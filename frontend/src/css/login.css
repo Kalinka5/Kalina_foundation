@@ -4,6 +4,15 @@
   margin: 0;
   box-sizing: border-box;
 }
+.login {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 89vh;
+  background: linear-gradient(to right, #ebe37d, #2f80ed);
+  overflow: hidden;
+}
 .login-background {
   width: 430px;
   height: 520px;
@@ -25,8 +34,8 @@
 }
 .login-shape:last-child {
   background: linear-gradient(to right, #febf11, #fae900);
-  right: -80px;
-  bottom: -100px;
+  right: -50px;
+  bottom: -80px;
 }
 .login-form {
   height: 520px;
@@ -91,5 +100,5 @@
   padding-top: 35px;
 }
 .login-form p a {
-  color: #faef1d;
+  color: #000000;
 }

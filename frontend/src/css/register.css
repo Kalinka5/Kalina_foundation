@@ -6,6 +6,15 @@
   margin: 0;
   box-sizing: border-box;
 }
+.register {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 89vh;
+  background: linear-gradient(to right, #ebe37d, #2f80ed);
+  overflow: hidden;
+}
 .register-background {
   width: 430px;
   height: 520px;
@@ -22,13 +31,13 @@
 }
 .register-shape:first-child {
   background: linear-gradient(#1845ad, #23a2f6);
-  right: -80px;
-  top: -80px;
+  right: -100px;
+  top: -100px;
 }
 .register-shape:last-child {
   background: linear-gradient(to right, #febf11, #fae900);
-  left: -80px;
-  bottom: -130px;
+  left: -50px;
+  bottom: -70px;
 }
 .register-form {
   height: 520px;
@@ -43,7 +52,6 @@
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   padding: 50px 45px;
-  margin-top: 30px;
 }
 .register h2 {
   color: #ffffff;

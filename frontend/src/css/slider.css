@@ -10,15 +10,15 @@
 .slider .slide:target {
   z-index: 100;
 }
-img {
+.slider img {
   max-width: 100%;
   width: 100%;
   position: fixed;
   left: 0;
 }
 
-a.prev,
-a.next {
+.slider a.prev,
+.slider a.next {
   height: 91px;
   position: absolute;
   width: 43px;
@@ -29,8 +29,8 @@ a.next {
   text-indent: -99999px;
   cursor: pointer;
 }
-a.prev:hover,
-a.next:hover {
+.slider a.prev:hover,
+.slider a.next:hover {
   opacity: 1;
 }
 .prev {
