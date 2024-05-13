@@ -5,10 +5,10 @@ class Header extends React.Component {
   render() {
     return (
       <header>
-        <div class="logo">
+        <div className="logo">
           <a href="/">Kalina Fond</a>
         </div>
-        <div class="nav">
+        <div className="nav">
           <ul>
             <li id="show-nails">
               <a href="/login">Login</a>

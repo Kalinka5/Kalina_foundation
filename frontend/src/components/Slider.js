@@ -11,59 +11,59 @@ import warriors from "../img/warriors.png";
 class Slider extends React.Component {
   render() {
     return (
-      <div class="slider">
+      <div className="slider">
         <ul>
-          <li id="no-js-slider-1" class="slide">
+          <li id="no-js-slider-1" className="slide">
             <img src={bpla} alt="BPLA" />
-            <a class="prev" href="#no-js-slider-6">
+            <a className="prev" href="#no-js-slider-6">
               prev
             </a>
-            <a class="next" href="#no-js-slider-2">
+            <a className="next" href="#no-js-slider-2">
               next
             </a>
           </li>
-          <li id="no-js-slider-2" class="slide">
+          <li id="no-js-slider-2" className="slide">
             <img src={communication} alt="Communication" />
-            <a class="prev" href="#no-js-slider-1">
+            <a className="prev" href="#no-js-slider-1">
               prev
             </a>
-            <a class="next" href="#no-js-slider-3">
+            <a className="next" href="#no-js-slider-3">
               next
             </a>
           </li>
-          <li id="no-js-slider-3" class="slide">
+          <li id="no-js-slider-3" className="slide">
             <img src={drones} alt="Drones" />
-            <a class="prev" href="#no-js-slider-2">
+            <a className="prev" href="#no-js-slider-2">
               prev
             </a>
-            <a class="next" href="#no-js-slider-4">
+            <a className="next" href="#no-js-slider-4">
               next
             </a>
           </li>
-          <li id="no-js-slider-4" class="slide">
+          <li id="no-js-slider-4" className="slide">
             <img src={optical_devices} alt="Optical devices" />
-            <a class="prev" href="#no-js-slider-3">
+            <a className="prev" href="#no-js-slider-3">
               prev
             </a>
-            <a class="next" href="#no-js-slider-5">
+            <a className="next" href="#no-js-slider-5">
               next
             </a>
           </li>
-          <li id="no-js-slider-5" class="slide">
+          <li id="no-js-slider-5" className="slide">
             <img src={transport} alt="Transport" />
-            <a class="prev" href="#no-js-slider-4">
+            <a className="prev" href="#no-js-slider-4">
               prev
             </a>
-            <a class="next" href="#no-js-slider-6">
+            <a className="next" href="#no-js-slider-6">
               next
             </a>
           </li>
-          <li id="no-js-slider-6" class="slide">
+          <li id="no-js-slider-6" className="slide">
             <img src={warriors} alt="Warriors" />
-            <a class="prev" href="#no-js-slider-5">
+            <a className="prev" href="#no-js-slider-5">
               prev
             </a>
-            <a class="next" href="#no-js-slider-1">
+            <a className="next" href="#no-js-slider-1">
               next
             </a>
           </li>

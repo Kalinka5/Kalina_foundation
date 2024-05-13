@@ -10,6 +10,7 @@
 }
 .profile-card {
   background-color: #fff;
+  margin-top: 70px;
   border-radius: 10px;
   overflow: hidden;
   height: 580px;
@@ -19,20 +20,86 @@
 .profile-header {
   padding: 20px;
   text-align: center;
-  background: linear-gradient(to bottom, #c8714e, #8f94fb);
+  background: #a59999;
   color: rgb(255, 255, 255);
 }
-.profile-header h2 {
-  color: green;
+.profile-header .input-data {
+  height: 40px;
+  margin: 10px 20px;
+  position: relative;
 }
-.profile-picture img {
+.input-data input {
+  height: 100%;
+  background-color: #a59999;
+  border: none;
+  font-size: 17px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.12);
+  outline: none;
+}
+.input-data input:focus ~ label,
+.input-data input:valid ~ label {
+  transform: translateY(-20px);
+  font-size: 14px;
+  color: #ffffff;
+}
+.input-data label {
+  position: absolute;
+  left: 100px;
+  pointer-events: none;
+  bottom: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.input-data .underline {
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+}
+.input-data .underline:before {
+  position: absolute;
+  left: 100px;
+  content: "";
+  height: 2px;
+  width: 221px;
+  background: #ffffff;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.input-data input:focus ~ .underline:before,
+.input-data input:valid ~ .underline:before {
+  transform: scale(1);
+}
+.profile-header .form-element {
   width: 200px;
   height: 200px;
-  border-radius: 50%;
-  margin: 0 auto 10px;
+  margin: auto;
+  box-shadow: 0px 0px 20px 5px rgba(100, 100, 100, 0.1);
+}
+.profile-header .form-element input {
+  display: none;
+}
+.profile-header .form-element img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.profile-header .form-element div {
+  position: relative;
+  height: 40px;
+  margin-top: -44px;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  line-height: 40px;
+  font-size: 13px;
+  color: #f5f5f5;
+  font-weight: 600;
+}
+.profile-header.form-element div span {
+  font-size: 40px;
 }
 .profile-username {
-  margin: 0;
+  margin-top: 10px;
 }
 .profile-details {
   padding: 20px;
@@ -82,14 +149,14 @@
   color: #fff;
   line-height: 40px;
   text-align: center;
-  background-color: #87314e;
-  border: 1px #87314e solid;
+  background-color: #606943;
+  border: 1px #606943 solid;
   opacity: 1;
   cursor: pointer;
 }
 .profile-details input[type="submit"]:hover {
-  background-color: #df405a;
-  border: 1px #df405a solid;
+  background-color: #8ea14f;
+  border: 1px #8ea14f solid;
 }
 .profile-details input[type="submit"]:focus {
   outline: none;

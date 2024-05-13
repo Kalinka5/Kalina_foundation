@@ -31,13 +31,13 @@
 }
 .register-shape:first-child {
   background: linear-gradient(#1845ad, #23a2f6);
-  right: -100px;
+  left: -80px;
   top: -100px;
 }
 .register-shape:last-child {
   background: linear-gradient(to right, #febf11, #fae900);
-  left: -50px;
-  bottom: -70px;
+  right: -60px;
+  bottom: -80px;
 }
 .register-form {
   height: 520px;
@@ -63,10 +63,15 @@
 .register form .input-box {
   height: 52px;
   margin: 18px 0;
+  text-align: center;
 }
-form .input-box input {
+.register form .input-box.button {
+  height: 52px;
+  margin: 36px 0;
+}
+.register-form .input-box input {
   height: 100%;
-  width: 100%;
+  width: 85%;
   outline: none;
   padding: 0 15px;
   font-size: 17px;
@@ -81,24 +86,25 @@ form .input-box input {
 .input-box input:valid {
   border-color: #4070f4;
 }
-.register-form .policy {
-  display: flex;
-  align-items: center;
-}
 .register-form h3 {
   color: #ffffff;
   font-size: 14px;
   font-weight: 500;
   margin-left: 10px;
 }
-.input-box.button input {
+.input-box.button button {
+  height: 100%;
+  width: 85%;
   color: #fff;
   letter-spacing: 1px;
   border: none;
   background: #4070f4;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
   cursor: pointer;
 }
-.input-box.button input:hover {
+.input-box.button button:hover {
   background: #0e4bf1;
 }
 .register-form .text h3 {
