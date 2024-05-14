@@ -30,6 +30,7 @@
 }
 .input-data input {
   height: 100%;
+  text-align: center;
   background-color: #a59999;
   border: none;
   font-size: 17px;
@@ -38,13 +39,13 @@
 }
 .input-data input:focus ~ label,
 .input-data input:valid ~ label {
-  transform: translateY(-20px);
+  transform: translate(-77px, -20px);
   font-size: 14px;
   color: #ffffff;
 }
 .input-data label {
   position: absolute;
-  left: 100px;
+  left: 177px;
   pointer-events: none;
   bottom: 10px;
   font-size: 16px;
@@ -58,6 +59,7 @@
 .input-data .underline:before {
   position: absolute;
   left: 100px;
+  top: 40px;
   content: "";
   height: 2px;
   width: 221px;
