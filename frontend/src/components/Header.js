@@ -10,15 +10,11 @@ class Header extends React.Component {
         </div>
         <div className="nav">
           <ul>
-            <li id="show-nails">
-              <a href="/login">Login</a>
-            </li>
-            <li>
-              <a href="/register">Register</a>
-            </li>
-            <li>
-              <a href="/profile">Profile</a>
-            </li>
+            {this.props.links.map((el) => (
+              <li key={el.id}>
+                <a href={el.urlLink}>{el.urlName}</a>
+              </li>
+            ))}
           </ul>
         </div>
       </header>

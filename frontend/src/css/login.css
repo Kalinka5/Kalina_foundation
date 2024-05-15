@@ -97,7 +97,11 @@
 ::placeholder {
   color: #e5e5e5;
 }
-.login-form button {
+.login-form .btn-container {
+  display: flex;
+  align-items: center;
+}
+.login-form .btn-container button {
   margin-top: 50px;
   width: 100%;
   background-color: #ffffff;
@@ -107,6 +111,27 @@
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-form .btn-container button .loader {
+  margin-left: 10px;
+  pointer-events: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #052abc;
+  animation: an1 1s ease infinite;
+}
+@keyframes an1 {
+  0% {
+    transform: rotate(0turn);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
 }
 .login-form p {
   padding-top: 35px;

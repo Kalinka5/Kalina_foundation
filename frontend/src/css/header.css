@@ -44,16 +44,6 @@ header .logo a {
   color: rgb(0, 0, 0);
   text-decoration: none;
 }
-#show-nails:hover div.thumbnail-peekaboo {
-  display: block;
-}
-header div.thumbnail-peekaboo {
-  display: none;
-  height: 165px;
-  width: 3000px;
-  top: 40px;
-  left: 0;
-  background: #222;
-  background-size: 100px 100px;
-  position: absolute;
+.nav li {
+  float: right;
 }

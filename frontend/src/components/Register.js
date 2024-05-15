@@ -79,7 +79,10 @@ function Register() {
         </div>
 
         <div className="input-box button">
-          <button type="submit">Register Now</button>
+          <button type="submit">
+            Register Now
+            {loading && <div className="loader"></div>}
+          </button>
         </div>
 
         <div className="text">

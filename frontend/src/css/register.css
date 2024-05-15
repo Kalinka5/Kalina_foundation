@@ -52,6 +52,7 @@
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   padding: 50px 45px;
+  align-items: center;
 }
 .register h2 {
   color: #ffffff;
@@ -68,6 +69,9 @@
 .register form .input-box.button {
   height: 52px;
   margin: 36px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .register-form .input-box input {
   height: 100%;
@@ -103,9 +107,30 @@
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .input-box.button button:hover {
   background: #0e4bf1;
+}
+.input-box.button button .loader {
+  margin-left: 10px;
+  pointer-events: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #ffffff;
+  animation: an1 1s ease infinite;
+}
+@keyframes an1 {
+  0% {
+    transform: rotate(0turn);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
 }
 .register-form .text h3 {
   color: #333;

@@ -18,7 +18,8 @@ function Login() {
       const res = await api.post("/token/", { email, password });
       localStorage.setItem(ACCESS_TOKEN, res.data.access);
       localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-      navigate("/profile");
+      navigate("/");
+      navigate(0); // Refresh page
     } catch (error) {
       alert(error);
     } finally {
@@ -61,7 +62,12 @@ function Login() {
           />
         </div>
 
-        <button type="submit">Log In</button>
+        <div className="btn-container">
+          <button type="submit">
+            Log In
+            {loading && <div className="loader"></div>}
+          </button>
+        </div>
 
         <p>
           You don't have an account?

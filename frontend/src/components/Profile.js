@@ -9,10 +9,15 @@ function Profile() {
   const [last_name, setLastName] = useState("");
   const [image, setImage] = useState("");
   const [image_url, setImageURL] = useState("");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getData();
   }, []);
+
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 
   const getData = async () => {
     try {
@@ -35,7 +40,10 @@ function Profile() {
   }
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
+    await sleep(20000);
+
     const formData = new FormData();
     formData.append("username", username);
     formData.append("email", email);
@@ -48,6 +56,8 @@ function Profile() {
       await api.patch("/profile", formData);
     } catch (error) {
       alert(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -113,7 +123,12 @@ function Profile() {
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>
-            <input type="submit" id="submit" value="SUBMIT" title="Submit" />
+            <div className="btn-container">
+              <button type="submit">
+                Submit
+                {loading && <div className="loader"></div>}
+              </button>
+            </div>
           </div>
         </form>
       </div>
