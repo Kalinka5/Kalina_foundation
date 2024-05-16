@@ -38,7 +38,7 @@ function App() {
         {auth ? <Header links={authLinks} /> : <Header links={notAuthLinks} />}
         <main>
           <Routes>
-            <Route exact path="/" element={<Slider />} />
+            <Route exact path="/:n" element={<Slider />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<Logout />} />

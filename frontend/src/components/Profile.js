@@ -15,10 +15,6 @@ function Profile() {
     getData();
   }, []);
 
-  function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
   const getData = async () => {
     try {
       const res = await api.get("/profile");
@@ -42,14 +38,13 @@ function Profile() {
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    await sleep(20000);
 
     const formData = new FormData();
     formData.append("username", username);
     formData.append("email", email);
     formData.append("first_name", first_name);
     formData.append("last_name", last_name);
-    formData.append("image", image, image.name);
+    image && formData.append("image", image, image.name);
     console.log(formData);
 
     try {

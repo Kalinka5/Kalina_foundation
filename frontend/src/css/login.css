@@ -104,8 +104,8 @@
 .login-form .btn-container button {
   margin-top: 50px;
   width: 100%;
-  background-color: #ffffff;
-  color: #080710;
+  background-color: #4070f4;
+  color: #ffffff;
   padding: 15px 0;
   font-size: 18px;
   font-weight: 600;
@@ -114,6 +114,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.login-form .btn-container button:hover {
+  background: #0e4bf1;
 }
 .login-form .btn-container button .loader {
   margin-left: 10px;

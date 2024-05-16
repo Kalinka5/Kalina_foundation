@@ -3,7 +3,7 @@
   position: relative;
 }
 .slide {
-  position: fixed;
+  position: relative;
   height: 100%;
   width: 100%;
 }
@@ -13,7 +13,7 @@
 .slider img {
   max-width: 100%;
   width: 100%;
-  position: fixed;
+  position: relative;
   left: 0;
 }
 
