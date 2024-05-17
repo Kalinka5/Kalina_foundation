@@ -6,7 +6,7 @@ class Header extends React.Component {
     return (
       <header>
         <div className="logo">
-          <a href="/">Kalina Fond</a>
+          <a href="/1">Kalina Fond</a>
         </div>
         <div className="nav">
           <ul>
