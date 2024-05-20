@@ -18,7 +18,7 @@ function Login() {
       const res = await api.post("/token/", { email, password });
       localStorage.setItem(ACCESS_TOKEN, res.data.access);
       localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-      navigate("/");
+      navigate("/1");
       navigate(0); // Refresh page
     } catch (error) {
       alert(error);

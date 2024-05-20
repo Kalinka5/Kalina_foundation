@@ -49,7 +49,7 @@ def single_category(request, pk):
 
 
 class ItemsViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
     throttle_classes = [AnonRateThrottle, UserRateThrottle]  # Add throttling
 
     queryset = Item.objects.all()

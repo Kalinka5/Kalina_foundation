@@ -15,7 +15,7 @@ class Payment extends React.Component {
             <div class="card">
               <div class="front">
                 <div class="type">
-                  <img class="bankid" />
+                  <img class="bankid" alt="Payment card" />
                 </div>
                 <span class="chip"></span>
                 <span class="card_number">

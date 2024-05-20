@@ -12,6 +12,7 @@ import Main from "./components/Main";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Profile from "./components/Profile";
+import Payment from "./components/Payment";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./components/AuthContext";
 
@@ -25,7 +26,7 @@ import "./css/main.css";
 
 function Logout() {
   localStorage.clear();
-  return <Navigate to="/" />;
+  return <Navigate to="/1" />;
 }
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
     { id: 2, urlLink: "/login", urlName: "Login" },
   ];
   const images = [
-    { src: bpla, alt: "BPLA", hrefPrev: "/6", hrefNext: "/2" },
+    { src: bpla, alt: "BPLA", hrefPrev: "/5", hrefNext: "/2" },
     {
       src: communication,
       alt: "Communication",
@@ -74,6 +75,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="/donate" element={<Payment />} />
           </Routes>
         </main>
         <Footer />

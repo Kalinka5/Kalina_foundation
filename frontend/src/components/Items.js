@@ -23,18 +23,19 @@ function Items() {
 
   return (
     <div className="items">
-      <p className="container-title">
-        Here are the features
-        <br />
-        we’re proud of
-      </p>
+      <div className="items-title">
+        <p className="container-title">На що ми збираємо</p>
+      </div>
 
-      {items.map((el) => (
+      {items.map((el, index) => (
         <div className="gradient-cards" key={el.id}>
-          <div className="card">
-            <div className="container-card bg-green-box">
+          <div className={`card ${index % 2 === 0 ? "left" : "right"}`}>
+            <div className="container-card">
               <div className="column1">
                 <img className="item-image" src={el.image} alt="item1" />
+                <a className="donate-button" href="/donate" target="_blank">
+                  Задонатити
+                </a>
               </div>
               <div className="column2">
                 <p className="card-title">{el.title}</p>
