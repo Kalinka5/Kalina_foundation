@@ -28,18 +28,18 @@ function Login() {
   };
 
   return (
-    <div className="login">
-      <div className="login-background">
+    <div className="login-register">
+      <div className="log-reg-background">
         <div className="login-shape"></div>
         <div className="login-shape"></div>
       </div>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h3>Login Here</h3>
+      <form className="log-reg-form" onSubmit={handleSubmit}>
+        <h3 className="log-h3">Login Here</h3>
 
         <label className="email-label" htmlFor="email">
           Email
         </label>
-        <div className="input-box">
+        <div className="log-input-box">
           <input
             type="text"
             value={email}
@@ -51,7 +51,7 @@ function Login() {
         </div>
 
         <label htmlFor="password">Password</label>
-        <div className="input-box">
+        <div className="log-input-box">
           <input
             type="password"
             value={password}

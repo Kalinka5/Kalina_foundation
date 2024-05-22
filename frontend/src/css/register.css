@@ -1,152 +1,120 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
-*:before,
-*:after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-.register {
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 89vh;
-  background: linear-gradient(to right, #ebe37d, #2f80ed);
-  overflow: hidden;
-}
-.register-background {
-  width: 430px;
-  height: 520px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-}
-.register-background .register-shape {
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  border-radius: 50%;
-}
-.register-shape:first-child {
-  background: linear-gradient(#1845ad, #23a2f6);
-  left: -80px;
-  top: -100px;
-}
-.register-shape:last-child {
-  background: linear-gradient(to right, #febf11, #fae900);
-  right: -60px;
-  bottom: -80px;
-}
-.register-form {
-  height: 520px;
-  width: 400px;
-  background-color: rgba(255, 255, 255, 0.13);
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-  padding: 50px 45px;
-}
-.register h2 {
+.login-register h2 {
   color: #ffffff;
   font-size: 32px;
   font-weight: 500;
   line-height: 42px;
   text-align: center;
 }
-.register form .input-box {
-  height: 52px;
-  margin: 18px 0;
-  text-align: center;
-}
-.register form .input-box.button {
-  height: 52px;
-  margin: 36px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.register-form .input-box input {
-  height: 80%;
-  width: 85%;
-  outline: none;
-  padding: 0 15px;
-  font-size: 17px;
-  font-weight: 400;
-  color: #333;
-  border: 1.5px solid #c7bebe;
-  border-bottom-width: 2.5px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-.register-form .input-box .success {
-  border-color: #09c372;
-}
-.register-form .input-box .error {
-  border-color: #8a021d;
-}
-.register-form h3 {
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 500;
-  margin-left: 10px;
-}
-.input-box.button button {
-  height: 100%;
-  width: 85%;
-  color: #fff;
-  letter-spacing: 1px;
-  border: none;
-  background: #4070f4;
-  font-size: 18px;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.input-box.button button:hover {
-  background: #0e4bf1;
-}
-.input-box.button button .loader {
-  margin-left: 10px;
-  pointer-events: none;
-  width: 30px;
-  height: 30px;
+
+.log-reg-background .register-shape {
+  height: 200px;
+  width: 200px;
+  position: absolute;
   border-radius: 50%;
-  border: 3px solid transparent;
-  border-top-color: #ffffff;
-  animation: an1 1s ease infinite;
-}
-@keyframes an1 {
-  0% {
-    transform: rotate(0turn);
+  &:first-child {
+    background: linear-gradient(#1845ad, #23a2f6);
+    left: -80px;
+    top: -100px;
   }
-  100% {
-    transform: rotate(1turn);
+  &:last-child {
+    background: linear-gradient(to right, #febf11, #fae900);
+    right: -60px;
+    bottom: -80px;
   }
 }
-.register-form .text h3 {
-  color: #333;
-  width: 100%;
-  text-align: center;
-}
-.register-form .text h3 a {
-  color: #4070f4;
-  text-decoration: none;
-}
-.register-form .text h3 a:hover {
-  text-decoration: underline;
-}
-.register-form .input-box p {
-  color: red;
-  margin-left: 15px;
-  margin-bottom: 10px;
-  text-align: left;
+
+.log-reg-form {
+  padding: 50px 45px;
+  .reg-input-box {
+    height: 52px;
+    margin: 18px 0;
+    text-align: center;
+    input {
+      height: 80%;
+      width: 85%;
+      outline: none;
+      padding: 0 15px;
+      font-size: 17px;
+      font-weight: 400;
+      color: #333;
+      border: 1.5px solid #c7bebe;
+      border-bottom-width: 2.5px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    .success {
+      border-color: #09c372;
+    }
+    .error {
+      border-color: #8a021d;
+    }
+    p {
+      color: red;
+      margin-left: 15px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+  }
+  .button {
+    height: 52px;
+    margin: 36px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      height: 100%;
+      width: 85%;
+      color: #fff;
+      letter-spacing: 1px;
+      border: none;
+      background: #4070f4;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button:hover {
+      background: #0e4bf1;
+    }
+    button .loader {
+      margin-left: 10px;
+      pointer-events: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #ffffff;
+      animation: an1 1s ease infinite;
+    }
+    @keyframes an1 {
+      0% {
+        transform: rotate(0turn);
+      }
+      100% {
+        transform: rotate(1turn);
+      }
+    }
+  }
+
+  .reg-h3 {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 10px;
+    color: #333;
+    width: 100%;
+    text-align: center;
+  }
+  .text h3 a {
+    color: #4070f4;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

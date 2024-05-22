@@ -21,8 +21,9 @@ class Footer extends React.Component {
               </svg>
               <a
                 className="footer-social-link linkedin"
-                href="#Linkedin"
+                href="https://www.linkedin.com/in/daniil-kalinevych-b75167266/"
                 target="_blank"
+                rel="noreferrer"
               >
                 <span className="hidden-link-text">Linkedin</span>
                 <svg
@@ -72,8 +73,9 @@ class Footer extends React.Component {
               </a>
               <a
                 className="footer-social-link github"
-                href="#Github"
+                href="https://github.com/Kalinka5"
                 target="_blank"
+                rel="noreferrer"
               >
                 <span className="hidden-link-text">Github</span>
                 <svg

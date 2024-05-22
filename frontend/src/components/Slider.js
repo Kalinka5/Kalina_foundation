@@ -17,7 +17,7 @@ function Slider(props) {
     setAlt(images[integerN].alt);
     setHrefPrev(images[integerN].hrefPrev);
     setHrefNext(images[integerN].hrefNext);
-  }, [images, integerN]);
+  }, []);
 
   return (
     <div className="slider">

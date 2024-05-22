@@ -1,24 +1,66 @@
 .payment {
   min-height: 89vh;
+  overflow: hidden;
+  background: linear-gradient(to right, #ebe37d, #2f80ed);
+  #cards-title {
+    color: #ffffff;
+    margin-top: 80px;
+    text-align: center;
+  }
+}
+.payment .grid-part {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  column-gap: 10px;
+  row-gap: 1em;
+  margin-top: 30px;
+  justify-content: center;
+  background: linear-gradient(#000, #000) center/2px 100% no-repeat;
+}
+.payment .grid-part .block {
+  margin: 10px;
+  display: inline-block;
+}
+.payment .grid-part .center-mono {
+  width: 150px;
+  grid-column: 2;
+  position: relative;
+  text-align: center;
+}
+.payment .grid-part .center-privat {
+  width: 140px;
+  grid-column: 3;
+  position: relative;
+  text-align: center;
+  h2 {
+    color: #10b201;
+  }
+}
+.payment .grid-part .row1 {
+  display: inline-block;
+  margin-top: 40px;
+}
+.payment .grid-part #mono-desc {
+  margin-left: 20px;
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row: 2;
+}
+.payment .grid-part #visa-desc {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row: 2;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, auto);
   column-gap: 10px;
   row-gap: 1em;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: linear-gradient(to right, #ebe37d, #2f80ed);
 }
-.payment .block {
-  margin: 10px;
-  max-width: 450px;
-  display: inline-block;
-}
-.payment .row1 {
-  margin-top: 60px;
-  display: inline-block;
-}
-.payment .description {
+.payment .grid-part .description {
+  width: 418px;
+  margin-left: 8px;
+  margin-bottom: 15px;
   input {
     display: block;
     width: 300px;
@@ -26,20 +68,24 @@
     padding-left: 10px;
     padding-top: 3px;
     padding-bottom: 3px;
-    margin: 7px;
+    margin: 0 auto;
     font-size: 17px;
     border-radius: 20px;
-    background: rgba(0, 0, 0, 0.05);
+    color: white;
+    background: rgba(0, 0, 0, 0.656);
     border: none;
     transition: background 0.5s;
-    pointer-events: none;
     &:focus {
       outline-width: 0;
-      background: rgba(31, 134, 252, 0.15);
+      background: rgba(16, 17, 17, 0.742);
       transition: background 0.5s;
     }
   }
-  /* CSS */
+  #monobanka-p {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
   a {
     appearance: none;
     background-color: #000000;
@@ -66,7 +112,7 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 100%;
+    width: 300px;
     will-change: transform;
   }
 
@@ -86,34 +132,8 @@
 
   label {
     padding-left: 8px;
-    font-size: 15px;
-    color: #444;
-  }
-
-  .ccv {
-    width: 40%;
-  }
-
-  .buy {
-    width: 260px;
-    height: 50px;
-    position: relative;
-    display: block;
-    margin: 20px auto;
-    border-radius: 10px;
-    border: none;
-    background: #42c2df;
-    color: white;
-    font-size: 20px;
-    transition: background 0.4s;
-    cursor: pointer;
-    i {
-      font-size: 20px;
-    }
-    &:hover {
-      background: #3594a9;
-      transition: background 0.4s;
-    }
+    font-size: 18px;
+    color: #000000;
   }
 }
 

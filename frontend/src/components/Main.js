@@ -1,3 +1,4 @@
+import React from "react";
 import { useParams } from "react-router-dom";
 import "../css/slider.css";
 import Slider from "./Slider";

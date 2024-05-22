@@ -34,7 +34,7 @@ function Items() {
               <div className="column1">
                 <img className="item-image" src={el.image} alt="item1" />
                 <a className="donate-button" href="/donate" target="_blank">
-                  Задонатити
+                  <span>Задонатити</span>
                 </a>
               </div>
               <div className="column2">

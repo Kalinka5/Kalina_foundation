@@ -44,15 +44,15 @@ function Register() {
   };
 
   return (
-    <div className="register">
-      <div className="register-background">
+    <div className="login-register">
+      <div className="log-reg-background">
         <div className="register-shape"></div>
         <div className="register-shape"></div>
       </div>
-      <form className="register-form" onSubmit={handleSubmit}>
+      <form className="log-reg-form" onSubmit={handleSubmit}>
         <h2>Registration</h2>
 
-        <div className="input-box">
+        <div className="reg-input-box">
           <input
             className={`${validFields.usernameIsValid ? "success" : "error"}`}
             type="text"
@@ -63,7 +63,7 @@ function Register() {
           {errors.username && <p>{errors.username}</p>}
         </div>
 
-        <div className="input-box">
+        <div className="reg-input-box">
           <input
             className={`${validFields.emailIsValid ? "success" : "error"}`}
             type="text"
@@ -74,7 +74,7 @@ function Register() {
           {errors.email && <p>{errors.email}</p>}
         </div>
 
-        <div className="input-box">
+        <div className="reg-input-box">
           <input
             className={`${validFields.passwordIsValid ? "success" : "error"}`}
             type="password"
@@ -85,7 +85,7 @@ function Register() {
           {errors.password && <p>{errors.password}</p>}
         </div>
 
-        <div className="input-box">
+        <div className="reg-input-box">
           <input
             className={`${
               validFields.confPasswordIsValid ? "success" : "error"
@@ -98,7 +98,7 @@ function Register() {
           {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         </div>
 
-        <div className="input-box button">
+        <div className="reg-input-box button">
           <button type="submit">
             Register Now
             {loading && <div className="loader"></div>}
@@ -106,7 +106,7 @@ function Register() {
         </div>
 
         <div className="text">
-          <h3>
+          <h3 className="reg-h3">
             Already have an account? <a href="/login">Login now</a>
           </h3>
         </div>
