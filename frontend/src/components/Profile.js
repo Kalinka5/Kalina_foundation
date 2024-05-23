@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../css/profile.css";
 import api from "../api";
-import { IoMdAt, IoIosContact } from "react-icons/io";
+import { IoMdAt, IoIosContact, IoIosImage } from "react-icons/io";
 import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 
 function Profile() {
@@ -75,8 +75,11 @@ function Profile() {
               />
               <label htmlFor="profile-image" id="profile-image-preview">
                 <img src={image_url} alt="Profile" />
-                <div>
-                  <span>+</span>
+                <div className="upload-content">
+                  <div className="upload-image">
+                    <IoIosImage />
+                  </div>
+                  <h2>Upload image</h2>
                 </div>
               </label>
             </div>
