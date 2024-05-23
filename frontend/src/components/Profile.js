@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../css/profile.css";
 import api from "../api";
+import { IoMdAt, IoIosContact } from "react-icons/io";
+import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 
 function Profile() {
   const [username, setUsername] = useState("");
@@ -88,35 +90,62 @@ function Profile() {
               />
               <div className="underline"></div>
               <label htmlFor="username">Username</label>
+              <i className="icon uil uil-at">
+                <IoIosContact />
+              </i>
             </div>
           </div>
           <div className="profile-details">
-            <div className="user-data">
+            <div className="form-group">
               <label htmlFor="email">E-mail:</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+              <div className="input-icon">
+                <input
+                  type="email"
+                  name="logemail"
+                  className="form-style"
+                  placeholder="Your Email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <i className="icon uil uil-at">
+                  <IoMdAt />
+                </i>
+              </div>
             </div>
-            <div className="user-data">
+            <div className="form-group">
               <label htmlFor="firstname">Firstname:</label>
-              <input
-                type="text"
-                id="firstname"
-                value={first_name}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
+              <div className="input-icon">
+                <input
+                  type="text"
+                  name="firstname"
+                  className="form-style"
+                  placeholder="Your Full Name"
+                  id="firstname"
+                  value={first_name}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+                <i className="icon uil uil-user">
+                  <FaAutoprefixer />
+                </i>
+              </div>
             </div>
-            <div className="user-data">
+            <div className="form-group">
               <label htmlFor="lastname">Lastname:</label>
-              <input
-                type="text"
-                id="lastname"
-                value={last_name}
-                onChange={(e) => setLastName(e.target.value)}
-              />
+              <div className="input-icon">
+                <input
+                  type="text"
+                  name="lastname"
+                  className="form-style"
+                  placeholder="Your Full Name"
+                  id="lastname"
+                  value={last_name}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+                <i className="icon uil uil-user">
+                  <FaAustralSign />
+                </i>
+              </div>
             </div>
             <div className="btn-container">
               <button type="submit">
