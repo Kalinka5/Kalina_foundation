@@ -44,3 +44,23 @@
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
 }
+
+/* Loader in Login, Register, Profile pages */
+.loader {
+  margin-left: 10px;
+  pointer-events: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  animation: an1 1s ease infinite;
+  border-top-color: #052abc;
+}
+@keyframes an1 {
+  0% {
+    transform: rotate(0turn);
+  }
+  100% {
+    transform: rotate(1turn);
+  }
+}

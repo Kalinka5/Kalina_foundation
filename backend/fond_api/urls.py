@@ -2,7 +2,7 @@ from django.urls import path
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from .views import RegisterApi, CategoriesListView, single_category, ItemsViewSet, profile
+from .views import RegisterApi, CategoriesListView, single_category, ItemsViewSet, profile, donaters
 
 
 urlpatterns = [
@@ -15,4 +15,5 @@ urlpatterns = [
     path('items/<int:pk>',
          ItemsViewSet.as_view({'get': 'retrieve'}), name='single_item'),
     path('profile', profile, name='profile'),
+    path('donaters', donaters, name='top-donaters')
 ]

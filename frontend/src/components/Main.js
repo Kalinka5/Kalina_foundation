@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "../css/slider.css";
 import Slider from "./Slider";
 import Items from "./Items";
+import Donaters from "./Donaters";
 
 function Main(props) {
   const { n } = useParams();
@@ -11,6 +12,7 @@ function Main(props) {
     <div className="main">
       <Slider page={n} images={props.images} />
       <Items page={n} />
+      <Donaters />
     </div>
   );
 }

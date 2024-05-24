@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404
 
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .models import Category, Item
+from .models import Category, Item, User
 from .serializers import RegisterSerializer, UserSerializer, CategorySerializer, ItemSerializer
 
 
@@ -79,3 +79,10 @@ def profile(request):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def donaters(request):
+    user = User.objects.all().order_by('-donated')[:5]
+    serializer = UserSerializer(user, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)

@@ -81,24 +81,6 @@
     button:hover {
       background: #0e4bf1;
     }
-    button .loader {
-      margin-left: 10px;
-      pointer-events: none;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: 3px solid transparent;
-      border-top-color: #ffffff;
-      animation: an1 1s ease infinite;
-    }
-    @keyframes an1 {
-      0% {
-        transform: rotate(0turn);
-      }
-      100% {
-        transform: rotate(1turn);
-      }
-    }
   }
 
   .reg-h3 {

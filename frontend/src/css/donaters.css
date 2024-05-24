@@ -1,0 +1,199 @@
+.donaters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 89vh;
+  background: linear-gradient(to right, #ebe37d, #2f80ed);
+  overflow: hidden;
+
+  .donaters-card {
+    text-align: center;
+    height: 620px;
+    width: 900px;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  }
+
+  h1 {
+    margin-top: 20px;
+  }
+
+  .pedestal {
+    margin: 30px auto;
+    height: 500px;
+    width: 700px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(100, 1fr);
+    grid-column-gap: 5px;
+
+    .bar1 {
+      background-color: rgb(81, 187, 0);
+      width: 100px;
+      grid-column: 1;
+      grid-row-start: 15;
+      grid-row-end: 101;
+      border-radius: 5px 5px 0 0;
+      position: relative;
+      text-align: center;
+
+      .user1 {
+        margin-top: 10px;
+        font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+      }
+    }
+    .bar2 {
+      background-color: rgb(81, 187, 0);
+      width: 100px;
+      grid-column: 2;
+      grid-row-start: 30;
+      grid-row-end: 101;
+      border-radius: 5px 5px 0 0;
+      position: relative;
+      text-align: center;
+
+      .user2 {
+        margin-top: 10px;
+        font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+      }
+    }
+    .bar3 {
+      background-color: rgb(81, 187, 0);
+      width: 100px;
+      grid-column: 3;
+      grid-row-start: 45;
+      grid-row-end: 101;
+      border-radius: 5px 5px 0 0;
+      position: relative;
+      text-align: center;
+
+      .user3 {
+        margin-top: 10px;
+        font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+      }
+    }
+    .bar4 {
+      background-color: rgb(81, 187, 0);
+      width: 100px;
+      grid-column: 4;
+      grid-row-start: 60;
+      grid-row-end: 101;
+      border-radius: 5px 5px 0 0;
+      position: relative;
+      text-align: center;
+
+      .user4 {
+        margin-top: 10px;
+        font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+      }
+    }
+    .bar5 {
+      background-color: rgb(81, 187, 0);
+      width: 100px;
+      grid-column: 5;
+      grid-row-start: 75;
+      grid-row-end: 101;
+      border-radius: 5px 5px 0 0;
+      position: relative;
+      text-align: center;
+
+      .user5 {
+        margin-top: 10px;
+        font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+      }
+    }
+  }
+}
+
+.donater-image {
+  position: absolute;
+  top: -110px;
+  left: 10px;
+
+  .image1 {
+    --c: #d7a800; /* border color */
+  }
+  .image2 {
+    --c: gray; /* border color */
+  }
+  .image3 {
+    --c: #b75300; /* border color */
+  }
+  .image4 {
+    --c: #ae3ec9; /* border color */
+  }
+  .image5 {
+    --c: #00bc42; /* border color */
+  }
+
+  img {
+    --s: 80px; /* image size */
+    --b: 6px; /* border thickness */
+    --cb: #e9ecef; /* background color */
+    --f: 1; /* initial scale */
+
+    width: var(--s);
+    aspect-ratio: 1;
+    padding-top: calc(var(--s) / 5);
+    cursor: pointer;
+    border-radius: 0 0 999px 999px;
+    --_g: 50% / calc(100% / var(--f)) 100% no-repeat content-box;
+    background: radial-gradient(
+        circle closest-side,
+        var(--cb) calc(99% - var(--b)),
+        var(--c) calc(100% - var(--b)) 99%,
+        #0000
+      )
+      var(--_g);
+    transform: scale(var(--f));
+    transition: 0.5s;
+  }
+  img:hover {
+    --f: 1.4; /* hover scale */
+  }
+}
+
+.donated {
+  font-size: 14px;
+  width: 130px;
+  position: absolute;
+  top: -70px;
+  left: 100px;
+  text-align: left;
+}
+
+.icon {
+  position: absolute;
+  bottom: 10px;
+  left: 40px;
+  height: 48px;
+  font-size: 24px;
+  line-height: 48px;
+  text-align: left;
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+
+  &__1 {
+    color: #d7a800;
+  }
+  &__2 {
+    color: gray;
+  }
+  &__3 {
+    color: #b75300;
+  }
+  &__4 {
+    color: #ae3ec9;
+  }
+  &__5 {
+    color: #00bc42;
+  }
+}

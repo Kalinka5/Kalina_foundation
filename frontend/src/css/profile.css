@@ -222,29 +222,14 @@
           justify-content: center;
 
           &:hover {
-            background-color: #edba00;
-            border: 1px #edba00 solid;
+            background-color: #d5a700;
+            border: 1px #d5a700 solid;
           }
           &:focus {
             outline: none;
           }
           .loader {
-            margin-left: 10px;
-            pointer-events: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            border-top-color: #052abc;
-            animation: an1 1s ease infinite;
-          }
-          @keyframes an1 {
-            0% {
-              transform: rotate(0turn);
-            }
-            100% {
-              transform: rotate(1turn);
-            }
+            border-top-color: #b76800;
           }
         }
       }

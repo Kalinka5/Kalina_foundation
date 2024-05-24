@@ -64,6 +64,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=255, blank=True, default='')
     image = models.ImageField(
         upload_to="profile_images/", blank=True, default="profile_images/default_profile.png")
+    donated = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
