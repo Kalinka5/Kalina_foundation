@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import "../css/donaters.css";
-import api from "../api";
+
 import { Fa1, Fa2, Fa3, Fa4, Fa5 } from "react-icons/fa6";
+
+import api from "../api";
+
+import "../styles/donaters.css";
 
 function Donaters() {
   const [donaters, setDonaters] = useState([]);
@@ -30,20 +33,23 @@ function Donaters() {
   return (
     <div className="donaters">
       <div className="donaters-card">
-        <h1>Top donaters</h1>
+        <h1>Top donators</h1>
         <div className="pedestal">
           {donaters.map((user, index) => (
             <div className={`bar${index + 1}`} key={user.id}>
-              <div className="donater-image">
+              <div className="profile-pic">
                 <img
-                  className={`image${index + 1}`}
+                  className="profile-pic-image"
                   src={process.env.REACT_APP_API_URL + user.image}
                   alt="Donater"
                 />
               </div>
               <div className="donated">Задонатив/ла {user.donated} грн.</div>
+              <div className="underline"></div>
               <div className={`user${index + 1}`}>{user.username}</div>
-              <i className={`icon__${index + 1}`}>{places[index]}</i>
+              <div className="icon-background">
+                <i className={`icon color${index + 1}`}>{places[index]}</i>
+              </div>
             </div>
           ))}
         </div>

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../css/items.css";
+
 import api from "../api";
+
+import "../styles/items.css";
 
 function Items() {
   const { n } = useParams();

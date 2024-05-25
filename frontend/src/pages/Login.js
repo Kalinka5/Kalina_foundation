@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import "../css/login.css";
+import { useNavigate } from "react-router-dom";
+
 import api from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
-import { useNavigate } from "react-router-dom";
+
+import "../styles/login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -30,8 +32,8 @@ function Login() {
   return (
     <div className="login-register">
       <div className="log-reg-background">
-        <div className="login-shape"></div>
-        <div className="login-shape"></div>
+        <div className="shape"></div>
+        <div className="shape"></div>
       </div>
       <form className="log-reg-form" onSubmit={handleSubmit}>
         <h3 className="log-h3">Login Here</h3>
@@ -62,14 +64,14 @@ function Login() {
           />
         </div>
 
-        <div className="btn-container">
+        <div className="btn-container log-button">
           <button type="submit">
             Log In
             {loading && <div className="loader"></div>}
           </button>
         </div>
 
-        <p>
+        <p className="log-p">
           You don't have an account?
           <br />
           <a href="/register">Register now</a>

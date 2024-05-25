@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import "../css/slider.css";
-import Slider from "./Slider";
-import Items from "./Items";
-import Donaters from "./Donaters";
+
+import Slider from "../components/Slider";
+import Items from "../components/Items";
+import Donaters from "../components/Donaters";
 
 function Main(props) {
   const { n } = useParams();

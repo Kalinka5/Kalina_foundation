@@ -8,13 +8,14 @@ import {
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Main from "./components/Main";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Profile from "./components/Profile";
-import Payment from "./components/Payment";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./components/AuthContext";
+
+import Main from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
+import Payment from "./pages/Payment";
 
 import bpla from "./img/bpla.jpg";
 import communication from "./img/communication.jpg";
@@ -22,7 +23,7 @@ import drones from "./img/drones.jpg";
 import optical_devices from "./img/optical_devices.jpg";
 import transport from "./img/transport.jpg";
 
-import "./css/main.css";
+import "./styles/index.css";
 
 function Logout() {
   localStorage.clear();

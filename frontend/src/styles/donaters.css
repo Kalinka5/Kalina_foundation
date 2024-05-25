@@ -8,21 +8,27 @@
 
   .donaters-card {
     text-align: center;
-    height: 620px;
-    width: 900px;
+    height: 680px;
+    width: 1100px;
     background-color: rgba(255, 255, 255, 0.13);
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   }
 
   h1 {
-    margin-top: 20px;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-shadow: 0.022em 0.022em 0.022em #111;
+    color: #e5e5e5;
   }
 
   .pedestal {
-    margin: 30px auto;
+    --bar-color: rgb(186, 93, 93);
+
+    margin: 0 auto;
+    margin-top: 100px;
     height: 500px;
     width: 700px;
     display: grid;
@@ -31,7 +37,7 @@
     grid-column-gap: 5px;
 
     .bar1 {
-      background-color: rgb(81, 187, 0);
+      background-color: var(--bar-color);
       width: 100px;
       grid-column: 1;
       grid-row-start: 15;
@@ -39,6 +45,9 @@
       border-radius: 5px 5px 0 0;
       position: relative;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       .user1 {
         margin-top: 10px;
@@ -47,7 +56,7 @@
       }
     }
     .bar2 {
-      background-color: rgb(81, 187, 0);
+      background-color: var(--bar-color);
       width: 100px;
       grid-column: 2;
       grid-row-start: 30;
@@ -55,6 +64,9 @@
       border-radius: 5px 5px 0 0;
       position: relative;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       .user2 {
         margin-top: 10px;
@@ -63,7 +75,7 @@
       }
     }
     .bar3 {
-      background-color: rgb(81, 187, 0);
+      background-color: var(--bar-color);
       width: 100px;
       grid-column: 3;
       grid-row-start: 45;
@@ -71,6 +83,9 @@
       border-radius: 5px 5px 0 0;
       position: relative;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       .user3 {
         margin-top: 10px;
@@ -79,7 +94,7 @@
       }
     }
     .bar4 {
-      background-color: rgb(81, 187, 0);
+      background-color: var(--bar-color);
       width: 100px;
       grid-column: 4;
       grid-row-start: 60;
@@ -87,6 +102,9 @@
       border-radius: 5px 5px 0 0;
       position: relative;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       .user4 {
         margin-top: 10px;
@@ -95,7 +113,7 @@
       }
     }
     .bar5 {
-      background-color: rgb(81, 187, 0);
+      background-color: var(--bar-color);
       width: 100px;
       grid-column: 5;
       grid-row-start: 75;
@@ -103,6 +121,9 @@
       border-radius: 5px 5px 0 0;
       position: relative;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       .user5 {
         margin-top: 10px;
@@ -112,88 +133,72 @@
     }
   }
 }
-
-.donater-image {
+.profile-pic {
+  aspect-ratio: 1;
+  border: clamp(3px, 0.4vw, 5px) solid white;
+  border-radius: 100%;
+  flex-shrink: 0;
   position: absolute;
   top: -110px;
-  left: 10px;
-
-  .image1 {
-    --c: #d7a800; /* border color */
-  }
-  .image2 {
-    --c: gray; /* border color */
-  }
-  .image3 {
-    --c: #b75300; /* border color */
-  }
-  .image4 {
-    --c: #ae3ec9; /* border color */
-  }
-  .image5 {
-    --c: #00bc42; /* border color */
-  }
-
-  img {
-    --s: 80px; /* image size */
-    --b: 6px; /* border thickness */
-    --cb: #e9ecef; /* background color */
-    --f: 1; /* initial scale */
-
-    width: var(--s);
-    aspect-ratio: 1;
-    padding-top: calc(var(--s) / 5);
-    cursor: pointer;
-    border-radius: 0 0 999px 999px;
-    --_g: 50% / calc(100% / var(--f)) 100% no-repeat content-box;
-    background: radial-gradient(
-        circle closest-side,
-        var(--cb) calc(99% - var(--b)),
-        var(--c) calc(100% - var(--b)) 99%,
-        #0000
-      )
-      var(--_g);
-    transform: scale(var(--f));
-    transition: 0.5s;
-  }
-  img:hover {
-    --f: 1.4; /* hover scale */
-  }
+}
+.profile-pic > .profile-pic-image {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 100%;
+  margin: clamp(5px, 0.75vw, 10px);
+  object-fit: cover;
+  height: 75px;
+  width: 75px;
 }
 
 .donated {
-  font-size: 14px;
-  width: 130px;
+  width: 221px;
   position: absolute;
-  top: -70px;
-  left: 100px;
+  top: -100px;
+  left: 110px;
   text-align: left;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+}
+.icon-background {
+  background-color: white;
+  .icon {
+    height: 48px;
+    font-size: 24px;
+    line-height: 48px;
+    text-align: left;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
 }
 
-.icon {
-  position: absolute;
-  bottom: 10px;
-  left: 40px;
-  height: 48px;
-  font-size: 24px;
-  line-height: 48px;
-  text-align: left;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
+.color1 {
+  color: #d7a800;
+}
+.color2 {
+  color: gray;
+}
+.color3 {
+  color: #b75300;
+}
+.color4 {
+  color: #ae3ec9;
+}
+.color5 {
+  color: #00bc42;
+}
 
-  &__1 {
-    color: #d7a800;
-  }
-  &__2 {
-    color: gray;
-  }
-  &__3 {
-    color: #b75300;
-  }
-  &__4 {
-    color: #ae3ec9;
-  }
-  &__5 {
-    color: #00bc42;
+.underline {
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+
+  &:before {
+    position: absolute;
+    left: 99px;
+    top: -80px;
+    content: "";
+    height: 2px;
+    width: 210px;
+    background: #ffffff;
   }
 }

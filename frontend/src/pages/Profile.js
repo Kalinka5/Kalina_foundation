@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "../css/profile.css";
-import api from "../api";
+
 import { IoMdAt, IoIosContact, IoIosImage } from "react-icons/io";
 import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
+
+import api from "../api";
+
+import "../styles/profile.css";
 
 function Profile() {
   const [username, setUsername] = useState("");

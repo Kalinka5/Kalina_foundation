@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "../css/register.css";
 import api from "../api";
 import Validation from "../validation";
+
+import "../styles/register.css";
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -46,8 +47,8 @@ function Register() {
   return (
     <div className="login-register">
       <div className="log-reg-background">
-        <div className="register-shape"></div>
-        <div className="register-shape"></div>
+        <div className="shape"></div>
+        <div className="shape"></div>
       </div>
       <form className="log-reg-form" onSubmit={handleSubmit}>
         <h2>Registration</h2>
@@ -98,18 +99,18 @@ function Register() {
           {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         </div>
 
-        <div className="reg-input-box button">
+        <div className="btn-container reg-button">
           <button type="submit">
             Register Now
             {loading && <div className="loader"></div>}
           </button>
         </div>
 
-        <div className="text">
-          <h3 className="reg-h3">
-            Already have an account? <a href="/login">Login now</a>
-          </h3>
-        </div>
+        <p>
+          Already have an account?
+          <br />
+          <a href="/login">Login now</a>
+        </p>
       </form>
     </div>
   );

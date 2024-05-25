@@ -1,3 +1,17 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -28,6 +42,23 @@
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
+
+  .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+    &:first-child {
+      background: linear-gradient(#1845ad, #23a2f6);
+      left: -80px;
+      top: -100px;
+    }
+    &:last-child {
+      background: linear-gradient(to right, #febf11, #fae900);
+      right: -60px;
+      bottom: -80px;
+    }
+  }
 }
 
 /* Login and Register form */
@@ -43,6 +74,31 @@
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+
+  p {
+    text-align: center;
+    a {
+      color: #4070f4;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .btn-container button {
+    background-color: #4070f4;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background: #0e4bf1;
+    }
+  }
 }
 
 /* Loader in Login, Register, Profile pages */

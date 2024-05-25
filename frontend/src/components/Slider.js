@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom";
-import "../css/slider.css";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+import "../styles/slider.css";
 
 function Slider(props) {
   const { n } = useParams();
