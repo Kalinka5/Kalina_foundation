@@ -10,56 +10,14 @@
   }
   .donater-info {
     position: absolute;
-    left: 832px;
+    left: 746px;
     top: 200px;
     overflow: hidden;
     color: rgb(255, 255, 255);
     font-family: "Lato";
     text-align: center;
-    z-index: 0;
 
-    &:before {
-      content: "";
-      backdrop-filter: blur(20px);
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      z-index: -1;
-    }
-    &:hover {
-      .show-info {
-        transition-delay: 550ms;
-        opacity: 1;
-      }
-    }
-    .show-info {
-      position: absolute;
-      left: 680px;
-      top: 200px;
-      max-height: 200px;
-      max-width: 360px;
-      overflow: hidden;
-      color: rgb(255, 255, 255);
-      font-family: "Lato";
-      text-align: center;
-      z-index: 1;
-      opacity: 1;
-      transform: translateY(25%);
-      transition: opacity 250ms ease, transform 250ms ease;
-      &:before {
-        content: "";
-        backdrop-filter: blur(20px);
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: -1;
-      }
-    }
-    .icon {
+    .tooltip-icon {
       cursor: pointer;
       height: 40px;
       font-size: 50px;
@@ -68,6 +26,35 @@
       -webkit-transition: all 200ms linear;
       transition: all 200ms linear;
       color: #d70000;
+    }
+    .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      top: 150%;
+      left: 50%;
+      margin-left: -60px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent transparent black transparent;
+      }
+    }
+
+    .tooltip-icon:hover ~ .tooltiptext {
+      visibility: visible;
     }
   }
 

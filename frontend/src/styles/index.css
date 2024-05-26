@@ -29,15 +29,15 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 89vh;
+  min-height: 88vh;
   background: linear-gradient(to right, #ebe37d, #2f80ed);
   overflow: hidden;
 }
 
 /* Login and Register background */
 .log-reg-background {
-  width: 430px;
-  height: 520px;
+  width: 387px;
+  height: 468px;
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
@@ -50,21 +50,15 @@ code {
     border-radius: 50%;
     &:first-child {
       background: linear-gradient(#1845ad, #23a2f6);
-      left: -80px;
-      top: -100px;
     }
     &:last-child {
       background: linear-gradient(to right, #febf11, #fae900);
-      right: -60px;
-      bottom: -80px;
     }
   }
 }
 
 /* Login and Register form */
 .log-reg-form {
-  height: 520px;
-  width: 400px;
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
   transform: translate(-50%, -50%);

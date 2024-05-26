@@ -12,24 +12,22 @@ class Payment extends React.Component {
           Ми маємо дві картки на які ви можете задонатити
         </h2>
         <div className="donater-info">
-          <i className="icon">
+          <i className="tooltip-icon">
             <IoIosHelpCircle />
           </i>
-          <div className="show-info">
-            <p>
-              Щоб відображатись на головній сторінці у Топ донатерах, потрібно:{" "}
-              <br />
-              <br />
-              1) зареєструватись та залогінитись на нашому веб-сайті;
-              <br />
-              <br />
-              2) в описі донату зазначити{" "}
-              <b>
-                <i>username</i>
-              </b>{" "}
-              вашого створенного акаунту.
-            </p>
-          </div>
+          <span className="tooltiptext">
+            Щоб відображатись на головній сторінці у Топ донатерах, потрібно:{" "}
+            <br />
+            <br />
+            1) зареєструватись та залогінитись на нашому веб-сайті;
+            <br />
+            <br />
+            2) в описі донату зазначити{" "}
+            <b>
+              <i>username</i>
+            </b>{" "}
+            вашого створенного акаунту.
+          </span>
         </div>
         <div className="grid-part">
           <div className="block row1">

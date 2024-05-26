@@ -32,10 +32,10 @@ function Login() {
   return (
     <div className="login-register">
       <div className="log-reg-background">
-        <div className="shape"></div>
-        <div className="shape"></div>
+        <div className="shape log-shape1"></div>
+        <div className="shape log-shape2"></div>
       </div>
-      <form className="log-reg-form" onSubmit={handleSubmit}>
+      <form className="log-reg-form log-p" onSubmit={handleSubmit}>
         <h3 className="log-h3">Login Here</h3>
 
         <label className="email-label" htmlFor="email">

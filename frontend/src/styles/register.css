@@ -7,33 +7,98 @@
   line-height: 42px;
   text-align: center;
 }
-
-.log-reg-form {
+.reg-shape1 {
+  left: -80px;
+  top: -90px;
+}
+.reg-shape2 {
+  right: -80px;
+  bottom: -80px;
+}
+.reg-p {
+  color: #ffffff;
   padding: 50px 45px;
-
+}
+.log-reg-form {
   .reg-input-box {
     height: 52px;
     margin: 18px 0;
     text-align: center;
 
-    input {
-      height: 80%;
-      width: 85%;
-      outline: none;
-      padding: 0 15px;
-      font-size: 17px;
-      font-weight: 400;
-      color: #333;
-      border: 1.5px solid #c7bebe;
-      border-bottom-width: 2.5px;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-    }
-    .success {
-      border-color: #09c372;
-    }
-    .error {
-      border-color: #8a021d;
+    .input-icon {
+      height: 100%;
+      position: relative;
+
+      input {
+        height: 80%;
+        width: 85%;
+        outline: none;
+        padding: 0 15px;
+        font-size: 17px;
+        font-weight: 400;
+        color: #333;
+        border: 1.5px solid #c7bebe;
+        border-bottom-width: 2.5px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+      }
+      .success {
+        border-color: #09c372;
+      }
+      .error {
+        border-color: #8a021d;
+      }
+      .name-tip {
+        top: -5px;
+      }
+      .email-tip {
+        top: -40px;
+      }
+      .pass-tip {
+        top: -55px;
+      }
+      .confirm-tip {
+        top: -20px;
+      }
+      .--icon {
+        position: absolute;
+        top: 3px;
+        right: 20px;
+        height: 48px;
+        font-size: 24px;
+        line-height: 48px;
+        text-align: left;
+        color: #ffc70e;
+        -webkit-transition: all 200ms linear;
+        transition: all 200ms linear;
+        cursor: pointer;
+      }
+      .tooltiptext {
+        visibility: hidden;
+        width: 240px;
+        background-color: rgb(255, 219, 57);
+        color: #000000;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        left: 100%;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: 100%;
+          margin-top: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: transparent rgb(255, 219, 57) transparent transparent;
+        }
+      }
+      .--icon:hover ~ .tooltiptext {
+        visibility: visible;
+      }
     }
     p {
       color: red;

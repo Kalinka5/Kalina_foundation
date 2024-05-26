@@ -1,19 +1,30 @@
-.log-reg-form {
+.log-p {
   padding: 50px 35px;
+}
+.log-shape1 {
+  left: -80px;
+  top: -90px;
+}
+.log-shape2 {
+  right: -60px;
+  bottom: -80px;
+}
+.log-reg-form {
   * {
     font-family: "Poppins", sans-serif;
-    color: #ffffff;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
   }
   .log-h3 {
+    color: #ffffff;
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;
     text-align: center;
   }
   label {
+    color: #ffffff;
     display: block;
     font-size: 16px;
     font-weight: 500;
@@ -49,6 +60,7 @@
     }
   }
   .log-p {
+    color: #ffffff;
     padding-top: 35px;
   }
 }

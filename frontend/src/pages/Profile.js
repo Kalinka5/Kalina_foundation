@@ -126,7 +126,7 @@ function Profile() {
                   type="text"
                   name="firstname"
                   className="form-style"
-                  placeholder="Your Full Name"
+                  placeholder="Your First Name"
                   id="firstname"
                   value={first_name}
                   onChange={(e) => setFirstName(e.target.value)}
@@ -143,7 +143,7 @@ function Profile() {
                   type="text"
                   name="lastname"
                   className="form-style"
-                  placeholder="Your Full Name"
+                  placeholder="Your Last Name"
                   id="lastname"
                   value={last_name}
                   onChange={(e) => setLastName(e.target.value)}
