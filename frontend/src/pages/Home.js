@@ -6,15 +6,24 @@ import Items from "../components/Items";
 import Donaters from "../components/Donaters";
 import Footer from "../components/Footer";
 
+import NotFound from "./NotFound";
+
 function Home(props) {
   const { n } = useParams();
+  const integerN = Number(n);
 
   return (
     <div className="main">
-      <Slider page={n} images={props.images} />
-      <Items page={n} />
-      <Donaters />
-      <Footer back="dot-white" />
+      {integerN > 0 && integerN < 6 ? (
+        <div>
+          <Slider page={n} images={props.images} />
+          <Items page={n} />
+          <Donaters />
+          <Footer back="dot-white" />
+        </div>
+      ) : (
+        <NotFound />
+      )}
     </div>
   );
 }
