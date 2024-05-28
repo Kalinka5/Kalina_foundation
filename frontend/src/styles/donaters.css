@@ -1,6 +1,6 @@
 .donaters {
   min-height: 89vh;
-  background: radial-gradient(#c2c2c2 8%, transparent 8%), white;
+  background: radial-gradient(#0093a9 8%, transparent 8%), white;
   background-size: 25px 25px;
   overflow: hidden;
 
@@ -13,7 +13,7 @@
     .icon-row {
       position: relative;
       top: -420px;
-      left: -60px;
+      left: -100px;
       width: 100%;
       display: flex;
       padding: 10px 0;
@@ -50,15 +50,67 @@
     }
   }
 
-  .donaters-card {
-    margin: 20px auto;
-    text-align: center;
-    height: 680px;
-    width: 1100px;
-    background-color: rgba(0, 0, 0, 0.13);
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+  .donators-background {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icons-back {
+      background-color: #1e293b;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      height: 680px;
+      width: 90%;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+
+      .icon-row {
+        position: relative;
+        width: 100%;
+        display: flex;
+        padding: 10px 0;
+        white-space: nowrap;
+        font-size: 67px;
+
+        i {
+          color: #0093a9;
+          padding: 0 2px;
+        }
+
+        div {
+          animation: animate1 80s linear infinite;
+          animation-delay: -80s;
+        }
+        div:nth-child(2) {
+          animation: animate2 80s linear infinite;
+          animation-delay: -40s;
+        }
+      }
+      .icon-row:nth-child(even) {
+        div {
+          animation: animate3 80s linear infinite;
+          animation-delay: -80s;
+        }
+        div:nth-child(2) {
+          animation: animate4 80s linear infinite;
+          animation-delay: -40s;
+        }
+      }
+      .donators-card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.125);
+        border-radius: 10px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+      }
+    }
   }
 
   .pedestal {
@@ -87,6 +139,7 @@
       justify-content: space-between;
 
       .user1 {
+        color: #ffffff;
         margin-top: 10px;
         font-size: 20px;
         font-family: "Times New Roman", Times, serif;
@@ -106,6 +159,7 @@
       justify-content: space-between;
 
       .user2 {
+        color: #ffffff;
         margin-top: 10px;
         font-size: 20px;
         font-family: "Times New Roman", Times, serif;
@@ -125,6 +179,7 @@
       justify-content: space-between;
 
       .user3 {
+        color: #ffffff;
         margin-top: 10px;
         font-size: 20px;
         font-family: "Times New Roman", Times, serif;
@@ -144,6 +199,7 @@
       justify-content: space-between;
 
       .user4 {
+        color: #ffffff;
         margin-top: 10px;
         font-size: 20px;
         font-family: "Times New Roman", Times, serif;
@@ -163,6 +219,7 @@
       justify-content: space-between;
 
       .user5 {
+        color: #ffffff;
         margin-top: 10px;
         font-size: 20px;
         font-family: "Times New Roman", Times, serif;
@@ -188,13 +245,20 @@
 }
 
 .donated {
+  color: white;
+  background-color: #9a9a9a;
   width: 221px;
   position: absolute;
   top: -100px;
-  left: 110px;
+  left: 100px;
   text-align: left;
   font-family: "Times New Roman", Times, serif;
   font-size: 16px;
+  border-radius: 10px;
+
+  p {
+    text-align: center;
+  }
 }
 .icon-background {
   background-color: white;
@@ -235,7 +299,7 @@
     top: -80px;
     content: "";
     height: 2px;
-    width: 210px;
+    width: 226px;
     background: #ffffff;
   }
 }
@@ -254,5 +318,21 @@
   }
   100% {
     transform: translateX(-200%);
+  }
+}
+@keyframes animate3 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes animate4 {
+  0% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0%);
   }
 }
