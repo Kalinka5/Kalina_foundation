@@ -6,8 +6,13 @@
   font-family: "Roboto", sans-serif;
 }
 
-.footer {
+.ua {
   background: linear-gradient(to right, #ebe37d, #2f80ed);
+  color: #fff;
+}
+.dot-white {
+  background: radial-gradient(#c2c2c2 8%, transparent 8%), white;
+  background-size: 25px 25px;
   color: #fff;
 }
 

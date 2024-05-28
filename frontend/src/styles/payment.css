@@ -12,33 +12,37 @@
     position: absolute;
     left: 746px;
     top: 200px;
-    overflow: hidden;
     color: rgb(255, 255, 255);
     font-family: "Lato";
     text-align: center;
 
-    .tooltip-icon {
-      cursor: pointer;
-      height: 40px;
-      font-size: 50px;
-      line-height: 40px;
-      text-align: left;
-      -webkit-transition: all 200ms linear;
-      transition: all 200ms linear;
-      color: #d70000;
+    .icon-background {
+      height: 50px;
+      border-radius: 60%;
+      background-color: #ffffff;
+
+      .tooltip-icon {
+        cursor: pointer;
+        height: 40px;
+        font-size: 50px;
+        line-height: 40px;
+        text-align: left;
+        color: #d70000;
+      }
     }
+
     .tooltiptext {
       visibility: hidden;
-      width: 120px;
-      background-color: black;
-      color: #fff;
+      width: 270px;
+      background-color: rgb(255, 255, 255);
+      color: #000000;
       text-align: center;
       border-radius: 6px;
       padding: 5px 0;
       position: absolute;
       z-index: 1;
-      top: 150%;
-      left: 50%;
+      top: 120%;
+      left: -98%;
       margin-left: -60px;
 
       &::after {
@@ -49,11 +53,11 @@
         margin-left: -5px;
         border-width: 5px;
         border-style: solid;
-        border-color: transparent transparent black transparent;
+        border-color: transparent transparent rgb(255, 255, 255) transparent;
       }
     }
 
-    .tooltip-icon:hover ~ .tooltiptext {
+    .icon-background:hover ~ .tooltiptext {
       visibility: visible;
     }
   }

@@ -13,7 +13,9 @@ class Footer extends React.Component {
   render() {
     return (
       <div className="pg-footer">
-        <footer className="footer">
+        <footer
+          className={`footer ${this.props.back === "ua" ? "ua" : "dot-white"}`}
+        >
           <div className="footer-content">
             <div className="footer-social-links">
               {" "}

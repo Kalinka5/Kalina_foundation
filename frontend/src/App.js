@@ -7,11 +7,10 @@ import {
 } from "react-router-dom";
 
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./components/AuthContext";
 
-import Main from "./pages/Home";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
@@ -19,7 +18,7 @@ import Payment from "./pages/Payment";
 
 import bpla from "./img/bpla.jpg";
 import communication from "./img/communication.jpg";
-import drones from "./img/drones.jpg";
+import drones from "./img/naval_drones.jpg";
 import optical_devices from "./img/optical_devices.jpg";
 import transport from "./img/transport.jpg";
 
@@ -64,7 +63,7 @@ function App() {
         {auth ? <Header links={authLinks} /> : <Header links={notAuthLinks} />}
         <main>
           <Routes>
-            <Route exact path="/:n" element={<Main images={images} />} />
+            <Route exact path="/:n" element={<Home images={images} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/logout" element={<Logout />} />
@@ -79,7 +78,6 @@ function App() {
             <Route path="/donate" element={<Payment />} />
           </Routes>
         </main>
-        <Footer />
       </div>
     </Router>
   );

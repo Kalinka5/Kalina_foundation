@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import api from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
 
+import Footer from "../components/Footer";
+
 import "../styles/login.css";
 
 function Login() {
@@ -30,53 +32,56 @@ function Login() {
   };
 
   return (
-    <div className="login-register">
-      <div className="log-reg-background">
-        <div className="shape log-shape1"></div>
-        <div className="shape log-shape2"></div>
+    <div className="login">
+      <div className="login-register">
+        <div className="log-reg-background">
+          <div className="shape log-shape1"></div>
+          <div className="shape log-shape2"></div>
+        </div>
+        <form className="log-reg-form log-p" onSubmit={handleSubmit}>
+          <h3 className="log-h3">Login Here</h3>
+
+          <label className="email-label" htmlFor="email">
+            Email
+          </label>
+          <div className="log-input-box">
+            <input
+              type="text"
+              value={email}
+              placeholder="Your Email"
+              id="email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <label htmlFor="password">Password</label>
+          <div className="log-input-box">
+            <input
+              type="password"
+              value={password}
+              placeholder="Your Password"
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="btn-container log-button">
+            <button type="submit">
+              Log In
+              {loading && <div className="loader"></div>}
+            </button>
+          </div>
+
+          <p className="log-p">
+            You don't have an account?
+            <br />
+            <a href="/register">Register now</a>
+          </p>
+        </form>
       </div>
-      <form className="log-reg-form log-p" onSubmit={handleSubmit}>
-        <h3 className="log-h3">Login Here</h3>
-
-        <label className="email-label" htmlFor="email">
-          Email
-        </label>
-        <div className="log-input-box">
-          <input
-            type="text"
-            value={email}
-            placeholder="Your Email"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-
-        <label htmlFor="password">Password</label>
-        <div className="log-input-box">
-          <input
-            type="password"
-            value={password}
-            placeholder="Your Password"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="btn-container log-button">
-          <button type="submit">
-            Log In
-            {loading && <div className="loader"></div>}
-          </button>
-        </div>
-
-        <p className="log-p">
-          You don't have an account?
-          <br />
-          <a href="/register">Register now</a>
-        </p>
-      </form>
+      <Footer back="ua" />
     </div>
   );
 }
