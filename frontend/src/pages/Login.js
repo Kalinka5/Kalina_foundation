@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+
 import api from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN, HOME_PAGE } from "../constants";
 
@@ -12,6 +14,8 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [passVisible, setPassVisible] = useState(false);
+  const [passType, setPassType] = useState("password");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -28,6 +32,16 @@ function Login() {
       alert(error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const clickIcon = () => {
+    if (passVisible) {
+      setPassType("password");
+      setPassVisible(false);
+    } else {
+      setPassType("text");
+      setPassVisible(true);
     }
   };
 
@@ -58,13 +72,24 @@ function Login() {
           <label htmlFor="password">Password</label>
           <div className="log-input-box">
             <input
-              type="password"
+              type={passType}
               value={password}
               placeholder="Your Password"
               id="password"
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <span className="password-toggle-icon" onClick={clickIcon}>
+              {passVisible ? (
+                <i>
+                  <IoMdEyeOff />
+                </i>
+              ) : (
+                <i>
+                  <IoMdEye />
+                </i>
+              )}
+            </span>
           </div>
 
           <div className="btn-container log-button">
