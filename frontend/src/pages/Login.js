@@ -6,8 +6,6 @@ import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import api from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN, HOME_PAGE } from "../constants";
 
-import Footer from "../components/Footer";
-
 import "../styles/login.css";
 
 function Login() {
@@ -106,7 +104,6 @@ function Login() {
           </p>
         </form>
       </div>
-      <Footer back="ua" />
     </div>
   );
 }

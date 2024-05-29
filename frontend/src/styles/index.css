@@ -29,7 +29,7 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 88vh;
+  min-height: 100vh;
   background: linear-gradient(to right, #ebe37d, #2f80ed);
   overflow: hidden;
 }
@@ -62,7 +62,7 @@ code {
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
   transform: translate(-50%, -50%);
-  top: 50%;
+  top: 53%;
   left: 50%;
   border-radius: 10px;
   backdrop-filter: blur(10px);

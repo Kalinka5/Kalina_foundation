@@ -5,8 +5,6 @@ import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 
 import api from "../api";
 
-import Footer from "../components/Footer";
-
 import "../styles/profile.css";
 
 function Profile() {
@@ -64,109 +62,106 @@ function Profile() {
   };
 
   return (
-    <div>
-      <div className="profile">
-        <div
-          className="profile-card animate__animated animate__fadeIn"
-          id="profileCard"
-        >
-          <form onSubmit={handleSubmit}>
-            <div className="profile-header">
-              <div className="form-element">
-                <input
-                  type="file"
-                  id="profile-image"
-                  accept="image/*"
-                  onChange={getFile}
-                />
-                <label htmlFor="profile-image" id="profile-image-preview">
-                  <img src={image_url} alt="Profile" />
-                  <div className="upload-content">
-                    <div className="upload-image">
-                      <IoIosImage />
-                    </div>
-                    <h2>Upload image</h2>
+    <div className="profile">
+      <div
+        className="profile-card animate__animated animate__fadeIn"
+        id="profileCard"
+      >
+        <form onSubmit={handleSubmit}>
+          <div className="profile-header">
+            <div className="form-element">
+              <input
+                type="file"
+                id="profile-image"
+                accept="image/*"
+                onChange={getFile}
+              />
+              <label htmlFor="profile-image" id="profile-image-preview">
+                <img src={image_url} alt="Profile" />
+                <div className="upload-content">
+                  <div className="upload-image">
+                    <IoIosImage />
                   </div>
-                </label>
-              </div>
-              <div className="input-data">
+                  <h2>Upload image</h2>
+                </div>
+              </label>
+            </div>
+            <div className="input-data">
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+              <div className="underline"></div>
+              <label htmlFor="username">Username</label>
+              <i className="icon uil uil-at">
+                <IoIosContact />
+              </i>
+            </div>
+          </div>
+          <div className="profile-details">
+            <div className="form-group">
+              <label htmlFor="email">E-mail:</label>
+              <div className="input-icon">
                 <input
-                  type="text"
-                  id="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
+                  type="email"
+                  name="logemail"
+                  className="form-style"
+                  placeholder="Your Email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
-                <div className="underline"></div>
-                <label htmlFor="username">Username</label>
                 <i className="icon uil uil-at">
-                  <IoIosContact />
+                  <IoMdAt />
                 </i>
               </div>
             </div>
-            <div className="profile-details">
-              <div className="form-group">
-                <label htmlFor="email">E-mail:</label>
-                <div className="input-icon">
-                  <input
-                    type="email"
-                    name="logemail"
-                    className="form-style"
-                    placeholder="Your Email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <i className="icon uil uil-at">
-                    <IoMdAt />
-                  </i>
-                </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="firstname">Firstname:</label>
-                <div className="input-icon">
-                  <input
-                    type="text"
-                    name="firstname"
-                    className="form-style"
-                    placeholder="Your First Name"
-                    id="firstname"
-                    value={first_name}
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                  <i className="icon uil uil-user">
-                    <FaAutoprefixer />
-                  </i>
-                </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="lastname">Lastname:</label>
-                <div className="input-icon">
-                  <input
-                    type="text"
-                    name="lastname"
-                    className="form-style"
-                    placeholder="Your Last Name"
-                    id="lastname"
-                    value={last_name}
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                  <i className="icon uil uil-user">
-                    <FaAustralSign />
-                  </i>
-                </div>
-              </div>
-              <div className="btn-container">
-                <button type="submit">
-                  Submit
-                  {loading && <div className="loader"></div>}
-                </button>
+            <div className="form-group">
+              <label htmlFor="firstname">Firstname:</label>
+              <div className="input-icon">
+                <input
+                  type="text"
+                  name="firstname"
+                  className="form-style"
+                  placeholder="Your First Name"
+                  id="firstname"
+                  value={first_name}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+                <i className="icon uil uil-user">
+                  <FaAutoprefixer />
+                </i>
               </div>
             </div>
-          </form>
-        </div>
+            <div className="form-group">
+              <label htmlFor="lastname">Lastname:</label>
+              <div className="input-icon">
+                <input
+                  type="text"
+                  name="lastname"
+                  className="form-style"
+                  placeholder="Your Last Name"
+                  id="lastname"
+                  value={last_name}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+                <i className="icon uil uil-user">
+                  <FaAustralSign />
+                </i>
+              </div>
+            </div>
+            <div className="btn-container">
+              <button type="submit">
+                Submit
+                {loading && <div className="loader"></div>}
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-      <Footer back="ua" />
     </div>
   );
 }

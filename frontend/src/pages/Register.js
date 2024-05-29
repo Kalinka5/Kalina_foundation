@@ -8,8 +8,6 @@ import Validation from "../validation";
 
 import { LOGIN_PAGE } from "../constants";
 
-import Footer from "../components/Footer";
-
 import "../styles/register.css";
 
 function Register() {
@@ -160,7 +158,6 @@ function Register() {
           </p>
         </form>
       </div>
-      <Footer back="ua" />
     </div>
   );
 }

@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 89vh;
+  min-height: 100vh;
   background: linear-gradient(to right, #ebe37d, #2f80ed);
   font-family: "Montserrat", sans-serif;
   overflow: hidden;
