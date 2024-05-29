@@ -57,9 +57,9 @@ function Donaters() {
 
     for (let i = 1; i <= 12; i++) {
       icons.push(
-        <div className="icon-row" key={i}>
-          <div>{iconsDiv.map((el) => el)}</div>
-          <div>{iconsDiv.map((el) => el)}</div>
+        <div className="icon-row title-row" key={i}>
+          <div className="ic">{iconsDiv.map((el) => el)}</div>
+          <div className="ic">{iconsDiv.map((el) => el)}</div>
         </div>
       );
     }
@@ -92,9 +92,9 @@ function Donaters() {
 
     for (let i = 1; i <= 7; i++) {
       iconsBack.push(
-        <div className="icon-row" key={i}>
-          <div>{iconsDiv.map((el) => el)}</div>
-          <div>{iconsDiv.map((el) => el)}</div>
+        <div className="icon-row card-row" key={i}>
+          <div className="ic">{iconsDiv.map((el) => el)}</div>
+          <div className="ic">{iconsDiv.map((el) => el)}</div>
         </div>
       );
     }
@@ -115,7 +115,7 @@ function Donaters() {
           <div className="donators-card">
             <div className="pedestal">
               {donaters.map((user, index) => (
-                <div className={`bar${index + 1}`} key={user.id}>
+                <div className={`bar __${index + 1}`} key={user.id}>
                   <div className="profile-pic">
                     <img
                       className="profile-pic-image"
@@ -127,7 +127,7 @@ function Donaters() {
                     <p>Задонатив/ла {user.donated} грн.</p>
                   </div>
                   <div className="underline"></div>
-                  <div className={`user${index + 1}`}>{user.username}</div>
+                  <div className="username">{user.username}</div>
                   <div className="icon-background">
                     <i className={`icon color${index + 1}`}>{places[index]}</i>
                   </div>

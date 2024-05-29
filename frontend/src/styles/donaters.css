@@ -4,35 +4,37 @@
   background-size: 25px 25px;
   overflow: hidden;
 
+  .icon-row {
+    position: relative;
+    width: 100%;
+    display: flex;
+    padding: 10px 0;
+    white-space: nowrap;
+
+    .ic {
+      animation: animate1 80s linear infinite;
+      animation-delay: -80s;
+    }
+    .ic:nth-child(2) {
+      animation: animate2 80s linear infinite;
+      animation-delay: -40s;
+    }
+  }
   .donators-title {
     position: relative;
     overflow: hidden;
     height: 150px;
     background: linear-gradient(71deg, #610081, #6200a3, #610081);
 
-    .icon-row {
-      position: relative;
+    .title-row {
       top: -420px;
       left: -100px;
-      width: 100%;
-      display: flex;
-      padding: 10px 0;
-      white-space: nowrap;
       font-size: 70px;
       transform: rotate(-30deg);
 
-      i {
+      .title-icons {
         color: #268500;
         padding: 0 8px;
-      }
-
-      div {
-        animation: animate1 80s linear infinite;
-        animation-delay: -80s;
-      }
-      div:nth-child(2) {
-        animation: animate2 80s linear infinite;
-        animation-delay: -40s;
       }
     }
 
@@ -43,6 +45,9 @@
       height: 100%;
       width: 100%;
       background-color: rgba(255, 255, 255, 0.125);
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       .container-title {
         text-align: center;
@@ -74,34 +79,20 @@
       position: relative;
       overflow: hidden;
 
-      .icon-row {
-        position: relative;
-        width: 100%;
-        display: flex;
-        padding: 10px 0;
-        white-space: nowrap;
+      .card-row {
         font-size: 67px;
 
-        i {
+        .title-icons {
           color: #0093a9;
           padding: 0 2px;
         }
-
-        div {
-          animation: animate1 80s linear infinite;
-          animation-delay: -80s;
-        }
-        div:nth-child(2) {
-          animation: animate2 80s linear infinite;
-          animation-delay: -40s;
-        }
       }
       .icon-row:nth-child(even) {
-        div {
+        .ic {
           animation: animate3 80s linear infinite;
           animation-delay: -80s;
         }
-        div:nth-child(2) {
+        .ic:nth-child(2) {
           animation: animate4 80s linear infinite;
           animation-delay: -40s;
         }
@@ -115,166 +106,118 @@
         background-color: rgba(255, 255, 255, 0.125);
         border-radius: 10px;
         border: 2px solid rgba(255, 255, 255, 0.1);
+
+        .pedestal {
+          --bar-color: rgb(186, 93, 93);
+
+          margin: 0 auto;
+          margin-top: 100px;
+          height: 500px;
+          width: 700px;
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          grid-template-rows: repeat(100, 1fr);
+          grid-column-gap: 5px;
+
+          .bar {
+            background-color: var(--bar-color);
+            width: 100px;
+            grid-row-end: 101;
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
+          .__1 {
+            grid-column: 1;
+            grid-row-start: 15;
+          }
+          .__2 {
+            grid-column: 2;
+            grid-row-start: 30;
+          }
+          .__3 {
+            grid-column: 3;
+            grid-row-start: 45;
+          }
+          .__4 {
+            grid-column: 4;
+            grid-row-start: 60;
+          }
+          .__5 {
+            grid-column: 5;
+            grid-row-start: 75;
+          }
+          .username {
+            color: #ffffff;
+            margin-top: 10px;
+            font-size: 20px;
+            font-family: "Times New Roman", Times, serif;
+          }
+          .profile-pic {
+            aspect-ratio: 1;
+            border: clamp(3px, 0.4vw, 5px) solid white;
+            border-radius: 100%;
+            flex-shrink: 0;
+            position: absolute;
+            top: -110px;
+
+            .profile-pic-image {
+              background-color: rgba(255, 255, 255, 0.06);
+              border-radius: 100%;
+              margin: clamp(5px, 0.75vw, 10px);
+              object-fit: cover;
+              height: 75px;
+              width: 75px;
+            }
+          }
+          .donated {
+            color: white;
+            background-color: #9a9a9a;
+            width: 221px;
+            position: absolute;
+            top: -100px;
+            left: 100px;
+            text-align: left;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 16px;
+            border-radius: 10px;
+
+            p {
+              text-align: center;
+            }
+          }
+          .icon-background {
+            background-color: white;
+            .icon {
+              height: 48px;
+              font-size: 24px;
+              line-height: 48px;
+              text-align: left;
+              -webkit-transition: all 200ms linear;
+              transition: all 200ms linear;
+            }
+          }
+          .underline {
+            bottom: 0;
+            height: 2px;
+            width: 100%;
+
+            &:before {
+              position: absolute;
+              left: 99px;
+              top: -80px;
+              content: "";
+              height: 2px;
+              width: 226px;
+              background: #ffffff;
+            }
+          }
+        }
       }
     }
-  }
-
-  .pedestal {
-    --bar-color: rgb(186, 93, 93);
-
-    margin: 0 auto;
-    margin-top: 100px;
-    height: 500px;
-    width: 700px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(100, 1fr);
-    grid-column-gap: 5px;
-
-    .bar1 {
-      background-color: var(--bar-color);
-      width: 100px;
-      grid-column: 1;
-      grid-row-start: 15;
-      grid-row-end: 101;
-      border-radius: 5px 5px 0 0;
-      position: relative;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      .user1 {
-        color: #ffffff;
-        margin-top: 10px;
-        font-size: 20px;
-        font-family: "Times New Roman", Times, serif;
-      }
-    }
-    .bar2 {
-      background-color: var(--bar-color);
-      width: 100px;
-      grid-column: 2;
-      grid-row-start: 30;
-      grid-row-end: 101;
-      border-radius: 5px 5px 0 0;
-      position: relative;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      .user2 {
-        color: #ffffff;
-        margin-top: 10px;
-        font-size: 20px;
-        font-family: "Times New Roman", Times, serif;
-      }
-    }
-    .bar3 {
-      background-color: var(--bar-color);
-      width: 100px;
-      grid-column: 3;
-      grid-row-start: 45;
-      grid-row-end: 101;
-      border-radius: 5px 5px 0 0;
-      position: relative;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      .user3 {
-        color: #ffffff;
-        margin-top: 10px;
-        font-size: 20px;
-        font-family: "Times New Roman", Times, serif;
-      }
-    }
-    .bar4 {
-      background-color: var(--bar-color);
-      width: 100px;
-      grid-column: 4;
-      grid-row-start: 60;
-      grid-row-end: 101;
-      border-radius: 5px 5px 0 0;
-      position: relative;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      .user4 {
-        color: #ffffff;
-        margin-top: 10px;
-        font-size: 20px;
-        font-family: "Times New Roman", Times, serif;
-      }
-    }
-    .bar5 {
-      background-color: var(--bar-color);
-      width: 100px;
-      grid-column: 5;
-      grid-row-start: 75;
-      grid-row-end: 101;
-      border-radius: 5px 5px 0 0;
-      position: relative;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      .user5 {
-        color: #ffffff;
-        margin-top: 10px;
-        font-size: 20px;
-        font-family: "Times New Roman", Times, serif;
-      }
-    }
-  }
-}
-.profile-pic {
-  aspect-ratio: 1;
-  border: clamp(3px, 0.4vw, 5px) solid white;
-  border-radius: 100%;
-  flex-shrink: 0;
-  position: absolute;
-  top: -110px;
-}
-.profile-pic > .profile-pic-image {
-  background-color: rgba(255, 255, 255, 0.06);
-  border-radius: 100%;
-  margin: clamp(5px, 0.75vw, 10px);
-  object-fit: cover;
-  height: 75px;
-  width: 75px;
-}
-
-.donated {
-  color: white;
-  background-color: #9a9a9a;
-  width: 221px;
-  position: absolute;
-  top: -100px;
-  left: 100px;
-  text-align: left;
-  font-family: "Times New Roman", Times, serif;
-  font-size: 16px;
-  border-radius: 10px;
-
-  p {
-    text-align: center;
-  }
-}
-.icon-background {
-  background-color: white;
-  .icon {
-    height: 48px;
-    font-size: 24px;
-    line-height: 48px;
-    text-align: left;
-    -webkit-transition: all 200ms linear;
-    transition: all 200ms linear;
   }
 }
 
@@ -292,22 +235,6 @@
 }
 .color5 {
   color: #00bc42;
-}
-
-.underline {
-  bottom: 0;
-  height: 2px;
-  width: 100%;
-
-  &:before {
-    position: absolute;
-    left: 99px;
-    top: -80px;
-    content: "";
-    height: 2px;
-    width: 226px;
-    background: #ffffff;
-  }
 }
 
 @keyframes animate1 {

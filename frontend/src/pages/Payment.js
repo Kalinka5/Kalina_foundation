@@ -44,7 +44,7 @@ class Payment extends React.Component {
                     <p id="no">5375 4141 2253 7789</p>
                     <div className="grid-date">
                       <p id="name">Daniil Kalinevych</p>
-                      <p id="exp-date">07/26</p>
+                      <p id="exp-date">dd/yy</p>
                     </div>
                   </div>
                 </div>
@@ -105,7 +105,7 @@ class Payment extends React.Component {
                 </div>
                 <div className="row name">
                   <p>Daniil Kalinevych</p>
-                  <p>10 / 25</p>
+                  <p>dd / yy</p>
                 </div>
               </div>
             </div>
@@ -116,7 +116,7 @@ class Payment extends React.Component {
               <input
                 className="number"
                 type="text"
-                defaultValue="Данііл Каліневич"
+                defaultValue="Каліневич Данііл Олександрович"
                 disabled
                 readOnly
               />
@@ -126,7 +126,7 @@ class Payment extends React.Component {
               <input
                 className="number"
                 type="text"
-                defaultValue="UA843052990000026200681993072"
+                defaultValue="UA863052990000026201737711936"
                 disabled
                 readOnly
               />
@@ -136,7 +136,7 @@ class Payment extends React.Component {
               <input
                 className="inputname"
                 type="text"
-                defaultValue="2975800618"
+                defaultValue="3765604679"
                 disabled
                 readOnly
               />

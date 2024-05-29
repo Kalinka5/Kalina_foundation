@@ -28,7 +28,6 @@ function Items() {
       <div className="items-title">
         <p className="container-title">На що ми збираємо</p>
       </div>
-
       {items.map((el, index) => (
         <div className="gradient-cards" key={el.id}>
           <div className={`card ${index % 2 === 0 ? "left" : "right"}`}>

@@ -76,15 +76,7 @@ class Footer extends React.Component {
           <div className="footer-copyright">
             <div className="footer-copyright-wrapper">
               <p className="footer-copyright-text">
-                <a
-                  className="footer-copyright-link"
-                  href="#Copyright"
-                  target="_self"
-                >
-                  {" "}
-                  ©2024. | Designed By: Daniil Kalinevych. | All rights
-                  reserved.{" "}
-                </a>
+                ©2024. | Designed By: Daniil Kalinevych. | All rights reserved.
               </p>
             </div>
           </div>
