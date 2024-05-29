@@ -6,6 +6,8 @@ import { IoIosBulb } from "react-icons/io";
 import api from "../api";
 import Validation from "../validation";
 
+import { LOGIN_PAGE } from "../constants";
+
 import Footer from "../components/Footer";
 
 import "../styles/register.css";
@@ -39,7 +41,7 @@ function Register() {
         formData.append("password", password1);
 
         await api.post("/register", formData);
-        navigate("/profile");
+        navigate(`${LOGIN_PAGE}`);
       }
     } catch (error) {
       alert(error);
@@ -154,7 +156,7 @@ function Register() {
           <p>
             Already have an account?
             <br />
-            <a href="/login">Login now</a>
+            <a href={`${LOGIN_PAGE}`}>Login now</a>
           </p>
         </form>
       </div>

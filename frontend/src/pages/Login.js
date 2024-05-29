@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import api from "../api";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
+import { ACCESS_TOKEN, REFRESH_TOKEN, HOME_PAGE } from "../constants";
 
 import Footer from "../components/Footer";
 
@@ -22,7 +22,7 @@ function Login() {
       const res = await api.post("/token/", { email, password });
       localStorage.setItem(ACCESS_TOKEN, res.data.access);
       localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-      navigate("/1");
+      navigate(`${HOME_PAGE}/1`);
       navigate(0); // Refresh page
     } catch (error) {
       alert(error);

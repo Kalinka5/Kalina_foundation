@@ -1,3 +1,5 @@
+import { HOME_PAGE } from "../constants";
+
 import "../styles/notFound.css";
 
 function NotFound() {
@@ -12,7 +14,7 @@ function NotFound() {
             alt="Background"
           />
           <a
-            href="/home/1"
+            href={`${HOME_PAGE}/1`}
             className="btn-go-home"
             target="_blank"
             rel="noreferrer"
