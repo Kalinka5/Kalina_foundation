@@ -105,7 +105,9 @@ function Donaters() {
     <div className="donaters">
       <div className="donators-title">
         {titleIcons.map((el) => el)}
-        <p className="container-title">Топ Донатерів</p>
+        <div className="title">
+          <p className="container-title">Топ Донатерів</p>
+        </div>
       </div>
       <div className="donators-background">
         <div className="icons-back">

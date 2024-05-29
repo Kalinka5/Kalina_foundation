@@ -10,11 +10,17 @@
   }
   .donater-info {
     position: absolute;
-    left: 746px;
-    top: 200px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
     color: rgb(255, 255, 255);
     font-family: "Lato";
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     .icon-background {
       height: 50px;
@@ -39,11 +45,7 @@
       text-align: center;
       border-radius: 6px;
       padding: 5px 0;
-      position: absolute;
       z-index: 1;
-      top: 120%;
-      left: -98%;
-      margin-left: -60px;
 
       &::after {
         content: "";
