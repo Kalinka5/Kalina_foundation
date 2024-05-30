@@ -1,161 +1,248 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { IoIosHelpCircle } from "react-icons/io";
+import { IoIosHelpCircle, IoIosBrowsers, IoIosCheckmark } from "react-icons/io";
 
 import "../styles/payment.css";
 
-class Payment extends React.Component {
-  render() {
-    return (
-      <div className="payment">
-        <h2 id="cards-title">
-          Ми маємо дві картки на які ви можете задонатити
-        </h2>
-        <div className="donater-info">
-          <div className="icon-background">
-            <i className="tooltip-icon">
-              <IoIosHelpCircle />
-            </i>
-          </div>
-          <span className="tooltiptext">
-            Щоб відображатись на головній сторінці у Топ донатерах, потрібно:{" "}
-            <br />
-            <br />
-            1) зареєструватись та залогінитись на нашому веб-сайті;
-            <br />
-            <br />
-            2) в описі донату зазначити{" "}
-            <b>
-              <i>username</i>
-            </b>{" "}
-            вашого створенного акаунту.
-          </span>
+function Payment() {
+  const recipient = "Каліневич Данііл Олександрович";
+  const iban = "UA863052990000026201737711936";
+  const inn = "3765604679";
+  const title = "Благодійний безповоротний внесок";
+
+  const [recCoppied, setRecCoppied] = useState(false);
+  const [ibanCoppied, setIbanCoppied] = useState(false);
+  const [innCoppied, setInnCoppied] = useState(false);
+  const [titleCoppied, setTitleCoppied] = useState(false);
+
+  const clickCopyRec = () => {
+    navigator.clipboard.writeText(recipient);
+    setRecCoppied(true);
+    setInterval(function () {
+      setRecCoppied(false);
+    }, 5000);
+  };
+  const clickCopyIban = () => {
+    navigator.clipboard.writeText(iban);
+    setIbanCoppied(true);
+    setInterval(function () {
+      setIbanCoppied(false);
+    }, 5000);
+  };
+  const clickCopyInn = () => {
+    navigator.clipboard.writeText(inn);
+    setInnCoppied(true);
+    setInterval(function () {
+      setInnCoppied(false);
+    }, 5000);
+  };
+  const clickCopyTitle = () => {
+    navigator.clipboard.writeText(title);
+    setTitleCoppied(true);
+    setInterval(function () {
+      setTitleCoppied(false);
+    }, 5000);
+  };
+
+  return (
+    <div className="payment">
+      <h2 id="cards-title">Ми маємо дві картки на які ви можете задонатити</h2>
+      <div className="donater-info">
+        <div className="icon-background">
+          <i className="tooltip-icon">
+            <IoIosHelpCircle />
+          </i>
         </div>
-        <div className="grid-part">
-          <div className="block row1">
-            <div className="container-mastercard">
-              <div className="front-card front-hov">
-                <div className="column1">
-                  <h3 id="main-title">
-                    monobank | <span>Universal Bank</span>
-                  </h3>
-                  <div id="chip"></div>
-                  <div className="card-info">
-                    <p id="no">5375 4141 2253 7789</p>
-                    <div className="grid-date">
-                      <p id="name">Daniil Kalinevych</p>
-                      <p id="exp-date">dd/yy</p>
-                    </div>
+        <span className="tooltiptext">
+          Щоб відображатись на головній сторінці у Топ донатерах, потрібно:{" "}
+          <br />
+          <br />
+          1) зареєструватись та залогінитись на нашому веб-сайті;
+          <br />
+          <br />
+          2) в описі донату зазначити{" "}
+          <b>
+            <i>username</i>
+          </b>{" "}
+          вашого створенного акаунту.
+        </span>
+      </div>
+      <div className="grid-part">
+        <div className="block row1">
+          <div className="container-mastercard">
+            <div className="front-card front-hov">
+              <div className="column1">
+                <h3 id="main-title">
+                  monobank | <span>Universal Bank</span>
+                </h3>
+                <div id="chip"></div>
+                <div className="card-info">
+                  <p id="no">5375 4141 2253 7789</p>
+                  <div className="grid-date">
+                    <p id="name">Daniil Kalinevych</p>
+                    <p id="exp-date">dd/yy</p>
                   </div>
                 </div>
-                <div className="column2">
-                  <i id="globe" className="fa fa-globe"></i>
-                  <div id="mastercard"></div>
-                </div>
+              </div>
+              <div className="column2">
+                <i id="globe" className="fa fa-globe"></i>
+                <div id="mastercard"></div>
               </div>
             </div>
           </div>
-          <div id="mono-desc" className="description">
-            <p id="monobanka-p">
-              Ви також можете зробити свій внесок через банку Фонду
-            </p>
-            <a
-              href="https://send.monobank.ua/jar/QsATQ1NQ4"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Монобанка
-            </a>
-          </div>
-          <div className="block center-mono">
-            <h2>Monobank</h2>
-          </div>
-          <div className="block center-privat">
-            <h2>Privatbank</h2>
-          </div>
-          <div className="block row1">
-            <div className="container-visa">
-              <div className="front front-hov">
+        </div>
+        <div id="mono-desc" className="description">
+          <p id="monobanka-p">
+            Ви також можете зробити свій внесок через банку Фонду
+          </p>
+          <a
+            href="https://send.monobank.ua/jar/QsATQ1NQ4"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Монобанка
+          </a>
+        </div>
+        <div className="block center-mono">
+          <h2>Monobank</h2>
+        </div>
+        <div className="block center-privat">
+          <h2>Privatbank</h2>
+        </div>
+        <div className="block row1">
+          <div className="container-visa">
+            <div className="front front-hov">
+              <img
+                src="https://i.ibb.co/PYss3yv/map.png"
+                className="map-img"
+                alt="Map"
+              />
+              <div className="row">
                 <img
-                  src="https://i.ibb.co/PYss3yv/map.png"
-                  className="map-img"
-                  alt="Map"
+                  src="https://i.ibb.co/G9pDnYJ/chip.png"
+                  width="60px"
+                  alt="Chip"
                 />
-                <div className="row">
-                  <img
-                    src="https://i.ibb.co/G9pDnYJ/chip.png"
-                    width="60px"
-                    alt="Chip"
-                  />
-                  <img
-                    src="https://i.ibb.co/WHZ3nRJ/visa.png"
-                    width="60px"
-                    alt="Visa"
-                  />
-                </div>
-                <div className="row card-no">
-                  <p>4149</p>
-                  <p>4390</p>
-                  <p>2438</p>
-                  <p>4293</p>
-                </div>
-                <div className="row card-holder">
-                  <p>CARD HOLDER</p>
-                  <p>VALID TILL</p>
-                </div>
-                <div className="row name">
-                  <p>Daniil Kalinevych</p>
-                  <p>dd / yy</p>
-                </div>
+                <img
+                  src="https://i.ibb.co/WHZ3nRJ/visa.png"
+                  width="60px"
+                  alt="Visa"
+                />
+              </div>
+              <div className="row card-no">
+                <p>4149</p>
+                <p>4390</p>
+                <p>2438</p>
+                <p>4293</p>
+              </div>
+              <div className="row card-holder">
+                <p>CARD HOLDER</p>
+                <p>VALID TILL</p>
+              </div>
+              <div className="row name">
+                <p>Daniil Kalinevych</p>
+                <p>dd / yy</p>
               </div>
             </div>
           </div>
-          <div id="visa-desc" className="description">
-            <div>
-              <label>Одержувач</label>
+        </div>
+        <div id="visa-desc" className="description">
+          <div>
+            <label>Одержувач</label>
+            <div className="input-box">
               <input
                 className="number"
                 type="text"
-                defaultValue="Каліневич Данііл Олександрович"
+                defaultValue={recipient}
                 disabled
                 readOnly
               />
+              <span className="copy-toggle-icon" onClick={clickCopyRec}>
+                {recCoppied ? (
+                  <i className="checkmark">
+                    <IoIosCheckmark />
+                  </i>
+                ) : (
+                  <i className="copy">
+                    <IoIosBrowsers />
+                  </i>
+                )}
+              </span>
             </div>
-            <div>
-              <label>IBAN</label>
+          </div>
+          <div>
+            <label>IBAN</label>
+            <div className="input-box">
               <input
                 className="number"
                 type="text"
-                defaultValue="UA863052990000026201737711936"
+                defaultValue={iban}
                 disabled
                 readOnly
               />
+              <span className="copy-toggle-icon" onClick={clickCopyIban}>
+                {ibanCoppied ? (
+                  <i className="checkmark">
+                    <IoIosCheckmark />
+                  </i>
+                ) : (
+                  <i className="copy">
+                    <IoIosBrowsers />
+                  </i>
+                )}
+              </span>
             </div>
-            <div>
-              <label>РНОКПП</label>
+          </div>
+          <div>
+            <label>РНОКПП</label>
+            <div className="input-box">
               <input
                 className="inputname"
                 type="text"
-                defaultValue="3765604679"
+                defaultValue={inn}
                 disabled
                 readOnly
               />
+              <span className="copy-toggle-icon" onClick={clickCopyInn}>
+                {innCoppied ? (
+                  <i className="checkmark">
+                    <IoIosCheckmark />
+                  </i>
+                ) : (
+                  <i className="copy">
+                    <IoIosBrowsers />
+                  </i>
+                )}
+              </span>
             </div>
-            <div>
-              <label>Призначення платежу</label>
+          </div>
+          <div>
+            <label>Призначення платежу</label>
+            <div className="input-box">
               <input
                 className="expire"
                 type="text"
-                defaultValue="Благодійний безповоротний внесок"
+                defaultValue={title}
                 disabled
                 readOnly
               />
+              <span className="copy-toggle-icon" onClick={clickCopyTitle}>
+                {titleCoppied ? (
+                  <i className="checkmark">
+                    <IoIosCheckmark />
+                  </i>
+                ) : (
+                  <i className="copy">
+                    <IoIosBrowsers />
+                  </i>
+                )}
+              </span>
             </div>
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Payment;
