@@ -34,7 +34,7 @@ class Payment extends React.Component {
         <div className="grid-part">
           <div className="block row1">
             <div className="container-mastercard">
-              <div className="front-card">
+              <div className="front-card front-hov">
                 <div className="column1">
                   <h3 id="main-title">
                     monobank | <span>Universal Bank</span>
@@ -75,7 +75,7 @@ class Payment extends React.Component {
           </div>
           <div className="block row1">
             <div className="container-visa">
-              <div className="front">
+              <div className="front front-hov">
                 <img
                   src="https://i.ibb.co/PYss3yv/map.png"
                   className="map-img"

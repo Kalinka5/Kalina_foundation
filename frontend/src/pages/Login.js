@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
 import api from "../api";
-import { ACCESS_TOKEN, REFRESH_TOKEN, HOME_PAGE } from "../constants";
+import { ACCESS_TOKEN, REFRESH_TOKEN, PROFILE_PAGE } from "../constants";
 
 import "../styles/login.css";
 
@@ -24,7 +24,7 @@ function Login() {
       const res = await api.post("/token/", { email, password });
       localStorage.setItem(ACCESS_TOKEN, res.data.access);
       localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-      navigate(`${HOME_PAGE}/1`);
+      navigate(`${PROFILE_PAGE}`);
       navigate(0); // Refresh page
     } catch (error) {
       alert(error);

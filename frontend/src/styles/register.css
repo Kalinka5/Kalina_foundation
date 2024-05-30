@@ -1,124 +1,132 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
-.login-register h2 {
-  color: #ffffff;
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 42px;
-  text-align: center;
-}
-.reg-shape1 {
-  left: -80px;
-  top: -70px;
-}
-.reg-shape2 {
-  right: -65px;
-  bottom: -110px;
-}
-.reg-p {
-  color: #ffffff;
-  padding: 50px 45px;
-}
-.log-reg-form {
-  .reg-input-box {
-    height: 52px;
-    margin: 18px 0;
-    text-align: center;
-
-    .input-icon {
-      height: 100%;
-      position: relative;
-
-      input {
-        height: 80%;
-        width: 85%;
-        outline: none;
-        padding: 0 15px;
-        font-size: 17px;
-        font-weight: 400;
-        color: #333;
-        border: 1.5px solid #c7bebe;
-        border-bottom-width: 2.5px;
-        border-radius: 6px;
-        transition: all 0.3s ease;
+.register {
+  .login-register {
+    .log-reg-background {
+      .reg-shape1 {
+        left: -80px;
+        top: -70px;
       }
-      .success {
-        border-color: #09c372;
+      .reg-shape2 {
+        right: -65px;
+        bottom: -110px;
       }
-      .error {
-        border-color: #8a021d;
-      }
-      .name-tip {
-        top: -5px;
-      }
-      .email-tip {
-        top: -40px;
-      }
-      .pass-tip {
-        top: -55px;
-      }
-      .confirm-tip {
-        top: -20px;
-      }
-      .--icon {
-        position: absolute;
-        top: 3px;
-        right: 20px;
-        height: 48px;
-        font-size: 24px;
-        line-height: 48px;
-        text-align: left;
-        color: #ffc70e;
-        -webkit-transition: all 200ms linear;
-        transition: all 200ms linear;
-        cursor: pointer;
-      }
-      .tooltiptext {
-        visibility: hidden;
-        width: 240px;
-        background-color: rgb(255, 219, 57);
-        color: #000000;
+    }
+    .reg-p {
+      color: #ffffff;
+      padding: 50px 45px;
+      width: 350px;
+    }
+    .log-reg-form {
+      h2 {
+        color: #ffffff;
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 42px;
         text-align: center;
-        border-radius: 6px;
-        padding: 5px 0;
-        position: absolute;
-        z-index: 1;
-        left: 100%;
+      }
+      .reg-input-box {
+        height: 52px;
+        margin: 18px 0;
+        text-align: center;
 
-        &::after {
-          content: "";
-          position: absolute;
-          top: 50%;
-          right: 100%;
-          margin-top: -5px;
-          border-width: 5px;
-          border-style: solid;
-          border-color: transparent rgb(255, 219, 57) transparent transparent;
+        .input-icon {
+          height: 100%;
+          position: relative;
+
+          input {
+            height: 80%;
+            width: 85%;
+            outline: none;
+            padding: 0 15px;
+            font-size: 17px;
+            font-weight: 400;
+            color: #333;
+            border: 1.5px solid #c7bebe;
+            border-bottom-width: 2.5px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+          }
+          .success {
+            border-color: #09c372;
+          }
+          .error {
+            border-color: #8a021d;
+          }
+          .name-tip {
+            top: -1px;
+          }
+          .email-tip {
+            top: -25px;
+          }
+          .pass-tip {
+            top: -35px;
+          }
+          .confirm-tip {
+            top: -10px;
+          }
+          .--icon {
+            position: absolute;
+            top: 3px;
+            right: 20px;
+            height: 48px;
+            font-size: 24px;
+            line-height: 48px;
+            text-align: left;
+            color: #ffc70e;
+            -webkit-transition: all 200ms linear;
+            transition: all 200ms linear;
+            cursor: pointer;
+          }
+          .tooltiptext {
+            visibility: hidden;
+            width: 240px;
+            background-color: rgb(255, 219, 57);
+            color: #000000;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            left: 100%;
+
+            &::after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              right: 100%;
+              margin-top: -5px;
+              border-width: 5px;
+              border-style: solid;
+              border-color: transparent rgb(255, 219, 57) transparent
+                transparent;
+            }
+          }
+          .--icon:hover ~ .tooltiptext {
+            visibility: visible;
+          }
+        }
+        p {
+          color: red;
+          margin-left: 15px;
+          margin-bottom: 10px;
+          text-align: left;
         }
       }
-      .--icon:hover ~ .tooltiptext {
-        visibility: visible;
-      }
-    }
-    p {
-      color: red;
-      margin-left: 15px;
-      margin-bottom: 10px;
-      text-align: left;
-    }
-  }
-  .reg-button {
-    height: 52px;
-    margin: 36px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+      .reg-button {
+        height: 52px;
+        margin: 36px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-    button {
-      height: 100%;
-      width: 85%;
-      letter-spacing: 1px;
-      border: none;
+        button {
+          height: 100%;
+          width: 85%;
+          letter-spacing: 1px;
+          border: none;
+        }
+      }
     }
   }
 }
