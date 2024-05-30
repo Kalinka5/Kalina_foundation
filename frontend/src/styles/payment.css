@@ -20,8 +20,8 @@
     color: rgb(255, 255, 255);
     font-family: "Lato";
     text-align: center;
+    margin-top: 220px;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
 
@@ -49,17 +49,6 @@
       border-radius: 6px;
       padding: 5px 0;
       z-index: 1;
-
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: transparent transparent rgb(255, 255, 255) transparent;
-      }
     }
 
     .icon-background:hover ~ .tooltiptext {
