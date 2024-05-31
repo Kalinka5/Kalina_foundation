@@ -15,7 +15,8 @@ function Items() {
 
   const getData = async () => {
     try {
-      const res = await api.get(`/items?page=${n}`);
+      const res = await api.get(`/items?page=${n}&format=json`);
+      console.log(`Response: ${res}`);
       console.log(`Items: ${res.data.results}`);
       setItems(res.data.results);
     } catch (err) {

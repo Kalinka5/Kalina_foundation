@@ -16,7 +16,7 @@ import api from "../api";
 import "../styles/donaters.css";
 
 function Donaters() {
-  const [donators, setDonators] = useState([]);
+  const [donators, setDonators] = useState(null);
   const [titleIcons, setTitleIcons] = useState([]);
   const [cardIcons, setCardIcons] = useState([]);
   const places = {
@@ -35,7 +35,8 @@ function Donaters() {
 
   const getData = async () => {
     try {
-      const res = await api.get("/donators");
+      const res = await api.get("/donators?format=json");
+      console.log(`Response: ${res.data}`);
       console.log(`Donators: ${res.data}`);
       setDonators(res.data);
     } catch (err) {
@@ -120,7 +121,7 @@ function Donaters() {
                     <div className="profile-pic">
                       <img
                         className="profile-pic-image"
-                        src={process.env.REACT_APP_API_URL + user.image}
+                        src={"/choreo-apis/kalinafond/backend/v1" + user.image}
                         alt="Donater"
                       />
                     </div>

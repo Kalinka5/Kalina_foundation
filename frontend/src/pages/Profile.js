@@ -28,7 +28,7 @@ function Profile() {
       setEmail(res.data.email);
       setFirstName(res.data.first_name);
       setLastName(res.data.last_name);
-      setImageURL(process.env.REACT_APP_API_URL + res.data.image);
+      setImageURL("/choreo-apis/kalinafond/backend/v1" + res.data.image);
     } catch (err) {
       alert(err);
     }
