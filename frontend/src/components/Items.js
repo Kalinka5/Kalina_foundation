@@ -7,7 +7,7 @@ import "../styles/items.css";
 
 function Items() {
   const { n } = useParams();
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(null);
 
   useEffect(() => {
     getData();
@@ -28,24 +28,25 @@ function Items() {
       <div className="items-title">
         <p className="container-title">На що ми збираємо</p>
       </div>
-      {items.map((el, index) => (
-        <div className="gradient-cards" key={el.id}>
-          <div className={`card ${index % 2 === 0 ? "left" : "right"}`}>
-            <div className="container-card">
-              <div className="column1">
-                <img className="item-image" src={el.image} alt="item1" />
-                <a className="donate-button" href="/donate" target="_blank">
-                  <span>Задонатити</span>
-                </a>
-              </div>
-              <div className="column2">
-                <p className="card-title">{el.title}</p>
-                <p className="card-description">{el.description}</p>
+      {items &&
+        items.map((el, index) => (
+          <div className="gradient-cards" key={el.id}>
+            <div className={`card ${index % 2 === 0 ? "left" : "right"}`}>
+              <div className="container-card">
+                <div className="column1">
+                  <img className="item-image" src={el.image} alt="item1" />
+                  <a className="donate-button" href="/donate" target="_blank">
+                    <span>Задонатити</span>
+                  </a>
+                </div>
+                <div className="column2">
+                  <p className="card-title">{el.title}</p>
+                  <p className="card-description">{el.description}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
     </div>
   );
 }

@@ -15,5 +15,5 @@ urlpatterns = [
     path('items/<int:pk>',
          ItemsViewSet.as_view({'get': 'retrieve'}), name='single_item'),
     path('profile', profile, name='profile'),
-    path('donaters', donaters, name='top-donaters')
+    path('donators', donaters, name='top-donators')
 ]

@@ -16,7 +16,7 @@ import api from "../api";
 import "../styles/donaters.css";
 
 function Donaters() {
-  const [donaters, setDonaters] = useState([]);
+  const [donators, setDonators] = useState([]);
   const [titleIcons, setTitleIcons] = useState([]);
   const [cardIcons, setCardIcons] = useState([]);
   const places = {
@@ -35,9 +35,9 @@ function Donaters() {
 
   const getData = async () => {
     try {
-      const res = await api.get("/donaters");
+      const res = await api.get("/donators");
       console.log(res.data);
-      setDonaters(res.data);
+      setDonators(res.data);
     } catch (err) {
       alert(err);
     }
@@ -114,25 +114,28 @@ function Donaters() {
           {cardIcons.map((el) => el)}
           <div className="donators-card">
             <div className="pedestal">
-              {donaters.map((user, index) => (
-                <div className={`bar __${index + 1}`} key={user.id}>
-                  <div className="profile-pic">
-                    <img
-                      className="profile-pic-image"
-                      src={process.env.REACT_APP_API_URL + user.image}
-                      alt="Donater"
-                    />
+              {donators &&
+                donators.map((user, index) => (
+                  <div className={`bar __${index + 1}`} key={user.id}>
+                    <div className="profile-pic">
+                      <img
+                        className="profile-pic-image"
+                        src={process.env.REACT_APP_API_URL + user.image}
+                        alt="Donater"
+                      />
+                    </div>
+                    <div className="donated">
+                      <p>Задонатив/ла {user.donated} грн.</p>
+                    </div>
+                    <div className="underline"></div>
+                    <div className="username">{user.username}</div>
+                    <div className="icon-background">
+                      <i className={`icon color${index + 1}`}>
+                        {places[index]}
+                      </i>
+                    </div>
                   </div>
-                  <div className="donated">
-                    <p>Задонатив/ла {user.donated} грн.</p>
-                  </div>
-                  <div className="underline"></div>
-                  <div className="username">{user.username}</div>
-                  <div className="icon-background">
-                    <i className={`icon color${index + 1}`}>{places[index]}</i>
-                  </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         </div>
