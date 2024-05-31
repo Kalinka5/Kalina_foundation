@@ -16,7 +16,7 @@ function Items() {
   const getData = async () => {
     try {
       const res = await api.get(`/items?page=${n}`);
-      console.log(res.data.results);
+      console.log(`Items: ${res.data.results}`);
       setItems(res.data.results);
     } catch (err) {
       alert(err);

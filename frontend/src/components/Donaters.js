@@ -36,7 +36,7 @@ function Donaters() {
   const getData = async () => {
     try {
       const res = await api.get("/donators");
-      console.log(res.data);
+      console.log(`Donators: ${res.data}`);
       setDonators(res.data);
     } catch (err) {
       alert(err);
