@@ -34,7 +34,8 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'backend-613209188-choreo-internal.dp-development-kalinafond-42344-3707085086'
+    'backend-613209188-choreo-internal.dp-development-kalinafond-42344-3707085086',
+    '127.0.0.1'
 ]
 
 

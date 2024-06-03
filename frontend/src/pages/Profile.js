@@ -22,7 +22,9 @@ function Profile() {
 
   const getData = async () => {
     try {
+      console.log("Start to sending a request to backend /profile");
       const res = await api.get("/profile");
+      console.log("The request was sending successfully!");
       console.log(res.data);
       setUsername(res.data.username);
       setEmail(res.data.email);
@@ -31,13 +33,17 @@ function Profile() {
       setImageURL("/choreo-apis/kalinafond/backend/v1" + res.data.image);
     } catch (err) {
       alert(err);
+      console.log(
+        "Something go wrong when sending backend request to /profile"
+      );
     }
   };
 
   function getFile(event) {
-    console.log(event.target.files[0]);
+    console.log(`A Profile image name is ${event.target.files[0]}`);
     setImage(event.target.files[0]);
     setImageURL(URL.createObjectURL(event.target.files[0]));
+    console.log("The new image was set successfully!");
   }
 
   const handleSubmit = async (e) => {
@@ -53,9 +59,12 @@ function Profile() {
     console.log(formData);
 
     try {
+      console.log("Start updating User's profile data");
       await api.patch("/profile", formData);
+      console.log("User profile was updated successfully");
     } catch (error) {
       alert(error);
+      console.log("Something go wrong when updating user profile!");
     } finally {
       setLoading(false);
     }
