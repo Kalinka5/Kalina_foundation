@@ -52,8 +52,8 @@ class ItemsViewSet(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticated]
     throttle_classes = [AnonRateThrottle, UserRateThrottle]  # Add throttling
 
-    queryset = Item.objects.all()
     serializer_class = ItemSerializer
+    queryset = Item.objects.all()
 
     filter_backends = [
         filters.SearchFilter,
@@ -65,16 +65,22 @@ class ItemsViewSet(viewsets.ModelViewSet):
     search_fields = ['title', 'category_id__title']
     ordering_fields = ['amount', 'full_price']
 
-
-@api_view(['PATCH'])
-def item_patch(request, pk):
-    print(pk)
-    item = Item.objects.get(id=pk)
-    serializer = ItemSerializer(item, data=request.data, partial=True)
-    if serializer.is_valid():
-        serializer.save()
+    def list(self, request):
+        serializer = ItemSerializer(self.queryset, many=True)
         return Response(serializer.data)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def retrieve(self, request, pk=None):
+        user = get_object_or_404(self.queryset, pk=pk)
+        serializer = ItemSerializer(user)
+        return Response(serializer.data)
+
+    def partial_update(self, request, pk=None):
+        item = Item.objects.get(id=pk)
+        serializer = ItemSerializer(item, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET', 'PATCH'])

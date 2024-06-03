@@ -39,6 +39,14 @@ function Items() {
                   <a className="donate-button" href="/donate" target="_blank">
                     <span>Задонатити</span>
                   </a>
+                  <a
+                    className="donate-button"
+                    href={`/item/${el.id}/edit`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span>Змінити</span>
+                  </a>
                 </div>
                 <div className="column2">
                   <p className="card-title">{el.title}</p>

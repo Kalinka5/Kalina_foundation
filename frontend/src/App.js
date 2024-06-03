@@ -20,6 +20,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./components/AuthContext";
 
 import Home from "./pages/Home";
+import ItemEdit from "./pages/ItemEdit";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
@@ -97,6 +98,7 @@ function App() {
               path={`${HOME_PAGE}/:n?`}
               element={<Home images={images} />}
             />
+            <Route exact path="item/:id/edit" element={<ItemEdit />} />
             <Route path={LOGIN_PAGE} element={<Login />} />
             <Route path={REGISTER_PAGE} element={<RegisterAndLogout />} />
             <Route path={LOGOUT_PAGE} element={<Logout />} />
