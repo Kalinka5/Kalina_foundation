@@ -5,6 +5,8 @@ import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 
 import api from "../api";
 
+import { API_URL } from "../constants";
+
 import "../styles/profile.css";
 
 function Profile() {
@@ -30,7 +32,7 @@ function Profile() {
       setEmail(res.data.email);
       setFirstName(res.data.first_name);
       setLastName(res.data.last_name);
-      setImageURL("/choreo-apis/kalinafond/backend/v1" + res.data.image);
+      setImageURL(API_URL + res.data.image);
     } catch (err) {
       alert(err);
       console.log(

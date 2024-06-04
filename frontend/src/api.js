@@ -1,12 +1,10 @@
 import axios from "axios";
-import { ACCESS_TOKEN } from "./constants";
-
-const apiUrl = "/choreo-apis/kalinafond/backend/v1";
+import { ACCESS_TOKEN, API_URL } from "./constants";
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL
     ? process.env.REACT_APP_API_URL
-    : apiUrl,
+    : API_URL,
 });
 
 api.interceptors.request.use(

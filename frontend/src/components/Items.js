@@ -3,11 +3,14 @@ import { useParams } from "react-router-dom";
 
 import api from "../api";
 
+import { API_URL } from "../constants";
+
 import "../styles/items.css";
 
 function Items() {
   const { n } = useParams();
   const [items, setItems] = useState(null);
+  const [isSuperUser, setIsSuperUser] = useState(false);
 
   useEffect(() => {
     getData();
@@ -16,10 +19,12 @@ function Items() {
   const getData = async () => {
     try {
       console.log("Start getting data of items...");
-      const res = await api.get(`/items/?page=${n}&format=json`);
-      console.log(`Response: ${res}`);
-      console.log(`Items: ${res.data}`);
-      setItems(res.data);
+      const resItems = await api.get(`/items/?page=${n}&format=json`);
+      setItems(resItems.data);
+
+      console.log("Start getting data of profile...");
+      const res = await api.get("/profile");
+      setIsSuperUser(res.data.is_superuser);
     } catch (err) {
       alert(err);
     }
@@ -38,20 +43,22 @@ function Items() {
                 <div className="column1">
                   <img
                     className="item-image"
-                    src={`/choreo-apis/kalinafond/backend/v1${el.image}`}
+                    src={API_URL + el.image}
                     alt="item1"
                   />
                   <a className="donate-button" href="/donate" target="_blank">
                     <span>Задонатити</span>
                   </a>
-                  <a
-                    className="donate-button"
-                    href={`/item/${el.id}/edit`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span>Змінити</span>
-                  </a>
+                  {isSuperUser && (
+                    <a
+                      className="donate-button"
+                      href={`/item/${el.id}/edit`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span>Змінити</span>
+                    </a>
+                  )}
                 </div>
                 <div className="column2">
                   <p className="card-title">{el.title}</p>

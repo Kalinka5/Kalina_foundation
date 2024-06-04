@@ -6,6 +6,8 @@ import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 
 import api from "../api";
 
+import { API_URL } from "../constants";
+
 import "../styles/itemEdit.css";
 
 function ItemEdit() {
@@ -30,7 +32,7 @@ function ItemEdit() {
       setDescription(res.data.description);
       setAmount(res.data.amount);
       setFullPrice(res.data.full_price);
-      setImageURL("/choreo-apis/kalinafond/backend/v1" + res.data.image);
+      setImageURL(API_URL + res.data.image);
     } catch (err) {
       alert(err);
       console.log(
