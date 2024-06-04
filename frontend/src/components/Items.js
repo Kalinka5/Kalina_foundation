@@ -51,7 +51,7 @@ function Items() {
                   </a>
                   {isSuperUser && (
                     <a
-                      className="donate-button"
+                      className="edit-button"
                       href={`/item/${el.id}/edit`}
                       target="_blank"
                       rel="noreferrer"
