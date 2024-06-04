@@ -5,7 +5,6 @@ from rest_framework.decorators import api_view, permission_classes, throttle_cla
 from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 from rest_framework.views import APIView
 
-from django.core.paginator import Paginator, EmptyPage
 from django.shortcuts import get_object_or_404
 
 from django_filters.rest_framework import DjangoFilterBackend
@@ -66,7 +65,8 @@ class ItemsViewSet(viewsets.ModelViewSet):
     ordering_fields = ['amount', 'full_price']
 
     def list(self, request):
-        serializer = ItemSerializer(self.queryset, many=True)
+        page = self.paginate_queryset(self.queryset)
+        serializer = ItemSerializer(page, many=True)
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
