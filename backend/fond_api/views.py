@@ -75,12 +75,15 @@ class ItemsViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def partial_update(self, request, pk=None):
-        item = Item.objects.get(id=pk)
-        serializer = ItemSerializer(item, data=request.data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if request.user.is_superuser:
+            item = Item.objects.get(id=pk)
+            serializer = ItemSerializer(item, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({"message": "You do not have the necessary permissions to access it!"}, status=status.HTTP_403_FORBIDDEN)
 
 
 @api_view(['GET', 'PATCH'])

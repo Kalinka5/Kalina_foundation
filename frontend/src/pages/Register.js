@@ -42,7 +42,13 @@ function Register() {
         navigate(`${LOGIN_PAGE}`);
       }
     } catch (error) {
-      alert(error);
+      if (error.response.data["email"]) {
+        setErrors({ email: error.response.data["email"] });
+      } else if (error.response.data["username"]) {
+        setErrors({ username: error.response.data["username"] });
+      } else {
+        alert(error);
+      }
     } finally {
       setLoading(false);
     }
