@@ -33,10 +33,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'backend-613209188-choreo-internal.dp-development-kalinafond-42344-3707085086',
-    '127.0.0.1'
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -96,8 +93,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': env("DB_NAME"),
         'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
         'HOST': env("DB_HOST"),
+        'PASSWORD': env("DB_PASSWORD"),
         'PORT': env("DB_PORT"),
     }
 }
