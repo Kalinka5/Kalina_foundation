@@ -13,8 +13,6 @@ import {
 
 import api from "../api";
 
-import { API_URL } from "../constants";
-
 import "../styles/donaters.css";
 
 function Donaters() {
@@ -123,7 +121,7 @@ function Donaters() {
                     <div className="profile-pic">
                       <img
                         className="profile-pic-image"
-                        src={API_URL + user.image}
+                        src={"/choreo-apis/kalinafond/backend/v1" + user.image}
                         alt="Donater"
                       />
                     </div>
