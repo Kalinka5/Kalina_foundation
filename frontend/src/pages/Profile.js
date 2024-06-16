@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { IoMdAt, IoIosContact, IoIosImage } from "react-icons/io";
 import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 
 import api from "../api";
 
-import { API_URL } from "../constants";
+import { API_URL, HOME_PAGE } from "../constants";
 
 import "../styles/profile.css";
 
@@ -17,6 +18,7 @@ function Profile() {
   const [image, setImage] = useState("");
   const [image_url, setImageURL] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getData();
@@ -47,6 +49,19 @@ function Profile() {
     setImageURL(URL.createObjectURL(event.target.files[0]));
     console.log("The new image was set successfully!");
   }
+
+  const clickDeleteUser = async () => {
+    try {
+      console.log("Start deleting User");
+      await api.delete("/profile");
+      console.log("User was deleted successfully");
+      localStorage.clear();
+      navigate(`${HOME_PAGE}/1`);
+    } catch (error) {
+      alert(error);
+      console.log("Something go wrong when deleting user profile!");
+    }
+  };
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -110,6 +125,11 @@ function Profile() {
               <i className="icon uil uil-at">
                 <IoIosContact />
               </i>
+            </div>
+            <div className="delete-button">
+              <button className="btn btn-delete" onClick={clickDeleteUser}>
+                Delete
+              </button>
             </div>
           </div>
           <div className="profile-details">

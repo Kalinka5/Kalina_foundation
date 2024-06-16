@@ -129,7 +129,10 @@ function Donaters() {
                       <p>Задонатив/ла {user.donated} грн.</p>
                     </div>
                     <div className="underline"></div>
-                    <div className="username">{user.username}</div>
+                    <div
+                      className="username"
+                      dangerouslySetInnerHTML={{ __html: user.username }}
+                    />
                     <div className="icon-background">
                       <i className={`icon color${index + 1}`}>
                         {places[index]}
