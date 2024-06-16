@@ -3,7 +3,8 @@ function Validation(username, email, password1, password2) {
   const validFields = {};
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,6}$/;
-  const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,}$/;
+  const passwordPattern =
+    /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
 
   if (username === "") {
     errors.username = "username field is required";

@@ -26,7 +26,7 @@ function Items() {
       const res = await api.get("/profile");
       setIsSuperUser(res.data.is_superuser);
     } catch (err) {
-      alert(err);
+      console.log(err);
     }
   };
 

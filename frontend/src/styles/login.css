@@ -18,7 +18,6 @@
         font-family: "Poppins", sans-serif;
         letter-spacing: 0.5px;
         outline: none;
-        border: none;
       }
       .log-h3 {
         color: #ffffff;
@@ -85,6 +84,7 @@
           margin-top: 50px;
           width: 100%;
           padding: 15px 0;
+          border: none;
         }
       }
       .log-p {
