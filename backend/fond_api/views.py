@@ -65,7 +65,8 @@ class ItemsViewSet(viewsets.ModelViewSet):
     ordering_fields = ['amount', 'full_price']
 
     def list(self, request):
-        page = self.paginate_queryset(self.queryset)
+        queryset = self.filter_queryset(self.get_queryset())
+        page = self.paginate_queryset(queryset)
         serializer = ItemSerializer(page, many=True)
         return Response(serializer.data)
 
