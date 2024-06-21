@@ -2,6 +2,7 @@ from rest_framework import generics, status, viewsets, filters
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes, throttle_classes
+from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 from rest_framework.views import APIView
 
@@ -89,6 +90,7 @@ class ItemsViewSet(viewsets.ModelViewSet):
 
 @api_view(['GET', 'PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated])
+@ensure_csrf_cookie
 def profile(request):
     user = request.user
 

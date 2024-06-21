@@ -15,7 +15,7 @@ import api from "../api";
 
 import "../styles/donaters.css";
 
-function Donaters() {
+function Donators() {
   const [donators, setDonators] = useState(null);
   const [titleIcons, setTitleIcons] = useState([]);
   const [cardIcons, setCardIcons] = useState([]);
@@ -148,4 +148,4 @@ function Donaters() {
   );
 }
 
-export default Donaters;
+export default Donators;

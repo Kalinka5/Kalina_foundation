@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import Slider from "../components/Slider";
 import Items from "../components/Items";
-import Donaters from "../components/Donaters";
+import Donators from "../components/Donators";
 import Footer from "../components/Footer";
 
 import NotFound from "./NotFound";
@@ -18,7 +18,7 @@ function Home(props) {
         <div>
           <Slider page={n} images={props.images} />
           <Items page={n} />
-          <Donaters />
+          <Donators />
           <Footer back="dot-white" />
         </div>
       ) : (

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 import { IoMdAt, IoIosContact, IoIosImage } from "react-icons/io";
@@ -6,7 +7,7 @@ import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 
 import api from "../api";
 
-import { API_URL, HOME_PAGE } from "../constants";
+import { API_URL, LOGIN_PAGE } from "../constants";
 
 import "../styles/profile.css";
 
@@ -50,13 +51,15 @@ function Profile() {
     console.log("The new image was set successfully!");
   }
 
-  const clickDeleteUser = async () => {
+  const clickDeleteUser = async (e) => {
+    e.preventDefault();
     try {
       console.log("Start deleting User");
       await api.delete("/profile");
       console.log("User was deleted successfully");
       localStorage.clear();
-      navigate(`${HOME_PAGE}/1`);
+      navigate(LOGIN_PAGE);
+      navigate(0); // Refresh page
     } catch (error) {
       alert(error);
       console.log("Something go wrong when deleting user profile!");
@@ -87,13 +90,23 @@ function Profile() {
     }
   };
 
+  const handlers = {
+    submit1: clickDeleteUser,
+    submit2: handleSubmit,
+  };
+
+  const submitHandler = (e) => {
+    const { id } = e.nativeEvent.submitter;
+    handlers[id](e);
+  };
+
   return (
     <div className="profile">
       <div
         className="profile-card animate__animated animate__fadeIn"
         id="profileCard"
       >
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitHandler}>
           <div className="profile-header">
             <div className="form-element">
               <input
@@ -127,7 +140,7 @@ function Profile() {
               </i>
             </div>
             <div className="delete-button">
-              <button className="btn btn-delete" onClick={clickDeleteUser}>
+              <button className="btn btn-delete" id="submit1">
                 Delete
               </button>
             </div>
@@ -185,7 +198,7 @@ function Profile() {
               </div>
             </div>
             <div className="btn-container">
-              <button type="submit">
+              <button type="submit" id="submit2">
                 Submit
                 {loading && <div className="loader"></div>}
               </button>
