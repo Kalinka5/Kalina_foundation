@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
-import { useNavigate } from "react-router-dom";
-
 import { IoMdAt, IoIosContact, IoIosImage } from "react-icons/io";
 import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 
 import api from "../api";
 
-import { API_URL, LOGIN_PAGE } from "../constants";
+import Modal from "../components/DeleteModal";
+
+import { API_URL } from "../constants";
 
 import "../styles/profile.css";
 
@@ -19,7 +19,7 @@ function Profile() {
   const [image, setImage] = useState("");
   const [image_url, setImageURL] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     getData();
@@ -51,21 +51,6 @@ function Profile() {
     console.log("The new image was set successfully!");
   }
 
-  const clickDeleteUser = async (e) => {
-    e.preventDefault();
-    try {
-      console.log("Start deleting User");
-      await api.delete("/profile");
-      console.log("User was deleted successfully");
-      localStorage.clear();
-      navigate(LOGIN_PAGE);
-      navigate(0); // Refresh page
-    } catch (error) {
-      alert(error);
-      console.log("Something go wrong when deleting user profile!");
-    }
-  };
-
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -90,23 +75,13 @@ function Profile() {
     }
   };
 
-  const handlers = {
-    submit1: clickDeleteUser,
-    submit2: handleSubmit,
-  };
-
-  const submitHandler = (e) => {
-    const { id } = e.nativeEvent.submitter;
-    handlers[id](e);
-  };
-
   return (
     <div className="profile">
       <div
         className="profile-card animate__animated animate__fadeIn"
         id="profileCard"
       >
-        <form onSubmit={submitHandler}>
+        <form onSubmit={handleSubmit}>
           <div className="profile-header">
             <div className="form-element">
               <input
@@ -140,7 +115,12 @@ function Profile() {
               </i>
             </div>
             <div className="delete-button">
-              <button className="btn btn-delete" id="submit1">
+              <button
+                className="btn btn-delete"
+                type="button"
+                id="submit1"
+                onClick={() => setIsOpen(true)}
+              >
                 Delete
               </button>
             </div>
@@ -206,6 +186,7 @@ function Profile() {
           </div>
         </form>
       </div>
+      {isOpen && <Modal setIsOpen={setIsOpen} />}
     </div>
   );
 }
