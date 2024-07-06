@@ -68,7 +68,10 @@ function Payment() {
             >
               Monobank
             </button>
-            <button className="privat" onClick={ChangeToMono}>
+            <button
+              className={`privat ${bankChange ? "privat-slider" : ""}`}
+              onClick={ChangeToMono}
+            >
               Privatbank
             </button>
           </div>

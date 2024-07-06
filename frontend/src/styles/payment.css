@@ -343,7 +343,7 @@
 
 @media screen and (max-width: 650px) {
   .container {
-    height: 600px;
+    height: 650px;
     width: 360px;
     background-color: rgba(255, 255, 255, 0.13);
     backdrop-filter: blur(10px);
@@ -395,7 +395,11 @@
         position: relative;
         cursor: pointer;
       }
-      .mono-slider {
+      .privat {
+        color: #0dbd00;
+      }
+      .mono-slider,
+      .privat-slider {
         color: #ffffff;
       }
     }
@@ -477,7 +481,13 @@
         }
       }
       #mono-desc {
+        height: 250px;
         margin-left: 0;
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
       .description {
         width: 355px;
@@ -498,9 +508,11 @@
         }
       }
       #visa-desc {
+        height: 250px;
         grid-column-start: 2;
         grid-column-end: 3;
         margin-left: 0;
+        margin-bottom: 0;
         grid-template-columns: repeat(1, auto);
         column-gap: 10px;
         row-gap: 1em;
