@@ -231,17 +231,6 @@
       column-gap: 10px;
       row-gap: 1em;
     }
-    @media screen and (max-width: 991px) {
-      #visa-desc {
-        grid-template-columns: repeat(1, auto);
-        column-gap: 10px;
-        row-gap: 1em;
-
-        label {
-          padding-left: 60px;
-        }
-      }
-    }
     .description {
       width: 418px;
       margin-left: 8px;
@@ -348,6 +337,230 @@
         font-size: 18px;
         color: #000000;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .container {
+    height: 600px;
+    width: 360px;
+    background-color: rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+
+    .slider {
+      height: 50px;
+      width: 100px;
+      left: 80px;
+      border-radius: 50px;
+      background-image: linear-gradient(
+        to right,
+        rgb(0, 0, 0),
+        rgb(33, 33, 33)
+      );
+      position: absolute;
+      top: 20px;
+      transition: all 0.5s ease-in-out;
+    }
+    .moveslider {
+      left: 180px;
+      background-image: linear-gradient(
+        to right,
+        rgb(0, 159, 42),
+        rgb(0, 215, 39)
+      );
+    }
+    .btn {
+      height: 50px;
+      width: 200px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      border-radius: 50px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+
+      .privat,
+      .mono {
+        font-size: 19px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        position: relative;
+        cursor: pointer;
+      }
+      .mono-slider {
+        color: #ffffff;
+      }
+    }
+    .form-section {
+      height: 500px;
+      width: 600px;
+      padding: 20px 0;
+      position: relative;
+      transition: all 0.5s ease-in-out;
+      left: 0px;
+      background: none;
+      grid-template-columns: repeat(2, auto);
+      column-gap: 0;
+      row-gap: 0;
+      margin-top: 0;
+      padding: 0;
+
+      .privat-box,
+      .mono-box {
+        height: 100%;
+        width: 260px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 40px;
+
+        .grid-part {
+          background: none;
+        }
+      }
+      .privat-box {
+        gap: 50px;
+      }
+      .mono-box {
+        gap: 30px;
+      }
+      .ele {
+        height: 50px;
+        width: 260px;
+        font-size: 15px;
+        outline: none;
+        border: none;
+        color: rgb(77, 77, 77);
+        background-color: rgb(240, 240, 240);
+        border-radius: 50px;
+        padding-left: 30px;
+      }
+      .clkbtn {
+        height: 50px;
+        width: 130px;
+        font-size: 19px;
+        border-radius: 50px;
+        background-image: linear-gradient(
+          to right,
+          rgb(255, 195, 110),
+          rgb(255, 146, 91)
+        );
+        border: none;
+        cursor: pointer;
+      }
+      .block .container-mastercard {
+        padding: 0;
+
+        .front-card {
+          height: 205px;
+          width: 308px;
+
+          .card-info #no {
+            font-size: 1.24em;
+          }
+          #chip {
+            height: 65px;
+            margin-top: 0;
+          }
+          #mastercard {
+            margin-top: 90px;
+          }
+        }
+      }
+      #mono-desc {
+        margin-left: 0;
+      }
+      .description {
+        width: 355px;
+      }
+      .block .container-visa {
+        padding: 0;
+
+        .front {
+          height: 205px;
+          width: 308px;
+          box-shadow: none;
+        }
+        .card-no {
+          font-size: 30px;
+        }
+        .card-holder {
+          margin-top: 28px;
+        }
+      }
+      #visa-desc {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        margin-left: 0;
+        grid-template-columns: repeat(1, auto);
+        column-gap: 10px;
+        row-gap: 1em;
+
+        label {
+          padding-left: 15px;
+        }
+      }
+    }
+    .form-section-move {
+      left: -362px;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container {
+    height: 600px;
+    width: 250px;
+
+    .slider {
+      height: 50px;
+      width: 100px;
+      left: 27px;
+    }
+    .moveslider {
+      left: 127px;
+    }
+    .btn {
+      height: 50px;
+      width: 200px;
+      margin: 20px auto;
+
+      .privat,
+      .mono {
+        font-size: 19px;
+      }
+    }
+    .form-section {
+      height: 500px;
+      width: 500px;
+
+      .login-box,
+      .signup-box {
+        height: 100%;
+        width: 250px;
+      }
+      .ele {
+        height: 50px;
+        width: 220px;
+        font-size: 15px;
+      }
+      .clkbtn {
+        height: 50px;
+        width: 130px;
+        font-size: 19px;
+      }
+    }
+    .form-section-move {
+      left: -250px;
     }
   }
 }
