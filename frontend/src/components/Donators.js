@@ -11,9 +11,13 @@ import {
   IoMdHeart,
 } from "react-icons/io";
 
+import { useMediaQuery } from "@uidotdev/usehooks";
+
 import api from "../api";
 
-import "../styles/donaters.css";
+import { API_URL } from "../constants";
+
+import "../styles/donators.css";
 
 function Donators() {
   const [donators, setDonators] = useState(null);
@@ -26,6 +30,7 @@ function Donators() {
     3: <Fa4 />,
     4: <Fa5 />,
   };
+  const isMobile = useMediaQuery("only screen and (max-width: 479px)");
 
   useEffect(() => {
     getData();
@@ -114,30 +119,53 @@ function Donators() {
         <div className="icons-back">
           {cardIcons.map((el) => el)}
           <div className="donators-card">
-            <div className="pedestal">
-              {donators &&
-                donators.map((user, index) => (
-                  <div className={`bar __${index + 1}`} key={user.id}>
-                    <div className="profile-pic">
-                      <img
-                        className="profile-pic-image"
-                        src={"/choreo-apis/kalinafond/backend/v1" + user.image}
-                        alt="Donater"
-                      />
+            {isMobile ? (
+              <div className="pedestal">
+                {donators &&
+                  donators.map((user, index) => (
+                    <div className={`bar __${index + 1}`} key={user.id}>
+                      <div className="profile-pic">
+                        <img
+                          className="profile-pic-image"
+                          src={API_URL + user.image}
+                          alt="Donater"
+                        />
+                      </div>
+                      <div className="username">{user.username}</div>
+                      <div className="icon-background">
+                        <i className={`icon color${index + 1}`}>
+                          {places[index]}
+                        </i>
+                      </div>
                     </div>
-                    <div className="donated">
-                      <p>Задонатив/ла {user.donated} грн.</p>
+                  ))}
+              </div>
+            ) : (
+              <div className="pedestal">
+                {donators &&
+                  donators.map((user, index) => (
+                    <div className={`bar __${index + 1}`} key={user.id}>
+                      <div className="profile-pic">
+                        <img
+                          className="profile-pic-image"
+                          src={API_URL + user.image}
+                          alt="Donater"
+                        />
+                      </div>
+                      <div className="donated">
+                        <p>Задонатив/ла {user.donated} грн.</p>
+                      </div>
+                      <div className="underline"></div>
+                      <div className="username">{user.username}</div>
+                      <div className="icon-background">
+                        <i className={`icon color${index + 1}`}>
+                          {places[index]}
+                        </i>
+                      </div>
                     </div>
-                    <div className="underline"></div>
-                    <div className="username">{user.username}</div>
-                    <div className="icon-background">
-                      <i className={`icon color${index + 1}`}>
-                        {places[index]}
-                      </i>
-                    </div>
-                  </div>
-                ))}
-            </div>
+                  ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

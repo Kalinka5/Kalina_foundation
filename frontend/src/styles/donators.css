@@ -152,7 +152,6 @@
           }
           .username {
             color: #ffffff;
-            margin-top: 10px;
             font-size: 20px;
             font-family: "Times New Roman", Times, serif;
           }
@@ -267,5 +266,18 @@
   }
   100% {
     transform: translateX(0%);
+  }
+}
+@media (min-width: 320px) and (max-width: 479px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  .donaters .donators-background .icons-back .donators-card .pedestal {
+    width: 668px;
+
+    .username {
+      margin: auto auto;
+    }
+    .profile-pic {
+      width: 94px;
+    }
   }
 }

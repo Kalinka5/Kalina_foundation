@@ -6,6 +6,8 @@ import {
   Navigate,
 } from "react-router-dom";
 
+import { useMediaQuery } from "@uidotdev/usehooks";
+
 import {
   HOME_PAGE,
   LOGIN_PAGE,
@@ -27,10 +29,15 @@ import Profile from "./pages/Profile";
 import Payment from "./pages/Payment";
 
 import bpla from "./img/bpla.jpg";
+import bplaMobile from "./img/bpla_mobile.jpeg";
 import communication from "./img/communication.jpg";
+import communicationMobile from "./img/communication_mobile.jpg";
 import drones from "./img/naval_drones.jpg";
-import optical_devices from "./img/optical_devices.jpg";
+import dronesMobile from "./img/drones_mobile.jpg";
+import opticalDevices from "./img/optical_devices.jpg";
+import opticalDevMobile from "./img/optical_dev_mobile.jpg";
 import transport from "./img/transport.jpg";
+import transportMobile from "./img/transport_mobile.jpeg";
 
 import "./styles/index.css";
 
@@ -54,33 +61,34 @@ function App() {
     { id: 1, urlLink: `${REGISTER_PAGE}`, urlName: "Register" },
     { id: 2, urlLink: `${LOGIN_PAGE}`, urlName: "Login" },
   ];
+  const isMobile = useMediaQuery("only screen and (max-width: 479px)");
   const images = [
     {
-      src: bpla,
+      src: isMobile ? bplaMobile : bpla,
       alt: "BPLA",
       hrefPrev: `${HOME_PAGE}/5`,
       hrefNext: `${HOME_PAGE}/2`,
     },
     {
-      src: communication,
+      src: isMobile ? communicationMobile : communication,
       alt: "Communication",
       hrefPrev: `${HOME_PAGE}/1`,
       hrefNext: `${HOME_PAGE}/3`,
     },
     {
-      src: drones,
+      src: isMobile ? dronesMobile : drones,
       alt: "Drones",
       hrefPrev: `${HOME_PAGE}/2`,
       hrefNext: `${HOME_PAGE}/4`,
     },
     {
-      src: optical_devices,
+      src: isMobile ? opticalDevMobile : opticalDevices,
       alt: "Optical devices",
       hrefPrev: `${HOME_PAGE}/3`,
       hrefNext: `${HOME_PAGE}/5`,
     },
     {
-      src: transport,
+      src: isMobile ? transportMobile : transport,
       alt: "Transport",
       hrefPrev: `${HOME_PAGE}/4`,
       hrefNext: `${HOME_PAGE}/1`,

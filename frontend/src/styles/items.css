@@ -5,19 +5,6 @@
   background-image: url("../img/pixels.png");
   padding: 0 !important;
 
-  @media screen and (min-width: 992px) and (max-width: 1439px) {
-    max-width: 1279px !important;
-    padding: 0 !important;
-    margin: 0 80px !important;
-    width: auto !important;
-  }
-
-  @media screen and (max-width: 991px) {
-    max-width: 959px !important;
-    margin: 0 16px !important;
-    padding: 0 !important;
-    width: auto !important;
-  }
   .items-title {
     background: linear-gradient(71deg, #080509, #1a171c, #080509);
     overflow: hidden;
@@ -167,6 +154,21 @@
     }
     .right {
       float: right;
+    }
+  }
+}
+@media screen and (max-width: 991px) {
+  .items {
+    max-width: 959px !important;
+    .gradient-cards .card .container-card {
+      display: block;
+      text-align: center;
+    }
+    .gradient-cards .card .container-card .column1 .item-image {
+      width: 250px;
+    }
+    .gradient-cards .card .container-card .column2 {
+      padding-top: 10px;
     }
   }
 }
