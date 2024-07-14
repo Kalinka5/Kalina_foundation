@@ -130,10 +130,229 @@
     }
   }
 }
-
 /* Media Query For different screens */
-@media (min-width: 320px) and (max-width: 479px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+@media (min-width: 320px) and (max-width: 369px) {
+  .register .login-register .log-reg-background {
+    width: 360px;
+
+    .reg-shape1 {
+      left: 15px;
+      top: -50px;
+    }
+    .reg-shape2 {
+      right: 15px;
+      bottom: -95px;
+    }
+  }
+  .register .login-register .log-reg-form {
+    width: 260px;
+
+    .reg-input-box .input-icon .tooltiptext {
+      left: 60px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 108%;
+        left: 168px;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: rgb(255, 219, 57) transparent transparent transparent;
+      }
+    }
+    .reg-input-box .input-icon .name-tip {
+      top: -40px;
+      &::after {
+        top: 110%;
+      }
+    }
+    .reg-input-box .input-icon .email-tip {
+      top: -95px;
+      &::after {
+        top: 105%;
+      }
+    }
+    .reg-input-box .input-icon .pass-tip {
+      top: -113px;
+      &::after {
+        top: 104%;
+      }
+    }
+    .reg-input-box .input-icon .confirm-tip {
+      top: -58px;
+    }
+  }
+  .register .login-register .reg-p {
+    padding: 50px 35px;
+  }
+}
+@media (min-width: 370px) and (max-width: 389px) {
+  .register .login-register .log-reg-background {
+    width: 375px;
+
+    .reg-shape1 {
+      left: 10px;
+      top: -50px;
+    }
+    .reg-shape2 {
+      right: 10px;
+      bottom: -90px;
+    }
+  }
+  .register .login-register .log-reg-form {
+    height: 523px;
+    width: 300px;
+
+    .reg-input-box .input-icon .tooltiptext {
+      left: 70px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 108%;
+        left: 198px;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: rgb(255, 219, 57) transparent transparent transparent;
+      }
+    }
+    .reg-input-box .input-icon .name-tip {
+      top: -40px;
+      &::after {
+        top: 110%;
+      }
+    }
+    .reg-input-box .input-icon .email-tip {
+      top: -95px;
+      &::after {
+        top: 105%;
+      }
+    }
+    .reg-input-box .input-icon .pass-tip {
+      top: -113px;
+      &::after {
+        top: 104%;
+      }
+    }
+    .reg-input-box .input-icon .confirm-tip {
+      top: -58px;
+    }
+  }
+  .register .login-register .reg-p {
+    padding: 50px 35px;
+  }
+}
+@media (min-width: 390px) and (max-width: 399px) {
+  .register .login-register .log-reg-background .reg-shape1 {
+    left: 10px;
+    top: -60px;
+  }
+  .register .login-register .log-reg-background .reg-shape2 {
+    right: 10px;
+    bottom: -120px;
+  }
+  .register .login-register .log-reg-form {
+    .reg-input-box .input-icon .tooltiptext {
+      left: 70px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 108%;
+        left: 198px;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: rgb(255, 219, 57) transparent transparent transparent;
+      }
+    }
+    .reg-input-box .input-icon .name-tip {
+      top: -40px;
+      &::after {
+        top: 110%;
+      }
+    }
+    .reg-input-box .input-icon .email-tip {
+      top: -95px;
+      &::after {
+        top: 105%;
+      }
+    }
+    .reg-input-box .input-icon .pass-tip {
+      top: -113px;
+      &::after {
+        top: 104%;
+      }
+    }
+    .reg-input-box .input-icon .confirm-tip {
+      top: -58px;
+    }
+  }
+  .register .login-register .log-reg-form {
+    height: 550px;
+    width: 300px;
+  }
+  .register .login-register .reg-p {
+    padding: 50px 35px;
+  }
+}
+@media (min-width: 400px) and (max-width: 429px) {
+  .register .login-register .log-reg-background .reg-shape1 {
+    left: 10px;
+    top: -60px;
+  }
+  .register .login-register .log-reg-background .reg-shape2 {
+    right: 10px;
+    bottom: -120px;
+  }
+  .register .login-register .log-reg-form {
+    .reg-input-box .input-icon .tooltiptext {
+      left: 70px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 108%;
+        left: 198px;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: rgb(255, 219, 57) transparent transparent transparent;
+      }
+    }
+    .reg-input-box .input-icon .name-tip {
+      top: -40px;
+      &::after {
+        top: 110%;
+      }
+    }
+    .reg-input-box .input-icon .email-tip {
+      top: -95px;
+      &::after {
+        top: 105%;
+      }
+    }
+    .reg-input-box .input-icon .pass-tip {
+      top: -113px;
+      &::after {
+        top: 104%;
+      }
+    }
+    .reg-input-box .input-icon .confirm-tip {
+      top: -58px;
+    }
+  }
+  .register .login-register .log-reg-form {
+    height: 550px;
+    width: 300px;
+  }
+  .register .login-register .reg-p {
+    padding: 50px 35px;
+  }
+}
+@media (min-width: 430px) and (max-width: 479px) {
   .register .login-register .log-reg-background .reg-shape1 {
     left: 10px;
     top: -60px;

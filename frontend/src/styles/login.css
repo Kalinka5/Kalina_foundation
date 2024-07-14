@@ -100,7 +100,75 @@
 }
 
 /* Media Query For different screens */
-@media (min-width: 320px) and (max-width: 479px) {
+@media (min-width: 320px) and (max-width: 369px) {
+  .login {
+    .login-register {
+      .log-reg-background {
+        width: 360px;
+
+        .log-shape1 {
+          left: 15px;
+          top: -40px;
+        }
+        .log-shape2 {
+          right: 15px;
+          bottom: -85px;
+        }
+      }
+      .log-reg-form {
+        height: 523px;
+        width: 260px;
+      }
+    }
+  }
+}
+@media (min-width: 370px) and (max-width: 389px) {
+  .login .login-register .log-reg-background {
+    width: 367px;
+    .log-shape1 {
+      left: 10px;
+      top: -60px;
+    }
+  }
+  .login .login-register .log-reg-background .log-shape2 {
+    right: 10px;
+    bottom: -90px;
+  }
+  .login .login-register .log-reg-form {
+    height: 523px;
+    width: 300px;
+  }
+}
+@media (min-width: 390px) and (max-width: 399px) {
+  .login .login-register .log-reg-background .log-shape1 {
+    left: 10px;
+    top: -60px;
+  }
+  .login .login-register .log-reg-background .log-shape2 {
+    right: 10px;
+    bottom: -120px;
+  }
+  .login .login-register .log-reg-form {
+    height: 550px;
+    width: 300px;
+  }
+}
+@media (min-width: 400px) and (max-width: 429px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  .login .login-register .log-reg-background .log-shape1 {
+    left: 10px;
+    top: -60px;
+  }
+  .login .login-register .log-reg-background .log-shape2 {
+    right: 10px;
+    bottom: -120px;
+  }
+  .login .login-register .log-reg-form {
+    height: 550px;
+    width: 300px;
+  }
+}
+@media (min-width: 430px) and (max-width: 479px) {
   /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
   .login .login-register .log-reg-background .log-shape1 {
     left: 10px;

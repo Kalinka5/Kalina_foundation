@@ -268,10 +268,60 @@
     transform: translateX(0%);
   }
 }
-@media (min-width: 320px) and (max-width: 479px) {
+/* Media Query For different screens */
+@media (min-width: 320px) and (max-width: 369px) {
+  .donaters .donators-background .icons-back .donators-card .pedestal {
+    width: 545px;
+
+    .username {
+      margin: auto auto;
+    }
+    .profile-pic {
+      width: 94px;
+    }
+  }
+}
+@media (min-width: 370px) and (max-width: 389px) {
+  .donaters .donators-background .icons-back .donators-card .pedestal {
+    width: 578px;
+
+    .username {
+      margin: auto auto;
+    }
+    .profile-pic {
+      width: 94px;
+    }
+  }
+}
+@media (min-width: 390px) and (max-width: 399px) {
+  .donaters .donators-background .icons-back .donators-card .pedestal {
+    width: 613px;
+
+    .username {
+      margin: auto auto;
+    }
+    .profile-pic {
+      width: 94px;
+    }
+  }
+}
+@media (min-width: 400px) and (max-width: 429px) {
   /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
   .donaters .donators-background .icons-back .donators-card .pedestal {
-    width: 668px;
+    width: 663px;
+
+    .username {
+      margin: auto auto;
+    }
+    .profile-pic {
+      width: 94px;
+    }
+  }
+}
+@media (min-width: 430px) and (max-width: 479px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  .donaters .donators-background .icons-back .donators-card .pedestal {
+    width: 702px;
 
     .username {
       margin: auto auto;

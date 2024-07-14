@@ -153,7 +153,7 @@ function Payment() {
               </div>
             </div>
             <div id="visa-desc" className="description">
-              <div>
+              <div className="desc-field">
                 <label>Одержувач</label>
                 <div className="input-box">
                   <input
@@ -176,7 +176,7 @@ function Payment() {
                   </span>
                 </div>
               </div>
-              <div>
+              <div className="desc-field">
                 <label>IBAN</label>
                 <div className="input-box">
                   <input
@@ -199,7 +199,7 @@ function Payment() {
                   </span>
                 </div>
               </div>
-              <div>
+              <div className="desc-field">
                 <label>РНОКПП</label>
                 <div className="input-box">
                   <input
@@ -222,7 +222,7 @@ function Payment() {
                   </span>
                 </div>
               </div>
-              <div>
+              <div className="desc-field">
                 <label>Призначення платежу</label>
                 <div className="input-box">
                   <input
@@ -249,7 +249,7 @@ function Payment() {
           </div>
         </div>
       ) : (
-        <div>
+        <div className="pc-version">
           <h2 id="cards-title">
             Ми маємо дві картки на які ви можете задонатити
           </h2>
