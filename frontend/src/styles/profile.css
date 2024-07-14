@@ -338,9 +338,100 @@
     }
   }
 }
-
 /* Media Query For different screens */
-@media (min-width: 320px) and (max-width: 479px) {
+@media (min-width: 320px) and (max-width: 369px) {
+  .profile .profile-card {
+    width: 350px;
+  }
+  .profile .profile-card .profile-header .input-data .underline::before {
+    left: 25px;
+  }
+  .profile .profile-card .profile-header .input-data .icon {
+    top: 1px;
+    left: 30px;
+  }
+  .profile .profile-card .profile-header .input-data label {
+    left: 105px;
+  }
+  .profile .profile-card .profile-details .form-group {
+    padding-left: 0;
+    width: 310px;
+  }
+  .profile .profile-card .profile-details .form-style {
+    padding: 13px 2px;
+    padding-left: 45px;
+    font-size: 12px;
+  }
+}
+@media (min-width: 370px) and (max-width: 389px) {
+  .profile .profile-card {
+    width: 350px;
+  }
+  .profile .profile-card .profile-header .input-data .underline::before {
+    left: 25px;
+  }
+  .profile .profile-card .profile-header .input-data .icon {
+    top: 1px;
+    left: 30px;
+  }
+  .profile .profile-card .profile-header .input-data label {
+    left: 105px;
+  }
+  .profile .profile-card .profile-details .form-group {
+    padding-left: 0;
+    width: 310px;
+  }
+  .profile .profile-card .profile-details .form-style {
+    padding: 13px 2px;
+    padding-left: 45px;
+    font-size: 12px;
+  }
+}
+@media (min-width: 390px) and (max-width: 399px) {
+  .profile .profile-card {
+    width: 380px;
+  }
+  .profile .profile-card .profile-header .input-data .underline::before {
+    left: 40px;
+  }
+  .profile .profile-card .profile-header .input-data .icon {
+    top: 1px;
+    left: 45px;
+  }
+  .profile .profile-card .profile-header .input-data label {
+    left: 120px;
+  }
+  .profile .profile-card .profile-details .form-group {
+    padding-left: 0;
+    width: 340px;
+  }
+  .profile .profile-card .profile-details .form-style {
+    padding: 13px 2px;
+    padding-left: 55px;
+    font-size: 12px;
+  }
+}
+@media (min-width: 400px) and (max-width: 429px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  .profile .profile-card {
+    width: 400px;
+  }
+  .profile .profile-card .profile-header .input-data .underline::before {
+    left: 51px;
+  }
+  .profile .profile-card .profile-header .input-data .icon {
+    top: 1px;
+    left: 55px;
+  }
+  .profile .profile-card .profile-header .input-data label {
+    left: 130px;
+  }
+  .profile .profile-card .profile-details .form-group {
+    padding-left: 0;
+    width: 360px;
+  }
+}
+@media (min-width: 430px) and (max-width: 479px) {
   /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
   .profile .profile-card {
     width: 400px;
