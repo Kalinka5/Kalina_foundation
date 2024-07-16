@@ -45,7 +45,15 @@ header {
   }
 }
 /* Media Query For different screens */
-@media (min-width: 320px) and (max-width: 399px) {
+@media (min-width: 320px) and (max-width: 344px) {
+  header .logo {
+    width: 160px;
+  }
+  header .nav li a {
+    width: 60px;
+  }
+}
+@media (min-width: 345px) and (max-width: 399px) {
   header .logo {
     width: 170px;
   }
@@ -69,7 +77,7 @@ header {
 @media (min-width: 600px) and (max-width: 800px) {
   /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
   .logo {
-    width: 170px;
+    width: 190px;
   }
 }
 @media (min-width: 801px) {
@@ -80,10 +88,4 @@ header {
 }
 @media (min-width: 1281px) {
   /* hi-res laptops and desktops */
-}
-
-@media (min-width: 760px) {
-  .logo {
-    width: 180px;
-  }
 }

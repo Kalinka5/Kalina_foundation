@@ -157,7 +157,26 @@
     }
   }
 }
-@media screen and (max-width: 991px) {
+@media (min-width: 320px) and (max-width: 344px) {
+  .items {
+    max-width: 959px !important;
+    .gradient-cards .card .container-card {
+      display: block;
+      text-align: center;
+    }
+    .gradient-cards .card .container-card .column1 .item-image {
+      width: 200px;
+    }
+    .gradient-cards .card .container-card .column2 {
+      padding-top: 10px;
+    }
+    .gradient-cards .card .container-card .column1 .donate-button:link,
+    .donate-button:visited {
+      padding: 1em 3em;
+    }
+  }
+}
+@media screen and (min-width: 345px) and (max-width: 991px) {
   .items {
     max-width: 959px !important;
     .gradient-cards .card .container-card {

@@ -269,7 +269,22 @@
   }
 }
 /* Media Query For different screens */
-@media (min-width: 320px) and (max-width: 369px) {
+@media (min-width: 320px) and (max-width: 344px) {
+  .donaters .donators-background .icons-back .donators-card .pedestal {
+    width: 515px;
+
+    .username {
+      margin: auto auto;
+    }
+    .profile-pic {
+      width: 93px;
+    }
+    .bar {
+      width: 98px;
+    }
+  }
+}
+@media (min-width: 345px) and (max-width: 369px) {
   .donaters .donators-background .icons-back .donators-card .pedestal {
     width: 545px;
 
