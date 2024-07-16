@@ -339,7 +339,31 @@
   }
 }
 /* Media Query For different screens */
-@media (min-width: 320px) and (max-width: 369px) {
+@media (min-width: 320px) and (max-width: 344px) {
+  .profile .profile-card {
+    width: 330px;
+  }
+  .profile .profile-card .profile-header .input-data .underline::before {
+    left: 15px;
+  }
+  .profile .profile-card .profile-header .input-data .icon {
+    top: 1px;
+    left: 20px;
+  }
+  .profile .profile-card .profile-header .input-data label {
+    left: 95px;
+  }
+  .profile .profile-card .profile-details .form-group {
+    padding-left: 0;
+    width: 290px;
+  }
+  .profile .profile-card .profile-details .form-style {
+    padding: 13px 2px;
+    padding-left: 45px;
+    font-size: 11px;
+  }
+}
+@media (min-width: 345px) and (max-width: 369px) {
   .profile .profile-card {
     width: 350px;
   }
