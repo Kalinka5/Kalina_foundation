@@ -30,7 +30,7 @@ function Donators() {
     3: <Fa4 />,
     4: <Fa5 />,
   };
-  const isMobile = useMediaQuery("only screen and (max-width: 479px)");
+  const isMobile = useMediaQuery("only screen and (max-width: 540px)");
   const isTablet = useMediaQuery(
     "only screen and (min-width: 760px) and (max-width: 1024px)"
   );

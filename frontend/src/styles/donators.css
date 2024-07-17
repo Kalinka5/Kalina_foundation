@@ -346,6 +346,23 @@
     }
   }
 }
+@media (min-width: 480px) and (max-width: 759px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  .donaters .donators-background .icons-back .donators-card .pedestal {
+    width: 493px;
+
+    .username {
+      margin: auto auto;
+    }
+    .profile-pic .profile-pic-image {
+      height: 65px;
+      width: 65px;
+    }
+    .bar {
+      width: 84px;
+    }
+  }
+}
 @media screen and (min-width: 760px) and (max-width: 819px) {
   .donaters .donators-background .icons-back .donators-card .pedestal {
     width: 730px;
@@ -358,7 +375,7 @@
     }
   }
 }
-@media screen and (min-width: 820px) and (max-width: 911px) {
+@media screen and (min-width: 820px) and (max-width: 851px) {
   .donaters {
     min-height: 72vh;
 
@@ -370,6 +387,25 @@
       }
       .profile-pic {
         width: 94px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 852px) and (max-width: 911px) {
+  .donaters {
+    min-height: 72vh;
+
+    .donators-background .icons-back .donators-card .pedestal {
+      width: 755px;
+
+      .username {
+        margin: auto auto;
+      }
+      .profile-pic {
+        width: 94px;
+      }
+      .bar {
+        margin: 0 auto;
       }
     }
   }
