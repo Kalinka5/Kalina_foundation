@@ -61,7 +61,7 @@ function App() {
     { id: 1, urlLink: `${REGISTER_PAGE}`, urlName: "Register" },
     { id: 2, urlLink: `${LOGIN_PAGE}`, urlName: "Login" },
   ];
-  const isMobile = useMediaQuery("only screen and (max-width: 479px)");
+  const isMobile = useMediaQuery("only screen and (max-width: 540px)");
   const images = [
     {
       src: isMobile ? bplaMobile : bpla,

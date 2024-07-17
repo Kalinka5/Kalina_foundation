@@ -346,3 +346,55 @@
     }
   }
 }
+@media screen and (min-width: 760px) and (max-width: 819px) {
+  .donaters .donators-background .icons-back .donators-card .pedestal {
+    width: 730px;
+
+    .username {
+      margin: auto auto;
+    }
+    .profile-pic {
+      width: 94px;
+    }
+  }
+}
+@media screen and (min-width: 820px) and (max-width: 911px) {
+  .donaters {
+    min-height: 72vh;
+
+    .donators-background .icons-back .donators-card .pedestal {
+      width: 769px;
+
+      .username {
+        margin: auto auto;
+      }
+      .profile-pic {
+        width: 94px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 912px) and (max-width: 1024px) {
+  .donaters {
+    min-height: 66vh;
+
+    .donators-background .icons-back .donators-card .pedestal {
+      .username {
+        margin: auto auto;
+      }
+      .profile-pic {
+        width: 94px;
+      }
+      .bar {
+        margin: 0 auto;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  .donaters .donators-background .icons-back .donators-card .pedestal {
+    .money-value {
+      color: #ffffff;
+    }
+  }
+}

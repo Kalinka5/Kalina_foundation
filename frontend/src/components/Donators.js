@@ -31,6 +31,9 @@ function Donators() {
     4: <Fa5 />,
   };
   const isMobile = useMediaQuery("only screen and (max-width: 479px)");
+  const isTablet = useMediaQuery(
+    "only screen and (min-width: 760px) and (max-width: 1024px)"
+  );
 
   useEffect(() => {
     getData();
@@ -119,11 +122,12 @@ function Donators() {
         <div className="icons-back">
           {cardIcons.map((el) => el)}
           <div className="donators-card">
-            {isMobile ? (
+            {isMobile || isTablet ? (
               <div className="pedestal">
                 {donators &&
                   donators.map((user, index) => (
                     <div className={`bar __${index + 1}`} key={user.id}>
+                      <div className="money-value">({user.donated} грн.)</div>
                       <div className="profile-pic">
                         <img
                           className="profile-pic-image"
