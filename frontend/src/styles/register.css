@@ -2,6 +2,12 @@
 
 .register {
   .login-register {
+    .alert-message {
+      z-index: 100;
+      position: absolute;
+      top: 10%;
+      margin: 0 25px;
+    }
     .log-reg-background {
       .reg-shape1 {
         left: -80px;

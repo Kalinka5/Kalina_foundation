@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { IoIosBulb } from "react-icons/io";
+
+import Alert from "@mui/material/Alert";
 
 import api from "../api";
 import Validation from "../validation";
@@ -15,13 +16,12 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
+  const [registrationStatus, setRegistrationStatus] = useState(null);
 
   const [loading, setLoading] = useState(false);
 
   const [errors, setErrors] = useState({});
   const [validFields, setValidFields] = useState({});
-
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -39,9 +39,10 @@ function Register() {
         formData.append("password", password1);
 
         await api.post("/register", formData);
-        navigate(`${LOGIN_PAGE}`);
+        setRegistrationStatus("success");
       }
     } catch (error) {
+      setRegistrationStatus("error");
       if (error.response.data["email"]) {
         setErrors({ email: error.response.data["email"] });
       } else if (error.response.data["username"]) {
@@ -54,9 +55,27 @@ function Register() {
     }
   };
 
+  let statusMessage = null;
+  if (registrationStatus === "success") {
+    statusMessage = (
+      <Alert
+        variant="filled"
+        severity="success"
+        className="alert-message"
+        onClose={() => {
+          setRegistrationStatus(null);
+        }}
+      >
+        <b>Registration successful!</b> Please check your <b>email</b> to verify
+        your account.
+      </Alert>
+    );
+  }
+
   return (
     <div className="register">
       <div className="login-register">
+        {statusMessage}
         <div className="log-reg-background">
           <div className="shape reg-shape1"></div>
           <div className="shape reg-shape2"></div>

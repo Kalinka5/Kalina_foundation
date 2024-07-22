@@ -20,6 +20,7 @@ import {
 import Header from "./components/Header";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./components/AuthContext";
+import EmailVerify from "./components/EmailVerify";
 
 import Home from "./pages/Home";
 import ItemEdit from "./pages/ItemEdit";
@@ -109,6 +110,7 @@ function App() {
             <Route exact path="item/:id/edit" element={<ItemEdit />} />
             <Route path={LOGIN_PAGE} element={<Login />} />
             <Route path={REGISTER_PAGE} element={<RegisterAndLogout />} />
+            <Route path="email-verify/:uid/:token" element={<EmailVerify />} />
             <Route path={LOGOUT_PAGE} element={<Logout />} />
             <Route
               path={PROFILE_PAGE}
