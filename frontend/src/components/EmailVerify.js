@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 
-import Alert from "@mui/material/Alert";
-
 import api from "../api";
 
 import "../styles/emailVerify.css";
@@ -41,34 +39,54 @@ function EmailVerify() {
   let statusMessage = null;
   if (emailStatus === "success") {
     statusMessage = (
-      <Alert
-        variant="filled"
-        severity="success"
-        className="alert-message"
-        onClose={() => {
-          setEmailStatus(null);
-        }}
-      >
-        Email Verification Done
-      </Alert>
+      <div className="text success">
+        <h1 className="title">
+          Email <strong>Verification</strong>
+          <em>Done</em>
+        </h1>
+      </div>
     );
   } else {
     statusMessage = (
-      <Alert
-        variant="filled"
-        severity="error"
-        className="alert-message"
-        onClose={() => {
-          setEmailStatus(null);
-        }}
-      >
-        Email Verification Failed. Email may be already verified or the link is
-        broken
-      </Alert>
+      <div className="text failed">
+        <h1 className="title">
+          Email <strong>Verification</strong>
+          <em>Failed</em>
+        </h1>
+        <p>Email may be already verified or the link is broken</p>
+      </div>
     );
   }
 
-  return <div className="container">{statusMessage}</div>;
+  return (
+    <div className="container">
+      <div className="ternary-system">
+        <div className="sun primary"></div>
+        <div className="sun secondary"></div>
+        <div className="sun ternary"></div>
+      </div>
+      <div className="sand">
+        <div className="pendulums">
+          <div className="pendulum">
+            <div className="bar"></div>
+            <div className="motion">
+              <div className="string"></div>
+              <div className="weight"></div>
+            </div>
+          </div>
+          <div className="pendulum shadow">
+            <div className="bar"></div>
+            <div className="motion">
+              <div className="string"></div>
+              <div className="weight"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="pyramid"></div>
+      {statusMessage}
+    </div>
+  );
 }
 
 export default EmailVerify;
