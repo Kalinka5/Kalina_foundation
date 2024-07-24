@@ -32,23 +32,18 @@ class RegisterApi(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
 
-        print("Start creation of Mail...")
         mail_subject = 'Activation link has been sent to your email id'
-        print("Start rendering the html template...")
         message = render_to_string('acc_active_email.html', {
             'user': user,
             'uid': urlsafe_base64_encode(force_bytes(user.pk)),
             'token': account_activation_token.make_token(user),
         })
-        print("Get email to send...")
         to_email = request.data['email']
-        print("Creating of email...")
         email = EmailMessage(
             mail_subject, message, to=[to_email]
         )
         email.content_subtype = 'html'
         email.send()
-        print("The email was sended...")
 
         return Response({
             "user": UserSerializer(user, context=self.get_serializer_context()).data,
