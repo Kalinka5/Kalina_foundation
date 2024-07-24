@@ -46,7 +46,7 @@ function EmailVerify() {
         </h1>
       </div>
     );
-  } else {
+  } else if (emailStatus === "failed") {
     statusMessage = (
       <div className="text failed">
         <h1 className="title">
@@ -56,6 +56,8 @@ function EmailVerify() {
         <p>Email may be already verified or the link is broken</p>
       </div>
     );
+  } else {
+    statusMessage = <div className="empty"></div>;
   }
 
   return (
