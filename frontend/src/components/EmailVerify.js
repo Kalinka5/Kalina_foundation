@@ -21,7 +21,6 @@ function EmailVerify() {
       if (token) {
         const res = await api.get(`/activate/${uid}/${token}/`);
         console.log(res);
-
         if (res.data.status === "success") {
           setEmailStatus("success");
         } else if (res.data.status === "failed") {
@@ -57,7 +56,19 @@ function EmailVerify() {
       </div>
     );
   } else {
-    statusMessage = <div className="empty"></div>;
+    statusMessage = (
+      <div class="loading-container">
+        <div class="loading-text">
+          <span className="letter1">L</span>
+          <span className="letter2">O</span>
+          <span className="letter3">A</span>
+          <span className="letter4">D</span>
+          <span className="letter5">I</span>
+          <span className="letter6">N</span>
+          <span className="letter7">G</span>
+        </div>
+      </div>
+    );
   }
 
   return (
