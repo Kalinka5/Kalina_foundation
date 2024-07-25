@@ -331,3 +331,102 @@
     font-size: 1em;
   }
 }
+/* Media Query For different screens */
+@media (min-width: 320px) and (max-width: 344px) {
+  .container .text {
+    position: relative;
+    right: 0;
+
+    .title {
+      font-size: 0.7em;
+    }
+    p {
+      position: relative;
+      left: 0;
+      transform: translateX(0);
+      font-size: 0.5em;
+      text-align: center;
+      margin: 20px 17px;
+    }
+  }
+}
+@media (min-width: 345px) and (max-width: 389px) {
+  .container .text {
+    position: relative;
+    right: 0;
+    top: 0;
+
+    .title {
+      font-size: 0.7em;
+    }
+    p {
+      position: relative;
+      left: 0;
+      transform: translateX(0);
+      font-size: 0.5em;
+      text-align: center;
+      margin: 20px 17px;
+    }
+  }
+}
+@media (min-width: 390px) and (max-width: 479px) {
+  .container .text {
+    position: relative;
+    right: 0;
+
+    .title {
+      font-size: 0.7em;
+    }
+    p {
+      position: relative;
+      left: 0;
+      transform: translateX(0);
+      font-size: 0.5em;
+      text-align: center;
+      margin: 20px 17px;
+    }
+  }
+}
+@media (min-width: 480px) and (max-width: 759px) {
+  .container .text {
+    right: 11vw;
+    bottom: calc(10vh);
+
+    .title {
+      font-size: 0.6em;
+    }
+    p {
+      font-size: 0.4em;
+    }
+  }
+  .container .ternary-system .sun.ternary {
+    right: 30px;
+  }
+}
+@media (min-width: 760px) and (max-width: 849px) {
+  .container .text {
+    right: 11vw;
+    bottom: calc(10vh);
+  }
+  .container .ternary-system .sun.ternary {
+    right: 20px;
+  }
+}
+@media (min-width: 850px) and (max-width: 899px) {
+  .container .text {
+    right: 11vw;
+    bottom: calc(1vh);
+  }
+  .container .ternary-system .sun.ternary {
+    right: 20px;
+  }
+}
+@media (min-width: 900px) and (max-width: 1099px) {
+  .container .text {
+    right: 17vw;
+    bottom: calc(1vh);
+  }
+  .container .ternary-system .sun.ternary {
+    right: 20px;
+  }
+}

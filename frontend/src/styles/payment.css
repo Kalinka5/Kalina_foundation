@@ -588,6 +588,14 @@
     }
   }
 }
+@media screen and (min-width: 320px) and (max-width: 344px) {
+  .payment .container .form-section-move {
+    left: -361px;
+    #visa-desc {
+      margin-left: 3px;
+    }
+  }
+}
 @media screen and (min-width: 320px) and (max-width: 399px) {
   .payment .container {
     margin-top: 50px;

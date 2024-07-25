@@ -1,4 +1,4 @@
-.donaters {
+.donators {
   min-height: 89vh;
   background: radial-gradient(#0093a9 8%, transparent 8%), white;
   background-size: 25px 25px;
@@ -270,12 +270,9 @@
 }
 /* Media Query For different screens */
 @media (min-width: 320px) and (max-width: 344px) {
-  .donaters .donators-background .icons-back .donators-card .pedestal {
-    width: 515px;
+  .donators .donators-background .icons-back .donators-card .pedestal {
+    width: 513px;
 
-    .username {
-      margin: auto auto;
-    }
     .profile-pic {
       width: 93px;
     }
@@ -285,152 +282,87 @@
   }
 }
 @media (min-width: 345px) and (max-width: 369px) {
-  .donaters .donators-background .icons-back .donators-card .pedestal {
-    width: 545px;
-
-    .username {
-      margin: auto auto;
-    }
-    .profile-pic {
-      width: 94px;
-    }
+  .donators .donators-background .icons-back .donators-card .pedestal {
+    width: 539px;
   }
 }
 @media (min-width: 370px) and (max-width: 389px) {
-  .donaters .donators-background .icons-back .donators-card .pedestal {
-    width: 578px;
-
-    .username {
-      margin: auto auto;
-    }
-    .profile-pic {
-      width: 94px;
-    }
+  .donators .donators-background .icons-back .donators-card .pedestal {
+    width: 556px;
   }
 }
 @media (min-width: 390px) and (max-width: 399px) {
-  .donaters .donators-background .icons-back .donators-card .pedestal {
-    width: 613px;
-
-    .username {
-      margin: auto auto;
-    }
-    .profile-pic {
-      width: 94px;
-    }
+  .donators .donators-background .icons-back .donators-card .pedestal {
+    width: 581px;
   }
 }
 @media (min-width: 400px) and (max-width: 429px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-  .donaters .donators-background .icons-back .donators-card .pedestal {
-    width: 663px;
-
-    .username {
-      margin: auto auto;
-    }
-    .profile-pic {
-      width: 94px;
-    }
+  .donators .donators-background .icons-back .donators-card .pedestal {
+    width: 615px;
   }
 }
 @media (min-width: 430px) and (max-width: 479px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-  .donaters .donators-background .icons-back .donators-card .pedestal {
-    width: 702px;
-
-    .username {
-      margin: auto auto;
-    }
-    .profile-pic {
-      width: 94px;
-    }
+  .donators .donators-background .icons-back .donators-card .pedestal {
+    width: 644px;
   }
 }
 @media (min-width: 480px) and (max-width: 759px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-  .donaters .donators-background .icons-back .donators-card .pedestal {
-    width: 493px;
+  .donators .donators-background .icons-back .donators-card .pedestal {
+    width: 803px;
 
-    .username {
-      margin: auto auto;
-    }
-    .profile-pic .profile-pic-image {
-      height: 65px;
-      width: 65px;
-    }
-    .bar {
+    .profile-pic .bar {
       width: 84px;
     }
   }
 }
 @media screen and (min-width: 760px) and (max-width: 819px) {
-  .donaters .donators-background .icons-back .donators-card .pedestal {
-    width: 730px;
-
-    .username {
-      margin: auto auto;
-    }
-    .profile-pic {
-      width: 94px;
-    }
+  .donators .donators-background .icons-back .donators-card .pedestal {
+    width: 669px;
   }
 }
 @media screen and (min-width: 820px) and (max-width: 851px) {
-  .donaters {
+  .donators {
     min-height: 72vh;
 
     .donators-background .icons-back .donators-card .pedestal {
-      width: 769px;
-
-      .username {
-        margin: auto auto;
-      }
-      .profile-pic {
-        width: 94px;
-      }
+      width: 707px;
     }
   }
 }
 @media screen and (min-width: 852px) and (max-width: 911px) {
-  .donaters {
+  .donators {
     min-height: 72vh;
 
     .donators-background .icons-back .donators-card .pedestal {
       width: 755px;
-
-      .username {
-        margin: auto auto;
-      }
-      .profile-pic {
-        width: 94px;
-      }
-      .bar {
-        margin: 0 auto;
-      }
     }
   }
 }
 @media screen and (min-width: 912px) and (max-width: 1024px) {
-  .donaters {
+  .donators {
     min-height: 66vh;
-
-    .donators-background .icons-back .donators-card .pedestal {
-      .username {
-        margin: auto auto;
-      }
-      .profile-pic {
-        width: 94px;
-      }
-      .bar {
-        margin: 0 auto;
-      }
-    }
+  }
+}
+@media (min-width: 345px) and (max-width: 1024px) {
+  .donators
+    .donators-background
+    .icons-back
+    .donators-card
+    .pedestal
+    .profile-pic {
+    width: 94px;
   }
 }
 @media screen and (max-width: 1024px) {
-  .donaters .donators-background .icons-back .donators-card .pedestal {
+  .donators .donators-background .icons-back .donators-card .pedestal {
     .money-value {
       color: #ffffff;
+    }
+    .username {
+      margin: auto auto;
+    }
+    .bar {
+      margin: 0 auto;
     }
   }
 }

@@ -46,19 +46,21 @@ function Items() {
                     src={API_URL + el.image}
                     alt="item1"
                   />
-                  <a className="donate-button" href="/donate" target="_blank">
-                    <span>Задонатити</span>
-                  </a>
-                  {isSuperUser && (
-                    <a
-                      className="edit-button"
-                      href={`/item/${el.id}/edit`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <span>Змінити</span>
+                  <div className="item-buttons">
+                    <a className="donate-button" href="/donate" target="_blank">
+                      <span>Задонатити</span>
                     </a>
-                  )}
+                    {isSuperUser && (
+                      <a
+                        className="edit-button"
+                        href={`/item/${el.id}/edit`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span>Змінити</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
                 <div className="column2">
                   <p className="card-title">{el.title}</p>

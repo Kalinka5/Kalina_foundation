@@ -111,7 +111,7 @@ function Donators() {
   };
 
   return (
-    <div className="donaters">
+    <div className="donators">
       <div className="donators-title">
         {titleIcons.map((el) => el)}
         <div className="title">

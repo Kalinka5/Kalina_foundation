@@ -139,11 +139,11 @@
 /* Media Query For different screens */
 @media (min-width: 320px) and (max-width: 369px) {
   .register .login-register .log-reg-background {
-    width: 360px;
+    width: 340px;
 
     .reg-shape1 {
       left: 15px;
-      top: -50px;
+      top: -45px;
     }
     .reg-shape2 {
       right: 15px;

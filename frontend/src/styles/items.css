@@ -205,11 +205,19 @@
       display: flex;
       justify-content: center;
 
-      .donate-button:link,
-      .donate-button:visited {
-        margin-top: 0;
-        margin: auto auto;
-        height: 20px;
+      .item-image {
+        margin-bottom: 0;
+      }
+      .item-buttons {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 10px;
+
+        .donate-button:link,
+        .donate-button:visited {
+          height: 20px;
+        }
       }
     }
     .gradient-cards .card .container-card .column2 {
