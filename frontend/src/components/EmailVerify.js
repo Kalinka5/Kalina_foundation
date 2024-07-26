@@ -57,8 +57,8 @@ function EmailVerify() {
     );
   } else {
     statusMessage = (
-      <div class="loading-container">
-        <div class="loading-text">
+      <div className="loading-container">
+        <div className="loading-text">
           <span className="letter1">L</span>
           <span className="letter2">O</span>
           <span className="letter3">A</span>
@@ -72,7 +72,7 @@ function EmailVerify() {
   }
 
   return (
-    <div className="container">
+    <div className="email-verify">
       <div className="ternary-system">
         <div className="sun primary"></div>
         <div className="sun secondary"></div>
