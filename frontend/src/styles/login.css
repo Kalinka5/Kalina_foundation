@@ -1,5 +1,39 @@
 .login {
   .login-register {
+    .landscape {
+      background-color: rgba(255, 255, 255, 0.13);
+      position: relative;
+      margin: auto auto;
+      display: flex;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+      width: 70%;
+      height: 70%;
+
+      .column {
+        flex: 1;
+      }
+      .log-reg-form {
+        & .log-input-box {
+          input {
+            padding: 0px 12px;
+          }
+        }
+      }
+
+      .image {
+        position: relative;
+        background-size: cover;
+
+        img {
+          max-width: 100%;
+          height: 100%;
+          border-radius: 10px;
+        }
+      }
+    }
     .log-reg-background {
       .log-shape1 {
         left: -80px;
@@ -96,7 +130,7 @@
 }
 
 ::placeholder {
-  color: #e5e5e5;
+  color: #929292;
 }
 
 /* Media Query For different screens */
@@ -125,6 +159,7 @@
 @media (min-width: 370px) and (max-width: 389px) {
   .login .login-register .log-reg-background {
     width: 367px;
+
     .log-shape1 {
       left: 10px;
       top: -60px;
@@ -139,7 +174,7 @@
     width: 300px;
   }
 }
-@media (min-width: 390px) and (max-width: 399px) {
+@media (min-width: 390px) and (max-width: 759px) {
   .login .login-register .log-reg-background .log-shape1 {
     left: 10px;
     top: -60px;
@@ -153,58 +188,68 @@
     width: 300px;
   }
 }
-@media (min-width: 400px) and (max-width: 429px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+@media (min-width: 760px) and (max-width: 999px) {
   .login .login-register .log-reg-background .log-shape1 {
-    left: 10px;
-    top: -60px;
+    left: -100px;
+    top: -150px;
   }
   .login .login-register .log-reg-background .log-shape2 {
-    right: 10px;
-    bottom: -120px;
+    right: -90px;
+    bottom: -220px;
   }
-  .login .login-register .log-reg-form {
-    height: 550px;
-    width: 300px;
+  .login .login-register .log-p {
+    padding: 100px 30px;
+  }
+  .login .login-register .log-reg-form .log-button {
+    width: 400px;
+  }
+  .login .login-register .log-reg-form .log-h3 {
+    font-size: 45px;
   }
 }
-@media (min-width: 430px) and (max-width: 479px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+@media (min-width: 912px) and (orientation: portrait) {
   .login .login-register .log-reg-background .log-shape1 {
-    left: 10px;
-    top: -60px;
+    left: -180px;
+    top: -300px;
   }
   .login .login-register .log-reg-background .log-shape2 {
-    right: 10px;
-    bottom: -120px;
+    right: -170px;
+    bottom: -380px;
   }
-  .login .login-register .log-reg-form {
-    height: 550px;
-    width: 300px;
+  .login .login-register .log-p {
+    padding: 130px 60px;
+    font-size: 30px;
   }
-}
-@media (min-width: 480px) and (max-width: 759px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-  .login .login-register .log-reg-background .log-shape1 {
-    left: 10px;
-    top: -60px;
+  .login .login-register .log-reg-form .log-button {
+    width: 500px;
+
+    button {
+      font-size: 30px;
+    }
   }
-  .login .login-register .log-reg-background .log-shape2 {
-    right: 10px;
-    bottom: -120px;
+  .login .login-register .log-reg-form .log-h3 {
+    font-size: 70px;
   }
-  .login .login-register .log-reg-form {
-    height: 550px;
-    width: 300px;
+  .login .login-register .log-reg-form label {
+    font-size: 38px;
   }
-}
-@media screen and (min-width: 760px) {
-  .login .login-register .log-reg-background .log-shape1 {
-    left: -70px;
-    top: -60px;
+  .login .login-register .log-reg-form .log-input-box input {
+    font-size: 26px;
+    height: 74px;
   }
-  .login .login-register .log-reg-background .log-shape2 {
-    right: -70px;
-    bottom: -120px;
+  .login {
+    & .login-register {
+      & .log-reg-form {
+        & .log-input-box {
+          & .password-toggle-icon {
+            right: 24px;
+
+            i {
+              font-size: 36px;
+            }
+          }
+        }
+      }
+    }
   }
 }

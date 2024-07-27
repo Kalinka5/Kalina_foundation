@@ -30,7 +30,7 @@ code {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(to right, #ebe37d, #2f80ed);
+  background: linear-gradient(to bottom, #2f80ed, #ebe37d);
   overflow: hidden;
 }
 
@@ -58,7 +58,7 @@ code {
 }
 
 /* Login and Register form */
-.log-reg-form {
+.portrait .log-reg-form {
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
   transform: translate(-50%, -50%);
@@ -69,6 +69,34 @@ code {
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
 
+  p {
+    text-align: center;
+    a {
+      color: #4070f4;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .btn-container button {
+    background-color: #4070f4;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background: #0e4bf1;
+    }
+  }
+}
+.landscape .log-reg-form {
+  height: 100%;
+  padding: 30px 20px 50px;
   p {
     text-align: center;
     a {
