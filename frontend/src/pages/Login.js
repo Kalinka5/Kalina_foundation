@@ -8,10 +8,7 @@ import { ACCESS_TOKEN, REFRESH_TOKEN, PROFILE_PAGE } from "../constants";
 
 import useOrientation from "../useOrientation";
 
-import loginImg1 from "../img/login-img1.jpg";
-import loginImg2 from "../img/login-img2.jpg";
-import loginImg3 from "../img/login-img3.jpg";
-import loginImg4 from "../img/login-img4.jpg";
+import { Carousel } from "../components/Carousel";
 
 import "../styles/login.css";
 
@@ -121,7 +118,7 @@ function Login() {
         ) : (
           <div className="landscape">
             <div className="image column">
-              <img src={loginImg4} alt="Login" />
+              <Carousel />
             </div>
             <form className="log-reg-form log-p column" onSubmit={handleSubmit}>
               <h3 className="log-h3">Login Here</h3>
