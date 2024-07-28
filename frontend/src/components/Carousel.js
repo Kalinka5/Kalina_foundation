@@ -40,7 +40,9 @@ export const Carousel = () => {
 
   return (
     <div className="carousel">
-      <BsArrowLeftCircleFill onClick={prevSlide} className="arrow arrow-left" />
+      <div className="arrow-background arrow-left">
+        <BsArrowLeftCircleFill onClick={prevSlide} className="arrow" />
+      </div>
       {slides.map((item, idx) => {
         return (
           <img
@@ -51,17 +53,16 @@ export const Carousel = () => {
           />
         );
       })}
-      <BsArrowRightCircleFill
-        onClick={nextSlide}
-        className="arrow arrow-right"
-      />
+      <div className="arrow-background arrow-right">
+        <BsArrowRightCircleFill onClick={nextSlide} className="arrow" />
+      </div>
       <span className="indicators">
         {slides.map((_, idx) => {
           return (
             <button
               key={idx}
               className={
-                slide === idx ? "indicator" : "indicator indicator-inactive"
+                slide === idx ? "indicator indicator-active" : "indicator"
               }
               onClick={() => setSlide(idx)}
             ></button>

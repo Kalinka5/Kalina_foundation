@@ -95,9 +95,7 @@ code {
   }
 }
 .landscape .log-reg-form {
-  height: 100%;
   padding: 30px 20px 50px;
-  margin: auto;
   p {
     text-align: center;
     a {

@@ -17,16 +17,25 @@
   display: none;
 }
 
-.arrow {
+.arrow-background {
   position: absolute;
-  filter: drop-shadow(0px 0px 5px #555);
+  background-color: rgb(0, 255, 17);
+  border-radius: 50%;
   width: 2rem;
   height: 2rem;
-  color: white;
+}
+
+.arrow {
+  width: 2rem;
+  height: 2rem;
+  color: #848484;
+  border: 2px solid rgb(0, 255, 17);
+  border-radius: 50%;
 }
 
 .arrow:hover {
   cursor: pointer;
+  color: #939393;
 }
 
 .arrow-left {
@@ -41,10 +50,13 @@
   display: flex;
   position: absolute;
   bottom: 1rem;
+  background-color: rgb(0, 255, 17);
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .indicator {
-  background-color: white;
+  background-color: grey;
   height: 0.5rem;
   width: 0.5rem;
   border-radius: 100%;
@@ -53,8 +65,16 @@
   box-shadow: 0px 0px 5px #555;
   margin: 0 0.2rem;
   cursor: pointer;
+  transition: all 500ms;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
 }
 
-.indicator-inactive {
-  background-color: grey;
+.indicator-active {
+  background-color: white;
+  width: 0.7rem;
+  border-radius: 10px;
+  transition: all 500ms;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
 }
