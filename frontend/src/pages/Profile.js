@@ -77,10 +77,7 @@ function Profile() {
 
   return (
     <div className="profile">
-      <div
-        className="profile-card animate__animated animate__fadeIn"
-        id="profileCard"
-      >
+      <div className="profile-card" id="profileCard">
         <form onSubmit={handleSubmit}>
           <div className="profile-header">
             <div className="form-element">
@@ -110,7 +107,7 @@ function Profile() {
               />
               <div className="underline"></div>
               <label htmlFor="username">Username</label>
-              <i className="icon uil uil-at">
+              <i className="icon">
                 <IoIosContact />
               </i>
             </div>
@@ -138,7 +135,7 @@ function Profile() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <i className="icon uil uil-at">
+                <i className="icon">
                   <IoMdAt />
                 </i>
               </div>
@@ -155,7 +152,7 @@ function Profile() {
                   value={first_name}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
-                <i className="icon uil uil-user">
+                <i className="icon">
                   <FaAutoprefixer />
                 </i>
               </div>
@@ -172,7 +169,7 @@ function Profile() {
                   value={last_name}
                   onChange={(e) => setLastName(e.target.value)}
                 />
-                <i className="icon uil uil-user">
+                <i className="icon">
                   <FaAustralSign />
                 </i>
               </div>

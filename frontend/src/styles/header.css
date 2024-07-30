@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 header {
-  height: 40px;
   line-height: 40px;
   width: 100%;
   position: fixed;
@@ -11,8 +10,7 @@ header {
 
   .logo {
     float: left;
-    width: 201px;
-    height: 40px;
+    padding: auto;
     background: #282828;
     text-align: center;
     text-transform: uppercase;
@@ -40,8 +38,7 @@ header {
 
       a {
         float: left;
-        width: 98px;
-        height: 40px;
+        padding: auto;
         color: #f2f2f2;
         text-align: center;
         text-transform: uppercase;
@@ -103,6 +100,9 @@ header {
       font-size: 13px;
     }
   }
+  header .nav li a {
+    padding: 0 10px;
+  }
 }
 @media (min-width: 480px) and (max-width: 599px) {
   .logo {
@@ -111,15 +111,26 @@ header {
 }
 @media (min-width: 750px) and (max-width: 1099px) and (orientation: portrait) {
   header {
-    height: 60px;
     line-height: 60px;
 
     .logo {
-      height: 60px;
+      padding: 0 12px;
     }
     .nav li a {
-      height: 60px;
       font-size: 14px;
+      padding: 0 12px;
     }
+  }
+}
+@media (min-width: 1300px) and (min-height: 1024px) {
+  header .logo {
+    padding: 15px;
+    a {
+      font-size: 28px;
+    }
+  }
+  header .nav li a {
+    font-size: 21px;
+    padding: 18px;
   }
 }

@@ -143,7 +143,7 @@
       }
       .delete-button {
         position: absolute;
-        top: 25px;
+        top: 20px;
         right: 20px;
 
         button {
@@ -342,138 +342,237 @@
 @media (min-width: 320px) and (max-width: 344px) {
   .profile .profile-card {
     width: 330px;
-  }
-  .profile .profile-card .profile-header .input-data .underline::before {
-    left: 15px;
-  }
-  .profile .profile-card .profile-header .input-data .icon {
-    top: 1px;
-    left: 20px;
-  }
-  .profile .profile-card .profile-header .input-data label {
-    left: 95px;
-  }
-  .profile .profile-card .profile-details .form-group {
-    padding-left: 0;
-    width: 290px;
-  }
-  .profile .profile-card .profile-details .form-style {
-    padding: 13px 2px;
-    padding-left: 45px;
-    font-size: 11px;
+
+    .profile-header .input-data .underline::before {
+      left: 15px;
+    }
+    .profile-header .input-data .icon {
+      top: 1px;
+      left: 20px;
+    }
+    .profile-header .input-data label {
+      left: 95px;
+    }
+    .profile-header .delete-button {
+      right: 4px;
+
+      button {
+        width: 58px;
+      }
+    }
+    .profile-details .form-group {
+      padding-left: 0;
+      width: 290px;
+    }
+    .profile-details .form-style {
+      padding: 13px 2px;
+      padding-left: 45px;
+      font-size: 11px;
+    }
   }
 }
-@media (min-width: 345px) and (max-width: 369px) {
+@media (min-width: 345px) and (max-width: 389px) {
   .profile .profile-card {
     width: 350px;
     margin-top: 40px;
-  }
-  .profile .profile-card .profile-header .input-data .underline::before {
-    left: 25px;
-  }
-  .profile .profile-card .profile-header .input-data .icon {
-    top: 1px;
-    left: 30px;
-  }
-  .profile .profile-card .profile-header .input-data label {
-    left: 105px;
-  }
-  .profile .profile-card .profile-details .form-group {
-    padding-left: 0;
-    width: 310px;
-  }
-  .profile .profile-card .profile-details .form-style {
-    padding: 13px 2px;
-    padding-left: 45px;
-    font-size: 12px;
+
+    .profile-header .input-data .underline::before {
+      left: 25px;
+    }
+    .profile-header .input-data .icon {
+      top: 1px;
+      left: 30px;
+    }
+    .profile-header .input-data label {
+      left: 105px;
+    }
+    .profile-header .delete-button {
+      right: 7px;
+
+      button {
+        width: 62px;
+      }
+    }
+    .profile-details .form-group {
+      padding-left: 0;
+      width: 310px;
+    }
+    .profile-details .form-style {
+      padding: 13px 2px;
+      padding-left: 45px;
+      font-size: 12px;
+    }
   }
 }
 @media (min-width: 370px) and (max-width: 389px) {
-  .profile .profile-card {
-    width: 350px;
-    margin-top: 40px;
-  }
-  .profile .profile-card .profile-header .input-data .underline::before {
-    left: 25px;
-  }
-  .profile .profile-card .profile-header .input-data .icon {
-    top: 1px;
-    left: 30px;
-  }
-  .profile .profile-card .profile-header .input-data label {
-    left: 105px;
-  }
-  .profile .profile-card .profile-details .form-group {
-    padding-left: 0;
-    width: 310px;
-  }
-  .profile .profile-card .profile-details .form-style {
-    padding: 13px 2px;
-    padding-left: 45px;
-    font-size: 12px;
+  .profile .profile-card .profile-header .delete-button {
+    right: 6px;
   }
 }
 @media (min-width: 390px) and (max-width: 399px) {
   .profile .profile-card {
     width: 380px;
-  }
-  .profile .profile-card .profile-header .input-data .underline::before {
-    left: 40px;
-  }
-  .profile .profile-card .profile-header .input-data .icon {
-    top: 1px;
-    left: 45px;
-  }
-  .profile .profile-card .profile-header .input-data label {
-    left: 120px;
-  }
-  .profile .profile-card .profile-details .form-group {
-    padding-left: 0;
-    width: 340px;
-  }
-  .profile .profile-card .profile-details .form-style {
-    padding: 13px 2px;
-    padding-left: 55px;
-    font-size: 12px;
-  }
-}
-@media (min-width: 400px) and (max-width: 429px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-  .profile .profile-card {
-    width: 400px;
-  }
-  .profile .profile-card .profile-header .input-data .underline::before {
-    left: 51px;
-  }
-  .profile .profile-card .profile-header .input-data .icon {
-    top: 1px;
-    left: 55px;
-  }
-  .profile .profile-card .profile-header .input-data label {
-    left: 130px;
-  }
-  .profile .profile-card .profile-details .form-group {
-    padding-left: 0;
-    width: 360px;
+
+    .profile-header .input-data .underline::before {
+      left: 40px;
+    }
+    .profile-header .input-data .icon {
+      top: 1px;
+      left: 45px;
+    }
+    .profile-header .input-data label {
+      left: 120px;
+    }
+    .profile-header .delete-button {
+      right: 11px;
+    }
+    .profile-details .form-group {
+      padding-left: 0;
+      width: 340px;
+    }
+    .profile-details .form-style {
+      padding: 13px 2px;
+      padding-left: 55px;
+      font-size: 12px;
+    }
   }
 }
-@media (min-width: 430px) and (max-width: 479px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+@media (min-width: 400px) and (max-width: 479px) {
   .profile .profile-card {
     width: 400px;
+
+    .profile-header .input-data .underline::before {
+      left: 51px;
+    }
+    .profile-header .input-data .icon {
+      top: 1px;
+      left: 55px;
+    }
+    .profile-header .input-data label {
+      left: 130px;
+    }
+    .profile-details .form-group {
+      padding-left: 0;
+      width: 360px;
+    }
   }
-  .profile .profile-card .profile-header .input-data .underline::before {
-    left: 51px;
+}
+@media (min-width: 1300px) and (min-height: 912px) {
+  .profile .profile-card {
+    width: 600px;
+    height: auto;
+    margin-top: 43px;
+
+    .profile-header {
+      .form-element {
+        width: 300px;
+        height: 300px;
+
+        img {
+          width: 300px;
+          height: 300px;
+        }
+      }
+      .delete-button button {
+        width: 73px;
+        height: 44px;
+      }
+      .input-data {
+        height: 50px;
+        margin: 14px 25px;
+        position: relative;
+
+        input {
+          font-size: 20px;
+
+          &:focus ~ label,
+          &:valid ~ label {
+            font-size: 14px;
+          }
+        }
+        .underline:before {
+          left: 123px;
+          top: 49px;
+          width: 265px;
+        }
+        label {
+          left: 202px;
+          bottom: 21px;
+        }
+        .icon {
+          left: 130px;
+          top: 8px;
+          top: 8px;
+        }
+      }
+    }
+    .profile-details .form-style {
+      padding: 22px 13px;
+      padding-left: 55px;
+      font-size: 20px;
+    }
+    .profile-details .icon {
+      top: 14px;
+      font-size: 34px;
+    }
+    .profile-details .btn-container button {
+      height: 61px;
+      font-size: 23px;
+    }
+    .profile-details .form-group label {
+      font: 800 1.55rem "Montserrat";
+    }
   }
-  .profile .profile-card .profile-header .input-data .icon {
-    top: 1px;
-    left: 55px;
-  }
-  .profile .profile-card .profile-header .input-data label {
-    left: 130px;
-  }
-  .profile .profile-card .profile-details .form-group {
-    padding-left: 0;
-    width: 360px;
+}
+@media (min-width: 1024px) and (max-height: 600px) {
+  .profile .profile-card {
+    width: 400px;
+    height: auto;
+    margin-top: 38px;
+
+    .profile-header {
+      .form-element {
+        width: 170px;
+        height: 170px;
+
+        img {
+          width: 170px;
+          height: 170px;
+        }
+      }
+      .delete-button button {
+        width: 63px;
+        height: 36px;
+      }
+      .input-data {
+        height: 36px;
+        margin: 9px 18px;
+        position: relative;
+
+        input {
+          font-size: 15px;
+
+          &:focus ~ label,
+          &:valid ~ label {
+            font-size: 12px;
+          }
+        }
+        .underline:before {
+          left: 64px;
+          top: 37px;
+          width: 197px;
+        }
+        label {
+          left: 140px;
+        }
+        .icon {
+          left: 68px;
+        }
+      }
+    }
+    .profile-details .form-style {
+      padding: 9px 10px;
+      padding-left: 50px;
+    }
   }
 }

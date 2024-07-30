@@ -30,7 +30,7 @@ const Modal = ({ setIsOpen }) => {
   };
 
   return (
-    <>
+    <div className="modal-window">
       <div className="darkBG" onClick={() => setIsOpen(false)} />
       <div className="centered">
         <div className="modal">
@@ -55,7 +55,7 @@ const Modal = ({ setIsOpen }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

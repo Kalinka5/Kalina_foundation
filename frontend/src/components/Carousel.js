@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 
 import loginImg1 from "../img/login-img1.jpg";
 import loginImg2 from "../img/login-img2.jpg";
@@ -40,8 +39,8 @@ export const Carousel = () => {
 
   return (
     <div className="carousel">
-      <div className="arrow-background arrow-left">
-        <BsArrowLeftCircleFill onClick={prevSlide} className="arrow" />
+      <div onClick={prevSlide} className="arrow-background arrow-left">
+        <span className="arrow"></span>
       </div>
       {slides.map((item, idx) => {
         return (
@@ -53,8 +52,8 @@ export const Carousel = () => {
           />
         );
       })}
-      <div className="arrow-background arrow-right">
-        <BsArrowRightCircleFill onClick={nextSlide} className="arrow" />
+      <div onClick={nextSlide} className="arrow-background arrow-right">
+        <span className="arrow"></span>
       </div>
       <span className="indicators">
         {slides.map((_, idx) => {

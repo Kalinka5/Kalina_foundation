@@ -124,12 +124,13 @@
             &::after {
               content: "";
               position: absolute;
-              top: 50%;
-              right: 100%;
+              left: 198px;
+              top: 108%;
               margin-top: -5px;
+              margin-left: -5px;
               border-width: 5px;
               border-style: solid;
-              border-color: transparent rgb(255, 219, 57) transparent
+              border-color: rgb(255, 219, 57) transparent transparent
                 transparent;
             }
           }
@@ -179,39 +180,31 @@
     width: 260px;
 
     .reg-input-box .input-icon .tooltiptext {
-      left: 60px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 168px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
+      left: 30px;
     }
     .reg-input-box .input-icon .name-tip {
       top: -40px;
       &::after {
-        top: 110%;
+        top: 108%;
       }
     }
     .reg-input-box .input-icon .email-tip {
       top: -95px;
       &::after {
-        top: 105%;
+        top: 104%;
       }
     }
     .reg-input-box .input-icon .pass-tip {
       top: -113px;
       &::after {
-        top: 104%;
+        top: 103%;
       }
     }
     .reg-input-box .input-icon .confirm-tip {
       top: -58px;
+      &::after {
+        top: 106%;
+      }
     }
   }
   .register .login-register .reg-p {
@@ -237,17 +230,6 @@
 
     .reg-input-box .input-icon .tooltiptext {
       left: 70px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 198px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
     }
     .reg-input-box .input-icon .name-tip {
       top: -40px;
@@ -287,17 +269,6 @@
   .register .login-register .log-reg-form {
     .reg-input-box .input-icon .tooltiptext {
       left: 70px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 198px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
     }
     .reg-input-box .input-icon .name-tip {
       top: -40px;
@@ -341,17 +312,6 @@
   .register .login-register .log-reg-form {
     .reg-input-box .input-icon .tooltiptext {
       left: 70px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 198px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
     }
     .reg-input-box .input-icon .name-tip {
       top: -40px;
@@ -395,17 +355,6 @@
   .register .login-register .log-reg-form {
     .reg-input-box .input-icon .tooltiptext {
       left: 70px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 198px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
     }
     .reg-input-box .input-icon .name-tip {
       top: -40px;
@@ -438,14 +387,8 @@
   }
 }
 @media (min-width: 320px) and (max-width: 759px) {
-  .register {
-    & .login-register {
-      & .log-reg-form {
-        .reg-input-box {
-          height: 52px;
-        }
-      }
-    }
+  .register .login-register .log-reg-form .reg-input-box {
+    height: 52px;
   }
 }
 @media (min-width: 480px) and (max-width: 759px) and (orientation: portrait) {
@@ -460,17 +403,6 @@
   .register .login-register .log-reg-form {
     .reg-input-box .input-icon .tooltiptext {
       left: 120px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 198px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
     }
     .reg-input-box .input-icon .name-tip {
       top: -40px;
@@ -500,17 +432,6 @@
     .reg-input-box .input-icon .tooltiptext {
       left: 35px;
       width: 186px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 160px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
     }
     .reg-input-box .input-icon .name-tip {
       top: -40px;
@@ -534,20 +455,9 @@
       top: -55px;
     }
   }
-  .register {
-    & .login-register {
-      & .log-reg-form {
-        & .reg-input-box {
-          & .input-icon {
-            .--icon {
-              position: absolute;
-              top: 0px;
-              right: 13px;
-            }
-          }
-        }
-      }
-    }
+  .register .login-register .log-reg-form .reg-input-box .input-icon .--icon {
+    top: 0px;
+    right: 13px;
   }
 }
 @media (min-width: 760px) and (max-width: 999px) and (orientation: portrait) {
@@ -591,17 +501,6 @@
     .log-reg-form .reg-input-box .input-icon .tooltiptext {
       left: 190px;
       width: 350px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 198px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
     }
     .log-reg-form .reg-input-box .input-icon .name-tip {
       top: -57px;
@@ -670,17 +569,6 @@
     .log-reg-form .reg-input-box .input-icon .tooltiptext {
       left: 219px;
       width: 350px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 198px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
     }
     .log-reg-form .reg-input-box .input-icon .name-tip {
       top: -70px;
@@ -713,40 +601,29 @@
     .reg-input-box .input-icon .tooltiptext {
       left: 38px;
       width: 250px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 198px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
     }
     .reg-input-box .input-icon .name-tip {
       top: -40px;
       &::after {
-        top: 106%;
+        top: 110%;
       }
     }
     .reg-input-box .input-icon .email-tip {
       top: -94px;
       &::after {
-        top: 103%;
+        top: 104%;
       }
     }
     .reg-input-box .input-icon .pass-tip {
       top: -95px;
       &::after {
-        top: 103%;
+        top: 104%;
       }
     }
     .reg-input-box .input-icon .confirm-tip {
       top: -58px;
       &::after {
-        top: 104%;
+        top: 107%;
       }
     }
   }
@@ -769,17 +646,6 @@
     .reg-input-box .input-icon .tooltiptext {
       left: 93px;
       width: 250px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 198px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
     }
     .reg-input-box .input-icon .name-tip {
       top: -40px;
@@ -815,17 +681,6 @@
     .reg-input-box .input-icon .tooltiptext {
       left: 128px;
       width: 250px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 198px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
     }
     .reg-input-box .input-icon .name-tip {
       top: -42px;
@@ -857,13 +712,8 @@
   .register .login-register .landscape {
     height: 600px;
 
-    .column .log-reg-form {
-      .reg-h3 {
-        font-size: 44px;
-      }
-      .reg-input-box input {
-        padding: 0px 12px;
-      }
+    .column .log-reg-form .reg-input-box input {
+      padding: 0px 12px;
     }
     .column .reg-p {
       padding: 50px 80px;
@@ -873,17 +723,6 @@
     .reg-input-box .input-icon .tooltiptext {
       left: 88px;
       width: 250px;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 108%;
-        left: 198px;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(255, 219, 57) transparent transparent transparent;
-      }
     }
     .reg-input-box .input-icon .name-tip {
       top: -40px;
@@ -914,17 +753,13 @@
 @media (min-width: 1600px) and (orientation: landscape) {
   .register .login-register .landscape {
     height: 765px;
-
-    .column .log-reg-form {
-      .reg-h3 {
-        font-size: 55px;
-      }
-    }
   }
 }
 @media (min-width: 1024px) and (max-height: 600px) {
   .register .login-register .landscape {
-    margin: 60px auto;
+    margin-top: 67px;
+    margin-left: auto;
+    margin-right: auto;
     height: 500px;
 
     .column {
@@ -960,17 +795,6 @@
         .reg-input-box .input-icon .tooltiptext {
           left: 53px;
           width: 250px;
-
-          &::after {
-            content: "";
-            position: absolute;
-            top: 108%;
-            left: 198px;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: rgb(255, 219, 57) transparent transparent transparent;
-          }
         }
         .reg-input-box .input-icon .name-tip {
           top: -43px;
@@ -1009,7 +833,9 @@
 }
 @media (min-width: 720px) and (max-height: 540px) {
   .register .login-register .landscape {
-    margin: 60px auto;
+    margin-top: 55px;
+    margin-left: auto;
+    margin-right: auto;
     width: 600px;
 
     .column {
@@ -1039,6 +865,9 @@
             i {
               font-size: 18px;
             }
+          }
+          .input-icon .tooltiptext::after {
+            left: 160px;
           }
         }
         .btn-container {
