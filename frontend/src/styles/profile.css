@@ -66,7 +66,7 @@
 
           &:before {
             position: absolute;
-            left: 99px;
+            left: 100px;
             top: 40px;
             content: "";
             height: 2px;
@@ -442,7 +442,7 @@
     width: 400px;
 
     .profile-header .input-data .underline::before {
-      left: 51px;
+      left: 50px;
     }
     .profile-header .input-data .icon {
       top: 1px;
@@ -454,6 +454,73 @@
     .profile-details .form-group {
       padding-left: 0;
       width: 360px;
+    }
+  }
+}
+@media (min-width: 750px) and (max-width: 1200px) and (orientation: portrait) {
+  .profile .profile-card {
+    width: 600px;
+    height: auto;
+    margin-top: 43px;
+
+    .profile-header {
+      .form-element {
+        width: 300px;
+        height: 300px;
+
+        img {
+          width: 300px;
+          height: 300px;
+        }
+      }
+      .delete-button button {
+        width: 73px;
+        height: 44px;
+      }
+      .input-data {
+        height: 50px;
+        margin: 14px 25px;
+        position: relative;
+
+        input {
+          font-size: 20px;
+
+          &:focus ~ label,
+          &:valid ~ label {
+            font-size: 14px;
+          }
+        }
+        .underline:before {
+          left: 123px;
+          top: 49px;
+          width: 265px;
+        }
+        label {
+          left: 202px;
+          bottom: 21px;
+        }
+        .icon {
+          left: 130px;
+          top: 8px;
+          top: 8px;
+        }
+      }
+    }
+    .profile-details .form-style {
+      padding: 22px 13px;
+      padding-left: 55px;
+      font-size: 20px;
+    }
+    .profile-details .icon {
+      top: 14px;
+      font-size: 34px;
+    }
+    .profile-details .btn-container button {
+      height: 61px;
+      font-size: 23px;
+    }
+    .profile-details .form-group label {
+      font: 800 1.55rem "Montserrat";
     }
   }
 }
@@ -521,6 +588,70 @@
     }
     .profile-details .form-group label {
       font: 800 1.55rem "Montserrat";
+    }
+  }
+}
+@media (min-width: 720px) and (max-height: 540px) {
+  .profile .profile-card {
+    width: 380px;
+    height: auto;
+    margin-top: 45px;
+
+    .profile-header {
+      padding: 14px;
+      .form-element {
+        width: 160px;
+        height: 160px;
+
+        img {
+          width: 160px;
+          height: 160px;
+        }
+      }
+      .delete-button {
+        top: 14px;
+        right: 25px;
+        button {
+          width: 60px;
+          height: 34px;
+        }
+      }
+      .input-data {
+        height: 34px;
+        margin: 8px 17px;
+        position: relative;
+
+        input {
+          font-size: 14px;
+
+          &:focus ~ label,
+          &:valid ~ label {
+            font-size: 11px;
+          }
+        }
+        .underline:before {
+          left: 69px;
+          top: 34px;
+          width: 181px;
+        }
+        label {
+          left: 147px;
+        }
+        .icon {
+          left: 73px;
+          top: -2px;
+        }
+      }
+    }
+    .profile-details {
+      padding: 14px;
+      .form-style {
+        padding: 8px 9px;
+        padding-left: 36px;
+      }
+      .form-group {
+        padding: 8px;
+      }
     }
   }
 }
