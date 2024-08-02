@@ -11,7 +11,7 @@ import { LOGIN_PAGE } from "../constants";
 
 import useOrientation from "../useOrientation";
 
-import { Carousel } from "../components/Carousel";
+import { Carousel } from "../components/carousel";
 
 import "../styles/register.css";
 

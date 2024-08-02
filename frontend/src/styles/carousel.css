@@ -1,124 +1,137 @@
-.carousel {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.carousel-container {
+  width: 100%;
   height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
 
-  .arrow-background {
+.carousel {
+  display: flex;
+  width: 400%; /* 100% * number of slides */
+  height: 100%;
+  transition: transform 0.5s ease-in-out; /* Smooth transition when changing slides */
+}
+
+.carousel-slide {
+  width: calc(
+    100% / 4
+  ); /* Each slide takes up an equal portion of the container */
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.indicators {
+  display: flex;
+  position: absolute;
+  bottom: 1rem;
+  left: 45%;
+  background-color: rgb(0, 255, 17);
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.indicator {
+  background-color: grey;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 5px #555;
+  margin: 0 0.2rem;
+  cursor: pointer;
+  transition: all 500ms;
+}
+
+.arrow-background {
+  position: absolute;
+  top: 47%;
+  background-color: rgb(0, 255, 17);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: 0.5s;
+  cursor: pointer;
+  z-index: 100;
+
+  &:hover {
+    background-color: rgb(0, 72, 255);
+  }
+
+  .arrow {
     position: absolute;
-    background-color: rgb(0, 255, 17);
-    border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 3px solid #ffffff;
     transition: 0.5s;
-    cursor: pointer;
+    top: 50%;
+    right: 35%;
+    transform: translateY(-50%) rotate(-45deg);
 
-    &:hover {
-      background-color: rgb(0, 72, 255);
-    }
-
-    .arrow {
+    &::before {
+      content: "";
       position: absolute;
-      width: 0.5rem;
-      height: 0.5rem;
-      border: 3px solid #ffffff;
+      width: 18px;
+      height: 3px;
+      background: #ffffff;
       transition: 0.5s;
-      top: 50%;
-      right: 35%;
-      transform: translateY(-50%) rotate(-45deg);
-
-      &::before {
-        content: "";
-        position: absolute;
-        width: 18px;
-        height: 3px;
-        background: #ffffff;
-        transition: 0.5s;
-      }
-    }
-
-    .arrow:hover {
-      color: #939393;
     }
   }
-  .arrow-left {
-    left: 1rem;
 
-    .arrow {
-      border-right: none;
-      border-bottom: none;
+  .arrow:hover {
+    color: #939393;
+  }
+}
+.arrow-left {
+  left: 1rem;
 
-      &::before {
-        transform: rotate(45deg) translate(-2px, -1px) scaleX(0);
-        transform-origin: left;
-      }
-    }
-    &:hover .arrow::before {
-      transform: rotate(45deg) translate(-2px, -1px) scaleX(1);
-    }
-    &:hover .arrow {
-      left: 30%;
+  .arrow {
+    border-right: none;
+    border-bottom: none;
+
+    &::before {
+      transform: rotate(45deg) translate(-2px, -1px) scaleX(0);
+      transform-origin: left;
     }
   }
-  .arrow-right {
-    right: 1rem;
+  &:hover .arrow::before {
+    transform: rotate(45deg) translate(-2px, -1px) scaleX(1);
+  }
+  &:hover .arrow {
+    left: 30%;
+  }
+}
+.arrow-right {
+  right: 1rem;
 
-    .arrow {
-      border-left: none;
-      border-top: none;
+  .arrow {
+    border-left: none;
+    border-top: none;
 
-      &::before {
-        transform: rotate(45deg) translate(0px, 12px) scaleX(0);
-        transform-origin: right;
-      }
-    }
-    &:hover .arrow::before {
-      transform: rotate(45deg) translate(0px, 12px) scaleX(1);
-    }
-    &:hover .arrow {
-      right: 30%;
+    &::before {
+      transform: rotate(45deg) translate(0px, 12px) scaleX(0);
+      transform-origin: right;
     }
   }
-  .slide {
-    box-shadow: 0px 0px 7px #666;
-    max-width: 100%;
-    height: 100%;
-    border-radius: 10px;
+  &:hover .arrow::before {
+    transform: rotate(45deg) translate(0px, 12px) scaleX(1);
   }
-  .slide-hidden {
-    display: none;
+  &:hover .arrow {
+    right: 30%;
   }
-  .indicators {
-    display: flex;
-    position: absolute;
-    bottom: 1rem;
-    background-color: rgb(0, 255, 17);
-    border-radius: 10px;
-    padding: 5px;
+}
 
-    .indicator {
-      background-color: grey;
-      height: 0.5rem;
-      width: 0.5rem;
-      border-radius: 100%;
-      border: none;
-      outline: none;
-      box-shadow: 0px 0px 5px #555;
-      margin: 0 0.2rem;
-      cursor: pointer;
-      transition: all 500ms;
-      -webkit-transition: all 500ms;
-      -moz-transition: all 500ms;
-    }
-
-    .indicator-active {
-      background-color: white;
-      width: 0.7rem;
-      border-radius: 10px;
-      transition: all 500ms;
-      -webkit-transition: all 500ms;
-      -moz-transition: all 500ms;
-    }
-  }
+.indicator-active {
+  background-color: white;
+  width: 0.7rem;
+  border-radius: 10px;
+  transition: all 500ms;
 }
