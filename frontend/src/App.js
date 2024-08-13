@@ -105,7 +105,7 @@ function App() {
             <Route
               exact
               path={`${HOME_PAGE}/:n?`}
-              element={<Home images={images} />}
+              element={<Home images={images} isAuth={auth ? true : false} />}
             />
             <Route exact path="item/:id/edit" element={<ItemEdit />} />
             <Route path={LOGIN_PAGE} element={<Login />} />

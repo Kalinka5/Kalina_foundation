@@ -7,7 +7,7 @@ import { API_URL } from "../constants";
 
 import "../styles/items.css";
 
-function Items() {
+function Items(props) {
   const { n } = useParams();
   const [items, setItems] = useState(null);
   const [isSuperUser, setIsSuperUser] = useState(false);
@@ -22,9 +22,11 @@ function Items() {
       const resItems = await api.get(`/items/?page=${n}&format=json`);
       setItems(resItems.data);
 
-      console.log("Start getting data of profile...");
-      const res = await api.get("/profile");
-      setIsSuperUser(res.data.is_superuser);
+      if (props.isAuth) {
+        console.log("Start getting data of profile...");
+        const res = await api.get("/profile");
+        setIsSuperUser(res.data.is_superuser);
+      }
     } catch (err) {
       console.log(err);
     }
