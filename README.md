@@ -136,7 +136,10 @@ The application is designed to be responsive and works across multiple devices a
     - Ipad Pro
   - PC
 
+![Frames-ezgif com-optimize](https://github.com/user-attachments/assets/304aba1b-727b-4b82-a549-7dec49ec3e28)
+
 ## Email Verification
+
 
 Email verification is implemented using the Django SMTP server. Upon registration, users receive a verification email with a link to verify their email address.
 
