@@ -118,6 +118,8 @@ The application uses JWT tokens for authentication. Users must log in to receive
 
 ## Responsive Design
 
+<div align="center"><img src="https://github.com/user-attachments/assets/304aba1b-727b-4b82-a549-7dec49ec3e28" alt="Frames" width="100%"></div>
+
 The application is designed to be responsive and works across multiple devices and screen sizes, including:
 
   - Mobile Devices:
@@ -135,8 +137,6 @@ The application is designed to be responsive and works across multiple devices a
     - Ipad Air
     - Ipad Pro
   - PC
-
-![Frames-ezgif com-optimize](https://github.com/user-attachments/assets/304aba1b-727b-4b82-a549-7dec49ec3e28)
 
 ## Email Verification
 
