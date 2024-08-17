@@ -138,6 +138,9 @@ The application is designed to be responsive and works across multiple devices a
     - Ipad Pro
   - PC
 
+![Frames](https://github.com/user-attachments/assets/0888c527-70e4-4b6b-a61d-a4c4dcc8dbd7)
+
+
 ## Email Verification
 
 
