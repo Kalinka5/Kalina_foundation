@@ -4,7 +4,7 @@
   </a>
 </div>
 
-Welcome to the Kalina Foundation repository. This project is a full-stack web application designed to support the Kalina Foundation's mission. The application provides a seamless experience across various devices and screen sizes, ensuring accessibility and usability for all users.
+Welcome to the **Kalina Foundation** repository. This project is a **full-stack web application** designed to support the *Kalina Foundation's mission*. The application provides a seamless experience across various *devices* and *screen sizes*, ensuring *accessibility and usability* for all users.
 
 ## 📑 Table of Contents
 
@@ -22,7 +22,7 @@ Welcome to the Kalina Foundation repository. This project is a full-stack web ap
 
 ## 📖 Project Overview
 
-The Kalina Foundation application is built using a Django backend with a REST API and a React.js frontend. The platform offers users the ability to register, log in, view their profile, make donations, and more.
+*The Kalina Foundation* application is built using a **Django** backend with a **REST API** and a **React.js** frontend. The platform offers users the ability to *register*, *log in*, *view their profile*, *make donations*, and more.
 
 ## ✨ Features
 
@@ -103,7 +103,7 @@ The Kalina Foundation application is built using a Django backend with a REST AP
 
 ## 🚀 Usage
 
-   - Visit the application at www.kalina-fond.com
+   - Visit the application at [this link](https://www.kalina-fond.com) or write url: www.kalina-fond.com
    - Register or log in to access your profile and make donations
 
 ## 📄 Pages
@@ -118,15 +118,15 @@ The Kalina Foundation application is built using a Django backend with a REST AP
 
 ## 🔒 Authentication
 
-The application uses JWT tokens for authentication. Users must log in to receive a token, which is then used to authenticate subsequent requests.
+The application uses **JWT tokens** *for authentication*. Users must log in to *receive a token*, which is then used to *authenticate subsequent requests*.
 
 ## 📱 Responsive Design
 
 <div align="center"><img src="https://github.com/user-attachments/assets/304aba1b-727b-4b82-a549-7dec49ec3e28" alt="Frames" width="100%"></div>
 
-The application is designed to be responsive and works across multiple devices and screen sizes, including:
+The application is designed to be responsive and works across **multiple devices and screen sizes**, including:
 
-  - Mobile Devices:
+  - **Mobile Devices**:
     - iPhone SE
     - iPhone XR
     - iPhone 12 Pro
@@ -136,19 +136,21 @@ The application is designed to be responsive and works across multiple devices a
     - Samsung Galaxy S20 Ultra
     - Galaxy Z Fold 5
     - Samsung Galaxy A51/71
-  - Tablet Devices:
+  - **Tablet Devices**:
     - Ipad Mini
     - Ipad Air
     - Ipad Pro
-  - PC
+  - **PC**
 
 ![Frames](https://github.com/user-attachments/assets/0888c527-70e4-4b6b-a61d-a4c4dcc8dbd7)
+
+<h2 align="center">Img. 1 Phone Frames</h2>
 
 
 ## 📧 Email Verification
 
 
-Email verification is implemented using the Django SMTP server. Upon registration, users receive a verification email with a link to verify their email address.
+Email verification is implemented using the **Django SMTP server**. Upon registration, users receive a *verification email* with a *link* to verify their email address.
 
 ## 🤝 Contributing
 
