@@ -163,8 +163,6 @@ We welcome contributions to the Kalina Foundation project. Please follow these s
 
 ## 📜 License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the [LICENSE](./LICENSE) file for details.
 
-```css
-Feel free to customize further based on specific project details or requirements!🎉
-```
+*Feel free to customize further based on specific project details or requirements!🎉*
