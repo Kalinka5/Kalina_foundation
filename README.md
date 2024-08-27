@@ -1,4 +1,8 @@
-# 🌟 Kalina Foundation
+<div align="center">
+  <a href="https://www.kalina-fond.com" target="_blank">
+    <img src="https://github.com/user-attachments/assets/7b72924b-30f1-49ec-90bf-9dbf35b81026" alt="Banner" width="100%">
+  </a>
+</div>
 
 Welcome to the Kalina Foundation repository. This project is a full-stack web application designed to support the Kalina Foundation's mission. The application provides a seamless experience across various devices and screen sizes, ensuring accessibility and usability for all users.
 
