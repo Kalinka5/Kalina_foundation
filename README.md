@@ -126,7 +126,7 @@ The application uses JWT tokens for authentication. Users must log in to receive
 
 The application is designed to be responsive and works across multiple devices and screen sizes, including:
 
-  - 📱 Mobile Devices:
+  - Mobile Devices:
     - iPhone SE
     - iPhone XR
     - iPhone 12 Pro
@@ -136,11 +136,11 @@ The application is designed to be responsive and works across multiple devices a
     - Samsung Galaxy S20 Ultra
     - Galaxy Z Fold 5
     - Samsung Galaxy A51/71
-  - 📲 Tablet Devices:
+  - Tablet Devices:
     - Ipad Mini
     - Ipad Air
     - Ipad Pro
-  - 💻 PC
+  - PC
 
 ![Frames](https://github.com/user-attachments/assets/0888c527-70e4-4b6b-a61d-a4c4dcc8dbd7)
 
