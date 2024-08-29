@@ -140,7 +140,7 @@ The application is designed to be responsive and works across **multiple devices
     - Ipad Mini
     - Ipad Air
     - Ipad Pro
-  - **PC**
+  - **Laptop Devices**
 
 ![Frames](https://github.com/user-attachments/assets/0888c527-70e4-4b6b-a61d-a4c4dcc8dbd7)
 
