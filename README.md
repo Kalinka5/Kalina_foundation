@@ -160,15 +160,9 @@ The application is designed to be responsive and works across **multiple devices
 
 ![Phone Frames](https://github.com/user-attachments/assets/0888c527-70e4-4b6b-a61d-a4c4dcc8dbd7)
 
-<h2 align="center">Img. 1 Phone Frames</h2>
-
 ![Tablet frames](https://github.com/user-attachments/assets/89a83763-ebfc-4658-9a2e-83739b14989e)
 
-<h2 align="center">Img. 2 Tablet Frames</h2>
-
 ![Laptop Frames](https://github.com/user-attachments/assets/5a4e5e4a-8221-487f-b36e-0c105b801e50)
-
-<h2 align="center">Img. 1 Laptop Frames</h2>
 
 ## 📧 Email Verification
 
