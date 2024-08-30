@@ -4,6 +4,22 @@
   </a>
 </div>
 
+![GitHub Repo stars](https://img.shields.io/github/stars/Kalinka5/Kalina_foundation)
+
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fwww.kalina-fond.com%2Fhome%2F1&style=flat-square&color=yellow)
+![OS Platforms](https://img.shields.io/badge/os-linux%20%7C%20macOS%20%7C%20windows-blue)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Kalinka5/Kalina_foundation/main)
+![GitHub language count](https://img.shields.io/github/languages/count/Kalinka5/Kalina_foundation)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Kalinka5/Kalina_foundation?color=%23c10000)
+
+![PyPI - Version](https://img.shields.io/pypi/v/django?style=flat&logo=Django&color=green)
+![PyPI - Version](https://img.shields.io/pypi/v/psycopg2-binary?style=plastic&logo=PostgreSQL&logoColor=white&labelColor=blue&color=green)
+![PyPI - Version](https://img.shields.io/pypi/v/djangorestframework-simplejwt?label=JWT&color=%23ff0087)
+![Node Current](https://img.shields.io/node/v/npm?color=%23177700)
+![NPM Version](https://img.shields.io/npm/v/npm?color=red)
+![NPM Version](https://img.shields.io/npm/v/react?label=React.js&color=%2380ffff)
+
+
 Welcome to the **Kalina Foundation** repository. This project is a **full-stack web application** designed to support the *Kalina Foundation's mission*. The application provides a seamless experience across various *devices* and *screen sizes*, ensuring *accessibility and usability* for all users.
 
 ## 📑 Table of Contents
