@@ -122,7 +122,7 @@ The application uses **JWT tokens** *for authentication*. Users must log in to *
 
 ## 📱 Responsive Design
 
-<div align="center"><img src="https://github.com/user-attachments/assets/304aba1b-727b-4b82-a549-7dec49ec3e28" alt="Frames" width="100%"></div>
+<div align="center"><img src="https://github.com/user-attachments/assets/402cf361-f098-474f-b82f-2f20271d2542" alt="Frames" width="100%"></div>
 
 The application is designed to be responsive and works across **multiple devices and screen sizes**, including:
 
@@ -142,10 +142,17 @@ The application is designed to be responsive and works across **multiple devices
     - Ipad Pro
   - **Laptop Devices**
 
-![Frames](https://github.com/user-attachments/assets/0888c527-70e4-4b6b-a61d-a4c4dcc8dbd7)
+![Phone Frames](https://github.com/user-attachments/assets/0888c527-70e4-4b6b-a61d-a4c4dcc8dbd7)
 
 <h2 align="center">Img. 1 Phone Frames</h2>
 
+![Tablet frames](https://github.com/user-attachments/assets/89a83763-ebfc-4658-9a2e-83739b14989e)
+
+<h2 align="center">Img. 2 Tablet Frames</h2>
+
+![Laptop Frames](https://github.com/user-attachments/assets/5a4e5e4a-8221-487f-b36e-0c105b801e50)
+
+<h2 align="center">Img. 1 Laptop Frames</h2>
 
 ## 📧 Email Verification
 
