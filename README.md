@@ -1,8 +1,28 @@
-# Kalina Foundation
+<div align="center">
+  <a href="https://www.kalina-fond.com" target="_blank">
+    <img src="https://github.com/user-attachments/assets/7b72924b-30f1-49ec-90bf-9dbf35b81026" alt="Banner" width="100%">
+  </a>
+</div>
 
-Welcome to the Kalina Foundation repository. This project is a full-stack web application designed to support the Kalina Foundation's mission. The application provides a seamless experience across various devices and screen sizes, ensuring accessibility and usability for all users.
+![GitHub Repo stars](https://img.shields.io/github/stars/Kalinka5/Kalina_foundation)
 
-## Table of Contents
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fwww.kalina-fond.com%2Fhome%2F1&style=flat-square&color=yellow)
+![OS Platforms](https://img.shields.io/badge/os-linux%20%7C%20macOS%20%7C%20windows-blue)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/Kalinka5/Kalina_foundation/main)
+![GitHub language count](https://img.shields.io/github/languages/count/Kalinka5/Kalina_foundation)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Kalinka5/Kalina_foundation?color=%23c10000)
+
+![PyPI - Version](https://img.shields.io/pypi/v/django?style=flat&logo=Django&color=green)
+![PyPI - Version](https://img.shields.io/pypi/v/psycopg2-binary?style=plastic&logo=PostgreSQL&logoColor=white&labelColor=blue&color=green)
+![PyPI - Version](https://img.shields.io/pypi/v/djangorestframework-simplejwt?label=JWT&color=%23ff0087)
+![Node Current](https://img.shields.io/node/v/npm?color=%23177700)
+![NPM Version](https://img.shields.io/npm/v/npm?color=red)
+![NPM Version](https://img.shields.io/npm/v/react?label=React.js&color=%2380ffff)
+
+
+Welcome to the **Kalina Foundation** repository. This project is a **full-stack web application** designed to support the *Kalina Foundation's mission*. The application provides a seamless experience across various *devices* and *screen sizes*, ensuring *accessibility and usability* for all users.
+
+## 📑 Table of Contents
 
 - [Project Overview](#project-overview)
 - [Features](#features)
@@ -16,26 +36,26 @@ Welcome to the Kalina Foundation repository. This project is a full-stack web ap
 - [Contributing](#contributing)
 - [License](#license)
 
-## Project Overview
+## 📖 Project Overview
 
-The Kalina Foundation application is built using a Django backend with a REST API and a React.js frontend. The platform offers users the ability to register, log in, view their profile, make donations, and more.
+*The Kalina Foundation* application is built using a **Django** backend with a **REST API** and a **React.js** frontend. The platform offers users the ability to *register*, *log in*, *view their profile*, *make donations*, and more.
 
-## Features
+## ✨ Features
 
-- User Authentication with JWT Tokens
-- Email Verification
-- Donation Processing
-- Responsive Design for Mobile, Tablet, and PC
-- Error Handling and 404 Page
+- 🔑 User Authentication with JWT Tokens
+- 📧 Email Verification
+- 💳 Donation Processing
+- 📱 Responsive Design for Mobile, Tablet, and PC
+- ⚠️ Error Handling and 404 Page
 
-## Technology Stack
+## 🛠️ Technology Stack
 
 - **Backend:** Django, Django REST framework
 - **Frontend:** React.js
 - **Authentication:** JWT Tokens
 - **Email Service:** Django SMTP Server
 
-## Installation
+## 💻 Installation
 
 1. **Clone the repository:**
 
@@ -97,32 +117,32 @@ The Kalina Foundation application is built using a Django backend with a REST AP
    npm start
    ```
 
-## Usage
+## 🚀 Usage
 
-   - Visit the application at www.kalina-fond.com
+   - Visit the application at [this link](https://www.kalina-fond.com) or write url: www.kalina-fond.com
    - Register or log in to access your profile and make donations
 
-## Pages
+## 📄 Pages
 
-  1. Login: User login page.
-  2. Register: User registration page.
-  3. Main: Main landing page.
-  4. Donate: Page for making donations.
-  5. Profile: User profile page.
-  6. Error404: Page displayed for non-existent routes.
-  7. Email Verification: Page for email verification.
+  1. 🔐 Login: User login page.
+  2. 📝 Register: User registration page.
+  3. 🏠 Main: Main landing page.
+  4. 💰 Donate: Page for making donations.
+  5. 👤 Profile: User profile page.
+  6. 🚫 Error404: Page displayed for non-existent routes.
+  7. 📧 Email Verification: Page for email verification.
 
-## Authentication
+## 🔒 Authentication
 
-The application uses JWT tokens for authentication. Users must log in to receive a token, which is then used to authenticate subsequent requests.
+The application uses **JWT tokens** *for authentication*. Users must log in to *receive a token*, which is then used to *authenticate subsequent requests*.
 
-## Responsive Design
+## 📱 Responsive Design
 
-<div align="center"><img src="https://github.com/user-attachments/assets/304aba1b-727b-4b82-a549-7dec49ec3e28" alt="Frames" width="100%"></div>
+<div align="center"><img src="https://github.com/user-attachments/assets/402cf361-f098-474f-b82f-2f20271d2542" alt="Frames" width="100%"></div>
 
-The application is designed to be responsive and works across multiple devices and screen sizes, including:
+The application is designed to be responsive and works across **multiple devices and screen sizes**, including:
 
-  - Mobile Devices:
+  - **Mobile Devices**:
     - iPhone SE
     - iPhone XR
     - iPhone 12 Pro
@@ -132,35 +152,36 @@ The application is designed to be responsive and works across multiple devices a
     - Samsung Galaxy S20 Ultra
     - Galaxy Z Fold 5
     - Samsung Galaxy A51/71
-  - Tablet Devices:
+  - **Tablet Devices**:
     - Ipad Mini
     - Ipad Air
     - Ipad Pro
-  - PC
+  - **Laptop Devices**
 
-![Frames](https://github.com/user-attachments/assets/0888c527-70e4-4b6b-a61d-a4c4dcc8dbd7)
+![Phone Frames](https://github.com/user-attachments/assets/0888c527-70e4-4b6b-a61d-a4c4dcc8dbd7)
+
+![Tablet frames](https://github.com/user-attachments/assets/89a83763-ebfc-4658-9a2e-83739b14989e)
+
+![Laptop Frames](https://github.com/user-attachments/assets/5a4e5e4a-8221-487f-b36e-0c105b801e50)
+
+## 📧 Email Verification
 
 
-## Email Verification
+Email verification is implemented using the **Django SMTP server**. Upon registration, users receive a *verification email* with a *link* to verify their email address.
 
-
-Email verification is implemented using the Django SMTP server. Upon registration, users receive a verification email with a link to verify their email address.
-
-## Contributing
+## 🤝 Contributing
 
 We welcome contributions to the Kalina Foundation project. Please follow these steps to contribute:
 
-  1. Fork the repository
-  2. Create a new branch (git checkout -b feature-branch)
-  3. Make your changes
-  4. Commit your changes (git commit -am 'Add new feature')
-  5. Push to the branch (git push origin feature-branch)
-  6. Create a new Pull Request
+  1. 🍴 Fork the repository
+  2. 🌿 Create a new branch (git checkout -b feature-branch)
+  3. ✏️ Make your changes
+  4. 💾 Commit your changes (git commit -am 'Add new feature')
+  5. 📤 Push to the branch (git push origin feature-branch)
+  6. 🔄 Create a new Pull Request
 
-## License
+## 📜 License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the [LICENSE](./LICENSE) file for details.
 
-```css
-Feel free to customize further based on specific project details or requirements!
-```
+*Feel free to customize further based on specific project details or requirements!🎉*
