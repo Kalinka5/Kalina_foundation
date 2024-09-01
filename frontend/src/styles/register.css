@@ -2,6 +2,11 @@
 
 .register {
   .login-register {
+    * {
+      font-family: "Poppins", sans-serif;
+      letter-spacing: 0.5px;
+      outline: none;
+    }
     .alert-message {
       z-index: 100;
       position: absolute;
@@ -83,6 +88,9 @@
           }
           .error {
             border-color: #8a021d;
+          }
+          .empty {
+            border-color: #00bfbc;
           }
           .name-tip {
             top: -1px;
@@ -753,6 +761,35 @@
 @media (min-width: 1600px) and (orientation: landscape) {
   .register .login-register .landscape {
     height: 765px;
+  }
+  .register .login-register .log-reg-form h2 {
+    font-size: 55px;
+  }
+  .register .login-register .reg-p {
+    padding: 55px 135px;
+  }
+  .register .login-register .landscape .log-reg-form {
+    .reg-input-box .input-icon .tooltiptext {
+      left: 374px;
+      width: 250px;
+      &::after {
+        top: 50%;
+        left: -4px; /* To the left of the tooltip */
+        border-color: transparent rgb(255, 219, 57) transparent transparent;
+      }
+    }
+    .reg-input-box .input-icon .name-tip {
+      top: -6px;
+    }
+    .reg-input-box .input-icon .email-tip {
+      top: -44px;
+    }
+    .reg-input-box .input-icon .pass-tip {
+      top: -56px;
+    }
+    .reg-input-box .input-icon .confirm-tip {
+      top: -17px;
+    }
   }
 }
 @media (min-width: 1024px) and (max-height: 600px) {

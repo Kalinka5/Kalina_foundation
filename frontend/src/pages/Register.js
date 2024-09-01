@@ -78,6 +78,11 @@ function Register() {
     );
   }
 
+  const isObjectEmpty = (objectName) => {
+    console.log(`Length of object: ${Object.keys(objectName).length}`);
+    return Object.keys(objectName).length === 0;
+  };
+
   return (
     <div className="register">
       <div className="login-register">
@@ -95,7 +100,11 @@ function Register() {
                 <div className="input-icon">
                   <input
                     className={`${
-                      validFields.usernameIsValid ? "success" : "error"
+                      isObjectEmpty(validFields)
+                        ? "empty"
+                        : validFields.usernameIsValid
+                        ? "success"
+                        : "error"
                     }`}
                     type="text"
                     placeholder="Enter your username"
@@ -116,7 +125,11 @@ function Register() {
                 <div className="input-icon">
                   <input
                     className={`${
-                      validFields.emailIsValid ? "success" : "error"
+                      isObjectEmpty(validFields)
+                        ? "empty"
+                        : validFields.emailIsValid
+                        ? "success"
+                        : "error"
                     }`}
                     type="text"
                     placeholder="user123@gmail.com"
@@ -138,7 +151,11 @@ function Register() {
                 <div className="input-icon">
                   <input
                     className={`${
-                      validFields.passwordIsValid ? "success" : "error"
+                      isObjectEmpty(validFields)
+                        ? "empty"
+                        : validFields.passwordIsValid
+                        ? "success"
+                        : "error"
                     }`}
                     type="password"
                     placeholder="Create password"
@@ -161,7 +178,11 @@ function Register() {
                 <div className="input-icon">
                   <input
                     className={`${
-                      validFields.confPasswordIsValid ? "success" : "error"
+                      isObjectEmpty(validFields)
+                        ? "empty"
+                        : validFields.confPasswordIsValid
+                        ? "success"
+                        : "error"
                     }`}
                     type="password"
                     placeholder="Confirm password"
@@ -206,13 +227,17 @@ function Register() {
                   <div className="input-icon">
                     <input
                       className={`${
-                        validFields.usernameIsValid ? "success" : "error"
+                        isObjectEmpty(validFields)
+                          ? "empty"
+                          : validFields.usernameIsValid
+                          ? "success"
+                          : "error"
                       }`}
                       type="text"
                       placeholder="Enter your username"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
-                    />
+                    ></input>
                     <i className="--icon">
                       <IoIosBulb />
                     </i>
@@ -227,7 +252,11 @@ function Register() {
                   <div className="input-icon">
                     <input
                       className={`${
-                        validFields.emailIsValid ? "success" : "error"
+                        isObjectEmpty(validFields)
+                          ? "empty"
+                          : validFields.emailIsValid
+                          ? "success"
+                          : "error"
                       }`}
                       type="text"
                       placeholder="user123@gmail.com"
@@ -250,7 +279,11 @@ function Register() {
                   <div className="input-icon">
                     <input
                       className={`${
-                        validFields.passwordIsValid ? "success" : "error"
+                        isObjectEmpty(validFields)
+                          ? "empty"
+                          : validFields.passwordIsValid
+                          ? "success"
+                          : "error"
                       }`}
                       type="password"
                       placeholder="Create password"
@@ -273,7 +306,11 @@ function Register() {
                   <div className="input-icon">
                     <input
                       className={`${
-                        validFields.confPasswordIsValid ? "success" : "error"
+                        isObjectEmpty(validFields)
+                          ? "empty"
+                          : validFields.confPasswordIsValid
+                          ? "success"
+                          : "error"
                       }`}
                       type="password"
                       placeholder="Confirm password"
