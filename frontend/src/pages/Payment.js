@@ -1,7 +1,7 @@
 import React from "react";
 
-import { PaymentPortrait } from "../components/paymentPortrait";
-import { PaymentLandscape } from "../components/paymentLandscape";
+import { PaymentPortrait } from "../components/PaymentPortrait";
+import { PaymentLandscape } from "../components/PaymentLandscape";
 
 import useOrientation from "../useOrientation";
 

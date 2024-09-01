@@ -7,7 +7,7 @@ import image4 from "../img/carousel-img4.jpg";
 
 import "../styles/carousel.css";
 
-export const Carousel = () => {
+const Carousel = () => {
   const [slide, setSlide] = useState(0);
   const slides = [image1, image2, image3, image4];
 
@@ -66,3 +66,5 @@ export const Carousel = () => {
     </div>
   );
 };
+
+export default Carousel;
