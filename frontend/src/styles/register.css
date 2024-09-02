@@ -73,6 +73,8 @@
           input {
             height: 90%;
             width: 85%;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
             outline: none;
             padding: 0 15px;
             font-size: 17px;
@@ -82,15 +84,16 @@
             border-bottom-width: 2.5px;
             border-radius: 6px;
             transition: all 0.3s ease;
+
+            &:focus {
+              border-color: #4070f4;
+            }
           }
           .success {
             border-color: #09c372;
           }
           .error {
             border-color: #8a021d;
-          }
-          .empty {
-            border-color: #00bfbc;
           }
           .name-tip {
             top: -1px;

@@ -65,7 +65,6 @@ function LoginLandscape() {
               placeholder="Your Email"
               id="email"
               onChange={(e) => setEmail(e.target.value)}
-              required
             />
           </div>
 
@@ -77,7 +76,6 @@ function LoginLandscape() {
               placeholder="Your Password"
               id="password"
               onChange={(e) => setPassword(e.target.value)}
-              required
             />
             <span className="password-toggle-icon" onClick={clickIcon}>
               {passVisible ? (

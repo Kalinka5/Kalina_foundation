@@ -72,7 +72,7 @@ function RegisterPortrait() {
             <input
               className={`${
                 isObjectEmpty(validFields)
-                  ? "empty"
+                  ? ""
                   : validFields.usernameIsValid
                   ? "success"
                   : "error"
@@ -97,7 +97,7 @@ function RegisterPortrait() {
             <input
               className={`${
                 isObjectEmpty(validFields)
-                  ? "empty"
+                  ? ""
                   : validFields.emailIsValid
                   ? "success"
                   : "error"
@@ -123,7 +123,7 @@ function RegisterPortrait() {
             <input
               className={`${
                 isObjectEmpty(validFields)
-                  ? "empty"
+                  ? ""
                   : validFields.passwordIsValid
                   ? "success"
                   : "error"
@@ -150,7 +150,7 @@ function RegisterPortrait() {
             <input
               className={`${
                 isObjectEmpty(validFields)
-                  ? "empty"
+                  ? ""
                   : validFields.confPasswordIsValid
                   ? "success"
                   : "error"

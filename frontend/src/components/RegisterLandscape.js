@@ -74,7 +74,7 @@ function RegisterLandscape() {
               <input
                 className={`${
                   isObjectEmpty(validFields)
-                    ? "empty"
+                    ? ""
                     : validFields.usernameIsValid
                     ? "success"
                     : "error"
@@ -99,7 +99,7 @@ function RegisterLandscape() {
               <input
                 className={`${
                   isObjectEmpty(validFields)
-                    ? "empty"
+                    ? ""
                     : validFields.emailIsValid
                     ? "success"
                     : "error"
@@ -125,7 +125,7 @@ function RegisterLandscape() {
               <input
                 className={`${
                   isObjectEmpty(validFields)
-                    ? "empty"
+                    ? ""
                     : validFields.passwordIsValid
                     ? "success"
                     : "error"
@@ -152,7 +152,7 @@ function RegisterLandscape() {
               <input
                 className={`${
                   isObjectEmpty(validFields)
-                    ? "empty"
+                    ? ""
                     : validFields.confPasswordIsValid
                     ? "success"
                     : "error"
