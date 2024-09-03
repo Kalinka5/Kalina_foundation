@@ -17,6 +17,7 @@ const useOrientation = () => {
   return {
     ...screenInfo,
     isPortrait: screenInfo.height > screenInfo.width,
+    isLandscape: screenInfo.height < screenInfo.width,
   };
 };
 

@@ -65,15 +65,101 @@
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 
+    .card-img {
+      position: relative;
+      width: 300px;
+      height: 680px;
+      background: #20a1b4;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+
+      .content {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: 0.5s;
+
+        .imgBx {
+          position: relative;
+          width: 200px;
+          height: 400px;
+          overflow: hidden;
+
+          img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .monitor-img {
+          width: 390px;
+        }
+        .contentBx h3 {
+          color: #fff;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-weight: 500;
+          font-size: 18px;
+          text-align: center;
+          margin: 20px 0 10px;
+          line-height: 1.1em;
+
+          span {
+            font-size: 12px;
+            font-weight: 300;
+            text-transform: initial;
+          }
+        }
+      }
+
+      &:hover .content {
+        transform: translateY(-20px);
+      }
+      .sci {
+        position: absolute;
+        bottom: 50px;
+        display: flex;
+
+        li {
+          list-style: none;
+          margin: 0 10px;
+          transform: translateY(40px);
+          transition: 0.5s;
+          opacity: 0;
+
+          a {
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+          }
+        }
+      }
+      &:hover .sci li {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+    }
+    .mon-wid {
+      width: 450px;
+    }
     .icons-back {
       background-color: #1e293b;
       margin-top: 20px;
       margin-bottom: 20px;
       text-align: center;
       height: 680px;
-      width: 90%;
+      width: 62%;
       border-radius: 10px;
       border: 2px solid rgba(255, 255, 255, 0.1);
       position: relative;
@@ -217,6 +303,9 @@
         }
       }
     }
+    .portrait {
+      width: 90%;
+    }
   }
 }
 
@@ -353,7 +442,7 @@
     width: 94px;
   }
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1400px) {
   .donators .donators-background .icons-back .donators-card .pedestal {
     .money-value {
       color: #ffffff;

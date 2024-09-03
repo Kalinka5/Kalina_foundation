@@ -17,6 +17,10 @@ import api from "../api";
 
 import { API_URL } from "../constants";
 
+import useOrientation from "../useOrientation";
+
+import image from "../img/winner.png";
+
 import "../styles/donators.css";
 
 function Donators() {
@@ -30,10 +34,16 @@ function Donators() {
     3: <Fa4 />,
     4: <Fa5 />,
   };
-  const isMobile = useMediaQuery("only screen and (max-width: 540px)");
-  const isTablet = useMediaQuery(
-    "only screen and (min-width: 760px) and (max-width: 1024px)"
+  const isDisplayMini = useMediaQuery(
+    "only screen and (min-width: 300px) and (max-width: 1024px)"
   );
+  const isDisplayMax = useMediaQuery(
+    "only screen and (min-width: 1025px) and (max-width: 3000px)"
+  );
+  const isMonitor = useMediaQuery(
+    "only screen and (min-width: 1400px) and (max-width: 3000px)"
+  );
+  const orientation = useOrientation();
 
   useEffect(() => {
     getData();
@@ -119,32 +129,38 @@ function Donators() {
         </div>
       </div>
       <div className="donators-background">
-        <div className="icons-back">
+        {orientation.isLandscape && isDisplayMax && (
+          <div className={`card-img ${isMonitor && "mon-wid"}`}>
+            <div className="content">
+              <div className={`imgBx ${isMonitor && "monitor-img"}`}>
+                <img src={image} alt="Winner" />
+              </div>
+              <div className="contentBx">
+                <h3>
+                  Будь переможцем
+                  <br />
+                  <span>Задонатити на ЗСУ</span>
+                </h3>
+              </div>
+            </div>
+            <ul className="sci">
+              <li>
+                <a href="/donate">Monobank</a>
+              </li>
+              <li>
+                <a href="/donate">Privat24</a>
+              </li>
+            </ul>
+          </div>
+        )}
+        <div
+          className={`icons-back ${
+            (orientation.isPortrait || isDisplayMini) && "portrait"
+          }`}
+        >
           {cardIcons.map((el) => el)}
           <div className="donators-card">
-            {isMobile || isTablet ? (
-              <div className="pedestal">
-                {donators &&
-                  donators.map((user, index) => (
-                    <div className={`bar __${index + 1}`} key={user.id}>
-                      <div className="money-value">({user.donated} грн.)</div>
-                      <div className="profile-pic">
-                        <img
-                          className="profile-pic-image"
-                          src={API_URL + user.image}
-                          alt="Donater"
-                        />
-                      </div>
-                      <div className="username">{user.username}</div>
-                      <div className="icon-background">
-                        <i className={`icon color${index + 1}`}>
-                          {places[index]}
-                        </i>
-                      </div>
-                    </div>
-                  ))}
-              </div>
-            ) : (
+            {isMonitor ? (
               <div className="pedestal">
                 {donators &&
                   donators.map((user, index) => (
@@ -160,6 +176,28 @@ function Donators() {
                         <p>Задонатив/ла {user.donated} грн.</p>
                       </div>
                       <div className="underline"></div>
+                      <div className="username">{user.username}</div>
+                      <div className="icon-background">
+                        <i className={`icon color${index + 1}`}>
+                          {places[index]}
+                        </i>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            ) : (
+              <div className="pedestal">
+                {donators &&
+                  donators.map((user, index) => (
+                    <div className={`bar __${index + 1}`} key={user.id}>
+                      <div className="money-value">({user.donated} грн.)</div>
+                      <div className="profile-pic">
+                        <img
+                          className="profile-pic-image"
+                          src={API_URL + user.image}
+                          alt="Donater"
+                        />
+                      </div>
                       <div className="username">{user.username}</div>
                       <div className="icon-background">
                         <i className={`icon color${index + 1}`}>
