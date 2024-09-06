@@ -5,6 +5,8 @@ import api from "../api";
 
 import { API_URL } from "../constants";
 
+import ItemsLoader from "./ItemsLoader";
+
 import "../styles/items.css";
 
 function Items(props) {
@@ -19,6 +21,7 @@ function Items(props) {
   const getData = async () => {
     try {
       console.log("Start getting data of items...");
+      await new Promise((r) => setTimeout(r, 30000));
       const resItems = await api.get(`/items/?page=${n}&format=json`);
       setItems(resItems.data);
 
@@ -37,7 +40,7 @@ function Items(props) {
       <div className="items-title">
         <p className="container-title">На що ми збираємо</p>
       </div>
-      {items &&
+      {items ? (
         items.map((el, index) => (
           <div className="gradient-cards" key={el.id}>
             <div className={`card ${index % 2 === 0 ? "left" : "right"}`}>
@@ -71,7 +74,10 @@ function Items(props) {
               </div>
             </div>
           </div>
-        ))}
+        ))
+      ) : (
+        <ItemsLoader />
+      )}
     </div>
   );
 }

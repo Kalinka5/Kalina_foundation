@@ -198,8 +198,8 @@
 
           margin: 0 auto;
           margin-top: 100px;
-          height: 500px;
-          width: 700px;
+          height: 80%;
+          width: 80%;
           display: grid;
           grid-template-columns: repeat(5, 1fr);
           grid-template-rows: repeat(100, 1fr);
@@ -452,6 +452,51 @@
     }
     .bar {
       margin: 0 auto;
+    }
+  }
+}
+@media screen and (min-width: 1401px) {
+  .donators .donators-background {
+    .icons-back {
+      height: 970px;
+
+      .card-row {
+        font-size: 95px;
+      }
+      .donators-card .pedestal .bar {
+        width: 140px;
+      }
+      .donators-card .pedestal .profile-pic {
+        top: -137px;
+        left: 4px;
+
+        .profile-pic-image {
+          height: 100px;
+          width: 100px;
+        }
+      }
+      .donators-card .pedestal .underline:before {
+        left: 126px;
+        top: -100px;
+      }
+      .donators-card .pedestal .donated {
+        top: -120px;
+        left: 126px;
+      }
+      .donators-card .pedestal .username {
+        font-size: 26px;
+      }
+    }
+    .card-img {
+      height: 970px;
+
+      .content .contentBx h3 {
+        font-size: 24px;
+
+        span {
+          font-size: 16px;
+        }
+      }
     }
   }
 }
