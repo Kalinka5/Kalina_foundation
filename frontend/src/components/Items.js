@@ -5,7 +5,7 @@ import api from "../api";
 
 import { API_URL } from "../constants";
 
-import ItemsLoader from "./ItemsLoader";
+import ItemsLoader from "./LoaderItems";
 
 import "../styles/items.css";
 
@@ -21,7 +21,6 @@ function Items(props) {
   const getData = async () => {
     try {
       console.log("Start getting data of items...");
-      await new Promise((r) => setTimeout(r, 30000));
       const resItems = await api.get(`/items/?page=${n}&format=json`);
       setItems(resItems.data);
 

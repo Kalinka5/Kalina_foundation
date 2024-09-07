@@ -21,6 +21,8 @@ import useOrientation from "../useOrientation";
 
 import image from "../img/winner.png";
 
+import DonatorsLoader from "./LoaderDonators";
+
 import "../styles/donators.css";
 
 function Donators() {
@@ -53,6 +55,7 @@ function Donators() {
 
   const getData = async () => {
     try {
+      await new Promise((r) => setTimeout(r, 50000));
       const res = await api.get("/donators?format=json");
       console.log(`Response: ${res.data}`);
       console.log(`Donators: ${res.data}`);
@@ -161,8 +164,8 @@ function Donators() {
           {cardIcons.map((el) => el)}
           <div className="donators-card">
             {isMonitor ? (
-              <div className="pedestal">
-                {donators &&
+              <div className={`pedestal ${donators ? "grid-p" : "flex-l"}`}>
+                {donators ? (
                   donators.map((user, index) => (
                     <div className={`bar __${index + 1}`} key={user.id}>
                       <div className="profile-pic">
@@ -183,11 +186,14 @@ function Donators() {
                         </i>
                       </div>
                     </div>
-                  ))}
+                  ))
+                ) : (
+                  <DonatorsLoader />
+                )}
               </div>
             ) : (
-              <div className="pedestal">
-                {donators &&
+              <div className={`pedestal ${donators ? "grid-p" : "flex-l"}`}>
+                {donators ? (
                   donators.map((user, index) => (
                     <div className={`bar __${index + 1}`} key={user.id}>
                       <div className="money-value">({user.donated} грн.)</div>
@@ -205,7 +211,10 @@ function Donators() {
                         </i>
                       </div>
                     </div>
-                  ))}
+                  ))
+                ) : (
+                  <DonatorsLoader />
+                )}
               </div>
             )}
           </div>

@@ -197,13 +197,9 @@
           --bar-color: rgb(186, 93, 93);
 
           margin: 0 auto;
-          margin-top: 100px;
-          height: 80%;
+          height: 100%;
           width: 80%;
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          grid-template-rows: repeat(100, 1fr);
-          grid-column-gap: 5px;
+          position: relative;
 
           .bar {
             background-color: var(--bar-color);
@@ -301,6 +297,19 @@
             }
           }
         }
+        .grid-p {
+          margin-top: 100px;
+          height: 80%;
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          grid-template-rows: repeat(100, 1fr);
+          grid-column-gap: 5px;
+        }
+        .flex-l {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
     .portrait {
@@ -359,7 +368,7 @@
 }
 /* Media Query For different screens */
 @media (min-width: 320px) and (max-width: 344px) {
-  .donators .donators-background .icons-back .donators-card .pedestal {
+  .donators .donators-background .icons-back .donators-card .grid-p {
     width: 513px;
 
     .profile-pic {
@@ -371,32 +380,32 @@
   }
 }
 @media (min-width: 345px) and (max-width: 369px) {
-  .donators .donators-background .icons-back .donators-card .pedestal {
+  .donators .donators-background .icons-back .donators-card .grid-p {
     width: 539px;
   }
 }
 @media (min-width: 370px) and (max-width: 389px) {
-  .donators .donators-background .icons-back .donators-card .pedestal {
+  .donators .donators-background .icons-back .donators-card .grid-p {
     width: 556px;
   }
 }
 @media (min-width: 390px) and (max-width: 399px) {
-  .donators .donators-background .icons-back .donators-card .pedestal {
+  .donators .donators-background .icons-back .donators-card .grid-p {
     width: 581px;
   }
 }
 @media (min-width: 400px) and (max-width: 429px) {
-  .donators .donators-background .icons-back .donators-card .pedestal {
+  .donators .donators-background .icons-back .donators-card .grid-p {
     width: 615px;
   }
 }
 @media (min-width: 430px) and (max-width: 479px) {
-  .donators .donators-background .icons-back .donators-card .pedestal {
+  .donators .donators-background .icons-back .donators-card .grid-p {
     width: 644px;
   }
 }
 @media (min-width: 480px) and (max-width: 759px) {
-  .donators .donators-background .icons-back .donators-card .pedestal {
+  .donators .donators-background .icons-back .donators-card .grid-p {
     width: 803px;
 
     .profile-pic .bar {
@@ -405,7 +414,7 @@
   }
 }
 @media screen and (min-width: 760px) and (max-width: 819px) {
-  .donators .donators-background .icons-back .donators-card .pedestal {
+  .donators .donators-background .icons-back .donators-card .grid-p {
     width: 669px;
   }
 }
@@ -413,7 +422,7 @@
   .donators {
     min-height: 72vh;
 
-    .donators-background .icons-back .donators-card .pedestal {
+    .donators-background .icons-back .donators-card .grid-p {
       width: 707px;
     }
   }
@@ -422,7 +431,7 @@
   .donators {
     min-height: 72vh;
 
-    .donators-background .icons-back .donators-card .pedestal {
+    .donators-background .icons-back .donators-card .grid-p {
       width: 755px;
     }
   }
