@@ -53,6 +53,80 @@ header {
         }
       }
     }
+    .lang-menu {
+      position: relative;
+      color: #fff;
+      padding: 18px;
+    }
+    .lang-menu .selected-lang {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+    .lang-menu .selected-lang:before {
+      content: "";
+      display: inline-block;
+      width: 32px;
+      height: 20px;
+      margin: auto;
+      background-image: url("../img/UK-flag.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .lang-menu ul {
+      margin: 0;
+      padding: 0;
+      display: none;
+      background-color: #fff;
+      border: 1px solid #f8f8f8;
+      position: absolute;
+      top: 55px;
+      right: 0px;
+      border-radius: 5px;
+      box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .lang-menu ul li {
+      list-style: none;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .lang-menu ul li a {
+      text-decoration: none;
+      width: 125px;
+      padding: 5px 10px;
+      display: block;
+      color: black;
+    }
+
+    .lang-menu ul li:hover {
+      background-color: #f2f2f2;
+    }
+
+    .lang-menu ul li a:before {
+      content: "";
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      vertical-align: middle;
+      margin-right: 10px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .ua:before {
+      background-image: url("../img/UA-flag.png");
+    }
+    .en:before {
+      background-image: url("../img/UK-flag.png");
+    }
+
+    .lang-menu:hover ul {
+      display: block;
+    }
   }
 }
 /* Media Query For different screens */

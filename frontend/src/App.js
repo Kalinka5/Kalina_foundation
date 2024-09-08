@@ -55,12 +55,12 @@ function RegisterAndLogout() {
 function App() {
   const { auth } = useAuth();
   const authLinks = [
-    { id: 1, urlLink: `${LOGOUT_PAGE}`, urlName: "Logout" },
-    { id: 2, urlLink: `${PROFILE_PAGE}`, urlName: "Profile" },
+    { id: 1, urlLink: `${LOGOUT_PAGE}`, urlName: "logout" },
+    { id: 2, urlLink: `${PROFILE_PAGE}`, urlName: "profile" },
   ];
   const notAuthLinks = [
-    { id: 1, urlLink: `${REGISTER_PAGE}`, urlName: "Register" },
-    { id: 2, urlLink: `${LOGIN_PAGE}`, urlName: "Login" },
+    { id: 1, urlLink: `${REGISTER_PAGE}`, urlName: "register" },
+    { id: 2, urlLink: `${LOGIN_PAGE}`, urlName: "login" },
   ];
   const isMobile = useMediaQuery("only screen and (max-width: 540px)");
   const images = [

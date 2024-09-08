@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { IoIosHelpCircle, IoIosBrowsers, IoIosCheckmark } from "react-icons/io";
 
+import { useTranslation } from "react-i18next";
+
 import "../styles/paymentPortrait.css";
 
 export const PaymentPortrait = () => {
@@ -16,6 +18,8 @@ export const PaymentPortrait = () => {
   const iban = "UA863052990000026201737711936";
   const inn = "3765604679";
   const title = "Благодійний безповоротний внесок";
+
+  const { t } = useTranslation();
 
   const clickCopyRec = () => {
     navigator.clipboard.writeText(recipient);
@@ -98,15 +102,13 @@ export const PaymentPortrait = () => {
           </div>
         </div>
         <div id="mono-desc" className="description">
-          <p id="monobanka-p">
-            Ви також можете зробити свій внесок через банку Фонду
-          </p>
+          <p id="monobanka-p">{t("monobanka-p")}</p>
           <a
             href="https://send.monobank.ua/jar/QsATQ1NQ4"
             target="_blank"
             rel="noreferrer"
           >
-            Монобанка
+            {t("monobank")}
           </a>
         </div>
         <div className="block row1">
@@ -148,7 +150,7 @@ export const PaymentPortrait = () => {
         </div>
         <div id="visa-desc" className="description">
           <div className="desc-field">
-            <label>Одержувач</label>
+            <label>{t("recipient")}</label>
             <div className="input-box">
               <input
                 className="number"
@@ -194,7 +196,7 @@ export const PaymentPortrait = () => {
             </div>
           </div>
           <div className="desc-field">
-            <label>РНОКПП</label>
+            <label>{t("rnokpp")}</label>
             <div className="input-box">
               <input
                 className="inputname"
@@ -217,7 +219,7 @@ export const PaymentPortrait = () => {
             </div>
           </div>
           <div className="desc-field">
-            <label>Призначення платежу</label>
+            <label>{t("title")}</label>
             <div className="input-box">
               <input
                 className="expire"
@@ -243,20 +245,20 @@ export const PaymentPortrait = () => {
       </div>
       <div className="mob-tooltip">
         <IoIosHelpCircle className="question-icon" />
-        Як відображатись у Топ донатерах
+        {t("q1-head")}
         <span className="tooltiptext">
           {" "}
-          Щоб відображатись на головній сторінці у Топ донатерах, потрібно:{" "}
+          {t("q1-text1")}
           <br />
           <br />
-          1) зареєструватись та залогінитись на нашому веб-сайті;
+          {t("q1-text2")}
           <br />
           <br />
-          2) в описі донату зазначити{" "}
+          {t("q1-text3")}
           <b>
             <i>username</i>
           </b>{" "}
-          вашого створенного акаунту.
+          {t("q1-text4")}
         </span>
       </div>
     </div>

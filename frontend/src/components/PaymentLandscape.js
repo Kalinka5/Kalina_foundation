@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import { IoIosHelpCircle, IoIosBrowsers, IoIosCheckmark } from "react-icons/io";
 
+import { useTranslation } from "react-i18next";
+
 import image from "../img/donate-bpla.jpg";
 
 import "../styles/paymentLandscape.css";
@@ -11,8 +13,10 @@ export const PaymentLandscape = () => {
   const [progress, setProgress] = useState(0);
   const goal = 150000;
 
+  const { t } = useTranslation();
+
   useEffect(() => {
-    const initialDonation = 15000; // Replace this with the actual initial donation value
+    const initialDonation = 15000;
     setDonation(initialDonation);
 
     // Animate progress bar
@@ -82,48 +86,47 @@ export const PaymentLandscape = () => {
     <div className="pc-version">
       <div className="payment-header">
         <span className="questions">
-          Як відображатись у Топ донатерах
+          {t("q1-head")}
           <div className="tooltip">
             <IoIosHelpCircle className="question-icon" />
             <span className="tooltiptext">
-              Щоб відображатись на головній сторінці у Топ донатерах, потрібно:{" "}
+              {t("q1-text1")}
               <br />
               <br />
-              1) зареєструватись та залогінитись на нашому веб-сайті;
+              {t("q1-text2")}
               <br />
               <br />
-              2) в описі донату зазначити{" "}
+              {t("q1-text3")}
               <b>
                 <i>username</i>
               </b>{" "}
-              вашого створенного акаунту.
+              {t("q1-text4")}
             </span>
           </div>
         </span>
         <button disabled className="button-arounder">
-          Донатна сторінка
+          {t("donate-page")}
         </button>
         <span className="questions">
           <div className="tooltip">
             <IoIosHelpCircle className="question-icon" />
             <span className="tooltiptext">
-              Так, ваш донат є <b>безпечним</b>.<br /> Ми використовуємо
-              передові технології шифрування для захисту ваших{" "}
+              {t("q2-text1")} <b>{t("q2-text2")}</b>.<br /> {t("q2-text3")}
               <b>
-                <i>персональних даних </i>
+                <i>{t("q2-text4")} </i>
               </b>
-              та{" "}
+              {t("q2-text5")}
               <b>
-                <i>платіжної інформації</i>
+                <i>{t("q2-text6")}</i>
               </b>
-              .<br /> Всі транзакції проходять через{" "}
+              .<br /> {t("q2-text7")}
               <b>
-                <i>надійні платіжні шлюзи</i>
+                <i>{t("q2-text8")}</i>
               </b>
-              , що забезпечує додатковий рівень безпеки.
+              {t("q2-text9")}
             </span>
           </div>
-          Чи мій донат безпечний
+          {t("q2-head")}
         </span>
       </div>
       <div className="cards">
@@ -153,15 +156,13 @@ export const PaymentLandscape = () => {
               </div>
             </figure>
             <div className="article-body mono-body">
-              <p id="monobanka-p">
-                Ви також можете зробити свій внесок через банку Фонду
-              </p>
+              <p id="monobanka-p">{t("monobanka-p")}</p>
               <a
                 href="https://send.monobank.ua/jar/QsATQ1NQ4"
                 target="_blank"
                 rel="noreferrer"
               >
-                Монобанка
+                {t("monobank")}
               </a>
             </div>
           </div>
@@ -173,17 +174,21 @@ export const PaymentLandscape = () => {
                 <img src={image} alt="BPLA"></img>
               </div>
               <div className="donate-desc">
-                <h2>"Нічні кошмари"</h2>
+                <h2>"{t("img-head")}"</h2>
                 <span className="text-left">
                   <a href="/donate" disabled>
-                    <i>Хочете щоб було багато бавовни?</i>
+                    <i>{t("img-text1")}</i>
                   </a>
                 </span>
-                <span className="text-right">- Ми зробимо це разом!</span>
+                <span className="text-right">{t("img-text2")}</span>
                 <div className="progress-desc">
                   <div className="progress-text">
-                    <span className="donated-text">{donation} грн.</span>
-                    <span className="goal-text">Ціль: {goal} грн.</span>
+                    <span className="donated-text">
+                      {donation} {t("uah")}
+                    </span>
+                    <span className="goal-text">
+                      {t("img-goal")} {goal} {t("uah")}
+                    </span>
                   </div>
                   <div className="progress">
                     <div
@@ -237,7 +242,7 @@ export const PaymentLandscape = () => {
             </figure>
             <div id="visa-desc" className="article-body">
               <div>
-                <label>Одержувач</label>
+                <label>{t("recipient")}</label>
                 <div className="input-box">
                   <input
                     className="number"
@@ -283,7 +288,7 @@ export const PaymentLandscape = () => {
                 </div>
               </div>
               <div>
-                <label>РНОКПП</label>
+                <label>{t("rnokpp")}</label>
                 <div className="input-box">
                   <input
                     className="inputname"
@@ -306,7 +311,7 @@ export const PaymentLandscape = () => {
                 </div>
               </div>
               <div>
-                <label>Призначення платежу</label>
+                <label>{t("title")}</label>
                 <div className="input-box">
                   <input
                     className="expire"

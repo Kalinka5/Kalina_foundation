@@ -11,6 +11,8 @@ import {
   IoMdHeart,
 } from "react-icons/io";
 
+import { useTranslation } from "react-i18next";
+
 import { useMediaQuery } from "@uidotdev/usehooks";
 
 import api from "../api";
@@ -47,6 +49,8 @@ function Donators() {
   );
   const orientation = useOrientation();
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     getData();
     createTitleIcons();
@@ -55,7 +59,6 @@ function Donators() {
 
   const getData = async () => {
     try {
-      await new Promise((r) => setTimeout(r, 50000));
       const res = await api.get("/donators?format=json");
       console.log(`Response: ${res.data}`);
       console.log(`Donators: ${res.data}`);
@@ -128,7 +131,7 @@ function Donators() {
       <div className="donators-title">
         {titleIcons.map((el) => el)}
         <div className="title">
-          <p className="container-title">Топ Донатерів</p>
+          <p className="container-title">{t("donators-header")}</p>
         </div>
       </div>
       <div className="donators-background">
@@ -140,9 +143,9 @@ function Donators() {
               </div>
               <div className="contentBx">
                 <h3>
-                  Будь переможцем
+                  {t("donators-h")}
                   <br />
-                  <span>Задонатити на ЗСУ</span>
+                  <span>{t("donators-p")}</span>
                 </h3>
               </div>
             </div>
@@ -176,7 +179,9 @@ function Donators() {
                         />
                       </div>
                       <div className="donated">
-                        <p>Задонатив/ла {user.donated} грн.</p>
+                        <p>
+                          {t("donated")} {user.donated} {t("uah")}
+                        </p>
                       </div>
                       <div className="underline"></div>
                       <div className="username">{user.username}</div>
@@ -196,7 +201,9 @@ function Donators() {
                 {donators ? (
                   donators.map((user, index) => (
                     <div className={`bar __${index + 1}`} key={user.id}>
-                      <div className="money-value">({user.donated} грн.)</div>
+                      <div className="money-value">
+                        ({user.donated} {t("uah")})
+                      </div>
                       <div className="profile-pic">
                         <img
                           className="profile-pic-image"

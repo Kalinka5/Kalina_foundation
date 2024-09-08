@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import api from "../api";
 
@@ -13,6 +14,8 @@ function Items(props) {
   const { n } = useParams();
   const [items, setItems] = useState(null);
   const [isSuperUser, setIsSuperUser] = useState(false);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     getData();
@@ -37,7 +40,7 @@ function Items(props) {
   return (
     <div className="items">
       <div className="items-title">
-        <p className="container-title">На що ми збираємо</p>
+        <p className="container-title">{t("items-header")}</p>
       </div>
       {items ? (
         items.map((el, index) => (
@@ -52,7 +55,7 @@ function Items(props) {
                   />
                   <div className="item-buttons">
                     <a className="donate-button" href="/donate" target="_blank">
-                      <span>Задонатити</span>
+                      <span>{t("donate-button")}</span>
                     </a>
                     {isSuperUser && (
                       <a
@@ -61,7 +64,7 @@ function Items(props) {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <span>Змінити</span>
+                        <span>{t("edit-button")}</span>
                       </a>
                     )}
                   </div>
