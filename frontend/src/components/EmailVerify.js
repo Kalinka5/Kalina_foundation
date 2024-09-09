@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 
+import { useTranslation } from "react-i18next";
+
 import api from "../api";
 
 import "../styles/emailVerify.css";
@@ -11,6 +13,8 @@ function EmailVerify() {
   const { token } = useParams();
 
   const [emailStatus, setEmailStatus] = useState(null);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     verifyEmail();
@@ -40,8 +44,8 @@ function EmailVerify() {
     statusMessage = (
       <div className="text success">
         <h1 className="title">
-          Email <strong>Verification</strong>
-          <em>Done</em>
+          {t("email")} <strong>{t("verification")}</strong>
+          <em>{t("done")}</em>
         </h1>
       </div>
     );
@@ -49,10 +53,10 @@ function EmailVerify() {
     statusMessage = (
       <div className="text failed">
         <h1 className="title">
-          Email <strong>Verification</strong>
-          <em>Failed</em>
+          {t("email")} <strong>{t("verification")}</strong>
+          <em>{t("failed")}</em>
         </h1>
-        <p>Email may be already verified or the link is broken</p>
+        <p>{t("failed-sent")}</p>
       </div>
     );
   } else {

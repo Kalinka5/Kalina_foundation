@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 header {
-  line-height: 40px;
   width: 100%;
   position: fixed;
   background: rgba(0, 0, 0, 0.9);
@@ -53,83 +52,14 @@ header {
         }
       }
     }
-    .lang-menu {
-      position: relative;
-      color: #fff;
-      padding: 18px;
-    }
-    .lang-menu .selected-lang {
-      display: flex;
-      justify-content: space-between;
-      cursor: pointer;
-    }
-    .lang-menu .selected-lang:before {
-      content: "";
-      display: inline-block;
-      width: 32px;
-      height: 20px;
-      margin: auto;
-      background-image: url("../img/UK-flag.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-
-    .lang-menu ul {
-      margin: 0;
-      padding: 0;
-      display: none;
-      background-color: #fff;
-      border: 1px solid #f8f8f8;
-      position: absolute;
-      top: 55px;
-      right: 0px;
-      border-radius: 5px;
-      box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .lang-menu ul li {
-      list-style: none;
-      text-align: left;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .lang-menu ul li a {
-      text-decoration: none;
-      width: 125px;
-      padding: 5px 10px;
-      display: block;
-      color: black;
-    }
-
-    .lang-menu ul li:hover {
-      background-color: #f2f2f2;
-    }
-
-    .lang-menu ul li a:before {
-      content: "";
-      display: inline-block;
-      width: 25px;
-      height: 25px;
-      vertical-align: middle;
-      margin-right: 10px;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-
-    .ua:before {
-      background-image: url("../img/UA-flag.png");
-    }
-    .en:before {
-      background-image: url("../img/UK-flag.png");
-    }
-
-    .lang-menu:hover ul {
-      display: block;
-    }
   }
 }
 /* Media Query For different screens */
+@media (min-width: 320px) and (max-width: 599px) {
+  header {
+    line-height: 40px;
+  }
+}
 @media (min-width: 320px) and (max-width: 344px) {
   header .logo {
     width: 160px;
@@ -138,14 +68,8 @@ header {
       font-size: 13px;
     }
   }
-  header {
-    & .nav {
-      & li {
-        a {
-          width: 87px;
-        }
-      }
-    }
+  header .nav li a {
+    width: 87px;
   }
 }
 @media (min-width: 345px) and (max-width: 399px) {
@@ -156,14 +80,8 @@ header {
       font-size: 13px;
     }
   }
-  header {
-    & .nav {
-      & li {
-        a {
-          width: 95px;
-        }
-      }
-    }
+  header .nav li a {
+    width: 95px;
   }
 }
 @media (min-width: 400px) and (max-width: 479px) {
@@ -230,14 +148,14 @@ header {
 }
 @media (min-width: 1280px) and (min-height: 912px) {
   header .logo {
-    padding: 15px;
+    padding: 20px;
     a {
       font-size: 28px;
     }
   }
   header .nav li a {
     font-size: 21px;
-    padding: 18px;
+    padding: 25px;
   }
 }
 @media (min-width: 720px) and (max-height: 540px) {

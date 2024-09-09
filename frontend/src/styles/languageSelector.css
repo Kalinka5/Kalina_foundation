@@ -1,0 +1,121 @@
+.lang-menu {
+  position: relative;
+  color: #fff;
+  padding: 25px;
+
+  .selected-lang {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 21px;
+
+    .flag-img {
+      content: "";
+      display: inline-block;
+      width: 32px;
+      height: 20px;
+      margin: auto 10px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+  .languages {
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #f8f8f8;
+    position: absolute;
+    top: 60px;
+    right: 0px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    float: left;
+
+    li {
+      list-style: none;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      float: left;
+      border-right: 2px solid #c4c4c4;
+
+      button {
+        padding: 5px 10px;
+        display: block;
+        background: none;
+        border: none;
+        color: black;
+        text-align: left;
+        cursor: pointer;
+
+        &:before {
+          content: "";
+          display: inline-block;
+          width: 25px;
+          height: 25px;
+          vertical-align: middle;
+          margin-right: 10px;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+      .ua:before {
+        background-image: url("../img/UA-flag.png");
+      }
+      .en:before {
+        background-image: url("../img/UK-flag.png");
+      }
+      &:hover {
+        background-color: #f2f2f2;
+      }
+    }
+    li:last-child {
+      border-right: 0;
+    }
+  }
+}
+
+.lang-menu:hover .languages {
+  display: block;
+}
+
+@media (min-width: 320px) and (max-width: 599px) {
+  .lang-menu {
+    padding: 0;
+
+    .selected-lang {
+      margin-right: 10px;
+
+      .flag-img {
+        width: 18px;
+        height: 12px;
+      }
+    }
+  }
+}
+@media (min-width: 320px) and (max-width: 344px) {
+  .lang-menu {
+    .selected-lang {
+      font-size: 13px;
+    }
+  }
+}
+@media (min-width: 345px) and (max-width: 399px) {
+  .lang-menu {
+    .selected-lang {
+      font-size: 13px;
+    }
+  }
+}
+@media (min-width: 400px) and (max-width: 479px) {
+  .lang-menu {
+    .selected-lang {
+      font-size: 13px;
+    }
+  }
+}

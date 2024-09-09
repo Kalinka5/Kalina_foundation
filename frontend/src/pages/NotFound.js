@@ -1,8 +1,12 @@
+import { useTranslation } from "react-i18next";
+
 import { HOME_PAGE } from "../constants";
 
 import "../styles/notFound.css";
 
 function NotFound() {
+  const { t } = useTranslation();
+
   return (
     <div className="error404">
       <div className="stars">
@@ -19,7 +23,7 @@ function NotFound() {
             target="_blank"
             rel="noreferrer"
           >
-            GO BACK HOME
+            {t("go-back-home")}
           </a>
         </div>
         <div className="objects">

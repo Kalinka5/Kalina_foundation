@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import { RiCloseLine } from "react-icons/ri";
 
+import { useTranslation } from "react-i18next";
+
 import api from "../api";
 
 import { LOGIN_PAGE } from "../constants";
@@ -12,6 +14,8 @@ import "../styles/modal.css";
 
 const Modal = ({ setIsOpen }) => {
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const DeleteUser = async (e) => {
     e.preventDefault();
@@ -35,21 +39,19 @@ const Modal = ({ setIsOpen }) => {
       <div className="centered">
         <div className="modal">
           <div className="modalHeader">
-            <h5 className="heading">Confirmation</h5>
+            <h5 className="heading">{t("confirmation")}</h5>
           </div>
           <button className="closeBtn" onClick={() => setIsOpen(false)}>
             <RiCloseLine />
           </button>
-          <div className="modalContent">
-            Are you sure you want to delete an account?
-          </div>
+          <div className="modalContent">{t("are-you-sure")}</div>
           <div className="modalActions">
             <div className="actionsContainer">
               <button className="deleteBtn" onClick={DeleteUser}>
-                Delete
+                {t("delete-button")}
               </button>
               <button className="cancelBtn" onClick={() => setIsOpen(false)}>
-                Cancel
+                {t("cancel")}
               </button>
             </div>
           </div>

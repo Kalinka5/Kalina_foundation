@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
+import { useTranslation } from "react-i18next";
+
 import api from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN, PROFILE_PAGE } from "../constants";
 
@@ -18,6 +20,8 @@ function LoginLandscape() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -53,10 +57,10 @@ function LoginLandscape() {
       </div>
       <div className="column">
         <form className="log-reg-form log-p" onSubmit={handleSubmit}>
-          <h3 className="log-h3">Login Here</h3>
+          <h3 className="log-h3">{t("login-head")}</h3>
 
           <label className="email-label" htmlFor="email">
-            Email
+            {t("email")}
           </label>
           <div className="log-input-box">
             <input
@@ -68,7 +72,7 @@ function LoginLandscape() {
             />
           </div>
 
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t("password")}</label>
           <div className="log-input-box">
             <input
               type={passType}
@@ -92,15 +96,15 @@ function LoginLandscape() {
 
           <div className="btn-container log-button">
             <button type="submit">
-              Log In
+              {t("login-button")}
               {loading && <div className="loader"></div>}
             </button>
           </div>
 
           <p className="log-p">
-            You don't have an account?
+            {t("login-q")}
             <br />
-            <a href="/register">Register now</a>
+            <a href="/register">{t("register-now")}</a>
           </p>
         </form>
       </div>

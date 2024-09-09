@@ -3,6 +3,7 @@
   "register": "Register",
   "profile": "Profile",
   "logout": "Logout",
+
   "items-header": "What are we collecting for",
   "donate-button": "Donate",
   "edit-button": "Edit",
@@ -11,12 +12,15 @@
   "donators-p": "Donate to the ZSU",
   "donated": "Donated",
   "uah": "UAH",
+
   "q1-head": "How to appear in Top Donators",
   "q1-text1": "To appear on the main page of Top Donators, you need:",
   "q1-text2": "1) register and log in on our website;",
   "q1-text3": "2) specify ",
   "q1-text4": "of your created account in the description of the donation.",
+
   "donate-page": "Donate page",
+
   "q2-head": "Is my donation safe",
   "q2-text1": "Yes, your donation is ",
   "q2-text2": "safe",
@@ -27,13 +31,55 @@
   "q2-text7": "All transactions go through",
   "q2-text8": "reliable payment gateways",
   "q2-text9": ", which provides an additional level of security.",
+
   "monobanka-p": "You can also make your contribution through the bank of the Fund",
   "monobank": "Monobank",
+
   "img-head": "Nightmares",
   "img-text1": "Want lots of explosions?",
   "img-text2": "- We will do it together!",
   "img-goal": "Goal:",
+
   "recipient": "Recipient",
   "rnokpp": "RNOKPP",
-  "title": "Purpose of payment"
+  "title": "Purpose of payment",
+
+  "login-head": "Login Here",
+  "email": "Email",
+  "password": "Password",
+  "login-button": "Log In",
+  "login-q": "You don't have an account?",
+  "register-now": "Register now",
+
+  "registration": "Registration",
+  "username-input": "Enter your username",
+  "password-input": "Create password",
+  "conf-pass-input": "Confirm password",
+  "tooltip1": "Username must not be empty!",
+  "tooltip2": "The correct email address format consists of 4 parts: the local part, the '@' symbol, a period, and the domain name.",
+  "tooltip3": "Your password must be at least 8 characters long and contain at least 1 letter, 1 number, and 1 special character (eg #, @, &)",
+  "tooltip4": "The confirmation password must match the password being created!",
+  "register-q": "Already have an account?",
+
+  "upload-image": "Upload image",
+  "username": "Username",
+  "delete-button": "Delete",
+  "e-mail": "E-mail:",
+  "e-mail-input": "Your Email",
+  "firstname": "Firstname:",
+  "firstname-input": "Your First Name",
+  "lastname": "Lastname:",
+  "lastname-input": "Your Last Name",
+  "submit": "Submit",
+
+  "confirmation": "Confirmation",
+  "are-you-sure": "Are you sure you want to delete an account?",
+  "cancel": "Cancel",
+
+  "go-back-home": "GO BACK HOME",
+
+  "verification": "Verification",
+  "done": "Done",
+  "failed": "Failed",
+  "failed-sent": "Email may be already verified or the link is broken"
 }

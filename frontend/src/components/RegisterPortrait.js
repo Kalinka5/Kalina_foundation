@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 
 import { IoIosBulb } from "react-icons/io";
 
+import { useTranslation } from "react-i18next";
+
 import api from "../api";
 import Validation from "../validation";
 
@@ -21,6 +23,8 @@ function RegisterPortrait() {
   const [validFields, setValidFields] = useState({});
 
   const { setRegistrationStatus } = useContext(PatientContext);
+
+  const { t } = useTranslation();
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -65,7 +69,7 @@ function RegisterPortrait() {
         <div className="shape reg-shape2"></div>
       </div>
       <form className="log-reg-form reg-p" onSubmit={handleSubmit}>
-        <h2>Registration</h2>
+        <h2>{t("registration")}</h2>
 
         <div className="reg-input-box">
           <div className="input-icon">
@@ -78,16 +82,14 @@ function RegisterPortrait() {
                   : "error"
               }`}
               type="text"
-              placeholder="Enter your username"
+              placeholder={t("username-input")}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
             <i className="--icon">
               <IoIosBulb />
             </i>
-            <span className="tooltiptext name-tip">
-              Username не повинен бути пустим!
-            </span>
+            <span className="tooltiptext name-tip">{t("tooltip1")}</span>
           </div>
           {errors.username && <p>{errors.username}</p>}
         </div>
@@ -110,10 +112,7 @@ function RegisterPortrait() {
             <i className="--icon">
               <IoIosBulb />
             </i>
-            <span className="tooltiptext email-tip">
-              Правильний формат адреси електронної пошти складається з 4 частин:
-              локальна частина, символ "@", крапка і доменне ім'я.
-            </span>
+            <span className="tooltiptext email-tip">{t("tooltip2")}</span>
           </div>
           {errors.email && <p>{errors.email}</p>}
         </div>
@@ -129,18 +128,14 @@ function RegisterPortrait() {
                   : "error"
               }`}
               type="password"
-              placeholder="Create password"
+              placeholder={t("password-input")}
               value={password1}
               onChange={(e) => setPassword1(e.target.value)}
             />
             <i className="--icon">
               <IoIosBulb />
             </i>
-            <span className="tooltiptext pass-tip">
-              Ваш пароль повинен складатися не менше ніж з 8 символів і містити
-              не менше 1 літери, 1 цифри та 1 спеціального символу (наприклад,
-              #, @, &)
-            </span>
+            <span className="tooltiptext pass-tip">{t("tooltip3")}</span>
           </div>
           {errors.password && <p>{errors.password}</p>}
         </div>
@@ -156,32 +151,29 @@ function RegisterPortrait() {
                   : "error"
               }`}
               type="password"
-              placeholder="Confirm password"
+              placeholder={t("conf-pass-input")}
               value={password2}
               onChange={(e) => setPassword2(e.target.value)}
             />
             <i className="--icon">
               <IoIosBulb />
             </i>
-            <span className="tooltiptext confirm-tip">
-              Підтверджувальний пароль повинен співпадати зі створюваним
-              паролем!
-            </span>
+            <span className="tooltiptext confirm-tip">{t("tooltip4")}</span>
           </div>
           {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         </div>
 
         <div className="btn-container reg-button">
           <button type="submit">
-            Register Now
+            {t("register-now")}
             {loading && <div className="loader"></div>}
           </button>
         </div>
 
         <p>
-          Already have an account?
+          {t("register-q")}
           <br />
-          <a href={`${LOGIN_PAGE}`}>Login now</a>
+          <a href={`${LOGIN_PAGE}`}>{t("login-button")}</a>
         </p>
       </form>
     </div>

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { IoMdAt, IoIosContact, IoIosImage } from "react-icons/io";
 import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 
+import { useTranslation } from "react-i18next";
+
 import api from "../api";
 
 import Modal from "../components/DeleteModal";
@@ -18,8 +20,12 @@ function Profile() {
   const [last_name, setLastName] = useState("");
   const [image, setImage] = useState("");
   const [image_url, setImageURL] = useState("");
+
   const [loading, setLoading] = useState(false);
+
   const [isOpen, setIsOpen] = useState(false);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     getData();
@@ -93,7 +99,7 @@ function Profile() {
                   <div className="upload-image">
                     <IoIosImage />
                   </div>
-                  <h2>Upload image</h2>
+                  <h2>{t("upload-image")}</h2>
                 </div>
               </label>
             </div>
@@ -106,7 +112,7 @@ function Profile() {
                 required
               />
               <div className="underline"></div>
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">{t("username")}</label>
               <i className="icon">
                 <IoIosContact />
               </i>
@@ -118,19 +124,19 @@ function Profile() {
                 id="submit1"
                 onClick={() => setIsOpen(true)}
               >
-                Delete
+                {t("delete-button")}
               </button>
             </div>
           </div>
           <div className="profile-details">
             <div className="form-group">
-              <label htmlFor="email">E-mail:</label>
+              <label htmlFor="email">{t("e-mail")}</label>
               <div className="input-icon">
                 <input
                   type="email"
                   name="logemail"
                   className="form-style"
-                  placeholder="Your Email"
+                  placeholder={t("e-mail-input")}
                   id="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -141,13 +147,13 @@ function Profile() {
               </div>
             </div>
             <div className="form-group">
-              <label htmlFor="firstname">Firstname:</label>
+              <label htmlFor="firstname">{t("firstname")}</label>
               <div className="input-icon">
                 <input
                   type="text"
                   name="firstname"
                   className="form-style"
-                  placeholder="Your First Name"
+                  placeholder={t("firstname-input")}
                   id="firstname"
                   value={first_name}
                   onChange={(e) => setFirstName(e.target.value)}
@@ -158,13 +164,13 @@ function Profile() {
               </div>
             </div>
             <div className="form-group">
-              <label htmlFor="lastname">Lastname:</label>
+              <label htmlFor="lastname">{t("lastname")}</label>
               <div className="input-icon">
                 <input
                   type="text"
                   name="lastname"
                   className="form-style"
-                  placeholder="Your Last Name"
+                  placeholder={t("lastname-input")}
                   id="lastname"
                   value={last_name}
                   onChange={(e) => setLastName(e.target.value)}
@@ -176,7 +182,7 @@ function Profile() {
             </div>
             <div className="btn-container">
               <button type="submit" id="submit2">
-                Submit
+                {t("submit")}
                 {loading && <div className="loader"></div>}
               </button>
             </div>
