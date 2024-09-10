@@ -1,19 +1,27 @@
 import React, { useState } from "react";
 import i18n from "../i18n";
 
+import { useMediaQuery } from "@uidotdev/usehooks";
+
 import UA_flag from "../img/UA-flag.png";
 import UK_flag from "../img/UK-flag.png";
 
 import "../styles/languageSelector.css";
 
 const LanguageSelector = () => {
-  const [selectedLang, setSelectedLang] = useState("ua");
+  const savedLang = localStorage.getItem("i18nextLng") || "ua";
+  const [selectedLang, setSelectedLang] = useState(savedLang);
+
+  const isPhoneDisplay = useMediaQuery(
+    "only screen and (min-width: 300px) and (max-width: 600px)"
+  );
 
   const handleLanguageChange = (e) => {
     e.preventDefault(); // Prevent default link behavior
     const newLang = e.target.getAttribute("data-lang"); // Get the language code from the data attribute
     setSelectedLang(newLang);
     i18n.changeLanguage(newLang);
+    localStorage.setItem("i18nextLng", newLang); // Save the selected language to localStorage
   };
 
   // Determine the display name and flag based on the selected language
@@ -24,7 +32,21 @@ const LanguageSelector = () => {
     <div className="lang-menu">
       <div className="selected-lang">
         <img src={flagImage} alt={languageDisplayName} className="flag-img" />
-        {languageDisplayName}
+        {!isPhoneDisplay && languageDisplayName}
+        <div className="arrow">
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            strokeWidth="0"
+            viewBox="0 0 24 24"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path fill="none" d="M24 24H0V0h24v24z" opacity=".87"></path>
+            <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"></path>
+          </svg>
+        </div>
       </div>
       <ul className="languages">
         <li>

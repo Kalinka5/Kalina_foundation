@@ -10,21 +10,23 @@ const Header = (props) => {
 
   return (
     <header>
-      <div className="logo">
-        <a href="/home/1">
-          <span>Kalina</span> <span>Foundation</span>
-        </a>
-      </div>
       <div className="nav">
         <ul>
-          {props.links.map((el) => (
-            <li key={el.id}>
-              <a href={el.urlLink}>{t(el.urlName)}</a>
-            </li>
-          ))}
+          <li>
+            <div className="logo">
+              <a href="/home/1">
+                <span>Kalina</span> <span>Foundation</span>
+              </a>
+            </div>
+          </li>
           <li>
             <LanguageSelector />
           </li>
+          {props.links.map((el) => (
+            <li key={el.id} className="nav-link">
+              <a href={el.urlLink}>{t(el.urlName)}</a>
+            </li>
+          ))}
         </ul>
       </div>
     </header>

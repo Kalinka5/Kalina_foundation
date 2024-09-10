@@ -12,10 +12,13 @@ const resources = {
   },
 };
 
+const savedLanguage = localStorage.getItem("i18nextLng") || "ua"; // Get saved language or default to 'ua'
+
 i18n.use(initReactI18next).init({
   resources,
-  lng: "ua",
+  lng: savedLanguage, // Initialize with the saved language
   fallbackLng: "ua",
+  debug: true,
   interpolation: {
     escapeValue: false,
   },
