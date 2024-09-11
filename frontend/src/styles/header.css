@@ -10,7 +10,7 @@ header {
   .nav {
     ul {
       display: grid;
-      grid-template-columns: 1fr repeat(1, auto) 1fr 1fr;
+      grid-template-columns: 1fr repeat(1, auto) 1fr;
       grid-column-gap: 5px;
       justify-items: center;
       list-style: none;
@@ -56,7 +56,7 @@ header {
     }
     .nav-link {
       a {
-        padding: auto;
+        padding: 15px;
         color: #f2f2f2;
         text-align: center;
         text-transform: uppercase;
@@ -79,24 +79,22 @@ header {
     line-height: 40px;
 
     .nav .nav-link a {
-      margin: 0 7px;
+      padding: 0 5px;
     }
   }
 }
 @media (min-width: 320px) and (max-width: 344px) {
-  header .nav ul li .logo {
-    width: 160px;
+  header .nav {
+    ul li .logo {
+      width: 160px;
 
-    a {
-      font-size: 13px;
+      a {
+        font-size: 13px;
+      }
     }
-  }
-  header .nav .nav-link a {
-    width: 87px;
-    margin: 0 4px;
-  }
-  header .nav ul li:nth-child(3) {
-    width: 35px;
+    .nav-link a {
+      padding: 0 4px;
+    }
   }
 }
 @media (min-width: 345px) and (max-width: 399px) {
@@ -106,9 +104,6 @@ header {
     a {
       font-size: 13px;
     }
-  }
-  header .nav ul li:nth-child(3) {
-    width: 45px;
   }
 }
 @media (min-width: 400px) and (max-width: 479px) {

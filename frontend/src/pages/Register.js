@@ -1,11 +1,9 @@
-import React, { createContext, useState } from "react";
-
+import React, { createContext, useState, useEffect } from "react";
 import Alert from "@mui/material/Alert";
-
 import useOrientation from "../useOrientation";
-
 import RegisterPortrait from "../components/RegisterPortrait";
 import RegisterLandscape from "../components/RegisterLandscape";
+import i18n from "../i18n"; // Ensure this is imported
 
 import "../styles/register.css";
 
@@ -13,8 +11,14 @@ export const PatientContext = createContext([{}]);
 
 function Register() {
   const [registrationStatus, setRegistrationStatus] = useState(null);
-
   const orientation = useOrientation();
+
+  useEffect(() => {
+    // Check if language is properly saved in localStorage
+    const savedLanguage = localStorage.getItem("i18nextLng") || "ua";
+    console.log("Language Loaded from LocalStorage: ", savedLanguage);
+    i18n.changeLanguage(savedLanguage); // Ensure correct language on load
+  }, []);
 
   let statusMessage = null;
   if (registrationStatus === "success") {

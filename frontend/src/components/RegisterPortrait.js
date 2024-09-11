@@ -173,7 +173,7 @@ function RegisterPortrait() {
         <p>
           {t("register-q")}
           <br />
-          <a href={`${LOGIN_PAGE}`}>{t("login-button")}</a>
+          <a href={`${LOGIN_PAGE}`}>{t("login-now")}</a>
         </p>
       </form>
     </div>

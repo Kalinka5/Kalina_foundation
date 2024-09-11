@@ -60,6 +60,7 @@
   "tooltip3": "Your password must be at least 8 characters long and contain at least 1 letter, 1 number, and 1 special character (eg #, @, &)",
   "tooltip4": "The confirmation password must match the password being created!",
   "register-q": "Already have an account?",
+  "login-now": "Login now",
 
   "upload-image": "Upload image",
   "username": "Username",

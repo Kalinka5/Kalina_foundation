@@ -9,6 +9,8 @@ import {
 import { useMediaQuery } from "@uidotdev/usehooks";
 
 import {
+  ACCESS_TOKEN,
+  REFRESH_TOKEN,
   HOME_PAGE,
   LOGIN_PAGE,
   REGISTER_PAGE,
@@ -43,13 +45,9 @@ import transportMobile from "./img/transport_mobile.jpeg";
 import "./styles/index.css";
 
 function Logout() {
-  localStorage.clear();
+  localStorage.removeItem(ACCESS_TOKEN);
+  localStorage.removeItem(REFRESH_TOKEN);
   return <Navigate to={`${HOME_PAGE}/1`} />;
-}
-
-function RegisterAndLogout() {
-  localStorage.clear();
-  return <Register />;
 }
 
 function App() {
@@ -109,7 +107,7 @@ function App() {
             />
             <Route exact path="item/:id/edit" element={<ItemEdit />} />
             <Route path={LOGIN_PAGE} element={<Login />} />
-            <Route path={REGISTER_PAGE} element={<RegisterAndLogout />} />
+            <Route path={REGISTER_PAGE} element={<Register />} />
             <Route path="email-verify/:uid/:token" element={<EmailVerify />} />
             <Route path={LOGOUT_PAGE} element={<Logout />} />
             <Route

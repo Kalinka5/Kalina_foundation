@@ -22,11 +22,13 @@ const Header = (props) => {
           <li>
             <LanguageSelector />
           </li>
-          {props.links.map((el) => (
-            <li key={el.id} className="nav-link">
-              <a href={el.urlLink}>{t(el.urlName)}</a>
-            </li>
-          ))}
+          <li className="nav-link">
+            {props.links.map((el) => (
+              <a key={el.id} href={el.urlLink}>
+                {t(el.urlName)}
+              </a>
+            ))}
+          </li>
         </ul>
       </div>
     </header>

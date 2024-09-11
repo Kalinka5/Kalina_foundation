@@ -18,10 +18,10 @@ const LanguageSelector = () => {
 
   const handleLanguageChange = (e) => {
     e.preventDefault(); // Prevent default link behavior
-    const newLang = e.target.getAttribute("data-lang"); // Get the language code from the data attribute
+    const newLang = e.target.getAttribute("data-lang");
     setSelectedLang(newLang);
     i18n.changeLanguage(newLang);
-    localStorage.setItem("i18nextLng", newLang); // Save the selected language to localStorage
+    localStorage.setItem("i18nextLng", newLang);
   };
 
   // Determine the display name and flag based on the selected language
@@ -51,12 +51,12 @@ const LanguageSelector = () => {
       <ul className="languages">
         <li>
           <button className="ua" onClick={handleLanguageChange} data-lang="ua">
-            UA
+            <b>UA</b>
           </button>
         </li>
         <li>
           <button className="en" onClick={handleLanguageChange} data-lang="en">
-            EN
+            <b>EN</b>
           </button>
         </li>
       </ul>
