@@ -13,8 +13,7 @@
     .container-title {
       text-align: center;
       padding: 0 !important;
-      margin-top: 40px;
-      margin-bottom: 40px;
+      margin: 40px 0;
       font-size: 40px;
       color: #fff;
       font-weight: 600;
@@ -49,86 +48,6 @@
           .item-image {
             width: 380px;
             border-radius: 12px;
-            margin-bottom: 20px;
-          }
-          .donate-button:link,
-          .donate-button:visited {
-            all: unset;
-            margin-top: 10px;
-            background: rgb(0, 195, 65);
-            border: 2px solid white;
-            padding: 1em 4em;
-            border-radius: 50px;
-            cursor: pointer;
-            display: inline-block;
-            font-weight: 700;
-            position: relative;
-            transition: all 300ms ease;
-            span {
-              display: inline-block;
-              transition: all 300ms ease;
-              z-index: 2;
-            }
-            &:before,
-            &:after {
-              content: "";
-              display: block;
-              position: absolute;
-              transition: all 300ms ease;
-              opacity: 0;
-            }
-            &:before {
-              height: 7px;
-              width: 7px;
-              background: transparent;
-              border-right: 2px solid;
-              border-top: 2px solid;
-              right: 30px;
-              top: 1.323em;
-              transform: rotate(45deg);
-            }
-            &:after {
-              background: rgb(0, 0, 0);
-              height: 2px;
-              width: 50px;
-              left: 0;
-              top: 1.49em;
-              z-index: 1;
-            }
-            &:hover {
-              span {
-                transform: translateX(-10px);
-              }
-              &:before {
-                opacity: 1;
-              }
-              &:after {
-                width: 14px;
-                opacity: 1;
-                transform: translateX(175px);
-              }
-            }
-          }
-          .donate-button:hover,
-          .donate-button:active {
-            background-color: rgb(0, 237, 79);
-          }
-          .edit-button:link,
-          .edit-button:visited {
-            all: unset;
-            margin-top: 10px;
-            background: rgb(194, 181, 0);
-            border: 2px solid white;
-            padding: 1em 4em;
-            border-radius: 50px;
-            cursor: pointer;
-            display: inline-block;
-            font-weight: 700;
-          }
-
-          .edit-button:hover,
-          .edit-button:active {
-            background-color: rgb(212, 198, 0);
           }
         }
         .column2 {
@@ -148,6 +67,70 @@
             font-size: 16px;
           }
         }
+        .item-buttons {
+          grid-row-start: 2;
+          grid-column-start: 1;
+          grid-column-end: 3;
+          margin-top: 15px;
+          justify-content: center;
+
+          .donate-button {
+            display: flex;
+            justify-content: center;
+
+            .donate-but {
+              --c: #127b00; /* the color */
+
+              box-shadow: 0 0 0 0.1em inset var(--c);
+              --_g: linear-gradient(var(--c) 0 0) no-repeat;
+              background: var(--_g) calc(var(--_p, 0%) - 100%) 0%,
+                var(--_g) calc(200% - var(--_p, 0%)) 0%,
+                var(--_g) calc(var(--_p, 0%) - 100%) 100%,
+                var(--_g) calc(200% - var(--_p, 0%)) 100%;
+              background-size: 50.5% calc(var(--_p, 0%) / 2 + 0.5%);
+              outline-offset: 0.1em;
+              transition: background-size 0.4s, background-position 0s 0.4s;
+              font-family: system-ui, sans-serif;
+              font-size: 2.5rem;
+              cursor: pointer;
+              padding: 0.1em 0.6em;
+              font-weight: bold;
+              color: #127b00;
+              text-decoration: none;
+              display: inline-block;
+              border-radius: 15px;
+            }
+
+            .donate-but:hover {
+              --_p: 100%;
+              transition: background-position 0.4s, background-size 0s;
+              color: #fff;
+            }
+
+            .donate-but:active {
+              box-shadow: 0 0 9e9Q inset #0009;
+              background-color: var(--c);
+              color: #fff;
+            }
+            .edit-button:link,
+            .edit-button:visited {
+              all: unset;
+              margin-top: 10px;
+              background: rgb(194, 181, 0);
+              border: 2px solid white;
+              padding: 1em 4em;
+              border-radius: 50px;
+              cursor: pointer;
+              display: inline-block;
+              font-weight: 700;
+            }
+
+            .edit-button:hover,
+            .edit-button:active {
+              background-color: rgb(212, 198, 0);
+            }
+          }
+        }
       }
     }
     .left {
@@ -159,9 +142,8 @@
   }
 }
 /* Media Query For different screens */
-@media (min-width: 320px) and (max-width: 991px) {
+@media (min-width: 320px) and (max-width: 1024px) and (orientation: portrait) {
   .items {
-    max-width: 959px !important;
     .gradient-cards .card .container-card {
       display: block;
       text-align: center;
@@ -171,35 +153,53 @@
     }
   }
 }
-@media (min-width: 320px) and (max-width: 344px) {
-  .items {
-    .gradient-cards .card .container-card .column1 .item-image {
-      width: 200px;
+@media (min-width: 320px) and (max-width: 540px) {
+  .items .items-title .container-title {
+    margin: 15px 0;
+    font-size: 27px;
+  }
+  .items
+    .gradient-cards
+    .card
+    .container-card
+    .item-buttons
+    .donate-button
+    .donate-but {
+    font-size: 2rem;
+  }
+  .items .gradient-cards .card .container-card {
+    padding: 30px;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 759px) and (orientation: portrait) {
+  .items .gradient-cards .card .container-card .column1 .item-image {
+    width: 100%;
+  }
+}
+@media (min-width: 720px) and (max-height: 540px) {
+  .items .gradient-cards .card .container-card .column1 .item-image {
+    width: 300px;
+  }
+  .items .gradient-cards .card .container-card .column2 {
+    .card-title {
+      line-height: 25px;
+      font-size: 23px;
     }
-    .gradient-cards .card .container-card .column1 .donate-button:link,
-    .donate-button:visited {
-      padding: 1em 3em;
+    .card-description {
+      line-height: 22px;
+      font-size: 11px;
     }
   }
 }
-@media screen and (min-width: 345px) and (max-width: 759px) {
+@media screen and (min-width: 760px) and (max-width: 1024px) and (orientation: portrait) {
   .items {
-    .gradient-cards .card .container-card .column1 .item-image {
-      width: 250px;
-    }
-  }
-}
-@media screen and (min-width: 760px) and (max-width: 991px) {
-  .items {
-    .gradient-cards .card .container-card .column1 .item-image {
-      width: 50%;
-    }
     .gradient-cards .card .container-card .column1 {
       display: flex;
       justify-content: center;
 
       .item-image {
         margin-bottom: 0;
+        width: 100%;
       }
       .item-buttons {
         display: flex;

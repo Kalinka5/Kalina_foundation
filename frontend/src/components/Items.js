@@ -53,25 +53,27 @@ function Items(props) {
                     src={API_URL + el.image}
                     alt="item1"
                   />
-                  <div className="item-buttons">
-                    <a className="donate-button" href="/donate" target="_blank">
-                      <span>{t("donate-button")}</span>
-                    </a>
-                    {isSuperUser && (
-                      <a
-                        className="edit-button"
-                        href={`/item/${el.id}/edit`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <span>{t("edit-button")}</span>
-                      </a>
-                    )}
-                  </div>
                 </div>
                 <div className="column2">
                   <p className="card-title">{el.title}</p>
                   <p className="card-description">{el.description}</p>
+                </div>
+                <div className="item-buttons">
+                  <div className="donate-button">
+                    <a href="/donate" className="donate-but" target="_blank">
+                      {t("donate-button")}
+                    </a>
+                  </div>
+                  {isSuperUser && (
+                    <a
+                      className="edit-button"
+                      href={`/item/${el.id}/edit`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span>{t("edit-button")}</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
