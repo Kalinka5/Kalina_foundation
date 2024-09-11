@@ -45,7 +45,7 @@ function Donators() {
     "only screen and (min-width: 1025px) and (max-width: 3000px)"
   );
   const isMonitor = useMediaQuery(
-    "only screen and (min-width: 1400px) and (max-width: 3000px)"
+    "only screen and (min-width: 1500px) and (max-width: 3000px)"
   );
   const orientation = useOrientation();
 
@@ -72,7 +72,7 @@ function Donators() {
     const icons = [];
     const iconsDiv = [];
 
-    for (let i = 1; i <= 21; i++) {
+    for (let i = 1; i <= 35; i++) {
       iconsDiv.push(
         <i className="title-icons" key={i}>
           <IoIosCash />
@@ -80,7 +80,7 @@ function Donators() {
       );
     }
 
-    for (let i = 1; i <= 12; i++) {
+    for (let i = 1; i <= 15; i++) {
       icons.push(
         <div className="icon-row title-row" key={i}>
           <div className="ic">{iconsDiv.map((el) => el)}</div>
