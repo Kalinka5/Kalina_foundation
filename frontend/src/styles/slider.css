@@ -48,35 +48,7 @@
   }
 }
 /* Media Query For different screens */
-@media (min-width: 320px) and (max-width: 479px) {
-  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
-  .slider {
-    height: 760px;
-    .slide {
-      height: 760px;
-      img {
-        height: 760px;
-      }
-    }
-  }
-}
-@media (min-width: 480px) and (max-width: 599px) {
-  /* smartphones, Android phones, landscape iPhone */
-}
-@media (min-width: 600px) and (max-width: 764px) {
-  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
-  .slider {
-    height: 860px;
-    .slide {
-      height: 860px;
-      img {
-        height: 860px;
-      }
-    }
-  }
-}
 @media (min-width: 765px) and (max-width: 820px) {
-  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
   .slider {
     height: 650px;
     .slide {
@@ -88,7 +60,6 @@
   }
 }
 @media (min-width: 821px) and (max-width: 1024px) {
-  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
   .slider {
     height: 750px;
     .slide {
@@ -98,13 +69,4 @@
       }
     }
   }
-}
-@media (min-width: 801px) and (max-width: 1024px) {
-  /* tablet, landscape iPad, lo-res laptops ands desktops */
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-  /* big landscape tablets, laptops, and desktops */
-}
-@media (min-width: 1281px) {
-  /* hi-res laptops and desktops */
 }

@@ -178,7 +178,7 @@ header {
     }
   }
 }
-@media (min-width: 1250px) and (orientation: landscape) {
+@media (min-width: 1181px) and (orientation: landscape) {
   header .nav ul li .logo {
     padding: 20px;
     a {

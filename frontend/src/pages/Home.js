@@ -16,7 +16,7 @@ function Home(props) {
     <div className="main">
       {integerN > 0 && integerN < 6 ? (
         <div>
-          <Slider page={n} images={props.images} />
+          <Slider page={n} />
           <Items page={n} isAuth={props.isAuth} />
           <Donators />
           <Footer back="dot-white" />
