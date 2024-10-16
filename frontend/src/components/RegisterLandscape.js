@@ -89,9 +89,9 @@ function RegisterLandscape() {
                 onChange={(e) => setUsername(e.target.value)}
               ></input>
               <i className="--icon">
-                <IoIosBulb />
+                <IoIosBulb className="lh-48" />
+                <span className="tooltiptext name-tip">{t("tooltip1")}</span>
               </i>
-              <span className="tooltiptext name-tip">{t("tooltip1")}</span>
             </div>
             {errors.username && <p>{errors.username}</p>}
           </div>
@@ -113,8 +113,8 @@ function RegisterLandscape() {
               />
               <i className="--icon">
                 <IoIosBulb />
+                <span className="tooltiptext email-tip">{t("tooltip2")}</span>
               </i>
-              <span className="tooltiptext email-tip">{t("tooltip2")}</span>
             </div>
             {errors.email && <p>{errors.email}</p>}
           </div>
@@ -136,8 +136,8 @@ function RegisterLandscape() {
               />
               <i className="--icon">
                 <IoIosBulb />
+                <span className="tooltiptext pass-tip">{t("tooltip3")}</span>
               </i>
-              <span className="tooltiptext pass-tip">{t("tooltip3")}</span>
             </div>
             {errors.password && <p>{errors.password}</p>}
           </div>
@@ -159,8 +159,8 @@ function RegisterLandscape() {
               />
               <i className="--icon">
                 <IoIosBulb />
+                <span className="tooltiptext confirm-tip">{t("tooltip4")}</span>
               </i>
-              <span className="tooltiptext confirm-tip">{t("tooltip4")}</span>
             </div>
             {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
           </div>

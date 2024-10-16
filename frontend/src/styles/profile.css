@@ -151,8 +151,8 @@
           --slant: 0.7em; /* control the slanted corners */
           --color: #c51a00; /* the color */
 
-          width: 70px;
-          height: 40px;
+          width: 94px;
+          height: 50px;
           border: none;
           cursor: pointer;
           font-weight: bold;
@@ -388,10 +388,6 @@
     }
     .profile-header .delete-button {
       right: 7px;
-
-      button {
-        width: 62px;
-      }
     }
     .profile-details .form-group {
       padding-left: 0;

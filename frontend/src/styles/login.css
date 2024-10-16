@@ -1,5 +1,12 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
 .login {
   .login-register {
+    * {
+      font-family: "Poppins", sans-serif;
+      letter-spacing: 0.5px;
+      outline: none;
+    }
     .landscape {
       background-color: rgba(255, 255, 255, 0.13);
       position: relative;
@@ -53,7 +60,7 @@
       .log-h3 {
         color: #ffffff;
         font-size: 32px;
-        font-weight: 500;
+        font-weight: 700;
         line-height: 42px;
         text-align: center;
       }
@@ -258,8 +265,12 @@
   }
 }
 @media (min-width: 1180px) and (max-width: 1299px) and (orientation: landscape) {
-  .login .login-register .landscape .log-reg-form .log-input-box input {
-    padding: 0px 14px;
+  .login .login-register .landscape {
+    height: 550px;
+
+    .log-reg-form .log-input-box input {
+      padding: 0px 14px;
+    }
   }
 }
 @media (min-width: 1300px) and (max-width: 1599px) and (orientation: landscape) {

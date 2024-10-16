@@ -49,6 +49,13 @@
         }
       }
     }
+    .portrait .log-reg-form .reg-input-box .input-icon .--icon .tooltiptext {
+      left: -192px;
+
+      &::after {
+        left: 85%;
+      }
+    }
     .reg-p {
       color: #ffffff;
       padding: 50px 45px;
@@ -58,7 +65,7 @@
       h2 {
         color: #ffffff;
         font-size: 32px;
-        font-weight: 500;
+        font-weight: 700;
         line-height: 42px;
         text-align: center;
       }
@@ -95,18 +102,6 @@
           .error {
             border-color: #8a021d;
           }
-          .name-tip {
-            top: -1px;
-          }
-          .email-tip {
-            top: -25px;
-          }
-          .pass-tip {
-            top: -35px;
-          }
-          .confirm-tip {
-            top: -10px;
-          }
           .--icon {
             position: absolute;
             top: 3px;
@@ -119,33 +114,50 @@
             -webkit-transition: all 200ms linear;
             transition: all 200ms linear;
             cursor: pointer;
-          }
-          .tooltiptext {
-            visibility: hidden;
-            width: 240px;
-            background-color: rgb(255, 219, 57);
-            color: #000000;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            left: 60px;
 
-            &::after {
-              content: "";
+            .name-tip {
+              top: -58px;
+            }
+            .email-tip {
+              top: -131px;
+            }
+            .pass-tip {
+              top: -154px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+            .confirm-tip {
+              top: -82px;
+            }
+            .tooltiptext {
+              visibility: hidden;
+              width: 240px;
+              background-color: rgb(255, 219, 57);
+              color: #000000;
+              text-align: center;
+              font-size: 15px;
+              line-height: 24px;
+              border-radius: 6px;
+              padding: 5px 0;
               position: absolute;
-              left: 198px;
-              top: 108%;
-              margin-top: -5px;
-              margin-left: -5px;
-              border-width: 5px;
-              border-style: solid;
-              border-color: rgb(255, 219, 57) transparent transparent
-                transparent;
+              z-index: 1;
+              left: 0px;
+
+              &::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 5%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: rgb(255, 219, 57) transparent transparent
+                  transparent;
+              }
             }
           }
-          .--icon:hover ~ .tooltiptext {
+          .--icon:hover .tooltiptext {
             visibility: visible;
           }
         }
@@ -190,32 +202,8 @@
   .register .login-register .log-reg-form {
     width: 260px;
 
-    .reg-input-box .input-icon .tooltiptext {
-      left: 30px;
-    }
-    .reg-input-box .input-icon .name-tip {
-      top: -40px;
-      &::after {
-        top: 108%;
-      }
-    }
-    .reg-input-box .input-icon .email-tip {
-      top: -95px;
-      &::after {
-        top: 104%;
-      }
-    }
-    .reg-input-box .input-icon .pass-tip {
-      top: -113px;
-      &::after {
-        top: 103%;
-      }
-    }
-    .reg-input-box .input-icon .confirm-tip {
-      top: -58px;
-      &::after {
-        top: 106%;
-      }
+    .reg-input-box .input-icon .--icon {
+      right: 10px;
     }
   }
   .register .login-register .reg-p {
@@ -238,37 +226,12 @@
   .register .login-register .log-reg-form {
     height: 523px;
     width: 300px;
-
-    .reg-input-box .input-icon .tooltiptext {
-      left: 70px;
-    }
-    .reg-input-box .input-icon .name-tip {
-      top: -40px;
-      &::after {
-        top: 110%;
-      }
-    }
-    .reg-input-box .input-icon .email-tip {
-      top: -95px;
-      &::after {
-        top: 105%;
-      }
-    }
-    .reg-input-box .input-icon .pass-tip {
-      top: -113px;
-      &::after {
-        top: 104%;
-      }
-    }
-    .reg-input-box .input-icon .confirm-tip {
-      top: -58px;
-    }
   }
   .register .login-register .reg-p {
     padding: 50px 35px;
   }
 }
-@media (min-width: 390px) and (max-width: 399px) {
+@media (min-width: 390px) and (max-width: 479px) {
   .register .login-register .log-reg-background .reg-shape1 {
     left: 10px;
     top: -60px;
@@ -276,118 +239,6 @@
   .register .login-register .log-reg-background .reg-shape2 {
     right: 10px;
     bottom: -120px;
-  }
-  .register .login-register .log-reg-form {
-    .reg-input-box .input-icon .tooltiptext {
-      left: 70px;
-    }
-    .reg-input-box .input-icon .name-tip {
-      top: -40px;
-      &::after {
-        top: 110%;
-      }
-    }
-    .reg-input-box .input-icon .email-tip {
-      top: -95px;
-      &::after {
-        top: 105%;
-      }
-    }
-    .reg-input-box .input-icon .pass-tip {
-      top: -113px;
-      &::after {
-        top: 104%;
-      }
-    }
-    .reg-input-box .input-icon .confirm-tip {
-      top: -58px;
-    }
-  }
-  .register .login-register .log-reg-form {
-    height: 550px;
-    width: 300px;
-  }
-  .register .login-register .reg-p {
-    padding: 50px 35px;
-  }
-}
-@media (min-width: 400px) and (max-width: 429px) {
-  .register .login-register .log-reg-background .reg-shape1 {
-    left: 10px;
-    top: -60px;
-  }
-  .register .login-register .log-reg-background .reg-shape2 {
-    right: 10px;
-    bottom: -120px;
-  }
-  .register .login-register .log-reg-form {
-    .reg-input-box .input-icon .tooltiptext {
-      left: 70px;
-    }
-    .reg-input-box .input-icon .name-tip {
-      top: -40px;
-      &::after {
-        top: 110%;
-      }
-    }
-    .reg-input-box .input-icon .email-tip {
-      top: -95px;
-      &::after {
-        top: 105%;
-      }
-    }
-    .reg-input-box .input-icon .pass-tip {
-      top: -113px;
-      &::after {
-        top: 104%;
-      }
-    }
-    .reg-input-box .input-icon .confirm-tip {
-      top: -58px;
-    }
-  }
-  .register .login-register .log-reg-form {
-    height: 550px;
-    width: 300px;
-  }
-  .register .login-register .reg-p {
-    padding: 50px 35px;
-  }
-}
-@media (min-width: 430px) and (max-width: 479px) {
-  .register .login-register .log-reg-background .reg-shape1 {
-    left: 10px;
-    top: -60px;
-  }
-  .register .login-register .log-reg-background .reg-shape2 {
-    right: 10px;
-    bottom: -120px;
-  }
-  .register .login-register .log-reg-form {
-    .reg-input-box .input-icon .tooltiptext {
-      left: 70px;
-    }
-    .reg-input-box .input-icon .name-tip {
-      top: -40px;
-      &::after {
-        top: 110%;
-      }
-    }
-    .reg-input-box .input-icon .email-tip {
-      top: -95px;
-      &::after {
-        top: 105%;
-      }
-    }
-    .reg-input-box .input-icon .pass-tip {
-      top: -113px;
-      &::after {
-        top: 104%;
-      }
-    }
-    .reg-input-box .input-icon .confirm-tip {
-      top: -58px;
-    }
   }
   .register .login-register .log-reg-form {
     height: 550px;
@@ -410,65 +261,6 @@
   .register .login-register .log-reg-background .reg-shape2 {
     right: -63px;
     bottom: -120px;
-  }
-  .register .login-register .log-reg-form {
-    .reg-input-box .input-icon .tooltiptext {
-      left: 120px;
-    }
-    .reg-input-box .input-icon .name-tip {
-      top: -40px;
-      &::after {
-        top: 110%;
-      }
-    }
-    .reg-input-box .input-icon .email-tip {
-      top: -95px;
-      &::after {
-        top: 105%;
-      }
-    }
-    .reg-input-box .input-icon .pass-tip {
-      top: -113px;
-      &::after {
-        top: 104%;
-      }
-    }
-    .reg-input-box .input-icon .confirm-tip {
-      top: -58px;
-    }
-  }
-}
-@media (min-width: 480px) and (max-width: 759px) and (orientation: landscape) {
-  .register .login-register .log-reg-form {
-    .reg-input-box .input-icon .tooltiptext {
-      left: 35px;
-      width: 186px;
-    }
-    .reg-input-box .input-icon .name-tip {
-      top: -40px;
-      &::after {
-        top: 110%;
-      }
-    }
-    .reg-input-box .input-icon .email-tip {
-      top: -87px;
-      &::after {
-        top: 105%;
-      }
-    }
-    .reg-input-box .input-icon .pass-tip {
-      top: -103px;
-      &::after {
-        top: 104%;
-      }
-    }
-    .reg-input-box .input-icon .confirm-tip {
-      top: -55px;
-    }
-  }
-  .register .login-register .log-reg-form .reg-input-box .input-icon .--icon {
-    top: 0px;
-    right: 13px;
   }
 }
 @media (min-width: 760px) and (max-width: 999px) and (orientation: portrait) {
@@ -509,34 +301,6 @@
         }
       }
     }
-    .log-reg-form .reg-input-box .input-icon .tooltiptext {
-      left: 190px;
-      width: 350px;
-    }
-    .log-reg-form .reg-input-box .input-icon .name-tip {
-      top: -57px;
-      &::after {
-        top: 108%;
-      }
-    }
-    .log-reg-form .reg-input-box .input-icon .email-tip {
-      top: -139px;
-      &::after {
-        top: 104%;
-      }
-    }
-    .log-reg-form .reg-input-box .input-icon .pass-tip {
-      top: -165px;
-      &::after {
-        top: 103%;
-      }
-    }
-    .log-reg-form .reg-input-box .input-icon .confirm-tip {
-      top: -85px;
-      &::after {
-        top: 106%;
-      }
-    }
   }
 }
 @media (min-width: 820px) and (orientation: portrait) {
@@ -568,6 +332,10 @@
         .--icon {
           font-size: 46px;
           top: 14px;
+
+          .tooltiptext {
+            left: -395%;
+          }
         }
       }
       .reg-button {
@@ -577,145 +345,22 @@
         }
       }
     }
-    .log-reg-form .reg-input-box .input-icon .tooltiptext {
-      left: 219px;
-      width: 350px;
-    }
-    .log-reg-form .reg-input-box .input-icon .name-tip {
-      top: -70px;
-      &::after {
-        top: 106%;
-      }
-    }
-    .log-reg-form .reg-input-box .input-icon .email-tip {
-      top: -206px;
-      &::after {
-        top: 103%;
-      }
-    }
-    .log-reg-form .reg-input-box .input-icon .pass-tip {
-      top: -242px;
-      &::after {
-        top: 103%;
-      }
-    }
-    .log-reg-form .reg-input-box .input-icon .confirm-tip {
-      top: -140px;
-      &::after {
-        top: 104%;
-      }
-    }
-  }
-}
-@media (min-width: 1024px) and (max-width: 1179px) and (orientation: landscape) {
-  .register .login-register .landscape .log-reg-form {
-    .reg-input-box .input-icon .tooltiptext {
-      left: 38px;
-      width: 250px;
-    }
-    .reg-input-box .input-icon .name-tip {
-      top: -40px;
-      &::after {
-        top: 110%;
-      }
-    }
-    .reg-input-box .input-icon .email-tip {
-      top: -94px;
-      &::after {
-        top: 104%;
-      }
-    }
-    .reg-input-box .input-icon .pass-tip {
-      top: -95px;
-      &::after {
-        top: 104%;
-      }
-    }
-    .reg-input-box .input-icon .confirm-tip {
-      top: -58px;
-      &::after {
-        top: 107%;
-      }
-    }
   }
 }
 @media (min-width: 1024px) and (orientation: landscape) {
   .register .login-register .landscape .log-reg-form .reg-input-box {
     height: 52px;
   }
+  .register .login-register .landscape .log-reg-form {
+    width: 80%;
+  }
+}
+@media (min-width: 1180px) and (max-width: 1299px) and (orientation: landscape) {
   .register .login-register .landscape {
-    .log-reg-form {
-      width: 80%;
-    }
-  }
-}
-@media (min-width: 1180px) and (max-width: 1279px) and (orientation: landscape) {
-  .register .login-register .landscape .log-reg-form .reg-input-box input {
-    padding: 0px 14px;
-  }
-  .register .login-register .landscape .log-reg-form {
-    .reg-input-box .input-icon .tooltiptext {
-      left: 93px;
-      width: 250px;
-    }
-    .reg-input-box .input-icon .name-tip {
-      top: -40px;
-      &::after {
-        top: 106%;
-      }
-    }
-    .reg-input-box .input-icon .email-tip {
-      top: -94px;
-      &::after {
-        top: 103%;
-      }
-    }
-    .reg-input-box .input-icon .pass-tip {
-      top: -95px;
-      &::after {
-        top: 103%;
-      }
-    }
-    .reg-input-box .input-icon .confirm-tip {
-      top: -58px;
-      &::after {
-        top: 104%;
-      }
-    }
-  }
-}
-@media (min-width: 1280px) and (max-width: 1299px) and (orientation: landscape) {
-  .register .login-register .landscape .log-reg-form .reg-input-box input {
-    padding: 0px 14px;
-  }
-  .register .login-register .landscape .log-reg-form {
-    .reg-input-box .input-icon .tooltiptext {
-      left: 128px;
-      width: 250px;
-    }
-    .reg-input-box .input-icon .name-tip {
-      top: -42px;
-      &::after {
-        top: 112%;
-      }
-    }
-    .reg-input-box .input-icon .email-tip {
-      top: -95px;
-      &::after {
-        top: 104%;
-      }
-    }
-    .reg-input-box .input-icon .pass-tip {
-      top: -96px;
-      &::after {
-        top: 105%;
-      }
-    }
-    .reg-input-box .input-icon .confirm-tip {
-      top: -59px;
-      &::after {
-        top: 107%;
-      }
+    width: 64%;
+
+    .log-reg-form .reg-input-box input {
+      padding: 0px 14px;
     }
   }
 }
@@ -730,36 +375,6 @@
       padding: 50px 80px;
     }
   }
-  .register .login-register .landscape .log-reg-form {
-    .reg-input-box .input-icon .tooltiptext {
-      left: 88px;
-      width: 250px;
-    }
-    .reg-input-box .input-icon .name-tip {
-      top: -40px;
-      &::after {
-        top: 106%;
-      }
-    }
-    .reg-input-box .input-icon .email-tip {
-      top: -94px;
-      &::after {
-        top: 103%;
-      }
-    }
-    .reg-input-box .input-icon .pass-tip {
-      top: -95px;
-      &::after {
-        top: 103%;
-      }
-    }
-    .reg-input-box .input-icon .confirm-tip {
-      top: -58px;
-      &::after {
-        top: 104%;
-      }
-    }
-  }
 }
 @media (min-width: 1600px) and (orientation: landscape) {
   .register .login-register .landscape {
@@ -770,29 +385,6 @@
   }
   .register .login-register .reg-p {
     padding: 55px 135px;
-  }
-  .register .login-register .landscape .log-reg-form {
-    .reg-input-box .input-icon .tooltiptext {
-      left: 374px;
-      width: 250px;
-      &::after {
-        top: 50%;
-        left: -4px; /* To the left of the tooltip */
-        border-color: transparent rgb(255, 219, 57) transparent transparent;
-      }
-    }
-    .reg-input-box .input-icon .name-tip {
-      top: -6px;
-    }
-    .reg-input-box .input-icon .email-tip {
-      top: -44px;
-    }
-    .reg-input-box .input-icon .pass-tip {
-      top: -56px;
-    }
-    .reg-input-box .input-icon .confirm-tip {
-      top: -17px;
-    }
   }
 }
 @media (min-width: 1024px) and (max-height: 600px) {
@@ -831,33 +423,12 @@
               right: 15px;
             }
           }
-        }
-        .reg-input-box .input-icon .tooltiptext {
-          left: 53px;
-          width: 250px;
-        }
-        .reg-input-box .input-icon .name-tip {
-          top: -43px;
-          &::after {
-            top: 109%;
-          }
-        }
-        .reg-input-box .input-icon .email-tip {
-          top: -97px;
-          &::after {
-            top: 104%;
-          }
-        }
-        .reg-input-box .input-icon .pass-tip {
-          top: -97px;
-          &::after {
-            top: 104%;
-          }
-        }
-        .reg-input-box .input-icon .confirm-tip {
-          top: -61px;
-          &::after {
-            top: 106%;
+          .input-icon .--icon .tooltiptext {
+            left: -10px;
+
+            &::after {
+              left: 9%;
+            }
           }
         }
         .btn-container {
@@ -872,17 +443,14 @@
   }
 }
 @media (min-width: 720px) and (max-height: 540px) {
-  .register .login-register .landscape {
-    margin-top: 55px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 600px;
+  .register {
+    .login-register .landscape {
+      margin-top: 55px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 600px;
 
-    .column {
-      .reg-p {
-        padding: 30px 40px;
-      }
-      .log-reg-form {
+      .column .log-reg-form {
         height: 392px;
         font-size: 14px;
         width: 80%;
@@ -891,23 +459,35 @@
           font-size: 30px;
           margin-bottom: 30px;
         }
-        label {
-          font-size: 14px;
-        }
         .reg-input-box {
           margin: 0 0;
+
           input {
             height: 38px;
             font-size: 14px;
             padding: 0px 8px;
           }
-          .password-toggle-icon {
-            i {
-              font-size: 18px;
+          .input-icon .--icon .tooltiptext {
+            width: 206px;
+            font-size: 13px;
+            line-height: 20px;
+            left: -71px;
+
+            &::after {
+              left: 41%;
             }
           }
-          .input-icon .tooltiptext::after {
-            left: 160px;
+          .input-icon .--icon .name-tip {
+            top: -48px;
+          }
+          .input-icon .--icon .email-tip {
+            top: -108px;
+          }
+          .input-icon .--icon .pass-tip {
+            top: -128px;
+          }
+          .input-icon .--icon .confirm-tip {
+            top: -68px;
           }
         }
         .btn-container {
@@ -917,6 +497,9 @@
             font-size: 14px;
           }
         }
+      }
+      .column .reg-p {
+        padding: 30px 40px;
       }
     }
   }

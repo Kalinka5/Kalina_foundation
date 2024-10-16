@@ -170,7 +170,7 @@
 }
 @media (min-width: 720px) {
   .lang-menu {
-    padding: 11px;
+    padding: 10px;
 
     .selected-lang .flag-img {
       margin: auto 5px;
