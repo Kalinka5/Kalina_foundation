@@ -34,8 +34,9 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '.vercel.app',
-    '127.0.0.1',
+    "127.0.0.1",
+    ".vercel.app",
+    ".now.sh"
 ]
 
 # Application definition
