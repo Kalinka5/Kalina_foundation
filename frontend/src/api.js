@@ -12,8 +12,11 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
+    config.headers["Access-Control-Allow-Origin"] = API_URL;
+
     const token = localStorage.getItem(ACCESS_TOKEN);
     const csrfToken = Cookies.get("csrftoken");
+
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
       config.headers["Content-Type"] = "multipart/form-data";
