@@ -9,5 +9,4 @@ export const PROFILE_PAGE = "/profile";
 export const DONATE_PAGE = "/donate";
 
 // /choreo-apis/kalinafond/backend/v1
-export const API_URL =
-  "https://kalina-foundation-back-af318puta-kalinka5s-projects.vercel.app/";
+export const API_URL = "https://kalina-foundation-back.vercel.app/";
