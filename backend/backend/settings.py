@@ -187,4 +187,5 @@ CORS_ALLOW_ALL_ORIGINS = False
 
 CORS_ALLOWED_ORIGINS = [
     "https://kalina-foundation.vercel.app",
+    "https://www.kalina-fond.com"
 ]
