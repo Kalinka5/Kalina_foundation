@@ -49,8 +49,10 @@ function Items(props) {
                   <img className="item-image" src={el.image} alt="item1" />
                 </div>
                 <div className="column2">
-                  <p className="card-title">{el.title}</p>
-                  <p className="card-description">{el.description}</p>
+                  <p className="card-title">{t(`${el.title}-title`)}</p>
+                  <p className="card-description">
+                    {t(`${el.title}-description`)}
+                  </p>
                 </div>
                 <div className="item-buttons">
                   <div className="donate-button">
