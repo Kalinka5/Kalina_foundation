@@ -27,6 +27,7 @@ class Item(models.Model):
     )
 
     class Meta:
+        # Shows like Items in admin panel
         verbose_name_plural = "Items"
 
     def __str__(self) -> str:
