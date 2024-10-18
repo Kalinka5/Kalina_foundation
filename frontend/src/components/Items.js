@@ -4,8 +4,6 @@ import { useTranslation } from "react-i18next";
 
 import api from "../api";
 
-import { API_URL } from "../constants";
-
 import ItemsLoader from "./LoaderItems";
 
 import "../styles/items.css";
@@ -48,11 +46,7 @@ function Items(props) {
             <div className={`card ${index % 2 === 0 ? "left" : "right"}`}>
               <div className="container-card">
                 <div className="column1">
-                  <img
-                    className="item-image"
-                    src={API_URL + el.image}
-                    alt="item1"
-                  />
+                  <img className="item-image" src={el.image} alt="item1" />
                 </div>
                 <div className="column2">
                   <p className="card-title">{el.title}</p>

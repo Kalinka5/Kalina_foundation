@@ -174,7 +174,7 @@ function Donators() {
                       <div className="profile-pic">
                         <img
                           className="profile-pic-image"
-                          src={API_URL + user.image}
+                          src={user.image}
                           alt="Donater"
                         />
                       </div>
@@ -207,7 +207,7 @@ function Donators() {
                       <div className="profile-pic">
                         <img
                           className="profile-pic-image"
-                          src={API_URL + user.image}
+                          src={user.image}
                           alt="Donater"
                         />
                       </div>
