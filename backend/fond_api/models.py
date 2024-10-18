@@ -30,11 +30,6 @@ class Item(models.Model):
         # Shows like Items in admin panel
         verbose_name_plural = "Items"
 
-    def save(self, *args, **kwargs):
-        if self.image:
-            self.image = f'https://{self.image.url[51:]}'  # Fix missing colon
-        super().save(*args, **kwargs)
-
     def __str__(self) -> str:
         return self.title
 
