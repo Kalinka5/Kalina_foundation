@@ -4,20 +4,21 @@ import { IoIosHelpCircle, IoIosBrowsers, IoIosCheckmark } from "react-icons/io";
 
 import { useTranslation } from "react-i18next";
 
+import api from "../api";
+
 import image from "../img/donate-bpla.jpg";
 
 import "../styles/paymentLandscape.css";
 
 export const PaymentLandscape = () => {
-  const [donation, setDonation] = useState(0);
   const [progress, setProgress] = useState(0);
-  const goal = 150000;
+  const [goal, setGoal] = useState(0);
+  const [initialDonation, setInitialDonation] = useState(0);
 
   const { t } = useTranslation();
 
   useEffect(() => {
-    const initialDonation = 15000;
-    setDonation(initialDonation);
+    getDonationData();
 
     // Animate progress bar
     const startProgress = 0;
@@ -42,6 +43,17 @@ export const PaymentLandscape = () => {
 
     requestAnimationFrame(animateProgress);
   }, [goal]);
+
+  const getDonationData = async () => {
+    try {
+      console.log("Start getting data of Donation item...");
+      const item = await api.get(`/items/18/?format=json`);
+      setGoal(item.data["full_price"]);
+      setInitialDonation(item.data["collected"]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const [recCoppied, setRecCoppied] = useState(false);
   const [ibanCoppied, setIbanCoppied] = useState(false);
@@ -184,7 +196,7 @@ export const PaymentLandscape = () => {
                 <div className="progress-desc">
                   <div className="progress-text">
                     <span className="donated-text">
-                      {donation} {t("uah")}
+                      {initialDonation} {t("uah")}
                     </span>
                     <span className="goal-text">
                       {t("img-goal")} {goal} {t("uah")}
