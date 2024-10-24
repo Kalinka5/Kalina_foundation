@@ -2,20 +2,26 @@ from rest_framework import generics, status, viewsets, filters
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes, throttle_classes
-from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 from rest_framework.views import APIView
 
 from django.shortcuts import get_object_or_404
 
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
+
 from django_filters.rest_framework import DjangoFilterBackend
 
-from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.utils.encoding import force_bytes, force_str
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.http import JsonResponse
+
+from decimal import Decimal
+
+import requests
+
+import json
 
 from .tokens import account_activation_token
 
@@ -160,3 +166,48 @@ def donaters(request):
     user = User.objects.all().order_by('-donated')[:5]
     serializer = UserSerializer(user, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+def get_usd_to_uah():
+    api_url = 'https://openexchangerates.org/api/latest.json'
+    params = {
+        'app_id': 'e94233a551a742bd954db09fe0a66807',
+        'symbols': 'UAH'
+    }
+    response = requests.get(api_url, params=params)
+    data = response.json()
+    return data['rates']['UAH']
+
+
+@csrf_exempt
+def process_donation(request):
+    if request.method == 'POST':
+        # Parse the JSON data
+        data = json.loads(request.body)
+        amount = data.get('amount')
+        user_email = data.get('email')
+
+        print(f"Amount: {amount}")
+        print(f"Email: {user_email}")
+        amount_usd = float(amount)
+
+        usd_to_uah = get_usd_to_uah()
+        amount_uah = amount_usd * usd_to_uah
+        amount = Decimal(amount_uah)
+
+        try:
+            user = User.objects.get(email=user_email)
+            user.donated += amount  # Update donation amount
+            user.save()
+
+            # Update Item collected variable
+            item_id = 1
+            item = Item.objects.get(pk=item_id)
+            item.collected += int(amount_uah)
+            item.save()
+
+            return JsonResponse({'status': 'success', 'message': 'Donation processed successfully'})
+        except User.DoesNotExist:
+            return JsonResponse({'status': 'error', 'message': 'User not found'}, status=404)
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)

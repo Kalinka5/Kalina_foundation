@@ -3,7 +3,7 @@ from django.urls import path
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from .views import RegisterApi, CategoriesListView, single_category, ItemsViewSet, profile, donaters, activate
+from .views import RegisterApi, CategoriesListView, single_category, ItemsViewSet, profile, donaters, activate, process_donation
 
 
 urlpatterns = [
@@ -15,6 +15,7 @@ urlpatterns = [
     path('categories/<int:pk>', single_category, name='single_category'),
     path('profile', profile, name='profile'),
     path('donators', donaters, name='top-donators'),
+    path('donate/', process_donation, name='process_donation'),
 ]
 
 

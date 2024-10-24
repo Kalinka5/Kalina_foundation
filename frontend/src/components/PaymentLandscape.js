@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 import { IoIosHelpCircle, IoIosBrowsers, IoIosCheckmark } from "react-icons/io";
 
@@ -6,14 +6,22 @@ import { useTranslation } from "react-i18next";
 
 import api from "../api";
 
+import PayPal from "./PayPalButton";
+
+import ChangeDonMethod from "./ChangeDonateMethod";
+
 import image from "../img/donate-bpla.jpg";
 
 import "../styles/paymentLandscape.css";
+
+export const PaymentContext = createContext([{}]);
 
 export const PaymentLandscape = () => {
   const [progress, setProgress] = useState(0);
   const [goal, setGoal] = useState(0);
   const [initialDonation, setInitialDonation] = useState(0);
+
+  const [currentDonation, setCurrentDonation] = useState(1);
 
   const { t } = useTranslation();
 
@@ -97,7 +105,7 @@ export const PaymentLandscape = () => {
   return (
     <div className="pc-version">
       <div className="payment-header">
-        <span className="questions">
+        <span className="questions left-q">
           {t("q1-head")}
           <div className="tooltip">
             <IoIosHelpCircle className="question-icon" />
@@ -119,7 +127,7 @@ export const PaymentLandscape = () => {
         <button disabled className="button-arounder">
           {t("donate-page")}
         </button>
-        <span className="questions">
+        <span className="questions right-q">
           <div className="tooltip">
             <IoIosHelpCircle className="question-icon" />
             <span className="tooltiptext">
@@ -142,8 +150,10 @@ export const PaymentLandscape = () => {
         </span>
       </div>
       <div className="cards">
-        <article>
-          <div className="article-wrapper">
+        <article
+          className={`payment-methods ${currentDonation === 2 ? "paypal" : ""}`}
+        >
+          <div className="article-wrapper front">
             <figure>
               <div className="container-mastercard">
                 <div className="front-card front-hov">
@@ -177,6 +187,9 @@ export const PaymentLandscape = () => {
                 {t("monobank")}
               </a>
             </div>
+          </div>
+          <div className="article-wrapper back">
+            <PayPal />
           </div>
         </article>
         <article>
@@ -223,29 +236,31 @@ export const PaymentLandscape = () => {
                     className="map-img"
                     alt="Map"
                   />
-                  <div className="row">
+                  <div className="row p-r-15 p-l-15 p-t-15">
                     <img
                       src="https://i.ibb.co/G9pDnYJ/chip.png"
                       width="50px"
                       alt="Chip"
+                      className="chip-img"
                     />
                     <img
                       src="https://i.ibb.co/WHZ3nRJ/visa.png"
                       width="50px"
                       alt="Visa"
+                      className="visa-img"
                     />
                   </div>
-                  <div className="row card-no">
+                  <div className="row card-no p-r-15 p-l-15">
                     <p>4149</p>
                     <p>4390</p>
                     <p>2438</p>
                     <p>4293</p>
                   </div>
-                  <div className="row card-holder">
+                  <div className="row card-holder p-r-15 p-l-15">
                     <p>CARD HOLDER</p>
                     <p>VALID TILL</p>
                   </div>
-                  <div className="row name">
+                  <div className="row name p-r-15 p-l-15 p-b-15">
                     <p>Daniil Kalinevych</p>
                     <p>dd / yy</p>
                   </div>
@@ -349,6 +364,9 @@ export const PaymentLandscape = () => {
           </div>
         </article>
       </div>
+      <PaymentContext.Provider value={{ currentDonation, setCurrentDonation }}>
+        <ChangeDonMethod />
+      </PaymentContext.Provider>
     </div>
   );
 };

@@ -1,0 +1,48 @@
+.donate-change {
+  background: #eeedef;
+  display: flex;
+  flex-direction: column;
+  height: 88px;
+  justify-content: center;
+  position: relative;
+  width: 280px;
+  border-radius: 30px;
+  margin-top: 40px;
+
+  .bar {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    justify-content: space-between;
+
+    .option {
+      cursor: pointer;
+      flex: 1;
+      line-height: 40px;
+      text-align: center;
+      color: black; /* Default inactive text color */
+      transition: color 200ms ease-in-out;
+    }
+    .option.active {
+      color: white; /* White color for active option */
+      z-index: 1; /* Ensure the text stays above the ellipse */
+    }
+  }
+  .ellipse {
+    background: #6000ea;
+    border-radius: 20px / 50%; /* Creates straight top and bottom, rounded sides */
+    height: 40px;
+    position: absolute;
+    width: 90px;
+    transition: transform 200ms ease-in-out, background-color 200ms ease-in-out;
+    z-index: 0;
+  }
+  .pos1 {
+    transform: translateX(27%); /* Start at first option */
+  }
+
+  .pos2 {
+    transform: translateX(182%); /* Slide to second option */
+  }
+}

@@ -3,7 +3,7 @@ import Alert from "@mui/material/Alert";
 import useOrientation from "../useOrientation";
 import RegisterPortrait from "../components/RegisterPortrait";
 import RegisterLandscape from "../components/RegisterLandscape";
-import i18n from "../i18n"; // Ensure this is imported
+import i18n from "../i18n";
 
 import "../styles/register.css";
 
