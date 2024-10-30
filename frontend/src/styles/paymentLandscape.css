@@ -119,7 +119,7 @@
       transform-style: preserve-3d;
       transition: all 0.8s ease;
     }
-    .paypal {
+    .others {
       transform: rotateY(180deg);
     }
     article {
@@ -244,8 +244,10 @@
               border-radius: 11px;
               overflow: hidden;
               transition: transform 0.3s ease, box-shadow 0.2s ease-in;
-              z-index: 1;
               backface-visibility: hidden;
+            }
+            .img-z-1 {
+              z-index: 1;
             }
             .row {
               display: flex;

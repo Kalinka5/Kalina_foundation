@@ -1,0 +1,74 @@
+.paypal-side {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+.radio-list {
+  margin: 10px;
+  display: flex;
+}
+h1 {
+  font-size: 20px;
+  margin: 10px;
+  color: #524eee;
+  text-align: center;
+}
+.radio-item [type="radio"] {
+  display: none;
+}
+.radio-item + .radio-item {
+  margin-top: 15px;
+}
+.radio-item label {
+  display: block;
+  padding: 17px 50px;
+  margin: 5px;
+  background: #f4c20c;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+  white-space: nowrap;
+  position: relative;
+  transition: 0.4s ease-in-out 0s;
+}
+.radio-item label:after,
+.radio-item label:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+.radio-item label:after {
+  height: 19px;
+  width: 19px;
+  border: 2px solid #524eee;
+  left: 19px;
+  top: calc(50% - 12px);
+}
+.radio-item label:before {
+  background: #524eee;
+  height: 19px;
+  width: 19px;
+  left: 19px;
+  top: 16px;
+  top: calc(50%-5px);
+  transform: scale(5);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.4s ease-in-out 0s;
+}
+.radio-item [type="radio"]:checked ~ label {
+  border-color: #524eee;
+}
+.radio-item [type="radio"]:checked ~ label::before {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+.paypal-button {
+  margin: 20px;
+}

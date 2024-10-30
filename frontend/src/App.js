@@ -51,7 +51,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {auth ? <Header links={authLinks} /> : <Header links={notAuthLinks} />}
+        <Header links={auth ? authLinks : notAuthLinks} />
         <main>
           <Routes>
             <Route

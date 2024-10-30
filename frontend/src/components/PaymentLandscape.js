@@ -55,7 +55,7 @@ export const PaymentLandscape = () => {
   const getDonationData = async () => {
     try {
       console.log("Start getting data of Donation item...");
-      const item = await api.get(`/items/18/?format=json`);
+      const item = await api.get(`/items/1/?format=json`);
       setGoal(item.data["full_price"]);
       setInitialDonation(item.data["collected"]);
     } catch (err) {
@@ -151,7 +151,7 @@ export const PaymentLandscape = () => {
       </div>
       <div className="cards">
         <article
-          className={`payment-methods ${currentDonation === 2 ? "paypal" : ""}`}
+          className={`payment-methods ${currentDonation === 2 ? "others" : ""}`}
         >
           <div className="article-wrapper front">
             <figure>
@@ -188,9 +188,7 @@ export const PaymentLandscape = () => {
               </a>
             </div>
           </div>
-          <div className="article-wrapper back">
-            <PayPal />
-          </div>
+          <div className="article-wrapper back"></div>
         </article>
         <article>
           <div className="article-wrapper">
@@ -226,11 +224,17 @@ export const PaymentLandscape = () => {
             </div>
           </div>
         </article>
-        <article>
-          <div className="article-wrapper">
+        <article
+          className={`payment-methods ${currentDonation === 2 ? "others" : ""}`}
+        >
+          <div className="article-wrapper front">
             <figure>
               <div className="container-visa">
-                <div className="front front-hov">
+                <div
+                  className={`front front-hov ${
+                    currentDonation === 1 ? "img-z-1" : ""
+                  }`}
+                >
                   <img
                     src="https://i.ibb.co/PYss3yv/map.png"
                     className="map-img"
@@ -361,6 +365,9 @@ export const PaymentLandscape = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="article-wrapper back">
+            <PayPal />
           </div>
         </article>
       </div>
