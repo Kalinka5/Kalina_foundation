@@ -15,9 +15,11 @@ function Items(props) {
 
   const { t } = useTranslation();
 
+  const isAuthen = props.superUser;
+
   useEffect(() => {
     getData();
-  }, []);
+  }, [isAuthen]);
 
   const getData = async () => {
     try {
@@ -25,7 +27,7 @@ function Items(props) {
       const resItems = await api.get(`/items/?page=${n}&format=json`);
       setItems(resItems.data);
 
-      if (props.isAuth) {
+      if (isAuthen) {
         console.log("Start getting data of profile...");
         const res = await api.get("/profile");
         setIsSuperUser(res.data.is_superuser);
@@ -61,14 +63,16 @@ function Items(props) {
                     </a>
                   </div>
                   {isSuperUser && (
-                    <a
-                      className="edit-button"
-                      href={`/item/${el.id}/edit`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <span>{t("edit-button")}</span>
-                    </a>
+                    <div className="donate-button">
+                      <a
+                        className="edit-button"
+                        href={`/item/${el.id}/edit`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <span>{t("edit-button")}</span>
+                      </a>
+                    </div>
                   )}
                 </div>
               </div>

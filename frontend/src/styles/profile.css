@@ -1,6 +1,7 @@
 .profile {
   margin: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -8,9 +9,14 @@
   font-family: "Montserrat", sans-serif;
   overflow: hidden;
 
+  .profile-field {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .profile-card {
     background-color: #fff;
-    margin-top: 70px;
     border-radius: 10px;
     overflow: hidden;
     height: 580px;
@@ -338,6 +344,11 @@
     }
   }
 }
+
+.profile > Header {
+  flex-shrink: 0;
+}
+
 /* Media Query For different screens */
 @media (min-width: 320px) and (max-width: 344px) {
   .profile .profile-card {
@@ -374,7 +385,6 @@
 @media (min-width: 345px) and (max-width: 389px) {
   .profile .profile-card {
     width: 350px;
-    margin-top: 40px;
 
     .profile-header .input-data .underline::before {
       left: 25px;
@@ -457,7 +467,6 @@
   .profile .profile-card {
     width: 600px;
     height: auto;
-    margin-top: 43px;
 
     .profile-header {
       .form-element {
@@ -524,7 +533,6 @@
   .profile .profile-card {
     width: 600px;
     height: auto;
-    margin-top: 43px;
 
     .profile-header {
       .form-element {
@@ -591,7 +599,6 @@
   .profile .profile-card {
     width: 380px;
     height: auto;
-    margin-top: 45px;
 
     .profile-header {
       padding: 14px;
@@ -655,7 +662,6 @@
   .profile .profile-card {
     width: 400px;
     height: auto;
-    margin-top: 38px;
 
     .profile-header {
       .form-element {

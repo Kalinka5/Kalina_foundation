@@ -7,9 +7,10 @@ import "../styles/header.css";
 
 const Header = (props) => {
   const { t } = useTranslation();
+  const fixed = props.fixed;
 
   return (
-    <header>
+    <header className={`${fixed && "pos-fixed"}`}>
       <div className="nav">
         <ul>
           <li>

@@ -26,10 +26,10 @@ code {
 
 /*Login and Register forms*/
 .login-register {
+  flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   background: linear-gradient(to bottom, #2f80ed, #ebe37d);
   overflow: hidden;
 }

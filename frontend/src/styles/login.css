@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
 .login {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
   .login-register {
     * {
       font-family: "Poppins", sans-serif;
@@ -10,7 +14,6 @@
     .landscape {
       background-color: rgba(255, 255, 255, 0.13);
       position: relative;
-      margin: auto auto;
       display: flex;
       border-radius: 10px;
       backdrop-filter: blur(10px);
@@ -131,6 +134,10 @@
       }
     }
   }
+}
+
+.login > Header {
+  flex-shrink: 0;
 }
 
 ::placeholder {
@@ -302,9 +309,6 @@
 }
 @media (min-width: 1024px) and (max-height: 600px) and (orientation: landscape) {
   .login .login-register .landscape {
-    margin-top: 67px;
-    margin-left: auto;
-    margin-right: auto;
     height: 500px;
 
     .column .log-p {
@@ -317,9 +321,6 @@
 }
 @media (min-width: 720px) and (max-height: 540px) and (orientation: landscape) {
   .login .login-register .landscape {
-    margin-top: 55px;
-    margin-left: auto;
-    margin-right: auto;
     width: 600px;
 
     .column {

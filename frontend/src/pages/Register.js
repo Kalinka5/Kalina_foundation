@@ -1,17 +1,21 @@
 import React, { createContext, useState, useEffect } from "react";
 import Alert from "@mui/material/Alert";
 import useOrientation from "../useOrientation";
+
 import RegisterPortrait from "../components/RegisterPortrait";
 import RegisterLandscape from "../components/RegisterLandscape";
+import Header from "../components/Header";
+
 import i18n from "../i18n";
 
 import "../styles/register.css";
 
 export const PatientContext = createContext([{}]);
 
-function Register() {
+function Register(props) {
   const [registrationStatus, setRegistrationStatus] = useState(null);
   const orientation = useOrientation();
+  const links = props.links;
 
   useEffect(() => {
     // Check if language is properly saved in localStorage
@@ -39,6 +43,7 @@ function Register() {
 
   return (
     <div className="register">
+      <Header links={links} fixed={false} />
       <div className="login-register">
         {statusMessage}
         <PatientContext.Provider

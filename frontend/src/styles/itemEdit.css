@@ -3,14 +3,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   min-height: 100vh;
   background: linear-gradient(to right, #ebe37d, #2f80ed);
   font-family: "Montserrat", sans-serif;
   overflow: hidden;
 
+  .item-desc {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .item-card {
     background-color: #fff;
-    margin-top: 70px;
     width: 600px;
     border-radius: 10px;
     overflow: hidden;
@@ -201,4 +207,7 @@
       transition: all 200ms linear;
     }
   }
+}
+.edit-item > Header {
+  flex-shrink: 0;
 }

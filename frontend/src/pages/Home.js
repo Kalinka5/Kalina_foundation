@@ -5,6 +5,7 @@ import Slider from "../components/Slider";
 import Items from "../components/Items";
 import Donators from "../components/Donators";
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 import NotFound from "./NotFound";
 
@@ -14,16 +15,17 @@ function Home(props) {
 
   return (
     <div className="main">
+      <Header links={props.links} fixed={true} />
       {integerN > 0 && integerN < 6 ? (
         <div>
           <Slider page={n} />
-          <Items page={n} isAuth={props.isAuth} />
+          <Items page={n} superUser={props.isAuth} />
           <Donators />
-          <Footer back="dot-white" />
         </div>
       ) : (
         <NotFound />
       )}
+      <Footer back="dot-white" />
     </div>
   );
 }

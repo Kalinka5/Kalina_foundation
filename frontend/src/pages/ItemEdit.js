@@ -7,9 +7,11 @@ import api from "../api";
 
 import { API_URL } from "../constants";
 
+import Header from "../components/Header";
+
 import "../styles/itemEdit.css";
 
-function ItemEdit() {
+function ItemEdit(props) {
   const { id } = useParams();
 
   const [title, setTitle] = useState("");
@@ -17,6 +19,8 @@ function ItemEdit() {
   const [image, setImage] = useState("");
   const [image_url, setImageURL] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const links = props.links;
 
   useEffect(() => {
     getData();
@@ -67,60 +71,63 @@ function ItemEdit() {
 
   return (
     <div className="edit-item">
-      <div className="item-card">
-        <form onSubmit={handleSubmit}>
-          <div className="form-element">
-            <input
-              type="file"
-              id="profile-image"
-              accept="image/*"
-              onChange={getFile}
-            />
-            <label htmlFor="profile-image" id="profile-image-preview">
-              <img src={image_url} alt="Profile" />
-              <div className="upload-content">
-                <div className="upload-image">
-                  <IoIosImage />
+      <Header links={links} fixed={false} />
+      <div className="item-desc">
+        <div className="item-card">
+          <form onSubmit={handleSubmit}>
+            <div className="form-element">
+              <input
+                type="file"
+                id="profile-image"
+                accept="image/*"
+                onChange={getFile}
+              />
+              <label htmlFor="profile-image" id="profile-image-preview">
+                <img src={image_url} alt="Profile" />
+                <div className="upload-content">
+                  <div className="upload-image">
+                    <IoIosImage />
+                  </div>
+                  <h2>Upload image</h2>
                 </div>
-                <h2>Upload image</h2>
-              </div>
-            </label>
-          </div>
+              </label>
+            </div>
 
-          <div className="form-group position-relative">
-            <label htmlFor="title" className="d-block">
-              Title
-            </label>
-            <input
-              type="text"
-              id="title"
-              className="form-control form-control-lg thick"
-              placeholder="Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
-          </div>
+            <div className="form-group position-relative">
+              <label htmlFor="title" className="d-block">
+                Title
+              </label>
+              <input
+                type="text"
+                id="title"
+                className="form-control form-control-lg thick"
+                placeholder="Title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+            </div>
 
-          <div className="form-group message">
-            <textarea
-              id="formMessage"
-              className="form-control form-control-lg"
-              rows="7"
-              placeholder="Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              required
-            ></textarea>
-          </div>
+            <div className="form-group message">
+              <textarea
+                id="formMessage"
+                className="form-control form-control-lg"
+                rows="7"
+                placeholder="Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              ></textarea>
+            </div>
 
-          <div className="btn-container">
-            <button type="submit">
-              Submit
-              {loading && <div className="loader"></div>}
-            </button>
-          </div>
-        </form>
+            <div className="btn-container">
+              <button type="submit">
+                Submit
+                {loading && <div className="loader"></div>}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

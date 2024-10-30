@@ -6,9 +6,11 @@ import { useTranslation } from "react-i18next";
 
 import api from "../api";
 
+import Header from "../components/Header";
+
 import "../styles/emailVerify.css";
 
-function EmailVerify() {
+function EmailVerify(props) {
   const { uid } = useParams();
   const { token } = useParams();
 
@@ -77,31 +79,34 @@ function EmailVerify() {
 
   return (
     <div className="email-verify">
-      <div className="ternary-system">
-        <div className="sun primary"></div>
-        <div className="sun secondary"></div>
-        <div className="sun ternary"></div>
-      </div>
-      <div className="sand">
-        <div className="pendulums">
-          <div className="pendulum">
-            <div className="bar"></div>
-            <div className="motion">
-              <div className="string"></div>
-              <div className="weight"></div>
+      <Header links={props.links} fixed={false} />
+      <div className="verif-view">
+        <div className="ternary-system">
+          <div className="sun primary"></div>
+          <div className="sun secondary"></div>
+          <div className="sun ternary"></div>
+        </div>
+        <div className="sand">
+          <div className="pendulums">
+            <div className="pendulum">
+              <div className="bar"></div>
+              <div className="motion">
+                <div className="string"></div>
+                <div className="weight"></div>
+              </div>
             </div>
-          </div>
-          <div className="pendulum shadow">
-            <div className="bar"></div>
-            <div className="motion">
-              <div className="string"></div>
-              <div className="weight"></div>
+            <div className="pendulum shadow">
+              <div className="bar"></div>
+              <div className="motion">
+                <div className="string"></div>
+                <div className="weight"></div>
+              </div>
             </div>
           </div>
         </div>
+        <div className="pyramid"></div>
+        {statusMessage}
       </div>
-      <div className="pyramid"></div>
-      {statusMessage}
     </div>
   );
 }

@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
+.pos-fixed {
+  position: fixed;
+}
 header {
   width: 100%;
-  position: fixed;
   background: rgba(0, 0, 0, 0.9);
   z-index: 120;
   font-family: "Poppins", sans-serif;

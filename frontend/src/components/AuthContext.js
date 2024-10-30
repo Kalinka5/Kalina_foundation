@@ -13,8 +13,8 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem(ACCESS_TOKEN);
-    !token ? setAuth(false) : setAuth(true);
-  }, [auth]);
+    setAuth(!!token);
+  }, []);
 
   return (
     <AuthContext.Provider value={{ auth, setAuth }}>

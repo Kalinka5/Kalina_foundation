@@ -17,10 +17,9 @@ import {
   DONATE_PAGE,
 } from "./constants";
 
-import Header from "./components/Header";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { useAuth } from "./components/AuthContext";
-import EmailVerify from "./components/EmailVerify";
+import EmailVerify from "./pages/EmailVerify";
 
 import Home from "./pages/Home";
 import ItemEdit from "./pages/ItemEdit";
@@ -51,28 +50,48 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header links={auth ? authLinks : notAuthLinks} />
         <main>
           <Routes>
             <Route
               exact
               path={`${HOME_PAGE}/:n?`}
-              element={<Home isAuth={auth ? true : false} />}
+              element={
+                <Home isAuth={auth} links={auth ? authLinks : notAuthLinks} />
+              }
             />
-            <Route exact path="item/:id/edit" element={<ItemEdit />} />
-            <Route path={LOGIN_PAGE} element={<Login />} />
-            <Route path={REGISTER_PAGE} element={<Register />} />
-            <Route path="email-verify/:uid/:token" element={<EmailVerify />} />
-            <Route path={LOGOUT_PAGE} element={<Logout />} />
+            <Route
+              exact
+              path="item/:id/edit"
+              element={<ItemEdit links={auth ? authLinks : notAuthLinks} />}
+            />
+            <Route
+              path={LOGIN_PAGE}
+              element={<Login links={auth ? authLinks : notAuthLinks} />}
+            />
+            <Route
+              path={REGISTER_PAGE}
+              element={<Register links={auth ? authLinks : notAuthLinks} />}
+            />
+            <Route
+              path="email-verify/:uid/:token"
+              element={<EmailVerify links={auth ? authLinks : notAuthLinks} />}
+            />
+            <Route
+              path={LOGOUT_PAGE}
+              element={<Logout links={auth ? authLinks : notAuthLinks} />}
+            />
             <Route
               path={PROFILE_PAGE}
               element={
                 <ProtectedRoute>
-                  <Profile />
+                  <Profile links={auth ? authLinks : notAuthLinks} />
                 </ProtectedRoute>
               }
             />
-            <Route path={DONATE_PAGE} element={<Payment />} />
+            <Route
+              path={DONATE_PAGE}
+              element={<Payment links={auth ? authLinks : notAuthLinks} />}
+            />
             <Route
               path="*"
               element={<Navigate to={`${HOME_PAGE}/1`} replace />}
