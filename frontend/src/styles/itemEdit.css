@@ -1,16 +1,12 @@
 .edit-item {
   margin: 0;
-  display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  min-height: 100vh;
   background: linear-gradient(to right, #ebe37d, #2f80ed);
   font-family: "Montserrat", sans-serif;
   overflow: hidden;
 
   .item-desc {
-    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;

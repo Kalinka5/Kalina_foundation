@@ -78,9 +78,9 @@ function EmailVerify(props) {
   }
 
   return (
-    <div className="email-verify">
+    <div className="email-verify header-body">
       <Header links={props.links} fixed={false} />
-      <div className="verif-view">
+      <div className="main-body">
         <div className="ternary-system">
           <div className="sun primary"></div>
           <div className="sun secondary"></div>
