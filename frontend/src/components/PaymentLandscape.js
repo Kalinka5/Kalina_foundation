@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import api from "../api";
 
-import PayPal from "./PayPalButton";
+import PaypalMethod from "./PayPalButton";
 
 import ChangeDonMethod from "./ChangeDonateMethod";
 
@@ -55,7 +55,7 @@ export const PaymentLandscape = () => {
   const getDonationData = async () => {
     try {
       console.log("Start getting data of Donation item...");
-      const item = await api.get(`/items/18/?format=json`);
+      const item = await api.get(`/items/1/?format=json`);
       setGoal(item.data["full_price"]);
       setInitialDonation(item.data["collected"]);
     } catch (err) {
@@ -372,7 +372,7 @@ export const PaymentLandscape = () => {
             </div>
           </div>
           <div className="article-wrapper back">
-            <PayPal />
+            <PaypalMethod />
           </div>
         </article>
       </div>

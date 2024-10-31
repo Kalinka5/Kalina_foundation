@@ -1,522 +1,562 @@
-.mob-container {
-  height: 650px;
-  width: 360px;
-  background-color: rgba(255, 255, 255, 0.13);
-  backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 
-  .slider {
-    height: 50px;
-    width: 100px;
-    left: 80px;
-    border-radius: 50px;
-    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(33, 33, 33));
-    position: absolute;
-    top: 20px;
-    transition: all 0.5s ease-in-out;
-  }
-  .moveslider {
-    left: 180px;
-    background-image: linear-gradient(
-      to right,
-      rgb(0, 159, 42),
-      rgb(0, 215, 39)
-    );
-  }
-  .btn {
-    height: 50px;
-    width: 200px;
-    margin: 20px auto;
-    background-color: #ffffff;
-    border-radius: 50px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-      "Segoe UI Symbol";
-
-    .privat,
-    .mono {
-      font-size: 19px;
-      border: none;
-      outline: none;
-      background-color: transparent;
-      position: relative;
-      cursor: pointer;
-    }
-    .privat {
-      color: #0dbd00;
-    }
-    .mono-slider,
-    .privat-slider {
-      color: #ffffff;
-    }
-  }
-  .grid-part {
-    display: grid;
-
-    .block {
-      margin: 10px;
-      display: inline-block;
-
-      .container-mastercard {
-        padding: 1em;
-
-        .front-card {
-          position: relative;
-          display: grid;
-          grid-template-columns: 2fr auto;
-          column-gap: 1em;
-          padding: 0.1em 1em;
-          color: white;
-          width: 370px;
-          height: 235px;
-          border-radius: 11px;
-          background: linear-gradient(135deg, #45484d 0%, #000000 100%);
-          box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
-          transition: transform 0.3s ease, box-shadow 0.2s ease-in;
-
-          #main-title {
-            margin-top: 20px;
-          }
-          #globe {
-            margin-top: 20px;
-            margin-left: 50px;
-            font-size: 1.6em;
-          }
-          span {
-            font-weight: normal;
-            color: #f8f8f8;
-            font-size: 14px;
-          }
-          #chip {
-            width: 50px;
-            height: 75px;
-            margin-top: 2.3em;
-            margin-left: 0.4em;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-          }
-          .card-info {
-            #no {
-              font-size: 1.25em;
-              font-family: "Cutive Mono";
-              font-weight: bold;
-              letter-spacing: 2px;
-              text-shadow: 2px 2px 1px rgba(black, 0.3);
-              margin-bottom: 15px;
-            }
-            #name {
-              font-family: "Cutive Mono";
-              font-weight: bold;
-              font-size: 1.2em;
-              display: block;
-            }
-            #exp-date {
-              margin-top: 4px;
-              position: relative;
-              font-size: 0.8em;
-              opacity: 0.9;
-              display: block;
-            }
-            .grid-date {
-              display: grid;
-              grid-template-columns: auto auto;
-              column-gap: 1em;
-            }
-          }
-          #mastercard {
-            background: url("http://www.pngall.com/wp-content/uploads/2016/07/Mastercard-PNG-Clipart.png");
-            width: 80px;
-            height: 65px;
-            margin-top: 110px;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-          }
-        }
-      }
-      .front-hov {
-        &:hover {
-          cursor: pointer;
-          transform: scale(1.015);
-          box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.45);
-        }
-      }
-      .container-visa {
-        padding: 1em;
-
-        .front {
-          position: relative;
-          color: white;
-          width: 370px;
-          height: 235px;
-          background-image: linear-gradient(45deg, #0045c7, #ff2c7d);
-          padding: 0.1em 1em;
-          border-radius: 11px;
-          overflow: hidden;
-          box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
-          transition: transform 0.3s ease, box-shadow 0.2s ease-in;
-          z-index: 1;
-          backface-visibility: hidden;
-        }
-        .row {
-          margin-top: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-        .map-img {
-          width: 100%;
-          position: absolute;
-          top: 0;
-          left: 0;
-          opacity: 0.3;
-          z-index: -1;
-        }
-        .card-no {
-          font-size: 35px;
-          margin-top: 25px;
-        }
-        .card-holder {
-          font-size: 12px;
-          margin-top: 40px;
-        }
-      }
-    }
-    .row1 {
-      margin-top: 40px;
-    }
-    .center-mono {
-      width: 150px;
-      grid-column: 2;
-      position: relative;
-      text-align: center;
-    }
-    .center-privat {
-      width: 140px;
-      grid-column: 3;
-      position: relative;
-      text-align: center;
-      h2 {
-        color: #10b201;
-      }
-    }
-    #mono-desc {
-      margin-left: 20px;
-      text-align: center;
-      grid-column-start: 1;
-      grid-column-end: 3;
-      grid-row: 2;
-    }
-    #visa-desc {
-      position: relative;
-      grid-column-start: 3;
-      grid-column-end: 5;
-      grid-row: 2;
-      margin-left: 55px;
-      display: grid;
-      grid-template-columns: repeat(2, auto);
-      column-gap: 10px;
-      row-gap: 1em;
-    }
-    .description {
-      width: 418px;
-      margin-left: 8px;
-      margin-bottom: 15px;
-
-      #monobanka-p {
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 20px;
-      }
-      .input-box {
-        position: relative;
-
-        input {
-          display: block;
-          width: 330px;
-          height: 30px;
-          padding-left: 10px;
-          padding-top: 3px;
-          padding-bottom: 3px;
-          margin: 0 auto;
-          font-size: 17px;
-          border-radius: 20px;
-          color: white;
-          background: rgba(0, 0, 0, 0.656);
-          border: none;
-          transition: background 0.5s;
-
-          &:focus {
-            outline-width: 0;
-            background: rgba(16, 17, 17, 0.742);
-            transition: background 0.5s;
-          }
-        }
-        .copy-toggle-icon {
-          position: absolute;
-          top: 55%;
-          right: 10px;
-          transform: translateY(-50%);
-          cursor: pointer;
-
-          .copy {
-            font-size: 24px;
-            line-height: 1;
-            color: #ffffff;
-            transition: color 0.3s ease-in-out;
-            margin-bottom: 20px;
-
-            &:hover {
-              color: #d2d2d2;
-            }
-          }
-          .checkmark {
-            font-size: 30px;
-            line-height: 1;
-            color: #0dbd00;
-          }
-        }
-      }
-      a {
-        appearance: none;
-        background-color: #000000;
-        border: 2px solid #1a1a1a;
-        border-radius: 15px;
-        box-sizing: border-box;
-        color: #ffffff;
-        cursor: pointer;
-        display: inline-block;
-        font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-          "Segoe UI Symbol";
-        font-size: 16px;
-        font-weight: 600;
-        line-height: normal;
-        margin: 0;
-        min-height: 60px;
-        min-width: 0;
-        outline: none;
-        padding: 16px 24px;
-        text-align: center;
-        text-decoration: none;
-        transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        width: 300px;
-        will-change: transform;
-
-        &:disabled {
-          pointer-events: none;
-        }
-        &:hover {
-          box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-          transform: translateY(-2px);
-        }
-        &:active {
-          box-shadow: none;
-          transform: translateY(0);
-        }
-      }
-
-      label {
-        padding-left: 8px;
-        font-size: 18px;
-        color: #000000;
-      }
-    }
-  }
-  .form-section {
-    height: 500px;
-    width: 600px;
-    padding: 20px 0;
+  .mob-container {
+    height: 650px;
+    width: 360px;
+    background-color: rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(10px);
     position: relative;
-    transition: all 0.5s ease-in-out;
-    left: 0px;
-    background: none;
-    grid-template-columns: repeat(2, auto);
-    column-gap: 0;
-    row-gap: 0;
-    margin-top: 0;
-    padding: 0;
+    overflow: hidden;
+    border-radius: 10px;
 
-    .privat-box,
-    .mono-box {
-      height: 100%;
-      width: 260px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0px 40px;
-
-      .grid-part {
-        background: none;
-      }
-    }
-    .privat-box {
-      gap: 50px;
-    }
-    .mono-box {
-      gap: 30px;
-    }
-    .ele {
+    .slider {
       height: 50px;
-      width: 260px;
-      font-size: 15px;
-      outline: none;
-      border: none;
-      color: rgb(77, 77, 77);
-      background-color: rgb(240, 240, 240);
-      border-radius: 50px;
-      padding-left: 30px;
-    }
-    .clkbtn {
-      height: 50px;
-      width: 130px;
-      font-size: 19px;
+      width: 62px;
       border-radius: 50px;
       background-image: linear-gradient(
         to right,
-        rgb(255, 195, 110),
-        rgb(255, 146, 91)
+        rgb(0, 0, 0),
+        rgb(33, 33, 33)
       );
-      border: none;
-      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      transition: all 0.5s ease-in-out;
     }
-    .block .container-mastercard {
-      padding: 0;
-
-      .front-card {
-        height: 205px;
-        width: 308px;
-
-        .card-info #no {
-          font-size: 1.2em;
-        }
-        #chip {
-          height: 87px;
-          margin-top: 0;
-        }
-        #mastercard {
-          margin-top: 90px;
-        }
-      }
+    .but-1 {
+      left: 80px;
     }
-    #mono-desc {
-      height: 250px;
-      margin-left: 0;
-      margin-bottom: 0;
+    .but-2 {
+      left: 140px;
+      width: 68px;
+      background-image: linear-gradient(
+        to right,
+        rgb(0, 159, 42),
+        rgb(0, 215, 39)
+      );
+    }
+    .but-3 {
+      left: 206px;
+      width: 74px;
+      background-image: linear-gradient(
+        to right,
+        rgb(211, 193, 0),
+        rgb(235, 231, 0)
+      );
+    }
+    .btn {
+      height: 50px;
+      width: 200px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      border-radius: 50px;
       display: flex;
-      flex-direction: column;
+      justify-content: space-around;
       align-items: center;
-      justify-content: center;
+      font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+
+      .privat-but,
+      .mono-but,
+      .paypal-but {
+        font-size: 19px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        position: relative;
+        cursor: pointer;
+      }
+      .privat-but {
+        color: #0dbd00;
+      }
+      .paypal-but .pay-col {
+        color: rgb(0, 61, 159);
+      }
+      .paypal-but .pal-col {
+        color: rgb(0, 127, 181);
+      }
+      .mono-slider,
+      .privat-slider {
+        color: #ffffff;
+      }
     }
-    .description {
-      width: 355px;
+    .grid-part {
+      display: grid;
+
+      .block {
+        margin: 10px;
+        display: inline-block;
+
+        .container-mastercard {
+          padding: 1em;
+
+          .front-card {
+            position: relative;
+            display: grid;
+            grid-template-columns: 2fr auto;
+            column-gap: 1em;
+            padding: 0.1em 1em;
+            color: white;
+            width: 370px;
+            height: 235px;
+            border-radius: 11px;
+            background: linear-gradient(135deg, #45484d 0%, #000000 100%);
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+            transition: transform 0.3s ease, box-shadow 0.2s ease-in;
+
+            #main-title {
+              margin-top: 20px;
+            }
+            #globe {
+              margin-top: 20px;
+              margin-left: 50px;
+              font-size: 1.6em;
+            }
+            span {
+              font-weight: normal;
+              color: #f8f8f8;
+              font-size: 14px;
+            }
+            #chip {
+              width: 50px;
+              height: 75px;
+              margin-top: 2.3em;
+              margin-left: 0.4em;
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center;
+            }
+            .card-info {
+              #no {
+                font-size: 1.25em;
+                font-family: "Cutive Mono";
+                font-weight: bold;
+                letter-spacing: 2px;
+                text-shadow: 2px 2px 1px rgba(black, 0.3);
+                margin-bottom: 15px;
+              }
+              #name {
+                font-family: "Cutive Mono";
+                font-weight: bold;
+                font-size: 1.2em;
+                display: block;
+              }
+              #exp-date {
+                margin-top: 4px;
+                position: relative;
+                font-size: 0.8em;
+                opacity: 0.9;
+                display: block;
+              }
+              .grid-date {
+                display: grid;
+                grid-template-columns: auto auto;
+                column-gap: 1em;
+              }
+            }
+            #mastercard {
+              background: url("http://www.pngall.com/wp-content/uploads/2016/07/Mastercard-PNG-Clipart.png");
+              width: 80px;
+              height: 65px;
+              margin-top: 110px;
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position: center;
+            }
+          }
+        }
+        .front-hov {
+          &:hover {
+            cursor: pointer;
+            transform: scale(1.015);
+            box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.45);
+          }
+        }
+        .container-visa {
+          padding: 1em;
+
+          .front {
+            position: relative;
+            color: white;
+            width: 370px;
+            height: 235px;
+            background-image: linear-gradient(45deg, #0045c7, #ff2c7d);
+            padding: 0.1em 1em;
+            border-radius: 11px;
+            overflow: hidden;
+            box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+            transition: transform 0.3s ease, box-shadow 0.2s ease-in;
+            z-index: 1;
+            backface-visibility: hidden;
+          }
+          .row {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .map-img {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.3;
+            z-index: -1;
+          }
+          .card-no {
+            font-size: 35px;
+            margin-top: 25px;
+          }
+          .card-holder {
+            font-size: 12px;
+            margin-top: 40px;
+          }
+        }
+      }
+      .row1 {
+        margin-top: 40px;
+      }
+      .center-mono {
+        width: 150px;
+        grid-column: 2;
+        position: relative;
+        text-align: center;
+      }
+      .center-privat {
+        width: 140px;
+        grid-column: 3;
+        position: relative;
+        text-align: center;
+        h2 {
+          color: #10b201;
+        }
+      }
+      #mono-desc {
+        margin-left: 20px;
+        text-align: center;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row: 2;
+      }
+      #visa-desc {
+        position: relative;
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row: 2;
+        margin-left: 55px;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        column-gap: 10px;
+        row-gap: 1em;
+      }
+      .description {
+        width: 418px;
+        margin-left: 8px;
+        margin-bottom: 15px;
+
+        #monobanka-p {
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
+        .input-box {
+          position: relative;
+
+          input {
+            display: block;
+            width: 330px;
+            height: 30px;
+            padding-left: 10px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            margin: 0 auto;
+            font-size: 17px;
+            border-radius: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.656);
+            border: none;
+            transition: background 0.5s;
+
+            &:focus {
+              outline-width: 0;
+              background: rgba(16, 17, 17, 0.742);
+              transition: background 0.5s;
+            }
+          }
+          .copy-toggle-icon {
+            position: absolute;
+            top: 55%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+
+            .copy {
+              font-size: 24px;
+              line-height: 1;
+              color: #ffffff;
+              transition: color 0.3s ease-in-out;
+              margin-bottom: 20px;
+
+              &:hover {
+                color: #d2d2d2;
+              }
+            }
+            .checkmark {
+              font-size: 30px;
+              line-height: 1;
+              color: #0dbd00;
+            }
+          }
+        }
+        a {
+          appearance: none;
+          background-color: #000000;
+          border: 2px solid #1a1a1a;
+          border-radius: 15px;
+          box-sizing: border-box;
+          color: #ffffff;
+          cursor: pointer;
+          display: inline-block;
+          font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+            "Segoe UI Symbol";
+          font-size: 16px;
+          font-weight: 600;
+          line-height: normal;
+          margin: 0;
+          min-height: 60px;
+          min-width: 0;
+          outline: none;
+          padding: 16px 24px;
+          text-align: center;
+          text-decoration: none;
+          transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+          width: 300px;
+          will-change: transform;
+
+          &:disabled {
+            pointer-events: none;
+          }
+          &:hover {
+            box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+            transform: translateY(-2px);
+          }
+          &:active {
+            box-shadow: none;
+            transform: translateY(0);
+          }
+        }
+
+        label {
+          padding-left: 8px;
+          font-size: 18px;
+          color: #000000;
+        }
+      }
     }
-    .block .container-visa {
+    .form-section {
+      height: 500px;
+      width: 1080px;
+      padding: 20px 0;
+      position: relative;
+      transition: all 0.5s ease-in-out;
+      left: 0px;
+      background: none;
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 0;
+      row-gap: 0;
+      margin-top: 0;
       padding: 0;
 
-      .front {
-        height: 205px;
-        width: 308px;
-        box-shadow: none;
+      .grid-paypal {
+        grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: 3;
       }
-      .card-no {
-        font-size: 30px;
-      }
-      .card-holder {
-        margin-top: 28px;
-      }
-    }
-    #visa-desc {
-      height: 250px;
-      grid-column-start: 2;
-      grid-column-end: 3;
-      margin-left: 0;
-      margin-bottom: 0;
-      grid-template-columns: repeat(1, auto);
-      column-gap: 10px;
-      row-gap: 1em;
+      .privat-box,
+      .mono-box {
+        height: 100%;
+        width: 260px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0px 40px;
 
-      .desc-field {
-        height: 5px;
-      }
-      label {
-        padding-left: 15px;
-        font-size: 15px;
-      }
-      .input-box {
-        input {
-          height: 20px;
+        .grid-part {
+          background: none;
         }
-        .copy-toggle-icon {
-          top: 60%;
-          right: 18px;
-          .copy {
-            font-size: 15px;
+      }
+      .privat-box {
+        gap: 50px;
+      }
+      .mono-box {
+        gap: 30px;
+      }
+      .ele {
+        height: 50px;
+        width: 260px;
+        font-size: 15px;
+        outline: none;
+        border: none;
+        color: rgb(77, 77, 77);
+        background-color: rgb(240, 240, 240);
+        border-radius: 50px;
+        padding-left: 30px;
+      }
+      .clkbtn {
+        height: 50px;
+        width: 130px;
+        font-size: 19px;
+        border-radius: 50px;
+        background-image: linear-gradient(
+          to right,
+          rgb(255, 195, 110),
+          rgb(255, 146, 91)
+        );
+        border: none;
+        cursor: pointer;
+      }
+      .block .container-mastercard {
+        padding: 0;
+
+        .front-card {
+          height: 205px;
+          width: 308px;
+
+          .card-info #no {
+            font-size: 1.2em;
+          }
+          #chip {
+            height: 87px;
+            margin-top: 0;
+          }
+          #mastercard {
+            margin-top: 90px;
+          }
+        }
+      }
+      #mono-desc {
+        height: 250px;
+        margin-left: 0;
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .description {
+        width: 355px;
+      }
+      .block .container-visa {
+        padding: 0;
+
+        .front {
+          height: 205px;
+          width: 308px;
+          box-shadow: none;
+        }
+        .card-no {
+          font-size: 30px;
+        }
+        .card-holder {
+          margin-top: 28px;
+        }
+      }
+      #visa-desc {
+        height: 250px;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        margin-left: 0;
+        margin-bottom: 0;
+        grid-template-columns: repeat(1, auto);
+        column-gap: 10px;
+        row-gap: 1em;
+
+        .desc-field {
+          height: 5px;
+        }
+        label {
+          padding-left: 15px;
+          font-size: 15px;
+        }
+        .input-box {
+          input {
+            height: 20px;
+          }
+          .copy-toggle-icon {
+            top: 60%;
+            right: 18px;
+            .copy {
+              font-size: 15px;
+            }
           }
         }
       }
     }
-  }
-  .form-section-move {
-    left: -362px;
-  }
-  .mob-tooltip {
-    position: absolute;
-    bottom: 20px;
-    left: 40px;
-    width: 100%;
-    display: flex;
-    color: rgb(189, 36, 36);
-
-    .question-icon {
-      font-size: 20px;
+    .move-2 {
+      left: -360px;
+    }
+    .move-3 {
+      left: -724px;
+    }
+    .mob-tooltip {
+      position: absolute;
+      bottom: 20px;
+      left: 40px;
+      width: 100%;
+      display: flex;
       color: rgb(189, 36, 36);
-    }
-    .tooltiptext {
-      text-align: center;
-      visibility: hidden;
-      background-color: rgb(189, 36, 36);
-      color: #fff;
-      margin-top: 22px;
-      padding: 10px;
-      line-height: 1.5;
-      width: 286px;
-      margin-left: -125px;
-      border-radius: 10px;
-      font-family: "Ubuntu", sans-serif;
-      position: absolute;
-      z-index: 3;
-      bottom: 150%;
-      left: 110px;
-    }
-    .tooltiptext::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: rgb(189, 36, 36) transparent transparent transparent;
-    }
-    &:hover .tooltiptext {
-      visibility: visible;
+
+      .question-icon {
+        font-size: 20px;
+        color: rgb(189, 36, 36);
+      }
+      .tooltiptext {
+        text-align: center;
+        visibility: hidden;
+        background-color: rgb(189, 36, 36);
+        color: #fff;
+        margin-top: 22px;
+        padding: 10px;
+        line-height: 1.5;
+        width: 286px;
+        margin-left: -125px;
+        border-radius: 10px;
+        font-family: "Ubuntu", sans-serif;
+        position: absolute;
+        z-index: 3;
+        bottom: 150%;
+        left: 110px;
+      }
+      .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: rgb(189, 36, 36) transparent transparent transparent;
+      }
+      &:hover .tooltiptext {
+        visibility: visible;
+        z-index: 100;
+      }
     }
   }
 }
 
 @media screen and (max-width: 320px) {
-  .mob-container {
+  .flex-center .mob-container {
     height: 600px;
     width: 250px;
 
@@ -564,16 +604,37 @@
   }
 }
 @media screen and (min-width: 320px) and (max-width: 344px) {
-  .mob-container .form-section-move {
-    left: -361px;
-    #visa-desc {
-      margin-left: 3px;
+  .flex-center .mob-container {
+    .slider {
+      left: 72px;
+    }
+    .but-2 {
+      left: 132px;
+    }
+    .but-3 {
+      left: 198px;
+    }
+    .form-section {
+      width: 1062px;
+
+      .description {
+        width: 342px;
+      }
+    }
+    .move-2 {
+      left: -354px;
+
+      #visa-desc {
+        margin-left: 1px;
+      }
+    }
+    .grid-part .block {
+      margin: 2px;
     }
   }
 }
 @media screen and (min-width: 320px) and (max-width: 399px) {
-  .mob-container {
-    margin-top: 50px;
+  .flex-center .mob-container {
     height: 600px;
 
     .form-section #visa-desc {

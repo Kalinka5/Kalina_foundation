@@ -201,7 +201,7 @@ def process_donation(request):
             user.save()
 
             # Update Item collected variable
-            item_id = 18
+            item_id = 1
             item = Item.objects.get(pk=item_id)
             item.collected += int(amount_uah)
             item.save()

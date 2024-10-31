@@ -6,7 +6,7 @@ import api from "../api";
 
 import "../styles/paypal.css";
 
-const DonationButton = () => {
+const PaypalMethod = () => {
   const [donationAmount, setDonationAmount] = useState(5);
 
   const handlePaymentSuccess = async (details, data) => {
@@ -132,4 +132,4 @@ const DonationButton = () => {
   );
 };
 
-export default DonationButton;
+export default PaypalMethod;
