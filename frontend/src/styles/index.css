@@ -26,7 +26,6 @@ code {
 
 /*Login and Register forms*/
 .login-register {
-  flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,4 +139,16 @@ code {
   100% {
     transform: rotate(1turn);
   }
+}
+
+.header-body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.header-body > Header {
+  flex-shrink: 0;
+}
+.main-body {
+  flex-grow: 1;
 }

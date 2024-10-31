@@ -13,9 +13,9 @@ function Login(props) {
   const links = props.links;
 
   return (
-    <div className="login">
+    <div className="login header-body">
       <Header links={links} fixed={false} />
-      <div className="login-register">
+      <div className="login-register main-body">
         {orientation.isPortrait ? <LoginPortrait /> : <LoginLandscape />}
       </div>
     </div>

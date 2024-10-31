@@ -42,9 +42,9 @@ function Register(props) {
   }
 
   return (
-    <div className="register">
+    <div className="register header-body">
       <Header links={links} fixed={false} />
-      <div className="login-register">
+      <div className="login-register main-body">
         {statusMessage}
         <PatientContext.Provider
           value={{ registrationStatus, setRegistrationStatus }}

@@ -70,9 +70,9 @@ function ItemEdit(props) {
   };
 
   return (
-    <div className="edit-item">
+    <div className="edit-item header-body">
       <Header links={links} fixed={false} />
-      <div className="item-desc">
+      <div className="item-desc main-body">
         <div className="item-card">
           <form onSubmit={handleSubmit}>
             <div className="form-element">

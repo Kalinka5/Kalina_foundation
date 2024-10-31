@@ -85,9 +85,9 @@ function Profile(props) {
   };
 
   return (
-    <div className="profile">
+    <div className="profile header-body">
       <Header links={links} fixed={false} />
-      <div className="profile-field">
+      <div className="profile-field main-body">
         <div className="profile-card" id="profileCard">
           <form onSubmit={handleSubmit}>
             <div className="profile-header">

@@ -13,9 +13,11 @@ function Payment(props) {
   const links = props.links;
 
   return (
-    <div className="payment">
+    <div className="payment header-body">
       <Header links={links} fixed={false} />
-      {orientation.isPortrait ? <PaymentPortrait /> : <PaymentLandscape />}
+      <div className="main-body">
+        {orientation.isPortrait ? <PaymentPortrait /> : <PaymentLandscape />}
+      </div>
     </div>
   );
 }
