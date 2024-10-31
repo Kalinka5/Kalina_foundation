@@ -5,70 +5,125 @@
   flex-wrap: wrap;
   align-items: center;
   align-content: center;
+
+  h1 {
+    font-size: 20px;
+    margin: 10px;
+    color: #524eee;
+    text-align: center;
+  }
+  .radio-list {
+    margin: 10px;
+    display: flex;
+
+    .radio-item [type="radio"] {
+      display: none;
+    }
+    .radio-item + .radio-item {
+      margin-top: 15px;
+    }
+    .radio-item label {
+      display: block;
+      padding: 17px 50px;
+      margin: 5px;
+      background: #f4c20c;
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 400;
+      white-space: nowrap;
+      position: relative;
+      transition: 0.4s ease-in-out 0s;
+    }
+    .radio-item label:after,
+    .radio-item label:before {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+    .radio-item label:after {
+      height: 19px;
+      width: 19px;
+      border: 2px solid #524eee;
+      left: 19px;
+      top: calc(50% - 12px);
+    }
+    .radio-item label:before {
+      background: #524eee;
+      height: 19px;
+      width: 19px;
+      left: 19px;
+      top: 16px;
+      top: calc(50%-5px);
+      transform: scale(5);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.4s ease-in-out 0s;
+    }
+    .radio-item [type="radio"]:checked ~ label {
+      border-color: #524eee;
+    }
+    .radio-item [type="radio"]:checked ~ label::before {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+  }
+  .paypal-button {
+    margin: 20px;
+  }
 }
-.radio-list {
-  margin: 10px;
-  display: flex;
+@media (min-width: 1024px) and (max-width: 1180px) {
+  .paypal-side {
+    & .radio-list {
+      margin: 0;
+
+      .radio-item label {
+        padding: 14px 34px;
+      }
+      .radio-item label:before {
+        left: 13px;
+        top: 15px;
+      }
+      .radio-item label:after {
+        left: 13px;
+        top: 15px;
+      }
+    }
+  }
 }
-h1 {
-  font-size: 20px;
-  margin: 10px;
-  color: #524eee;
-  text-align: center;
-}
-.radio-item [type="radio"] {
-  display: none;
-}
-.radio-item + .radio-item {
-  margin-top: 15px;
-}
-.radio-item label {
-  display: block;
-  padding: 17px 50px;
-  margin: 5px;
-  background: #f4c20c;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 400;
-  white-space: nowrap;
-  position: relative;
-  transition: 0.4s ease-in-out 0s;
-}
-.radio-item label:after,
-.radio-item label:before {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-}
-.radio-item label:after {
-  height: 19px;
-  width: 19px;
-  border: 2px solid #524eee;
-  left: 19px;
-  top: calc(50% - 12px);
-}
-.radio-item label:before {
-  background: #524eee;
-  height: 19px;
-  width: 19px;
-  left: 19px;
-  top: 16px;
-  top: calc(50%-5px);
-  transform: scale(5);
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.4s ease-in-out 0s;
-}
-.radio-item [type="radio"]:checked ~ label {
-  border-color: #524eee;
-}
-.radio-item [type="radio"]:checked ~ label::before {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1);
-}
-.paypal-button {
-  margin: 20px;
+@media (min-width: 720px) and (max-height: 540px) {
+  .paypal-side {
+    h1 {
+      font-size: 16px;
+      margin: 0;
+    }
+    .radio-list {
+      margin: 0;
+      display: flex;
+      justify-content: space-around;
+
+      .radio-item label {
+        padding: 8px 14px;
+        margin: 5px;
+        font-size: 12px;
+      }
+      .radio-item label:before {
+        left: 3px;
+        top: 9px;
+        height: 10px;
+        width: 10px;
+      }
+      .radio-item label:after {
+        left: 3px;
+        top: 9px;
+        height: 10px;
+        width: 10px;
+      }
+    }
+    .paypal-button {
+      margin: 8px;
+    }
+  }
 }

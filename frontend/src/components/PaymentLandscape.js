@@ -273,7 +273,7 @@ export const PaymentLandscape = () => {
             </figure>
             <div id="visa-desc" className="article-body">
               <div>
-                <label>{t("recipient")}</label>
+                <label htmlFor="recipient">{t("recipient")}</label>
                 <div className="input-box">
                   <input
                     className="number"
@@ -281,6 +281,7 @@ export const PaymentLandscape = () => {
                     defaultValue={recipient}
                     disabled
                     readOnly
+                    id="recipient"
                   />
                   <span className="copy-toggle-icon" onClick={clickCopyRec}>
                     {recCoppied ? (
@@ -296,7 +297,7 @@ export const PaymentLandscape = () => {
                 </div>
               </div>
               <div>
-                <label>IBAN</label>
+                <label htmlFor="iban">IBAN</label>
                 <div className="input-box">
                   <input
                     className="number"
@@ -304,6 +305,8 @@ export const PaymentLandscape = () => {
                     defaultValue={iban}
                     disabled
                     readOnly
+                    id="iban"
+                    autoComplete="off"
                   />
                   <span className="copy-toggle-icon" onClick={clickCopyIban}>
                     {ibanCoppied ? (
@@ -319,7 +322,7 @@ export const PaymentLandscape = () => {
                 </div>
               </div>
               <div>
-                <label>{t("rnokpp")}</label>
+                <label htmlFor="rnokpp">{t("rnokpp")}</label>
                 <div className="input-box">
                   <input
                     className="inputname"
@@ -327,6 +330,7 @@ export const PaymentLandscape = () => {
                     defaultValue={inn}
                     disabled
                     readOnly
+                    id="rnokpp"
                   />
                   <span className="copy-toggle-icon" onClick={clickCopyInn}>
                     {innCoppied ? (
@@ -342,7 +346,7 @@ export const PaymentLandscape = () => {
                 </div>
               </div>
               <div>
-                <label>{t("title")}</label>
+                <label htmlFor="title">{t("title")}</label>
                 <div className="input-box">
                   <input
                     className="expire"
@@ -350,6 +354,7 @@ export const PaymentLandscape = () => {
                     defaultValue={title}
                     disabled
                     readOnly
+                    id="title"
                   />
                   <span className="copy-toggle-icon" onClick={clickCopyTitle}>
                     {titleCoppied ? (
