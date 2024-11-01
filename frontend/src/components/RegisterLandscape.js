@@ -165,14 +165,14 @@ function RegisterLandscape() {
             {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
           </div>
 
-          <div className="btn-container reg-button">
+          <div className="btn-container subm-button">
             <button type="submit">
               {t("register-now")}
               {loading && <div className="loader"></div>}
             </button>
           </div>
 
-          <p>
+          <p className="help-p">
             {t("register-q")}
             <br />
             <a href={`${LOGIN_PAGE}`}>{t("login-now")}</a>
