@@ -3,11 +3,6 @@ import i18n from "../i18n";
 
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-import UA_flag from "../img/UA-flag.png";
-import UA_flag_mobile from "../img/UA-flag_mobile.png";
-import UK_flag from "../img/UK-flag.png";
-import UK_flag_mobile from "../img/UK-flag_mobile.png";
-
 import "../styles/languageSelector.css";
 
 const LanguageSelector = () => {
@@ -28,19 +23,16 @@ const LanguageSelector = () => {
 
   // Determine the display name and flag based on the selected language
   const languageDisplayName = selectedLang === "ua" ? "UA" : "EN";
-  const flagImage = selectedLang === "ua" ? UA_flag : UK_flag;
-  const flagImageMobile =
-    selectedLang === "ua" ? UA_flag_mobile : UK_flag_mobile;
 
   return (
     <div className="lang-menu">
       <div className="selected-lang">
-        <img
-          src={flagImage}
-          srcSet={flagImageMobile}
+        <div
           alt={languageDisplayName}
-          className="flag-img"
-        />
+          className={`flag-img ${
+            selectedLang === "ua" ? "flag-ua" : "flag-uk"
+          }`}
+        ></div>
         {!isPhoneDisplay && languageDisplayName}
         <div className="arrow">
           <svg
