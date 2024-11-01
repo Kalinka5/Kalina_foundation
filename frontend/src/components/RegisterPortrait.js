@@ -65,10 +65,10 @@ function RegisterPortrait() {
   return (
     <div className="portrait">
       <div className="log-reg-background">
-        <div className="shape reg-shape1"></div>
-        <div className="shape reg-shape2"></div>
+        <div className="shape shape1"></div>
+        <div className="shape shape2"></div>
       </div>
-      <form className="log-reg-form reg-p" onSubmit={handleSubmit}>
+      <form className="log-reg-form form-p" onSubmit={handleSubmit}>
         <h2>{t("registration")}</h2>
 
         <div className="reg-input-box">
@@ -163,14 +163,14 @@ function RegisterPortrait() {
           {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         </div>
 
-        <div className="btn-container reg-button">
+        <div className="btn-container subm-button">
           <button type="submit">
             {t("register-now")}
             {loading && <div className="loader"></div>}
           </button>
         </div>
 
-        <p>
+        <p className="help-p">
           {t("register-q")}
           <br />
           <a href={`${LOGIN_PAGE}`}>{t("login-now")}</a>

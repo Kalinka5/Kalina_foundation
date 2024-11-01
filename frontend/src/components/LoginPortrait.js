@@ -51,11 +51,11 @@ function LoginPortrait() {
   return (
     <div className="portrait">
       <div className="log-reg-background">
-        <div className="shape log-shape1"></div>
-        <div className="shape log-shape2"></div>
+        <div className="shape shape1"></div>
+        <div className="shape shape2"></div>
       </div>
-      <form className="log-reg-form log-p" onSubmit={handleSubmit}>
-        <h3 className="log-h3">{t("login-head")}</h3>
+      <form className="log-reg-form form-p" onSubmit={handleSubmit}>
+        <h2>{t("login-head")}</h2>
 
         <label className="email-label" htmlFor="email">
           {t("email")}
@@ -92,14 +92,14 @@ function LoginPortrait() {
           </span>
         </div>
 
-        <div className="btn-container log-button">
+        <div className="btn-container subm-button">
           <button type="submit">
             {t("login-button")}
             {loading && <div className="loader"></div>}
           </button>
         </div>
 
-        <p className="log-p">
+        <p className="help-p">
           {t("login-q")}
           <br />
           <a href="/register">{t("register-now")}</a>

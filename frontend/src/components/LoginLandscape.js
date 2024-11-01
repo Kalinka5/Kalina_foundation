@@ -57,7 +57,7 @@ function LoginLandscape() {
       </div>
       <div className="column">
         <form className="log-reg-form log-p" onSubmit={handleSubmit}>
-          <h3 className="log-h3">{t("login-head")}</h3>
+          <h2>{t("login-head")}</h2>
 
           <label className="email-label" htmlFor="email">
             {t("email")}
@@ -94,14 +94,14 @@ function LoginLandscape() {
             </span>
           </div>
 
-          <div className="btn-container log-button">
+          <div className="btn-container subm-button">
             <button type="submit">
               {t("login-button")}
               {loading && <div className="loader"></div>}
             </button>
           </div>
 
-          <p className="log-p">
+          <p className="help-p">
             {t("login-q")}
             <br />
             <a href="/register">{t("register-now")}</a>
