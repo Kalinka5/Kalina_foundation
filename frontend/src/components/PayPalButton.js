@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import {
+  PayPalScriptProvider,
+  PayPalButtons,
+  FUNDING,
+} from "@paypal/react-paypal-js";
 
 import api from "../api";
 
@@ -125,6 +129,7 @@ const PaypalMethod = () => {
                 console.error("Error capturing order", error);
               }
             }}
+            fundingSource={FUNDING.PAYPAL}
           />
         </div>
       </div>

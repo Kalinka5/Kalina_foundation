@@ -55,7 +55,6 @@
       width: 19px;
       left: 19px;
       top: 16px;
-      top: calc(50%-5px);
       transform: scale(5);
       opacity: 0;
       visibility: hidden;
@@ -72,6 +71,7 @@
   }
   .paypal-button {
     margin: 20px;
+    width: 300px;
   }
 }
 @media screen and (min-width: 320px) and (max-width: 344px) {

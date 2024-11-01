@@ -55,7 +55,7 @@ export const PaymentLandscape = () => {
   const getDonationData = async () => {
     try {
       console.log("Start getting data of Donation item...");
-      const item = await api.get(`/items/1/?format=json`);
+      const item = await api.get(`/items/18/?format=json`);
       setGoal(item.data["full_price"]);
       setInitialDonation(item.data["collected"]);
     } catch (err) {
