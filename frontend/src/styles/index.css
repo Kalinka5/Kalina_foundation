@@ -280,6 +280,9 @@ code {
     right: -63px;
     bottom: -120px;
   }
+  .login-register .log-reg-form {
+    width: 300px;
+  }
 }
 @media (min-width: 760px) and (max-width: 999px) {
   .login-register .portrait {
@@ -296,10 +299,8 @@ code {
     }
     .log-reg-form {
       height: 567px;
+      width: 400px;
 
-      .subm-button {
-        width: 400px;
-      }
       h2 {
         font-size: 45px;
       }

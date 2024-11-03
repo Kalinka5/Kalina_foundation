@@ -26,11 +26,12 @@
 
           input {
             height: 90%;
-            width: 85%;
+            width: 100%;
+            box-sizing: border-box;
             -webkit-transition: 0.5s;
             transition: 0.5s;
             outline: none;
-            padding: 0 15px;
+            padding-left: 15px;
             font-size: 17px;
             font-weight: 400;
             color: #333;
@@ -51,8 +52,8 @@
           }
           .--icon {
             position: absolute;
-            top: 3px;
-            right: 20px;
+            top: 0;
+            right: 10px;
             height: 48px;
             font-size: 24px;
             line-height: 48px;
