@@ -17,12 +17,7 @@ function NotFound() {
             width="300px"
             alt="Background"
           />
-          <a
-            href={`${HOME_PAGE}/1`}
-            className="btn-go-home"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href={`${HOME_PAGE}/1`} className="btn-go-home" rel="noreferrer">
             {t("go-back-home")}
           </a>
         </div>

@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
 
+import { useTranslation } from "react-i18next";
+
 import { PaymentContext } from "./PaymentLandscape";
 
 import "../styles/changeDonateMethod.css";
 
 const ChangeDonMethod = () => {
   const { currentDonation, setCurrentDonation } = useContext(PaymentContext);
+
+  const { t } = useTranslation();
 
   const handleOptionClick = (index) => {
     setCurrentDonation(index); // Update the position on click
@@ -18,13 +22,13 @@ const ChangeDonMethod = () => {
           className={`option ${currentDonation === 1 ? "active" : ""}`}
           onClick={() => handleOptionClick(1)}
         >
-          Cards
+          {t("cards")}
         </div>
         <div
           className={`option ${currentDonation === 2 ? "active" : ""}`}
           onClick={() => handleOptionClick(2)}
         >
-          Others
+          {t("others")}
         </div>
       </div>
       <div className={`ellipse pos${currentDonation}`} />

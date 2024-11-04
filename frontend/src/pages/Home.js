@@ -21,11 +21,11 @@ function Home(props) {
           <Slider page={n} />
           <Items page={n} superUser={props.isAuth} />
           <Donators />
+          <Footer back="dot-white" />
         </div>
       ) : (
         <NotFound />
       )}
-      <Footer back="dot-white" />
     </div>
   );
 }

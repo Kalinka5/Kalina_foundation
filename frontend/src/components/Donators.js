@@ -17,8 +17,6 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 
 import api from "../api";
 
-import { API_URL } from "../constants";
-
 import useOrientation from "../useOrientation";
 
 import image from "../img/winner.png";
