@@ -44,6 +44,11 @@
   "rnokpp": "RNOKPP",
   "title": "Purpose of payment",
 
+  "paypal-title": "What amount do you want to donate?",
+
+  "cards": "Cards",
+  "others": "Others",
+
   "login-head": "Login Here",
   "email": "Email",
   "password": "Password",

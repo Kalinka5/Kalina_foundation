@@ -6,12 +6,15 @@ import {
   FUNDING,
 } from "@paypal/react-paypal-js";
 
+import { useTranslation } from "react-i18next";
+
 import api from "../api";
 
 import "../styles/paypal.css";
 
 const PaypalMethod = () => {
   const [donationAmount, setDonationAmount] = useState(5);
+  const { t } = useTranslation();
 
   const handlePaymentSuccess = async (details, data) => {
     if (!data || !details) {
@@ -39,7 +42,7 @@ const PaypalMethod = () => {
       options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}
     >
       <div className="paypal-side">
-        <h1>Яку суму бажаєте задонатити?</h1>
+        <h1>{t("paypal-title")}</h1>
         <div className="radio-list">
           <div className="radio-col-1">
             <div className="radio-item">
