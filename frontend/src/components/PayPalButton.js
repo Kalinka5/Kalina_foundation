@@ -10,6 +10,8 @@ import { useTranslation } from "react-i18next";
 
 import api from "../api";
 
+import paypalLogo from "../img/PayPal.png";
+
 import "../styles/paypal.css";
 
 const PaypalMethod = () => {
@@ -42,6 +44,7 @@ const PaypalMethod = () => {
       options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}
     >
       <div className="paypal-side">
+        <img src={paypalLogo} alt="PayPal-logo" className="paypal-logo"></img>
         <h1>{t("paypal-title")}</h1>
         <div className="radio-list">
           <div className="radio-col-1">
