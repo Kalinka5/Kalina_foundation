@@ -1,0 +1,114 @@
+/* Container and basic styling */
+
+.CryptoPaymentForm {
+  height: 100%;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+
+  .content {
+    padding: 28px;
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 0;
+
+      .header-icon {
+        width: 32px; /* Adjust as needed */
+        height: 32px;
+      }
+
+      .header-text {
+        font-size: 32px; /* Adjust font size */
+        font-weight: bold;
+        color: #ffffff; /* Color of your choice */
+      }
+    }
+    label {
+      font-weight: 700;
+      font-size: 15px;
+      color: #ffffff;
+      margin-top: 8px;
+      padding: 5px;
+      display: block;
+    }
+    .address-container {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15px;
+      margin: 20px 0;
+
+      .address {
+        font-weight: 500;
+        font-size: 14px;
+        margin-top: 8px;
+        display: block;
+      }
+      a {
+        color: #ffbb00;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    .form-control {
+      width: 100%;
+      height: 38px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 16px;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        border-color: #80bdff;
+        outline: none;
+      }
+    }
+    .btn-primary {
+      background-color: #eaac00;
+      color: #ffffff;
+      border: none;
+      width: 100%;
+      padding: 18px;
+      margin-top: 35px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #ff9d00;
+      }
+    }
+    .alert {
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 16px;
+    }
+  }
+}
+
+/* Alerts */
+
+.CryptoPaymentForm .alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.CryptoPaymentForm .alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Link styling */
