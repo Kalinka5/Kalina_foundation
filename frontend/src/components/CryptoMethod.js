@@ -339,16 +339,21 @@ function CryptoPaymentForm(props) {
           defaultValue={options[0]}
           onChange={changeNetwork}
           formatOptionLabel={(option) => (
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div
+              className="network-select__option"
+              style={{ display: "flex", alignItems: "center" }}
+            >
               <img
                 src={option.icon}
                 alt={option.label}
-                style={{ width: 20, height: 20, marginRight: 8 }}
+                className="network-select__img"
               />
               {option.label}
             </div>
           )}
           styles={customStyles}
+          className="network-select"
+          classNamePrefix="network-select"
         />
         <label htmlFor="crypto-amount">Payment Amount ({currency}):</label>
         <input

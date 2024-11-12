@@ -56,6 +56,23 @@
         }
       }
     }
+    .network-select__control {
+      font-size: 14px;
+      height: 40px;
+    }
+    .network-select__indicator {
+      padding: 3px;
+    }
+    .network-select__option {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
+    .network-select__img {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
     .form-control {
       width: 100%;
       height: 38px;
@@ -97,18 +114,77 @@
   }
 }
 
-/* Alerts */
+@media screen and (min-width: 320px) and (max-width: 344px) {
+  .paypal-side {
+    margin-left: 14px;
 
-.CryptoPaymentForm .alert-success {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+    .radio-list .radio-item label {
+      padding: 17px 42px;
+    }
+  }
 }
+@media (min-width: 1024px) and (max-width: 1180px) {
+  .CryptoPaymentForm .content {
+    .address-container {
+      margin: 6px 0;
 
-.CryptoPaymentForm .alert-error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+      .address {
+        font-size: 11px;
+      }
+    }
+    .btn-primary {
+      margin-top: 18px;
+    }
+  }
 }
+@media (min-width: 720px) and (max-height: 540px) {
+  .CryptoPaymentForm .content {
+    padding: 17px;
 
-/* Link styling */
+    .header {
+      .header-icon {
+        width: 26px;
+        height: 26px;
+      }
+      .header-text {
+        font-size: 25px;
+      }
+    }
+    .address-container {
+      margin: 0;
+      font-size: 12px;
+
+      .address {
+        font-size: 8px;
+      }
+    }
+    label {
+      font-size: 13px;
+      margin-top: 0;
+    }
+    .network-select__control {
+      font-size: 12px;
+      height: 28px;
+      min-height: 28px;
+    }
+
+    .network-select__option {
+      font-size: 12px;
+    }
+
+    .network-select__img {
+      width: 16px;
+      height: 16px;
+    }
+    .form-control {
+      height: 28px;
+      font-size: 12px;
+      margin-bottom: 0;
+    }
+    .btn-primary {
+      margin-top: 18px;
+      padding: 14px;
+      font-size: 16px;
+    }
+  }
+}
