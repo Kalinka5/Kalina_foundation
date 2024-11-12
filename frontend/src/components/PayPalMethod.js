@@ -23,12 +23,12 @@ const PaypalMethod = () => {
       console.error("Invalid transaction data");
       return;
     }
-    console.log(donationAmount);
+
     // Send the transaction data to the backend
     await api
       .post("donate/", {
+        donate_type: "dollars",
         amount: donationAmount,
-        transaction_id: data.orderID || "Unknown Transaction ID", // Fallback to a default
         email: details.payer ? details.payer.email_address : "Unknown Email", // Handle undefined payer
       })
       .then((response) => {

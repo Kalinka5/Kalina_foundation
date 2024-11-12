@@ -4,7 +4,7 @@ import { IoIosHelpCircle, IoIosBrowsers, IoIosCheckmark } from "react-icons/io";
 
 import { useTranslation } from "react-i18next";
 
-import PaypalMethod from "./PayPalButton";
+import PaypalMethod from "./PayPalMethod";
 
 import "../styles/paymentPortrait.css";
 

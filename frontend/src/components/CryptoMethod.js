@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Select from "react-select";
 
@@ -9,13 +9,17 @@ import { ethers, parseEther } from "ethers";
 import bnbLogo from "../img/bnb.svg";
 import ethLogo from "../img/eth_logo.svg";
 
+import api from "../api";
+
 import "../styles/cryptoMethod.css";
 
+// Options of Network Selection React Component
 const options = [
   { value: "ETH", label: "Ethereum Mainnet", icon: ethLogo },
   { value: "BNB", label: "Binance Smart Chain", icon: bnbLogo },
 ];
 
+// Styles for React Select Component (Network Eth or BNB)
 const customStyles = {
   option: (provided) => ({
     ...provided,
@@ -29,7 +33,7 @@ const customStyles = {
   }),
 };
 
-// Define constants and configurations for supported networks and currencies
+// Constants and configurations for supported networks and currencies
 export const CHAIN_IDS = {
   BINANCE: {
     NAME: "Binance",
@@ -50,21 +54,20 @@ export const CHAIN_IDS = {
 export const MAXIMUM_DECIMAL_PLACES = 8;
 
 // Function Component for the Crypto Payment Form
-function CryptoPaymentForm() {
+function CryptoPaymentForm(props) {
+  const isAuth = props.isAuth;
+
   const [networkName, setNetworkName] = useState("Ethereum Mainnet");
   const [error, setError] = useState("");
   const [transaction, setTransaction] = useState(null);
   const [amount, setAmount] = useState(0);
-  const [destinationAddress, setDestinationAddress] = useState(
+  const [destinationAddress] = useState(
     "0xB55ffd71e7E9938c4e1972ea53B2294aCd145417"
   );
   const [currency, setCurrency] = useState("ETH");
 
-  const isEditableAmount = true;
   const onError = (message) => {};
   const onSuccess = (transaction) => {};
-  const className = "";
-  const style = {};
 
   let blockExplorerHost =
     currency === CHAIN_IDS.BINANCE.CURRENCY_CODE
@@ -105,11 +108,37 @@ function CryptoPaymentForm() {
     return { isCorrectNetwork: true, message: "" };
   };
 
-  useEffect(() => {
-    setAmount(amount);
-    setDestinationAddress(destinationAddress);
-    setNetworkName(networkName);
-  }, [amount, destinationAddress, networkName]);
+  const updateCryptoDonateAmount = (event) => {
+    setAmount(parseFloat(event.target.value));
+  };
+
+  const handlePaymentSuccess = async () => {
+    console.log(isAuth);
+    let email;
+
+    if (isAuth) {
+      console.log("Start to sending a request to backend /profile");
+      const res = await api.get("/profile");
+      console.log("The request was sent successfully!");
+      email = res.data.email;
+    } else {
+      email = "Unknown Email";
+    }
+
+    // Send the transaction data to the backend after ensuring userEmail is set
+    await api
+      .post("/donate/", {
+        donate_type: currency,
+        amount: amount,
+        email: email,
+      })
+      .then((response) => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error updating donation", error);
+      });
+  };
 
   const startPayment = async (event) => {
     event.preventDefault();
@@ -147,6 +176,8 @@ function CryptoPaymentForm() {
 
       setTransaction(transactionResponse);
       onSuccess(transactionResponse);
+
+      await handlePaymentSuccess();
     } catch (err) {
       setError(err.message);
       onError(err.message);
@@ -154,16 +185,8 @@ function CryptoPaymentForm() {
     }
   };
 
-  const updatePaymentForm = (event) => {
-    if (event.target.name === "amount") {
-      setAmount(parseFloat(event.target.value));
-    } else if (event.target.name === "address") {
-      setDestinationAddress(event.target.value);
-    }
-  };
-
   return (
-    <div className={`CryptoPaymentForm ${className}`} style={style}>
+    <div className="CryptoPaymentForm">
       <div className="content">
         <div className="header">
           <svg
@@ -333,8 +356,7 @@ function CryptoPaymentForm() {
           type="number"
           name="amount"
           value={amount ? amount.toFixed(MAXIMUM_DECIMAL_PLACES) : "0.00"}
-          disabled={!isEditableAmount}
-          onChange={updatePaymentForm}
+          onChange={updateCryptoDonateAmount}
           id="crypto-amount"
         />
         <button className="btn-primary" onClick={startPayment}>

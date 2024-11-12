@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import api from "../api";
 
-import PaypalMethod from "./PayPalButton";
+import PaypalMethod from "./PayPalMethod";
 import CryptoPaymentsForm from "./CryptoMethod";
 import ChangeDonMethod from "./ChangeDonateMethod";
 
@@ -16,7 +16,9 @@ import "../styles/paymentLandscape.css";
 
 export const PaymentContext = createContext([{}]);
 
-export const PaymentLandscape = () => {
+export const PaymentLandscape = (props) => {
+  const isAuth = props.isAuth;
+
   const [progress, setProgress] = useState(0);
   const [goal, setGoal] = useState(0);
   const [initialDonation, setInitialDonation] = useState(0);
@@ -189,7 +191,7 @@ export const PaymentLandscape = () => {
             </div>
           </div>
           <div className="article-wrapper back">
-            <CryptoPaymentsForm />
+            <CryptoPaymentsForm isAuth={isAuth} />
           </div>
         </article>
         <article>
