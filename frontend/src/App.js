@@ -90,7 +90,12 @@ function App() {
             />
             <Route
               path={DONATE_PAGE}
-              element={<Payment links={auth ? authLinks : notAuthLinks} />}
+              element={
+                <Payment
+                  isAuth={auth}
+                  links={auth ? authLinks : notAuthLinks}
+                />
+              }
             />
             <Route
               path="*"

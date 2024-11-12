@@ -22,6 +22,7 @@ from decimal import Decimal
 import requests
 
 import json
+from json import JSONDecodeError
 
 from .tokens import account_activation_token
 
@@ -179,35 +180,69 @@ def get_usd_to_uah():
     return data['rates']['UAH']
 
 
+def convert_crypto_to_uah(crypto_symbol):
+    crypto_name = {"ETH": "ethereum", "BNB": "binancecoin"}
+    crypto_key = crypto_name.get(crypto_symbol)
+    url = f"https://api.coingecko.com/api/v3/simple/price?ids={
+        crypto_key}&vs_currencies=UAH"
+
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Raise error for bad status
+        data = response.json()
+        return data[crypto_key]['uah']
+    except requests.exceptions.RequestException as e:
+        print(f"API request error: {e}")
+        return None
+    except KeyError:
+        print(f"Conversion data for {crypto_key} not available.")
+        return None
+
+
 @csrf_exempt
 def process_donation(request):
     if request.method == 'POST':
-        # Parse the JSON data
-        data = json.loads(request.body)
-        amount = data.get('amount')
-        user_email = data.get('email')
-
-        print(f"Amount: {amount}")
-        print(f"Email: {user_email}")
-        amount_usd = float(amount)
-
-        usd_to_uah = get_usd_to_uah()
-        amount_uah = amount_usd * usd_to_uah
-        amount = Decimal(amount_uah)
-
         try:
-            user = User.objects.get(email=user_email)
-            user.donated += amount  # Update donation amount
-            user.save()
+            # Detect JSON request based on content type
+            if request.content_type == 'application/json':
+                data = json.loads(request.body)
+                donate_type = data.get('donate_type')
+                amount = data.get('amount')
+                user_email = data.get('email')
+            else:
+                # Handle form-data requests
+                donate_type = request.POST.get('donate_type')
+                amount = request.POST.get('amount')
+                user_email = request.POST.get('email')
 
-            # Update Item collected variable
-            item_id = 18
-            item = Item.objects.get(pk=item_id)
-            item.collected += int(amount_uah)
-            item.save()
+            # Proceed with your donation logic
+            if donate_type == "dollars":
+                usd_to_uah = get_usd_to_uah()
+                amount_uah = float(amount) * usd_to_uah
+                amount = Decimal(amount_uah)
+            elif donate_type in ["BNB", "ETH"]:
+                crypto_to_uah = convert_crypto_to_uah(donate_type)
+                amount_uah = float(amount) * crypto_to_uah
+                amount = Decimal(amount_uah)
+            else:
+                raise ValueError("Unsupported donation type")
 
-            return JsonResponse({'status': 'success', 'message': 'Donation processed successfully'})
-        except User.DoesNotExist:
-            return JsonResponse({'status': 'error', 'message': 'User not found'}, status=404)
+            # Attempt to update the user's donation record
+            try:
+                user = User.objects.get(email=user_email)
+                user.donated += amount
+                user.save()
+
+                # Update Item collected variable
+                item_id = 1
+                item = Item.objects.get(pk=item_id)
+                item.collected += int(amount_uah)
+                item.save()
+
+                return JsonResponse({'status': 'success', 'message': 'Donation processed successfully'})
+            except User.DoesNotExist:
+                return JsonResponse({'status': 'error', 'message': 'User not found'}, status=404)
+        except JSONDecodeError:
+            return JsonResponse({'status': 'error', 'message': 'Invalid JSON format'}, status=400)
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
