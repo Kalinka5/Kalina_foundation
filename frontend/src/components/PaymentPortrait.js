@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 
 import { IoIosHelpCircle, IoIosBrowsers, IoIosCheckmark } from "react-icons/io";
 
@@ -6,7 +6,13 @@ import { useTranslation } from "react-i18next";
 
 import PaypalMethod from "./PayPalMethod";
 
+import CryptoPaymentForm from "./CryptoMethod";
+
+import SliderDonatePortrait1 from "./SliderDonatePortrait";
+
 import "../styles/paymentPortrait.css";
+
+export const PaymentPortraitContext = createContext(null);
 
 export const PaymentPortrait = () => {
   const [bankChange, setbankChange] = useState(1);
@@ -51,38 +57,13 @@ export const PaymentPortrait = () => {
       setTitleCoppied(false);
     }, 5000);
   };
-  const ChangeToMono = async (e) => {
-    setbankChange(1);
-  };
-  const ChangeToPrivat = async (e) => {
-    setbankChange(2);
-  };
-  const ChangeToPayPal = async (e) => {
-    setbankChange(3);
-  };
 
   return (
     <div className="flex-center">
       <div className="mob-container">
-        <div className={`slider but-${bankChange}`}></div>
-        <div className="btn">
-          <button
-            className={`mono-but ${bankChange === 1 ? "mono-slider" : ""}`}
-            onClick={ChangeToMono}
-          >
-            Mono
-          </button>
-          <button
-            className={`privat-but ${bankChange === 2 ? "privat-slider" : ""}`}
-            onClick={ChangeToPrivat}
-          >
-            Privat
-          </button>
-          <button className="paypal-but" onClick={ChangeToPayPal}>
-            <span className="pay-col">Pay</span>
-            <span className="pal-col">Pal</span>
-          </button>
-        </div>
+        <PaymentPortraitContext.Provider value={setbankChange}>
+          <SliderDonatePortrait1 />
+        </PaymentPortraitContext.Provider>
         <div className={`grid-part form-section move-${bankChange}`}>
           <div className="block row1">
             <div className="container-mastercard">
@@ -250,6 +231,9 @@ export const PaymentPortrait = () => {
           </div>
           <div className="grid-paypal">
             <PaypalMethod />
+          </div>
+          <div className="grid-metamask">
+            <CryptoPaymentForm />
           </div>
         </div>
         <div className="mob-tooltip">

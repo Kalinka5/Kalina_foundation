@@ -14,7 +14,7 @@ import image from "../img/donate-bpla.jpg";
 
 import "../styles/paymentLandscape.css";
 
-export const PaymentContext = createContext([{}]);
+export const PaymentLandscapeContext = createContext([{}]);
 
 export const PaymentLandscape = (props) => {
   const isAuth = props.isAuth;
@@ -57,7 +57,8 @@ export const PaymentLandscape = (props) => {
   const getDonationData = async () => {
     try {
       console.log("Start getting data of Donation item...");
-      const item = await api.get(`/items/1/?format=json`);
+      let donateItem = 18;
+      const item = await api.get(`/items/${donateItem}/?format=json`);
       setGoal(item.data["full_price"]);
       setInitialDonation(item.data["collected"]);
     } catch (err) {
@@ -380,9 +381,11 @@ export const PaymentLandscape = (props) => {
           </div>
         </article>
       </div>
-      <PaymentContext.Provider value={{ currentDonation, setCurrentDonation }}>
+      <PaymentLandscapeContext.Provider
+        value={{ currentDonation, setCurrentDonation }}
+      >
         <ChangeDonMethod />
-      </PaymentContext.Provider>
+      </PaymentLandscapeContext.Provider>
     </div>
   );
 };
