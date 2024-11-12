@@ -121,10 +121,8 @@ function CryptoPaymentForm(props) {
       const res = await api.get("/profile");
       console.log("The request was sent successfully!");
       email = res.data.email;
-      setUserEmail(email);
     } else {
       email = "Unknown Email";
-      setUserEmail(email);
     }
 
     // Send the transaction data to the backend after ensuring userEmail is set
