@@ -117,14 +117,17 @@
   background: url(http://salehriaz.com/404Page/img/bg_purple.png);
   background-repeat: repeat-x;
   background-size: cover;
-  background-position: left top;
   overflow: hidden;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
 
   .stars {
     background: url(http://salehriaz.com/404Page/img/overlay_stars.svg);
     background-repeat: repeat;
     background-size: contain;
-    background-position: left top;
+    width: 100%;
 
     .central-body {
       padding: 17% 5% 10% 5%;
@@ -265,7 +268,7 @@
 }
 @media (orientation: portrait) and (min-width: 345px) and (max-width: 600px) {
   .error404 .stars .central-body {
-    padding-top: 25%;
+    padding-top: 190px;
     margin: 50% auto;
   }
 }

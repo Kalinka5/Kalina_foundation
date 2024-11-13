@@ -384,6 +384,11 @@
     bottom: calc(41vh);
     font-size: 2rem;
   }
+  .email-verify .success {
+    bottom: 36vh;
+    font-size: 1.6rem;
+    right: 2vw;
+  }
 }
 @media (min-width: 760px) and (max-width: 799px) and (orientation: portrait) {
   .email-verify .loading-container {
