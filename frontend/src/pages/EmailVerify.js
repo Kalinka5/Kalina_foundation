@@ -26,7 +26,6 @@ function EmailVerify(props) {
     try {
       if (token) {
         const res = await api.get(`/activate/${uid}/${token}/`);
-        console.log(res);
         if (res.data.status === "success") {
           setEmailStatus("success");
         } else if (res.data.status === "failed") {
