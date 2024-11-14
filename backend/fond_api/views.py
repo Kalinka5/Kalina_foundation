@@ -30,6 +30,10 @@ from .models import Category, Item, User
 from .serializers import RegisterSerializer, UserSerializer, CategorySerializer, ItemSerializer
 
 
+# Change item ID when users donated full amount
+DONATE_ITEM_ID = 18
+
+
 class RegisterApi(generics.GenericAPIView):
     serializer_class = RegisterSerializer
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
@@ -234,8 +238,7 @@ def process_donation(request):
                 user.save()
 
                 # Update Item collected variable
-                item_id = 18
-                item = Item.objects.get(pk=item_id)
+                item = Item.objects.get(pk=DONATE_ITEM_ID)
                 item.collected += int(amount_uah)
                 item.save()
 

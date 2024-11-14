@@ -1,7 +1,5 @@
 import React, { useContext, useState } from "react";
 
-import { IoIosBulb } from "react-icons/io";
-
 import { useTranslation } from "react-i18next";
 
 import api from "../api";
@@ -9,20 +7,28 @@ import Validation from "../validation";
 
 import { LOGIN_PAGE } from "../constants";
 
-import { PatientContext } from "../pages/Register";
+import { RegisterContext } from "../pages/Register";
+
+import Button from "./LoginRegister/SubmitButton";
+import LogRegHeader from "./LoginRegister/Header";
+import UsernameField from "./LoginRegister/RegUsernameField";
+import EmailField from "./LoginRegister/RegEmailField";
+import Password1 from "./LoginRegister/RegPassword1";
+import Password2 from "./LoginRegister/RegPassword2";
+import LogRegLink from "./LoginRegister/Link";
 
 function RegisterPortrait() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password1, setPassword1] = useState("");
-  const [password2, setPassword2] = useState("");
+  const { username } = useContext(RegisterContext);
+  const { email } = useContext(RegisterContext);
+  const { password1 } = useContext(RegisterContext);
+  const { password2 } = useContext(RegisterContext);
 
   const [loading, setLoading] = useState(false);
 
   const [errors, setErrors] = useState({});
   const [validFields, setValidFields] = useState({});
 
-  const { setRegistrationStatus } = useContext(PatientContext);
+  const { setRegistrationStatus } = useContext(RegisterContext);
 
   const { t } = useTranslation();
 
@@ -58,10 +64,6 @@ function RegisterPortrait() {
     }
   };
 
-  const isObjectEmpty = (objectName) => {
-    return Object.keys(objectName).length === 0;
-  };
-
   return (
     <div className="portrait">
       <div className="log-reg-background">
@@ -69,112 +71,40 @@ function RegisterPortrait() {
         <div className="shape shape2"></div>
       </div>
       <form className="log-reg-form form-p" onSubmit={handleSubmit}>
-        <h2>{t("registration")}</h2>
+        <LogRegHeader text="registration-head" translate={{ t }} />
 
-        <div className="reg-input-box">
-          <div className="input-icon">
-            <input
-              className={`${
-                isObjectEmpty(validFields)
-                  ? ""
-                  : validFields.usernameIsValid
-                  ? "success"
-                  : "error"
-              }`}
-              type="text"
-              placeholder={t("username-input")}
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <i className="--icon">
-              <IoIosBulb />
-              <span className="tooltiptext name-tip">{t("tooltip1")}</span>
-            </i>
-          </div>
-          {errors.username && <p>{errors.username}</p>}
-        </div>
+        <UsernameField
+          validFields={validFields}
+          translate={{ t }}
+          errors={errors}
+        />
 
-        <div className="reg-input-box">
-          <div className="input-icon">
-            <input
-              className={`${
-                isObjectEmpty(validFields)
-                  ? ""
-                  : validFields.emailIsValid
-                  ? "success"
-                  : "error"
-              }`}
-              type="text"
-              placeholder="user123@gmail.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <i className="--icon">
-              <IoIosBulb />
-              <span className="tooltiptext email-tip">{t("tooltip2")}</span>
-            </i>
-          </div>
-          {errors.email && <p>{errors.email}</p>}
-        </div>
+        <EmailField
+          validFields={validFields}
+          translate={{ t }}
+          errors={errors}
+        />
 
-        <div className="reg-input-box">
-          <div className="input-icon">
-            <input
-              className={`${
-                isObjectEmpty(validFields)
-                  ? ""
-                  : validFields.passwordIsValid
-                  ? "success"
-                  : "error"
-              }`}
-              type="password"
-              placeholder={t("password-input")}
-              value={password1}
-              onChange={(e) => setPassword1(e.target.value)}
-            />
-            <i className="--icon">
-              <IoIosBulb />
-              <div className="tooltiptext pass-tip">{t("tooltip3")}</div>
-            </i>
-          </div>
-          {errors.password && <p>{errors.password}</p>}
-        </div>
+        <Password1
+          validFields={validFields}
+          translate={{ t }}
+          errors={errors}
+        />
 
-        <div className="reg-input-box">
-          <div className="input-icon">
-            <input
-              className={`${
-                isObjectEmpty(validFields)
-                  ? ""
-                  : validFields.confPasswordIsValid
-                  ? "success"
-                  : "error"
-              }`}
-              type="password"
-              placeholder={t("conf-pass-input")}
-              value={password2}
-              onChange={(e) => setPassword2(e.target.value)}
-            />
-            <i className="--icon">
-              <IoIosBulb />
-              <span className="tooltiptext confirm-tip">{t("tooltip4")}</span>
-            </i>
-          </div>
-          {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        </div>
+        <Password2
+          validFields={validFields}
+          translate={{ t }}
+          errors={errors}
+        />
 
-        <div className="btn-container subm-button">
-          <button type="submit">
-            {t("register-now")}
-            {loading && <div className="loader"></div>}
-          </button>
-        </div>
+        <Button text="register-now" loading={loading} translate={{ t }} />
 
-        <p className="help-p">
-          {t("register-q")}
-          <br />
-          <a href={`${LOGIN_PAGE}`}>{t("login-now")}</a>
-        </p>
+        <LogRegLink
+          link={LOGIN_PAGE}
+          textLink="login-now"
+          question="register-q"
+          translate={{ t }}
+        />
       </form>
     </div>
   );

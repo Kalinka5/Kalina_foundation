@@ -12,6 +12,8 @@ import ChangeDonMethod from "./ChangeDonateMethod";
 
 import image from "../img/donate-bpla.jpg";
 
+import { DONATION_ITEM_ID } from "../constants";
+
 import "../styles/paymentLandscape.css";
 
 export const PaymentLandscapeContext = createContext([{}]);
@@ -57,8 +59,7 @@ export const PaymentLandscape = (props) => {
   const getDonationData = async () => {
     try {
       console.log("Start getting data of Donation item...");
-      let donateItem = 18;
-      const item = await api.get(`/items/${donateItem}/?format=json`);
+      const item = await api.get(`/items/${DONATION_ITEM_ID}/?format=json`);
       setGoal(item.data["full_price"]);
       setInitialDonation(item.data["collected"]);
     } catch (err) {

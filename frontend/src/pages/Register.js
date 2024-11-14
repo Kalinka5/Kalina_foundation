@@ -10,12 +10,16 @@ import i18n from "../i18n";
 
 import "../styles/register.css";
 
-export const PatientContext = createContext([{}]);
+export const RegisterContext = createContext([{}]);
 
 function Register(props) {
   const [registrationStatus, setRegistrationStatus] = useState(null);
   const orientation = useOrientation();
   const links = props.links;
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password1, setPassword1] = useState("");
+  const [password2, setPassword2] = useState("");
 
   useEffect(() => {
     // Check if language is properly saved in localStorage
@@ -46,15 +50,26 @@ function Register(props) {
       <Header links={links} fixed={false} />
       <div className="login-register main-body">
         {statusMessage}
-        <PatientContext.Provider
-          value={{ registrationStatus, setRegistrationStatus }}
+        <RegisterContext.Provider
+          value={{
+            registrationStatus,
+            setRegistrationStatus,
+            username,
+            setUsername,
+            email,
+            setEmail,
+            password1,
+            setPassword1,
+            password2,
+            setPassword2,
+          }}
         >
           {orientation.isPortrait ? (
             <RegisterPortrait />
           ) : (
             <RegisterLandscape />
           )}
-        </PatientContext.Provider>
+        </RegisterContext.Provider>
       </div>
     </div>
   );

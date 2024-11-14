@@ -7,6 +7,8 @@ import Donators from "../components/Donators";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
+import { MAX_PAGE_NUMBER } from "../constants";
+
 import NotFound from "./NotFound";
 
 function Home(props) {
@@ -16,7 +18,7 @@ function Home(props) {
   return (
     <div className="main">
       <Header links={props.links} fixed={true} />
-      {integerN > 0 && integerN < 6 ? (
+      {integerN > 0 && integerN < MAX_PAGE_NUMBER ? (
         <div>
           <Slider page={n} />
           <Items page={n} superUser={props.isAuth} />

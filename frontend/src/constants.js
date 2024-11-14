@@ -8,5 +8,8 @@ export const LOGOUT_PAGE = "/logout";
 export const PROFILE_PAGE = "/profile";
 export const DONATE_PAGE = "/donate";
 
-// /choreo-apis/kalinafond/backend/v1
 export const API_URL = "https://kalina-foundation-back.vercel.app/";
+
+export const DONATION_ITEM_ID = 18;
+
+export const MAX_PAGE_NUMBER = 6;

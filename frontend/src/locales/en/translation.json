@@ -56,7 +56,7 @@
   "login-q": "You don't have an account?",
   "register-now": "Register now",
 
-  "registration": "Registration",
+  "registration-head": "Registration",
   "username-input": "Enter your username",
   "password-input": "Create password",
   "conf-pass-input": "Confirm password",

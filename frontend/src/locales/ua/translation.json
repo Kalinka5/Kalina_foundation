@@ -56,7 +56,7 @@
   "login-q": "У вас ще немає облікового запису?",
   "register-now": "Зареєструватись",
 
-  "registration": "Реєстрація",
+  "registration-head": "Реєстрація",
   "username-input": "Введіть ім'я користувача",
   "password-input": "Створіть пароль",
   "conf-pass-input": "Підтвердьте пароль",

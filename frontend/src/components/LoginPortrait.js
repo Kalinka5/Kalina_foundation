@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
 import { useTranslation } from "react-i18next";
 
 import api from "../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN, PROFILE_PAGE } from "../constants";
 
-function LoginPortrait() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+import EmailField from "./LoginRegister/LogEmailField";
+import PasswordField from "./LoginRegister/LogPasswordField";
+import Button from "./LoginRegister/SubmitButton";
+import LogRegHeader from "./LoginRegister/Header";
+import LogRegLink from "./LoginRegister/Link";
 
-  const [passVisible, setPassVisible] = useState(false);
-  const [passType, setPassType] = useState("password");
+import { REGISTER_PAGE } from "../constants";
+
+import { LoginContext } from "../pages/Login";
+
+function LoginPortrait() {
+  const { email } = useContext(LoginContext);
+  const { password } = useContext(LoginContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -38,16 +43,6 @@ function LoginPortrait() {
     }
   };
 
-  const clickIcon = () => {
-    if (passVisible) {
-      setPassType("password");
-      setPassVisible(false);
-    } else {
-      setPassType("text");
-      setPassVisible(true);
-    }
-  };
-
   return (
     <div className="portrait">
       <div className="log-reg-background">
@@ -55,55 +50,20 @@ function LoginPortrait() {
         <div className="shape shape2"></div>
       </div>
       <form className="log-reg-form form-p" onSubmit={handleSubmit}>
-        <h2>{t("login-head")}</h2>
+        <LogRegHeader text="login-head" translate={{ t }} />
 
-        <label className="email-label" htmlFor="email">
-          {t("email")}
-        </label>
-        <div className="log-input-box">
-          <input
-            type="text"
-            value={email}
-            placeholder="Your Email"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
+        <EmailField translate={{ t }} />
 
-        <label htmlFor="password">{t("password")}</label>
-        <div className="log-input-box">
-          <input
-            type={passType}
-            value={password}
-            placeholder="Your Password"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <span className="password-toggle-icon" onClick={clickIcon}>
-            {passVisible ? (
-              <i>
-                <IoMdEyeOff />
-              </i>
-            ) : (
-              <i>
-                <IoMdEye />
-              </i>
-            )}
-          </span>
-        </div>
+        <PasswordField translate={{ t }} />
 
-        <div className="btn-container subm-button">
-          <button type="submit">
-            {t("login-button")}
-            {loading && <div className="loader"></div>}
-          </button>
-        </div>
+        <Button text="login-button" loading={loading} translate={{ t }} />
 
-        <p className="help-p">
-          {t("login-q")}
-          <br />
-          <a href="/register">{t("register-now")}</a>
-        </p>
+        <LogRegLink
+          link={REGISTER_PAGE}
+          textLink="register-now"
+          question="login-q"
+          translate={{ t }}
+        />
       </form>
     </div>
   );
