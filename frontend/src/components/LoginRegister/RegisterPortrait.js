@@ -2,20 +2,20 @@ import React, { useContext, useState } from "react";
 
 import { useTranslation } from "react-i18next";
 
-import api from "../api";
-import Validation from "../validation";
+import api from "../../api";
+import Validation from "../../validation";
 
-import { LOGIN_PAGE } from "../constants";
+import { LOGIN_PAGE } from "../../constants";
 
-import { RegisterContext } from "../pages/Register";
+import { RegisterContext } from "../../pages/Register";
 
-import Button from "./LoginRegister/SubmitButton";
-import LogRegHeader from "./LoginRegister/Header";
-import UsernameField from "./LoginRegister/RegUsernameField";
-import EmailField from "./LoginRegister/RegEmailField";
-import Password1 from "./LoginRegister/RegPassword1";
-import Password2 from "./LoginRegister/RegPassword2";
-import LogRegLink from "./LoginRegister/Link";
+import SubmitButton from "./SubmitButton";
+import LogRegHeader from "./Header";
+import UsernameField from "./RegUsernameField";
+import EmailField from "./RegEmailField";
+import Password1 from "./RegPassword1";
+import Password2 from "./RegPassword2";
+import LogRegLink from "./Link";
 
 function RegisterPortrait() {
   const { username } = useContext(RegisterContext);
@@ -97,7 +97,7 @@ function RegisterPortrait() {
           errors={errors}
         />
 
-        <Button text="register-now" loading={loading} translate={{ t }} />
+        <SubmitButton text="register-now" loading={loading} translate={{ t }} />
 
         <LogRegLink
           link={LOGIN_PAGE}

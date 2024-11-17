@@ -70,6 +70,7 @@ code {
     font-weight: 700;
     line-height: 42px;
     text-align: center;
+    margin-bottom: 30px;
   }
   .subm-button {
     display: flex;
@@ -319,7 +320,7 @@ code {
     }
     .form-p {
       padding: 130px 60px;
-      font-size: 30px;
+      font-size: 25px;
       width: 460px;
       height: 760px;
     }

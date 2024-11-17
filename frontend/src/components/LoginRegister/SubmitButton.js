@@ -1,6 +1,6 @@
 import React from "react";
 
-function Button(props) {
+function SubmitButton(props) {
   const text = props.text;
   const loading = props.loading;
   const { t } = props.translate;
@@ -15,4 +15,4 @@ function Button(props) {
   );
 }
 
-export default Button;
+export default SubmitButton;

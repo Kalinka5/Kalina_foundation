@@ -2,8 +2,8 @@ import React, { createContext, useState } from "react";
 
 import useOrientation from "../useOrientation";
 
-import LoginPortrait from "../components/LoginPortrait";
-import LoginLandscape from "../components/LoginLandscape";
+import LoginPortrait from "../components/LoginRegister/LoginPortrait";
+import LoginLandscape from "../components/LoginRegister/LoginLandscape";
 import Header from "../components/Header";
 
 import "../styles/login.css";

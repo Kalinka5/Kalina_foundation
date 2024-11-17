@@ -17,15 +17,16 @@
     }
     .log-reg-form {
       .reg-input-box {
-        margin: 25px 0;
+        height: 73px;
+        margin-bottom: 5px;
         text-align: center;
 
         .input-icon {
-          height: 100%;
           position: relative;
+          height: 40px;
 
           input {
-            height: 90%;
+            height: 100%;
             width: 100%;
             box-sizing: border-box;
             -webkit-transition: 0.5s;
@@ -109,9 +110,9 @@
           }
         }
         p {
+          font-size: 13px;
           color: red;
           margin-left: 10px;
-          margin-bottom: 10px;
           text-align: left;
         }
       }
@@ -128,23 +129,31 @@
     right: 10px;
   }
 }
-@media (min-width: 320px) and (max-width: 759px) {
-  .register .login-register .log-reg-form .reg-input-box {
-    height: 52px;
+@media (min-width: 320px) and (max-width: 430px) {
+  .register .login-register .log-reg-form .reg-input-box .input-icon {
+    height: 45px;
   }
 }
 @media (min-width: 760px) and (max-width: 999px) and (orientation: portrait) {
   .register .login-register .portrait {
     .log-reg-form {
-      .reg-input-box .input-icon input {
-        font-size: 24px;
-        height: 64px;
-        padding: 0 19px;
-      }
-      .reg-input-box .input-icon {
-        .--icon {
-          font-size: 37px;
-          top: 14px;
+      .reg-input-box {
+        height: 83px;
+
+        .input-icon input {
+          font-size: 24px;
+          padding: 0 19px;
+        }
+        .input-icon {
+          height: 61px;
+
+          .--icon {
+            font-size: 37px;
+            top: 14px;
+          }
+        }
+        p {
+          font-size: 18px;
         }
       }
     }
@@ -205,27 +214,34 @@
     h2 {
       margin-bottom: 80px;
     }
-    .reg-input-box .input-icon input {
-      font-size: 26px;
-      height: 74px;
-      padding: 0 19px;
-    }
-    .reg-input-box .input-icon {
-      .--icon {
-        font-size: 46px;
-        top: 14px;
+    .reg-input-box {
+      height: 110px;
 
-        .tooltiptext {
-          left: -395%;
+      .input-icon input {
+        font-size: 26px;
+        padding: 0 19px;
+      }
+      .input-icon {
+        height: 74px;
+
+        .--icon {
+          font-size: 46px;
+          top: 14px;
+
+          .tooltiptext {
+            left: -395%;
+          }
         }
+      }
+      p {
+        font-size: 22px;
       }
     }
   }
 }
 @media (min-width: 1024px) and (orientation: landscape) {
   .register .login-register .landscape .log-reg-form .reg-input-box {
-    height: 47px;
-    margin: 18px 0;
+    height: 57px;
   }
 }
 @media (min-width: 1300px) and (max-width: 1599px) and (orientation: landscape) {
@@ -263,11 +279,21 @@
   }
 }
 @media (min-width: 720px) and (max-height: 540px) {
+  .register .login-register .landscape .log-reg-form {
+    padding: 10px 20px 50px;
+
+    .reg-input-box {
+      height: 57px;
+
+      .input-icon {
+        height: 37px;
+      }
+    }
+  }
   .register .login-register .landscape .column .log-reg-form .reg-input-box {
     margin: 0 0;
 
     input {
-      height: 38px;
       font-size: 14px;
       padding: 0px 8px;
     }

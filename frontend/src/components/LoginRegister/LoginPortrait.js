@@ -3,18 +3,18 @@ import { useNavigate } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
 
-import api from "../api";
-import { ACCESS_TOKEN, REFRESH_TOKEN, PROFILE_PAGE } from "../constants";
+import api from "../../api";
+import { ACCESS_TOKEN, REFRESH_TOKEN, PROFILE_PAGE } from "../../constants";
 
-import EmailField from "./LoginRegister/LogEmailField";
-import PasswordField from "./LoginRegister/LogPasswordField";
-import Button from "./LoginRegister/SubmitButton";
-import LogRegHeader from "./LoginRegister/Header";
-import LogRegLink from "./LoginRegister/Link";
+import EmailField from "./LogEmailField";
+import PasswordField from "./LogPasswordField";
+import SubmitButton from "./SubmitButton";
+import LogRegHeader from "./Header";
+import LogRegLink from "./Link";
 
-import { REGISTER_PAGE } from "../constants";
+import { REGISTER_PAGE } from "../../constants";
 
-import { LoginContext } from "../pages/Login";
+import { LoginContext } from "../../pages/Login";
 
 function LoginPortrait() {
   const { email } = useContext(LoginContext);
@@ -56,7 +56,7 @@ function LoginPortrait() {
 
         <PasswordField translate={{ t }} />
 
-        <Button text="login-button" loading={loading} translate={{ t }} />
+        <SubmitButton text="login-button" loading={loading} translate={{ t }} />
 
         <LogRegLink
           link={REGISTER_PAGE}
