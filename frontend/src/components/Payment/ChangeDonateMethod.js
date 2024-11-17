@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 
 import { PaymentLandscapeContext } from "./PaymentLandscape";
 
-import "../styles/changeDonateMethod.css";
+import "../../styles/changeDonateMethod.css";
 
-const ChangeDonMethod = () => {
+const ChangeDonateMethod = () => {
   const { currentDonation, setCurrentDonation } = useContext(
     PaymentLandscapeContext
   );
@@ -38,4 +38,4 @@ const ChangeDonMethod = () => {
   );
 };
 
-export default ChangeDonMethod;
+export default ChangeDonateMethod;

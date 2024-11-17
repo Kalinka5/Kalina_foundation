@@ -1,4 +1,4 @@
-import "../styles/loaderItems.css";
+import "../../styles/loaderItems.css";
 
 function ItemsLoader() {
   return (

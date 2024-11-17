@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import api from "../api";
+import api from "../../api";
 
 import ItemsLoader from "./LoaderItems";
 
-import "../styles/items.css";
+import "../../styles/items.css";
 
 function Items(props) {
   const { n } = useParams();

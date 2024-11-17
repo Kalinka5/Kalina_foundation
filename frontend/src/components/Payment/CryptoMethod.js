@@ -6,13 +6,13 @@ import { Alert } from "antd";
 
 import { ethers, parseEther } from "ethers";
 
-import bnbLogo from "../img/bnb.svg";
-import ethLogo from "../img/eth_logo.svg";
-import metaMaskIcon from "../img/metamask-icon.svg";
+import bnbLogo from "../../img/bnb.svg";
+import ethLogo from "../../img/eth_logo.svg";
+import metaMaskIcon from "../../img/metamask-icon.svg";
 
-import api from "../api";
+import api from "../../api";
 
-import "../styles/cryptoMethod.css";
+import "../../styles/cryptoMethod.css";
 
 // Options of Network Selection React Component
 const options = [

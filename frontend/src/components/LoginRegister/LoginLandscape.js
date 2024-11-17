@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import api from "../../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN, PROFILE_PAGE } from "../../constants";
 
-import Carousel from "../Carousel";
+import Carousel from "./Carousel";
 
 import EmailField from "./LogEmailField";
 import PasswordField from "./LogPasswordField";

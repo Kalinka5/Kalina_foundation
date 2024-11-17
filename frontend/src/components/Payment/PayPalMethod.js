@@ -8,11 +8,11 @@ import {
 
 import { useTranslation } from "react-i18next";
 
-import api from "../api";
+import api from "../../api";
 
-import paypalLogo from "../img/PayPal.png";
+import paypalLogo from "../../img/PayPal.png";
 
-import "../styles/paypal.css";
+import "../../styles/paypal.css";
 
 const PaypalMethod = () => {
   const [donationAmount, setDonationAmount] = useState(5);

@@ -7,7 +7,7 @@ import Validation from "../../validation";
 
 import { LOGIN_PAGE } from "../../constants";
 
-import Carousel from "../Carousel";
+import Carousel from "./Carousel";
 
 import { RegisterContext } from "../../pages/Register";
 

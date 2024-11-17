@@ -1,9 +1,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import Slider from "../components/Slider";
-import Items from "../components/Items";
-import Donators from "../components/Donators";
+import Slider from "../components/Home/Slider";
+import Items from "../components/Home/Items";
+import Donators from "../components/Home/Donators";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 

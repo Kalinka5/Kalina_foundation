@@ -3,20 +3,20 @@ import { useParams } from "react-router-dom";
 
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-import { HOME_PAGE } from "../constants";
+import { HOME_PAGE } from "../../constants";
 
-import bpla from "../img/bpla.jpg";
-import bplaMobile from "../img/bpla_mobile.jpeg";
-import communication from "../img/communication.jpg";
-import communicationMobile from "../img/communication_mobile.jpg";
-import drones from "../img/naval_drones.jpg";
-import dronesMobile from "../img/drones_mobile.jpg";
-import opticalDevices from "../img/optical_devices.jpg";
-import opticalDevMobile from "../img/optical_dev_mobile.jpg";
-import transport from "../img/transport.jpg";
-import transportMobile from "../img/transport_mobile.jpeg";
+import bpla from "../../img/bpla.jpg";
+import bplaMobile from "../../img/bpla_mobile.jpeg";
+import communication from "../../img/communication.jpg";
+import communicationMobile from "../../img/communication_mobile.jpg";
+import drones from "../../img/naval_drones.jpg";
+import dronesMobile from "../../img/drones_mobile.jpg";
+import opticalDevices from "../../img/optical_devices.jpg";
+import opticalDevMobile from "../../img/optical_dev_mobile.jpg";
+import transport from "../../img/transport.jpg";
+import transportMobile from "../../img/transport_mobile.jpeg";
 
-import "../styles/slider.css";
+import "../../styles/slider.css";
 
 function Slider() {
   const { n } = useParams();
