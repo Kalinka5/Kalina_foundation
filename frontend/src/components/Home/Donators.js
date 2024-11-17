@@ -15,15 +15,15 @@ import { useTranslation } from "react-i18next";
 
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-import api from "../api";
+import api from "../../api";
 
-import useOrientation from "../useOrientation";
+import useOrientation from "../../useOrientation";
 
-import image from "../img/winner.png";
+import image from "../../img/winner.png";
 
 import DonatorsLoader from "./LoaderDonators";
 
-import "../styles/donators.css";
+import "../../styles/donators.css";
 
 function Donators() {
   const [donators, setDonators] = useState(null);

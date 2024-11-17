@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import image1 from "../img/carousel-img1.jpg";
-import image2 from "../img/carousel-img2.jpg";
-import image3 from "../img/carousel-img3.jpg";
-import image4 from "../img/carousel-img4.jpg";
+import image1 from "../../img/carousel-img1.jpg";
+import image2 from "../../img/carousel-img2.jpg";
+import image3 from "../../img/carousel-img3.jpg";
+import image4 from "../../img/carousel-img4.jpg";
 
-import "../styles/carousel.css";
+import "../../styles/carousel.css";
 
 const Carousel = () => {
   const [slide, setSlide] = useState(0);

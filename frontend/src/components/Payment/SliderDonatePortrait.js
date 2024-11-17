@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 
 import { PaymentPortraitContext } from "./PaymentPortrait";
 
-import metaMaskIcon from "../img/metamask-icon.svg";
-import paypalIcon from "../img/paypal-icon.svg";
-import privatIcon from "../img/privat-icon.svg";
-import monoIcon from "../img/mono-icon.jpeg";
+import metaMaskIcon from "../../img/metamask-icon.svg";
+import paypalIcon from "../../img/paypal-icon.svg";
+import privatIcon from "../../img/privat-icon.svg";
+import monoIcon from "../../img/mono-icon.jpeg";
 
-import "../styles/sliderDonatePortrait.css";
+import "../../styles/sliderDonatePortrait.css";
 
 const SliderDonatePortrait1 = () => {
   const setBankChange = useContext(PaymentPortraitContext);
