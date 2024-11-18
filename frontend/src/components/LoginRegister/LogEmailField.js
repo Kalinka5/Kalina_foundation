@@ -15,7 +15,7 @@ function EmailField(props) {
         <input
           type="text"
           value={email}
-          placeholder="Your Email"
+          placeholder={t("your-email")}
           id="email"
           onChange={(e) => setEmail(e.target.value)}
         />

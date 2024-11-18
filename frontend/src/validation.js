@@ -1,4 +1,4 @@
-function Validation(username, email, password1, password2) {
+function Validation(username, email, password1, password2, t) {
   const errors = {};
   const validFields = {};
 
@@ -7,37 +7,37 @@ function Validation(username, email, password1, password2) {
     /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
 
   if (username === "") {
-    errors.username = "username field is required";
+    errors.username = t("username-required");
     validFields.usernameIsValid = false;
   } else {
     validFields.usernameIsValid = true;
   }
 
   if (email === "") {
-    errors.email = "email field is required";
+    errors.email = t("email-required");
     validFields.emailIsValid = false;
   } else if (!emailPattern.test(email)) {
-    errors.email = "email is not valid";
+    errors.email = t("email-not-valid");
     validFields.emailIsValid = false;
   } else {
     validFields.emailIsValid = true;
   }
 
   if (password1 === "") {
-    errors.password = "password field is required";
+    errors.password = t("password-required");
     validFields.passwordIsValid = false;
   } else if (!passwordPattern.test(password1)) {
-    errors.password = "password is not valid";
+    errors.password = t("password-not-valid");
     validFields.passwordIsValid = false;
   } else {
     validFields.passwordIsValid = true;
   }
 
   if (password2 === "") {
-    errors.confirmPassword = "confirm password field is required";
+    errors.confirmPassword = t("conf-password-required");
     validFields.confPasswordIsValid = false;
   } else if (password1 !== password2) {
-    errors.confirmPassword = "password not matched";
+    errors.confirmPassword = t("password-not-matched");
     validFields.confPasswordIsValid = false;
   } else {
     validFields.confPasswordIsValid = true;
