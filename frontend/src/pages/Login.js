@@ -6,7 +6,7 @@ import LoginPortrait from "../components/LoginRegister/LoginPortrait";
 import LoginLandscape from "../components/LoginRegister/LoginLandscape";
 import Header from "../components/Header";
 
-import "../styles/login.css";
+import "../styles/loginRegister/login.css";
 
 export const LoginContext = createContext(null);
 

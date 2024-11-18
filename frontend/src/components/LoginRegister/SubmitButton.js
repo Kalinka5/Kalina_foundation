@@ -1,5 +1,7 @@
 import React from "react";
 
+import "../../styles/loginRegister/submitButton.css";
+
 function SubmitButton(props) {
   const text = props.text;
   const loading = props.loading;

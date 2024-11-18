@@ -5,7 +5,7 @@ import image2 from "../../img/carousel-img2.jpg";
 import image3 from "../../img/carousel-img3.jpg";
 import image4 from "../../img/carousel-img4.jpg";
 
-import "../../styles/carousel.css";
+import "../../styles/loginRegister/carousel.css";
 
 const Carousel = () => {
   const [slide, setSlide] = useState(0);

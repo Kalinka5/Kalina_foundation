@@ -146,20 +146,6 @@ code {
       }
     }
   }
-  .btn-container button {
-    background-color: #4070f4;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &:hover {
-      background: #0e4bf1;
-    }
-  }
 }
 .landscape .log-reg-form {
   padding: 30px 20px 50px;
@@ -171,20 +157,6 @@ code {
       &:hover {
         text-decoration: underline;
       }
-    }
-  }
-  .btn-container button {
-    background-color: #4070f4;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &:hover {
-      background: #0e4bf1;
     }
   }
 }
@@ -458,15 +430,6 @@ code {
         }
         .input-icon .--icon .confirm-tip {
           top: -68px;
-        }
-      }
-      .btn-container {
-        height: 44px;
-        margin: 7px 0;
-
-        button {
-          margin-top: 0;
-          font-size: 14px;
         }
       }
     }

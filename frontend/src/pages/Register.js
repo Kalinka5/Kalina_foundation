@@ -8,7 +8,7 @@ import Header from "../components/Header";
 
 import i18n from "../i18n";
 
-import "../styles/register.css";
+import "../styles/loginRegister/register.css";
 
 export const RegisterContext = createContext([{}]);
 
