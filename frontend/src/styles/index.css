@@ -237,7 +237,10 @@ code {
   }
   .login-register .log-reg-form {
     height: 523px;
-    width: 260px;
+    width: 295px;
+  }
+  .login-register .form-p {
+    padding: 50px 17px;
   }
 }
 @media (min-width: 370px) and (max-width: 389px) {
@@ -321,7 +324,7 @@ code {
     .form-p {
       padding: 130px 60px;
       font-size: 25px;
-      width: 460px;
+      width: 478px;
       height: 760px;
     }
     .log-reg-form {

@@ -27,7 +27,7 @@ function PasswordField(props) {
         <input
           type={passType}
           value={password}
-          placeholder="Your Password"
+          placeholder={t("your-password")}
           id="password"
           onChange={(e) => setPassword(e.target.value)}
         />

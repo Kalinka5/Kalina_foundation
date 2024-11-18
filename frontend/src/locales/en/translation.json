@@ -51,7 +51,9 @@
 
   "login-head": "Login Here",
   "email": "Email",
+  "your-email": "Your Email",
   "password": "Password",
+  "your-password": "Your Password",
   "login-button": "Log In",
   "login-q": "You don't have an account?",
   "register-now": "Register now",
@@ -66,6 +68,14 @@
   "tooltip4": "The confirmation password must match the password being created!",
   "register-q": "Already have an account?",
   "login-now": "Login now",
+
+  "username-required": "username field is required",
+  "email-required": "email field is required",
+  "email-not-valid": "email is not valid",
+  "password-required": "password field is required",
+  "password-not-valid": "password is not valid",
+  "conf-password-required": "confirm password field is required",
+  "password-not-matched": "password not matched",
 
   "upload-image": "Upload image",
   "username": "Username",

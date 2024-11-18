@@ -36,7 +36,13 @@ function RegisterPortrait() {
     setLoading(true);
     e.preventDefault();
 
-    const [err, valFields] = Validation(username, email, password1, password2);
+    const [err, valFields] = Validation(
+      username,
+      email,
+      password1,
+      password2,
+      t
+    );
     setErrors(err);
     setValidFields(valFields);
 
