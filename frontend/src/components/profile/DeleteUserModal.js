@@ -6,13 +6,13 @@ import { RiCloseLine } from "react-icons/ri";
 
 import { useTranslation } from "react-i18next";
 
-import api from "../api";
+import api from "../../api";
 
-import { LOGIN_PAGE } from "../constants";
+import { LOGIN_PAGE } from "../../constants";
 
-import "../styles/modal.css";
+import "../../styles/profile/modal.css";
 
-const Modal = ({ setIsOpen }) => {
+const DeleteUserModal = ({ setIsOpen }) => {
   const navigate = useNavigate();
 
   const { t } = useTranslation();
@@ -61,4 +61,4 @@ const Modal = ({ setIsOpen }) => {
   );
 };
 
-export default Modal;
+export default DeleteUserModal;
