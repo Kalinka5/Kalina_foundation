@@ -12,7 +12,7 @@ import api from "../../api";
 
 import paypalLogo from "../../img/PayPal.png";
 
-import "../../styles/paypal.css";
+import "../../styles/payment/paypal.css";
 
 const PaypalMethod = () => {
   const [donationAmount, setDonationAmount] = useState(5);

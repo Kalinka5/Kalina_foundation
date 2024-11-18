@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { PaymentLandscapeContext } from "./PaymentLandscape";
 
-import "../../styles/changeDonateMethod.css";
+import "../../styles/payment/changeDonateMethod.css";
 
 const ChangeDonateMethod = () => {
   const { currentDonation, setCurrentDonation } = useContext(

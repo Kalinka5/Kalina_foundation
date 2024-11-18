@@ -64,50 +64,6 @@
     .move-4 {
       left: -1103px;
     }
-    .mob-tooltip {
-      position: absolute;
-      bottom: 20px;
-      left: 40px;
-      width: 100%;
-      display: flex;
-      color: rgb(189, 36, 36);
-
-      .question-icon {
-        font-size: 20px;
-        color: rgb(189, 36, 36);
-      }
-      .tooltiptext {
-        text-align: center;
-        visibility: hidden;
-        background-color: rgb(189, 36, 36);
-        color: #fff;
-        margin-top: 22px;
-        padding: 10px;
-        line-height: 1.5;
-        width: 286px;
-        margin-left: -125px;
-        border-radius: 10px;
-        font-family: "Ubuntu", sans-serif;
-        position: absolute;
-        z-index: 3;
-        bottom: 150%;
-        left: 110px;
-      }
-      .tooltiptext::after {
-        content: "";
-        position: absolute;
-        top: 100%;
-        left: 50%;
-        margin-left: -5px;
-        border-width: 5px;
-        border-style: solid;
-        border-color: rgb(189, 36, 36) transparent transparent transparent;
-      }
-      &:hover .tooltiptext {
-        visibility: visible;
-        z-index: 100;
-      }
-    }
   }
 }
 
@@ -166,9 +122,6 @@
     }
     .grid-part .block {
       margin: 2px;
-    }
-    .mob-tooltip {
-      left: 32px;
     }
   }
 }

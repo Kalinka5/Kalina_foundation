@@ -2,7 +2,7 @@ import React from "react";
 
 import { useTranslation } from "react-i18next";
 
-import "../../styles/monoMethod.css";
+import "../../styles/payment/monoMethod.css";
 
 export const MonoBank = () => {
   const { t } = useTranslation();
