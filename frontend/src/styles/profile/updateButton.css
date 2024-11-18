@@ -1,0 +1,48 @@
+.btn-container {
+  text-align: center;
+
+  button {
+    width: 100%;
+    height: 48px;
+    padding: 0px 20px;
+    margin: 0 auto;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    background-color: #c99400;
+    border: 1px #c99400 solid;
+    border-radius: 5px;
+    opacity: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: #d5a700;
+      border: 1px #d5a700 solid;
+    }
+    &:focus {
+      outline: none;
+    }
+    .loader {
+      border-top-color: #b76800;
+    }
+  }
+}
+
+@media (min-width: 750px) and (max-width: 1200px) and (orientation: portrait) {
+  .btn-container button {
+    height: 61px;
+    font-size: 23px;
+  }
+}
+@media (min-width: 1300px) and (min-height: 912px) {
+  .btn-container button {
+    height: 61px;
+    font-size: 23px;
+  }
+}

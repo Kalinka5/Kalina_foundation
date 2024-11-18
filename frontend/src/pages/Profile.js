@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
-
-import { IoMdAt, IoIosContact, IoIosImage } from "react-icons/io";
-import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
-
-import { useTranslation } from "react-i18next";
+import React, { createContext, useEffect, useState } from "react";
 
 import api from "../api";
 
-import Modal from "../components/DeleteModal";
 import Header from "../components/Header";
+import DeleteButton from "../components/profile/DeleteButton";
+import DeleteUserModal from "../components/profile/DeleteUserModal";
+import ProfileImage from "../components/profile/ProfileImage";
+import UsernameField from "../components/profile/UsernameField";
+import EmailField from "../components/profile/EmailField";
+import FirstnameField from "../components/profile/FirstnameField";
+import LastnameField from "../components/profile/LastnameField";
+import UpdateButton from "../components/profile/UpdateButton";
 
-import { API_URL } from "../constants";
+import "../styles/profile/profile.css";
 
-import "../styles/profile.css";
+export const ProfileContext = createContext([{}]);
 
 function Profile(props) {
   const [username, setUsername] = useState("");
@@ -25,8 +27,6 @@ function Profile(props) {
   const [loading, setLoading] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
-
-  const { t } = useTranslation();
 
   const links = props.links;
 
@@ -44,7 +44,7 @@ function Profile(props) {
       setEmail(res.data.email);
       setFirstName(res.data.first_name);
       setLastName(res.data.last_name);
-      setImageURL(API_URL + res.data.image);
+      setImageURL(res.data.image);
     } catch (err) {
       alert(err);
       console.log(
@@ -52,13 +52,6 @@ function Profile(props) {
       );
     }
   };
-
-  function getFile(event) {
-    console.log(`A Profile image name is ${event.target.files[0]}`);
-    setImage(event.target.files[0]);
-    setImageURL(URL.createObjectURL(event.target.files[0]));
-    console.log("The new image was set successfully!");
-  }
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -87,115 +80,48 @@ function Profile(props) {
   return (
     <div className="profile header-body">
       <Header links={links} fixed={false} />
-      <div className="profile-field main-body">
-        <div className="profile-card" id="profileCard">
-          <form onSubmit={handleSubmit}>
-            <div className="profile-header">
-              <div className="form-element">
-                <input
-                  type="file"
-                  id="profile-image"
-                  accept="image/*"
-                  onChange={getFile}
-                />
-                <label htmlFor="profile-image" id="profile-image-preview">
-                  <img src={image_url} alt="Profile" />
-                  <div className="upload-content">
-                    <div className="upload-image">
-                      <IoIosImage />
-                    </div>
-                    <h2>{t("upload-image")}</h2>
-                  </div>
-                </label>
+      <ProfileContext.Provider
+        value={{
+          isOpen,
+          setIsOpen,
+          loading,
+          image_url,
+          setImage,
+          setImageURL,
+          username,
+          setUsername,
+          email,
+          setEmail,
+          first_name,
+          setFirstName,
+          last_name,
+          setLastName,
+        }}
+      >
+        <div className="profile-field main-body">
+          <div className="profile-card" id="profileCard">
+            <form onSubmit={handleSubmit}>
+              <div className="profile-header">
+                <ProfileImage />
+
+                <UsernameField />
+
+                <DeleteButton />
               </div>
-              <div className="input-data">
-                <input
-                  type="text"
-                  id="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                />
-                <div className="underline"></div>
-                <label htmlFor="username">{t("username")}</label>
-                <i className="icon">
-                  <IoIosContact />
-                </i>
+              <div className="profile-details">
+                <EmailField />
+
+                <FirstnameField />
+
+                <LastnameField />
+
+                <UpdateButton />
               </div>
-              <div className="delete-button">
-                <button
-                  className="btn btn-delete"
-                  type="button"
-                  id="submit1"
-                  onClick={() => setIsOpen(true)}
-                >
-                  {t("delete-button")}
-                </button>
-              </div>
-            </div>
-            <div className="profile-details">
-              <div className="form-group">
-                <label htmlFor="email">{t("e-mail")}</label>
-                <div className="input-icon">
-                  <input
-                    type="email"
-                    name="logemail"
-                    className="form-style"
-                    placeholder={t("e-mail-input")}
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <i className="icon">
-                    <IoMdAt />
-                  </i>
-                </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="firstname">{t("firstname")}</label>
-                <div className="input-icon">
-                  <input
-                    type="text"
-                    name="firstname"
-                    className="form-style"
-                    placeholder={t("firstname-input")}
-                    id="firstname"
-                    value={first_name}
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                  <i className="icon">
-                    <FaAutoprefixer />
-                  </i>
-                </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="lastname">{t("lastname")}</label>
-                <div className="input-icon">
-                  <input
-                    type="text"
-                    name="lastname"
-                    className="form-style"
-                    placeholder={t("lastname-input")}
-                    id="lastname"
-                    value={last_name}
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                  <i className="icon">
-                    <FaAustralSign />
-                  </i>
-                </div>
-              </div>
-              <div className="btn-container">
-                <button type="submit" id="submit2">
-                  {t("submit")}
-                  {loading && <div className="loader"></div>}
-                </button>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
-      {isOpen && <Modal setIsOpen={setIsOpen} />}
+        {isOpen && <DeleteUserModal setIsOpen={setIsOpen} />}
+      </ProfileContext.Provider>
     </div>
   );
 }

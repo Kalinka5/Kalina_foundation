@@ -1,0 +1,95 @@
+.profile {
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #ebe37d, #2f80ed);
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+
+  .profile-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .profile-card {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 580px;
+    width: 500px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+    .profile-header {
+      position: relative;
+      padding: 20px;
+      text-align: center;
+      background: #008374;
+      color: rgb(255, 255, 255);
+    }
+    .profile-details {
+      padding: 20px;
+      background-color: #fdebb2;
+
+      p {
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+.profile > Header {
+  flex-shrink: 0;
+}
+
+/* Media Query For different screens */
+@media (min-width: 320px) and (max-width: 344px) {
+  .profile .profile-card {
+    width: 330px;
+  }
+}
+@media (min-width: 345px) and (max-width: 389px) {
+  .profile .profile-card {
+    width: 350px;
+  }
+}
+@media (min-width: 390px) and (max-width: 399px) {
+  .profile .profile-card {
+    width: 380px;
+  }
+}
+@media (min-width: 400px) and (max-width: 479px) {
+  .profile .profile-card {
+    width: 400px;
+  }
+}
+@media (min-width: 750px) and (max-width: 1200px) and (orientation: portrait) {
+  .profile .profile-card {
+    width: 600px;
+    height: auto;
+  }
+}
+@media (min-width: 1300px) and (min-height: 912px) {
+  .profile .profile-card {
+    width: 600px;
+    height: auto;
+  }
+}
+@media (min-width: 720px) and (max-height: 540px) {
+  .profile .profile-card {
+    width: 380px;
+    height: auto;
+
+    .profile-header {
+      padding: 14px;
+    }
+    .profile-details {
+      padding: 14px;
+    }
+  }
+}
+@media (min-width: 1024px) and (max-height: 600px) {
+  .profile .profile-card {
+    width: 400px;
+    height: auto;
+  }
+}
