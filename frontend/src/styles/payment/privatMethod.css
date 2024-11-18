@@ -128,7 +128,7 @@
 }
 
 @media (min-width: 320px) and (max-width: 430px) {
-  .privat-container figure .container-visa {
+  .privat-container figure .container-visa .front {
     .card-no {
       font-size: 28px;
       margin-top: 34px;
@@ -140,7 +140,7 @@
   }
 }
 @media (min-width: 540px) and (max-width: 1000px) and (orientation: portrait) {
-  .privat-container figure .container-visa {
+  .privat-container figure .container-visa .front {
     .card-no {
       font-size: 30px;
       margin-top: 26px;
@@ -152,7 +152,7 @@
 }
 @media (min-width: 1024px) and (max-width: 1100px) {
   .privat-container {
-    figure .container-visa {
+    figure .container-visa .front {
       .chip-img {
         width: 40px;
       }
@@ -177,7 +177,7 @@
 }
 @media (min-width: 1100px) and (max-width: 1200px) {
   .privat-container {
-    figure .container-visa {
+    figure .container-visa .front {
       .card-no {
         font-size: 30px;
         margin-top: 32px;
@@ -196,7 +196,7 @@
 }
 @media (min-width: 1200px) and (max-width: 1300px) {
   .privat-container {
-    figure .container-visa {
+    figure .container-visa .front {
       .card-no {
         font-size: 30px;
         margin-top: 41px;
@@ -215,7 +215,7 @@
 }
 @media (min-width: 720px) and (max-height: 540px) {
   .privat-container {
-    figure .container-visa {
+    figure .container-visa .front {
       .row .chip-img {
         width: 26px;
       }

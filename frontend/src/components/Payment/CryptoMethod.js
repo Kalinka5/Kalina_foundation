@@ -12,7 +12,7 @@ import metaMaskIcon from "../../img/metamask-icon.svg";
 
 import api from "../../api";
 
-import "../../styles/cryptoMethod.css";
+import "../../styles/payment/cryptoMethod.css";
 
 // Options of Network Selection React Component
 const options = [

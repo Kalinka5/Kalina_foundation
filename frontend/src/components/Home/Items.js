@@ -6,7 +6,7 @@ import api from "../../api";
 
 import ItemsLoader from "./LoaderItems";
 
-import "../../styles/items.css";
+import "../../styles/home/items.css";
 
 function Items(props) {
   const { n } = useParams();

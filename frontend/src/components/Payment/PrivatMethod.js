@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 import { PaymentLandscapeContext } from "./PaymentLandscape";
 
-import "../../styles/privatMethod.css";
+import "../../styles/payment/privatMethod.css";
 
 export const PrivatBank = () => {
   const { currentDonation } = useContext(PaymentLandscapeContext);

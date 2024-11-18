@@ -1,9 +1,6 @@
 import React, { createContext, useState } from "react";
 
-import { IoIosHelpCircle } from "react-icons/io";
-
-import { useTranslation } from "react-i18next";
-
+import { QuestionPortrait } from "./Questions";
 import { MonoBank } from "./MonoMethod";
 import { PrivatBank } from "./PrivatMethod";
 import PaypalMethod from "./PayPalMethod";
@@ -11,14 +8,12 @@ import CryptoPaymentForm from "./CryptoMethod";
 
 import SliderDonatePortrait1 from "./SliderDonatePortrait";
 
-import "../../styles/paymentPortrait.css";
+import "../../styles/payment/paymentPortrait.css";
 
 export const PaymentPortraitContext = createContext(null);
 
 export const PaymentPortrait = () => {
   const [bankChange, setbankChange] = useState(1);
-
-  const { t } = useTranslation();
 
   return (
     <div className="flex-center">
@@ -40,24 +35,7 @@ export const PaymentPortrait = () => {
             <CryptoPaymentForm />
           </div>
         </div>
-        <div className="mob-tooltip">
-          <IoIosHelpCircle className="question-icon" />
-          {t("q1-head")}
-          <span className="tooltiptext">
-            {" "}
-            {t("q1-text1")}
-            <br />
-            <br />
-            {t("q1-text2")}
-            <br />
-            <br />
-            {t("q1-text3")}
-            <b>
-              <i>username</i>
-            </b>{" "}
-            {t("q1-text4")}
-          </span>
-        </div>
+        <QuestionPortrait />
       </div>
     </div>
   );

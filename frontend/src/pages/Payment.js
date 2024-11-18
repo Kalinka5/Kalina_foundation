@@ -6,7 +6,7 @@ import Header from "../components/Header";
 
 import useOrientation from "../useOrientation";
 
-import "../styles/payment.css";
+import "../styles/payment/payment.css";
 
 function Payment(props) {
   const orientation = useOrientation();

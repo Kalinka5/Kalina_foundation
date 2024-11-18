@@ -7,7 +7,7 @@ import paypalIcon from "../../img/paypal-icon.svg";
 import privatIcon from "../../img/privat-icon.svg";
 import monoIcon from "../../img/mono-icon.jpeg";
 
-import "../../styles/sliderDonatePortrait.css";
+import "../../styles/payment/sliderDonatePortrait.css";
 
 const SliderDonatePortrait1 = () => {
   const setBankChange = useContext(PaymentPortraitContext);

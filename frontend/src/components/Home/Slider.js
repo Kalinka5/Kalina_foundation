@@ -16,7 +16,7 @@ import opticalDevMobile from "../../img/optical_dev_mobile.jpg";
 import transport from "../../img/transport.jpg";
 import transportMobile from "../../img/transport_mobile.jpeg";
 
-import "../../styles/slider.css";
+import "../../styles/home/slider.css";
 
 function Slider() {
   const { n } = useParams();

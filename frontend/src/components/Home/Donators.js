@@ -23,7 +23,7 @@ import image from "../../img/winner.png";
 
 import DonatorsLoader from "./LoaderDonators";
 
-import "../../styles/donators.css";
+import "../../styles/home/donators.css";
 
 function Donators() {
   const [donators, setDonators] = useState(null);
