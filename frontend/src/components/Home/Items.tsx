@@ -8,14 +8,24 @@ import ItemsLoader from "./LoaderItems";
 
 import "../../styles/home/items.css";
 
-function Items(props) {
+type Item = {
+  id: number;
+  image: string;
+  title: string;
+};
+
+type ItemsProps = {
+  superUser: boolean;
+};
+
+function Items({ superUser }: ItemsProps) {
   const { n } = useParams();
-  const [items, setItems] = useState(null);
+  const [items, setItems] = useState<Item[]>([]);
   const [isSuperUser, setIsSuperUser] = useState(false);
 
   const { t } = useTranslation();
 
-  const isAuthen = props.superUser;
+  const isAuthen = superUser;
 
   useEffect(() => {
     getData();

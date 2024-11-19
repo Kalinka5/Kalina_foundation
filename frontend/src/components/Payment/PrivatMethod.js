@@ -57,7 +57,7 @@ export const PrivatBank = () => {
       <figure className="container-visa">
         <div
           className={`card-front front-hov ${
-            currentDonation === 1 ? "img-z-1" : ""
+            currentDonation === 1 && "img-z-1"
           }`}
         >
           <img

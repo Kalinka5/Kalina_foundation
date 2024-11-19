@@ -4,7 +4,7 @@ import { FaAutoprefixer } from "react-icons/fa6";
 
 import { useTranslation } from "react-i18next";
 
-import { ProfileContext } from "../../pages/Profile";
+import { ProfileContext } from "../../pages/Profile.tsx";
 
 import "../../styles/profile/userFields.css";
 

@@ -9,7 +9,7 @@ import monoIcon from "../../img/mono-icon.jpeg";
 
 import "../../styles/payment/sliderDonatePortrait.css";
 
-const SliderDonatePortrait1 = () => {
+const SliderDonatePortrait = () => {
   const setBankChange = useContext(PaymentPortraitContext);
 
   const changeToMono = () => setBankChange(1);
@@ -35,4 +35,4 @@ const SliderDonatePortrait1 = () => {
   );
 };
 
-export default SliderDonatePortrait1;
+export default SliderDonatePortrait;

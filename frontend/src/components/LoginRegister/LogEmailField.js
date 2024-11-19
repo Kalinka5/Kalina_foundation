@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { LoginContext } from "../../pages/Login";
+import { LoginContext } from "../../pages/Login.tsx";
 
 function EmailField(props) {
   const { email, setEmail } = useContext(LoginContext);

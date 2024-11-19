@@ -6,7 +6,7 @@ import { PrivatBank } from "./PrivatMethod";
 import PaypalMethod from "./PayPalMethod";
 import CryptoPaymentForm from "./CryptoMethod";
 
-import SliderDonatePortrait1 from "./SliderDonatePortrait";
+import SliderDonatePortrait from "./SliderDonatePortrait";
 
 import "../../styles/payment/paymentPortrait.css";
 
@@ -19,7 +19,7 @@ export const PaymentPortrait = () => {
     <div className="flex-center">
       <div className="mob-container">
         <PaymentPortraitContext.Provider value={setbankChange}>
-          <SliderDonatePortrait1 />
+          <SliderDonatePortrait />
         </PaymentPortraitContext.Provider>
         <div className={`grid-part form-section move-${bankChange}`}>
           <div className="grid-mono grid-column">

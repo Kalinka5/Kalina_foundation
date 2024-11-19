@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
-import { LoginContext } from "../../pages/Login";
+import { LoginContext } from "../../pages/Login.tsx";
 
 function PasswordField(props) {
   const { password, setPassword } = useContext(LoginContext);

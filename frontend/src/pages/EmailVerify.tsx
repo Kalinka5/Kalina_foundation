@@ -1,20 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import { useParams } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
 
-import api from "../api";
+import api from "../api.js";
 
-import Header from "../components/Header";
+import Header from "../components/Header.tsx";
+
+import { AuthContext } from "../App.tsx";
 
 import "../styles/emailVerify.css";
 
-function EmailVerify(props) {
+function EmailVerify() {
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    throw new Error("AuthContext must be used within an AuthContext.Provider");
+  }
+
+  const { auth, authLinks, notAuthLinks } = authContext;
+  const links = auth ? authLinks : notAuthLinks;
+
   const { uid } = useParams();
   const { token } = useParams();
 
-  const [emailStatus, setEmailStatus] = useState(null);
+  const [emailStatus, setEmailStatus] = useState<"success" | "failed" | null>(
+    null
+  );
 
   const { t } = useTranslation();
 
@@ -40,7 +53,7 @@ function EmailVerify(props) {
     }
   };
 
-  let statusMessage = null;
+  let statusMessage: React.ReactNode = null;
   if (emailStatus === "success") {
     statusMessage = (
       <div className="text success">
@@ -78,7 +91,7 @@ function EmailVerify(props) {
 
   return (
     <div className="email-verify header-body">
-      <Header links={props.links} fixed={false} />
+      <Header links={links} />
       <div className="main-body">
         <div className="ternary-system">
           <div className="sun primary"></div>

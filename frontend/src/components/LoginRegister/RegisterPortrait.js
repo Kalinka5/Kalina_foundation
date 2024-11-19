@@ -7,7 +7,7 @@ import Validation from "../../validation";
 
 import { LOGIN_PAGE } from "../../constants";
 
-import { RegisterContext } from "../../pages/Register";
+import { RegisterContext } from "../../pages/Register.tsx";
 
 import SubmitButton from "./SubmitButton";
 import LogRegHeader from "./Header";

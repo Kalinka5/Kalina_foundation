@@ -5,12 +5,22 @@ import LanguageSelector from "./LanguageSelector";
 
 import "../styles/header.css";
 
-const Header = (props) => {
+type Link = {
+  id: number;
+  urlLink: string;
+  urlName: string;
+};
+
+type HeaderProps = {
+  fixed?: "pos-fixed";
+  links: Link[];
+};
+
+const Header = ({ fixed, links }: HeaderProps) => {
   const { t } = useTranslation();
-  const fixed = props.fixed;
 
   return (
-    <header className={`${fixed && "pos-fixed"}`}>
+    <header className={fixed}>
       <ul>
         <li>
           <div className="logo">
@@ -23,7 +33,7 @@ const Header = (props) => {
           <LanguageSelector />
         </li>
         <li className="nav-link">
-          {props.links.map((el) => (
+          {links.map((el) => (
             <a key={el.id} href={el.urlLink}>
               {t(el.urlName)}
             </a>

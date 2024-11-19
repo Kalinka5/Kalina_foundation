@@ -14,7 +14,7 @@ import LogRegLink from "./Link";
 
 import { REGISTER_PAGE } from "../../constants";
 
-import { LoginContext } from "../../pages/Login";
+import { LoginContext } from "../../pages/Login.tsx";
 
 function LoginPortrait() {
   const { email } = useContext(LoginContext);

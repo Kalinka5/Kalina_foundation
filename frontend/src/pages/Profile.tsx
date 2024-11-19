@@ -1,34 +1,60 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState, useContext } from "react";
 
-import api from "../api";
+import api from "../api.js";
 
-import Header from "../components/Header";
-import DeleteButton from "../components/profile/DeleteButton";
-import DeleteUserModal from "../components/profile/DeleteUserModal";
-import ProfileImage from "../components/profile/ProfileImage";
-import UsernameField from "../components/profile/UsernameField";
-import EmailField from "../components/profile/EmailField";
-import FirstnameField from "../components/profile/FirstnameField";
-import LastnameField from "../components/profile/LastnameField";
-import UpdateButton from "../components/profile/UpdateButton";
+import { AuthContext } from "../App.tsx";
+
+import Header from "../components/Header.tsx";
+import DeleteButton from "../components/profile/DeleteButton.js";
+import DeleteUserModal from "../components/profile/DeleteUserModal.js";
+import ProfileImage from "../components/profile/ProfileImage.js";
+import UsernameField from "../components/profile/UsernameField.js";
+import EmailField from "../components/profile/EmailField.js";
+import FirstnameField from "../components/profile/FirstnameField.js";
+import LastnameField from "../components/profile/LastnameField.js";
+import UpdateButton from "../components/profile/UpdateButton.js";
 
 import "../styles/profile/profile.css";
 
-export const ProfileContext = createContext([{}]);
+type ProfileContextType = {
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  loading: boolean;
+  image_url: string;
+  setImage: React.Dispatch<React.SetStateAction<File | null>>;
+  setImageURL: React.Dispatch<React.SetStateAction<string>>;
+  username: string;
+  setUsername: React.Dispatch<React.SetStateAction<string>>;
+  email: string;
+  setEmail: React.Dispatch<React.SetStateAction<string>>;
+  first_name: string;
+  setFirstName: React.Dispatch<React.SetStateAction<string>>;
+  last_name: string;
+  setLastName: React.Dispatch<React.SetStateAction<string>>;
+};
 
-function Profile(props) {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [first_name, setFirstName] = useState("");
-  const [last_name, setLastName] = useState("");
-  const [image, setImage] = useState("");
-  const [image_url, setImageURL] = useState("");
+export const ProfileContext = createContext<ProfileContextType | undefined>(
+  undefined
+);
 
-  const [loading, setLoading] = useState(false);
+function Profile() {
+  const authContext = useContext(AuthContext);
 
-  const [isOpen, setIsOpen] = useState(false);
+  if (!authContext) {
+    throw new Error("AuthContext must be used within an AuthContext.Provider");
+  }
 
-  const links = props.links;
+  const { auth, authLinks, notAuthLinks } = authContext;
+  const links = auth ? authLinks : notAuthLinks;
+
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [first_name, setFirstName] = useState<string>("");
+  const [last_name, setLastName] = useState<string>("");
+  const [image, setImage] = useState<File | null>(null);
+  const [image_url, setImageURL] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     getData();
@@ -53,7 +79,7 @@ function Profile(props) {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
 
@@ -79,7 +105,7 @@ function Profile(props) {
 
   return (
     <div className="profile header-body">
-      <Header links={links} fixed={false} />
+      <Header links={links} />
       <ProfileContext.Provider
         value={{
           isOpen,

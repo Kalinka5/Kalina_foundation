@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { IoIosBulb } from "react-icons/io";
 
-import { RegisterContext } from "../../pages/Register";
+import { RegisterContext } from "../../pages/Register.tsx";
 
 function Password1(props) {
   const { password1, setPassword1 } = useContext(RegisterContext);

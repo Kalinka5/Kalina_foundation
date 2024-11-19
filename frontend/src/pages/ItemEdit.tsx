@@ -1,26 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import { IoIosImage } from "react-icons/io";
 
-import api from "../api";
+import api from "../api.js";
 
-import { API_URL } from "../constants";
+import { API_URL } from "../constants.js";
 
-import Header from "../components/Header";
+import Header from "../components/Header.tsx";
+
+import { AuthContext } from "../App.tsx";
 
 import "../styles/itemEdit.css";
 
-function ItemEdit(props) {
+function ItemEdit() {
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    throw new Error("AuthContext must be used within an AuthContext.Provider");
+  }
+
+  const { auth, authLinks, notAuthLinks } = authContext;
+  const links = auth ? authLinks : notAuthLinks;
+
   const { id } = useParams();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState<File | null>(null);
   const [image_url, setImageURL] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const links = props.links;
 
   useEffect(() => {
     getData();
@@ -48,7 +57,7 @@ function ItemEdit(props) {
     console.log("The new image was set successfully!");
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
 
@@ -56,7 +65,6 @@ function ItemEdit(props) {
     formData.append("title", title);
     formData.append("description", description);
     image && formData.append("image", image, image.name);
-    console.log(image.name);
 
     try {
       await api.patch(`/items/${id}/`, formData);
@@ -71,7 +79,7 @@ function ItemEdit(props) {
 
   return (
     <div className="edit-item header-body">
-      <Header links={links} fixed={false} />
+      <Header links={links} />
       <div className="item-desc main-body">
         <div className="item-card">
           <form onSubmit={handleSubmit}>
@@ -112,7 +120,7 @@ function ItemEdit(props) {
               <textarea
                 id="formMessage"
                 className="form-control form-control-lg"
-                rows="7"
+                rows={7}
                 placeholder="Description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}

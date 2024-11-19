@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { useTranslation } from "react-i18next";
 
-import { ProfileContext } from "../../pages/Profile";
+import { ProfileContext } from "../../pages/Profile.tsx";
 
 import "../../styles/profile/updateButton.css";
 
