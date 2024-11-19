@@ -34,43 +34,25 @@ export const PaymentLandscape = (props) => {
               currentDonation === 2 ? "others" : ""
             }`}
           >
-            <div
-              className={`article-wrapper front ${
-                currentDonation === 1 && "index-100"
-              }`}
-            >
+            <div className={`front ${currentDonation === 1 && "index-100"}`}>
               <MonoBank />
             </div>
-            <div
-              className={`article-wrapper back ${
-                currentDonation === 2 && "index-100"
-              }`}
-            >
+            <div className={`back ${currentDonation === 2 && "index-100"}`}>
               <CryptoPaymentsForm isAuth={isAuth} />
             </div>
           </article>
           <article>
-            <div className="article-wrapper">
-              <DonateInfo />
-            </div>
+            <DonateInfo />
           </article>
           <article
             className={`payment-methods ${
               currentDonation === 2 ? "others" : ""
             }`}
           >
-            <div
-              className={`article-wrapper front ${
-                currentDonation === 1 && "index-100"
-              }`}
-            >
+            <div className={`front ${currentDonation === 1 && "index-100"}`}>
               <PrivatBank />
             </div>
-            <div
-              className={`article-wrapper back ${
-                currentDonation === 2 && "index-100"
-              }`}
-            >
+            <div className={`back ${currentDonation === 2 && "index-100"}`}>
               <PaypalMethod />
             </div>
           </article>

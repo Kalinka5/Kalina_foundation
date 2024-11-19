@@ -50,9 +50,6 @@
       &:nth-child(3) {
         background: rgb(229, 229, 21);
       }
-      .article-wrapper {
-        height: 100%;
-      }
       .front {
         backface-visibility: hidden;
         overflow: hidden;

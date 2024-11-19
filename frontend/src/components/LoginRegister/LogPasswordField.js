@@ -21,7 +21,7 @@ function PasswordField(props) {
   };
 
   return (
-    <div className="password-field">
+    <>
       <label htmlFor="password">{t("password")}</label>
       <div className="log-input-box">
         <input
@@ -43,7 +43,7 @@ function PasswordField(props) {
           )}
         </span>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -1,4 +1,8 @@
-.btn-container button {
+.submit-but {
+  margin-top: 50px;
+  width: 100%;
+  padding: 15px 0;
+  border: none;
   background-color: #4070f4;
   color: #ffffff;
   font-size: 18px;
@@ -14,13 +18,15 @@
 }
 
 @media (min-width: 720px) and (max-height: 540px) {
-  .btn-container {
+  .submit-but {
     height: 44px;
     margin: 7px 0;
-
-    button {
-      margin-top: 0;
-      font-size: 14px;
-    }
+    margin-top: 0;
+    font-size: 14px;
+  }
+}
+@media (min-width: 912px) and (orientation: portrait) {
+  .submit-but {
+    font-size: 30px;
   }
 }

@@ -1,147 +1,134 @@
-.pg-footer {
+.footer {
   font-family: "Roboto", sans-serif;
   color: #fff;
 
-  .footer {
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
-    .footer-content {
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 2000px;
-      padding: 40px 15px 1px;
-      position: relative;
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  .footer-content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 2000px;
+    padding: 40px 15px 1px;
+    position: relative;
 
-      .footer-social-links {
-        bottom: -1px;
+    .footer-social-links {
+      bottom: -1px;
+      height: 54px;
+      position: absolute;
+      right: 0;
+      width: 236px;
+
+      .footer-social-amoeba-svg {
         height: 54px;
+        left: 0;
+        display: block;
         position: absolute;
-        right: 0;
+        top: 0;
         width: 236px;
 
-        .footer-social-amoeba-svg {
-          height: 54px;
-          left: 0;
-          display: block;
-          position: absolute;
-          top: 0;
-          width: 236px;
-
-          .footer-social-amoeba-path {
-            fill: #027b9a;
-          }
-        }
-        .footer-social-link {
-          display: block;
-          padding: 10px;
-          position: absolute;
-
-          .hidden-link-text {
-            position: absolute;
-            clip: rect(1px 1px 1px 1px);
-            clip: rect(1px, 1px, 1px, 1px);
-            -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
-            clip-path: inset(0px 0px 99.9% 99.9%);
-            overflow: hidden;
-            height: 1px;
-            width: 1px;
-            padding: 0;
-            border: 0;
-            top: 50%;
-          }
-          &.linkedin {
-            .icon {
-              height: 60px;
-              font-size: 30px;
-              line-height: 60px;
-            }
-          }
-          &.instagram {
-            left: 52px;
-            top: -17px;
-            .icon {
-              height: 90px;
-              font-size: 45px;
-              line-height: 90px;
-            }
-          }
-          &.youtube {
-            left: 122px;
-            top: 5px;
-            .icon {
-              height: 50px;
-              font-size: 25px;
-              line-height: 50px;
-            }
-          }
-          &.github {
-            left: 173px;
-            .icon {
-              height: 60px;
-              font-size: 30px;
-              line-height: 60px;
-            }
-          }
+        .footer-social-amoeba-path {
+          fill: #027b9a;
         }
       }
-    }
-    .footer-copyright {
-      background-color: #027b9a;
-      padding: 15px 30px;
-      text-align: center;
+      .footer-social-link {
+        display: block;
+        padding: 10px;
+        position: absolute;
 
-      .footer-copyright-wrapper {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 1200px;
-
-        .footer-copyright-text {
-          font-size: 13px;
-          font-weight: 400;
-          line-height: 18px;
-          margin-bottom: 0;
-          margin-top: 0;
+        .hidden-link-text {
+          position: absolute;
+          clip: rect(1px 1px 1px 1px);
+          clip: rect(1px, 1px, 1px, 1px);
+          -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
+          clip-path: inset(0px 0px 99.9% 99.9%);
+          overflow: hidden;
+          height: 1px;
+          width: 1px;
+          padding: 0;
+          border: 0;
+          top: 50%;
+        }
+        &.linkedin {
+          .icon {
+            height: 60px;
+            font-size: 30px;
+            line-height: 60px;
+          }
+        }
+        &.instagram {
+          left: 52px;
+          top: -17px;
+          .icon {
+            height: 90px;
+            font-size: 45px;
+            line-height: 90px;
+          }
+        }
+        &.youtube {
+          left: 122px;
+          top: 5px;
+          .icon {
+            height: 50px;
+            font-size: 25px;
+            line-height: 50px;
+          }
+        }
+        &.github {
+          left: 173px;
+          .icon {
+            height: 60px;
+            font-size: 30px;
+            line-height: 60px;
+          }
         }
       }
     }
   }
-  .dot-white {
-    background: radial-gradient(#0093a9 8%, transparent 8%), white;
-    background-size: 25px 25px;
+  .footer-copyright {
+    background-color: #027b9a;
+    padding: 15px 30px;
+    text-align: center;
+
+    .footer-copyright-wrapper {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1200px;
+
+      .footer-copyright-text {
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 18px;
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+    }
   }
 }
+.dot-white {
+  background: radial-gradient(#0093a9 8%, transparent 8%), white;
+  background-size: 25px 25px;
+}
+
 /* Media Query For different screens */
 @media (min-width: 320px) and (max-width: 344px) {
-  .pg-footer
-    .footer
-    .footer-copyright
-    .footer-copyright-wrapper
-    .footer-copyright-text {
+  .footer .footer-copyright .footer-copyright-wrapper .footer-copyright-text {
     font-size: 10px;
   }
 }
 @media (min-width: 345px) and (max-width: 375px) {
-  .pg-footer
-    .footer
-    .footer-copyright
-    .footer-copyright-wrapper
-    .footer-copyright-text {
+  .footer .footer-copyright .footer-copyright-wrapper .footer-copyright-text {
     font-size: 11px;
   }
 }
 @media (min-width: 376px) and (max-width: 449px) {
-  .pg-footer
-    .footer
-    .footer-copyright
-    .footer-copyright-wrapper
-    .footer-copyright-text {
+  .footer .footer-copyright .footer-copyright-wrapper .footer-copyright-text {
     font-size: 12px;
   }
 }
 @media (min-width: 320px) and (max-width: 800px) {
-  .footer-content {
+  .footer .footer-content {
     margin-left: auto;
     margin-right: auto;
     max-width: 1230px;
@@ -150,7 +137,7 @@
   }
 }
 @media (min-width: 760px) {
-  .footer-content {
+  .footer .footer-content {
     padding: 40px 15px 1px;
   }
 }

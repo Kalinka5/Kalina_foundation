@@ -8,27 +8,25 @@ export const MonoBank = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="mono-container">
-      <figure>
-        <div className="container-mastercard">
-          <div className="front-card front-hov">
-            <div className="column1">
-              <h3 id="main-title">
-                monobank | <span>Universal Bank</span>
-              </h3>
-              <div id="chip"></div>
-              <div className="card-info">
-                <p id="no">5375 4141 2253 7789</p>
-                <div className="grid-date">
-                  <p id="name">Daniil Kalinevych</p>
-                  <p id="exp-date">dd/yy</p>
-                </div>
+    <>
+      <figure className="container-mastercard">
+        <div className="front-card front-hov">
+          <div className="column1">
+            <h3 id="main-title">
+              monobank | <span>Universal Bank</span>
+            </h3>
+            <div id="chip"></div>
+            <div className="card-info">
+              <p id="no">5375 4141 2253 7789</p>
+              <div className="grid-date">
+                <p id="name">Daniil Kalinevych</p>
+                <p id="exp-date">dd/yy</p>
               </div>
             </div>
-            <div className="column2">
-              <i id="globe" className="fa fa-globe"></i>
-              <div id="mastercard"></div>
-            </div>
+          </div>
+          <div className="column2">
+            <i id="globe" className="fa fa-globe"></i>
+            <div id="mastercard"></div>
           </div>
         </div>
       </figure>
@@ -42,6 +40,6 @@ export const MonoBank = () => {
           {t("monobank")}
         </a>
       </div>
-    </div>
+    </>
   );
 };

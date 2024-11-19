@@ -49,61 +49,56 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <main>
-          <Routes>
-            <Route
-              exact
-              path={`${HOME_PAGE}/:n?`}
-              element={
-                <Home isAuth={auth} links={auth ? authLinks : notAuthLinks} />
-              }
-            />
-            <Route
-              exact
-              path="item/:id/edit"
-              element={<ItemEdit links={auth ? authLinks : notAuthLinks} />}
-            />
-            <Route
-              path={LOGIN_PAGE}
-              element={<Login links={auth ? authLinks : notAuthLinks} />}
-            />
-            <Route
-              path={REGISTER_PAGE}
-              element={<Register links={auth ? authLinks : notAuthLinks} />}
-            />
-            <Route
-              path="email-verify/:uid/:token"
-              element={<EmailVerify links={auth ? authLinks : notAuthLinks} />}
-            />
-            <Route
-              path={LOGOUT_PAGE}
-              element={<Logout links={auth ? authLinks : notAuthLinks} />}
-            />
-            <Route
-              path={PROFILE_PAGE}
-              element={
-                <ProtectedRoute>
-                  <Profile links={auth ? authLinks : notAuthLinks} />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path={DONATE_PAGE}
-              element={
-                <Payment
-                  isAuth={auth}
-                  links={auth ? authLinks : notAuthLinks}
-                />
-              }
-            />
-            <Route
-              path="*"
-              element={<Navigate to={`${HOME_PAGE}/1`} replace />}
-            />
-          </Routes>
-        </main>
-      </div>
+      <main className="App">
+        <Routes>
+          <Route
+            exact
+            path={`${HOME_PAGE}/:n?`}
+            element={
+              <Home isAuth={auth} links={auth ? authLinks : notAuthLinks} />
+            }
+          />
+          <Route
+            exact
+            path="item/:id/edit"
+            element={<ItemEdit links={auth ? authLinks : notAuthLinks} />}
+          />
+          <Route
+            path={LOGIN_PAGE}
+            element={<Login links={auth ? authLinks : notAuthLinks} />}
+          />
+          <Route
+            path={REGISTER_PAGE}
+            element={<Register links={auth ? authLinks : notAuthLinks} />}
+          />
+          <Route
+            path="email-verify/:uid/:token"
+            element={<EmailVerify links={auth ? authLinks : notAuthLinks} />}
+          />
+          <Route
+            path={LOGOUT_PAGE}
+            element={<Logout links={auth ? authLinks : notAuthLinks} />}
+          />
+          <Route
+            path={PROFILE_PAGE}
+            element={
+              <ProtectedRoute>
+                <Profile links={auth ? authLinks : notAuthLinks} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={DONATE_PAGE}
+            element={
+              <Payment isAuth={auth} links={auth ? authLinks : notAuthLinks} />
+            }
+          />
+          <Route
+            path="*"
+            element={<Navigate to={`${HOME_PAGE}/1`} replace />}
+          />
+        </Routes>
+      </main>
     </Router>
   );
 }

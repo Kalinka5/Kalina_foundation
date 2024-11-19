@@ -8,6 +8,7 @@
 
   .image {
     overflow: hidden;
+
     img {
       width: 100%;
       transform-origin: center;

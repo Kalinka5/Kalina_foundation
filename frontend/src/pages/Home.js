@@ -19,12 +19,12 @@ function Home(props) {
     <div className="main">
       <Header links={props.links} fixed={true} />
       {integerN > 0 && integerN < MAX_PAGE_NUMBER ? (
-        <div>
+        <>
           <Slider page={n} />
           <Items page={n} superUser={props.isAuth} />
           <Donators />
           <Footer back="dot-white" />
-        </div>
+        </>
       ) : (
         <NotFound />
       )}

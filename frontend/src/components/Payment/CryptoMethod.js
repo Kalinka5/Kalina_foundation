@@ -187,80 +187,78 @@ function CryptoPaymentForm(props) {
   };
 
   return (
-    <div className="CryptoPaymentForm">
-      <div className="content">
-        <div className="header">
-          <img className="header-icon" src={metaMaskIcon} alt="MetaMask" />
-          <h1 className="header-text">MetaMask</h1>
-        </div>
-        <div className="address-container">
-          Destination Address:
-          <div className="address">{destinationAddress}</div>
-          <a
-            href={destinationAddressUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Address
-          </a>
-        </div>
-        <label id="network-label" htmlFor="network">
-          Network:
-        </label>
-        <Select
-          options={options}
-          aria-labelledby="network-label"
-          defaultValue={options[0]}
-          onChange={changeNetwork}
-          formatOptionLabel={(option) => (
-            <div
-              className="network-select__option"
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <img
-                src={option.icon}
-                alt={option.label}
-                className="network-select__img"
-              />
-              {option.label}
-            </div>
-          )}
-          styles={customStyles}
-          className="network-select"
-          classNamePrefix="network-select"
-        />
-        <label htmlFor="crypto-amount">Payment Amount ({currency}):</label>
-        <input
-          className="form-control"
-          type="number"
-          name="amount"
-          value={amount ? amount.toFixed(MAXIMUM_DECIMAL_PLACES) : "0.00"}
-          onChange={updateCryptoDonateAmount}
-          id="crypto-amount"
-        />
-        <button className="btn-primary" onClick={startPayment}>
-          Confirm Payment
-        </button>
-        {transactionUrl && (
-          <Alert
-            type="success"
-            className="alert"
-            message={
-              <p>
-                Payment Complete:{" "}
-                <a
-                  href={transactionUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View Transaction
-                </a>
-              </p>
-            }
-          />
-        )}
-        {error && <Alert type="error" message={error} />}
+    <div className="metamask">
+      <div className="header">
+        <img className="header-icon" src={metaMaskIcon} alt="MetaMask" />
+        <h1 className="header-text">MetaMask</h1>
       </div>
+      <div className="address-container">
+        Destination Address:
+        <div className="address">{destinationAddress}</div>
+        <a
+          href={destinationAddressUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Address
+        </a>
+      </div>
+      <label id="network-label" htmlFor="network">
+        Network:
+      </label>
+      <Select
+        options={options}
+        aria-labelledby="network-label"
+        defaultValue={options[0]}
+        onChange={changeNetwork}
+        formatOptionLabel={(option) => (
+          <div
+            className="network-select__option"
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <img
+              src={option.icon}
+              alt={option.label}
+              className="network-select__img"
+            />
+            {option.label}
+          </div>
+        )}
+        styles={customStyles}
+        className="network-select"
+        classNamePrefix="network-select"
+      />
+      <label htmlFor="crypto-amount">Payment Amount ({currency}):</label>
+      <input
+        className="form-control"
+        type="number"
+        name="amount"
+        value={amount ? amount.toFixed(MAXIMUM_DECIMAL_PLACES) : "0.00"}
+        onChange={updateCryptoDonateAmount}
+        id="crypto-amount"
+      />
+      <button className="btn-primary" onClick={startPayment}>
+        Confirm Payment
+      </button>
+      {transactionUrl && (
+        <Alert
+          type="success"
+          className="alert"
+          message={
+            <p>
+              Payment Complete:{" "}
+              <a
+                href={transactionUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Transaction
+              </a>
+            </p>
+          }
+        />
+      )}
+      {error && <Alert type="error" message={error} />}
     </div>
   );
 }

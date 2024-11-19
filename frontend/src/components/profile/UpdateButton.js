@@ -12,12 +12,10 @@ function UpdateButton() {
   const { t } = useTranslation();
 
   return (
-    <div className="btn-container">
-      <button type="submit" id="submit2">
-        {t("submit")}
-        {loading && <div className="loader"></div>}
-      </button>
-    </div>
+    <button type="submit" id="update-user">
+      {t("submit")}
+      {loading && <div className="loader"></div>}
+    </button>
   );
 }
 

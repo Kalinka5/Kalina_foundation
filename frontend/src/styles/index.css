@@ -72,17 +72,6 @@ code {
     text-align: center;
     margin-bottom: 30px;
   }
-  .subm-button {
-    display: flex;
-    align-items: center;
-
-    button {
-      margin-top: 50px;
-      width: 100%;
-      padding: 15px 0;
-      border: none;
-    }
-  }
   .help-p {
     color: #ffffff;
   }
@@ -138,9 +127,11 @@ code {
 
   p {
     text-align: center;
+
     a {
       color: #4070f4;
       text-decoration: none;
+
       &:hover {
         text-decoration: underline;
       }
@@ -149,11 +140,14 @@ code {
 }
 .landscape .log-reg-form {
   padding: 30px 20px 50px;
+
   p {
     text-align: center;
+
     a {
       color: #4070f4;
       text-decoration: none;
+
       &:hover {
         text-decoration: underline;
       }
@@ -316,11 +310,6 @@ code {
 
         i {
           font-size: 36px;
-        }
-      }
-      .subm-button {
-        button {
-          font-size: 30px;
         }
       }
     }

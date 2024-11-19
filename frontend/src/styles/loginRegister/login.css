@@ -2,10 +2,6 @@
 
 .login {
   .login-register {
-    .landscape .image {
-      position: relative;
-      background-size: cover;
-    }
     .log-reg-form {
       label {
         color: #ffffff;

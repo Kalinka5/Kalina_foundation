@@ -47,7 +47,7 @@ function LoginLandscape() {
 
   return (
     <div className="landscape">
-      <div className="image column">
+      <div className="column">
         <Carousel />
       </div>
       <div className="column">

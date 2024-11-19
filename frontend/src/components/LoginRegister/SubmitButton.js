@@ -8,12 +8,10 @@ function SubmitButton(props) {
   const { t } = props.translate;
 
   return (
-    <div className="btn-container subm-button">
-      <button type="submit">
-        {t(text)}
-        {loading && <div className="loader"></div>}
-      </button>
-    </div>
+    <button type="submit" className="submit-but">
+      {t(text)}
+      {loading && <div className="loader"></div>}
+    </button>
   );
 }
 

@@ -99,26 +99,24 @@ function Profile(props) {
         }}
       >
         <div className="profile-field main-body">
-          <div className="profile-card" id="profileCard">
-            <form onSubmit={handleSubmit}>
-              <div className="profile-header">
-                <ProfileImage />
+          <form className="profile-card" onSubmit={handleSubmit}>
+            <div className="profile-header">
+              <ProfileImage />
 
-                <UsernameField />
+              <UsernameField />
 
-                <DeleteButton />
-              </div>
-              <div className="profile-details">
-                <EmailField />
+              <DeleteButton />
+            </div>
+            <div className="profile-details">
+              <EmailField />
 
-                <FirstnameField />
+              <FirstnameField />
 
-                <LastnameField />
+              <LastnameField />
 
-                <UpdateButton />
-              </div>
-            </form>
-          </div>
+              <UpdateButton />
+            </div>
+          </form>
         </div>
         {isOpen && <DeleteUserModal setIsOpen={setIsOpen} />}
       </ProfileContext.Provider>

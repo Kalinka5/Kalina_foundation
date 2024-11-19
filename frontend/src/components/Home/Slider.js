@@ -70,15 +70,13 @@ function Slider() {
 
   return (
     <div className="slider">
-      <div className="slide">
-        <img src={image} alt={alt} />
-        <a className="prev" href={hrefPrev}>
-          prev
-        </a>
-        <a className="next" href={hrefNext}>
-          next
-        </a>
-      </div>
+      <img src={image} alt={alt} />
+      <a className="prev" href={hrefPrev}>
+        prev
+      </a>
+      <a className="next" href={hrefNext}>
+        next
+      </a>
     </div>
   );
 }

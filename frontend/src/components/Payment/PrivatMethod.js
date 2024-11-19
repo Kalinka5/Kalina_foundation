@@ -53,47 +53,45 @@ export const PrivatBank = () => {
   };
 
   return (
-    <div className="privat-container">
-      <figure>
-        <div className="container-visa">
-          <div
-            className={`front front-hov ${
-              currentDonation === 1 ? "img-z-1" : ""
-            }`}
-          >
+    <>
+      <figure className="container-visa">
+        <div
+          className={`card-front front-hov ${
+            currentDonation === 1 ? "img-z-1" : ""
+          }`}
+        >
+          <img
+            src="https://i.ibb.co/PYss3yv/map.png"
+            className="map-img"
+            alt="Map"
+          />
+          <div className="row p-r-15 p-l-15 p-t-15">
             <img
-              src="https://i.ibb.co/PYss3yv/map.png"
-              className="map-img"
-              alt="Map"
+              src="https://i.ibb.co/G9pDnYJ/chip.png"
+              width="50px"
+              alt="Chip"
+              className="chip-img"
             />
-            <div className="row p-r-15 p-l-15 p-t-15">
-              <img
-                src="https://i.ibb.co/G9pDnYJ/chip.png"
-                width="50px"
-                alt="Chip"
-                className="chip-img"
-              />
-              <img
-                src="https://i.ibb.co/WHZ3nRJ/visa.png"
-                width="50px"
-                alt="Visa"
-                className="visa-img"
-              />
-            </div>
-            <div className="row card-no p-r-15 p-l-15">
-              <p>4149</p>
-              <p>4390</p>
-              <p>2438</p>
-              <p>4293</p>
-            </div>
-            <div className="row card-holder p-r-15 p-l-15">
-              <p>CARD HOLDER</p>
-              <p>VALID TILL</p>
-            </div>
-            <div className="row name p-r-15 p-l-15 p-b-15">
-              <p>Daniil Kalinevych</p>
-              <p>dd / yy</p>
-            </div>
+            <img
+              src="https://i.ibb.co/WHZ3nRJ/visa.png"
+              width="50px"
+              alt="Visa"
+              className="visa-img"
+            />
+          </div>
+          <div className="row card-no p-r-15 p-l-15">
+            <p>4149</p>
+            <p>4390</p>
+            <p>2438</p>
+            <p>4293</p>
+          </div>
+          <div className="row card-holder p-r-15 p-l-15">
+            <p>CARD HOLDER</p>
+            <p>VALID TILL</p>
+          </div>
+          <div className="row name p-r-15 p-l-15 p-b-15">
+            <p>Daniil Kalinevych</p>
+            <p>dd / yy</p>
           </div>
         </div>
       </figure>
@@ -196,6 +194,6 @@ export const PrivatBank = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

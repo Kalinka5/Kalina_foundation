@@ -7,7 +7,7 @@ function EmailField(props) {
   const { t } = props.translate;
 
   return (
-    <div className="email-field">
+    <>
       <label className="email-label" htmlFor="email">
         {t("email")}
       </label>
@@ -20,7 +20,7 @@ function EmailField(props) {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-    </div>
+    </>
   );
 }
 

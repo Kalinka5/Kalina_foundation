@@ -12,16 +12,14 @@ function DeleteButton() {
   const { t } = useTranslation();
 
   return (
-    <div className="delete-button">
-      <button
-        className="btn btn-delete"
-        type="button"
-        id="submit1"
-        onClick={() => setIsOpen(true)}
-      >
-        {t("delete-button")}
-      </button>
-    </div>
+    <button
+      className="btn btn-delete"
+      type="button"
+      id="delete-user"
+      onClick={() => setIsOpen(true)}
+    >
+      {t("delete-button")}
+    </button>
   );
 }
 
