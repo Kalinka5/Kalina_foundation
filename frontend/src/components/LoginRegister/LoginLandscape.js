@@ -8,8 +8,7 @@ import { ACCESS_TOKEN, REFRESH_TOKEN, PROFILE_PAGE } from "../../constants";
 
 import Carousel from "./Carousel";
 
-import EmailField from "./LogEmailField";
-import PasswordField from "./LogPasswordField";
+import InputField from "./LoginField.js";
 import SubmitButton from "./SubmitButton";
 import LogRegHeader from "./Header";
 import LogRegLink from "./Link";
@@ -19,8 +18,7 @@ import { REGISTER_PAGE } from "../../constants";
 import { LoginContext } from "../../pages/Login.tsx";
 
 function LoginLandscape() {
-  const { email } = useContext(LoginContext);
-  const { password } = useContext(LoginContext);
+  const { email, setEmail, password, setPassword } = useContext(LoginContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -54,9 +52,23 @@ function LoginLandscape() {
         <form className="log-reg-form log-p" onSubmit={handleSubmit}>
           <LogRegHeader text="login-head" translate={{ t }} />
 
-          <EmailField translate={{ t }} />
+          <InputField
+            label="email"
+            value={email}
+            placeholder="your-email"
+            type="email"
+            onChange={setEmail}
+            translate={{ t }}
+          />
 
-          <PasswordField translate={{ t }} />
+          <InputField
+            label="password"
+            value={password}
+            placeholder="your-password"
+            type="password"
+            onChange={setPassword}
+            translate={{ t }}
+          />
 
           <SubmitButton
             text="login-button"

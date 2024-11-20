@@ -6,8 +6,7 @@ import { useTranslation } from "react-i18next";
 import api from "../../api";
 import { ACCESS_TOKEN, REFRESH_TOKEN, PROFILE_PAGE } from "../../constants";
 
-import EmailField from "./LogEmailField";
-import PasswordField from "./LogPasswordField";
+import InputField from "./LoginField.js";
 import SubmitButton from "./SubmitButton";
 import LogRegHeader from "./Header";
 import LogRegLink from "./Link";
@@ -17,8 +16,7 @@ import { REGISTER_PAGE } from "../../constants";
 import { LoginContext } from "../../pages/Login.tsx";
 
 function LoginPortrait() {
-  const { email } = useContext(LoginContext);
-  const { password } = useContext(LoginContext);
+  const { email, setEmail, password, setPassword } = useContext(LoginContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -52,9 +50,23 @@ function LoginPortrait() {
       <form className="log-reg-form form-p" onSubmit={handleSubmit}>
         <LogRegHeader text="login-head" translate={{ t }} />
 
-        <EmailField translate={{ t }} />
+        <InputField
+          label="email"
+          value={email}
+          placeholder="your-email"
+          type="email"
+          onChange={setEmail}
+          translate={{ t }}
+        />
 
-        <PasswordField translate={{ t }} />
+        <InputField
+          label="password"
+          value={password}
+          placeholder="your-password"
+          type="password"
+          onChange={setPassword}
+          translate={{ t }}
+        />
 
         <SubmitButton text="login-button" loading={loading} translate={{ t }} />
 

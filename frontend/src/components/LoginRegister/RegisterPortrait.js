@@ -11,17 +11,20 @@ import { RegisterContext } from "../../pages/Register.tsx";
 
 import SubmitButton from "./SubmitButton";
 import LogRegHeader from "./Header";
-import UsernameField from "./RegUsernameField";
-import EmailField from "./RegEmailField";
-import Password1 from "./RegPassword1";
-import Password2 from "./RegPassword2";
+import InputField from "./RegisterField.js";
 import LogRegLink from "./Link";
 
 function RegisterPortrait() {
-  const { username } = useContext(RegisterContext);
-  const { email } = useContext(RegisterContext);
-  const { password1 } = useContext(RegisterContext);
-  const { password2 } = useContext(RegisterContext);
+  const {
+    username,
+    setUsername,
+    email,
+    setEmail,
+    password1,
+    setPassword1,
+    password2,
+    setPassword2,
+  } = useContext(RegisterContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -79,28 +82,60 @@ function RegisterPortrait() {
       <form className="log-reg-form form-p" onSubmit={handleSubmit}>
         <LogRegHeader text="registration-head" translate={{ t }} />
 
-        <UsernameField
+        <InputField
+          value={username}
+          placeholder="username-input"
+          type="text"
+          onChange={setUsername}
           validFields={validFields}
-          translate={{ t }}
+          isValid="usernameIsValid"
           errors={errors}
+          errorsName={"username"}
+          className="name-tip"
+          tooltipText="tooltip1"
+          translate={{ t }}
         />
 
-        <EmailField
+        <InputField
+          value={email}
+          placeholder="email-input"
+          type="text"
+          onChange={setEmail}
           validFields={validFields}
-          translate={{ t }}
+          isValid="emailIsValid"
           errors={errors}
+          errorsName={"email"}
+          className="email-tip"
+          tooltipText="tooltip2"
+          translate={{ t }}
         />
 
-        <Password1
+        <InputField
+          value={password1}
+          placeholder="password-input"
+          type="password"
+          onChange={setPassword1}
           validFields={validFields}
-          translate={{ t }}
+          isValid="passwordIsValid"
           errors={errors}
+          errorsName={"password"}
+          className="pass-tip"
+          tooltipText="tooltip3"
+          translate={{ t }}
         />
 
-        <Password2
+        <InputField
+          value={password2}
+          placeholder="conf-pass-input"
+          type="password"
+          onChange={setPassword2}
           validFields={validFields}
-          translate={{ t }}
+          isValid="confPasswordIsValid"
           errors={errors}
+          errorsName={"confirmPassword"}
+          className="confirm-tip"
+          tooltipText="tooltip4"
+          translate={{ t }}
         />
 
         <SubmitButton text="register-now" loading={loading} translate={{ t }} />

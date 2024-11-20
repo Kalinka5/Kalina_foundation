@@ -60,6 +60,7 @@
 
   "registration-head": "Registration",
   "username-input": "Enter your username",
+  "email-input": "user123@gmail.com",
   "password-input": "Create password",
   "conf-pass-input": "Confirm password",
   "tooltip1": "Username must not be empty!",

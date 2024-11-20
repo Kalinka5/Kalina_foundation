@@ -60,6 +60,7 @@
 
   "registration-head": "Реєстрація",
   "username-input": "Введіть ім'я користувача",
+  "email-input": "user123@gmail.com",
   "password-input": "Створіть пароль",
   "conf-pass-input": "Підтвердьте пароль",
   "tooltip1": "Ім'я користувача не повинно бути пустим!",
