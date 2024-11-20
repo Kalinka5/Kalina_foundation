@@ -20,15 +20,14 @@ function Home() {
     throw new Error("AuthContext must be used within an AuthContext.Provider");
   }
 
-  const { auth, authLinks, notAuthLinks } = authContext;
-  const links = auth ? authLinks : notAuthLinks;
+  const { auth } = authContext;
 
   const { n } = useParams();
   const integerN = Number(n);
 
   return (
     <div className="main">
-      <Header links={links} fixed="pos-fixed" />
+      <Header fixed="pos-fixed" />
       {integerN > 0 && integerN < MAX_PAGE_NUMBER ? (
         <>
           <Slider />

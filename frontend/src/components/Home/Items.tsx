@@ -8,16 +8,6 @@ import ItemsLoader from "./LoaderItems";
 
 import "../../styles/home/items.css";
 
-type Item = {
-  id: number;
-  image: string;
-  title: string;
-};
-
-type ItemsProps = {
-  superUser: boolean;
-};
-
 function Items({ superUser }: ItemsProps) {
   const { n } = useParams();
   const [items, setItems] = useState<Item[]>([]);

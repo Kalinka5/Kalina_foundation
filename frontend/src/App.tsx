@@ -36,12 +36,6 @@ function Logout() {
   return <Navigate to={`${HOME_PAGE}/1`} />;
 }
 
-type AuthContextType = {
-  auth: boolean;
-  authLinks: { id: number; urlLink: string; urlName: string }[];
-  notAuthLinks: { id: number; urlLink: string; urlName: string }[];
-};
-
 export const AuthContext = createContext<AuthContextType | undefined>(
   undefined
 );

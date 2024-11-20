@@ -1,22 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 
 import LanguageSelector from "./LanguageSelector";
 
+import { AuthContext } from "../App.tsx";
+
 import "../styles/header.css";
 
-type Link = {
-  id: number;
-  urlLink: string;
-  urlName: string;
-};
+const Header = ({ fixed }: HeaderProps) => {
+  const authContext = useContext(AuthContext);
 
-type HeaderProps = {
-  fixed?: "pos-fixed";
-  links: Link[];
-};
+  if (!authContext) {
+    throw new Error("AuthContext must be used within an AuthContext.Provider");
+  }
 
-const Header = ({ fixed, links }: HeaderProps) => {
+  const { auth, authLinks, notAuthLinks } = authContext;
+  const links = auth ? authLinks : notAuthLinks;
   const { t } = useTranslation();
 
   return (
