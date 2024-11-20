@@ -4,7 +4,7 @@ import { PaymentPortrait } from "../components/Payment/PaymentPortrait.js";
 import { PaymentLandscape } from "../components/Payment/PaymentLandscape.js";
 import Header from "../components/Header.tsx";
 
-import useOrientation from "../useOrientation.js";
+import useOrientation from "../lib/useOrientation.js";
 
 import { AuthContext } from "../App.tsx";
 

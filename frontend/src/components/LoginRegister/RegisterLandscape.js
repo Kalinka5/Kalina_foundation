@@ -2,10 +2,10 @@ import React, { useState, useContext } from "react";
 
 import { useTranslation } from "react-i18next";
 
-import api from "../../api";
-import Validation from "../../validation";
+import api from "../../lib/api.js";
+import Validation from "../../lib/validation.js";
 
-import { LOGIN_PAGE } from "../../constants";
+import { LOGIN_PAGE } from "../../lib/constants.js";
 
 import Carousel from "./Carousel";
 

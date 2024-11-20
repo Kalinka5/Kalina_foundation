@@ -3,15 +3,19 @@ import { useNavigate } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
 
-import api from "../../api";
-import { ACCESS_TOKEN, REFRESH_TOKEN, PROFILE_PAGE } from "../../constants";
+import api from "../../lib/api.js";
+import {
+  ACCESS_TOKEN,
+  REFRESH_TOKEN,
+  PROFILE_PAGE,
+} from "../../lib/constants.js";
 
 import InputField from "./LoginField.js";
 import SubmitButton from "./SubmitButton";
 import LogRegHeader from "./Header";
 import LogRegLink from "./Link";
 
-import { REGISTER_PAGE } from "../../constants";
+import { REGISTER_PAGE } from "../../lib/constants.js";
 
 import { LoginContext } from "../../pages/Login.tsx";
 

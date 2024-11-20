@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
 
-import useOrientation from "../useOrientation.js";
+import useOrientation from "../lib/useOrientation.js";
 
 import LoginPortrait from "../components/LoginRegister/LoginPortrait.js";
 import LoginLandscape from "../components/LoginRegister/LoginLandscape.js";

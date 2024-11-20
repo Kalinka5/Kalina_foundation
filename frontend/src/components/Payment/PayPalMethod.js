@@ -8,7 +8,7 @@ import {
 
 import { useTranslation } from "react-i18next";
 
-import api from "../../api";
+import api from "../../lib/api";
 
 import paypalLogo from "../../img/PayPal.png";
 

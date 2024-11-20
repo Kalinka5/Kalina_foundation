@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
 
-import api from "../api.js";
+import api from "../lib/api.js";
 
 import Header from "../components/Header.tsx";
 

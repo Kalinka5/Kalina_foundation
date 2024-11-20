@@ -15,7 +15,7 @@ import {
   LOGOUT_PAGE,
   PROFILE_PAGE,
   DONATE_PAGE,
-} from "./constants.js";
+} from "./lib/constants.js";
 
 import ProtectedRoute from "./components/ProtectedRoute.js";
 import { useAuth } from "./components/AuthContext.js";

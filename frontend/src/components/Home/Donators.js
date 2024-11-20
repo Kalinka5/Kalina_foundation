@@ -15,9 +15,9 @@ import { useTranslation } from "react-i18next";
 
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-import api from "../../api";
+import api from "../../lib/api";
 
-import useOrientation from "../../useOrientation";
+import useOrientation from "../../lib/useOrientation";
 
 import image from "../../img/winner.png";
 

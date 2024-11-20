@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import Alert from "@mui/material/Alert";
-import useOrientation from "../useOrientation.js";
+import useOrientation from "../lib/useOrientation.js";
 
 import RegisterPortrait from "../components/LoginRegister/RegisterPortrait.js";
 import RegisterLandscape from "../components/LoginRegister/RegisterLandscape.js";

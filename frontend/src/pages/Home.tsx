@@ -7,7 +7,7 @@ import Donators from "../components/Home/Donators.js";
 import Footer from "../components/Footer.js";
 import Header from "../components/Header.tsx";
 
-import { MAX_PAGE_NUMBER } from "../constants.js";
+import { MAX_PAGE_NUMBER } from "../lib/constants.js";
 
 import NotFound from "./NotFound.js";
 

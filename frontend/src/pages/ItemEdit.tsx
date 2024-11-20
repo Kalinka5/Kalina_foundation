@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom";
 
 import { IoIosImage } from "react-icons/io";
 
-import api from "../api.js";
+import api from "../lib/api.js";
 
-import { API_URL } from "../constants.js";
+import { API_URL } from "../lib/constants.js";
 
 import Header from "../components/Header.tsx";
 

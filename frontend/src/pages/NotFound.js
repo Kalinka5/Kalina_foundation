@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { HOME_PAGE } from "../constants";
+import { HOME_PAGE } from "../lib/constants";
 
 import "../styles/notFound.css";
 

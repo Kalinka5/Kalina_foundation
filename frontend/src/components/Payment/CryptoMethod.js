@@ -10,7 +10,7 @@ import bnbLogo from "../../img/bnb.svg";
 import ethLogo from "../../img/eth_logo.svg";
 import metaMaskIcon from "../../img/metamask-icon.svg";
 
-import api from "../../api";
+import api from "../../lib/api";
 
 import "../../styles/payment/cryptoMethod.css";
 

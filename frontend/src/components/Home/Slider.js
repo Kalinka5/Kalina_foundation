@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-import { HOME_PAGE } from "../../constants";
+import { HOME_PAGE } from "../../lib/constants";
 
 import bpla from "../../img/bpla.jpg";
 import bplaMobile from "../../img/bpla_mobile.jpeg";

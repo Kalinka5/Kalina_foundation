@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 
 import { useTranslation } from "react-i18next";
 
-import api from "../../api";
+import api from "../../lib/api";
 
 import image from "../../img/donate-bpla.jpg";
 
-import { DONATION_ITEM_ID } from "../../constants";
+import { DONATION_ITEM_ID } from "../../lib/constants";
 
 import "../../styles/payment/donateInfo.css";
 
