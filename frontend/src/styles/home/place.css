@@ -1,0 +1,27 @@
+.place {
+  background-color: white;
+
+  .icon {
+    height: 48px;
+    font-size: 24px;
+    line-height: 48px;
+    text-align: left;
+    -webkit-transition: all 200ms linear;
+    transition: all 200ms linear;
+  }
+  .color1 {
+    color: #d7a800;
+  }
+  .color2 {
+    color: gray;
+  }
+  .color3 {
+    color: #b75300;
+  }
+  .color4 {
+    color: #ae3ec9;
+  }
+  .color5 {
+    color: #00bc42;
+  }
+}

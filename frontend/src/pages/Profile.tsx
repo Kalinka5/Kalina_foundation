@@ -3,14 +3,14 @@ import React, { createContext, useEffect, useState } from "react";
 import api from "../lib/api.js";
 
 import Header from "../components/Header.tsx";
-import DeleteButton from "../components/profile/DeleteButton.js";
-import DeleteUserModal from "../components/profile/DeleteUserModal.js";
-import ProfileImage from "../components/profile/ProfileImage.js";
-import UsernameField from "../components/profile/UsernameField.js";
-import EmailField from "../components/profile/EmailField.js";
-import FirstnameField from "../components/profile/FirstnameField.js";
-import LastnameField from "../components/profile/LastnameField.js";
-import UpdateButton from "../components/profile/UpdateButton.js";
+import DeleteButton from "../components/Profile/DeleteButton.js";
+import DeleteUserModal from "../components/Profile/DeleteUserModal.js";
+import ProfileImage from "../components/Profile/ProfileImage.js";
+import UsernameField from "../components/Profile/UsernameField.js";
+import EmailField from "../components/Profile/EmailField.js";
+import FirstnameField from "../components/Profile/FirstnameField.js";
+import LastnameField from "../components/Profile/LastnameField.js";
+import UpdateButton from "../components/Profile/UpdateButton.js";
 
 import "../styles/profile/profile.css";
 

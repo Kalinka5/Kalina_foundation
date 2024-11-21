@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import { Fa1, Fa2, Fa3, Fa4, Fa5 } from "react-icons/fa6";
 import {
   IoIosCash,
   IoIosAirplane,
@@ -11,17 +10,15 @@ import {
   IoMdHeart,
 } from "react-icons/io";
 
-import { useTranslation } from "react-i18next";
-
 import { useMediaQuery } from "@uidotdev/usehooks";
 
 import api from "../../lib/api";
 
 import useOrientation from "../../lib/useOrientation";
 
-import image from "../../img/winner.png";
-
-import DonatorsLoader from "./LoaderDonators";
+import HeaderSection from "./HeaderSection";
+import CardImage from "./CardImage";
+import Pedestal from "./Pedestal";
 
 import "../../styles/home/donators.css";
 
@@ -29,13 +26,7 @@ function Donators() {
   const [donators, setDonators] = useState(null);
   const [titleIcons, setTitleIcons] = useState([]);
   const [cardIcons, setCardIcons] = useState([]);
-  const places = {
-    0: <Fa1 />,
-    1: <Fa2 />,
-    2: <Fa3 />,
-    3: <Fa4 />,
-    4: <Fa5 />,
-  };
+
   const isDisplayMini = useMediaQuery(
     "only screen and (min-width: 300px) and (max-width: 1024px)"
   );
@@ -46,8 +37,6 @@ function Donators() {
     "only screen and (min-width: 1500px) and (max-width: 3000px)"
   );
   const orientation = useOrientation();
-
-  const { t } = useTranslation();
 
   useEffect(() => {
     getData();
@@ -126,37 +115,14 @@ function Donators() {
 
   return (
     <div className="donators">
-      <div className="donators-title">
-        {titleIcons.map((el) => el)}
-        <div className="title">
-          <p className="container-title">{t("donators-header")}</p>
-        </div>
-      </div>
+      <HeaderSection
+        title="items-header"
+        className="back-violet"
+        titleIcons={titleIcons}
+      />
       <div className="donators-background">
-        {orientation.isLandscape && isDisplayMax && (
-          <div className={`card-img ${isMonitor && "mon-wid"}`}>
-            <div className="content">
-              <div className={`imgBx ${isMonitor && "monitor-img"}`}>
-                <img src={image} alt="Winner" />
-              </div>
-              <div className="contentBx">
-                <h3>
-                  {t("donators-h")}
-                  <br />
-                  <span>{t("donators-p")}</span>
-                </h3>
-              </div>
-            </div>
-            <ul className="sci">
-              <li>
-                <a href="/donate">Monobank</a>
-              </li>
-              <li>
-                <a href="/donate">Privat24</a>
-              </li>
-            </ul>
-          </div>
-        )}
+        {orientation.isLandscape && isDisplayMax && <CardImage />}
+
         <div
           className={`icons-back ${
             (orientation.isPortrait || isDisplayMini) && "portrait"
@@ -165,62 +131,9 @@ function Donators() {
           {cardIcons.map((el) => el)}
           <div className="donators-card">
             {isMonitor ? (
-              <div className={`pedestal ${donators ? "grid-p" : "flex-l"}`}>
-                {donators ? (
-                  donators.map((user, index) => (
-                    <div className={`bar __${index + 1}`} key={user.id}>
-                      <div className="profile-pic">
-                        <img
-                          className="profile-pic-image"
-                          src={user.image}
-                          alt="Donater"
-                        />
-                      </div>
-                      <div className="donated">
-                        <p>
-                          {t("donated")} {user.donated} {t("uah")}
-                        </p>
-                      </div>
-                      <div className="underline"></div>
-                      <div className="username">{user.username}</div>
-                      <div className="icon-background">
-                        <i className={`icon color${index + 1}`}>
-                          {places[index]}
-                        </i>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <DonatorsLoader />
-                )}
-              </div>
+              <Pedestal donators={donators} orientation="landscape" />
             ) : (
-              <div className={`pedestal ${donators ? "grid-p" : "flex-l"}`}>
-                {donators ? (
-                  donators.map((user, index) => (
-                    <div className={`bar __${index + 1}`} key={user.id}>
-                      <div className="money-value">
-                        ({user.donated} {t("uah")})
-                      </div>
-                      <div className="profile-pic">
-                        <img
-                          className="profile-pic-image"
-                          src={user.image}
-                          alt="Donater"
-                        />
-                      </div>
-                      <div className="username">{user.username}</div>
-                      <div className="icon-background">
-                        <i className={`icon color${index + 1}`}>
-                          {places[index]}
-                        </i>
-                      </div>
-                    </div>
-                  ))
-                ) : (
-                  <DonatorsLoader />
-                )}
-              </div>
+              <Pedestal donators={donators} orientation="portrait" />
             )}
           </div>
         </div>
