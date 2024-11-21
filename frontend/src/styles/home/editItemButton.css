@@ -1,0 +1,17 @@
+.edit-button:link,
+.edit-button:visited {
+  all: unset;
+  margin-top: 10px;
+  background: rgb(194, 181, 0);
+  border: 2px solid white;
+  padding: 1em 4em;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.edit-button:hover,
+.edit-button:active {
+  background-color: rgb(212, 198, 0);
+}

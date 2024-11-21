@@ -1,0 +1,45 @@
+.profile-pic {
+  aspect-ratio: 1;
+  border: clamp(3px, 0.4vw, 5px) solid white;
+  border-radius: 100%;
+  flex-shrink: 0;
+  position: absolute;
+  top: -110px;
+
+  .profile-pic-image {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-radius: 100%;
+    margin: clamp(5px, 0.75vw, 10px);
+    object-fit: cover;
+    height: 75px;
+    width: 75px;
+  }
+}
+
+/* Media Query For different screens */
+@media (min-width: 320px) and (max-width: 344px) {
+  .profile-pic {
+    width: 93px;
+  }
+}
+@media (min-width: 480px) and (max-width: 759px) {
+  .profile-pic .bar {
+    width: 84px;
+  }
+}
+@media (min-width: 345px) and (max-width: 1024px) {
+  .profile-pic {
+    width: 94px;
+  }
+}
+@media (min-width: 1500px) {
+  .profile-pic {
+    top: -137px;
+    left: 4px;
+
+    .profile-pic-image {
+      height: 100px;
+      width: 100px;
+    }
+  }
+}

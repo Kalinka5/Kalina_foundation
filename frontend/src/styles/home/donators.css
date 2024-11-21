@@ -19,139 +19,12 @@
       animation-delay: -40s;
     }
   }
-  .donators-title {
-    position: relative;
-    overflow: hidden;
-    height: 150px;
-    background: linear-gradient(71deg, #610081, #6200a3, #610081);
-
-    .title-row {
-      top: -620px;
-      left: -160px;
-      font-size: 70px;
-      transform: rotate(-30deg);
-
-      .title-icons {
-        color: #268500;
-        padding: 0 8px;
-      }
-    }
-
-    .title {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background-color: rgba(255, 255, 255, 0.125);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .container-title {
-        text-align: center;
-        padding: 0 !important;
-        font-size: 40px;
-        color: #fff;
-        font-weight: 600;
-        line-height: 60px;
-        overflow: hidden;
-      }
-    }
-  }
-
   .donators-background {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 
-    .card-img {
-      position: relative;
-      width: 300px;
-      height: 680px;
-      background: #20a1b4;
-      border-radius: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      backdrop-filter: blur(10px);
-      cursor: pointer;
-
-      .content {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        transition: 0.5s;
-
-        .imgBx {
-          position: relative;
-          width: 200px;
-          height: 400px;
-          overflow: hidden;
-
-          img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-        .monitor-img {
-          width: 390px;
-        }
-        .contentBx h3 {
-          color: #fff;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          font-weight: 500;
-          font-size: 18px;
-          text-align: center;
-          margin: 20px 0 10px;
-          line-height: 1.1em;
-
-          span {
-            font-size: 12px;
-            font-weight: 300;
-            text-transform: initial;
-          }
-        }
-      }
-
-      &:hover .content {
-        transform: translateY(-20px);
-      }
-      .sci {
-        position: absolute;
-        bottom: 50px;
-        display: flex;
-
-        li {
-          list-style: none;
-          margin: 0 10px;
-          transform: translateY(40px);
-          transition: 0.5s;
-          opacity: 0;
-
-          a {
-            color: #fff;
-            font-size: 20px;
-            text-decoration: none;
-          }
-        }
-      }
-      &:hover .sci li {
-        transform: translateY(0px);
-        opacity: 1;
-      }
-    }
-    .mon-wid {
-      width: 450px;
-    }
     .icons-back {
       background-color: #1e293b;
       margin-top: 20px;
@@ -191,146 +64,12 @@
         background-color: rgba(255, 255, 255, 0.125);
         border-radius: 10px;
         border: 2px solid rgba(255, 255, 255, 0.1);
-
-        .pedestal {
-          --bar-color: rgb(186, 93, 93);
-
-          margin: 0 auto;
-          height: 100%;
-          width: 80%;
-          position: relative;
-
-          .bar {
-            background-color: var(--bar-color);
-            width: 100px;
-            grid-row-end: 101;
-            border-radius: 5px 5px 0 0;
-            position: relative;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-          }
-          .__1 {
-            grid-column: 1;
-            grid-row-start: 15;
-          }
-          .__2 {
-            grid-column: 2;
-            grid-row-start: 30;
-          }
-          .__3 {
-            grid-column: 3;
-            grid-row-start: 45;
-          }
-          .__4 {
-            grid-column: 4;
-            grid-row-start: 60;
-          }
-          .__5 {
-            grid-column: 5;
-            grid-row-start: 75;
-          }
-          .username {
-            color: #ffffff;
-            font-size: 20px;
-            font-family: "Times New Roman", Times, serif;
-          }
-          .profile-pic {
-            aspect-ratio: 1;
-            border: clamp(3px, 0.4vw, 5px) solid white;
-            border-radius: 100%;
-            flex-shrink: 0;
-            position: absolute;
-            top: -110px;
-
-            .profile-pic-image {
-              background-color: rgba(255, 255, 255, 0.06);
-              border-radius: 100%;
-              margin: clamp(5px, 0.75vw, 10px);
-              object-fit: cover;
-              height: 75px;
-              width: 75px;
-            }
-          }
-          .donated {
-            color: white;
-            background-color: #9a9a9a;
-            width: 221px;
-            position: absolute;
-            top: -100px;
-            left: 100px;
-            text-align: left;
-            font-family: "Times New Roman", Times, serif;
-            font-size: 16px;
-            border-radius: 10px;
-
-            p {
-              text-align: center;
-            }
-          }
-          .icon-background {
-            background-color: white;
-            .icon {
-              height: 48px;
-              font-size: 24px;
-              line-height: 48px;
-              text-align: left;
-              -webkit-transition: all 200ms linear;
-              transition: all 200ms linear;
-            }
-          }
-          .underline {
-            bottom: 0;
-            height: 2px;
-            width: 100%;
-
-            &:before {
-              position: absolute;
-              left: 99px;
-              top: -80px;
-              content: "";
-              height: 2px;
-              width: 226px;
-              background: #ffffff;
-            }
-          }
-        }
-        .grid-p {
-          margin-top: 100px;
-          height: 80%;
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          grid-template-rows: repeat(100, 1fr);
-          grid-column-gap: 5px;
-        }
-        .flex-l {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
       }
     }
     .portrait {
       width: 90%;
     }
   }
-}
-
-.color1 {
-  color: #d7a800;
-}
-.color2 {
-  color: gray;
-}
-.color3 {
-  color: #b75300;
-}
-.color4 {
-  color: #ae3ec9;
-}
-.color5 {
-  color: #00bc42;
 }
 
 @keyframes animate1 {
@@ -366,156 +105,27 @@
   }
 }
 /* Media Query For different screens */
-@media (min-width: 320px) and (max-width: 344px) {
-  .donators .donators-background .icons-back .donators-card .grid-p {
-    width: 513px;
-
-    .profile-pic {
-      width: 93px;
-    }
-    .bar {
-      width: 99px;
-    }
-  }
-}
-@media (min-width: 345px) and (max-width: 369px) {
-  .donators .donators-background .icons-back .donators-card .grid-p {
-    width: 539px;
-  }
-}
-@media (min-width: 370px) and (max-width: 389px) {
-  .donators .donators-background .icons-back .donators-card .grid-p {
-    width: 556px;
-  }
-}
-@media (min-width: 390px) and (max-width: 399px) {
-  .donators .donators-background .icons-back .donators-card .grid-p {
-    width: 581px;
-  }
-}
-@media (min-width: 400px) and (max-width: 429px) {
-  .donators .donators-background .icons-back .donators-card .grid-p {
-    width: 615px;
-  }
-}
-@media (min-width: 430px) and (max-width: 479px) {
-  .donators .donators-background .icons-back .donators-card .grid-p {
-    width: 644px;
-  }
-}
-@media (min-width: 320px) and (max-width: 540px) {
-  .donators .donators-title {
-    height: 100px;
-
-    .title .container-title {
-      font-size: 27px;
-      margin: 20px 0;
-    }
-  }
-}
-@media (min-width: 480px) and (max-width: 759px) {
-  .donators .donators-background .icons-back .donators-card .grid-p {
-    width: 803px;
-
-    .profile-pic .bar {
-      width: 84px;
-    }
-  }
-}
-@media screen and (min-width: 760px) and (max-width: 1399px) {
-  .donators .donators-background .icons-back .donators-card .grid-p {
-    width: 100%;
-  }
-}
-@media screen and (min-width: 820px) and (max-width: 851px) {
+@media (min-width: 820px) and (max-width: 851px) {
   .donators {
     min-height: 72vh;
   }
 }
-@media screen and (min-width: 852px) and (max-width: 911px) {
+@media (min-width: 852px) and (max-width: 911px) {
   .donators {
     min-height: 72vh;
   }
 }
-@media screen and (min-width: 912px) and (max-width: 1024px) {
+@media (min-width: 912px) and (max-width: 1024px) {
   .donators {
     min-height: 66vh;
-
-    .donators-background .icons-back .donators-card .pedestal .bar {
-      width: 102px;
-    }
   }
 }
-@media screen and (min-width: 1025px) and (max-width: 1499px) {
-  .donators .donators-background .icons-back .donators-card .pedestal .bar {
-    width: 105px;
-  }
-}
-@media (min-width: 345px) and (max-width: 1024px) {
-  .donators
-    .donators-background
-    .icons-back
-    .donators-card
-    .pedestal
-    .profile-pic {
-    width: 94px;
-  }
-}
-@media screen and (max-width: 1499px) {
-  .donators .donators-background .icons-back .donators-card .pedestal {
-    .money-value {
-      color: #ffffff;
-    }
-    .username {
-      margin: auto auto;
-    }
-    .bar {
-      margin: 0 auto;
-    }
-  }
-}
-@media screen and (min-width: 1500px) {
-  .donators .donators-background {
-    .icons-back {
-      height: 970px;
+@media (min-width: 1500px) {
+  .donators .donators-background .icons-back {
+    height: 970px;
 
-      .card-row {
-        font-size: 95px;
-      }
-      .donators-card .pedestal .bar {
-        width: 140px;
-      }
-      .donators-card .pedestal .profile-pic {
-        top: -137px;
-        left: 4px;
-
-        .profile-pic-image {
-          height: 100px;
-          width: 100px;
-        }
-      }
-      .donators-card .pedestal .underline:before {
-        left: 126px;
-        top: -100px;
-      }
-      .donators-card .pedestal .donated {
-        top: -120px;
-        left: 126px;
-      }
-      .donators-card .pedestal .username {
-        font-size: 26px;
-      }
-    }
-    .card-img {
-      height: 970px;
-
-      .content .contentBx h3 {
-        font-size: 24px;
-
-        span {
-          font-size: 16px;
-        }
-      }
+    .card-row {
+      font-size: 95px;
     }
   }
 }

@@ -1,0 +1,42 @@
+.donated {
+  color: white;
+  background-color: #9a9a9a;
+  width: 221px;
+  position: absolute;
+  top: -100px;
+  left: 100px;
+  text-align: left;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  border-radius: 10px;
+
+  p {
+    text-align: center;
+  }
+}
+.underline {
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+
+  &:before {
+    position: absolute;
+    left: 99px;
+    top: -80px;
+    content: "";
+    height: 2px;
+    width: 226px;
+    background: #ffffff;
+  }
+}
+
+@media (min-width: 1500px) {
+  .donated {
+    top: -120px;
+    left: 126px;
+  }
+  .underline:before {
+    left: 126px;
+    top: -100px;
+  }
+}
