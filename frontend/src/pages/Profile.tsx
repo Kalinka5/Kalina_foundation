@@ -1,5 +1,8 @@
 import React, { createContext, useEffect, useState } from "react";
 
+import { IoMdAt } from "react-icons/io";
+import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
+
 import api from "../lib/api.js";
 
 import Header from "../components/Header.tsx";
@@ -7,9 +10,7 @@ import DeleteButton from "../components/Profile/DeleteButton.js";
 import DeleteUserModal from "../components/Profile/DeleteUserModal.js";
 import ProfileImage from "../components/Profile/ProfileImage.js";
 import UsernameField from "../components/Profile/UsernameField.js";
-import EmailField from "../components/Profile/EmailField.js";
-import FirstnameField from "../components/Profile/FirstnameField.js";
-import LastnameField from "../components/Profile/LastnameField.js";
+import InputField from "../components/Profile/InputField.js";
 import UpdateButton from "../components/Profile/UpdateButton.js";
 
 import "../styles/profile/profile.css";
@@ -88,12 +89,6 @@ function Profile() {
           setImageURL,
           username,
           setUsername,
-          email,
-          setEmail,
-          first_name,
-          setFirstName,
-          last_name,
-          setLastName,
         }}
       >
         <div className="profile-field main-body">
@@ -106,11 +101,35 @@ function Profile() {
               <DeleteButton />
             </div>
             <div className="profile-details">
-              <EmailField />
+              <InputField
+                value={email}
+                onChange={setEmail}
+                label="email"
+                tLabel="e-mail"
+                type="email"
+                placeholder="e-mail-input"
+                icon={<IoMdAt />}
+              />
 
-              <FirstnameField />
+              <InputField
+                value={first_name}
+                onChange={setFirstName}
+                label="firstname"
+                tLabel="firstname"
+                type="text"
+                placeholder="firstname-input"
+                icon={<FaAutoprefixer />}
+              />
 
-              <LastnameField />
+              <InputField
+                value={last_name}
+                onChange={setLastName}
+                label="lastname"
+                tLabel="lastname"
+                type="text"
+                placeholder="lastname-input"
+                icon={<FaAustralSign />}
+              />
 
               <UpdateButton />
             </div>

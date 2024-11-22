@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 import api from "../../lib/api";
@@ -7,18 +7,26 @@ import HeaderSection from "./HeaderSection";
 import ItemCard from "./ItemCard";
 import ItemsLoader from "./LoaderItems";
 
+import { AuthContext } from "../../App.tsx";
+
 import "../../styles/home/items.css";
 
-function Items({ superUser }: ItemsProps) {
+function Items() {
   const { n } = useParams();
   const [items, setItems] = useState<Item[]>([]);
   const [isSuperUser, setIsSuperUser] = useState(false);
 
-  const isAuthen = superUser;
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    throw new Error("AuthContext must be used within an AuthContext.Provider");
+  }
+
+  const { auth } = authContext;
 
   useEffect(() => {
     getData();
-  }, [isAuthen]);
+  }, [auth]);
 
   const getData = async () => {
     try {
@@ -26,7 +34,7 @@ function Items({ superUser }: ItemsProps) {
       const resItems = await api.get(`/items/?page=${n}&format=json`);
       setItems(resItems.data);
 
-      if (isAuthen) {
+      if (auth) {
         console.log("Start getting data of profile...");
         const res = await api.get("/profile");
         setIsSuperUser(res.data.is_superuser);

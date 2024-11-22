@@ -20,8 +20,6 @@ function Home() {
     throw new Error("AuthContext must be used within an AuthContext.Provider");
   }
 
-  const { auth } = authContext;
-
   const { n } = useParams();
   const integerN = Number(n);
 
@@ -31,7 +29,7 @@ function Home() {
       {integerN > 0 && integerN < MAX_PAGE_NUMBER ? (
         <>
           <Slider />
-          <Items superUser={auth} />
+          <Items />
           <Donators />
           <Footer />
         </>

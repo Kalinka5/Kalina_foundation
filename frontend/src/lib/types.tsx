@@ -40,12 +40,6 @@ type ProfileContextType = {
   setImageURL: React.Dispatch<React.SetStateAction<string>>;
   username: string;
   setUsername: React.Dispatch<React.SetStateAction<string>>;
-  email: string;
-  setEmail: React.Dispatch<React.SetStateAction<string>>;
-  first_name: string;
-  setFirstName: React.Dispatch<React.SetStateAction<string>>;
-  last_name: string;
-  setLastName: React.Dispatch<React.SetStateAction<string>>;
 };
 
 // Header Component
@@ -58,7 +52,4 @@ type Item = {
   id: number;
   image: string;
   title: string;
-};
-type ItemsProps = {
-  superUser: boolean;
 };

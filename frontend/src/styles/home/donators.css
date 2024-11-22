@@ -3,22 +3,6 @@
   background-size: 25px 25px;
   overflow: hidden;
 
-  .icon-row {
-    position: relative;
-    width: 100%;
-    display: flex;
-    padding: 10px 0;
-    white-space: nowrap;
-
-    .ic {
-      animation: animate1 80s linear infinite;
-      animation-delay: -80s;
-    }
-    .ic:nth-child(2) {
-      animation: animate2 80s linear infinite;
-      animation-delay: -40s;
-    }
-  }
   .donators-background {
     position: relative;
     display: flex;
@@ -37,24 +21,6 @@
       position: relative;
       overflow: hidden;
 
-      .card-row {
-        font-size: 67px;
-
-        .title-icons {
-          color: #0093a9;
-          padding: 0 2px;
-        }
-      }
-      .icon-row:nth-child(even) {
-        .ic {
-          animation: animate3 80s linear infinite;
-          animation-delay: -80s;
-        }
-        .ic:nth-child(2) {
-          animation: animate4 80s linear infinite;
-          animation-delay: -40s;
-        }
-      }
       .donators-card {
         position: absolute;
         top: 0;
@@ -123,9 +89,5 @@
 @media (min-width: 1500px) {
   .donators .donators-background .icons-back {
     height: 970px;
-
-    .card-row {
-      font-size: 95px;
-    }
   }
 }
