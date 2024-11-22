@@ -9,10 +9,10 @@ import { LOGIN_PAGE } from "../../lib/constants.js";
 
 import { RegisterContext } from "../../pages/Register.tsx";
 
-import SubmitButton from "./SubmitButton";
-import LogRegHeader from "./Header";
-import InputField from "./RegisterField.js";
-import LogRegLink from "./Link";
+import LogRegHeader from "./Header.tsx";
+import InputField from "./RegisterField.tsx";
+import LogRegLink from "./Link.tsx";
+import SubmitButton from "./SubmitButton.tsx";
 
 function RegisterPortrait() {
   const {
@@ -80,7 +80,7 @@ function RegisterPortrait() {
         <div className="shape shape2"></div>
       </div>
       <form className="log-reg-form form-p" onSubmit={handleSubmit}>
-        <LogRegHeader text="registration-head" translate={{ t }} />
+        <LogRegHeader text="registration-head" />
 
         <InputField
           value={username}
@@ -93,7 +93,6 @@ function RegisterPortrait() {
           errorsName={"username"}
           className="name-tip"
           tooltipText="tooltip1"
-          translate={{ t }}
         />
 
         <InputField
@@ -107,7 +106,6 @@ function RegisterPortrait() {
           errorsName={"email"}
           className="email-tip"
           tooltipText="tooltip2"
-          translate={{ t }}
         />
 
         <InputField
@@ -121,7 +119,6 @@ function RegisterPortrait() {
           errorsName={"password"}
           className="pass-tip"
           tooltipText="tooltip3"
-          translate={{ t }}
         />
 
         <InputField
@@ -135,16 +132,14 @@ function RegisterPortrait() {
           errorsName={"confirmPassword"}
           className="confirm-tip"
           tooltipText="tooltip4"
-          translate={{ t }}
         />
 
-        <SubmitButton text="register-now" loading={loading} translate={{ t }} />
+        <SubmitButton text="register-now" loading={loading} />
 
         <LogRegLink
           link={LOGIN_PAGE}
           textLink="login-now"
           question="register-q"
-          translate={{ t }}
         />
       </form>
     </div>

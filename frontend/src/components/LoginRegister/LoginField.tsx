@@ -1,13 +1,24 @@
 import React, { useState } from "react";
+
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
-function InputField({ label, value, placeholder, type, onChange, translate }) {
+import { useTranslation } from "react-i18next";
+
+import { LoginFieldProps } from "../../lib/types";
+
+function InputField({
+  label,
+  value,
+  placeholder,
+  type,
+  onChange,
+}: LoginFieldProps) {
   const [passVisible, setPassVisible] = useState(false);
 
   // Adjust type dynamically for password visibility toggle
   const inputType = type === "password" && passVisible ? "text" : type;
 
-  const { t } = translate;
+  const { t } = useTranslation();
 
   const togglePasswordVisibility = () => {
     setPassVisible(!passVisible);

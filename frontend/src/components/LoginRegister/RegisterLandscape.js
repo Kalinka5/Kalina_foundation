@@ -11,10 +11,10 @@ import Carousel from "./Carousel";
 
 import { RegisterContext } from "../../pages/Register.tsx";
 
-import SubmitButton from "./SubmitButton";
-import LogRegHeader from "./Header";
-import InputField from "./RegisterField.js";
-import LogRegLink from "./Link";
+import LogRegHeader from "./Header.tsx";
+import InputField from "./RegisterField.tsx";
+import LogRegLink from "./Link.tsx";
+import SubmitButton from "./SubmitButton.tsx";
 
 function RegisterLandscape() {
   const {
@@ -82,7 +82,7 @@ function RegisterLandscape() {
       </div>
       <div className="column">
         <form className="log-reg-form reg-p" onSubmit={handleSubmit}>
-          <LogRegHeader text="registration-head" translate={{ t }} />
+          <LogRegHeader text="registration-head" />
 
           <InputField
             value={username}
@@ -92,24 +92,22 @@ function RegisterLandscape() {
             validFields={validFields}
             isValid="usernameIsValid"
             errors={errors}
-            errorsName={"username"}
+            errorsName="username"
             className="name-tip"
             tooltipText="tooltip1"
-            translate={{ t }}
           />
 
           <InputField
             value={email}
             placeholder="email-input"
-            type="text"
+            type="email"
             onChange={setEmail}
             validFields={validFields}
             isValid="emailIsValid"
             errors={errors}
-            errorsName={"email"}
+            errorsName="email"
             className="email-tip"
             tooltipText="tooltip2"
-            translate={{ t }}
           />
 
           <InputField
@@ -120,10 +118,9 @@ function RegisterLandscape() {
             validFields={validFields}
             isValid="passwordIsValid"
             errors={errors}
-            errorsName={"password"}
+            errorsName="password"
             className="pass-tip"
             tooltipText="tooltip3"
-            translate={{ t }}
           />
 
           <InputField
@@ -134,23 +131,17 @@ function RegisterLandscape() {
             validFields={validFields}
             isValid="confPasswordIsValid"
             errors={errors}
-            errorsName={"confirmPassword"}
+            errorsName="confirmPassword"
             className="confirm-tip"
             tooltipText="tooltip4"
-            translate={{ t }}
           />
 
-          <SubmitButton
-            text="register-now"
-            loading={loading}
-            translate={{ t }}
-          />
+          <SubmitButton text="register-now" loading={loading} />
 
           <LogRegLink
             link={LOGIN_PAGE}
             textLink="login-now"
             question="register-q"
-            translate={{ t }}
           />
         </form>
       </div>

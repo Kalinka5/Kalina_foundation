@@ -10,9 +10,11 @@ import api from "../../lib/api";
 
 import { LOGIN_PAGE } from "../../lib/constants";
 
+import { DeleteUserModalProps } from "../../lib/types";
+
 import "../../styles/profile/modal.css";
 
-const DeleteUserModal = ({ setIsOpen }) => {
+const DeleteUserModal = ({ setIsOpen }: DeleteUserModalProps) => {
   const navigate = useNavigate();
 
   const { t } = useTranslation();

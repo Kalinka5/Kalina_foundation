@@ -7,11 +7,13 @@ import api from "../lib/api.js";
 
 import Header from "../components/Header.tsx";
 import DeleteButton from "../components/Profile/DeleteButton.js";
-import DeleteUserModal from "../components/Profile/DeleteUserModal.js";
+import DeleteUserModal from "../components/Profile/DeleteUserModal.tsx";
 import ProfileImage from "../components/Profile/ProfileImage.js";
 import UsernameField from "../components/Profile/UsernameField.js";
-import InputField from "../components/Profile/InputField.js";
+import InputField from "../components/Profile/InputField.tsx";
 import UpdateButton from "../components/Profile/UpdateButton.js";
+
+import { ProfileContextType } from "../lib/types.tsx";
 
 import "../styles/profile/profile.css";
 

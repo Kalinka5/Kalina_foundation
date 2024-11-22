@@ -2,6 +2,8 @@ import React from "react";
 
 import { useTranslation } from "react-i18next";
 
+import { ProfileInputFieldProps } from "../../lib/types";
+
 import "../../styles/profile/userFields.css";
 
 function InputField({
@@ -12,7 +14,7 @@ function InputField({
   type,
   placeholder,
   icon,
-}) {
+}: ProfileInputFieldProps) {
   const { t } = useTranslation();
 
   return (
@@ -23,7 +25,7 @@ function InputField({
           type={type}
           name={label}
           className="form-style"
-          placeholder={t({ placeholder })}
+          placeholder={t(placeholder)}
           id={label}
           value={value}
           onChange={(e) => onChange(e.target.value)}

@@ -8,10 +8,10 @@ import api from "../../lib/api";
 
 import useOrientation from "../../lib/useOrientation";
 
-import HeaderSection from "./HeaderSection";
+import HeaderSection from "./HeaderSection.tsx";
 import CardIcons from "./CardIcons";
 import CardImage from "./CardImage";
-import Pedestal from "./Pedestal";
+import Pedestal from "./Pedestal.tsx";
 
 import "../../styles/home/donators.css";
 

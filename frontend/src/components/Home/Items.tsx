@@ -3,11 +3,13 @@ import { useParams } from "react-router-dom";
 
 import api from "../../lib/api";
 
-import HeaderSection from "./HeaderSection";
-import ItemCard from "./ItemCard";
+import HeaderSection from "./HeaderSection.tsx";
+import ItemCard from "./ItemCard.tsx";
 import ItemsLoader from "./LoaderItems";
 
-import { AuthContext } from "../../App.tsx";
+import { HeaderContext } from "../../App.tsx";
+
+import { Item } from "../../lib/types.tsx";
 
 import "../../styles/home/items.css";
 
@@ -16,7 +18,7 @@ function Items() {
   const [items, setItems] = useState<Item[]>([]);
   const [isSuperUser, setIsSuperUser] = useState(false);
 
-  const authContext = useContext(AuthContext);
+  const authContext = useContext(HeaderContext);
 
   if (!authContext) {
     throw new Error("AuthContext must be used within an AuthContext.Provider");

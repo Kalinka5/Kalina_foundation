@@ -8,6 +8,8 @@ import Header from "../components/Header.tsx";
 
 import i18n from "../i18n.js";
 
+import { RegisterContextType, RegistrationStatus } from "../lib/types.tsx";
+
 import "../styles/loginRegister/register.css";
 
 export const RegisterContext = createContext<RegisterContextType | undefined>(

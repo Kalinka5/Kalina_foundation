@@ -1,12 +1,31 @@
+import React, { ReactNode, Dispatch, SetStateAction } from "react";
+
+// AuthContext.tsx
+export type AuthContextType = {
+  auth: boolean | null; // `auth` can be null or boolean
+  setAuth: Dispatch<SetStateAction<boolean | null>>; // `setAuth` manages `auth` state
+};
+export type AuthProviderProps = {
+  children: ReactNode; // Children can be any valid ReactNode
+};
+
+// ProtectedRoute.tsx
+export type DecodedToken = {
+  exp: number;
+};
+export type ProtectedRouteProps = {
+  children: ReactNode;
+};
+
 // App.tsx
-type AuthContextType = {
+export type HeaderContextType = {
   auth: boolean;
   authLinks: { id: number; urlLink: string; urlName: string }[];
   notAuthLinks: { id: number; urlLink: string; urlName: string }[];
 };
 
 // Login.tsx
-type LoginContextType = {
+export type LoginContextType = {
   email: string;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   password: string;
@@ -14,8 +33,8 @@ type LoginContextType = {
 };
 
 // Register.tsx
-type RegistrationStatus = "success" | "failed" | null;
-type RegisterContextType = {
+export type RegistrationStatus = "success" | "failed" | null;
+export type RegisterContextType = {
   registrationStatus: RegistrationStatus;
   setRegistrationStatus: React.Dispatch<
     React.SetStateAction<RegistrationStatus>
@@ -31,7 +50,7 @@ type RegisterContextType = {
 };
 
 // Profile.tsx
-type ProfileContextType = {
+export type ProfileContextType = {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   loading: boolean;
@@ -43,13 +62,131 @@ type ProfileContextType = {
 };
 
 // Header Component
-type HeaderProps = {
+export type HeaderProps = {
   fixed?: "pos-fixed";
 };
 
 // Items Component
-type Item = {
+export type Item = {
   id: number;
   image: string;
   title: string;
+};
+
+// Items.tsx and Donators.tsx
+export type HeaderSectionProps = {
+  title: string;
+  className: string;
+  children?: [];
+};
+
+// DonatorImg.tsx
+export type DonatorImgProps = {
+  image: string;
+};
+
+// EditItemButton.tsx
+export type EditItemButtonProps = {
+  id: number;
+};
+
+// ItemCard.tsx
+export type ItemCardProps = {
+  items: Item[];
+  isSuperUser: boolean;
+};
+
+// ItemDescription.tsx
+export type ItemDescriptionProps = {
+  title: string;
+};
+
+// ItemImage.tsx
+export type ItemImageProps = {
+  image: string;
+  index: number;
+};
+
+// MoneyLandscape.tsx and MoneyPortrait.tsx
+export type MoneyProps = {
+  donated: number;
+};
+
+// Pedestal.tsx
+type User = {
+  id: number;
+  donated: number;
+  image: string;
+  username: string;
+};
+export type PedestalProps = {
+  donators: User[];
+  orientation: "landscape" | "portrait";
+};
+
+// Place.tsx
+export type PlaceProps = {
+  index: number;
+};
+
+// Username.tsx
+export type UsernameProps = {
+  username: string;
+};
+
+// Header.tsx
+export type LogRegHeaderProps = {
+  text: "login-head" | "registration-head";
+};
+
+// Link.tsx
+export type LogRegLinkProps = {
+  link: string;
+  textLink: "register-now" | "login-now";
+  question: "login-q" | "register-q";
+};
+
+// LoginField.tsx
+export type LoginFieldProps = {
+  label: "email" | "password";
+  value: string;
+  placeholder: "your-email" | "your-password";
+  type: "email" | "password";
+  onChange: Dispatch<SetStateAction<string>>;
+};
+
+// RegisterField.tsx
+export type RegisterFieldProps = {
+  value: string;
+  placeholder: string;
+  type: "text" | "email" | "password";
+  onChange: Dispatch<SetStateAction<string>>;
+  validFields: { string: boolean };
+  isValid: string;
+  errors: { string: string };
+  errorsName: "username" | "email" | "password" | "confirmPassword";
+  className: "name-tip" | "email-tip" | "pass-tip" | "confirm-tip";
+  tooltipText: "tooltip1" | "tooltip2" | "tooltip3" | "tooltip4";
+};
+
+// SubmitButton.tsx
+export type SubmitButtonProps = {
+  text: "register-now" | "login-button";
+  loading: boolean;
+};
+
+// DeleteUserModal.tsx
+export type DeleteUserModalProps = {
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
+};
+
+// InputField.tsx in Profile
+export type ProfileInputFieldProps = {
+  value: string;
+  onChange: Dispatch<SetStateAction<string>>;
+  label: string;
+  tLabel: string;
+  type: "email" | "text";
+  placeholder: string;
+  icon: React.ReactNode;
 };

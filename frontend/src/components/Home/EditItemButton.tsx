@@ -1,9 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { EditItemButtonProps } from "../../lib/types";
+
 import "../../styles/home/editItemButton.css";
 
-function EditItemButton({ id }) {
+function EditItemButton({ id }: EditItemButtonProps) {
   const { t } = useTranslation();
 
   return (

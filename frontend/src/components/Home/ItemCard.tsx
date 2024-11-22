@@ -1,13 +1,15 @@
 import React from "react";
 
-import ItemImage from "./ItemImage";
-import ItemDescription from "./ItemDescription";
+import ItemImage from "./ItemImage.tsx";
+import ItemDescription from "./ItemDescription.tsx";
 import DonateButton from "./DonateButton";
-import EditItemButton from "./EditItemButton";
+import EditItemButton from "./EditItemButton.tsx";
+
+import { ItemCardProps } from "../../lib/types";
 
 import "../../styles/home/itemCard.css";
 
-function ItemCard({ items, isSuperUser }) {
+function ItemCard({ items, isSuperUser }: ItemCardProps) {
   return items.map((el, index) => (
     <div className="gradient-cards" key={el.id}>
       <div className={`card ${index % 2 === 0 ? "left" : "right"}`}>
