@@ -1,15 +1,17 @@
 import React from "react";
 
-import MoneyPortrait from "./MoneyPortrait";
-import DonatorImg from "./DonatorImg";
-import MoneyLandscape from "./MoneyLandscape";
-import Username from "./Username";
-import Place from "./Place";
-import DonatorsLoader from "./LoaderDonators";
+import DonatorImg from "./DonatorImg.tsx";
+import MoneyLandscape from "./MoneyLandscape.tsx";
+import MoneyPortrait from "./MoneyPortrait.tsx";
+import Username from "./Username.tsx";
+import Place from "./Place.tsx";
+import DonatorsLoader from "./LoaderDonators.js";
+
+import { PedestalProps } from "../../lib/types.tsx";
 
 import "../../styles/home/pedestal.css";
 
-function Pedestal({ donators, orientation }) {
+function Pedestal({ donators, orientation }: PedestalProps) {
   return (
     <div className={`pedestal ${donators ? "grid-p" : "flex-l"}`}>
       {donators ? (

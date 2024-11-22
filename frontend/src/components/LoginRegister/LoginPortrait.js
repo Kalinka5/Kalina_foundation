@@ -1,8 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useTranslation } from "react-i18next";
-
 import api from "../../lib/api.js";
 import {
   ACCESS_TOKEN,
@@ -10,10 +8,10 @@ import {
   PROFILE_PAGE,
 } from "../../lib/constants.js";
 
-import InputField from "./LoginField.js";
-import SubmitButton from "./SubmitButton";
-import LogRegHeader from "./Header";
-import LogRegLink from "./Link";
+import InputField from "./LoginField.tsx";
+import LogRegHeader from "./Header.tsx";
+import LogRegLink from "./Link.tsx";
+import SubmitButton from "./SubmitButton.tsx";
 
 import { REGISTER_PAGE } from "../../lib/constants.js";
 
@@ -25,8 +23,6 @@ function LoginPortrait() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
-  const { t } = useTranslation();
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -52,7 +48,7 @@ function LoginPortrait() {
         <div className="shape shape2"></div>
       </div>
       <form className="log-reg-form form-p" onSubmit={handleSubmit}>
-        <LogRegHeader text="login-head" translate={{ t }} />
+        <LogRegHeader text="login-head" />
 
         <InputField
           label="email"
@@ -60,7 +56,6 @@ function LoginPortrait() {
           placeholder="your-email"
           type="email"
           onChange={setEmail}
-          translate={{ t }}
         />
 
         <InputField
@@ -69,16 +64,14 @@ function LoginPortrait() {
           placeholder="your-password"
           type="password"
           onChange={setPassword}
-          translate={{ t }}
         />
 
-        <SubmitButton text="login-button" loading={loading} translate={{ t }} />
+        <SubmitButton text="login-button" loading={loading} />
 
         <LogRegLink
           link={REGISTER_PAGE}
           textLink="register-now"
           question="login-q"
-          translate={{ t }}
         />
       </form>
     </div>

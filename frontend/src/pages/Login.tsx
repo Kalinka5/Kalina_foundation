@@ -6,6 +6,8 @@ import LoginPortrait from "../components/LoginRegister/LoginPortrait.js";
 import LoginLandscape from "../components/LoginRegister/LoginLandscape.js";
 import Header from "../components/Header.tsx";
 
+import { LoginContextType } from "../lib/types.tsx";
+
 import "../styles/loginRegister/login.css";
 
 export const LoginContext = createContext<LoginContextType | undefined>(

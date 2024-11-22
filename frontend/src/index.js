@@ -5,7 +5,7 @@ import App from "./App.tsx";
 
 import reportWebVitals from "./reportWebVitals";
 
-import AuthProvider from "./components/AuthContext";
+import AuthProvider from "./components/AuthContext.tsx";
 
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";

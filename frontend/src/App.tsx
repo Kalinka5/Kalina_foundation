@@ -17,8 +17,8 @@ import {
   DONATE_PAGE,
 } from "./lib/constants.js";
 
-import ProtectedRoute from "./components/ProtectedRoute.js";
-import { useAuth } from "./components/AuthContext.js";
+import ProtectedRoute from "./components/ProtectedRoute.tsx";
+import { useAuth } from "./components/AuthContext.tsx";
 
 import EmailVerify from "./pages/EmailVerify.tsx";
 import Home from "./pages/Home.tsx";
@@ -28,6 +28,8 @@ import Register from "./pages/Register.tsx";
 import Profile from "./pages/Profile.tsx";
 import Payment from "./pages/Payment.tsx";
 
+import { HeaderContextType } from "./lib/types.tsx";
+
 import "./styles/index.css";
 
 function Logout() {
@@ -36,7 +38,7 @@ function Logout() {
   return <Navigate to={`${HOME_PAGE}/1`} />;
 }
 
-export const AuthContext = createContext<AuthContextType | undefined>(
+export const HeaderContext = createContext<HeaderContextType | undefined>(
   undefined
 );
 
@@ -53,7 +55,7 @@ function App() {
 
   return (
     <Router>
-      <AuthContext.Provider value={{ auth: !!auth, authLinks, notAuthLinks }}>
+      <HeaderContext.Provider value={{ auth: !!auth, authLinks, notAuthLinks }}>
         <main className="App">
           <Routes>
             <Route path={`${HOME_PAGE}/:n?`} element={<Home />} />
@@ -77,7 +79,7 @@ function App() {
             />
           </Routes>
         </main>
-      </AuthContext.Provider>
+      </HeaderContext.Provider>
     </Router>
   );
 }

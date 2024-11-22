@@ -1,11 +1,13 @@
 import React from "react";
 
+import { useTranslation } from "react-i18next";
+
+import { SubmitButtonProps } from "../../lib/types";
+
 import "../../styles/loginRegister/submitButton.css";
 
-function SubmitButton(props) {
-  const text = props.text;
-  const loading = props.loading;
-  const { t } = props.translate;
+function SubmitButton({ text, loading }: SubmitButtonProps) {
+  const { t } = useTranslation();
 
   return (
     <button type="submit" className="submit-but">

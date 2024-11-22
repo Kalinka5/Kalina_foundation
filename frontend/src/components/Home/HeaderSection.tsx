@@ -1,9 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { HeaderSectionProps } from "../../lib/types";
+
 import "../../styles/home/headerSection.css";
 
-function HeaderSection({ title, className, children }) {
+function HeaderSection({ title, className, children }: HeaderSectionProps) {
   const { t } = useTranslation();
 
   return (

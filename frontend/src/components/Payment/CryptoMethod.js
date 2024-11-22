@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import Select from "react-select";
 
@@ -11,6 +11,8 @@ import ethLogo from "../../img/eth_logo.svg";
 import metaMaskIcon from "../../img/metamask-icon.svg";
 
 import api from "../../lib/api";
+
+import { HeaderContext } from "../../App.tsx";
 
 import "../../styles/payment/cryptoMethod.css";
 
@@ -55,8 +57,8 @@ export const CHAIN_IDS = {
 export const MAXIMUM_DECIMAL_PLACES = 8;
 
 // Function Component for the Crypto Payment Form
-function CryptoPaymentForm(props) {
-  const isAuth = props.isAuth;
+function CryptoPaymentForm() {
+  const { auth } = useContext(HeaderContext);
 
   const [networkName, setNetworkName] = useState("Ethereum Mainnet");
   const [error, setError] = useState("");
@@ -114,10 +116,9 @@ function CryptoPaymentForm(props) {
   };
 
   const handlePaymentSuccess = async () => {
-    console.log(isAuth);
     let email;
 
-    if (isAuth) {
+    if (auth) {
       console.log("Start to sending a request to backend /profile");
       const res = await api.get("/profile");
       console.log("The request was sent successfully!");

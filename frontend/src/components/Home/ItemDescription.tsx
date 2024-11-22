@@ -1,9 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { ItemDescriptionProps } from "../../lib/types";
+
 import "../../styles/home/itemDescription.css";
 
-function ItemDescription({ title }) {
+function ItemDescription({ title }: ItemDescriptionProps) {
   const { t } = useTranslation();
 
   return (

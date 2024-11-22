@@ -11,10 +11,10 @@ import { MAX_PAGE_NUMBER } from "../lib/constants.js";
 
 import NotFound from "./NotFound.js";
 
-import { AuthContext } from "../App.tsx";
+import { HeaderContext } from "../App.tsx";
 
 function Home() {
-  const authContext = useContext(AuthContext);
+  const authContext = useContext(HeaderContext);
 
   if (!authContext) {
     throw new Error("AuthContext must be used within an AuthContext.Provider");

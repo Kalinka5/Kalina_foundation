@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
 import { jwtDecode } from "jwt-decode";
@@ -6,8 +6,10 @@ import { jwtDecode } from "jwt-decode";
 import api from "../lib/api";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../lib/constants";
 
-function ProtectedRoute({ children }) {
-  const [isAuthorized, setIsAuthorized] = useState(null);
+import { DecodedToken, ProtectedRouteProps } from "../lib/types";
+
+function ProtectedRoute({ children }: ProtectedRouteProps) {
+  const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
 
   useEffect(() => {
     auth().catch(() => setIsAuthorized(false));
@@ -35,8 +37,8 @@ function ProtectedRoute({ children }) {
       setIsAuthorized(false);
       return;
     }
-    const decoded = jwtDecode(token);
-    const tokenExpiration = decoded.exp;
+    const decoded = jwtDecode<DecodedToken>(token);
+    const tokenExpiration = decoded?.exp;
     const now = Date.now() / 1000;
 
     if (tokenExpiration < now) {
@@ -50,7 +52,7 @@ function ProtectedRoute({ children }) {
     return <div>Loading...</div>;
   }
 
-  return isAuthorized ? children : <Navigate to="/login" />;
+  return isAuthorized ? <>{children}</> : <Navigate to="/login" />;
 }
 
 export default ProtectedRoute;

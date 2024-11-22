@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState } from "react";
 
 import { DonateInfo } from "./DonateInfo";
 import { Question1, Question2 } from "./Questions";
@@ -9,15 +9,11 @@ import PaypalMethod from "./PayPalMethod";
 import CryptoPaymentsForm from "./CryptoMethod";
 import ChangeDonateMethod from "./SliderDonateLandscape";
 
-import { AuthContext } from "../../App.tsx";
-
 import "../../styles/payment/paymentLandscape.css";
 
 export const PaymentLandscapeContext = createContext([{}]);
 
 export const PaymentLandscape = () => {
-  const { auth } = useContext(AuthContext);
-
   const [currentDonation, setCurrentDonation] = useState(1);
 
   return (
@@ -38,7 +34,7 @@ export const PaymentLandscape = () => {
               <MonoBank />
             </div>
             <div className={`back ${currentDonation === 2 && "index-100"}`}>
-              <CryptoPaymentsForm isAuth={auth} />
+              <CryptoPaymentsForm />
             </div>
           </article>
           <article>
