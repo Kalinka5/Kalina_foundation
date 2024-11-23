@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from "react";
 
+import { useQuery } from "@tanstack/react-query";
+
 import { IoIosCash } from "react-icons/io";
 
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-import api from "../../lib/api";
+import api from "../../lib/api.js";
 
-import useOrientation from "../../lib/useOrientation";
+import useOrientation from "../../lib/useOrientation.js";
 
 import HeaderSection from "./HeaderSection.tsx";
-import CardIcons from "./CardIcons";
-import CardImage from "./CardImage";
+import CardIcons from "./CardIcons.js";
+import CardImage from "./CardImage.js";
 import Pedestal from "./Pedestal.tsx";
+
+import { User } from "../../lib/types.tsx";
 
 import "../../styles/home/donators.css";
 
 function Donators() {
-  const [donators, setDonators] = useState(null);
-  const [titleIcons, setTitleIcons] = useState([]);
+  const [titleIcons, setTitleIcons] = useState<JSX.Element[]>([]);
 
   const isDisplayMini = useMediaQuery(
     "only screen and (min-width: 300px) and (max-width: 1024px)"
@@ -31,22 +34,12 @@ function Donators() {
   const orientation = useOrientation();
 
   useEffect(() => {
-    getData();
     createTitleIcons();
   }, []);
 
-  const getData = async () => {
-    try {
-      const res = await api.get("/donators?format=json");
-      setDonators(res.data);
-    } catch (err) {
-      alert(err);
-    }
-  };
-
   const createTitleIcons = async () => {
-    const icons = [];
-    const iconsDiv = [];
+    const icons: JSX.Element[] = [];
+    const iconsDiv: JSX.Element[] = [];
 
     for (let i = 1; i <= 35; i++) {
       iconsDiv.push(
@@ -67,6 +60,19 @@ function Donators() {
     setTitleIcons(icons);
   };
 
+  const getDonators = async (): Promise<User[]> => {
+    console.log("Start getting data of items...");
+    const response = await api.get("/donators?format=json");
+    return response?.data;
+  };
+
+  const donators = useQuery<User[]>({
+    queryKey: ["donators"],
+    queryFn: getDonators,
+  });
+
+  const donatorData = donators.data ?? [];
+
   return (
     <div className="donators">
       <HeaderSection title="items-header" className="back-violet">
@@ -83,9 +89,9 @@ function Donators() {
           <CardIcons />
           <div className="donators-card">
             {isMonitor ? (
-              <Pedestal donators={donators} orientation="landscape" />
+              <Pedestal donators={donatorData} orientation="landscape" />
             ) : (
-              <Pedestal donators={donators} orientation="portrait" />
+              <Pedestal donators={donatorData} orientation="portrait" />
             )}
           </div>
         </div>

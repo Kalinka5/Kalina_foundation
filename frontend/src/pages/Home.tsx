@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import Slider from "../components/Home/Slider.js";
 import Items from "../components/Home/Items.tsx";
-import Donators from "../components/Home/Donators.js";
+import Donators from "../components/Home/Donators.tsx";
 import Footer from "../components/Footer.js";
 import Header from "../components/Header.tsx";
 

@@ -63,10 +63,10 @@ function RegisterLandscape() {
       }
     } catch (error) {
       setRegistrationStatus("error");
-      if (error.response.data["email"]) {
-        setErrors({ email: error.response.data["email"] });
-      } else if (error.response.data["username"]) {
-        setErrors({ username: error.response.data["username"] });
+      if (error.response.data["username"]) {
+        setErrors({ username: t("username-already-exists") });
+      } else if (error.response.data["email"]) {
+        setErrors({ email: t("email-already-exists") });
       } else {
         alert(error);
       }

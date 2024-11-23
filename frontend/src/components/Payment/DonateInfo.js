@@ -23,7 +23,7 @@ export const DonateInfo = () => {
     // Animate progress bar
     const startProgress = 0;
     const endProgress = (initialDonation / goal) * 100;
-    const duration = 10; // 2 seconds
+    const duration = 10;
     const startTime = performance.now();
 
     const animateProgress = (currentTime) => {

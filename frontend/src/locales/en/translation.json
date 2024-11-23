@@ -77,6 +77,8 @@
   "password-not-valid": "password is not valid",
   "conf-password-required": "confirm password field is required",
   "password-not-matched": "password not matched",
+  "username-already-exists": "User with this username already exists",
+  "email-already-exists": "User with this email already exists",
 
   "upload-image": "Upload image",
   "username": "Username",

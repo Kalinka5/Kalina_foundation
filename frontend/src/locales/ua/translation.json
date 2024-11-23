@@ -77,6 +77,8 @@
   "password-not-valid": "пароль недійсний",
   "conf-password-required": "поле підтвердження пароля є обов’язковим",
   "password-not-matched": "пароль не збігається",
+  "username-already-exists": "Користувач із таким іменем вже існує",
+  "email-already-exists": "Користувач із цією поштою вже існує",
 
   "upload-image": "Завантажити зображення",
   "username": "Ім'я користувача",
