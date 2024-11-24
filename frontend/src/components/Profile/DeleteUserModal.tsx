@@ -24,7 +24,9 @@ const DeleteUserModal = ({ setIsOpen }: DeleteUserModalProps) => {
     try {
       setIsOpen(false);
       console.log("Start deleting User");
-      await api.delete("/profile");
+      await api("/profile", {
+        method: "DELETE",
+      });
       console.log("User was deleted successfully");
       localStorage.clear();
       navigate(LOGIN_PAGE);

@@ -24,19 +24,24 @@ const PaypalMethod = () => {
       return;
     }
 
+    // Get email from payment details
+    let email = details.payer ? details.payer.email_address : "";
+
     // Send the transaction data to the backend
-    await api
-      .post("donate/", {
+    const response = await api("/donate/", {
+      method: "POST",
+      body: JSON.stringify({
         donate_type: "dollars",
         amount: donationAmount,
-        email: details.payer ? details.payer.email_address : "Unknown Email", // Handle undefined payer
-      })
-      .then((response) => {
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.error("Error updating donation", error);
-      });
+        email: email,
+      }),
+    });
+
+    if (response.status === "success") {
+      window.location.reload();
+    } else {
+      console.error("Error updating donation", response.message);
+    }
   };
 
   return (

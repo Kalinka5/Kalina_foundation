@@ -47,9 +47,9 @@ export const DonateInfo = () => {
   const getDonationData = async () => {
     try {
       console.log("Start getting data of Donation item...");
-      const item = await api.get(`/items/${DONATION_ITEM_ID}/?format=json`);
-      setGoal(item.data["full_price"]);
-      setInitialDonation(item.data["collected"]);
+      const item = await api(`/items/${DONATION_ITEM_ID}/?format=json`);
+      setGoal(item.full_price);
+      setInitialDonation(item.collected);
     } catch (err) {
       console.log(err);
     }

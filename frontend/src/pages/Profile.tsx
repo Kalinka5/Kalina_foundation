@@ -3,6 +3,8 @@ import React, { createContext, useEffect, useState } from "react";
 import { IoMdAt } from "react-icons/io";
 import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 
+import { useQuery } from "@tanstack/react-query";
+
 import api from "../lib/api.js";
 
 import Header from "../components/Header.tsx";
@@ -13,7 +15,7 @@ import UsernameField from "../components/Profile/UsernameField.js";
 import InputField from "../components/Profile/InputField.tsx";
 import UpdateButton from "../components/Profile/UpdateButton.js";
 
-import { ProfileContextType } from "../lib/types.tsx";
+import { ProfileContextType, User } from "../lib/types.tsx";
 
 import "../styles/profile/profile.css";
 
@@ -31,32 +33,37 @@ function Profile() {
   const [loading, setLoading] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const getData = async () => {
+  const getUser = async (): Promise<User | {}> => {
     try {
       console.log("Start to sending a request to backend /profile");
-      const res = await api.get("/profile");
+      const response = await api("/profile");
       console.log("The request was sending successfully!");
-      console.log(res.data);
-      setUsername(res.data.username);
-      setEmail(res.data.email);
-      setFirstName(res.data.first_name);
-      setLastName(res.data.last_name);
-      setImageURL(res.data.image);
-    } catch (err) {
-      alert(err);
-      console.log(
-        "Something go wrong when sending backend request to /profile"
-      );
+      return response as unknown as User;
+    } catch (error) {
+      console.error("Error fetching User data:", (error as Error).message);
+      return {};
     }
   };
 
+  const user = useQuery<User | {}>({
+    queryKey: ["items"],
+    queryFn: getUser,
+  });
+
+  useEffect(() => {
+    if (user.data && "username" in user.data) {
+      const userData = user.data as User;
+      setUsername(userData.username);
+      setEmail(userData.email);
+      setFirstName(userData.first_name);
+      setLastName(userData.last_name);
+      setImageURL(userData.image);
+    }
+  }, [user.data]);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    setLoading(true);
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData();
     formData.append("username", username);
@@ -68,11 +75,14 @@ function Profile() {
 
     try {
       console.log("Start updating User's profile data");
-      await api.patch("/profile", formData);
-      console.log("User profile was updated successfully");
+      const response = await api("/profile", {
+        method: "PATCH",
+        body: formData,
+      });
+      console.log("User profile was updated successfully:", response);
     } catch (error) {
-      alert(error);
-      console.log("Something go wrong when updating user profile!");
+      console.error("Error updating User's profile:", error);
+      alert("Something went wrong when updating the user profile!");
     } finally {
       setLoading(false);
     }

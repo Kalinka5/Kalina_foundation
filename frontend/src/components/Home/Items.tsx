@@ -11,7 +11,7 @@ import ItemsLoader from "./LoaderItems";
 
 import { HeaderContext } from "../../App.tsx";
 
-import { Item } from "../../lib/types.tsx";
+import { Item, User } from "../../lib/types.tsx";
 
 import "../../styles/home/items.css";
 
@@ -31,9 +31,11 @@ function Items() {
     if (auth) {
       (async () => {
         try {
-          console.log("Start getting data of profile...");
-          let response = await api.get("/profile");
-          setIsSuperUser(response.data.is_superuser);
+          console.log("Start to sending a request to backend /profile");
+          const response = (await api("/profile")) as unknown as User;
+          console.log("The request was sending successfully!");
+          console.log(response.is_superuser);
+          setIsSuperUser(response.is_superuser);
         } catch (err) {
           console.error("Error fetching user data:", err);
         }
@@ -42,9 +44,14 @@ function Items() {
   }, [auth]);
 
   const getItems = async (): Promise<Item[]> => {
-    console.log("Start getting data of items...");
-    const response = await api.get(`/items/?page=${n}&format=json`);
-    return response?.data;
+    try {
+      console.log("Start getting data of items...");
+      const response = await api(`/items/?page=${n}&format=json`);
+      return response as unknown as Item[];
+    } catch (error) {
+      console.error("Error fetching items:", (error as Error).message);
+      return [];
+    }
   };
 
   const items = useQuery<Item[]>({

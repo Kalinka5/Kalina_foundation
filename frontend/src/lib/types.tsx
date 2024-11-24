@@ -79,22 +79,22 @@ export type Item = {
 };
 
 // User
-// export type UserInfo = {
-//   id: number;
-//   password: string;
-//   last_login: string;
-//   username: string;
-//   email: string;
-//   first_name: string;
-//   last_name: string;
-//   image: string;
-//   donated: string;
-//   is_active: boolean;
-//   is_staff: boolean;
-//   is_superuser: boolean;
-//   groups: [];
-//   user_permissions: [];
-// };
+export type User = {
+  id: number;
+  password: string;
+  last_login: string;
+  username: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  image: string;
+  donated: string;
+  is_active: boolean;
+  is_staff: boolean;
+  is_superuser: boolean;
+  groups: [];
+  user_permissions: [];
+};
 
 // Items.tsx and Donators.tsx
 export type HeaderSectionProps = {
@@ -136,12 +136,6 @@ export type MoneyProps = {
 };
 
 // Pedestal.tsx
-export type User = {
-  id: number;
-  donated: number;
-  image: string;
-  username: string;
-};
 export type PedestalProps = {
   donators: User[];
   orientation: "landscape" | "portrait";

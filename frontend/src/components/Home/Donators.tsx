@@ -61,9 +61,14 @@ function Donators() {
   };
 
   const getDonators = async (): Promise<User[]> => {
-    console.log("Start getting data of items...");
-    const response = await api.get("/donators?format=json");
-    return response?.data;
+    try {
+      console.log("Start getting data of donators...");
+      const response = await api("/donators?format=json");
+      return response as unknown as User[];
+    } catch (error) {
+      console.error("Error fetching donators:", (error as Error).message);
+      return [];
+    }
   };
 
   const donators = useQuery<User[]>({

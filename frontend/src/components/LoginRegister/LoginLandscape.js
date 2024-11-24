@@ -31,11 +31,20 @@ function LoginLandscape() {
     e.preventDefault();
 
     try {
-      const res = await api.post("/token/", { email, password });
-      localStorage.setItem(ACCESS_TOKEN, res.data.access);
-      localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-      navigate(`${PROFILE_PAGE}`);
-      navigate(0); // Refresh page
+      const response = await api("/token/", {
+        method: "POST",
+        body: JSON.stringify({ email: email, password: password }),
+      });
+      console.log(response);
+      if (response.access) {
+        localStorage.setItem(ACCESS_TOKEN, response.access);
+        localStorage.setItem(REFRESH_TOKEN, response.refresh);
+
+        navigate(`${PROFILE_PAGE}`);
+        navigate(0); // Refresh page
+      } else {
+        alert("Email or Password are not valid!");
+      }
     } catch (error) {
       alert(error);
     } finally {

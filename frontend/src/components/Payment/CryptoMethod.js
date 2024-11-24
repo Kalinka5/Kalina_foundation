@@ -120,26 +120,28 @@ function CryptoPaymentForm() {
 
     if (auth) {
       console.log("Start to sending a request to backend /profile");
-      const res = await api.get("/profile");
+      const response = await api.get("/profile");
       console.log("The request was sent successfully!");
-      email = res.data.email;
+      email = response.email;
     } else {
-      email = "Unknown Email";
+      email = "";
     }
 
-    // Send the transaction data to the backend after ensuring userEmail is set
-    await api
-      .post("/donate/", {
+    // Send the transaction data to the backend
+    const response = await api("/donate/", {
+      method: "POST",
+      body: JSON.stringify({
         donate_type: currency,
         amount: amount,
         email: email,
-      })
-      .then((response) => {
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.error("Error updating donation", error);
-      });
+      }),
+    });
+
+    if (response.status === "success") {
+      window.location.reload();
+    } else {
+      console.error("Error updating donation", response.message);
+    }
   };
 
   const startPayment = async (event) => {

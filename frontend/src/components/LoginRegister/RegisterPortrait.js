@@ -51,23 +51,42 @@ function RegisterPortrait() {
 
     try {
       if (Object.keys(err).length === 0) {
-        const formData = new FormData();
-        formData.append("username", username);
-        formData.append("email", email);
-        formData.append("password", password1);
+        const requestData = {
+          username: username,
+          email: email,
+          password: password1,
+        };
 
-        await api.post("/register", formData);
-        setRegistrationStatus("success");
+        const response = await api("/register", {
+          method: "POST",
+          body: JSON.stringify(requestData),
+        });
+
+        // Handle HTTP errors
+        if (response.ok) {
+          setRegistrationStatus("success");
+        } else {
+          setRegistrationStatus("error");
+          console.log(response);
+
+          // Parse error message if response contains JSON
+          try {
+            if (response["username"]) {
+              setErrors({ username: t("username-already-exists") });
+            } else if (response["email"]) {
+              setErrors({ email: t("email-already-exists") });
+            }
+          } catch {
+            // Handle non-JSON errors
+            console.error("Unexpected error:", response);
+            alert(response);
+          }
+        }
       }
     } catch (error) {
       setRegistrationStatus("error");
-      if (error.response.data["email"]) {
-        setErrors({ email: error.response.data["email"] });
-      } else if (error.response.data["username"]) {
-        setErrors({ username: error.response.data["username"] });
-      } else {
-        alert(error);
-      }
+      console.error("Unexpected error:", error);
+      alert(error);
     } finally {
       setLoading(false);
     }
