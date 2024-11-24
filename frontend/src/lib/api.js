@@ -41,7 +41,7 @@ const api = async (endpoint, options = {}) => {
   };
 
   // Perform the fetch request
-  const response = await fetch(`${baseURL}/${endpoint}`, fetchOptions);
+  const response = await fetch(`${baseURL}${endpoint}`, fetchOptions);
 
   // Check if the response is empty (204 No Content or similar)
   if (response.status === 204) {
