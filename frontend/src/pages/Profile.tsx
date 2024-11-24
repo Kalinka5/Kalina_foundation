@@ -3,8 +3,6 @@ import React, { createContext, useEffect, useState } from "react";
 import { IoMdAt } from "react-icons/io";
 import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 
-import { useQuery } from "@tanstack/react-query";
-
 import api from "../lib/api.js";
 
 import Header from "../components/Header.tsx";
@@ -16,6 +14,8 @@ import InputField from "../components/Profile/InputField.tsx";
 import UpdateButton from "../components/Profile/UpdateButton.js";
 
 import { ProfileContextType, User } from "../lib/types.tsx";
+
+import { useUser } from "../lib/hooks.tsx";
 
 import "../styles/profile/profile.css";
 
@@ -32,23 +32,9 @@ function Profile() {
   const [image_url, setImageURL] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const auth = true;
 
-  const getUser = async (): Promise<User | {}> => {
-    try {
-      console.log("Start to sending a request to backend /profile");
-      const response = await api("profile");
-      console.log("The request was sending successfully!");
-      return response as unknown as User;
-    } catch (error) {
-      console.error("Error fetching User data:", (error as Error).message);
-      return {};
-    }
-  };
-
-  const user = useQuery<User | {}>({
-    queryKey: ["items"],
-    queryFn: getUser,
-  });
+  const user = useUser(auth);
 
   useEffect(() => {
     if (user.data && "username" in user.data) {

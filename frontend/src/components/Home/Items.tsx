@@ -1,17 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 
-import { useQuery } from "@tanstack/react-query";
-
-import api from "../../lib/api";
-
 import HeaderSection from "./HeaderSection.tsx";
 import ItemCard from "./ItemCard.tsx";
 import ItemsLoader from "./LoaderItems";
 
 import { HeaderContext } from "../../App.tsx";
 
-import { Item, User } from "../../lib/types.tsx";
+import { User } from "../../lib/types.tsx";
+
+import { useItems, useUser } from "../../lib/hooks.tsx";
 
 import "../../styles/home/items.css";
 
@@ -27,37 +25,16 @@ function Items() {
 
   const { auth } = authContext;
 
+  const items = useItems(n ?? "1");
+
+  const user = useUser(auth);
+
   useEffect(() => {
-    if (auth) {
-      (async () => {
-        try {
-          console.log("Start to sending a request to backend /profile");
-          const response = (await api("profile")) as unknown as User;
-          console.log("The request was sending successfully!");
-          console.log(response.is_superuser);
-          setIsSuperUser(response.is_superuser);
-        } catch (err) {
-          console.error("Error fetching user data:", err);
-        }
-      })();
+    if (user.data && "username" in user.data) {
+      const userData = user.data as User;
+      setIsSuperUser(userData.is_superuser);
     }
-  }, [auth]);
-
-  const getItems = async (): Promise<Item[]> => {
-    try {
-      console.log("Start getting data of items...");
-      const response = await api(`items/?page=${n}&format=json`);
-      return response as unknown as Item[];
-    } catch (error) {
-      console.error("Error fetching items:", (error as Error).message);
-      return [];
-    }
-  };
-
-  const items = useQuery<Item[]>({
-    queryKey: ["items"],
-    queryFn: getItems,
-  });
+  }, [user.data]);
 
   if (items.isLoading) {
     return (
