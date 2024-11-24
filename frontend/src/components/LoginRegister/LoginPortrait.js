@@ -29,7 +29,7 @@ function LoginPortrait() {
     e.preventDefault();
 
     try {
-      const response = await api("/token/", {
+      const response = await api("token/", {
         method: "POST",
         body: JSON.stringify({ email: email, password: password }),
       });
