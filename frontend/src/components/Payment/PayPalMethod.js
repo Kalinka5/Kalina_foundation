@@ -28,7 +28,7 @@ const PaypalMethod = () => {
     let email = details.payer ? details.payer.email_address : "";
 
     // Send the transaction data to the backend
-    const response = await api("/donate/", {
+    const response = await api("donate/", {
       method: "POST",
       body: JSON.stringify({
         donate_type: "dollars",

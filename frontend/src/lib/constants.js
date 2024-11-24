@@ -8,7 +8,7 @@ export const LOGOUT_PAGE = "/logout";
 export const PROFILE_PAGE = "/profile";
 export const DONATE_PAGE = "/donate";
 
-export const API_URL = "https://kalina-foundation-back.vercel.app/";
+export const API_URL = "https://kalina-foundation-back.vercel.app";
 
 export const DONATION_ITEM_ID = 18;
 

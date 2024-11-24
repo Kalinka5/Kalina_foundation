@@ -57,7 +57,7 @@ function RegisterPortrait() {
           password: password1,
         };
 
-        const response = await api("/register", {
+        const response = await api("register", {
           method: "POST",
           body: JSON.stringify(requestData),
         });

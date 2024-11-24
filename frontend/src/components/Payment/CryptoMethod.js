@@ -120,7 +120,7 @@ function CryptoPaymentForm() {
 
     if (auth) {
       console.log("Start to sending a request to backend /profile");
-      const response = await api.get("/profile");
+      const response = await api.get("profile");
       console.log("The request was sent successfully!");
       email = response.email;
     } else {
@@ -128,7 +128,7 @@ function CryptoPaymentForm() {
     }
 
     // Send the transaction data to the backend
-    const response = await api("/donate/", {
+    const response = await api("donate/", {
       method: "POST",
       body: JSON.stringify({
         donate_type: currency,

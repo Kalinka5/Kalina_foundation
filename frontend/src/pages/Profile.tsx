@@ -36,7 +36,7 @@ function Profile() {
   const getUser = async (): Promise<User | {}> => {
     try {
       console.log("Start to sending a request to backend /profile");
-      const response = await api("/profile");
+      const response = await api("profile");
       console.log("The request was sending successfully!");
       return response as unknown as User;
     } catch (error) {
@@ -75,7 +75,7 @@ function Profile() {
 
     try {
       console.log("Start updating User's profile data");
-      const response = await api("/profile", {
+      const response = await api("profile", {
         method: "PATCH",
         body: formData,
       });

@@ -32,7 +32,7 @@ function Items() {
       (async () => {
         try {
           console.log("Start to sending a request to backend /profile");
-          const response = (await api("/profile")) as unknown as User;
+          const response = (await api("profile")) as unknown as User;
           console.log("The request was sending successfully!");
           console.log(response.is_superuser);
           setIsSuperUser(response.is_superuser);
@@ -46,7 +46,7 @@ function Items() {
   const getItems = async (): Promise<Item[]> => {
     try {
       console.log("Start getting data of items...");
-      const response = await api(`/items/?page=${n}&format=json`);
+      const response = await api(`items/?page=${n}&format=json`);
       return response as unknown as Item[];
     } catch (error) {
       console.error("Error fetching items:", (error as Error).message);
