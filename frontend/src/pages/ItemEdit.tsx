@@ -5,14 +5,14 @@ import { IoIosImage } from "react-icons/io";
 
 import api from "../lib/api.js";
 
-import { API_URL } from "../lib/constants.js";
-
 import Header from "../components/Header.tsx";
+
+import { useItemData } from "../lib/hooks.tsx";
 
 import "../styles/itemEdit.css";
 
 function ItemEdit() {
-  const { id } = useParams();
+  const { id } = useParams() as { id: string };
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -20,23 +20,15 @@ function ItemEdit() {
   const [image_url, setImageURL] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    getData();
-  }, []);
+  const item = useItemData(id);
 
-  const getData = async () => {
-    try {
-      const res = await api.get(`items/${id}/`);
-      setTitle(res.data.title);
-      setDescription(res.data.description);
-      setImageURL(API_URL + res.data.image);
-    } catch (err) {
-      alert(err);
-      console.log(
-        "Something go wrong when sending backend request to /profile"
-      );
+  useEffect(() => {
+    if (item.data) {
+      setTitle(item.data.title);
+      setDescription(item.data.description);
+      setImageURL(item.data.image);
     }
-  };
+  }, [item.data]);
 
   function getFile(event) {
     console.log(`An Item image name is ${event.target.files[0]}`);
@@ -56,7 +48,10 @@ function ItemEdit() {
     image && formData.append("image", image, image.name);
 
     try {
-      await api.patch(`/items/${id}/`, formData);
+      await api(`/items/${id}/`, {
+        method: "PATCH",
+        body: formData,
+      });
       console.log(`Item pk=${id} was updated successfully!`);
     } catch (error) {
       alert(error);
@@ -80,7 +75,7 @@ function ItemEdit() {
                 onChange={getFile}
               />
               <label htmlFor="profile-image" id="profile-image-preview">
-                <img src={image_url} alt="Profile" />
+                <img src={image_url} alt="Item" />
                 <div className="upload-content">
                   <div className="upload-image">
                     <IoIosImage />

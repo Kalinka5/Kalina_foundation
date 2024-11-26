@@ -15,7 +15,7 @@ import UpdateButton from "../components/Profile/UpdateButton.js";
 
 import { ProfileContextType, User } from "../lib/types.tsx";
 
-import { useUser } from "../lib/hooks.tsx";
+import { useUserData } from "../lib/hooks.tsx";
 
 import "../styles/profile/profile.css";
 
@@ -34,10 +34,10 @@ function Profile() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const auth = true;
 
-  const user = useUser(auth);
+  const user = useUserData(auth);
 
   useEffect(() => {
-    if (user.data && "username" in user.data) {
+    if (user.data) {
       const userData = user.data as User;
       setUsername(userData.username);
       setEmail(userData.email);

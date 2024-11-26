@@ -1,12 +1,10 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 import Alert from "@mui/material/Alert";
 import useOrientation from "../lib/useOrientation.js";
 
 import RegisterPortrait from "../components/LoginRegister/RegisterPortrait.js";
 import RegisterLandscape from "../components/LoginRegister/RegisterLandscape.js";
 import Header from "../components/Header.tsx";
-
-import i18n from "../i18n.js";
 
 import { RegisterContextType, RegistrationStatus } from "../lib/types.tsx";
 
@@ -25,13 +23,6 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
-
-  useEffect(() => {
-    // Check if language is properly saved in localStorage
-    const savedLanguage = localStorage.getItem("i18nextLng") || "ua";
-    console.log("Language Loaded from LocalStorage: ", savedLanguage);
-    i18n.changeLanguage(savedLanguage); // Ensure correct language on load
-  }, []);
 
   let statusMessage: React.ReactNode = null;
   if (registrationStatus === "success") {

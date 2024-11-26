@@ -1,46 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { useParams } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
 
-import api from "../lib/api.js";
-
 import Header from "../components/Header.tsx";
+
+import { useEmailVerification } from "../lib/hooks.tsx";
 
 import "../styles/emailVerify.css";
 
 function EmailVerify() {
-  const { uid } = useParams();
-  const { token } = useParams();
-
-  const [emailStatus, setEmailStatus] = useState<"success" | "failed" | null>(
-    null
-  );
+  const { uid, token } = useParams() as { uid: string; token: string };
 
   const { t } = useTranslation();
 
-  useEffect(() => {
-    verifyEmail();
-  }, []);
-
-  const verifyEmail = async () => {
-    try {
-      if (token) {
-        const res = await api.get(`/activate/${uid}/${token}/`);
-        if (res.data.status === "success") {
-          setEmailStatus("success");
-        } else if (res.data.status === "failed") {
-          setEmailStatus("failed");
-        }
-      }
-    } catch (err) {
-      alert(err);
-      console.log(
-        "Something go wrong when sending request to activate the user"
-      );
-    }
-  };
+  const emailStatus = useEmailVerification(uid, token);
 
   let statusMessage: React.ReactNode = null;
   if (emailStatus === "success") {

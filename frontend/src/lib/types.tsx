@@ -224,3 +224,9 @@ export type SliderProps = {
 export type ItemsProps = {
   page: number;
 };
+
+// EvailVerify
+export type EmailVerify = {
+  status: string;
+  message: string;
+};
