@@ -6,7 +6,7 @@ import { jwtDecode } from "jwt-decode";
 import api from "../lib/api";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../lib/constants";
 
-import { DecodedToken, ProtectedRouteProps } from "../lib/types";
+import { DecodedToken, ProtectedRouteProps, TokenResponse } from "../lib/types";
 
 function ProtectedRoute({ children }: ProtectedRouteProps) {
   const [isAuthorized, setIsAuthorized] = useState<boolean | null>(null);
@@ -17,10 +17,15 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   const refreshToken = async () => {
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
+
     try {
-      const res = await api.post("/token/refresh/", { refresh: refreshToken });
-      if (res.status === 200) {
-        localStorage.setItem(ACCESS_TOKEN, res.data.access);
+      const response = (await api("/token/refresh/", {
+        method: "POST",
+        body: JSON.stringify({ refresh: refreshToken }),
+      })) as TokenResponse;
+
+      if (response?.access) {
+        localStorage.setItem(ACCESS_TOKEN, response.access);
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);

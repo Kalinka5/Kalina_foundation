@@ -35,7 +35,7 @@ function LoginLandscape() {
         method: "POST",
         body: JSON.stringify({ email: email, password: password }),
       });
-      console.log(response);
+
       if (response.access) {
         localStorage.setItem(ACCESS_TOKEN, response.access);
         localStorage.setItem(REFRESH_TOKEN, response.refresh);

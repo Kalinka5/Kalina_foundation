@@ -58,7 +58,7 @@ function App() {
       <HeaderContext.Provider value={{ auth: !!auth, authLinks, notAuthLinks }}>
         <main className="App">
           <Routes>
-            <Route path={`${HOME_PAGE}/:n?`} element={<Home />} />
+            <Route path={`${HOME_PAGE}`} element={<Home />} />
             <Route path="item/:id/edit" element={<ItemEdit />} />
             <Route path={LOGIN_PAGE} element={<Login />} />
             <Route path={REGISTER_PAGE} element={<Register />} />
@@ -75,7 +75,7 @@ function App() {
             <Route path={DONATE_PAGE} element={<Payment />} />
             <Route
               path="*"
-              element={<Navigate to={`${HOME_PAGE}/1`} replace />}
+              element={<Navigate to={`${HOME_PAGE}`} replace />}
             />
           </Routes>
         </main>

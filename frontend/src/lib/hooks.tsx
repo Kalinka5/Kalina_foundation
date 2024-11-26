@@ -8,7 +8,6 @@ import api from "./api";
 const getItems = async (n: any): Promise<Item[]> => {
   try {
     console.log("Start getting data of items...");
-    console.log(n);
     const response = await api(`items/?page=${n}&format=json`);
     return response as unknown as Item[];
   } catch (error) {
@@ -17,10 +16,15 @@ const getItems = async (n: any): Promise<Item[]> => {
   }
 };
 
-export function useItems(n: string) {
+export function useItems(n: number) {
   const items = useQuery<Item[]>({
     queryKey: ["items", n],
     queryFn: () => getItems(n),
+    staleTime: 60 * 60 * 1000, // 1 hour
+    gcTime: 24 * 60 * 60 * 1000, // Cache data for 24 hours
+    refetchOnMount: false, // Do not refetch on mount if data is fresh
+    refetchOnWindowFocus: false, // Prevent refetching when the window regains focus
+    placeholderData: (previousData, previousQuery) => previousData,
   });
 
   return items;
@@ -46,7 +50,11 @@ export function useUser(auth: boolean) {
     enabled: auth,
   });
 
-  return user;
+  if (user.data) {
+    return user.data.is_superuser;
+  } else {
+    return false;
+  }
 }
 
 // Get Top 5 Donators data

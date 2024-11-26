@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext } from "react";
 
 import HeaderSection from "./HeaderSection.tsx";
 import ItemCard from "./ItemCard.tsx";
@@ -7,16 +6,13 @@ import ItemsLoader from "./LoaderItems";
 
 import { HeaderContext } from "../../App.tsx";
 
-import { User } from "../../lib/types.tsx";
-
 import { useItems, useUser } from "../../lib/hooks.tsx";
+
+import { ItemsProps } from "../../lib/types.tsx";
 
 import "../../styles/home/items.css";
 
-function Items() {
-  const { n } = useParams();
-  const [isSuperUser, setIsSuperUser] = useState(false);
-
+function Items({ page }: ItemsProps) {
   const authContext = useContext(HeaderContext);
 
   if (!authContext) {
@@ -25,16 +21,11 @@ function Items() {
 
   const { auth } = authContext;
 
-  const items = useItems(n ?? "1");
+  // Get Items data from backend
+  const items = useItems(page);
 
-  const user = useUser(auth);
-
-  useEffect(() => {
-    if (user.data && "username" in user.data) {
-      const userData = user.data as User;
-      setIsSuperUser(userData.is_superuser);
-    }
-  }, [user.data]);
+  // Get data is user is super user (true or false)
+  const isSuperUser = useUser(auth);
 
   if (items.isLoading) {
     return (

@@ -207,3 +207,20 @@ export type ProfileInputFieldProps = {
   placeholder: string;
   icon: React.ReactNode;
 };
+
+// ProtectedRoute.tsx
+export type TokenResponse = {
+  access?: string;
+  refresh?: string;
+};
+
+// Slider.tsx
+export type SliderProps = {
+  page: number;
+  setPage: Dispatch<SetStateAction<number>>;
+};
+
+// Items.tsx
+export type ItemsProps = {
+  page: number;
+};

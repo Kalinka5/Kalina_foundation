@@ -13,33 +13,39 @@
     position: relative;
     left: 0;
   }
-  a.prev,
-  a.next {
+  button.prev,
+  button.next {
     height: 91px;
-    position: absolute;
     width: 43px;
-    color: #fff;
+    position: absolute;
     top: 50%;
     margin-top: -30px;
+    color: transparent; /* Hide text */
     opacity: 0.6;
-    text-indent: -99999px;
+    text-indent: -99999px; /* Hide button text visually */
     cursor: pointer;
+    border: none; /* Remove default border */
+    background-color: transparent; /* Ensure no default background color */
+    background-size: cover; /* Correctly display sprite */
   }
-  a.prev:hover,
-  a.next:hover {
+
+  button.prev:hover,
+  button.next:hover {
     opacity: 1;
   }
-  .prev {
+
+  button.prev {
     left: 0;
-    background: #000
-      url("https://lh4.googleusercontent.com/-JN1IZLtuToI/UUoZnMG3C_I/AAAAAAAAAE8/SEbJ9nqXGnY/s226/sprite.png")
+    background: url("https://lh4.googleusercontent.com/-JN1IZLtuToI/UUoZnMG3C_I/AAAAAAAAAE8/SEbJ9nqXGnY/s226/sprite.png")
       no-repeat -200px 25px;
+    background-color: #000; /* Fallback for background */
   }
-  .next {
+
+  button.next {
     right: 0;
-    background: #000
-      url("https://lh4.googleusercontent.com/-JN1IZLtuToI/UUoZnMG3C_I/AAAAAAAAAE8/SEbJ9nqXGnY/s226/sprite.png")
+    background: url("https://lh4.googleusercontent.com/-JN1IZLtuToI/UUoZnMG3C_I/AAAAAAAAAE8/SEbJ9nqXGnY/s226/sprite.png")
       no-repeat -167px 25px;
+    background-color: #000; /* Fallback for background */
   }
 }
 /* Media Query For different screens */
