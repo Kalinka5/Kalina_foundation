@@ -132,7 +132,7 @@ export type ItemImageProps = {
 
 // MoneyLandscape.tsx and MoneyPortrait.tsx
 export type MoneyProps = {
-  donated: number;
+  donated: string;
 };
 
 // Pedestal.tsx
