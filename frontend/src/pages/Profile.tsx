@@ -6,9 +6,9 @@ import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 import api from "../lib/api.js";
 
 import Header from "../components/Header.tsx";
-import DeleteButton from "../components/Profile/DeleteButton.js";
+import DeleteButton from "../components/DeleteButton.js";
 import DeleteUserModal from "../components/Profile/DeleteUserModal.tsx";
-import ProfileImage from "../components/Profile/ProfileImage.js";
+import UploadImage from "../components/UploadImage.js";
 import UsernameField from "../components/Profile/UsernameField.js";
 import InputField from "../components/Profile/InputField.tsx";
 import UpdateButton from "../components/Profile/UpdateButton.js";
@@ -92,7 +92,11 @@ function Profile() {
         <div className="profile-field main-body">
           <form className="profile-card" onSubmit={handleSubmit}>
             <div className="profile-header">
-              <ProfileImage />
+              <UploadImage
+                image_url={image_url}
+                setImage={setImage}
+                setImageURL={setImageURL}
+              />
 
               <UsernameField />
 

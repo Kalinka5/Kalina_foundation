@@ -2,7 +2,7 @@ import React from "react";
 
 import { useTranslation } from "react-i18next";
 
-import "../../styles/profile/deleteButton.css";
+import "../styles/profile/deleteButton.css";
 
 function DeleteButton({ onClick, className }) {
   const { t } = useTranslation();

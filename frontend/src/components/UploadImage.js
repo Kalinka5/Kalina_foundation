@@ -1,20 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { IoIosImage } from "react-icons/io";
 
 import { useTranslation } from "react-i18next";
 
-import { ProfileContext } from "../../pages/Profile.tsx";
+import "../styles/profile/profileImage.css";
 
-import "../../styles/profile/profileImage.css";
-
-function ProfileImage() {
-  const { image_url, setImage, setImageURL } = useContext(ProfileContext);
-
+function UploadImage({ image_url, setImage, setImageURL }) {
   const { t } = useTranslation();
 
   function getFile(event) {
-    console.log(`A Profile image name is ${event.target.files[0]}`);
+    console.log(`A previous image name is ${event.target.files[0]}`);
     setImage(event.target.files[0]);
     setImageURL(URL.createObjectURL(event.target.files[0]));
     console.log("The new image was set successfully!");
@@ -41,4 +37,4 @@ function ProfileImage() {
   );
 }
 
-export default ProfileImage;
+export default UploadImage;
