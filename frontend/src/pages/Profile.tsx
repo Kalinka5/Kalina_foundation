@@ -96,7 +96,7 @@ function Profile() {
 
               <UsernameField />
 
-              <DeleteButton />
+              <DeleteButton onClick={setIsOpen} className="profile" />
             </div>
             <div className="profile-details">
               <InputField
@@ -133,7 +133,7 @@ function Profile() {
             </div>
           </form>
         </div>
-        {isOpen && <DeleteUserModal setIsOpen={setIsOpen} />}
+        {isOpen && <DeleteUserModal setIsOpen={() => setIsOpen(true)} />}
       </ProfileContext.Provider>
     </div>
   );

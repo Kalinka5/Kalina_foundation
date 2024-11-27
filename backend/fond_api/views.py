@@ -144,6 +144,14 @@ class ItemsViewSet(viewsets.ModelViewSet):
         else:
             return Response({"message": "You do not have the necessary permissions to access it!"}, status=status.HTTP_403_FORBIDDEN)
 
+    def destroy(self, request, pk=None):
+        if request.user.is_superuser:
+            item = Item.objects.get(id=pk)
+            item.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        else:
+            return Response({"message": "You do not have the necessary permissions to access it!"}, status=status.HTTP_403_FORBIDDEN)
+
 
 @api_view(['GET', 'PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated])
