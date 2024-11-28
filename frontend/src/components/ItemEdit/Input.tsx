@@ -2,9 +2,18 @@ import React from "react";
 
 import { IoIosCreate, IoIosKeypad } from "react-icons/io";
 
+import { InputProps } from "../../lib/types";
+
 import "../../styles/itemEdit/input.css";
 
-function Input({ value, onChange, placeholder, withIcon, styleName, type }) {
+function Input({
+  value,
+  onChange,
+  placeholder,
+  withIcon,
+  styleName,
+  type,
+}: InputProps) {
   const icon =
     placeholder === "Title" ? (
       <IoIosCreate size={30} />

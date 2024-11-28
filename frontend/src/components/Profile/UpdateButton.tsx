@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { useTranslation } from "react-i18next";
 
-import { ProfileContext } from "../../pages/Profile.tsx";
+import { UpdateButtonProps } from "../../lib/types";
 
 import "../../styles/profile/updateButton.css";
 
-function UpdateButton() {
-  const { loading } = useContext(ProfileContext);
-
+function UpdateButton({ loading }: UpdateButtonProps) {
   const { t } = useTranslation();
 
   return (

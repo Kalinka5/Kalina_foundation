@@ -1,8 +1,10 @@
 import React from "react";
 
+import { DescriptionProps } from "../../lib/types";
+
 import "../../styles/itemEdit/description.css";
 
-function Description({ description, setDescription }) {
+function Description({ description, setDescription }: DescriptionProps) {
   return (
     <div className="description">
       <textarea

@@ -8,8 +8,8 @@ import {
   PROFILE_PAGE,
 } from "../../lib/constants.js";
 
+import Title from "./Title.tsx";
 import InputField from "./LoginField.tsx";
-import LogRegHeader from "./Header.tsx";
 import LogRegLink from "./Link.tsx";
 import SubmitButton from "./SubmitButton.tsx";
 
@@ -57,7 +57,7 @@ function LoginPortrait() {
         <div className="shape shape2"></div>
       </div>
       <form className="log-reg-form form-p" onSubmit={handleSubmit}>
-        <LogRegHeader text="login-head" />
+        <Title text="login-head" />
 
         <InputField
           label="email"

@@ -10,8 +10,8 @@ import {
 
 import Carousel from "./Carousel";
 
+import Title from "./Title.tsx";
 import InputField from "./LoginField.tsx";
-import LogRegHeader from "./Header.tsx";
 import LogRegLink from "./Link.tsx";
 import SubmitButton from "./SubmitButton.tsx";
 
@@ -59,7 +59,7 @@ function LoginLandscape() {
       </div>
       <div className="column">
         <form className="log-reg-form log-p" onSubmit={handleSubmit}>
-          <LogRegHeader text="login-head" />
+          <Title text="login-head" />
 
           <InputField
             label="email"

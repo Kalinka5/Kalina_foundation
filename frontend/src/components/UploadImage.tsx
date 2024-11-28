@@ -4,9 +4,11 @@ import { IoIosImage } from "react-icons/io";
 
 import { useTranslation } from "react-i18next";
 
+import { UploadImageProps } from "../lib/types";
+
 import "../styles/profile/profileImage.css";
 
-function UploadImage({ image_url, setImage, setImageURL }) {
+function UploadImage({ imageUrl, setImage, setImageURL }: UploadImageProps) {
   const { t } = useTranslation();
 
   function getFile(event) {
@@ -25,7 +27,7 @@ function UploadImage({ image_url, setImage, setImageURL }) {
         onChange={getFile}
       />
       <label htmlFor="profile-image" id="profile-image-preview">
-        <img src={image_url} alt="Profile" />
+        <img src={imageUrl} alt="Profile" />
         <div className="upload-content">
           <div className="upload-image">
             <IoIosImage />

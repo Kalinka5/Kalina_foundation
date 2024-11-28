@@ -7,11 +7,11 @@ import api from "../lib/api.js";
 
 import Header from "../components/Header.tsx";
 import { H1, H4 } from "../components/ItemEdit/Titles.tsx";
-import UploadImage from "../components/UploadImage.js";
+import UploadImage from "../components/UploadImage.tsx";
 import Input from "../components/ItemEdit/Input.tsx";
 import Description from "../components/ItemEdit/Description.tsx";
 import UpdateButton from "../components/ItemEdit/UpdateButton.tsx";
-import DeleteButton from "../components/DeleteButton.js";
+import DeleteButton from "../components/DeleteButton.tsx";
 
 import { HOME_PAGE } from "../lib/constants.js";
 
@@ -25,7 +25,7 @@ function ItemEdit() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState<File | null>(null);
-  const [image_url, setImageURL] = useState("");
+  const [imageUrl, setImageURL] = useState("");
   const [amount, setAmount] = useState(0);
   const [fullPrice, setFullPrice] = useState(0);
   const [collected, setCollected] = useState(0);
@@ -61,7 +61,7 @@ function ItemEdit() {
     }
   }, [item.data]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
 
@@ -88,7 +88,7 @@ function ItemEdit() {
     }
   };
 
-  const deleteItem = async (e: React.FormEvent<HTMLFormElement>) => {
+  const deleteItem = async (e) => {
     e.preventDefault();
 
     try {
@@ -114,7 +114,7 @@ function ItemEdit() {
               Item (<i>{id} id</i>)
             </H1>
             <UploadImage
-              image_url={image_url}
+              imageUrl={imageUrl}
               setImage={setImage}
               setImageURL={setImageURL}
             />
@@ -156,7 +156,6 @@ function ItemEdit() {
                 onChange={setFullPrice}
                 placeholder="1000000"
                 withIcon={false}
-                styleName=""
                 type="number"
               />
             </div>
@@ -167,7 +166,6 @@ function ItemEdit() {
                 onChange={setCollected}
                 placeholder="100"
                 withIcon={false}
-                styleName=""
                 type="number"
               />
             </div>

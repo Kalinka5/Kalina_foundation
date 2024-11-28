@@ -1,64 +1,14 @@
-import React, { ReactNode, Dispatch, SetStateAction } from "react";
+import React, {
+  ReactNode,
+  Dispatch,
+  SetStateAction,
+  MouseEventHandler,
+} from "react";
 
-// AuthContext.tsx
-export type AuthContextType = {
-  auth: boolean | null; // `auth` can be null or boolean
-  setAuth: Dispatch<SetStateAction<boolean | null>>; // `setAuth` manages `auth` state
-};
-export type AuthProviderProps = {
-  children: ReactNode; // Children can be any valid ReactNode
-};
-
-// ProtectedRoute.tsx
-export type DecodedToken = {
-  exp: number;
-};
-export type ProtectedRouteProps = {
-  children: ReactNode;
-};
-
-// App.tsx
-export type HeaderContextType = {
-  auth: boolean;
-  authLinks: { id: number; urlLink: string; urlName: string }[];
-  notAuthLinks: { id: number; urlLink: string; urlName: string }[];
-};
-
-// Login.tsx
-export type LoginContextType = {
-  email: string;
-  setEmail: React.Dispatch<React.SetStateAction<string>>;
-  password: string;
-  setPassword: React.Dispatch<React.SetStateAction<string>>;
-};
-
-// Register.tsx
-export type RegistrationStatus = "success" | "failed" | null;
-export type RegisterContextType = {
-  registrationStatus: RegistrationStatus;
-  setRegistrationStatus: React.Dispatch<
-    React.SetStateAction<RegistrationStatus>
-  >;
-  username: string;
-  setUsername: React.Dispatch<React.SetStateAction<string>>;
-  email: string;
-  setEmail: React.Dispatch<React.SetStateAction<string>>;
-  password1: string;
-  setPassword1: React.Dispatch<React.SetStateAction<string>>;
-  password2: string;
-  setPassword2: React.Dispatch<React.SetStateAction<string>>;
-};
-
-// Profile.tsx
-export type ProfileContextType = {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  loading: boolean;
-  image_url: string;
-  setImage: React.Dispatch<React.SetStateAction<File | null>>;
-  setImageURL: React.Dispatch<React.SetStateAction<string>>;
-  username: string;
-  setUsername: React.Dispatch<React.SetStateAction<string>>;
+// Hooks
+export type EmailVerify = {
+  status: string;
+  message: string;
 };
 
 // Header Component
@@ -66,16 +16,22 @@ export type HeaderProps = {
   fixed?: "pos-fixed";
 };
 
-// Items Component
-export type Item = {
-  id: number;
-  title: string;
-  image: string;
-  description: string;
-  amount: number;
-  full_price: number;
-  collected: number;
-  category_id: number;
+// UpdateButton.tsx
+export type UpdateButtonProps = {
+  loading: boolean;
+};
+
+// DeleteButton.tsx
+export type DeleteButtonProps = {
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  className: string;
+};
+
+// UploadImage.tsx
+export type UploadImageProps = {
+  imageUrl: string;
+  setImage: Dispatch<SetStateAction<File | null>>;
+  setImageURL: Dispatch<SetStateAction<string>>;
 };
 
 // User
@@ -96,74 +52,129 @@ export type User = {
   user_permissions: [];
 };
 
-// Items.tsx and Donators.tsx
+// AuthContext.tsx
+export type AuthContextType = {
+  auth: boolean | null; // `auth` can be null or boolean
+  setAuth: Dispatch<SetStateAction<boolean | null>>; // `setAuth` manages `auth` state
+};
+export type AuthProviderProps = {
+  children: ReactNode; // Children can be any valid ReactNode
+};
+
+// ProtectedRoute.tsx
+export type ProtectedRouteProps = {
+  children: ReactNode;
+};
+
+export type TokenResponse = {
+  access?: string;
+  refresh?: string;
+};
+
+export type DecodedToken = {
+  exp: number;
+};
+
+// App.tsx
+export type HeaderContextType = {
+  auth: boolean;
+  authLinks: { id: number; urlLink: string; urlName: string }[];
+  notAuthLinks: { id: number; urlLink: string; urlName: string }[];
+};
+
+// Home Slider component
+export type SliderProps = {
+  page: number;
+  setPage: Dispatch<SetStateAction<number>>;
+};
+
+// Home Items and Donators components
 export type HeaderSectionProps = {
   title: string;
   className: string;
   children?: JSX.Element[];
 };
 
-// DonatorImg.tsx
-export type DonatorImgProps = {
-  image: string;
-};
-
-// EditItemButton.tsx
-export type EditItemButtonProps = {
+// Home Items component
+export type Item = {
   id: number;
+  title: string;
+  image: string;
+  description: string;
+  amount: number;
+  full_price: number;
+  collected: number;
+  category_id: number;
 };
 
-// ItemCard.tsx
+export type ItemsProps = {
+  page: number;
+};
+
 export type ItemCardProps = {
   items: Item[];
   isSuperUser: boolean;
 };
 
-// ItemDescription.tsx
 export type ItemDescriptionProps = {
   title: string;
 };
 
-// ItemImage.tsx
 export type ItemImageProps = {
   image: string;
   index: number;
 };
 
-// MoneyLandscape.tsx and MoneyPortrait.tsx
-export type MoneyProps = {
-  donated: string;
+export type EditItemButtonProps = {
+  id: number;
 };
 
-// Pedestal.tsx
+// Home Donators
+export type DonatorImgProps = {
+  image: string;
+};
+
 export type PedestalProps = {
   donators: User[];
   orientation: "landscape" | "portrait";
 };
 
-// Place.tsx
+export type MoneyProps = {
+  donated: string;
+};
+
 export type PlaceProps = {
   index: number;
 };
 
-// Username.tsx
 export type UsernameProps = {
   username: string;
 };
 
-// Header.tsx
-export type LogRegHeaderProps = {
+// Login and Register Title
+export type LogRegTitleProps = {
   text: "login-head" | "registration-head";
 };
 
-// Link.tsx
 export type LogRegLinkProps = {
   link: string;
   textLink: "register-now" | "login-now";
   question: "login-q" | "register-q";
 };
 
-// LoginField.tsx
+export type SubmitButtonProps = {
+  text: "register-now" | "login-button";
+  loading: boolean;
+};
+
+// Login Page
+export type LoginContextType = {
+  email: string;
+  setEmail: Dispatch<SetStateAction<string>>;
+  password: string;
+  setPassword: Dispatch<SetStateAction<string>>;
+};
+
 export type LoginFieldProps = {
   label: "email" | "password";
   value: string;
@@ -172,7 +183,21 @@ export type LoginFieldProps = {
   onChange: Dispatch<SetStateAction<string>>;
 };
 
-// RegisterField.tsx
+// Register Page
+export type RegistrationStatus = "success" | "failed" | null;
+export type RegisterContextType = {
+  registrationStatus: RegistrationStatus;
+  setRegistrationStatus: Dispatch<SetStateAction<RegistrationStatus>>;
+  username: string;
+  setUsername: Dispatch<SetStateAction<string>>;
+  email: string;
+  setEmail: Dispatch<SetStateAction<string>>;
+  password1: string;
+  setPassword1: Dispatch<SetStateAction<string>>;
+  password2: string;
+  setPassword2: Dispatch<SetStateAction<string>>;
+};
+
 export type RegisterFieldProps = {
   value: string;
   placeholder: string;
@@ -186,18 +211,12 @@ export type RegisterFieldProps = {
   tooltipText: "tooltip1" | "tooltip2" | "tooltip3" | "tooltip4";
 };
 
-// SubmitButton.tsx
-export type SubmitButtonProps = {
-  text: "register-now" | "login-button";
-  loading: boolean;
+// Profile
+export type UsernameFieldProps = {
+  username: string;
+  setUsername: Dispatch<SetStateAction<string>>;
 };
 
-// DeleteUserModal.tsx
-export type DeleteUserModalProps = {
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-};
-
-// InputField.tsx in Profile
 export type ProfileInputFieldProps = {
   value: string;
   onChange: Dispatch<SetStateAction<string>>;
@@ -208,25 +227,23 @@ export type ProfileInputFieldProps = {
   icon: React.ReactNode;
 };
 
-// ProtectedRoute.tsx
-export type TokenResponse = {
-  access?: string;
-  refresh?: string;
+export type DeleteUserModalProps = {
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-// Slider.tsx
-export type SliderProps = {
-  page: number;
-  setPage: Dispatch<SetStateAction<number>>;
+// Item Edit page
+export type TitleProps = {
+  children: React.ReactNode;
 };
-
-// Items.tsx
-export type ItemsProps = {
-  page: number;
+export type InputProps = {
+  value: string | number;
+  onChange: Dispatch<SetStateAction<any>>;
+  placeholder: "Title" | "Amount" | "1000000" | "100";
+  withIcon: boolean;
+  styleName?: "input-group-icon";
+  type: "text" | "number";
 };
-
-// EvailVerify
-export type EmailVerify = {
-  status: string;
-  message: string;
+export type DescriptionProps = {
+  description: string;
+  setDescription: Dispatch<SetStateAction<string>>;
 };

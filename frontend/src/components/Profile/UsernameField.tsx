@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { IoIosContact } from "react-icons/io";
 
 import { useTranslation } from "react-i18next";
 
-import { ProfileContext } from "../../pages/Profile.tsx";
+import { UsernameFieldProps } from "../../lib/types";
 
 import "../../styles/profile/usernameField.css";
 
-function UsernameField() {
-  const { username, setUsername } = useContext(ProfileContext);
-
+function UsernameField({ username, setUsername }: UsernameFieldProps) {
   const { t } = useTranslation();
 
   return (

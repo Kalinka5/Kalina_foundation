@@ -11,7 +11,7 @@ import Carousel from "./Carousel";
 
 import { RegisterContext } from "../../pages/Register.tsx";
 
-import LogRegHeader from "./Header.tsx";
+import Title from "./Title.tsx";
 import InputField from "./RegisterField.tsx";
 import LogRegLink from "./Link.tsx";
 import SubmitButton from "./SubmitButton.tsx";
@@ -101,7 +101,7 @@ function RegisterLandscape() {
       </div>
       <div className="column">
         <form className="log-reg-form reg-p" onSubmit={handleSubmit}>
-          <LogRegHeader text="registration-head" />
+          <Title text="registration-head" />
 
           <InputField
             value={username}

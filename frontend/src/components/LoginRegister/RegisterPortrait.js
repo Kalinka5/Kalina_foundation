@@ -9,7 +9,7 @@ import { LOGIN_PAGE } from "../../lib/constants.js";
 
 import { RegisterContext } from "../../pages/Register.tsx";
 
-import LogRegHeader from "./Header.tsx";
+import Title from "./Title.tsx";
 import InputField from "./RegisterField.tsx";
 import LogRegLink from "./Link.tsx";
 import SubmitButton from "./SubmitButton.tsx";
@@ -99,7 +99,7 @@ function RegisterPortrait() {
         <div className="shape shape2"></div>
       </div>
       <form className="log-reg-form form-p" onSubmit={handleSubmit}>
-        <LogRegHeader text="registration-head" />
+        <Title text="registration-head" />
 
         <InputField
           value={username}

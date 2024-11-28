@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { IoMdAt } from "react-icons/io";
 import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
@@ -6,30 +6,26 @@ import { FaAutoprefixer, FaAustralSign } from "react-icons/fa6";
 import api from "../lib/api.js";
 
 import Header from "../components/Header.tsx";
-import DeleteButton from "../components/DeleteButton.js";
+import DeleteButton from "../components/DeleteButton.tsx";
 import DeleteUserModal from "../components/Profile/DeleteUserModal.tsx";
-import UploadImage from "../components/UploadImage.js";
-import UsernameField from "../components/Profile/UsernameField.js";
+import UploadImage from "../components/UploadImage.tsx";
+import UsernameField from "../components/Profile/UsernameField.tsx";
 import InputField from "../components/Profile/InputField.tsx";
-import UpdateButton from "../components/Profile/UpdateButton.js";
+import UpdateButton from "../components/Profile/UpdateButton.tsx";
 
-import { ProfileContextType, User } from "../lib/types.tsx";
+import { User } from "../lib/types.tsx";
 
 import { useUserData } from "../lib/hooks.tsx";
 
 import "../styles/profile/profile.css";
 
-export const ProfileContext = createContext<ProfileContextType | undefined>(
-  undefined
-);
-
 function Profile() {
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [first_name, setFirstName] = useState<string>("");
-  const [last_name, setLastName] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
-  const [image_url, setImageURL] = useState<string>("");
+  const [imageUrl, setImageURL] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const auth = true;
@@ -54,8 +50,8 @@ function Profile() {
     const formData = new FormData();
     formData.append("username", username);
     formData.append("email", email);
-    formData.append("first_name", first_name);
-    formData.append("last_name", last_name);
+    formData.append("first_name", firstName);
+    formData.append("last_name", lastName);
     image && formData.append("image", image, image.name);
     console.log(formData);
 
@@ -77,68 +73,59 @@ function Profile() {
   return (
     <div className="profile header-body">
       <Header />
-      <ProfileContext.Provider
-        value={{
-          isOpen,
-          setIsOpen,
-          loading,
-          image_url,
-          setImage,
-          setImageURL,
-          username,
-          setUsername,
-        }}
-      >
-        <div className="profile-field main-body">
-          <form className="profile-card" onSubmit={handleSubmit}>
-            <div className="profile-header">
-              <UploadImage
-                image_url={image_url}
-                setImage={setImage}
-                setImageURL={setImageURL}
-              />
 
-              <UsernameField />
+      <div className="profile-field main-body">
+        <form className="profile-card" onSubmit={handleSubmit}>
+          <div className="profile-header">
+            <UploadImage
+              imageUrl={imageUrl}
+              setImage={setImage}
+              setImageURL={setImageURL}
+            />
 
-              <DeleteButton onClick={setIsOpen} className="profile" />
-            </div>
-            <div className="profile-details">
-              <InputField
-                value={email}
-                onChange={setEmail}
-                label="email"
-                tLabel="e-mail"
-                type="email"
-                placeholder="e-mail-input"
-                icon={<IoMdAt />}
-              />
+            <UsernameField username={username} setUsername={setUsername} />
 
-              <InputField
-                value={first_name}
-                onChange={setFirstName}
-                label="firstname"
-                tLabel="firstname"
-                type="text"
-                placeholder="firstname-input"
-                icon={<FaAutoprefixer />}
-              />
+            <DeleteButton
+              onClick={async () => setIsOpen(true)}
+              className="profile"
+            />
+          </div>
+          <div className="profile-details">
+            <InputField
+              value={email}
+              onChange={setEmail}
+              label="email"
+              tLabel="e-mail"
+              type="email"
+              placeholder="e-mail-input"
+              icon={<IoMdAt />}
+            />
 
-              <InputField
-                value={last_name}
-                onChange={setLastName}
-                label="lastname"
-                tLabel="lastname"
-                type="text"
-                placeholder="lastname-input"
-                icon={<FaAustralSign />}
-              />
+            <InputField
+              value={firstName}
+              onChange={setFirstName}
+              label="firstname"
+              tLabel="firstname"
+              type="text"
+              placeholder="firstname-input"
+              icon={<FaAutoprefixer />}
+            />
 
-              <UpdateButton />
-            </div>
-          </form>
-        </div>
-        {isOpen && <DeleteUserModal setIsOpen={() => setIsOpen(true)} />}
-      </ProfileContext.Provider>
+            <InputField
+              value={lastName}
+              onChange={setLastName}
+              label="lastname"
+              tLabel="lastname"
+              type="text"
+              placeholder="lastname-input"
+              icon={<FaAustralSign />}
+            />
+
+            <UpdateButton loading={loading} />
+          </div>
+        </form>
+      </div>
+      {isOpen && <DeleteUserModal setIsOpen={setIsOpen} />}
     </div>
   );
 }
