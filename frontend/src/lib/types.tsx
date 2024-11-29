@@ -54,8 +54,8 @@ export type User = {
 
 // AuthContext.tsx
 export type AuthContextType = {
-  auth: boolean | null; // `auth` can be null or boolean
-  setAuth: Dispatch<SetStateAction<boolean | null>>; // `setAuth` manages `auth` state
+  isAuthorized: boolean; // `auth` can be null or boolean
+  setIsAuthorized: Dispatch<SetStateAction<boolean>>; // `setAuth` manages `auth` state
 };
 export type AuthProviderProps = {
   children: ReactNode; // Children can be any valid ReactNode
@@ -77,7 +77,6 @@ export type DecodedToken = {
 
 // App.tsx
 export type HeaderContextType = {
-  auth: boolean;
   authLinks: { id: number; urlLink: string; urlName: string }[];
   notAuthLinks: { id: number; urlLink: string; urlName: string }[];
 };

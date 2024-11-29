@@ -18,7 +18,6 @@ import {
 } from "./lib/constants.js";
 
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
-import { useAuth } from "./components/AuthContext.tsx";
 
 import EmailVerify from "./pages/EmailVerify.tsx";
 import Home from "./pages/Home.tsx";
@@ -35,7 +34,8 @@ import "./styles/index.css";
 function Logout() {
   localStorage.removeItem(ACCESS_TOKEN);
   localStorage.removeItem(REFRESH_TOKEN);
-  return <Navigate to={`${HOME_PAGE}/1`} />;
+  window.location.href = HOME_PAGE; // Navigate and refresh
+  return null; // Prevent React rendering
 }
 
 export const HeaderContext = createContext<HeaderContextType | undefined>(
@@ -43,7 +43,6 @@ export const HeaderContext = createContext<HeaderContextType | undefined>(
 );
 
 function App() {
-  const { auth } = useAuth();
   const authLinks = [
     { id: 1, urlLink: `${PROFILE_PAGE}`, urlName: "profile" },
     { id: 2, urlLink: `${LOGOUT_PAGE}`, urlName: "logout" },
@@ -55,7 +54,7 @@ function App() {
 
   return (
     <Router>
-      <HeaderContext.Provider value={{ auth: !!auth, authLinks, notAuthLinks }}>
+      <HeaderContext.Provider value={{ authLinks, notAuthLinks }}>
         <main className="App">
           <Routes>
             <Route path={`${HOME_PAGE}`} element={<Home />} />

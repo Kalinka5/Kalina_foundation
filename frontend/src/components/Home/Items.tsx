@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
+
+import { useAuth } from "../../components/AuthContext.tsx";
 
 import HeaderSection from "./HeaderSection.tsx";
 import ItemCard from "./ItemCard.tsx";
 import ItemsLoader from "./LoaderItems";
-
-import { HeaderContext } from "../../App.tsx";
 
 import { useItems, useUser } from "../../lib/hooks.tsx";
 
@@ -13,19 +13,14 @@ import { ItemsProps } from "../../lib/types.tsx";
 import "../../styles/home/items.css";
 
 function Items({ page }: ItemsProps) {
-  const authContext = useContext(HeaderContext);
-
-  if (!authContext) {
-    throw new Error("AuthContext must be used within an AuthContext.Provider");
-  }
-
-  const { auth } = authContext;
+  const { isAuthorized } = useAuth();
+  console.log(isAuthorized);
 
   // Get Items data from backend
   const items = useItems(page);
 
   // Get data is user is super user (true or false)
-  const isSuperUser = useUser(auth);
+  const isSuperUser = useUser(isAuthorized);
 
   if (items.isLoading) {
     return (

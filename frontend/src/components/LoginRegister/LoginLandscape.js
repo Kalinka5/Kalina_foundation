@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import api from "../../lib/api.js";
 import {
@@ -24,8 +23,6 @@ function LoginLandscape() {
 
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -40,8 +37,7 @@ function LoginLandscape() {
         localStorage.setItem(ACCESS_TOKEN, response.access);
         localStorage.setItem(REFRESH_TOKEN, response.refresh);
 
-        navigate(`${PROFILE_PAGE}`);
-        navigate(0); // Refresh page
+        window.location.href = PROFILE_PAGE; // Navigate and refresh
       } else {
         alert("Email or Password are not valid!");
       }
