@@ -9,9 +9,7 @@ import image from "../../img/winner.png";
 import "../../styles/home/cardImage.css";
 
 function CardImage() {
-  const isMonitor = useMediaQuery(
-    "only screen and (min-width: 1500px) and (max-width: 3000px)"
-  );
+  const isMonitor = useMediaQuery("only screen and (min-width: 1500px)");
 
   const { t } = useTranslation();
 

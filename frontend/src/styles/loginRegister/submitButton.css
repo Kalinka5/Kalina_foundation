@@ -30,3 +30,8 @@
     font-size: 30px;
   }
 }
+@media (min-width: 1024px) and (max-height: 600px) {
+  .submit-but {
+    margin-top: 25px;
+  }
+}

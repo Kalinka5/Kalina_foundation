@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import { useQuery } from "@tanstack/react-query";
-
 import { IoIosCash } from "react-icons/io";
 
 import { useMediaQuery } from "@uidotdev/usehooks";
-
-import api from "../../lib/api.js";
 
 import useOrientation from "../../lib/useOrientation.js";
 
@@ -14,8 +10,6 @@ import HeaderSection from "./HeaderSection.tsx";
 import CardIcons from "./CardIcons.js";
 import CardImage from "./CardImage.js";
 import Pedestal from "./Pedestal.tsx";
-
-import { User } from "../../lib/types.tsx";
 
 import { useDonators } from "../../lib/hooks.tsx";
 
@@ -27,12 +21,8 @@ function Donators() {
   const isDisplayMini = useMediaQuery(
     "only screen and (min-width: 300px) and (max-width: 1024px)"
   );
-  const isDisplayMax = useMediaQuery(
-    "only screen and (min-width: 1025px) and (max-width: 3000px)"
-  );
-  const isMonitor = useMediaQuery(
-    "only screen and (min-width: 1500px) and (max-width: 3000px)"
-  );
+  const isDisplayMax = useMediaQuery("only screen and (min-width: 1025px)");
+  const isMonitor = useMediaQuery("only screen and (min-width: 1500px)");
   const orientation = useOrientation();
 
   useEffect(() => {
@@ -67,24 +57,26 @@ function Donators() {
 
   return (
     <div className="donators">
-      <HeaderSection title="items-header" className="back-violet">
+      <HeaderSection title="donators-header" className="back-violet">
         {titleIcons}
       </HeaderSection>
-      <div className="donators-background">
-        {orientation.isLandscape && isDisplayMax && <CardImage />}
+      <div className="donators-main">
+        <div className="container donators-background">
+          {orientation.isLandscape && isDisplayMax && <CardImage />}
 
-        <div
-          className={`icons-back ${
-            (orientation.isPortrait || isDisplayMini) && "portrait"
-          }`}
-        >
-          <CardIcons />
-          <div className="donators-card">
-            {isMonitor ? (
-              <Pedestal donators={donatorData} orientation="landscape" />
-            ) : (
-              <Pedestal donators={donatorData} orientation="portrait" />
-            )}
+          <div
+            className={`icons-back ${
+              (orientation.isPortrait || isDisplayMini) && "portrait"
+            }`}
+          >
+            <CardIcons />
+            <div className="donators-card">
+              {isMonitor ? (
+                <Pedestal donators={donatorData} orientation="landscape" />
+              ) : (
+                <Pedestal donators={donatorData} orientation="portrait" />
+              )}
+            </div>
           </div>
         </div>
       </div>

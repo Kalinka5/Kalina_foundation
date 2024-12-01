@@ -7,10 +7,9 @@
     text-decoration: none;
   }
   .footer-content {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 2000px;
-    padding: 40px 15px 1px;
+    margin: 0 auto;
+    max-width: 1800px;
+    padding-top: 40px;
     position: relative;
 
     .footer-social-links {
@@ -92,9 +91,8 @@
     text-align: center;
 
     .footer-copyright-wrapper {
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 1200px;
+      margin: 0 auto;
+      max-width: 1800px;
 
       .footer-copyright-text {
         font-size: 13px;
@@ -133,10 +131,5 @@
     margin-right: auto;
     max-width: 1230px;
     position: relative;
-  }
-}
-@media (min-width: 760px) {
-  .footer .footer-content {
-    padding: 40px 15px 1px;
   }
 }

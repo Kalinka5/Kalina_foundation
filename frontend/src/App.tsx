@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -27,8 +27,6 @@ import Register from "./pages/Register.tsx";
 import Profile from "./pages/Profile.tsx";
 import Payment from "./pages/Payment.tsx";
 
-import { HeaderContextType } from "./lib/types.tsx";
-
 import "./styles/index.css";
 
 function Logout() {
@@ -38,47 +36,29 @@ function Logout() {
   return null; // Prevent React rendering
 }
 
-export const HeaderContext = createContext<HeaderContextType | undefined>(
-  undefined
-);
-
 function App() {
-  const authLinks = [
-    { id: 1, urlLink: `${PROFILE_PAGE}`, urlName: "profile" },
-    { id: 2, urlLink: `${LOGOUT_PAGE}`, urlName: "logout" },
-  ];
-  const notAuthLinks = [
-    { id: 1, urlLink: `${LOGIN_PAGE}`, urlName: "login" },
-    { id: 2, urlLink: `${REGISTER_PAGE}`, urlName: "register" },
-  ];
-
   return (
     <Router>
-      <HeaderContext.Provider value={{ authLinks, notAuthLinks }}>
-        <main className="App">
-          <Routes>
-            <Route path={`${HOME_PAGE}`} element={<Home />} />
-            <Route path="item/:id/edit" element={<ItemEdit />} />
-            <Route path={LOGIN_PAGE} element={<Login />} />
-            <Route path={REGISTER_PAGE} element={<Register />} />
-            <Route path="email-verify/:uid/:token" element={<EmailVerify />} />
-            <Route path={LOGOUT_PAGE} element={<Logout />} />
-            <Route
-              path={PROFILE_PAGE}
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-            <Route path={DONATE_PAGE} element={<Payment />} />
-            <Route
-              path="*"
-              element={<Navigate to={`${HOME_PAGE}`} replace />}
-            />
-          </Routes>
-        </main>
-      </HeaderContext.Provider>
+      <main className="App">
+        <Routes>
+          <Route path={`${HOME_PAGE}`} element={<Home />} />
+          <Route path="item/:id/edit" element={<ItemEdit />} />
+          <Route path={LOGIN_PAGE} element={<Login />} />
+          <Route path={REGISTER_PAGE} element={<Register />} />
+          <Route path="email-verify/:uid/:token" element={<EmailVerify />} />
+          <Route path={LOGOUT_PAGE} element={<Logout />} />
+          <Route
+            path={PROFILE_PAGE}
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route path={DONATE_PAGE} element={<Payment />} />
+          <Route path="*" element={<Navigate to={`${HOME_PAGE}`} replace />} />
+        </Routes>
+      </main>
     </Router>
   );
 }

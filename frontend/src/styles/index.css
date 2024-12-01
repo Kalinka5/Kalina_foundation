@@ -24,6 +24,12 @@ code {
   box-sizing: border-box;
 }
 
+.container {
+  width: 90%;
+  max-width: 1800px;
+  margin: 25px;
+}
+
 /*Login and Register forms*/
 .login-register {
   display: flex;
@@ -45,9 +51,10 @@ code {
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-    width: 70%;
+    width: 90%;
+    height: 90%;
     max-width: 1400px;
-    height: 70%;
+    max-height: 800px;
 
     .column {
       flex: 1;
@@ -188,6 +195,11 @@ code {
 }
 
 /* Media Query For different screens */
+@media (min-width: 320px) and (max-width: 499px) {
+  .container {
+    margin: 15px;
+  }
+}
 @media (min-width: 320px) and (max-width: 369px) {
   .login-register .log-reg-background {
     width: 340px;
@@ -316,18 +328,12 @@ code {
   }
 }
 @media (min-width: 1180px) and (max-width: 1299px) and (orientation: landscape) {
-  .login-register .landscape {
-    width: 64%;
-
-    .log-reg-form .log-input-box input {
-      padding: 0px 14px;
-    }
+  .login-register .landscape .log-reg-form .log-input-box input {
+    padding: 0px 14px;
   }
 }
-@media (min-width: 1300px) and (max-width: 1599px) and (orientation: landscape) {
+@media (min-width: 1280px) and (max-width: 1599px) and (orientation: landscape) {
   .login-register .landscape {
-    height: 600px;
-
     .column .log-reg-form {
       h2 {
         font-size: 44px;
@@ -356,9 +362,7 @@ code {
         padding: 30px 40px;
       }
       .log-reg-form {
-        height: 392px;
         font-size: 16px;
-        width: 80%;
 
         h2 {
           font-size: 30px;
@@ -366,6 +370,13 @@ code {
         }
         label {
           font-size: 14px;
+        }
+        .reg-input-box {
+          height: 60px;
+
+          .input-icon {
+            height: 38px;
+          }
         }
       }
     }
@@ -382,7 +393,7 @@ code {
       width: 80%;
 
       h2 {
-        font-size: 40px;
+        font-size: 36px;
         margin-bottom: 10px;
       }
       .reg-input-box {

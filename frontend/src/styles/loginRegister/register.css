@@ -23,7 +23,7 @@
 
         .input-icon {
           position: relative;
-          height: 40px;
+          height: 55px;
 
           input {
             height: 100%;
@@ -53,10 +53,10 @@
           }
           .--icon {
             position: absolute;
-            top: 0;
+            top: 6px;
             right: 10px;
             height: 48px;
-            font-size: 24px;
+            font-size: 28px;
             line-height: 48px;
             color: #ffc70e;
             -webkit-transition: all 200ms linear;
@@ -90,13 +90,13 @@
               padding: 5px 0;
               position: absolute;
               z-index: 1;
-              left: -36px;
+              left: -106px;
 
               &::after {
                 content: "";
                 position: absolute;
                 top: 100%;
-                left: 20%;
+                left: 50%;
                 margin-left: -5px;
                 border-width: 5px;
                 border-style: solid;
@@ -132,8 +132,24 @@
 @media (min-width: 320px) and (max-width: 430px) {
   .register .login-register .log-reg-form .reg-input-box .input-icon {
     height: 45px;
+
+    .--icon {
+      top: 2px;
+      right: 6px;
+    }
+  }
+  .register
+    .login-register
+    .portrait
+    .log-reg-form
+    .reg-input-box
+    .input-icon
+    .--icon
+    .tooltiptext::after {
+    left: 86%;
   }
 }
+
 @media (min-width: 760px) and (max-width: 999px) and (orientation: portrait) {
   .register .login-register .portrait {
     .log-reg-form {
@@ -241,7 +257,7 @@
 }
 @media (min-width: 1024px) and (orientation: landscape) {
   .register .login-register .landscape .log-reg-form .reg-input-box {
-    height: 57px;
+    height: 72px;
   }
 }
 @media (min-width: 1300px) and (max-width: 1599px) and (orientation: landscape) {
@@ -260,7 +276,6 @@
     margin: 0 0;
 
     input {
-      height: 38px;
       font-size: 14px;
       padding: 0px 10px;
     }
@@ -269,10 +284,10 @@
       right: 15px;
 
       .tooltiptext {
-        left: -16px;
+        left: -70px;
 
         &::after {
-          left: 12%;
+          left: 35%;
         }
       }
     }
@@ -305,7 +320,7 @@
         width: 206px;
         font-size: 13px;
         line-height: 20px;
-        left: -85px;
+        left: -83px;
 
         &::after {
           left: 47%;

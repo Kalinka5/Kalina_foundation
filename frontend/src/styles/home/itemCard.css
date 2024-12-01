@@ -1,63 +1,67 @@
-.gradient-cards {
-  padding: 30px;
-  overflow: hidden;
+.items-main {
+  display: flex;
+  justify-content: center;
 
-  .card {
-    max-width: 1000px;
-    border: 0;
-    width: 100%;
-    margin-inline: auto;
+  .gradient-cards {
+    padding: 30px 0;
+    overflow: hidden;
 
-    .container-card {
-      display: grid;
-      grid-template-columns: 2fr auto;
-      column-gap: 1em;
-      border: 2px solid transparent;
-      background: linear-gradient(71deg, #080509, #1a171c, #080509);
-      background-clip: padding-box;
-      border-radius: 45px;
-      padding: 40px;
+    .card {
+      max-width: 1000px;
+      border: 0;
+      width: 100%;
+      margin-inline: auto;
 
-      .column1 {
-        text-align: center;
-      }
-      .item-buttons {
-        grid-row-start: 2;
-        grid-column-start: 1;
-        grid-column-end: 3;
-        margin-top: 15px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
+      .container-card {
+        display: grid;
+        grid-template-columns: 2fr auto;
+        column-gap: 1em;
+        background: linear-gradient(71deg, #080509, #1a171c, #080509);
+        background-clip: padding-box;
+        border-radius: 45px;
+        padding: 40px;
+
+        .column1 {
+          text-align: center;
+        }
+        .item-buttons {
+          grid-row-start: 2;
+          grid-column-start: 1;
+          grid-column-end: 3;
+          margin-top: 15px;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+        }
       }
     }
-  }
-  .left {
-    float: left;
-  }
-  .right {
-    float: right;
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+    }
   }
 }
 
 /* Media Query For different screens */
 @media (min-width: 320px) and (max-width: 1024px) and (orientation: portrait) {
-  .gradient-cards .card .container-card {
+  .items-main .gradient-cards .card .container-card {
     display: block;
     text-align: center;
   }
-  .gradient-cards .card .container-card .column2 {
+  .items-main .gradient-cards .card .container-card .column2 {
     padding-top: 10px;
   }
 }
 @media (min-width: 320px) and (max-width: 540px) {
-  .gradient-cards .card .container-card {
+  .items-main .gradient-cards .card .container-card {
     padding: 30px;
   }
 }
 @media screen and (min-width: 760px) and (max-width: 1024px) and (orientation: portrait) {
-  .gradient-cards .card .container-card .column1 {
+  .items-main .gradient-cards .card .container-card .column1 {
     display: flex;
     justify-content: center;
 

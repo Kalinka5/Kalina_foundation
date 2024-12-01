@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import Slider from "../components/Home/Slider.tsx";
 import Items from "../components/Home/Items.tsx";
@@ -10,16 +10,8 @@ import { MAX_PAGE_NUMBER } from "../lib/constants.js";
 
 import NotFound from "./NotFound.js";
 
-import { HeaderContext } from "../App.tsx";
-
 function Home() {
   const [page, setPage] = useState(1);
-
-  const authContext = useContext(HeaderContext);
-
-  if (!authContext) {
-    throw new Error("AuthContext must be used within an AuthContext.Provider");
-  }
 
   return (
     <div className="main">

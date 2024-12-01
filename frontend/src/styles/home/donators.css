@@ -3,37 +3,39 @@
   background-size: 25px 25px;
   overflow: hidden;
 
-  .donators-background {
-    position: relative;
+  .donators-main {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 
-    .icons-back {
-      background-color: #1e293b;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      text-align: center;
-      height: 680px;
-      width: 62%;
-      border-radius: 10px;
-      border: 2px solid rgba(255, 255, 255, 0.1);
+    .donators-background {
       position: relative;
-      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      gap: 10px;
+      margin-top: 25px;
+      margin-bottom: 25px;
 
-      .donators-card {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.125);
+      .icons-back {
+        background-color: #1e293b;
+        text-align: center;
+        height: 680px;
         border-radius: 10px;
         border: 2px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+
+        .donators-card {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background-color: rgba(255, 255, 255, 0.125);
+          border-radius: 10px;
+          border: 2px solid rgba(255, 255, 255, 0.1);
+        }
       }
-    }
-    .portrait {
-      width: 90%;
     }
   }
 }
@@ -70,6 +72,7 @@
     transform: translateX(0%);
   }
 }
+
 /* Media Query For different screens */
 @media (min-width: 820px) and (max-width: 851px) {
   .donators {
@@ -87,7 +90,7 @@
   }
 }
 @media (min-width: 1500px) {
-  .donators .donators-background .icons-back {
+  .donators .donators-main .donators-background .icons-back {
     height: 970px;
   }
 }

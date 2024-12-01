@@ -10,24 +10,30 @@ import { ItemCardProps } from "../../lib/types";
 import "../../styles/home/itemCard.css";
 
 function ItemCard({ items, isSuperUser }: ItemCardProps) {
-  return items.map((el, index) => (
-    <div className="gradient-cards" key={el.id}>
-      <div className={`card ${index % 2 === 0 ? "left" : "right"}`}>
-        <div className="container-card">
-          <div className="column1">
-            <ItemImage image={el.image} index={index} />
+  return (
+    <div className="items-main">
+      <div className="container">
+        {items.map((el, index) => (
+          <div className="gradient-cards" key={el.id}>
+            <div className={`card ${index % 2 === 0 ? "left" : "right"}`}>
+              <div className="container-card">
+                <div className="column1">
+                  <ItemImage image={el.image} index={index} />
+                </div>
+                <div className="column2">
+                  <ItemDescription title={el.title} />
+                </div>
+                <div className="item-buttons">
+                  <DonateButton />
+                  {isSuperUser && <EditItemButton id={el.id} />}
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="column2">
-            <ItemDescription title={el.title} />
-          </div>
-          <div className="item-buttons">
-            <DonateButton />
-            {isSuperUser && <EditItemButton id={el.id} />}
-          </div>
-        </div>
+        ))}
       </div>
     </div>
-  ));
+  );
 }
 
 export default ItemCard;
