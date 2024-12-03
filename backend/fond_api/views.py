@@ -1,21 +1,24 @@
-from rest_framework import generics, status, viewsets, filters
+from rest_framework import exceptions as rest_exceptions, generics, status, viewsets, filters
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes, throttle_classes
 from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 from rest_framework.views import APIView
 
-from django.shortcuts import get_object_or_404
-
-from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
+from rest_framework_simplejwt import tokens, views as jwt_views
 
 from django_filters.rest_framework import DjangoFilterBackend
 
+from django.conf import settings
 from django.core.mail import EmailMessage
+from django.contrib.auth import authenticate
 from django.utils.encoding import force_bytes, force_str
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import ensure_csrf_cookie, csrf_exempt
+from django.middleware import csrf
 
 from decimal import Decimal
 
@@ -27,11 +30,58 @@ from json import JSONDecodeError
 from .tokens import account_activation_token
 
 from .models import Category, Item, User
-from .serializers import RegisterSerializer, UserSerializer, CategorySerializer, ItemSerializer
+from .serializers import LoginSerializer, RegisterSerializer, CookieTokenRefreshSerializer, UserSerializer, CategorySerializer, ItemSerializer
 
 
 # Change item ID when users donated full amount
 DONATE_ITEM_ID = 18
+
+
+def get_user_tokens(user):
+    refresh = tokens.RefreshToken.for_user(user)
+    return {
+        "refresh_token": str(refresh),
+        "access_token": str(refresh.access_token)
+    }
+
+
+@api_view(["POST"])
+@permission_classes([])
+def loginView(request):
+    serializer = LoginSerializer(data=request.data)
+    serializer.is_valid(raise_exception=True)
+
+    email = serializer.validated_data["email"]
+    password = serializer.validated_data["password"]
+
+    user = authenticate(email=email, password=password)
+
+    if user is not None:
+        tokens = get_user_tokens(user)
+        res = Response()
+        res.set_cookie(
+            key=settings.SIMPLE_JWT['AUTH_COOKIE'],
+            value=tokens["access_token"],
+            expires=settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'],
+            secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
+            httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
+            samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
+        )
+
+        res.set_cookie(
+            key=settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'],
+            value=tokens["refresh_token"],
+            expires=settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME'],
+            secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
+            httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
+            samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
+        )
+
+        res.data = tokens
+        res["X-CSRFToken"] = csrf.get_token(request)
+        return res
+    raise rest_exceptions.AuthenticationFailed(
+        "Email or Password is incorrect!")
 
 
 class RegisterApi(generics.GenericAPIView):
@@ -83,6 +133,47 @@ def activate(request, uidb64, token):
             'message': 'Invalid',
         }
         return JsonResponse(res)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def logoutView(request):
+    try:
+        refreshToken = request.COOKIES.get(
+            settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
+        token = tokens.RefreshToken(refreshToken)
+        token.blacklist()
+
+        res = Response()
+        res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])
+        res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
+        res.delete_cookie("X-CSRFToken")
+        res.delete_cookie("csrftoken")
+        res["X-CSRFToken"] = None
+
+        return res
+    except Exception as e:
+        print(e)
+        raise rest_exceptions.ParseError("Invalid token")
+
+
+class CookieTokenRefreshView(jwt_views.TokenRefreshView):
+    serializer_class = CookieTokenRefreshSerializer
+
+    def finalize_response(self, request, response, *args, **kwargs):
+        if response.data.get("refresh"):
+            response.set_cookie(
+                key=settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'],
+                value=response.data['refresh'],
+                expires=settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME'],
+                secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
+                httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
+                samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
+            )
+
+            del response.data["refresh"]
+        response["X-CSRFToken"] = request.COOKIES.get("csrftoken")
+        return super().finalize_response(request, response, *args, **kwargs)
 
 
 class CategoriesListView(APIView):
