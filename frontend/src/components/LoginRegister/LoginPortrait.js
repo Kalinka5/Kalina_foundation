@@ -31,9 +31,9 @@ function LoginPortrait() {
         body: JSON.stringify({ email: email, password: password }),
       });
 
-      if (response.access_token) {
-        localStorage.setItem(ACCESS_TOKEN, response.access_token);
-        localStorage.setItem(REFRESH_TOKEN, response.refresh_token);
+      if (response.access) {
+        localStorage.setItem(ACCESS_TOKEN, response.access);
+        localStorage.setItem(REFRESH_TOKEN, response.refresh);
 
         window.location.href = PROFILE_PAGE; // Navigate and refresh
       } else {

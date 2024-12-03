@@ -40,8 +40,8 @@ DONATE_ITEM_ID = 18
 def get_user_tokens(user):
     refresh = tokens.RefreshToken.for_user(user)
     return {
-        "refresh_token": str(refresh),
-        "access_token": str(refresh.access_token)
+        "refresh": str(refresh),
+        "access": str(refresh.access_token)
     }
 
 
@@ -61,7 +61,7 @@ def loginView(request):
         res = Response()
         res.set_cookie(
             key=settings.SIMPLE_JWT['AUTH_COOKIE'],
-            value=tokens["access_token"],
+            value=tokens["access"],
             expires=settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'],
             secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
             httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
@@ -70,7 +70,7 @@ def loginView(request):
 
         res.set_cookie(
             key=settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'],
-            value=tokens["refresh_token"],
+            value=tokens["refresh"],
             expires=settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME'],
             secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
             httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],

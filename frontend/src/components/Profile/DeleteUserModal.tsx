@@ -29,8 +29,8 @@ const DeleteUserModal = ({ setIsOpen }: DeleteUserModalProps) => {
       });
       console.log("User was deleted successfully");
       localStorage.clear();
-      navigate(LOGIN_PAGE);
-      navigate(0); // Refresh page
+
+      window.location.href = LOGIN_PAGE; // Navigate and refresh
     } catch (error) {
       alert(error);
       console.log("Something go wrong when deleting user profile!");

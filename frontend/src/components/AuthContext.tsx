@@ -38,7 +38,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const refreshToken = localStorage.getItem(REFRESH_TOKEN);
 
     try {
-      const response = (await api("/token/refresh/", {
+      const response = (await api("token/refresh/", {
         method: "POST",
         body: JSON.stringify({ refresh: refreshToken }),
       })) as TokenResponse;
@@ -48,6 +48,9 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         setIsAuthorized(true);
       } else {
         setIsAuthorized(false);
+        localStorage.removeItem(ACCESS_TOKEN);
+        localStorage.removeItem(REFRESH_TOKEN);
+        return;
       }
     } catch (error) {
       console.log(error);
