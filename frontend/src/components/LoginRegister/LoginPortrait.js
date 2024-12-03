@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import api from "../../lib/api.js";
 import {
@@ -22,8 +21,6 @@ function LoginPortrait() {
 
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -33,13 +30,12 @@ function LoginPortrait() {
         method: "POST",
         body: JSON.stringify({ email: email, password: password }),
       });
-      console.log(response);
-      if (response.access) {
-        localStorage.setItem(ACCESS_TOKEN, response.access);
-        localStorage.setItem(REFRESH_TOKEN, response.refresh);
 
-        navigate(`${PROFILE_PAGE}`);
-        navigate(0); // Refresh page
+      if (response.access_token) {
+        localStorage.setItem(ACCESS_TOKEN, response.access_token);
+        localStorage.setItem(REFRESH_TOKEN, response.refresh_token);
+
+        window.location.href = PROFILE_PAGE; // Navigate and refresh
       } else {
         alert("Email or Password are not valid!");
       }

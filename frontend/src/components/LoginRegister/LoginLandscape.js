@@ -33,9 +33,9 @@ function LoginLandscape() {
         body: JSON.stringify({ email: email, password: password }),
       });
 
-      if (response.access) {
-        localStorage.setItem(ACCESS_TOKEN, response.access);
-        localStorage.setItem(REFRESH_TOKEN, response.refresh);
+      if (response.access_token) {
+        localStorage.setItem(ACCESS_TOKEN, response.access_token);
+        localStorage.setItem(REFRESH_TOKEN, response.refresh_token);
 
         window.location.href = PROFILE_PAGE; // Navigate and refresh
       } else {
