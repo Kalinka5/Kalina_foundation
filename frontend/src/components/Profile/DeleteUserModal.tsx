@@ -1,7 +1,5 @@
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
-
 import { RiCloseLine } from "react-icons/ri";
 
 import { useTranslation } from "react-i18next";
@@ -15,8 +13,6 @@ import { DeleteUserModalProps } from "../../lib/types";
 import "../../styles/profile/modal.css";
 
 const DeleteUserModal = ({ setIsOpen }: DeleteUserModalProps) => {
-  const navigate = useNavigate();
-
   const { t } = useTranslation();
 
   const DeleteUser = async (e) => {

@@ -4,20 +4,27 @@
   position: fixed;
 }
 header {
+  height: 65px;
   width: 100%;
+  gap: 5px;
   background: rgba(0, 0, 0, 0.9);
   z-index: 120;
   font-family: "Poppins", sans-serif;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   .header-logo {
-    padding: 0 15px;
+    height: 100%;
+    width: 340px;
     background: #282828;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
     align-content: center;
+    flex-wrap: wrap;
 
     a {
       text-decoration: none;
@@ -32,13 +39,15 @@ header {
     }
   }
 
-  ul {
+  .nav {
+    height: 100%;
     display: flex;
     gap: 5px;
     justify-items: center;
     list-style: none;
 
     .nav-link {
+      height: 100%;
       display: flex;
       justify-content: center;
       align-content: center;
@@ -49,7 +58,6 @@ header {
       }
 
       a {
-        padding: 15px;
         color: #f2f2f2;
         text-align: center;
         text-transform: uppercase;
@@ -58,7 +66,14 @@ header {
         font-weight: 500;
         border-radius: 5px;
         transition: all 0.3s ease;
+        transition: width 0.3s ease-in-out;
       }
+    }
+    .nav-link:nth-child(1) {
+      width: 80px;
+    }
+    .nav-link:nth-child(2) {
+      width: 145px;
     }
   }
 }
@@ -66,64 +81,53 @@ header {
 /* Media Query For different screens */
 @media (min-width: 320px) and (max-width: 599px) {
   header {
-    line-height: 2.5;
+    height: 45px;
 
-    ul .nav-link a {
-      padding: 0 4px;
+    .nav {
+      .nav-link:nth-child(1) {
+        width: 50px;
+      }
+      .nav-link:nth-child(2) {
+        width: 85px;
+      }
     }
   }
 }
 @media (min-width: 320px) and (max-width: 344px) {
   header {
-    .header-logo a {
-      font-size: 13px;
-    }
-    ul .nav-link a {
-      padding: 0 4px;
-    }
-  }
-}
-@media (min-width: 345px) and (max-width: 399px) {
-  header .header-logo a {
-    font-size: 13px;
-  }
-}
-@media (min-width: 400px) and (max-width: 479px) {
-  header .header-logo a {
-    font-size: 13px;
-  }
+    gap: 2px;
 
-  header ul .nav-link a {
-    padding: 0 10px;
+    .header-logo a {
+      font-size: 12px;
+    }
+  }
+}
+@media (min-width: 345px) and (max-width: 479px) {
+  header .header-logo a {
+    font-size: 13px;
   }
 }
 @media (min-width: 480px) and (max-width: 599px) {
   header .header-logo {
     width: 194px;
-    padding: 2px 12px;
 
     a {
       font-size: 16px;
     }
-  }
-  header ul .nav-link a {
-    padding: 0 10px;
   }
 }
 @media (min-width: 750px) and (max-width: 999px) and (orientation: portrait) {
   header {
     .header-logo {
       width: 280px;
-      padding: 24px;
 
       a {
         font-size: 25px;
         font-weight: 600;
       }
     }
-    ul .nav-link a {
+    .nav .nav-link a {
       font-size: 18px;
-      padding: 16px;
     }
   }
 }
@@ -131,78 +135,76 @@ header {
   header {
     .header-logo {
       width: 320px;
-      padding: 25px;
 
       a {
         font-size: 27px;
         font-weight: 600;
       }
     }
-    ul .nav-link a {
+    .nav .nav-link a {
       font-size: 21px;
-      padding: 16px;
     }
   }
 }
 @media (min-width: 750px) and (max-width: 1180px) and (orientation: landscape) {
   header {
-    .header-logo {
-      padding: 15px 22px;
-
-      a {
-        font-size: 21px;
-      }
+    .header-logo a {
+      font-size: 21px;
     }
-    ul .nav-link a {
-      font-size: 14px;
-      padding: 7px 12px;
+    .nav .nav-link a {
+      font-size: 16px;
     }
   }
 }
 @media (min-width: 1181px) and (orientation: landscape) {
-  header .header-logo {
-    padding: 10px 18px;
-    a {
-      font-size: 28px;
-    }
+  header .header-logo a {
+    font-size: 28px;
   }
-  header ul .nav-link a {
+
+  header .nav .nav-link a {
     font-size: 17px;
   }
 }
 @media (min-width: 720px) and (max-height: 540px) {
   header {
-    line-height: auto;
+    height: 50px;
 
     .header-logo {
-      width: 194px;
-      padding: 11px 15px;
+      width: 200px;
 
       a {
         font-size: 16px;
       }
     }
-    ul .nav-link a {
-      padding: 13px;
+    .nav .nav-link a {
       font-size: 11px;
-      padding: 0 10px;
+    }
+    .nav {
+      .nav-link:nth-child(1) {
+        width: 50px;
+      }
+      .nav-link:nth-child(2) {
+        width: 85px;
+      }
     }
   }
 }
 @media (min-width: 1024px) and (max-height: 600px) {
   header {
-    line-height: auto;
+    height: 55px;
 
-    .header-logo {
-      padding: 10px 12px;
-
-      a {
-        font-size: 22px;
-      }
+    .header-logo a {
+      font-size: 22px;
     }
-    ul .nav-link a {
-      font-size: 12px;
-      padding: 0 12px;
+
+    .nav .nav-link a {
+      font-size: 14px;
+    }
+    .nav .nav-link:nth-child(1) {
+      width: 50px;
+    }
+    .nav .nav-link:nth-child(2) {
+      width: 100px;
     }
   }
 }

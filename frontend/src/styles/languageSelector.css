@@ -1,193 +1,72 @@
 .lang-menu {
+  width: 120px;
   position: relative;
   color: #fff;
-  padding: 25px;
   display: flex;
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
 
-  .selected-lang {
+  .language-select__control {
+    font-size: 14px;
+    height: 40px;
+  }
+  .language-select__indicator {
+    padding: 3px;
+  }
+  .language-select__option {
+    color: black;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    cursor: pointer;
-    font-size: 21px;
-
-    .flag-img {
-      content: "";
-      display: inline-block;
-      width: 32px;
-      height: 20px;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-    .flag-ua {
-      background-image: url("../img/UA-flag.png");
-    }
-    .flag-uk {
-      background-image: url("../img/UK-flag.png");
-    }
-    .arrow {
-      display: flex;
-      align-content: center;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    font-size: 14px;
+    font-weight: 700;
   }
-  .languages {
-    margin: 0;
-    padding: 0;
-    width: 150px;
-    display: none;
-    background-color: #fff;
-    border: 1px solid #f8f8f8;
-    position: absolute;
-    top: 60px;
-    right: 0px;
-    border-radius: 5px;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
-    float: left;
-
-    &::after {
-      content: " ";
-      position: absolute;
-      bottom: 100%; /* At the top of the tooltip */
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: transparent transparent #f8f8f8 transparent;
-    }
-    li {
-      list-style: none;
-      text-align: left;
-      display: flex;
-      justify-content: space-between;
-      float: left;
-      border-right: 2px solid #c4c4c4;
-
-      button {
-        padding: 5px 10px;
-        display: block;
-        background: none;
-        border: none;
-        color: black;
-        text-align: left;
-        cursor: pointer;
-
-        &:before {
-          content: "";
-          display: inline-block;
-          width: 25px;
-          height: 25px;
-          vertical-align: middle;
-          margin-right: 10px;
-          background-size: contain;
-          background-repeat: no-repeat;
-        }
-        &:focus {
-          outline: none;
-        }
-      }
-      .ua:before {
-        background-image: url("../img/UA-flag.png");
-      }
-      .en:before {
-        background-image: url("../img/UK-flag.png");
-      }
-      &:hover {
-        background-color: #f2f2f2;
-      }
-    }
-    li:last-child {
-      border-right: 0;
-    }
+  .language-select__img {
+    width: 20px;
+    height: 15px;
+    margin-right: 8px;
   }
-}
-
-.lang-menu:hover .languages {
-  display: block;
 }
 
 @media (min-width: 320px) and (max-width: 599px) {
   .lang-menu {
-    padding: 0;
+    width: 95px;
 
-    .selected-lang {
-      .flag-img {
-        width: 18px;
-        height: 12px;
-      }
+    .language-select__control {
+      font-size: 14px;
+      height: 20px;
     }
-    .languages {
-      top: 24px;
-      right: -51px;
-
-      li button:before {
-        height: 18px;
-      }
+    .language-select__indicator {
+      padding: 0;
+    }
+    .language-select__option {
+      color: black;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .language-select__img {
+      width: 20px;
+      height: 15px;
+      margin-right: 8px;
+    }
+    .language-select__value-container {
+      padding: 0;
     }
   }
 }
 @media (min-width: 320px) and (max-width: 344px) {
-  .lang-menu .selected-lang {
-    font-size: 13px;
-    margin: auto 6px;
-  }
 }
 @media (min-width: 345px) and (max-width: 399px) {
-  .lang-menu .selected-lang {
-    font-size: 13px;
-    margin: auto 4px;
-  }
 }
 @media (min-width: 400px) and (max-width: 479px) {
-  .lang-menu .selected-lang {
-    font-size: 13px;
-    margin: auto 8px;
-  }
 }
 @media (min-width: 480px) and (max-width: 599px) {
-  .lang-menu {
-    padding: 11px;
-
-    .languages {
-      top: 40px;
-      right: -45px;
-    }
-  }
 }
 @media (min-width: 720px) and (max-height: 540px) {
-  .lang-menu {
-    .selected-lang {
-      font-size: 16px;
-
-      .flag-img {
-        width: 22px;
-        height: 15px;
-      }
-    }
-    .languages {
-      top: 43px;
-      right: -30px;
-    }
-  }
 }
 @media (min-width: 720px) {
-  .lang-menu {
-    padding: 10px;
-
-    .selected-lang .flag-img {
-      margin: auto 5px;
-    }
-  }
 }
 @media (min-width: 760px) {
-  .lang-menu {
-    .languages {
-      top: 50px;
-      right: -18px;
-    }
-  }
 }

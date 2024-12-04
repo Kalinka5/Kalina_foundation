@@ -1,66 +1,106 @@
-import React, { useState } from "react";
+import React from "react";
+
 import i18n from "../i18n";
 
 import { useMediaQuery } from "@uidotdev/usehooks";
 
+import Select from "react-select";
+
+import flagUA from "../img/UA-flag.png";
+import flagUK from "../img/UK-flag.png";
+
 import "../styles/languageSelector.css";
+
+// Options of Network Selection React Component
+const options = [
+  { value: "en", label: "en", icon: flagUK },
+  { value: "ua", label: "ua", icon: flagUA },
+];
+
+// Styles for React Select Component (Network Eth or BNB)
+const customStylesMobile = {
+  container: (provided) => ({
+    ...provided,
+    height: "auto",
+    fontSize: "14px", // Adjust font size for mobile
+  }),
+  control: (provided, state) => ({
+    ...provided,
+    minHeight: "30px", // Adjust control height for mobile
+    border: state.isFocused ? "2px solid #0a4ebb" : "1px solid #ccc",
+    boxShadow: "none",
+  }),
+  valueContainer: (provided) => ({
+    ...provided,
+    padding: "2px 8px", // Adjust padding for smaller height
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    display: "flex",
+    alignItems: "center",
+    fontSize: "12px", // Smaller font size
+  }),
+  dropdownIndicator: (provided) => ({
+    ...provided,
+    padding: "4px", // Adjust padding for smaller height
+  }),
+  option: (provided) => ({
+    ...provided,
+    fontSize: "12px", // Smaller font size for options
+    padding: "5px 10px", // Adjust padding
+    display: "flex",
+    alignItems: "center",
+  }),
+};
+const customStyles = {
+  option: (provided) => ({
+    ...provided,
+    display: "flex",
+    alignItems: "center",
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    display: "flex",
+    alignItems: "center",
+  }),
+};
 
 const LanguageSelector = () => {
   const savedLang = localStorage.getItem("i18nextLng") || "ua";
-  const [selectedLang, setSelectedLang] = useState(savedLang);
 
   const isPhoneDisplay = useMediaQuery(
     "only screen and (min-width: 300px) and (max-width: 600px)"
   );
 
-  const handleLanguageChange = (e) => {
-    e.preventDefault(); // Prevent default link behavior
-    const newLang = e.target.getAttribute("data-lang");
-    setSelectedLang(newLang);
-    i18n.changeLanguage(newLang);
-    localStorage.setItem("i18nextLng", newLang);
+  const handleLanguageChange = (selectedOption) => {
+    i18n.changeLanguage(selectedOption.value);
+    localStorage.setItem("i18nextLng", selectedOption.value);
   };
-
-  // Determine the display name and flag based on the selected language
-  const languageDisplayName = selectedLang === "ua" ? "UA" : "EN";
 
   return (
     <div className="lang-menu">
-      <div className="selected-lang">
-        <div
-          alt={languageDisplayName}
-          className={`flag-img ${
-            selectedLang === "ua" ? "flag-ua" : "flag-uk"
-          }`}
-        ></div>
-        {!isPhoneDisplay && languageDisplayName}
-        <div className="arrow">
-          <svg
-            stroke="currentColor"
-            fill="currentColor"
-            strokeWidth="0"
-            viewBox="0 0 24 24"
-            height="1em"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
+      <Select
+        options={options}
+        defaultValue={savedLang === "en" ? options[0] : options[1]}
+        onChange={handleLanguageChange}
+        formatOptionLabel={(option) => (
+          <div
+            className="language-select__option"
+            style={{ display: "flex", alignItems: "center" }}
           >
-            <path fill="none" d="M24 24H0V0h24v24z" opacity=".87"></path>
-            <path d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"></path>
-          </svg>
-        </div>
-      </div>
-      <ul className="languages">
-        <li>
-          <button className="ua" onClick={handleLanguageChange} data-lang="ua">
-            <b>UA</b>
-          </button>
-        </li>
-        <li>
-          <button className="en" onClick={handleLanguageChange} data-lang="en">
-            <b>EN</b>
-          </button>
-        </li>
-      </ul>
+            <img
+              src={option.icon}
+              alt={option.label}
+              className="language-select__img"
+            />
+            {!isPhoneDisplay && option.label}
+          </div>
+        )}
+        styles={isPhoneDisplay ? customStylesMobile : customStyles}
+        className="language-select"
+        classNamePrefix="language-select"
+        isSearchable={false}
+      />
     </div>
   );
 };
