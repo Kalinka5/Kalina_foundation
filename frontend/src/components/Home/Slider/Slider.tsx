@@ -83,7 +83,7 @@ function Slider({ page, setPage }: SliderProps) {
   };
 
   return (
-    <div className="slider">
+    <section className="slider section-header-mg" id="slider-section">
       <ArrowButton className="prev" onClick={handlePrev}>
         prev
       </ArrowButton>
@@ -94,7 +94,7 @@ function Slider({ page, setPage }: SliderProps) {
         <SliderText isPortrait={orientation.isPortrait} />
         <img className="slider-image" src={image} alt={alt} />
       </div>
-    </div>
+    </section>
   );
 }
 

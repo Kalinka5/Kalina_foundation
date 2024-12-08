@@ -5,24 +5,3 @@
   background-size: cover;
   padding: 0 !important;
 }
-
-@media (min-width: 320px) and (max-width: 600px) {
-  .items {
-    scroll-margin-top: 40px;
-  }
-}
-@media (min-width: 760px) {
-  .items {
-    scroll-margin-top: 65px;
-  }
-}
-@media (min-width: 720px) and (max-height: 540px) {
-  .items {
-    scroll-margin-top: 50px;
-  }
-}
-@media (min-width: 1024px) and (max-height: 600px) {
-  .items {
-    scroll-margin-top: 55px;
-  }
-}

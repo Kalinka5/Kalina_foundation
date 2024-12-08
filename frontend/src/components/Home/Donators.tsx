@@ -56,7 +56,7 @@ function Donators() {
   const donatorData = donators.data ?? [];
 
   return (
-    <div className="donators">
+    <section className="donators section-header-mg" id="donators-section">
       <HeaderSection title="donators-header" className="back-violet">
         {titleIcons}
       </HeaderSection>
@@ -80,7 +80,7 @@ function Donators() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

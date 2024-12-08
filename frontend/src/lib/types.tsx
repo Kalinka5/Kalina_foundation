@@ -14,6 +14,7 @@ export type EmailVerify = {
 // Header Component
 export type HeaderProps = {
   fixed?: "pos-fixed";
+  children?: { id: number; urlLink: string; urlName: string }[];
 };
 
 // UpdateButton.tsx
@@ -94,7 +95,7 @@ export type ArrowButtonProps = {
 export type TextPartProps = {
   header: string;
   text: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
   classMobile?: string;
 };
@@ -249,7 +250,7 @@ export type DeleteUserModalProps = {
 
 // Item Edit page
 export type TitleProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 export type InputProps = {
   value: string | number;

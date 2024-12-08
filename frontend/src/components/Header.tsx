@@ -16,7 +16,7 @@ import { HeaderProps } from "../lib/types.tsx";
 
 import "../styles/header.css";
 
-const Header = ({ fixed }: HeaderProps) => {
+const Header = ({ fixed, children }: HeaderProps) => {
   const authLinks = [
     { id: 1, urlLink: `${PROFILE_PAGE}`, urlName: "profile" },
     { id: 2, urlLink: `${LOGOUT_PAGE}`, urlName: "logout" },
@@ -39,8 +39,19 @@ const Header = ({ fixed }: HeaderProps) => {
           <span>Kalina</span> <span>Foundation</span>{" "}
         </a>
       </div>
-      <LanguageSelector />
-      <ul className="nav">
+      <div className="center-nav">
+        <LanguageSelector />
+        {children && (
+          <ul className="nav-links section-links">
+            {children.map((el) => (
+              <li className="nav-link" key={el.id}>
+                <a href={el.urlLink}>{t(el.urlName)}</a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      <ul className="nav-links page-links">
         {links.map((el) => (
           <li className="nav-link" key={el.id}>
             <a href={el.urlLink}>{t(el.urlName)}</a>
