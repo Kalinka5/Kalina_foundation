@@ -6,9 +6,11 @@ import "../../../styles/home/slider/arrowButton.css";
 
 function ArrowButton({ className, onClick, children }: ArrowButtonProps) {
   return (
-    <button className={className} onClick={onClick}>
-      {children}
-    </button>
+    <div className={`slider-button ${className}`}>
+      <button className={className} onClick={onClick}>
+        {children}
+      </button>
+    </div>
   );
 }
 

@@ -87,13 +87,13 @@ function Slider({ page, setPage }: SliderProps) {
       <ArrowButton className="prev" onClick={handlePrev}>
         prev
       </ArrowButton>
+      <ArrowButton className="next" onClick={handleNext}>
+        next
+      </ArrowButton>
       <div className="slider-text-image">
         <SliderText isPortrait={orientation.isPortrait} />
         <img className="slider-image" src={image} alt={alt} />
       </div>
-      <ArrowButton className="next" onClick={handleNext}>
-        next
-      </ArrowButton>
     </div>
   );
 }

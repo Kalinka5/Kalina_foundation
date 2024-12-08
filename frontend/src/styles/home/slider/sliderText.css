@@ -10,7 +10,7 @@
   color: #fff;
 }
 
-@media (min-width: 320px) and (max-width: 720px) and (orientation: portrait) {
+@media (min-width: 320px) and (max-width: 1024px) and (orientation: portrait) {
   .text-description {
     padding: 0 10px;
   }
