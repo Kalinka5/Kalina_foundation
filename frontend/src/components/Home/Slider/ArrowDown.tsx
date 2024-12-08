@@ -6,8 +6,10 @@ function ArrowDown() {
   return (
     <div className="arrow-container animation">
       <div className="moving-arrow">
-        <span className="arrow-down"></span>
-        <span className="arrow-down"></span>
+        <a href="#items-section">
+          <span className="arrow-down"></span>
+          <span className="arrow-down"></span>
+        </a>
       </div>
     </div>
   );

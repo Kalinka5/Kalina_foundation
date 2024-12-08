@@ -46,7 +46,7 @@ function Items({ page }: ItemsProps) {
   }
 
   return (
-    <div className="items">
+    <div className="items" id="items-section">
       <HeaderSection title="items-header" className="back-black" />
       {items.data && <ItemCard items={items.data} isSuperUser={isSuperUser} />}
     </div>
