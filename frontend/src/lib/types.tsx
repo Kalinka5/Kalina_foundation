@@ -86,6 +86,23 @@ export type SliderProps = {
   page: number;
   setPage: Dispatch<SetStateAction<number>>;
 };
+export type ArrowButtonProps = {
+  className: string;
+  onClick: MouseEventHandler<HTMLButtonElement>;
+  children?: string;
+};
+export type TextPartProps = {
+  header: string;
+  text: string;
+  children?: React.ReactNode;
+  className?: string;
+  classMobile?: string;
+};
+export type SliderListProps = {
+  classContainer: string;
+  classList: string;
+  children: string[];
+};
 
 // Home Items and Donators components
 export type HeaderSectionProps = {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Slider from "../components/Home/Slider.tsx";
+import Slider from "../components/Home/Slider/Slider.tsx";
 import Items from "../components/Home/Items.tsx";
 import Donators from "../components/Home/Donators.tsx";
 import Footer from "../components/Footer.js";

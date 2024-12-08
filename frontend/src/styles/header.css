@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 .pos-fixed {
-  position: fixed;
+  position: sticky;
+  top: 0;
 }
 header {
   height: 65px;
