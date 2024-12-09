@@ -10,16 +10,20 @@ import { MAX_PAGE_NUMBER } from "../lib/constants.js";
 
 import useOrientation from "../lib/useOrientation.js";
 
+import { useTranslation } from "react-i18next";
+
 import NotFound from "./NotFound.js";
 
 function Home() {
   const [page, setPage] = useState(1);
   const orientation = useOrientation();
 
+  const { t } = useTranslation();
+
   const SectionLinks = [
-    { id: 1, urlLink: "#slider-section", urlName: "About Us" },
-    { id: 2, urlLink: "#items-section", urlName: "Items" },
-    { id: 3, urlLink: "#donators-section", urlName: "Donators" },
+    { id: 1, urlLink: "#slider-section", urlName: t("about-us") },
+    { id: 2, urlLink: "#items-section", urlName: t("donate") },
+    { id: 3, urlLink: "#donators-section", urlName: t("top-donators") },
   ];
 
   return (
