@@ -1,8 +1,8 @@
 import React from "react";
 
-import { ItemImageProps } from "../../lib/types";
+import { ItemImageProps } from "../../../lib/types";
 
-import "../../styles/home/itemImage.css";
+import "../../../styles/home/itemImage.css";
 
 function ItemImage({ image, index }: ItemImageProps) {
   const altImageName = `item${index + 1}`;

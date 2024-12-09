@@ -2,9 +2,9 @@ import React from "react";
 
 import { useTranslation } from "react-i18next";
 
-import { MoneyProps } from "../../lib/types";
+import { MoneyProps } from "../../../lib/types";
 
-import "../../styles/home/moneyLandscape.css";
+import "../../../styles/home/moneyLandscape.css";
 
 function MoneyLandscape({ donated }: MoneyProps) {
   const { t } = useTranslation();

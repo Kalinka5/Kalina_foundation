@@ -11,6 +11,8 @@
       border: 0;
       width: 100%;
       margin-inline: auto;
+      transition: all 2s ease;
+      opacity: 0;
 
       .container-card {
         display: grid;
@@ -36,12 +38,23 @@
         }
       }
     }
-    .left {
-      float: left;
+    .slide-in {
+      opacity: 1 !important;
     }
-    .right {
-      float: right;
-    }
+  }
+  .gradient-cards:nth-child(odd) .card {
+    transform: translateX(-100%);
+  }
+  .gradient-cards:nth-child(even) .card {
+    transform: translateX(100%);
+  }
+  .gradient-cards:nth-child(odd) .slide-in {
+    transform: translateX(0) !important;
+    float: right;
+  }
+  .gradient-cards:nth-child(even) .slide-in {
+    transform: translateX(0) !important;
+    float: left;
   }
 }
 

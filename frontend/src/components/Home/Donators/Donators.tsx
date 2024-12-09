@@ -4,16 +4,16 @@ import { IoIosCash } from "react-icons/io";
 
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-import useOrientation from "../../lib/useOrientation.js";
+import useOrientation from "../../../lib/useOrientation.js";
 
-import HeaderSection from "./HeaderSection.tsx";
+import HeaderSection from "../HeaderSection.tsx";
 import CardIcons from "./CardIcons.js";
 import CardImage from "./CardImage.js";
 import Pedestal from "./Pedestal.tsx";
 
-import { useDonators } from "../../lib/hooks.tsx";
+import { useDonators } from "../../../lib/hooks.tsx";
 
-import "../../styles/home/donators.css";
+import "../../../styles/home/donators.css";
 
 function Donators() {
   const [titleIcons, setTitleIcons] = useState<JSX.Element[]>([]);

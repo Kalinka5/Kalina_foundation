@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 
 import { useMediaQuery } from "@uidotdev/usehooks";
 
-import image from "../../img/winner.png";
+import image from "../../../img/winner.png";
 
-import "../../styles/home/cardImage.css";
+import "../../../styles/home/cardImage.css";
 
 function CardImage() {
   const isMonitor = useMediaQuery("only screen and (min-width: 1500px)");

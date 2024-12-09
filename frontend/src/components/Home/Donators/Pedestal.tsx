@@ -7,9 +7,9 @@ import Username from "./Username.tsx";
 import Place from "./Place.tsx";
 import DonatorsLoader from "./LoaderDonators.js";
 
-import { PedestalProps } from "../../lib/types.tsx";
+import { PedestalProps } from "../../../lib/types.tsx";
 
-import "../../styles/home/pedestal.css";
+import "../../../styles/home/pedestal.css";
 
 function Pedestal({ donators, orientation }: PedestalProps) {
   return (

@@ -1,16 +1,16 @@
 import React from "react";
 
-import { useAuth } from "../../components/AuthContext.tsx";
+import { useAuth } from "../../AuthContext.tsx";
 
-import HeaderSection from "./HeaderSection.tsx";
+import HeaderSection from "../HeaderSection.tsx";
 import ItemCard from "./ItemCard.tsx";
 import ItemsLoader from "./LoaderItems";
 
-import { useItems, useUser } from "../../lib/hooks.tsx";
+import { useItems, useUser } from "../../../lib/hooks.tsx";
 
-import { ItemsProps } from "../../lib/types.tsx";
+import { ItemsProps } from "../../../lib/types.tsx";
 
-import "../../styles/home/items.css";
+import "../../../styles/home/items.css";
 
 function Items({ page }: ItemsProps) {
   const { isAuthorized } = useAuth();
