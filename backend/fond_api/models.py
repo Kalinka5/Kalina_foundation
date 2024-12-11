@@ -29,6 +29,7 @@ class Item(models.Model):
     class Meta:
         # Shows like Items in admin panel
         verbose_name_plural = "Items"
+        ordering = ['title']  # Default ordering by title
 
     def __str__(self) -> str:
         return self.title

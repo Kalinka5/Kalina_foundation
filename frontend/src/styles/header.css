@@ -65,11 +65,6 @@ header {
         font-weight: 500;
         border-radius: 5px;
         transition: all 0.3s ease;
-        transition: width 0.3s ease-in-out;
-
-        &:hover {
-          text-decoration: underline;
-        }
       }
     }
   }
@@ -89,6 +84,9 @@ header {
     }
     .nav-link:first-child a:after {
       display: none;
+    }
+    .nav-link a:hover {
+      text-decoration: underline;
     }
   }
   .page-links {

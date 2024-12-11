@@ -201,7 +201,7 @@ class ItemsViewSet(viewsets.ModelViewSet):
     throttle_classes = [AnonRateThrottle, UserRateThrottle]  # Add throttling
 
     serializer_class = ItemSerializer
-    queryset = Item.objects.all()
+    queryset = Item.objects.all().order_by('title')
 
     filter_backends = [
         filters.SearchFilter,
@@ -214,7 +214,7 @@ class ItemsViewSet(viewsets.ModelViewSet):
     ordering_fields = ['amount', 'full_price']
 
     def list(self, request):
-        queryset = self.filter_queryset(self.get_queryset())
+        queryset = self.filter_queryset(self.get_queryset().order_by('title'))
         page = self.paginate_queryset(queryset)
         serializer = ItemSerializer(page, many=True)
         return Response(serializer.data)
