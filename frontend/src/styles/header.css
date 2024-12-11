@@ -45,8 +45,6 @@ header {
   }
   .nav-links {
     height: 100%;
-    display: flex;
-    justify-items: center;
     list-style: none;
 
     .nav-link {
@@ -69,6 +67,9 @@ header {
     }
   }
   .section-links {
+    display: flex;
+    justify-items: center;
+
     .nav-link a {
       position: relative;
       padding: 0 10px;
@@ -90,6 +91,8 @@ header {
     }
   }
   .page-links {
+    display: flex;
+    justify-items: center;
     gap: 5px;
 
     .nav-link:hover {
