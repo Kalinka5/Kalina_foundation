@@ -13,7 +13,7 @@ import Pedestal from "./Pedestal.tsx";
 
 import { useDonators } from "../../../lib/hooks.tsx";
 
-import "../../../styles/home/donators.css";
+import "../../../styles/home/donators/donators.css";
 
 function Donators() {
   const [titleIcons, setTitleIcons] = useState<JSX.Element[]>([]);

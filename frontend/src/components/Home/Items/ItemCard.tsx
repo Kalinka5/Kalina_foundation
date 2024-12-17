@@ -7,7 +7,7 @@ import EditItemButton from "./EditItemButton.tsx";
 
 import { ItemCardProps } from "../../../lib/types.tsx";
 
-import "../../../styles/home/itemCard.css";
+import "../../../styles/home/items/itemCard.css";
 
 function ItemCard({ items, isSuperUser }: ItemCardProps) {
   const [isIntersecting, setIsIntersecting] = useState(false);

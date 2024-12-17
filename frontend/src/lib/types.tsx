@@ -14,7 +14,7 @@ export type EmailVerify = {
 // Header Component
 export type HeaderProps = {
   fixed?: "pos-fixed";
-  children?: { id: number; urlLink: string; urlName: string }[];
+  children?: { id: number; urlLink: string; urlName: string }[] | false;
 };
 
 // UpdateButton.tsx

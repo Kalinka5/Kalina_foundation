@@ -9,7 +9,7 @@ import DonatorsLoader from "./LoaderDonators.js";
 
 import { PedestalProps } from "../../../lib/types.tsx";
 
-import "../../../styles/home/pedestal.css";
+import "../../../styles/home/donators/pedestal.css";
 
 function Pedestal({ donators, orientation }: PedestalProps) {
   return (

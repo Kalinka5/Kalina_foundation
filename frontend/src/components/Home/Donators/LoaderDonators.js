@@ -1,4 +1,4 @@
-import "../../../styles/home/loaderDonators.css";
+import "../../../styles/home/donators/loaderDonators.css";
 
 function DonatorsLoader() {
   return (

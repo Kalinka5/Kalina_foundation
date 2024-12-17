@@ -10,7 +10,7 @@ import { useItems, useUser } from "../../../lib/hooks.tsx";
 
 import { ItemsProps } from "../../../lib/types.tsx";
 
-import "../../../styles/home/items.css";
+import "../../../styles/home/items/items.css";
 
 function Items({ page }: ItemsProps) {
   const { isAuthorized } = useAuth();

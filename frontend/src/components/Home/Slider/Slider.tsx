@@ -16,8 +16,6 @@ import transportMobile from "../../../img/transport_mobile.jpeg";
 import ArrowButton from "./ArrowButton.tsx";
 import SliderText from "./SliderText.tsx";
 
-import useOrientation from "../../../lib/useOrientation.js";
-
 import { SliderProps } from "../../../lib/types";
 
 import "../../../styles/home/slider/slider.css";
@@ -27,8 +25,7 @@ function Slider({ page, setPage }: SliderProps) {
   const [image, setImage] = useState<string>("");
   const [alt, setAlt] = useState<string>("");
 
-  const orientation = useOrientation();
-  const isMobile = useMediaQuery("only screen and (max-width: 540px)");
+  const isMobile = useMediaQuery("only screen and (max-width: 750px)");
 
   // Use useMemo to memoize the images array
   const images = useMemo(
@@ -91,7 +88,7 @@ function Slider({ page, setPage }: SliderProps) {
         next
       </ArrowButton>
       <div className="slider-text-image">
-        <SliderText isPortrait={orientation.isPortrait} />
+        <SliderText isPortrait={isMobile} />
         <img className="slider-image" src={image} alt={alt} />
       </div>
     </section>

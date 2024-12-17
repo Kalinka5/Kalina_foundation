@@ -2,7 +2,7 @@ import React from "react";
 
 import { DonatorImgProps } from "../../../lib/types";
 
-import "../../../styles/home/donatorImg.css";
+import "../../../styles/home/donators/donatorImg.css";
 
 function DonatorImg({ image }: DonatorImgProps) {
   return (

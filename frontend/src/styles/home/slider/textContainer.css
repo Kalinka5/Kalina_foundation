@@ -1,4 +1,6 @@
 .text-container {
+  gap: 10px;
+
   .text-logo-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -107,27 +109,8 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 344px) {
-  .text-container {
-    .text-title.mobile {
-      width: 300px;
-    }
-    .text.mobile {
-      width: 250px;
-    }
-  }
-}
-@media (min-width: 345px) and (max-width: 499px) {
-  .text-container {
-    .text-title.mobile {
-      width: 300px;
-    }
-    .text.mobile {
-      width: 285px;
-    }
-  }
-}
-@media (orientation: portrait) {
+/* Media Query For different screens */
+@media (min-width: 320px) and (max-width: 750px) {
   .text-container {
     justify-content: center;
 
@@ -150,11 +133,21 @@
     }
   }
 }
+@media (min-width: 320px) and (max-width: 344px) {
+  .text-container .text.mobile {
+    width: 240px;
+  }
+}
+@media (min-width: 345px) and (max-width: 499px) {
+  .text-container .text.mobile {
+    width: 285px;
+  }
+}
 @media (min-width: 320px) and (max-width: 499px) {
   .text-container {
     .text-logo-container {
       .logo-text {
-        font-size: 35px;
+        font-size: 34px;
       }
       .logo-slogan {
         font-size: 15px;
@@ -163,76 +156,15 @@
     .text-title {
       font-size: 20px;
     }
-    .text {
-      font-size: 12px;
-    }
-  }
-}
-@media (min-width: 1024px) and (max-width: 1179px) and (orientation: landscape) {
-  .text-container {
-    .text-logo-container .logo-text {
-      font-size: 60px;
-    }
-    .text-logo-container .logo-slogan {
-      font-size: 35px;
-    }
-    .text-title {
-      font-size: 20px;
+    .text-title.mobile {
+      width: 300px;
     }
     .text {
       font-size: 12px;
     }
   }
 }
-@media (min-width: 1180px) and (max-width: 1299px) and (orientation: landscape) {
-  .text-container {
-    .text-logo-container .logo-text {
-      font-size: 60px;
-    }
-    .text-logo-container .logo-slogan {
-      font-size: 35px;
-    }
-    .text-title {
-      font-size: 25px;
-    }
-    .text {
-      font-size: 15px;
-    }
-  }
-}
-@media (min-width: 1300px) and (max-width: 1400px) and (orientation: landscape) {
-  .text-container {
-    .text-logo-container .logo-text {
-      font-size: 65px;
-    }
-    .text-logo-container .logo-slogan {
-      font-size: 40px;
-    }
-    .text-title {
-      font-size: 30px;
-    }
-    .text {
-      font-size: 20px;
-    }
-  }
-}
-@media (min-width: 720px) and (max-height: 540px) and (orientation: landscape) {
-  .text-container {
-    .text-logo-container .logo-text {
-      font-size: 35px;
-    }
-    .text-logo-container .logo-slogan {
-      font-size: 22px;
-    }
-    .text-title {
-      font-size: 18px;
-    }
-    .text {
-      font-size: 10px;
-    }
-  }
-}
-@media (min-width: 540px) and (max-height: 720px) and (orientation: portrait) {
+@media (min-width: 500px) and (max-width: 944px) {
   .text-container {
     .text-logo-container .logo-text {
       font-size: 40px;
@@ -248,6 +180,86 @@
     }
     .text.mobile {
       width: 400px;
+    }
+  }
+}
+@media (min-width: 945px) and (max-width: 1023px) {
+  .text-container {
+    .text-logo-container .logo-text {
+      font-size: 45px;
+    }
+    .text-logo-container .logo-slogan {
+      font-size: 27px;
+    }
+    .text-title {
+      font-size: 27px;
+    }
+    .text {
+      font-size: 14px;
+    }
+  }
+}
+@media (min-width: 1024px) and (max-width: 1179px) {
+  .text-container {
+    .text-logo-container .logo-text {
+      font-size: 60px;
+    }
+    .text-logo-container .logo-slogan {
+      font-size: 35px;
+    }
+    .text-title {
+      font-size: 27px;
+    }
+    .text {
+      font-size: 14px;
+    }
+  }
+}
+@media (min-width: 1180px) and (max-width: 1299px) {
+  .text-container {
+    .text-logo-container .logo-text {
+      font-size: 60px;
+    }
+    .text-logo-container .logo-slogan {
+      font-size: 35px;
+    }
+    .text-title {
+      font-size: 25px;
+    }
+    .text {
+      font-size: 15px;
+    }
+  }
+}
+@media (min-width: 1300px) and (max-width: 1400px) {
+  .text-container {
+    .text-logo-container .logo-text {
+      font-size: 65px;
+    }
+    .text-logo-container .logo-slogan {
+      font-size: 40px;
+    }
+    .text-title {
+      font-size: 30px;
+    }
+    .text {
+      font-size: 20px;
+    }
+  }
+}
+@media (min-width: 900px) and (orientation: portrait) {
+  .text-container {
+    .text-logo-container .logo-text {
+      font-size: 65px;
+    }
+    .text-logo-container .logo-slogan {
+      font-size: 40px;
+    }
+    .text-title {
+      font-size: 30px;
+    }
+    .text {
+      font-size: 20px;
     }
   }
 }

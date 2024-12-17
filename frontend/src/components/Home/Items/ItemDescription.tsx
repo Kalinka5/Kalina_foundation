@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { ItemDescriptionProps } from "../../../lib/types";
 
-import "../../../styles/home/itemDescription.css";
+import "../../../styles/home/items/itemDescription.css";
 
 function ItemDescription({ title }: ItemDescriptionProps) {
   const { t } = useTranslation();

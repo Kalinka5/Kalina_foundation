@@ -69,7 +69,7 @@ const LanguageSelector = () => {
   const savedLang = localStorage.getItem("i18nextLng") || "ua";
 
   const isPhoneDisplay = useMediaQuery(
-    "only screen and (min-width: 300px) and (max-width: 600px)"
+    "only screen and (min-width: 300px) and (max-width: 750px)"
   );
 
   const handleLanguageChange = (selectedOption) => {

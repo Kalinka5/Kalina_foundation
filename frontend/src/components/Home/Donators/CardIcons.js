@@ -9,7 +9,7 @@ import {
   IoMdHeart,
 } from "react-icons/io";
 
-import "../../../styles/home/cardIcons.css";
+import "../../../styles/home/donators/cardIcons.css";
 
 function CardIcons() {
   const [cardIcons, setCardIcons] = useState([]);

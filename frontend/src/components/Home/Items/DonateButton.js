@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import "../../../styles/home/donateButton.css";
+import "../../../styles/home/items/donateButton.css";
 
 function DonateButton() {
   const { t } = useTranslation();

@@ -8,7 +8,7 @@ import Header from "../components/Header.tsx";
 
 import { MAX_PAGE_NUMBER } from "../lib/constants.js";
 
-import useOrientation from "../lib/useOrientation.js";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 import { useTranslation } from "react-i18next";
 
@@ -16,7 +16,9 @@ import NotFound from "./NotFound.js";
 
 function Home() {
   const [page, setPage] = useState(1);
-  const orientation = useOrientation();
+  const isPhoneDisplay = useMediaQuery(
+    "only screen and (min-width: 300px) and (max-width: 1064px)"
+  );
 
   const { t } = useTranslation();
 
@@ -28,9 +30,7 @@ function Home() {
 
   return (
     <div className="main">
-      <Header fixed="pos-fixed">
-        {orientation.isLandscape && SectionLinks}
-      </Header>
+      <Header fixed="pos-fixed">{!isPhoneDisplay && SectionLinks}</Header>
       {page > 0 && page < MAX_PAGE_NUMBER ? (
         <>
           <Slider page={page} setPage={setPage} />
