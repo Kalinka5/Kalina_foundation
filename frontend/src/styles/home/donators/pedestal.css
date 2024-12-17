@@ -6,41 +6,46 @@
   width: 80%;
   position: relative;
 
-  .bar {
-    background-color: var(--bar-color);
-    width: 100px;
-    grid-row-end: 101;
-    border-radius: 5px 5px 0 0;
-    position: relative;
-    text-align: center;
+  .bar-image {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-  }
-  .__1 {
-    grid-column: 1;
-    grid-row-start: 15;
-  }
-  .__2 {
-    grid-column: 2;
-    grid-row-start: 30;
-  }
-  .__3 {
-    grid-column: 3;
-    grid-row-start: 45;
-  }
-  .__4 {
-    grid-column: 4;
-    grid-row-start: 60;
-  }
-  .__5 {
-    grid-column: 5;
-    grid-row-start: 75;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+
+    .bar {
+      background-color: var(--bar-color);
+      width: 100%;
+      max-width: 100px;
+      grid-row-end: 101;
+      border-radius: 5px 5px 0 0;
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .__1 {
+      height: 450px;
+    }
+    .__2 {
+      height: 370px;
+    }
+    .__3 {
+      height: 290px;
+    }
+    .__4 {
+      height: 210px;
+    }
+    .__5 {
+      height: 130px;
+    }
   }
 }
 .grid-p {
-  margin-top: 100px;
-  height: 80%;
+  height: 570px;
+  max-width: 870px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(100, 1fr);
@@ -53,46 +58,17 @@
 }
 
 /* Media Query For different screens */
-@media (min-width: 320px) and (max-width: 344px) {
+@media (max-width: 749px) {
   .grid-p {
-    width: 513px;
-
-    .bar {
-      width: 99px;
-    }
+    grid-template-columns: repeat(3, 1fr);
   }
 }
-@media (min-width: 345px) and (max-width: 369px) {
-  .grid-p {
-    width: 539px;
+/* @media (min-width: 1200px) {
+  .pedestal .bar-image .bar {
+    max-width: 140px;
   }
-}
-@media (min-width: 370px) and (max-width: 389px) {
-  .grid-p {
-    width: 556px;
-  }
-}
-@media (min-width: 390px) and (max-width: 399px) {
-  .grid-p {
-    width: 581px;
-  }
-}
-@media (min-width: 400px) and (max-width: 429px) {
-  .grid-p {
-    width: 615px;
-  }
-}
-@media (min-width: 430px) and (max-width: 479px) {
-  .grid-p {
-    width: 644px;
-  }
-}
-@media (min-width: 480px) and (max-width: 759px) {
-  .grid-p {
-    width: 803px;
-  }
-}
-@media (min-width: 760px) and (max-width: 1399px) {
+} */
+@media (min-width: 750px) and (max-width: 1699px) {
   .grid-p {
     width: 100%;
   }
@@ -113,7 +89,7 @@
   }
 }
 @media (min-width: 1500px) {
-  .pedestal .bar {
-    width: 140px;
+  .pedestal .bar-image .bar {
+    max-width: 130px;
   }
 }

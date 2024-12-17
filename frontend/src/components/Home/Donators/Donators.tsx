@@ -18,11 +18,10 @@ import "../../../styles/home/donators/donators.css";
 function Donators() {
   const [titleIcons, setTitleIcons] = useState<JSX.Element[]>([]);
 
-  const isDisplayMini = useMediaQuery(
-    "only screen and (min-width: 300px) and (max-width: 1024px)"
-  );
+  const isDisplayMobile = useMediaQuery("only screen and (max-width: 749px)");
+  const isDisplayMini = useMediaQuery("only screen and (max-width: 1024px)");
   const isDisplayMax = useMediaQuery("only screen and (min-width: 1025px)");
-  const isMonitor = useMediaQuery("only screen and (min-width: 1500px)");
+  const isMonitor = useMediaQuery("only screen and (min-width: 1900px)");
   const orientation = useOrientation();
 
   useEffect(() => {
@@ -54,6 +53,7 @@ function Donators() {
 
   const donators = useDonators();
   const donatorData = donators.data ?? [];
+  const donatorDataSmall = donatorData.slice(0, 3) ?? [];
 
   return (
     <section className="donators section-header-mg" id="donators-section">
@@ -62,7 +62,7 @@ function Donators() {
       </HeaderSection>
       <div className="donators-main">
         <div className="container donators-background">
-          {orientation.isLandscape && isDisplayMax && <CardImage />}
+          {isDisplayMax && <CardImage />}
 
           <div
             className={`icons-back ${
@@ -72,9 +72,15 @@ function Donators() {
             <CardIcons />
             <div className="donators-card">
               {isMonitor ? (
-                <Pedestal donators={donatorData} orientation="landscape" />
+                <Pedestal
+                  donators={isDisplayMobile ? donatorDataSmall : donatorData}
+                  orientation="landscape"
+                />
               ) : (
-                <Pedestal donators={donatorData} orientation="portrait" />
+                <Pedestal
+                  donators={isDisplayMobile ? donatorDataSmall : donatorData}
+                  orientation="portrait"
+                />
               )}
             </div>
           </div>

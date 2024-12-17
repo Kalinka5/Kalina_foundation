@@ -16,16 +16,18 @@ function Pedestal({ donators, orientation }: PedestalProps) {
     <div className={`pedestal ${donators ? "grid-p" : "flex-l"}`}>
       {donators ? (
         donators.map((user, index) => (
-          <div className={`bar __${index + 1}`} key={user.id}>
-            {orientation === "portrait" && (
-              <MoneyPortrait donated={user.donated} />
-            )}
+          <div className="bar-image" key={user.id}>
             <DonatorImg image={user.image} />
-            {orientation === "landscape" && (
-              <MoneyLandscape donated={user.donated} />
-            )}
-            <Username username={user.username} />
-            <Place index={index} />
+            <div className={`bar __${index + 1}`}>
+              {orientation === "portrait" && (
+                <MoneyPortrait donated={user.donated} />
+              )}
+              {orientation === "landscape" && (
+                <MoneyLandscape donated={user.donated} />
+              )}
+              <Username username={user.username} />
+              <Place index={index} />
+            </div>
           </div>
         ))
       ) : (

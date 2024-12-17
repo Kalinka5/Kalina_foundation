@@ -108,7 +108,7 @@ header {
 }
 
 /* Media Query For different screens */
-@media (min-width: 320px) and (max-width: 499px) {
+@media (max-width: 499px) {
   header {
     height: 45px;
     gap: 2px;
@@ -118,7 +118,7 @@ header {
     }
   }
 }
-@media (min-width: 320px) and (max-width: 344px) {
+@media (max-width: 344px) {
   header .page-links .nav-link:nth-child(1) {
     width: 40px;
   }

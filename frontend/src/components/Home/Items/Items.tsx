@@ -14,7 +14,6 @@ import "../../../styles/home/items/items.css";
 
 function Items({ page }: ItemsProps) {
   const { isAuthorized } = useAuth();
-  console.log(isAuthorized);
 
   // Get Items data from backend
   const items = useItems(page);

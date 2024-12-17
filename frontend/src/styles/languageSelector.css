@@ -29,7 +29,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 750px) {
+@media (max-width: 750px) {
   .lang-menu {
     width: 70px;
 
@@ -57,7 +57,7 @@
     }
   }
 }
-@media (min-width: 320px) and (max-width: 374px) {
+@media (max-width: 374px) {
   .lang-menu {
     width: auto;
   }

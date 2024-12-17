@@ -34,7 +34,7 @@
 }
 
 /* Media Query For different screens */
-@media (min-width: 320px) and (max-width: 750px) {
+@media (max-width: 749px) {
   .container-list .list-items.bullets li {
     padding: 0;
     background-image: none;
@@ -44,7 +44,7 @@
     list-style-position: inside;
   }
 }
-@media (min-width: 320px) and (max-width: 499px) {
+@media (max-width: 499px) {
   .container-list .list-items {
     font-size: 11px;
   }

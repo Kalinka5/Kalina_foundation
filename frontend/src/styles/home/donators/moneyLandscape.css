@@ -30,13 +30,13 @@
   }
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 1900px) {
   .donated {
     top: -120px;
-    left: 126px;
+    left: 108px;
   }
   .underline:before {
-    left: 126px;
     top: -100px;
+    left: 105px;
   }
 }

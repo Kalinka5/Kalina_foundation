@@ -32,8 +32,3 @@
     padding: 0 2px;
   }
 }
-@media (min-width: 1500px) {
-  .card-row {
-    font-size: 95px;
-  }
-}

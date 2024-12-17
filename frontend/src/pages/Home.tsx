@@ -16,9 +16,7 @@ import NotFound from "./NotFound.js";
 
 function Home() {
   const [page, setPage] = useState(1);
-  const isPhoneDisplay = useMediaQuery(
-    "only screen and (min-width: 300px) and (max-width: 1064px)"
-  );
+  const isPhoneDisplay = useMediaQuery("only screen and (max-width: 1064px)");
 
   const { t } = useTranslation();
 

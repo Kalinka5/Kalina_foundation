@@ -2,21 +2,17 @@ import React from "react";
 
 import { useTranslation } from "react-i18next";
 
-import { useMediaQuery } from "@uidotdev/usehooks";
-
 import image from "../../../img/winner.png";
 
 import "../../../styles/home/donators/cardImage.css";
 
 function CardImage() {
-  const isMonitor = useMediaQuery("only screen and (min-width: 1500px)");
-
   const { t } = useTranslation();
 
   return (
-    <div className={`card-img ${isMonitor && "mon-wid"}`}>
+    <div className={`card-img`}>
       <div className="content">
-        <div className={`imgBx ${isMonitor && "monitor-img"}`}>
+        <div className="imgBx">
           <img src={image} alt="Winner" />
         </div>
         <div className="contentBx">

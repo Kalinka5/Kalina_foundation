@@ -37,7 +37,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 499px) {
+@media (max-width: 499px) {
   .arrow-container .moving-arrow a .arrow-down {
     width: 4px;
     height: 25px;

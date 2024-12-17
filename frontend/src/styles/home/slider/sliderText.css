@@ -11,7 +11,7 @@
 }
 
 /* Media Query For different screens */
-@media (min-width: 332px) and (max-width: 749px) {
+@media (max-width: 749px) {
   .text-description {
     padding: 0 10px;
   }
