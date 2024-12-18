@@ -1,145 +1,135 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 
-.register {
-  .login-register {
-    .alert-message {
-      z-index: 100;
-      position: absolute;
-      top: 10%;
-      margin: 0 25px;
+.login-register {
+  .alert-message {
+    z-index: 100;
+    position: absolute;
+    top: 10%;
+    margin: 0 25px;
+  }
+  .portrait .log-reg-form .reg-input-box .input-icon .--icon .tooltiptext {
+    left: -192px;
+
+    &::after {
+      left: 85%;
     }
-    .portrait .log-reg-form .reg-input-box .input-icon .--icon .tooltiptext {
-      left: -192px;
+  }
+  .log-reg-form {
+    .reg-input-box {
+      height: 73px;
+      width: 100%;
+      margin-bottom: 5px;
+      text-align: center;
 
-      &::after {
-        left: 85%;
-      }
-    }
-    .log-reg-form {
-      .reg-input-box {
-        height: 73px;
-        margin-bottom: 5px;
-        text-align: center;
+      .input-icon {
+        position: relative;
+        height: 55px;
 
-        .input-icon {
-          position: relative;
-          height: 55px;
+        input {
+          height: 100%;
+          width: 100%;
+          box-sizing: border-box;
+          -webkit-transition: 0.5s;
+          transition: 0.5s;
+          outline: none;
+          padding-left: 15px;
+          font-size: 17px;
+          font-weight: 400;
+          color: #333;
+          border: 1.5px solid #c7bebe;
+          border-bottom-width: 2.5px;
+          border-radius: 6px;
+          transition: all 0.3s ease;
 
-          input {
-            height: 100%;
-            width: 100%;
-            box-sizing: border-box;
-            -webkit-transition: 0.5s;
-            transition: 0.5s;
-            outline: none;
-            padding-left: 15px;
-            font-size: 17px;
-            font-weight: 400;
-            color: #333;
-            border: 1.5px solid #c7bebe;
-            border-bottom-width: 2.5px;
+          &:focus {
+            border-color: #4070f4;
+          }
+        }
+        .success {
+          border-color: #09c372;
+        }
+        .error {
+          border-color: #8a021d;
+        }
+        .--icon {
+          position: absolute;
+          top: 6px;
+          right: 10px;
+          height: 48px;
+          font-size: 28px;
+          line-height: 48px;
+          color: #ffc70e;
+          -webkit-transition: all 200ms linear;
+          transition: all 200ms linear;
+          cursor: pointer;
+
+          .name-tip {
+            top: -58px;
+          }
+          .email-tip {
+            top: -131px;
+          }
+          .pass-tip {
+            top: -130px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .confirm-tip {
+            top: -82px;
+          }
+          .tooltiptext {
+            visibility: hidden;
+            width: 240px;
+            background-color: rgb(255, 219, 57);
+            color: #000000;
+            text-align: center;
+            font-size: 15px;
+            line-height: 24px;
             border-radius: 6px;
-            transition: all 0.3s ease;
-
-            &:focus {
-              border-color: #4070f4;
-            }
-          }
-          .success {
-            border-color: #09c372;
-          }
-          .error {
-            border-color: #8a021d;
-          }
-          .--icon {
+            padding: 5px 0;
             position: absolute;
-            top: 6px;
-            right: 10px;
-            height: 48px;
-            font-size: 28px;
-            line-height: 48px;
-            color: #ffc70e;
-            -webkit-transition: all 200ms linear;
-            transition: all 200ms linear;
-            cursor: pointer;
+            z-index: 1;
+            left: -106px;
 
-            .name-tip {
-              top: -58px;
-            }
-            .email-tip {
-              top: -131px;
-            }
-            .pass-tip {
-              top: -130px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            }
-            .confirm-tip {
-              top: -82px;
-            }
-            .tooltiptext {
-              visibility: hidden;
-              width: 240px;
-              background-color: rgb(255, 219, 57);
-              color: #000000;
-              text-align: center;
-              font-size: 15px;
-              line-height: 24px;
-              border-radius: 6px;
-              padding: 5px 0;
+            &::after {
+              content: "";
               position: absolute;
-              z-index: 1;
-              left: -106px;
-
-              &::after {
-                content: "";
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                margin-left: -5px;
-                border-width: 5px;
-                border-style: solid;
-                border-color: rgb(255, 219, 57) transparent transparent
-                  transparent;
-              }
+              top: 100%;
+              left: 50%;
+              margin-left: -5px;
+              border-width: 5px;
+              border-style: solid;
+              border-color: rgb(255, 219, 57) transparent transparent
+                transparent;
             }
           }
-          .--icon:hover .tooltiptext {
-            visibility: visible;
-          }
         }
-        p {
-          font-size: 13px;
-          color: red;
-          margin-left: 4px;
-          text-align: left;
+        .--icon:hover .tooltiptext {
+          visibility: visible;
         }
       }
-      .subm-button button {
-        margin-top: 25px;
+      p {
+        font-size: 13px;
+        color: red;
+        margin-left: 4px;
+        text-align: left;
       }
+    }
+    .subm-button button {
+      margin-top: 25px;
     }
   }
 }
 
 /* Media Query For different screens */
 @media (min-width: 320px) and (max-width: 369px) {
-  .register .login-register .log-reg-form .reg-input-box .input-icon .--icon {
+  .login-register .log-reg-form .reg-input-box .input-icon .--icon {
     right: 10px;
   }
 }
 @media (min-width: 320px) and (max-width: 430px) {
-  .register .login-register .log-reg-form .reg-input-box .input-icon {
-    height: 45px;
-
-    .--icon {
-      top: 2px;
-      right: 6px;
-    }
-  }
-  .register
-    .login-register
+  .login-register
     .portrait
     .log-reg-form
     .reg-input-box
@@ -150,34 +140,25 @@
   }
 }
 
-@media (min-width: 760px) and (max-width: 999px) and (orientation: portrait) {
-  .register .login-register .portrait {
-    .log-reg-form {
-      .reg-input-box {
-        height: 83px;
+@media (min-width: 760px) and (orientation: portrait) {
+  .login-register .portrait .log-reg-form .reg-input-box {
+    height: 83px;
 
-        .input-icon input {
-          font-size: 24px;
-          padding: 0 19px;
-        }
-        .input-icon {
-          height: 61px;
+    .input-icon input {
+      padding: 0 19px;
+    }
+    .input-icon .--icon {
+      font-size: 30px;
+      top: 7px;
+    }
 
-          .--icon {
-            font-size: 37px;
-            top: 14px;
-          }
-        }
-        p {
-          font-size: 18px;
-        }
-      }
+    p {
+      font-size: 18px;
     }
   }
 }
 @media (min-width: 760px) and (max-width: 819px) {
-  .register
-    .login-register
+  .login-register
     .portrait
     .log-reg-form
     .reg-input-box
@@ -188,13 +169,7 @@
   }
 }
 @media (min-width: 760px) and (max-width: 1024px) and (orientation: portrait) {
-  .register
-    .login-register
-    .portrait
-    .log-reg-form
-    .reg-input-box
-    .input-icon
-    .--icon {
+  .login-register .portrait .log-reg-form .reg-input-box .input-icon .--icon {
     .name-tip {
       top: -63px;
     }
@@ -213,8 +188,7 @@
   }
 }
 @media (min-width: 820px) and (orientation: portrait) {
-  .register
-    .login-register
+  .login-register
     .portrait
     .log-reg-form
     .reg-input-box
@@ -225,38 +199,8 @@
   }
 }
 
-@media (min-width: 912px) and (orientation: portrait) {
-  .register .login-register .portrait .log-reg-form {
-    h2 {
-      margin-bottom: 80px;
-    }
-    .reg-input-box {
-      height: 110px;
-
-      .input-icon input {
-        font-size: 26px;
-        padding: 0 19px;
-      }
-      .input-icon {
-        height: 74px;
-
-        .--icon {
-          font-size: 46px;
-          top: 14px;
-
-          .tooltiptext {
-            left: -395%;
-          }
-        }
-      }
-      p {
-        font-size: 22px;
-      }
-    }
-  }
-}
 @media (min-width: 1024px) and (orientation: landscape) {
-  .register .login-register .landscape .log-reg-form .reg-input-box {
+  .login-register .landscape .log-reg-form .reg-input-box {
     height: 72px;
   }
 }
@@ -272,7 +216,7 @@
   }
 }
 @media (min-width: 1024px) and (max-height: 600px) {
-  .register .login-register .landscape .column .log-reg-form .reg-input-box {
+  .login-register .landscape .column .log-reg-form .reg-input-box {
     margin: 0 0;
 
     input {
@@ -294,9 +238,7 @@
   }
 }
 @media (min-width: 720px) and (max-height: 540px) {
-  .register .login-register .landscape .log-reg-form {
-    padding: 10px 20px 50px;
-
+  .login-register .landscape .log-reg-form {
     .reg-input-box {
       height: 57px;
 
@@ -305,7 +247,7 @@
       }
     }
   }
-  .register .login-register .landscape .column .log-reg-form .reg-input-box {
+  .login-register .landscape .column .log-reg-form .reg-input-box {
     margin: 0 0;
 
     input {

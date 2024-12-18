@@ -2,8 +2,9 @@ import React, { createContext, useState } from "react";
 import Alert from "@mui/material/Alert";
 import useOrientation from "../lib/useOrientation.js";
 
-import RegisterPortrait from "../components/LoginRegister/RegisterPortrait.js";
-import RegisterLandscape from "../components/LoginRegister/RegisterLandscape.js";
+import ShapeBackground from "../components/LoginRegister/ShapeBackground.js";
+import RegisterForm from "../components/LoginRegister/RegisterForm.tsx";
+import Carousel from "../components/LoginRegister/Carousel.js";
 import Header from "../components/Header.tsx";
 
 import { RegisterContextType, RegistrationStatus } from "../lib/types.tsx";
@@ -42,7 +43,7 @@ function Register() {
   }
 
   return (
-    <div className="register header-body">
+    <div className="header-body">
       <Header />
       <div className="login-register main-body">
         {statusMessage}
@@ -61,9 +62,19 @@ function Register() {
           }}
         >
           {orientation.isPortrait ? (
-            <RegisterPortrait />
+            <div className="portrait">
+              <ShapeBackground />
+              <RegisterForm className="form-p" />
+            </div>
           ) : (
-            <RegisterLandscape />
+            <div className="landscape">
+              <div className="column">
+                <Carousel />
+              </div>
+              <div className="column">
+                <RegisterForm />
+              </div>
+            </div>
           )}
         </RegisterContext.Provider>
       </div>

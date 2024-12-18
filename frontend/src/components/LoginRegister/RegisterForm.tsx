@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { useTranslation } from "react-i18next";
 
@@ -14,7 +14,17 @@ import InputField from "./RegisterField.tsx";
 import LogRegLink from "./Link.tsx";
 import SubmitButton from "./SubmitButton.tsx";
 
-function RegisterPortrait() {
+import { LogRegFormProps } from "../../lib/types.tsx";
+
+function RegisterForm({ className }: LogRegFormProps) {
+  const context = useContext(RegisterContext);
+
+  if (!context) {
+    throw new Error(
+      "RegisterForm must be used within a RegisterContextProvider"
+    );
+  }
+
   const {
     username,
     setUsername,
@@ -24,14 +34,13 @@ function RegisterPortrait() {
     setPassword1,
     password2,
     setPassword2,
-  } = useContext(RegisterContext);
+    setRegistrationStatus,
+  } = context;
 
   const [loading, setLoading] = useState(false);
 
   const [errors, setErrors] = useState({});
   const [validFields, setValidFields] = useState({});
-
-  const { setRegistrationStatus } = useContext(RegisterContext);
 
   const { t } = useTranslation();
 
@@ -93,14 +102,10 @@ function RegisterPortrait() {
   };
 
   return (
-    <div className="portrait">
-      <div className="log-reg-background">
-        <div className="shape shape1"></div>
-        <div className="shape shape2"></div>
-      </div>
-      <form className="log-reg-form form-p" onSubmit={handleSubmit}>
-        <Title text="registration-head" />
+    <form className={`log-reg-form ${className}`} onSubmit={handleSubmit}>
+      <Title text="registration-head" />
 
+      <div className="form-fields">
         <InputField
           value={username}
           placeholder="username-input"
@@ -109,7 +114,7 @@ function RegisterPortrait() {
           validFields={validFields}
           isValid="usernameIsValid"
           errors={errors}
-          errorsName={"username"}
+          errorsName="username"
           className="name-tip"
           tooltipText="tooltip1"
         />
@@ -117,12 +122,12 @@ function RegisterPortrait() {
         <InputField
           value={email}
           placeholder="email-input"
-          type="text"
+          type="email"
           onChange={setEmail}
           validFields={validFields}
           isValid="emailIsValid"
           errors={errors}
-          errorsName={"email"}
+          errorsName="email"
           className="email-tip"
           tooltipText="tooltip2"
         />
@@ -135,7 +140,7 @@ function RegisterPortrait() {
           validFields={validFields}
           isValid="passwordIsValid"
           errors={errors}
-          errorsName={"password"}
+          errorsName="password"
           className="pass-tip"
           tooltipText="tooltip3"
         />
@@ -148,7 +153,7 @@ function RegisterPortrait() {
           validFields={validFields}
           isValid="confPasswordIsValid"
           errors={errors}
-          errorsName={"confirmPassword"}
+          errorsName="confirmPassword"
           className="confirm-tip"
           tooltipText="tooltip4"
         />
@@ -160,9 +165,9 @@ function RegisterPortrait() {
           textLink="login-now"
           question="register-q"
         />
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 
-export default RegisterPortrait;
+export default RegisterForm;

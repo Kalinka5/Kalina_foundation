@@ -1,0 +1,32 @@
+/* Login and Register background */
+.log-reg-background {
+  width: 100%;
+  max-width: 500px;
+  max-height: 700px;
+  height: 100%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+
+  .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+    &:first-child {
+      background: linear-gradient(#1845ad, #23a2f6);
+    }
+    &:last-child {
+      background: linear-gradient(to right, #febf11, #fae900);
+    }
+  }
+  .shape1 {
+    left: 10px;
+    top: -50px;
+  }
+  .shape2 {
+    right: 10px;
+    bottom: -90px;
+  }
+}

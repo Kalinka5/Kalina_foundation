@@ -16,8 +16,18 @@ import { REGISTER_PAGE } from "../../lib/constants.js";
 
 import { LoginContext } from "../../pages/Login.tsx";
 
-function LoginPortrait() {
-  const { email, setEmail, password, setPassword } = useContext(LoginContext);
+import { TokenResponse, LogRegFormProps } from "../../lib/types.tsx";
+
+import "../../styles/loginRegister/loginForm.css";
+
+function LoginForm({ className }: LogRegFormProps) {
+  const context = useContext(LoginContext);
+
+  if (!context) {
+    throw new Error("LoginForm must be used within a LoginContextProvider");
+  }
+
+  const { email, setEmail, password, setPassword } = context;
 
   const [loading, setLoading] = useState(false);
 
@@ -26,12 +36,12 @@ function LoginPortrait() {
     e.preventDefault();
 
     try {
-      const response = await api("token/", {
+      const response = (await api("token/", {
         method: "POST",
         body: JSON.stringify({ email: email, password: password }),
-      });
+      })) as TokenResponse;
 
-      if (response.access) {
+      if (response?.access && response?.refresh) {
         localStorage.setItem(ACCESS_TOKEN, response.access);
         localStorage.setItem(REFRESH_TOKEN, response.refresh);
 
@@ -47,14 +57,10 @@ function LoginPortrait() {
   };
 
   return (
-    <div className="portrait">
-      <div className="log-reg-background">
-        <div className="shape shape1"></div>
-        <div className="shape shape2"></div>
-      </div>
-      <form className="log-reg-form form-p" onSubmit={handleSubmit}>
-        <Title text="login-head" />
+    <form className={`log-reg-form ${className}`} onSubmit={handleSubmit}>
+      <Title text="login-head" />
 
+      <div className="form-fields">
         <InputField
           label="email"
           value={email}
@@ -78,9 +84,9 @@ function LoginPortrait() {
           textLink="register-now"
           question="login-q"
         />
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }
 
-export default LoginPortrait;
+export default LoginForm;

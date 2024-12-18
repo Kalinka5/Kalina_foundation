@@ -32,7 +32,7 @@
   position: absolute;
   bottom: 1rem;
   left: 45%;
-  background-color: rgb(0, 255, 17);
+  background-color: #4070f4;
   border-radius: 10px;
   padding: 5px;
 }
@@ -53,7 +53,7 @@
 .arrow-background {
   position: absolute;
   top: 47%;
-  background-color: rgb(0, 255, 17);
+  background-color: #4070f4;
   border-radius: 50%;
   width: 2.5rem;
   height: 2.5rem;

@@ -21,17 +21,6 @@
   .submit-but {
     height: 44px;
     margin: 7px 0;
-    margin-top: 0;
     font-size: 14px;
-  }
-}
-@media (min-width: 912px) and (orientation: portrait) {
-  .submit-but {
-    font-size: 30px;
-  }
-}
-@media (min-width: 1024px) and (max-height: 600px) {
-  .submit-but {
-    margin-top: 25px;
   }
 }

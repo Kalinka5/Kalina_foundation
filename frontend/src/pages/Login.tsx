@@ -2,13 +2,12 @@ import React, { createContext, useState } from "react";
 
 import useOrientation from "../lib/useOrientation.js";
 
-import LoginPortrait from "../components/LoginRegister/LoginPortrait.js";
-import LoginLandscape from "../components/LoginRegister/LoginLandscape.js";
+import Carousel from "../components/LoginRegister/Carousel.js";
+import ShapeBackground from "../components/LoginRegister/ShapeBackground.js";
+import LoginForm from "../components/LoginRegister/LoginForm.tsx";
 import Header from "../components/Header.tsx";
 
 import { LoginContextType } from "../lib/types.tsx";
-
-import "../styles/loginRegister/login.css";
 
 export const LoginContext = createContext<LoginContextType | undefined>(
   undefined
@@ -20,11 +19,25 @@ function Login() {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="login header-body">
+    <div className="header-body">
       <Header />
       <LoginContext.Provider value={{ email, setEmail, password, setPassword }}>
         <div className="login-register main-body">
-          {orientation.isPortrait ? <LoginPortrait /> : <LoginLandscape />}
+          {orientation.isPortrait ? (
+            <div className="portrait">
+              <ShapeBackground />
+              <LoginForm className="form-p" />
+            </div>
+          ) : (
+            <div className="landscape">
+              <div className="column">
+                <Carousel />
+              </div>
+              <div className="column">
+                <LoginForm />
+              </div>
+            </div>
+          )}
         </div>
       </LoginContext.Provider>
     </div>

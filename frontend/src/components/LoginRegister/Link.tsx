@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 
 import { LogRegLinkProps } from "../../lib/types";
 
+import "../../styles/loginRegister/link.css";
+
 function LogRegLink({ link, textLink, question }: LogRegLinkProps) {
   const { t } = useTranslation();
 

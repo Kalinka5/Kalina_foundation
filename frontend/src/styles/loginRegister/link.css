@@ -1,0 +1,14 @@
+.help-p {
+  text-align: center;
+  padding-top: 35px;
+  color: #ffffff;
+
+  a {
+    color: #4070f4;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

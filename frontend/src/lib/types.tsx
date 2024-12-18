@@ -168,17 +168,18 @@ export type UsernameProps = {
   username: string;
 };
 
-// Login and Register Title
+// Login and Register
 export type LogRegTitleProps = {
   text: "login-head" | "registration-head";
 };
-
+export type LogRegFormProps = {
+  className?: string;
+};
 export type LogRegLinkProps = {
   link: string;
   textLink: "register-now" | "login-now";
   question: "login-q" | "register-q";
 };
-
 export type SubmitButtonProps = {
   text: "register-now" | "login-button";
   loading: boolean;
@@ -201,7 +202,7 @@ export type LoginFieldProps = {
 };
 
 // Register Page
-export type RegistrationStatus = "success" | "failed" | null;
+export type RegistrationStatus = "success" | "error" | null;
 export type RegisterContextType = {
   registrationStatus: RegistrationStatus;
   setRegistrationStatus: Dispatch<SetStateAction<RegistrationStatus>>;
@@ -220,9 +221,9 @@ export type RegisterFieldProps = {
   placeholder: string;
   type: "text" | "email" | "password";
   onChange: Dispatch<SetStateAction<string>>;
-  validFields: { string: boolean };
+  validFields: { string: boolean } | {};
   isValid: string;
-  errors: { string: string };
+  errors: { string: string } | {};
   errorsName: "username" | "email" | "password" | "confirmPassword";
   className: "name-tip" | "email-tip" | "pass-tip" | "confirm-tip";
   tooltipText: "tooltip1" | "tooltip2" | "tooltip3" | "tooltip4";
