@@ -193,7 +193,7 @@ header {
     }
   }
 }
-@media (min-height: 500px) and (max-height: 600px) {
+@media (max-height: 600px) {
   header {
     height: 45px;
   }

@@ -157,9 +157,11 @@ function RegisterForm({ className }: LogRegFormProps) {
           className="confirm-tip"
           tooltipText="tooltip4"
         />
-
+      </div>
+      <div className="form-fields">
         <SubmitButton text="register-now" loading={loading} />
-
+      </div>
+      <div className="form-fields">
         <LogRegLink
           link={LOGIN_PAGE}
           textLink="login-now"

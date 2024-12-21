@@ -1,0 +1,11 @@
+.field-error {
+  font-size: 13px;
+  color: red;
+  margin-left: 4px;
+  text-align: left;
+  visibility: hidden;
+  display: inline-block;
+}
+.field-error.visible {
+  visibility: initial;
+}

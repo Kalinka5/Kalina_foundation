@@ -1,0 +1,261 @@
+/* Login and Register form */
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
+.log-reg-form {
+  height: 100%;
+  width: 98%;
+  max-width: 400px;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: auto auto;
+  box-sizing: border-box;
+
+  h2 {
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 42px;
+    text-align: center;
+  }
+  .form-fields {
+    padding: 0 10px;
+    box-sizing: border-box;
+
+    label {
+      color: #ffffff;
+      display: block;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .input-box {
+      position: relative;
+
+      input {
+        height: 55px;
+        width: 100%;
+        outline: none;
+        padding-left: 15px;
+        font-size: 17px;
+        font-weight: 400;
+        color: #333;
+        border: 1.5px solid #c7bebe;
+        border-bottom-width: 2.5px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+
+        &:focus {
+          border-color: #4070f4;
+        }
+      }
+      .success {
+        border-color: #09c372;
+      }
+      .error {
+        border-color: #8a021d;
+      }
+      .icon {
+        position: absolute;
+        top: 55%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        i {
+          font-size: 24px;
+          line-height: 1;
+          color: #333;
+          transition: color 0.3s ease-in-out;
+          margin-bottom: 20px;
+
+          &:hover {
+            color: #000;
+          }
+        }
+      }
+      .bulb {
+        height: 48px;
+        font-size: 28px;
+        line-height: 48px;
+        color: #ffc70e;
+        -webkit-transition: all 200ms linear;
+        transition: all 200ms linear;
+
+        .name-tip {
+          top: -58px;
+        }
+        .email-tip {
+          top: -131px;
+        }
+        .pass-tip {
+          top: -130px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .confirm-tip {
+          top: -82px;
+        }
+        .tooltiptext {
+          visibility: hidden;
+          width: 240px;
+          background-color: rgb(255, 219, 57);
+          color: #000000;
+          text-align: center;
+          font-size: 15px;
+          line-height: 24px;
+          border-radius: 6px;
+          padding: 5px 0;
+          position: absolute;
+          z-index: 1;
+          left: -106px;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgb(255, 219, 57) transparent transparent transparent;
+          }
+        }
+      }
+      .bulb:hover .tooltiptext {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+@media (orientation: portrait) {
+  .log-reg-form {
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+
+    .input-box .bulb .tooltiptext {
+      left: -192px;
+
+      &::after {
+        left: 85%;
+      }
+    }
+  }
+}
+@media (min-width: 320px) and (max-width: 430px) {
+  .log-reg-form .input-box .bulb .tooltiptext::after {
+    left: 86%;
+  }
+}
+@media (min-width: 760px) and (orientation: portrait) {
+  .field-error {
+    font-size: 14px;
+  }
+}
+@media (min-width: 760px) and (max-width: 819px) {
+  .log-reg-form .input-box .bulb .tooltiptext {
+    left: -503%;
+  }
+}
+@media (min-width: 760px) and (max-width: 1024px) and (orientation: portrait) {
+  .log-reg-form .input-box .bulb {
+    .name-tip {
+      top: -63px;
+    }
+    .email-tip {
+      top: -136px;
+    }
+    .pass-tip {
+      top: -136px;
+    }
+    .confirm-tip {
+      top: -87px;
+    }
+  }
+}
+@media (min-width: 820px) and (orientation: portrait) {
+  .log-reg-form .input-box .bulb .tooltiptext {
+    left: -500%;
+  }
+}
+@media (min-width: 1600px) and (orientation: landscape) {
+  .log-reg-form h2 {
+    font-size: 55px;
+  }
+}
+@media (min-width: 1024px) and (max-height: 600px) {
+  .log-reg-form {
+    font-size: 16px;
+
+    label {
+      font-size: 14px;
+    }
+    .reg-input-box {
+      height: 60px;
+
+      .input-icon {
+        height: 38px;
+      }
+    }
+  }
+  .log-reg-form .input-box {
+    input {
+      font-size: 14px;
+    }
+    .bulb .tooltiptext {
+      left: -70px;
+
+      &::after {
+        left: 35%;
+      }
+    }
+  }
+}
+@media (max-height: 665px) and (orientation: landscape) {
+  .log-reg-form {
+    font-size: 14px;
+    width: 80%;
+
+    h2 {
+      font-size: 36px;
+    }
+    .form-fields .input-box {
+      input {
+        height: 42px;
+        font-size: 14px;
+      }
+      .bulb {
+        right: 2px;
+
+        .tooltiptext {
+          width: 206px;
+          font-size: 13px;
+          line-height: 20px;
+          left: -83px;
+
+          &::after {
+            left: 47%;
+          }
+        }
+      }
+      .bulb .name-tip {
+        top: -48px;
+      }
+      .bulb .email-tip {
+        top: -108px;
+      }
+      .bulb .pass-tip {
+        top: -108px;
+      }
+      .bulb .confirm-tip {
+        top: -68px;
+      }
+    }
+  }
+}

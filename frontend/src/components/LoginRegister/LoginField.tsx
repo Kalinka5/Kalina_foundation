@@ -27,7 +27,7 @@ function InputField({
   return (
     <>
       <label htmlFor={type}>{t(label)}</label>
-      <div className="log-input-box">
+      <div className="input-box">
         <input
           type={inputType}
           value={value}
@@ -36,10 +36,7 @@ function InputField({
           onChange={(e) => onChange(e.target.value)}
         />
         {type === "password" && (
-          <span
-            className="password-toggle-icon"
-            onClick={togglePasswordVisibility}
-          >
+          <span className="icon" onClick={togglePasswordVisibility}>
             {passVisible ? (
               <i>
                 <IoMdEyeOff />

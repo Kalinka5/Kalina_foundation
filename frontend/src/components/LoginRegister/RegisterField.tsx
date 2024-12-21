@@ -6,6 +6,8 @@ import { useTranslation } from "react-i18next";
 
 import { RegisterFieldProps } from "../../lib/types";
 
+import "../../styles/loginRegister/fieldError.css";
+
 function InputField({
   value,
   placeholder,
@@ -25,8 +27,8 @@ function InputField({
   };
 
   return (
-    <div className="reg-input-box">
-      <div className="input-icon">
+    <>
+      <div className="input-box">
         <input
           className={`${
             isObjectEmpty(validFields)
@@ -40,13 +42,15 @@ function InputField({
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
-        <i className="--icon">
+        <div className="icon bulb">
           <IoIosBulb />
           <span className={`tooltiptext ${className}`}>{t(tooltipText)}</span>
-        </i>
+        </div>
       </div>
-      {errors[errorsName] && <p>{errors[errorsName]}</p>}
-    </div>
+      <p className={`field-error ${errors[errorsName] && "visible"}`}>
+        {errors[errorsName]}
+      </p>
+    </>
   );
 }
 

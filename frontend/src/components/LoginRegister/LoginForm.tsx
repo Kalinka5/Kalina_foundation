@@ -18,7 +18,7 @@ import { LoginContext } from "../../pages/Login.tsx";
 
 import { TokenResponse, LogRegFormProps } from "../../lib/types.tsx";
 
-import "../../styles/loginRegister/loginForm.css";
+import "../../styles/loginRegister/logRegForm.css";
 
 function LoginForm({ className }: LogRegFormProps) {
   const context = useContext(LoginContext);
@@ -76,9 +76,11 @@ function LoginForm({ className }: LogRegFormProps) {
           type="password"
           onChange={setPassword}
         />
-
+      </div>
+      <div className="form-fields">
         <SubmitButton text="login-button" loading={loading} />
-
+      </div>
+      <div className="form-fields">
         <LogRegLink
           link={REGISTER_PAGE}
           textLink="register-now"

@@ -1,5 +1,4 @@
 .submit-but {
-  margin-top: 50px;
   width: 100%;
   padding: 15px 0;
   border: none;
@@ -12,15 +11,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   &:hover {
     background: #0e4bf1;
   }
 }
 
-@media (min-width: 720px) and (max-height: 540px) {
+@media (max-height: 665px) and (orientation: landscape) {
   .submit-but {
     height: 44px;
-    margin: 7px 0;
     font-size: 14px;
   }
 }

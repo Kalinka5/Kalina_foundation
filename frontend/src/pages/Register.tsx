@@ -9,7 +9,7 @@ import Header from "../components/Header.tsx";
 
 import { RegisterContextType, RegistrationStatus } from "../lib/types.tsx";
 
-import "../styles/loginRegister/register.css";
+import "../styles/loginRegister/alertMessage.css";
 
 export const RegisterContext = createContext<RegisterContextType | undefined>(
   undefined
