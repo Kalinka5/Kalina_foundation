@@ -16,9 +16,9 @@ function Pedestal({ donators, orientation }: PedestalProps) {
     <div className={`pedestal ${donators ? "grid-p" : "flex-l"}`}>
       {donators ? (
         donators.map((user, index) => (
-          <div className="bar-image" key={user.id}>
+          <div className={`bar-image __${index + 1}`} key={user.id}>
             <DonatorImg image={user.image} />
-            <div className={`bar __${index + 1}`}>
+            <div className="bar">
               {orientation === "portrait" && (
                 <MoneyPortrait donated={user.donated} />
               )}

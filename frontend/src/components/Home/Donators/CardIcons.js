@@ -42,7 +42,7 @@ function CardIcons() {
       n++;
     }
 
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i <= 11; i++) {
       iconsBack.push(
         <div className="icon-row card-row" key={i}>
           <div className="ic">{iconsDiv.map((el) => el)}</div>
@@ -53,7 +53,7 @@ function CardIcons() {
     setCardIcons(iconsBack);
   };
 
-  return <>{cardIcons.map((el) => el)}</>;
+  return <div className="pedestal-icons">{cardIcons.map((el) => el)}</div>;
 }
 
 export default CardIcons;

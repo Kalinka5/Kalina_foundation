@@ -30,6 +30,11 @@ header {
     a {
       text-decoration: none;
       font-size: 22px;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       span:nth-child(1) {
         color: #008cff;
@@ -95,6 +100,13 @@ header {
     justify-items: center;
     gap: 5px;
 
+    .nav-link a {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .nav-link:hover {
       background: #3a3b3c;
     }

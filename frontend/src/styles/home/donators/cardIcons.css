@@ -1,3 +1,10 @@
+.pedestal-icons {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
 .icon-row {
   position: relative;
   width: 100%;
@@ -26,9 +33,49 @@
 }
 .card-row {
   font-size: 67px;
+  height: calc(100% / 11 - 20px);
 
   .title-icons {
     color: #0093a9;
     padding: 0 2px;
+  }
+}
+
+@keyframes animate1 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes animate2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+@keyframes animate3 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes animate4 {
+  0% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .card-row {
+    font-size: 40px;
   }
 }
