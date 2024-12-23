@@ -169,11 +169,16 @@ export type UsernameProps = {
 };
 
 // Login and Register
+export type LogRegContainerProps = {
+  message?: ReactNode;
+  children: ReactNode;
+};
 export type LogRegTitleProps = {
   text: "login-head" | "registration-head";
 };
 export type LogRegFormProps = {
-  className?: string;
+  handleSubmit: (e: any) => Promise<void>;
+  children: ReactNode;
 };
 export type LogRegLinkProps = {
   link: string;
@@ -186,13 +191,6 @@ export type SubmitButtonProps = {
 };
 
 // Login Page
-export type LoginContextType = {
-  email: string;
-  setEmail: Dispatch<SetStateAction<string>>;
-  password: string;
-  setPassword: Dispatch<SetStateAction<string>>;
-};
-
 export type LoginFieldProps = {
   label: "email" | "password";
   value: string;

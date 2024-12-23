@@ -56,47 +56,6 @@ code {
   }
 }
 
-/*Login and Register pages*/
-.login-register {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(to bottom, #2f80ed, #ebe37d);
-  overflow: hidden;
-
-  * {
-    font-family: "Poppins", sans-serif;
-    letter-spacing: 0.5px;
-    outline: none;
-  }
-  .landscape {
-    background-color: rgba(255, 255, 255, 0.13);
-    position: relative;
-    display: flex;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-    width: 90%;
-    height: 90%;
-    max-width: 1400px;
-    max-height: 800px;
-
-    .column {
-      flex: 1;
-      position: relative;
-      display: flex;
-    }
-  }
-  .portrait {
-    height: 80%;
-    width: 100%;
-    min-height: 600px;
-    position: relative;
-    display: flex;
-  }
-}
-
 /* Loader in Login, Register, Profile pages */
 .loader {
   margin-left: 10px;
