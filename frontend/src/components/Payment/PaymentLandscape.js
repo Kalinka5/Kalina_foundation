@@ -17,18 +17,19 @@ export const PaymentLandscape = () => {
   const [currentDonation, setCurrentDonation] = useState(1);
 
   return (
-    <div className="pc-version">
-      <PaymentLandscapeContext.Provider
-        value={{ currentDonation, setCurrentDonation }}
-      >
-        <div className="payment-header">
+    <div className="container payment-container">
+      <div className="pc-version">
+        <PaymentLandscapeContext.Provider
+          value={{ currentDonation, setCurrentDonation }}
+        >
           <Question1 />
           <ButtonHeader />
           <Question2 />
-        </div>
-        <div className="cards">
+
           <article
-            className={`payment-methods ${currentDonation === 2 && "others"}`}
+            className={`payment-methods blue ${
+              currentDonation === 2 && "others"
+            }`}
           >
             <div className={`front ${currentDonation === 1 && "index-100"}`}>
               <MonoBank />
@@ -41,7 +42,9 @@ export const PaymentLandscape = () => {
             <DonateInfo />
           </article>
           <article
-            className={`payment-methods ${currentDonation === 2 && "others"}`}
+            className={`payment-methods yellow ${
+              currentDonation === 2 && "others"
+            }`}
           >
             <div className={`front ${currentDonation === 1 && "index-100"}`}>
               <PrivatBank />
@@ -50,10 +53,12 @@ export const PaymentLandscape = () => {
               <PaypalMethod />
             </div>
           </article>
-        </div>
 
-        <ChangeDonateMethod />
-      </PaymentLandscapeContext.Provider>
+          <div className="change-method-container">
+            <ChangeDonateMethod />
+          </div>
+        </PaymentLandscapeContext.Provider>
+      </div>
     </div>
   );
 };

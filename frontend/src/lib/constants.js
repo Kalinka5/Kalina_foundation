@@ -10,6 +10,6 @@ export const DONATE_PAGE = "/donate";
 
 export const API_URL = "https://kalina-foundation-back.vercel.app";
 
-export const DONATION_ITEM_ID = 18;
+export const DONATION_ITEM_ID = 1;
 
 export const MAX_PAGE_NUMBER = 6;

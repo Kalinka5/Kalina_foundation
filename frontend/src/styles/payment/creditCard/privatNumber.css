@@ -1,0 +1,3 @@
+.card-no {
+  font-size: clamp(1rem, 2.25vw, 2.75rem);
+}

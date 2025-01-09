@@ -1,0 +1,3 @@
+.mono-info {
+  font-size: clamp(0.5rem, 1vw, 1rem);
+}

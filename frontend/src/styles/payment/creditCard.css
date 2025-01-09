@@ -1,0 +1,60 @@
+.credit-card {
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  box-sizing: border-box;
+  padding: 5px;
+
+  .card-front {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    padding: clamp(0.5em, 1vw, 1.25em);
+    color: white;
+    border-radius: 11px;
+    transition: transform 0.3s ease, box-shadow 0.2s ease-in;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.015);
+    }
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+
+      .card-info {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+    }
+    .info {
+      height: 40%;
+    }
+  }
+  .img-z-1 {
+    z-index: 1;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card.mono {
+    background: linear-gradient(135deg, #45484d 0%, #000000 100%);
+  }
+  .card.privat {
+    background-image: linear-gradient(45deg, #0045c7, #ff2c7d);
+  }
+}
+
+@media (min-width: 320px) and (max-width: 430px) {
+  .credit-card {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -2,3 +2,9 @@
   overflow: hidden;
   background: linear-gradient(to top, #ebe37d, #2f80ed);
 }
+.payment-landscape {
+  background-color: #45484d98;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

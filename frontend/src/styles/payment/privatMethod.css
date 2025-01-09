@@ -1,169 +1,73 @@
-figure {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-
-  .card-front {
-    position: relative;
-    color: white;
-    background-image: linear-gradient(45deg, #0045c7, #ff2c7d);
-    border-radius: 11px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.2s ease-in;
-    backface-visibility: hidden;
-
-    .map-img {
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0.3;
-      z-index: -1;
-    }
-    .row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .p-t-15 {
-      padding-top: 15px;
-    }
-    .p-b-15 {
-      padding-bottom: 15px;
-    }
-    .p-r-15 {
-      padding-right: 15px;
-    }
-    .p-l-15 {
-      padding-left: 15px;
-    }
-    .card-no {
-      font-size: 36px;
-      margin-top: 50px;
-    }
-    .card-holder {
-      font-size: 12px;
-      margin-top: 52px;
-    }
-  }
-  .front-hov:hover {
-    cursor: pointer;
-    transform: scale(1.015);
-    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.45);
-  }
-  .img-z-1 {
-    z-index: 1;
-  }
-}
-.container-visa {
-  padding: 5px;
-}
 .article-body {
   display: flex;
+  height: 50%;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
+  padding: 15px;
+  box-sizing: border-box;
 }
 #visa-desc {
-  .desc-field {
-    height: 5px;
-  }
-  label {
-    padding-left: 10px;
-    font-size: 16px;
-    font-weight: 500;
-    font-family: sans-serif;
-  }
-  .input-box {
-    position: relative;
+  .input-row {
+    width: 100%;
 
-    input {
-      display: block;
-      width: 330px;
-      height: 30px;
+    label {
       padding-left: 10px;
-      padding-top: 3px;
-      padding-bottom: 3px;
-      margin: 0 auto;
-      font-size: 17px;
-      border-radius: 20px;
-      color: white;
-      background: rgba(0, 0, 0, 0.656);
-      border: none;
-      transition: background 0.5s;
-
-      &:focus {
-        outline-width: 0;
-        background: rgba(16, 17, 17, 0.742);
-        transition: background 0.5s;
-      }
+      font-size: 16px;
+      font-weight: 500;
+      font-family: sans-serif;
     }
-    .copy-toggle-icon {
-      position: absolute;
-      top: 55%;
-      right: 10px;
-      transform: translateY(-50%);
-      cursor: pointer;
+    .input-box {
+      position: relative;
 
-      .copy {
-        font-size: 24px;
-        line-height: 1;
-        color: #ffffff;
-        transition: color 0.3s ease-in-out;
-        margin-bottom: 20px;
+      input {
+        display: block;
+        width: 100%;
+        height: 30px;
+        padding-left: 10px;
+        font-size: 17px;
+        border-radius: 20px;
+        color: white;
+        background: rgba(0, 0, 0, 0.656);
+        border: none;
+        transition: background 0.5s;
+        box-sizing: border-box;
 
-        &:hover {
-          color: #d2d2d2;
+        &:focus {
+          outline-width: 0;
+          background: rgba(16, 17, 17, 0.742);
+          transition: background 0.5s;
         }
       }
-      .checkmark {
-        font-size: 30px;
-        line-height: 1;
-        color: #0dbd00;
+      .copy-toggle-icon {
+        position: absolute;
+        top: 55%;
+        right: 10px;
+        transform: translateY(-50%);
+        cursor: pointer;
+
+        .copy {
+          font-size: 24px;
+          line-height: 1;
+          color: #ffffff;
+          transition: color 0.3s ease-in-out;
+          margin-bottom: 20px;
+
+          &:hover {
+            color: #d2d2d2;
+          }
+        }
+        .checkmark {
+          font-size: 30px;
+          line-height: 1;
+          color: #0dbd00;
+        }
       }
     }
   }
 }
 
-@media (min-width: 320px) and (max-width: 430px) {
-  .container-visa .card-front {
-    .card-no {
-      font-size: 28px;
-      margin-top: 34px;
-    }
-    .card-holder {
-      font-size: 12px;
-      margin-top: 36px;
-    }
-  }
-}
-@media (min-width: 540px) and (max-width: 1000px) and (orientation: portrait) {
-  .container-visa .card-front {
-    .card-no {
-      font-size: 30px;
-      margin-top: 26px;
-    }
-    .card-holder {
-      margin-top: 40px;
-    }
-  }
-}
 @media (min-width: 1024px) and (max-width: 1100px) {
-  .container-visa .card-front {
-    .chip-img {
-      width: 40px;
-    }
-    .visa-img {
-      width: 40px;
-    }
-    .card-no {
-      font-size: 26px;
-      margin-top: 22px;
-    }
-    .card-holder {
-      font-size: 10px;
-      margin-top: 29px;
-    }
-  }
   #visa-desc .input-box input {
     width: 284px;
     height: 28px;
@@ -171,16 +75,6 @@ figure {
   }
 }
 @media (min-width: 1100px) and (max-width: 1200px) {
-  .container-visa .card-front {
-    .card-no {
-      font-size: 30px;
-      margin-top: 32px;
-    }
-    .card-holder {
-      font-size: 10px;
-      margin-top: 40px;
-    }
-  }
   #visa-desc .input-box input {
     width: 284px;
     height: 28px;
@@ -188,16 +82,6 @@ figure {
   }
 }
 @media (min-width: 1200px) and (max-width: 1300px) {
-  .container-visa .card-front {
-    .card-no {
-      font-size: 30px;
-      margin-top: 41px;
-    }
-    .card-holder {
-      font-size: 10px;
-      margin-top: 43px;
-    }
-  }
   #visa-desc .input-box input {
     width: 328px;
     height: 29px;
@@ -205,25 +89,6 @@ figure {
   }
 }
 @media (min-width: 720px) and (max-height: 540px) {
-  .container-visa .card-front {
-    .row .chip-img {
-      width: 26px;
-    }
-    .row .visa-img {
-      width: 26px;
-    }
-    .card-no {
-      font-size: 15px;
-      margin-top: 14px;
-    }
-    .card-holder {
-      font-size: 8px;
-      margin-top: 19px;
-    }
-    .name {
-      font-size: 10px;
-    }
-  }
   #visa-desc {
     label {
       font-size: 12px;

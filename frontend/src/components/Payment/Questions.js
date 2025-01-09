@@ -11,7 +11,7 @@ export const Question1 = () => {
 
   return (
     <span className="questions left-q">
-      {t("q1-head")}
+      <p className="question">{t("q1-head")}</p>
       <div className="tooltip">
         <IoIosHelpCircle className="question-icon" />
         <span className="tooltiptext">
@@ -55,7 +55,7 @@ export const Question2 = () => {
           {t("q2-text9")}
         </span>
       </div>
-      {t("q2-head")}
+      <p className="question">{t("q2-head")}</p>
     </span>
   );
 };

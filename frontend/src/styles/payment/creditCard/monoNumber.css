@@ -1,0 +1,7 @@
+.mono-number {
+  font-size: clamp(0.5em, 1.5vw, 1.75em);
+  font-family: "Cutive Mono";
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 1px rgba(black, 0.3);
+}

@@ -1,0 +1,3 @@
+.chip-img {
+  width: clamp(0.5rem, 4vw, 3.75rem);
+}

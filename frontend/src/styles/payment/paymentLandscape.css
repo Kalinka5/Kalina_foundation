@@ -1,27 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i&display=swap");
 
-.pc-version {
-  width: 100%;
-  height: 100%;
-  background-color: #45484d98;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.payment-container {
+  height: 90%;
+  max-height: 1000px;
 
-  .payment-header {
-    display: flex;
-    align-items: center;
-    color: #ffffff;
-  }
-
-  .cards {
+  .pc-version {
+    width: 100%;
+    height: 100%;
     display: grid;
+    grid-template-columns: 1fr fit-content(40%) 1fr;
+    grid-template-rows: auto auto auto;
+    gap: clamp(10px, 2vw, 20px);
     margin-inline: auto;
-    padding-inline: 24px;
-    grid-template-columns: 402px 483px 402px;
-    gap: 15px;
 
     .payment-methods {
       transform-style: preserve-3d;
@@ -33,23 +24,17 @@
     article {
       --img-scale: 1.001;
       --title-color: rgb(255, 255, 255);
+
       position: relative;
       border-radius: 16px;
       box-shadow: none;
       background: #fff;
       transform-origin: center;
       transition: all 0.4s ease-in-out;
-
-      height: 106%;
+      height: 100%;
       width: 100%;
       margin: auto;
 
-      &:nth-child(1) {
-        background: #2f80ed;
-      }
-      &:nth-child(3) {
-        background: rgb(229, 229, 21);
-      }
       .front {
         backface-visibility: hidden;
         overflow: hidden;
@@ -72,39 +57,27 @@
       .index-100 {
         z-index: 100;
       }
-    }
-    /* using the has() relational pseudo selector to update our custom properties */
-    article:has(:hover, :focus) {
-      --img-scale: 1.1;
-      --title-color: #81ecfa;
-      box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-    }
-  }
-}
-@media (min-width: 1024px) and (max-width: 1100px) {
-  .pc-version .cards {
-    grid-template-columns: 305px 340px 305px;
-    gap: 12px;
-  }
-}
-@media (min-width: 1100px) and (max-width: 1200px) {
-  .pc-version .cards {
-    grid-template-columns: 341px 416px 341px;
-    gap: 14px;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1300px) {
-  .pc-version .cards {
-    grid-template-columns: 358px 460px 358px;
-    gap: 14px;
-  }
-}
 
-@media (min-width: 720px) and (max-height: 540px) {
-  .pc-version .cards {
-    grid-template-columns: 215px 259px 215px;
-    padding-inline: 5px;
-    gap: 8px;
+      /* using the has() relational pseudo selector to update our custom properties */
+      article:has(:hover, :focus) {
+        --img-scale: 1.1;
+        --title-color: #81ecfa;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+          rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+      }
+    }
+    .yellow {
+      background-color: rgb(229, 229, 21);
+    }
+    .blue {
+      background-color: #2f80ed;
+    }
+    .change-method-container {
+      grid-column-start: 1;
+      grid-column-end: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

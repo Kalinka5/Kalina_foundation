@@ -1,0 +1,3 @@
+.fa-globe {
+  font-size: clamp(1em, 1vw + 0.4rem, 1.6em);
+}

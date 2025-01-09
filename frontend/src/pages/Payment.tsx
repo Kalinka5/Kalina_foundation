@@ -14,7 +14,11 @@ function Payment() {
   return (
     <div className="payment header-body">
       <Header />
-      <div className="main-body">
+      <div
+        className={`main-body ${
+          orientation.isLandscape && "payment-landscape"
+        }`}
+      >
         {orientation.isPortrait ? <PaymentPortrait /> : <PaymentLandscape />}
       </div>
     </div>

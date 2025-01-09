@@ -2,6 +2,15 @@ import React from "react";
 
 import { useTranslation } from "react-i18next";
 
+import CreditCard from "./CreditCard.tsx";
+import MonoTitle from "./CreditCard/MonoTitle.tsx";
+import GlobeIcon from "./CreditCard/GlobeIcon.tsx";
+import MonoNumber from "./CreditCard/MonoNumber.tsx";
+import CardHolder from "./CreditCard/CardHolder.tsx";
+import MasterCardIcon from "./CreditCard/MasterCardIcon.tsx";
+import MonoText from "./MonoText.tsx";
+import MonobankaLink from "./MonobankaLink.tsx";
+
 import "../../styles/payment/monoMethod.css";
 
 export const MonoBank = () => {
@@ -9,36 +18,22 @@ export const MonoBank = () => {
 
   return (
     <>
-      <figure className="container-mastercard">
-        <div className="front-card front-hov">
-          <div className="column1">
-            <h3 id="main-title">
-              monobank | <span>Universal Bank</span>
-            </h3>
-            <div id="chip"></div>
-            <div className="card-info">
-              <p id="no">5375 4141 2253 7789</p>
-              <div className="grid-date">
-                <p id="name">Daniil Kalinevych</p>
-                <p id="exp-date">dd/yy</p>
-              </div>
-            </div>
-          </div>
-          <div className="column2">
-            <i id="globe" className="fa fa-globe"></i>
-            <div id="mastercard"></div>
-          </div>
+      <CreditCard className="card mono">
+        <div className="row">
+          <MonoTitle />
+          <GlobeIcon />
         </div>
-      </figure>
+        <div className="row info">
+          <div className="card-info">
+            <MonoNumber />
+            <CardHolder />
+          </div>
+          <MasterCardIcon />
+        </div>
+      </CreditCard>
       <div className="article-body mono-body">
-        <p id="monobanka-p">{t("monobanka-p")}</p>
-        <a
-          href="https://send.monobank.ua/jar/QsATQ1NQ4"
-          target="_blank"
-          rel="noreferrer"
-        >
-          {t("monobank")}
-        </a>
+        <MonoText>{t("monobanka-p")}</MonoText>
+        <MonobankaLink>{t("monobank")}</MonobankaLink>
       </div>
     </>
   );

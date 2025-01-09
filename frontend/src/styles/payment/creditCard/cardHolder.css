@@ -1,0 +1,18 @@
+.card-holder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .name {
+    font-family: "Cutive Mono";
+    font-weight: bold;
+    font-size: clamp(0.6em, 1.5vw, 1.5em);
+    display: block;
+  }
+  .exp-date {
+    position: relative;
+    font-size: clamp(0.6em, 1vw, 1.25em);
+    opacity: 0.9;
+    display: block;
+  }
+}

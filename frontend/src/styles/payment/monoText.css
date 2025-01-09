@@ -1,0 +1,5 @@
+.monobanka-text {
+  font-size: clamp(0.5rem, 1.5vw, 1.75rem);
+  font-weight: 600;
+  text-align: center;
+}

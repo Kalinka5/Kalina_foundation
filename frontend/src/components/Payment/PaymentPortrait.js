@@ -13,15 +13,13 @@ import "../../styles/payment/paymentPortrait.css";
 export const PaymentPortraitContext = createContext(null);
 
 export const PaymentPortrait = () => {
-  const [bankChange, setbankChange] = useState(1);
+  const [payMethod, setPayMethod] = useState(1);
 
   return (
     <div className="flex-center">
       <div className="mob-container">
-        <PaymentPortraitContext.Provider value={setbankChange}>
-          <SliderDonatePortrait />
-        </PaymentPortraitContext.Provider>
-        <div className={`grid-part form-section move-${bankChange}`}>
+        <SliderDonatePortrait setPayMethod={setPayMethod} />
+        <div className={`grid-part form-section move-${payMethod}`}>
           <div className="grid-mono grid-column">
             <MonoBank />
           </div>

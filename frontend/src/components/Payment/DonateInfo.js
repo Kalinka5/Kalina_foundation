@@ -62,12 +62,14 @@ export const DonateInfo = () => {
       </div>
       <div className="donate-desc">
         <h2>"{t("img-head")}"</h2>
-        <span className="text-left">
-          <a href="/donate" disabled>
-            <i>{t("img-text1")}</i>
-          </a>
-        </span>
-        <span className="text-right">{t("img-text2")}</span>
+        <div className="donate-text">
+          <span className="text-left">
+            <a href="/donate" disabled>
+              <i>{t("img-text1")}</i>
+            </a>
+          </span>
+          <span className="text-right">{t("img-text2")}</span>
+        </div>
         <div className="progress-desc">
           <div className="progress-text">
             <span className="donated-text">

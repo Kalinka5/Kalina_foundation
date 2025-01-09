@@ -263,3 +263,10 @@ export type DescriptionProps = {
   description: string;
   setDescription: Dispatch<SetStateAction<string>>;
 };
+
+// Payment page
+export type CreditCardProps = {
+  className: "privat-card" | "mono-card";
+  currentDonation: 1 | 2;
+  children?: ReactNode;
+};

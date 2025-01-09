@@ -1,16 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import { IoIosBrowsers, IoIosCheckmark } from "react-icons/io";
 
 import { useTranslation } from "react-i18next";
 
-import { PaymentLandscapeContext } from "./PaymentLandscape";
+import CreditCard from "./CreditCard.tsx";
+import BackgroundImg from "./CreditCard/BackgroundImg.tsx";
+import ChipImg from "./CreditCard/ChipImg.tsx";
+import VisaImg from "./CreditCard/VisaImg.tsx";
+import PrivatNumber from "./CreditCard/PrivatNumber.tsx";
+import NameInfo from "./CreditCard/MonoNameInfo.tsx";
+import MonoInfo from "./CreditCard/MonoInfo.tsx";
 
 import "../../styles/payment/privatMethod.css";
 
 export const PrivatBank = () => {
-  const { currentDonation } = useContext(PaymentLandscapeContext);
-
   const { t } = useTranslation();
 
   const [recCoppied, setRecCoppied] = useState(false);
@@ -54,49 +58,20 @@ export const PrivatBank = () => {
 
   return (
     <>
-      <figure className="container-visa">
-        <div
-          className={`card-front front-hov ${
-            currentDonation === 1 && "img-z-1"
-          }`}
-        >
-          <img
-            src="https://i.ibb.co/PYss3yv/map.png"
-            className="map-img"
-            alt="Map"
-          />
-          <div className="row p-r-15 p-l-15 p-t-15">
-            <img
-              src="https://i.ibb.co/G9pDnYJ/chip.png"
-              width="50px"
-              alt="Chip"
-              className="chip-img"
-            />
-            <img
-              src="https://i.ibb.co/WHZ3nRJ/visa.png"
-              width="50px"
-              alt="Visa"
-              className="visa-img"
-            />
-          </div>
-          <div className="row card-no p-r-15 p-l-15">
-            <p>4149</p>
-            <p>4390</p>
-            <p>2438</p>
-            <p>4293</p>
-          </div>
-          <div className="row card-holder p-r-15 p-l-15">
-            <p>CARD HOLDER</p>
-            <p>VALID TILL</p>
-          </div>
-          <div className="row name p-r-15 p-l-15 p-b-15">
-            <p>Daniil Kalinevych</p>
-            <p>dd / yy</p>
-          </div>
+      <CreditCard className="card privat">
+        <BackgroundImg />
+        <div className="row">
+          <ChipImg />
+          <VisaImg />
         </div>
-      </figure>
-      <div id="visa-desc" className="article-body">
+        <PrivatNumber />
         <div>
+          <NameInfo />
+          <MonoInfo />
+        </div>
+      </CreditCard>
+      <div id="visa-desc" className="article-body">
+        <div className="input-row">
           <label htmlFor="recipient">{t("recipient")}</label>
           <div className="input-box">
             <input
@@ -120,7 +95,7 @@ export const PrivatBank = () => {
             </span>
           </div>
         </div>
-        <div>
+        <div className="input-row">
           <label htmlFor="iban">IBAN</label>
           <div className="input-box">
             <input
@@ -145,7 +120,7 @@ export const PrivatBank = () => {
             </span>
           </div>
         </div>
-        <div>
+        <div className="input-row">
           <label htmlFor="rnokpp">{t("rnokpp")}</label>
           <div className="input-box">
             <input
@@ -169,7 +144,7 @@ export const PrivatBank = () => {
             </span>
           </div>
         </div>
-        <div>
+        <div className="input-row">
           <label htmlFor="title">{t("title")}</label>
           <div className="input-box">
             <input

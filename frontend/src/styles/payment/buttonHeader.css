@@ -1,11 +1,9 @@
 .button-arounder {
-  width: 483px;
-  font-size: 32px;
+  font-size: clamp(0.6rem, 2vw, 2.5rem);
   background: hsl(190deg, 30%, 15%);
   color: hsl(190deg, 10%, 95%);
   border: solid 2px black;
   padding: 0.375em 1.125em;
-  margin: 15px;
   box-shadow: 0 0px 0px hsla(190deg, 15%, 5%, 0.2);
   transform: translateY(0);
   border-top-left-radius: 0px;
@@ -35,28 +33,4 @@
   border-top-right-radius: var(--radius);
   border-bottom-left-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
-}
-
-@media (min-width: 1024px) and (max-width: 1100px) {
-  .button-arounder {
-    width: 340px;
-    margin: 6px;
-    font-size: 28px;
-  }
-}
-@media (min-width: 1100px) and (max-width: 1200px) {
-  .button-arounder {
-    width: 416px;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1300px) {
-  .button-arounder {
-    width: 460px;
-  }
-}
-@media (min-width: 720px) and (max-height: 540px) {
-  .button-arounder {
-    width: 259px;
-    font-size: 21px;
-  }
 }

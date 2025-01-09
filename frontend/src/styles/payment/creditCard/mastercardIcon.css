@@ -1,0 +1,8 @@
+.mastercard {
+  background: url("http://www.pngall.com/wp-content/uploads/2016/07/Mastercard-PNG-Clipart.png");
+  width: clamp(1.5rem, 30% - 2rem, 6rem);
+  height: clamp(1rem, 100% - 1rem, 6rem);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
