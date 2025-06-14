@@ -2,12 +2,11 @@ import React, { useState } from "react"
 
 import Footer from "../components/Footer.js"
 import Header from "../components/Header.tsx"
-import Donators from "../components/Home/Donators/Donators.tsx"
-import ImpactStatistics from "../components/Home/ImpactStatistics/ImpactStatistics.tsx"
-import Items from "../components/Home/Items/Items.tsx"
-import MissionHighlights from "../components/Home/MissionHighlights/MissionHighlights.tsx"
-import Slider from "../components/Home/Slider/Slider.tsx"
-import UrgentNeeds from "../components/Home/UrgentNeeds/UrgentNeeds.tsx"
+import DonateBanner from "../components/Home/DonateBanner.tsx"
+import DonationDrives from "../components/Home/DonationDrives.tsx"
+import HeroSection from "../components/Home/HeroSection.tsx"
+import TopHeroes from "../components/Home/TopHeroes.tsx"
+import WatchNow from "../components/Home/WatchNow.tsx"
 
 import { MAX_PAGE_NUMBER } from "../lib/constants.js"
 
@@ -24,11 +23,10 @@ function Home() {
 	const { t } = useTranslation()
 
 	const SectionLinks = [
-		{ id: 1, urlLink: "#slider-section", urlName: t("about-us") },
-		{ id: 2, urlLink: "#urgent-needs-section", urlName: t("urgent-needs") },
-		{ id: 3, urlLink: "#items-section", urlName: t("donate") },
-		{ id: 4, urlLink: "#impact-section", urlName: t("our-impact") },
-		{ id: 5, urlLink: "#donators-section", urlName: t("top-donators") },
+		{ id: 1, urlLink: "#hero-section", urlName: t("about-us") },
+		{ id: 2, urlLink: "#donation-drives", urlName: t("donation-drives") },
+		{ id: 3, urlLink: "#watch-now", urlName: t("watch-now") },
+		{ id: 4, urlLink: "#donate-banner", urlName: t("donate") },
 	]
 
 	return (
@@ -36,12 +34,11 @@ function Home() {
 			<Header fixed="pos-fixed">{!isPhoneDisplay && SectionLinks}</Header>
 			{page > 0 && page < MAX_PAGE_NUMBER ? (
 				<>
-					<Slider page={page} setPage={setPage} />
-					<UrgentNeeds />
-					<MissionHighlights />
-					<Items page={page} />
-					<ImpactStatistics />
-					<Donators />
+					<HeroSection />
+					<DonateBanner />
+					<DonationDrives />
+					<WatchNow />
+					<TopHeroes />
 					<Footer />
 				</>
 			) : (

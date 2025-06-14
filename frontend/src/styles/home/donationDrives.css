@@ -1,0 +1,112 @@
+.donation-drives {
+	background: #2c3e50;
+	padding: 80px 0;
+	color: white;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.donation-drives h2 {
+	font-size: 3rem;
+	font-weight: 700;
+	margin-bottom: 60px;
+	text-align: left;
+	letter-spacing: 2px;
+}
+
+.drives-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 40px;
+	align-items: center;
+}
+
+.drive-card {
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	border-radius: 12px;
+	overflow: hidden;
+	transition: transform 0.3s ease;
+}
+
+.drive-card:hover {
+	transform: translateY(-5px);
+}
+
+.drive-content {
+	padding: 40px;
+}
+
+.drive-info h3 {
+	font-size: 1.5rem;
+	margin-bottom: 30px;
+	color: white;
+}
+
+.progress-container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.progress-bar {
+	width: 100%;
+	height: 8px;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.progress-fill {
+	height: 100%;
+	background: linear-gradient(90deg, #4caf50, #81c784);
+	border-radius: 4px;
+	transition: width 0.3s ease;
+}
+
+.progress-text {
+	font-size: 0.9rem;
+	color: rgba(255, 255, 255, 0.8);
+}
+
+.drive-image {
+	height: 300px;
+	overflow: hidden;
+}
+
+.drive-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+}
+
+.drive-card:hover .drive-image img {
+	transform: scale(1.05);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+	.donation-drives {
+		padding: 60px 0;
+	}
+
+	.donation-drives h2 {
+		font-size: 2rem;
+		text-align: center;
+		margin-bottom: 40px;
+	}
+
+	.drives-grid {
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+
+	.drive-content {
+		padding: 30px;
+	}
+}

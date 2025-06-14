@@ -1,0 +1,60 @@
+.donate-banner {
+	background: #1a1a1a;
+	color: white;
+	padding: 20px 0;
+	overflow: hidden;
+	position: relative;
+}
+
+.banner-wrapper {
+	display: flex;
+	width: 200%;
+	animation: scroll 40s linear infinite;
+}
+
+.banner-content {
+	display: flex;
+	width: 50%;
+	flex-shrink: 0;
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.banner-content::after {
+	content: "• Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now";
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+.banner-content span {
+	margin: 0 2rem;
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+	.banner-content {
+		font-size: 1.5rem;
+	}
+
+	.banner-content::after {
+		font-size: 1.5rem;
+	}
+
+	.banner-content span {
+		margin: 0 1rem;
+	}
+}
