@@ -287,8 +287,7 @@ def get_usd_to_uah():
 def convert_crypto_to_uah(crypto_symbol):
     crypto_name = {"ETH": "ethereum", "BNB": "binancecoin"}
     crypto_key = crypto_name.get(crypto_symbol)
-    url = f"https://api.coingecko.com/api/v3/simple/price?ids={
-        crypto_key}&vs_currencies=UAH"
+    url = f"https://api.coingecko.com/api/v3/simple/price?ids={crypto_key}&vs_currencies=UAH"
 
     try:
         response = requests.get(url)

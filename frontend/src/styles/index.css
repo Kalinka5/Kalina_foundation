@@ -1,89 +1,90 @@
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 *:before,
 *:after {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 .container {
-  width: 90%;
-  max-width: 1800px;
+	width: 90%;
+	max-width: 1800px;
+	margin: 0 auto;
 }
 @media (min-width: 320px) and (max-width: 499px) {
-  .container {
-    margin: 15px;
-  }
+	.container {
+		margin: 15px;
+	}
 }
 
 .section-header-mg {
-  scroll-margin-top: 40px;
+	scroll-margin-top: 40px;
 }
 @media (min-width: 760px) {
-  .section-header-mg {
-    scroll-margin-top: 65px;
-  }
+	.section-header-mg {
+		scroll-margin-top: 65px;
+	}
 }
 @media (min-width: 720px) and (max-height: 540px) {
-  .section-header-mg {
-    scroll-margin-top: 50px;
-  }
+	.section-header-mg {
+		scroll-margin-top: 50px;
+	}
 }
 @media (min-width: 1024px) and (max-height: 600px) {
-  .section-header-mg {
-    scroll-margin-top: 55px;
-  }
+	.section-header-mg {
+		scroll-margin-top: 55px;
+	}
 }
 
 /* Loader in Login, Register, Profile pages */
 .loader {
-  margin-left: 10px;
-  pointer-events: none;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  animation: an1 1s ease infinite;
-  border-top-color: #052abc;
+	margin-left: 10px;
+	pointer-events: none;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 3px solid transparent;
+	animation: an1 1s ease infinite;
+	border-top-color: #052abc;
 }
 @keyframes an1 {
-  0% {
-    transform: rotate(0turn);
-  }
-  100% {
-    transform: rotate(1turn);
-  }
+	0% {
+		transform: rotate(0turn);
+	}
+	100% {
+		transform: rotate(1turn);
+	}
 }
 
 .header-body {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
 .header-body > Header {
-  flex-shrink: 0;
+	flex-shrink: 0;
 }
 .main-body {
-  flex-grow: 1;
+	flex-grow: 1;
 }

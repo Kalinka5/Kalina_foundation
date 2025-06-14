@@ -4,10 +4,13 @@ djangorestframework-simplejwt==5.3.1
 django-environ==0.11.2
 psycopg2-binary==2.9.9
 Pillow==10.3.0
-django-filter==24.2
 django-cors-headers==4.3.1
 django-storages==1.14.4
+django-filter==25.1
 boto3==1.35.43
 six==1.16.0
 requests==2.32.3
 forex-python==1.8
+python-dotenv==1.0.0
+PyJWT==2.10.1
+python-multipart==0.0.20
