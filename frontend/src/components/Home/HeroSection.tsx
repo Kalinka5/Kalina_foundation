@@ -3,7 +3,7 @@ import "../../styles/home/heroSection.css"
 
 function HeroSection() {
 	return (
-		<section className="hero-section">
+		<section className="hero-section" id="hero-section">
 			<div className="hero-background">
 				<div className="hero-content">
 					<div className="hero-text">
@@ -50,8 +50,7 @@ function HeroSection() {
 										<span className="impact-item">🕊️ Peace</span>
 									</div>
 									<p>
-										...to{" "}
-										<span className="highlight">millions of Ukrainians</span>{" "}
+										to <span className="highlight">millions of Ukrainians</span>{" "}
 										who depend on our support.
 									</p>
 								</div>

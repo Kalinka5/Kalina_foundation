@@ -3,7 +3,7 @@ import "../../styles/home/donationDrives.css"
 
 function DonationDrives() {
 	return (
-		<section className="donation-drives">
+		<section className="donation-drives" id="donation-drives">
 			<div className="container">
 				<h2>DONATION DRIVES</h2>
 				<div className="drives-grid">

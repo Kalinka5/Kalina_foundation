@@ -1,40 +1,37 @@
 .donate-but {
-  --c: #127b00; /* the color */
-
-  box-shadow: 0 0 0 0.1em inset var(--c);
-  --_g: linear-gradient(var(--c) 0 0) no-repeat;
-  background: var(--_g) calc(var(--_p, 0%) - 100%) 0%,
-    var(--_g) calc(200% - var(--_p, 0%)) 0%,
-    var(--_g) calc(var(--_p, 0%) - 100%) 100%,
-    var(--_g) calc(200% - var(--_p, 0%)) 100%;
-  background-size: 50.5% calc(var(--_p, 0%) / 2 + 0.5%);
-  outline-offset: 0.1em;
-  transition: background-size 0.4s, background-position 0s 0.4s;
-  font-family: system-ui, sans-serif;
-  font-size: 2.5rem;
-  cursor: pointer;
-  padding: 0.1em 0.6em;
-  font-weight: bold;
-  color: #127b00;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 15px;
+	background: #4caf50;
+	color: white;
+	border: 2px solid #45a049;
+	padding: 12px 24px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	border-radius: 6px;
+	cursor: pointer;
+	text-decoration: none;
+	display: inline-block;
+	transition: all 0.2s ease;
+	text-align: center;
+	box-shadow: none;
 }
 
 .donate-but:hover {
-  --_p: 100%;
-  transition: background-position 0.4s, background-size 0s;
-  color: #fff;
+	background: #45a049;
+	border-color: #3d8b40;
+	transform: translateY(-1px);
+	box-shadow: 0 3px 8px rgba(76, 175, 80, 0.3);
+	color: white;
 }
 
 .donate-but:active {
-  box-shadow: 0 0 9e9Q inset #0009;
-  background-color: var(--c);
-  color: #fff;
+	transform: translateY(0);
+	box-shadow: 0 1px 4px rgba(76, 175, 80, 0.2);
+	background: #3d8b40;
+	color: white;
 }
 
 @media (min-width: 320px) and (max-width: 540px) {
-  .donate-but {
-    font-size: 2rem;
-  }
+	.donate-but {
+		font-size: 1rem;
+		padding: 10px 20px;
+	}
 }

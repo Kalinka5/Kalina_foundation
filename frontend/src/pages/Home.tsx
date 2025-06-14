@@ -26,7 +26,7 @@ function Home() {
 		{ id: 1, urlLink: "#hero-section", urlName: t("about-us") },
 		{ id: 2, urlLink: "#donation-drives", urlName: t("donation-drives") },
 		{ id: 3, urlLink: "#watch-now", urlName: t("watch-now") },
-		{ id: 4, urlLink: "#donate-banner", urlName: t("donate") },
+		{ id: 4, urlLink: "#top-heroes", urlName: t("top-heroes") },
 	]
 
 	return (

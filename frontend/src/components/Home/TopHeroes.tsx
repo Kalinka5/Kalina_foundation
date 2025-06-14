@@ -46,7 +46,7 @@ function TopHeroes() {
 	]
 
 	return (
-		<section className="top-heroes-section">
+		<section className="top-heroes-section" id="top-heroes">
 			<div className="top-heroes-container">
 				<div className="top-heroes-header">
 					<h2 className="top-heroes-title">Our Top Heroes</h2>

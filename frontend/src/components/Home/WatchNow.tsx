@@ -10,7 +10,7 @@ function WatchNow() {
 	}
 
 	return (
-		<section className="watch-now">
+		<section className="watch-now" id="watch-now">
 			<div className="container">
 				<div className="watch-now-header">
 					<h2>WATCH NOW</h2>

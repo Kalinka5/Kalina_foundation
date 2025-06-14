@@ -469,56 +469,45 @@
 }
 
 .donate-urgent-btn {
-	background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+	background: #f44336;
 	color: white;
-	border: none;
-	padding: 15px 25px;
-	border-radius: 30px;
-	font-weight: 700;
+	border: 2px solid #d32f2f;
+	padding: 12px 20px;
+	border-radius: 6px;
+	font-weight: 600;
 	font-size: 1rem;
 	display: flex;
 	align-items: center;
-	gap: 10px;
+	gap: 8px;
 	cursor: pointer;
-	transition: all 0.3s ease;
-	box-shadow: 0 8px 25px rgba(238, 90, 36, 0.3);
+	transition: all 0.2s ease;
+	box-shadow: none;
 	position: relative;
-	overflow: hidden;
+	overflow: visible;
 }
 
 .donate-urgent-btn::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: -100%;
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(
-		90deg,
-		transparent,
-		rgba(255, 255, 255, 0.3),
-		transparent
-	);
-	transition: left 0.5s ease;
+	display: none;
 }
 
 .donate-urgent-btn:hover {
-	background: linear-gradient(135deg, #ee5a24, #d63031);
-	transform: translateY(-3px);
-	box-shadow: 0 12px 35px rgba(238, 90, 36, 0.4);
+	background: #d32f2f;
+	border-color: #b71c1c;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
 }
 
 .donate-urgent-btn:hover::before {
-	left: 100%;
+	display: none;
 }
 
 .btn-arrow {
 	font-size: 0.9rem;
-	transition: transform 0.3s ease;
+	transition: transform 0.2s ease;
 }
 
 .donate-urgent-btn:hover .btn-arrow {
-	transform: translateX(3px);
+	transform: translateX(2px);
 }
 
 .needed-info {
