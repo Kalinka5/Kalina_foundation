@@ -4,6 +4,7 @@
 	padding: 20px 0;
 	overflow: hidden;
 	position: relative;
+	white-space: nowrap;
 }
 
 .donate-banner .container {
@@ -12,21 +13,19 @@
 	padding: 0 20px;
 }
 
-.banner-wrapper {
+.banner-track {
 	display: flex;
-	width: 200%;
-	animation: scroll 40s linear infinite;
+	animation: marquee 60s linear infinite;
+	width: fit-content;
 }
 
 .banner-content {
-	display: flex;
-	width: 50%;
-	flex-shrink: 0;
 	font-size: 2rem;
 	font-weight: 700;
 	letter-spacing: 2px;
 	text-transform: uppercase;
 	white-space: nowrap;
+	flex-shrink: 0;
 }
 
 .banner-content::after {
@@ -41,7 +40,7 @@
 	margin: 0 2rem;
 }
 
-@keyframes scroll {
+@keyframes marquee {
 	0% {
 		transform: translateX(0);
 	}
@@ -56,11 +55,18 @@
 		font-size: 1.5rem;
 	}
 
-	.banner-content::after {
-		font-size: 1.5rem;
+	.banner-track {
+		animation: marquee 50s linear infinite;
+	}
+}
+
+@media (max-width: 480px) {
+	.banner-content {
+		font-size: 1.2rem;
+		letter-spacing: 1px;
 	}
 
-	.banner-content span {
-		margin: 0 1rem;
+	.banner-track {
+		animation: marquee 40s linear infinite;
 	}
 }
