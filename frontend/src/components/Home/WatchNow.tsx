@@ -11,22 +11,26 @@ function WatchNow() {
 
 	return (
 		<section className="watch-now" id="watch-now">
-			<div className="container">
-				<div className="watch-now-header">
+			<div className="watch-now-header">
+				<div className="container">
 					<h2>WATCH NOW</h2>
 				</div>
-				<div className="video-container">
-					<div className="video-player">
-						<div className="video-overlay">
-							<h3>internal</h3>
-							{!isPlaying && (
-								<button className="play-button" onClick={handlePlayClick}>
-									<span className="play-icon">▶</span>
-									<span className="play-text">Play Video</span>
-								</button>
-							)}
+			</div>
+			<div className="video-section">
+				<div className="container">
+					<div className="video-container">
+						<div className="video-player">
+							<div className="video-overlay">
+								<h3>internal</h3>
+								{!isPlaying && (
+									<button className="play-button" onClick={handlePlayClick}>
+										<span className="play-icon">▶</span>
+										<span className="play-text">Play Video</span>
+									</button>
+								)}
+							</div>
+							<div className="video-background"></div>
 						</div>
-						<div className="video-background"></div>
 					</div>
 				</div>
 			</div>

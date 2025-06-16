@@ -6,6 +6,12 @@
 	position: relative;
 }
 
+.donate-banner .container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
 .banner-wrapper {
 	display: flex;
 	width: 200%;

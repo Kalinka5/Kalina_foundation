@@ -2,6 +2,16 @@ import React from "react"
 import "../../styles/home/heroSection.css"
 
 function HeroSection() {
+	const scrollToDonationDrives = () => {
+		const donationDrivesSection = document.getElementById("donation-drives")
+		if (donationDrivesSection) {
+			donationDrivesSection.scrollIntoView({
+				behavior: "smooth",
+				block: "start",
+			})
+		}
+	}
+
 	return (
 		<section className="hero-section" id="hero-section">
 			<div className="hero-background">
@@ -131,7 +141,11 @@ function HeroSection() {
 						</div>
 
 						<div className="scroll-indicator">
-							<div className="arrow-down">
+							<div
+								className="arrow-down"
+								onClick={scrollToDonationDrives}
+								style={{ cursor: "pointer" }}
+							>
 								<svg
 									width="24"
 									height="24"
