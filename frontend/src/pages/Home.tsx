@@ -5,7 +5,7 @@ import Header from "../components/Header.tsx"
 import DonateBanner from "../components/Home/DonateBanner.tsx"
 import DonationDrives from "../components/Home/DonationDrives.tsx"
 import HeroSection from "../components/Home/HeroSection.tsx"
-import TopHeroes from "../components/Home/TopHeroes.tsx"
+import TopDonators from "../components/Home/TopDonators.tsx"
 import WatchNow from "../components/Home/WatchNow.tsx"
 
 import { MAX_PAGE_NUMBER } from "../lib/constants.js"
@@ -26,7 +26,7 @@ function Home() {
 		{ id: 1, urlLink: "#hero-section", urlName: t("about-us") },
 		{ id: 2, urlLink: "#donation-drives", urlName: t("donation-drives") },
 		{ id: 3, urlLink: "#watch-now", urlName: t("watch-now") },
-		{ id: 4, urlLink: "#top-heroes", urlName: t("top-heroes") },
+		{ id: 4, urlLink: "#top-donators", urlName: t("top-donators") },
 	]
 
 	return (
@@ -38,7 +38,7 @@ function Home() {
 					<DonateBanner />
 					<DonationDrives />
 					<WatchNow />
-					<TopHeroes />
+					<TopDonators />
 					<Footer />
 				</>
 			) : (
