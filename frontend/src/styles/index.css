@@ -27,11 +27,6 @@ code {
 	box-sizing: border-box;
 }
 
-.container {
-	width: 90%;
-	max-width: 1800px;
-	margin: 0 auto;
-}
 @media (min-width: 320px) and (max-width: 499px) {
 	.container {
 		margin: 15px;

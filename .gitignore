@@ -2,6 +2,7 @@
 images_for_KalinaFond/
 db.txt
 Django_data.txt
+speech.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
