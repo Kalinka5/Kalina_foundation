@@ -1,0 +1,77 @@
+.accessibility-statement {
+	min-height: 100vh;
+	padding: 80px 20px 40px;
+	background-color: #f8f9fa;
+}
+
+.accessibility-statement .container {
+	max-width: 800px;
+	margin: 0 auto;
+	background-color: white;
+	padding: 40px;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.accessibility-statement h1 {
+	color: #2c3e50;
+	font-size: 2.5rem;
+	margin-bottom: 10px;
+	text-align: center;
+	border-bottom: 3px solid #27ae60;
+	padding-bottom: 15px;
+}
+
+.accessibility-statement .last-updated {
+	text-align: center;
+	color: #666;
+	font-style: italic;
+	margin-bottom: 30px;
+}
+
+.accessibility-statement section {
+	margin-bottom: 30px;
+}
+
+.accessibility-statement h2 {
+	color: #34495e;
+	font-size: 1.5rem;
+	margin-bottom: 15px;
+	border-left: 4px solid #27ae60;
+	padding-left: 15px;
+}
+
+.accessibility-statement p {
+	line-height: 1.6;
+	color: #555;
+	margin-bottom: 15px;
+}
+
+.accessibility-statement ul {
+	margin-left: 20px;
+	margin-bottom: 15px;
+}
+
+.accessibility-statement li {
+	line-height: 1.6;
+	color: #555;
+	margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+	.accessibility-statement {
+		padding: 60px 15px 30px;
+	}
+
+	.accessibility-statement .container {
+		padding: 25px;
+	}
+
+	.accessibility-statement h1 {
+		font-size: 2rem;
+	}
+
+	.accessibility-statement h2 {
+		font-size: 1.3rem;
+	}
+}
