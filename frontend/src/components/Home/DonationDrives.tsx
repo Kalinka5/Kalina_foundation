@@ -1,10 +1,12 @@
 import React, { useState } from "react"
+import { useTranslation } from "react-i18next"
 import { useItems } from "../../lib/hooks.tsx"
 import "../../styles/home/donationDrives.css"
 
 function DonationDrives() {
 	const [currentPage, setCurrentPage] = useState(1)
 	const items = useItems(currentPage)
+	const { t } = useTranslation()
 
 	const handlePrevious = () => {
 		setCurrentPage(prev => (prev > 1 ? prev - 1 : 6))
@@ -23,7 +25,7 @@ function DonationDrives() {
 			<section className="donation-drives" id="donation-drives">
 				<div className="container">
 					<div className="drives-section">
-						<h2>DONATION DRIVES</h2>
+						<h2>{t("donation-drives").toUpperCase()}</h2>
 						<div className="drives-slider">
 							<button className="slider-btn prev-btn">
 								<svg
@@ -39,7 +41,7 @@ function DonationDrives() {
 								<div className="drive-card">
 									<div className="drive-content">
 										<div className="drive-info">
-											<p>Loading...</p>
+											<p>{t("loading")}</p>
 										</div>
 									</div>
 								</div>
@@ -66,7 +68,7 @@ function DonationDrives() {
 			<section className="donation-drives" id="donation-drives">
 				<div className="container">
 					<div className="drives-section">
-						<h2>DONATION DRIVES</h2>
+						<h2>{t("donation-drives").toUpperCase()}</h2>
 						<div className="drives-slider">
 							<button className="slider-btn prev-btn">
 								<svg
@@ -82,7 +84,7 @@ function DonationDrives() {
 								<div className="drive-card">
 									<div className="drive-content">
 										<div className="drive-info">
-											<p>Error loading donation drives</p>
+											<p>{t("error-loading-drives")}</p>
 										</div>
 									</div>
 								</div>
@@ -108,7 +110,7 @@ function DonationDrives() {
 		<section className="donation-drives" id="donation-drives">
 			<div className="container">
 				<div className="drives-section">
-					<h2>DONATION DRIVES</h2>
+					<h2>{t("donation-drives").toUpperCase()}</h2>
 					<div className="drives-slider">
 						<button className="slider-btn prev-btn" onClick={handlePrevious}>
 							<svg
@@ -143,7 +145,8 @@ function DonationDrives() {
 														></div>
 													</div>
 													<span className="progress-text">
-														{progress}% Complete
+														{progress}
+														{t("percent-complete")}
 													</span>
 												</div>
 												<div className="drive-amounts">
@@ -151,7 +154,7 @@ function DonationDrives() {
 														${item.collected.toLocaleString()}
 													</span>
 													<span className="goal">
-														of ${item.full_price.toLocaleString()}
+														{t("of")} ${item.full_price.toLocaleString()}
 													</span>
 												</div>
 											</div>

@@ -1,7 +1,10 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import "../../styles/home/heroSection.css"
 
 function HeroSection() {
+	const { t } = useTranslation()
+
 	const scrollToDonationDrives = () => {
 		const donationDrivesSection = document.getElementById("donation-drives")
 		if (donationDrivesSection) {
@@ -22,46 +25,50 @@ function HeroSection() {
 								<span className="blue-text">Kalina</span>{" "}
 								<span className="yellow-text">Foundation</span>
 							</h1>
-							<p className="tagline">
-								🇺🇦 Together, We Stand for Ukraine's Freedom! 🇺🇦
-							</p>
+							<p className="tagline">{t("hero-tagline")}</p>
 						</div>
 
 						<div className="content-grid">
 							<div className="content-row">
 								<div className="text-section">
 									<div className="section-icon">🏛️</div>
-									<h2>What is Kalina Foundation</h2>
+									<h2>{t("hero-title1")}</h2>
 									<p>
-										<strong>More than just a website</strong> — we're a{" "}
-										<em>mission-driven platform</em> dedicated to supporting
-										Ukraine's brave defenders in their fight for freedom.
+										<strong>{t("hero-text1-1")}</strong>
+										{t("hero-text1-2")}
+										<em>{t("hero-text1-3")}</em>
+										{t("hero-text1-4")}
 									</p>
 									<p>
-										Our global community enables people worldwide to join hands
-										and provide the{" "}
-										<span className="highlight">critical resources</span> our
-										heroes need to{" "}
-										<strong>win this war as soon as possible.</strong>
+										{t("hero-text1-5")}
+										<span className="highlight">{t("hero-text1-6")}</span>
+										{t("hero-text1-7")}
+										<strong>{t("hero-text1-8")}</strong>
 									</p>
 								</div>
 
 								<div className="text-section">
 									<div className="section-icon">⚡</div>
-									<h2>Every Donation Counts. Every Second Matters</h2>
+									<h2>{t("hero-title2")}</h2>
 									<p>
-										<strong>Time is of the essence.</strong> Together, we can
-										bring victory closer. Your contributions don't just fund
-										equipment — they deliver:
+										<strong>{t("hero-text2-1")}</strong>
+										{t("hero-text2-2")}
 									</p>
 									<div className="impact-items">
-										<span className="impact-item">💙 Hope</span>
-										<span className="impact-item">🛡️ Security</span>
-										<span className="impact-item">🕊️ Peace</span>
+										<span className="impact-item">
+											{t("hero-impact-item1")}
+										</span>
+										<span className="impact-item">
+											{t("hero-impact-item2")}
+										</span>
+										<span className="impact-item">
+											{t("hero-impact-item3")}
+										</span>
 									</div>
 									<p>
-										to <span className="highlight">millions of Ukrainians</span>{" "}
-										who depend on our support.
+										{t("hero-text2-3")}
+										<span className="highlight">{t("hero-text2-4")}</span>
+										{t("hero-text2-5")}
 									</p>
 								</div>
 							</div>
@@ -69,58 +76,55 @@ function HeroSection() {
 							<div className="content-row">
 								<div className="text-section">
 									<div className="section-icon">🎯</div>
-									<h2>Critical Equipment Needed</h2>
+									<h2>{t("hero-title3")}</h2>
 									<p>
-										<strong>Our brave defenders</strong> rely on your generosity
-										to secure{" "}
-										<span className="highlight">
-											vital battlefield equipment:
-										</span>
+										<strong>{t("hero-text3-1")}</strong>
+										{t("hero-text3-2")}
+										<span className="highlight">{t("hero-text3-3")}</span>
 									</p>
 									<ul className="equipment-list">
 										<li>
-											<strong>🚛 Transport</strong> — Mobilize troops and
-											essential supplies
+											<strong>{t("hero-equipment-item1")}</strong>
+											{t("hero-equipment-item1-text")}
 										</li>
 										<li>
-											<strong>🛸 Drones & UAVs</strong> — Unmatched
-											reconnaissance and defense
+											<strong>{t("hero-equipment-item2")}</strong>
+											{t("hero-equipment-item2-text")}
 										</li>
 										<li>
-											<strong>📡 Communication</strong> — Coordinate missions
-											effectively
+											<strong>{t("hero-equipment-item3")}</strong>
+											{t("hero-equipment-item3-text")}
 										</li>
 										<li>
-											<strong>🔍 Optical Tools</strong> — Precision and safety
-											on the battlefield
+											<strong>{t("hero-equipment-item4")}</strong>
+											{t("hero-equipment-item4-text")}
 										</li>
 									</ul>
 								</div>
 
 								<div className="text-section">
 									<div className="section-icon">💳</div>
-									<h2>How You Can Help Today</h2>
+									<h2>{t("hero-title4")}</h2>
 									<p>
-										<strong>Multiple secure ways</strong> to make your
-										contribution count. Choose the method that works best for
-										you:
+										<strong>{t("hero-text4-1")}</strong>
+										{t("hero-text4-2")}
 									</p>
 									<ul className="payment-list">
 										<li>
-											<strong>💰 PayPal</strong> — Global contributions made
-											simple
+											<strong>{t("hero-payment-item1")}</strong>
+											{t("hero-payment-item1-text")}
 										</li>
 										<li>
-											<strong>🏦 PrivatBank</strong> — Trusted, quick & reliable
-											transfers
+											<strong>{t("hero-payment-item2")}</strong>
+											{t("hero-payment-item2-text")}
 										</li>
 										<li>
-											<strong>📱 MonoBank</strong> — Ukraine's popular digital
-											banking
+											<strong>{t("hero-payment-item3")}</strong>
+											{t("hero-payment-item3-text")}
 										</li>
 										<li>
-											<strong>🪙 Crypto Wallets</strong> — Fast & secure via
-											Metamask
+											<strong>{t("hero-payment-item4")}</strong>
+											{t("hero-payment-item4-text")}
 										</li>
 									</ul>
 								</div>
@@ -128,16 +132,16 @@ function HeroSection() {
 						</div>
 
 						<div className="cta-section">
-							<h2>🇺🇦 Stand with Ukraine Today! 🇺🇦</h2>
+							<h2>{t("hero-cta-title")}</h2>
 							<p>
-								Join our <strong>global network of supporters</strong> and make
-								a real difference. Together, we'll ensure a brighter, free
-								future for Ukraine.
+								{t("hero-cta-text1")}
+								<strong>{t("hero-cta-text2")}</strong>
+								{t("hero-cta-text3")}
 							</p>
 							<p className="cta-subtitle">
-								<strong>Donate Now. Support the Heroes. Win the War.</strong>
+								<strong>{t("hero-cta-subtitle1")}</strong>
 							</p>
-							<button className="cta-button">🚀 Make a Difference</button>
+							<button className="cta-button">{t("hero-cta-button")}</button>
 						</div>
 
 						<div className="scroll-indicator">

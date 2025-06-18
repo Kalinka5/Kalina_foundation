@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
 import "../../styles/home/watchNow.css"
 
 function WatchNow() {
@@ -6,6 +7,7 @@ function WatchNow() {
 	const [isLoading, setIsLoading] = useState(false)
 	const [hasError, setHasError] = useState(false)
 	const videoRef = useRef<HTMLVideoElement>(null)
+	const { t } = useTranslation()
 
 	const handlePlayClick = () => {
 		setIsPlaying(true)
@@ -62,7 +64,7 @@ function WatchNow() {
 		<section className="watch-now" id="watch-now">
 			<div className="watch-now-header">
 				<div className="container">
-					<h2>WATCH NOW</h2>
+					<h2>{t("watch-now").toUpperCase()}</h2>
 				</div>
 			</div>
 			<div className="video-section">
@@ -74,21 +76,21 @@ function WatchNow() {
 									{isLoading && (
 										<div className="video-loading">
 											<div className="loading-spinner"></div>
-											<p>Loading video...</p>
+											<p>{t("loading-video")}</p>
 										</div>
 									)}
 									{hasError && (
 										<div className="video-error">
-											<p>Unable to load video</p>
+											<p>{t("unable-load-video")}</p>
 											<button className="retry-button" onClick={handleRetry}>
-												Try Again
+												{t("try-again")}
 											</button>
 										</div>
 									)}
 									<button
 										className="close-video-btn"
 										onClick={handleStopVideo}
-										title="Close video"
+										title={t("close-video")}
 									>
 										×
 									</button>
@@ -137,10 +139,10 @@ function WatchNow() {
 							)}
 							{!isPlaying && (
 								<div className="video-overlay">
-									<h3>internal</h3>
+									<h3>{t("watch-now-overlay-title")}</h3>
 									<button className="play-button" onClick={handlePlayClick}>
 										<span className="play-icon">▶</span>
-										<span className="play-text">Play Video</span>
+										<span className="play-text">{t("play-video")}</span>
 									</button>
 								</div>
 							)}

@@ -1,19 +1,19 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { useDonators } from "../../lib/hooks.tsx"
 import "../../styles/home/topDonators.css"
 
 function TopDonators() {
 	const { data: donators, isLoading, isError } = useDonators()
+	const { t } = useTranslation()
 
 	if (isLoading) {
 		return (
 			<section className="top-heroes-section" id="top-donators">
 				<div className="top-heroes-container">
 					<div className="top-heroes-header">
-						<h2 className="top-heroes-title">Our Top Donators</h2>
-						<p className="top-heroes-subtitle">
-							Loading our most generous supporters...
-						</p>
+						<h2 className="top-heroes-title">{t("our-top-donators")}</h2>
+						<p className="top-heroes-subtitle">{t("loading-supporters")}</p>
 					</div>
 				</div>
 			</section>
@@ -25,10 +25,8 @@ function TopDonators() {
 			<section className="top-heroes-section" id="top-donators">
 				<div className="top-heroes-container">
 					<div className="top-heroes-header">
-						<h2 className="top-heroes-title">Our Top Donators</h2>
-						<p className="top-heroes-subtitle">
-							Unable to load donators at the moment
-						</p>
+						<h2 className="top-heroes-title">{t("our-top-donators")}</h2>
+						<p className="top-heroes-subtitle">{t("unable-load-donators")}</p>
 					</div>
 				</div>
 			</section>
@@ -77,10 +75,8 @@ function TopDonators() {
 		<section className="top-heroes-section" id="top-donators">
 			<div className="top-heroes-container">
 				<div className="top-heroes-header">
-					<h2 className="top-heroes-title">Our Top Donators</h2>
-					<p className="top-heroes-subtitle">
-						Celebrating our most generous supporters
-					</p>
+					<h2 className="top-heroes-title">{t("our-top-donators")}</h2>
+					<p className="top-heroes-subtitle">{t("celebrating-supporters")}</p>
 				</div>
 
 				<div className="heroes-grid">
@@ -125,9 +121,7 @@ function TopDonators() {
 				</div>
 
 				<div className="heroes-cta">
-					<p className="cta-text">
-						Join our community of donators and make a difference today
-					</p>
+					<p className="cta-text">{t("join-community")}</p>
 				</div>
 			</div>
 		</section>
