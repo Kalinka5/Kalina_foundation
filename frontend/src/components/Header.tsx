@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 
 import { useAuth } from "../components/AuthContext.tsx"
@@ -28,16 +28,16 @@ const Header = ({ fixed, children }: HeaderProps) => {
 
 	const { isAuthorized } = useAuth()
 	const links = isAuthorized ? authLinks : notAuthLinks
+	const [isMenuOpen, setMenuOpen] = useState(false)
 
 	const { t } = useTranslation()
 
-	return (
-		<header className={fixed}>
-			<div className="header-logo">
-				<a href="/home/1">
-					<span>Kalina</span> <span>Foundation</span>{" "}
-				</a>
-			</div>
+	const toggleMenu = () => {
+		setMenuOpen(!isMenuOpen)
+	}
+
+	const NavContent = () => (
+		<>
 			<div className="center-nav">
 				<LanguageSelector />
 				{children && (
@@ -57,6 +57,30 @@ const Header = ({ fixed, children }: HeaderProps) => {
 					</li>
 				))}
 			</ul>
+		</>
+	)
+
+	return (
+		<header className={fixed}>
+			<div className="header-logo">
+				<a href="/home/1">
+					<img src="/logo.png" alt="Kalina Foundation Logo" />
+				</a>
+			</div>
+			<div className="desktop-nav">
+				<NavContent />
+			</div>
+			<div className={`mobile-nav ${isMenuOpen ? "active" : ""}`}>
+				<NavContent />
+			</div>
+			<button
+				className={`hamburger ${isMenuOpen ? "active" : ""}`}
+				onClick={toggleMenu}
+			>
+				<span className="bar"></span>
+				<span className="bar"></span>
+				<span className="bar"></span>
+			</button>
 		</header>
 	)
 }

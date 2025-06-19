@@ -8,7 +8,7 @@ class Footer extends React.Component {
 			<footer className="footer">
 				<div className="footer-content">
 					<div className="footer-section">
-						<h3>Kalina Foundation</h3>
+						<img src="/logo.png" alt="Kalina Foundation Logo" />
 					</div>
 					<div className="footer-section">
 						<p>+380992977886</p>
