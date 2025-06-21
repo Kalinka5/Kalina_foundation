@@ -246,10 +246,6 @@ header {
 	header {
 		height: 45px;
 		gap: 2px;
-
-		.header-logo a {
-			font-size: 12px;
-		}
 	}
 }
 @media (max-width: 344px) {
@@ -269,9 +265,6 @@ header {
 	}
 }
 @media (min-width: 500px) and (max-width: 599px) {
-	header .header-logo a {
-		font-size: 18px;
-	}
 	header .nav-links .nav-link a {
 		font-size: 14px;
 	}
@@ -283,20 +276,12 @@ header {
 	}
 }
 @media (min-width: 600px) {
-	header .header-logo a {
-		font-size: 21px;
-	}
 	header .nav-links .nav-link a {
 		font-size: 16px;
 	}
 }
 @media (min-width: 750px) and (max-width: 999px) and (orientation: portrait) {
 	header {
-		.header-logo a {
-			font-size: 25px;
-			font-weight: 600;
-		}
-
 		.page-links .nav-link a {
 			font-size: 18px;
 		}
@@ -304,11 +289,6 @@ header {
 }
 @media (min-width: 1000px) and (max-width: 1050px) and (orientation: portrait) {
 	header {
-		.header-logo a {
-			font-size: 27px;
-			font-weight: 600;
-		}
-
 		.page-links .nav-link a {
 			font-size: 21px;
 		}
