@@ -28,14 +28,6 @@
 	flex-shrink: 0;
 }
 
-.banner-content::after {
-	content: "• Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now • Donate Now";
-	font-size: 2rem;
-	font-weight: 700;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-}
-
 .banner-content span {
 	margin: 0 2rem;
 }
