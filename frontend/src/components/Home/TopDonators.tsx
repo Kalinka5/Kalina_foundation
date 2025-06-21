@@ -1,11 +1,13 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { useDonators } from "../../lib/hooks.tsx"
+import useMediaQuery from "../../lib/useMediaQuery.tsx"
 import "../../styles/home/topDonators.css"
 
 function TopDonators() {
 	const { data: donators, isLoading, isError } = useDonators()
 	const { t } = useTranslation()
+	const isMobile = useMediaQuery("(max-width: 1034px)")
 
 	if (isLoading) {
 		return (
@@ -32,6 +34,12 @@ function TopDonators() {
 			</section>
 		)
 	}
+
+	const displayedDonators = donators
+		? isMobile
+			? donators.slice(0, 3)
+			: donators.slice(0, 5)
+		: []
 
 	const getDisplayName = (donator: any) => {
 		const firstName = donator.first_name?.trim()
@@ -80,7 +88,7 @@ function TopDonators() {
 				</div>
 
 				<div className="heroes-grid">
-					{donators.map((donator, index) => (
+					{displayedDonators.map((donator, index) => (
 						<div
 							key={donator.id}
 							className={`hero-card ${

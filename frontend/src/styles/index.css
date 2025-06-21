@@ -31,7 +31,7 @@ code {
 	box-sizing: border-box;
 }
 
-@media (min-width: 320px) and (max-width: 499px) {
+@media (min-width: 296px) and (max-width: 499px) {
 	.container {
 		margin: 15px;
 	}

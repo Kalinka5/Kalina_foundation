@@ -155,8 +155,17 @@
 	color: white;
 }
 
+.position-4 .medal-icon {
+	background: linear-gradient(45deg, #708090 0%, #778899 50%, #b0c4de 100%);
+}
+
+.position-5 .medal-icon {
+	background: linear-gradient(45deg, #708090 0%, #778899 50%, #b0c4de 100%);
+}
+
 .hero-info {
 	text-align: center;
+	max-width: 140px;
 }
 
 .hero-name {
@@ -165,6 +174,7 @@
 	margin-bottom: 8px;
 	color: white;
 	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+	overflow-wrap: break-word;
 }
 
 .hero-amount {
@@ -267,6 +277,10 @@
 		margin-bottom: 15px;
 	}
 
+	.hero-info {
+		max-width: 120px;
+	}
+
 	.pedestal-bar {
 		width: 120px;
 		font-size: 2.2rem;
@@ -325,6 +339,10 @@
 		margin-bottom: 12px;
 	}
 
+	.hero-info {
+		max-width: 100px;
+	}
+
 	.pedestal-bar {
 		width: 100px;
 		font-size: 1.8rem;
@@ -376,6 +394,10 @@
 
 	.top-hero-content {
 		margin-bottom: 10px;
+	}
+
+	.hero-info {
+		max-width: 80px;
 	}
 
 	.pedestal-bar {
