@@ -14,7 +14,11 @@ header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 24px;
+	padding-right: 24px;
+}
+
+.header-logo {
+	height: 100%;
 }
 
 .header-logo a {
@@ -26,9 +30,17 @@ header {
 }
 
 .header-logo img {
-	max-height: 90%;
 	max-width: 100%;
 	object-fit: contain;
+	height: 100%;
+	width: auto;
+	background: #282828;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-shrink: 0;
+	padding: 0 32px;
+	box-sizing: border-box;
 }
 
 .header-logo span:nth-child(1) {
@@ -132,18 +144,6 @@ header {
 @media (min-width: 992px) {
 	header {
 		padding: 0;
-	}
-
-	.header-logo {
-		height: 100%;
-		width: auto;
-		background: #282828;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		flex-shrink: 0;
-		padding: 0 32px;
-		box-sizing: border-box;
 	}
 
 	.hamburger,
@@ -261,13 +261,6 @@ header {
 	}
 }
 @media (min-width: 345px) and (max-width: 499px) {
-	header .header-logo {
-		width: 200px;
-
-		a {
-			font-size: 13px;
-		}
-	}
 	header .page-links .nav-link:nth-child(1) {
 		width: 50px;
 	}
@@ -299,14 +292,11 @@ header {
 }
 @media (min-width: 750px) and (max-width: 999px) and (orientation: portrait) {
 	header {
-		.header-logo {
-			width: 310px;
-
-			a {
-				font-size: 25px;
-				font-weight: 600;
-			}
+		.header-logo a {
+			font-size: 25px;
+			font-weight: 600;
 		}
+
 		.page-links .nav-link a {
 			font-size: 18px;
 		}
@@ -314,21 +304,13 @@ header {
 }
 @media (min-width: 1000px) and (max-width: 1050px) and (orientation: portrait) {
 	header {
-		.header-logo {
-			width: 320px;
-
-			a {
-				font-size: 27px;
-				font-weight: 600;
-			}
+		.header-logo a {
+			font-size: 27px;
+			font-weight: 600;
 		}
+
 		.page-links .nav-link a {
 			font-size: 21px;
 		}
-	}
-}
-@media (max-height: 600px) {
-	header {
-		height: 45px;
 	}
 }
