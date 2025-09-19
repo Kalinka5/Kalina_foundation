@@ -1,9 +1,31 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import {
+	useScrollAnimation,
+	useStaggeredAnimation,
+} from "../../lib/useAnimations.tsx"
 import "../../styles/home/storiesSection.css"
 
 function StoriesSection() {
 	const { t } = useTranslation()
+
+	// Animation hooks
+	const { elementRef: sectionRef, isVisible } = useScrollAnimation<HTMLElement>(
+		{
+			threshold: 0.2,
+			triggerOnce: true,
+		}
+	)
+	const { containerRef: gridRef, visibleItems } =
+		useStaggeredAnimation<HTMLDivElement>(6, {
+			stagger: 120,
+			threshold: 0.1,
+		})
+	const { elementRef: ctaRef, isVisible: ctaVisible } =
+		useScrollAnimation<HTMLDivElement>({
+			threshold: 0.5,
+			triggerOnce: true,
+		})
 
 	const stories = [
 		{
@@ -51,19 +73,52 @@ function StoriesSection() {
 	]
 
 	return (
-		<section className="stories-section" id="stories-section">
+		<section
+			ref={sectionRef}
+			className={`stories-section ${isVisible ? "visible" : ""}`}
+			id="stories-section"
+		>
 			<div className="stories-container">
 				<div className="stories-header">
-					<h2 className="stories-title">{t("stories-title")}</h2>
-					<p className="stories-subtitle">{t("stories-subtitle")}</p>
+					<h2
+						className={`stories-title ${
+							isVisible ? "animate-fade-up visible" : "animate-fade-up"
+						}`}
+					>
+						{t("stories-title")}
+					</h2>
+					<p
+						className={`stories-subtitle ${
+							isVisible
+								? "animate-fade-up visible stagger-1"
+								: "animate-fade-up stagger-1"
+						}`}
+					>
+						{t("stories-subtitle")}
+					</p>
 				</div>
 
 				<div className="journeys-section">
-					<h3 className="journeys-title">{t("stories-brigades-title")}</h3>
+					<h3
+						className={`journeys-title ${
+							isVisible
+								? "animate-fade-up visible stagger-2"
+								: "animate-fade-up stagger-2"
+						}`}
+					>
+						{t("stories-brigades-title")}
+					</h3>
 
-					<div className="stories-grid">
-						{stories.map(story => (
-							<div key={story.id} className="story-card">
+					<div ref={gridRef} className="stories-grid">
+						{stories.map((story, index) => (
+							<div
+								key={story.id}
+								className={`story-card hover-lift glass-effect ${
+									visibleItems[index]
+										? "animate-fade-up visible"
+										: "animate-fade-up"
+								}`}
+							>
 								<div className="story-image">
 									<img
 										src={story.image}
@@ -71,14 +126,17 @@ function StoriesSection() {
 										onError={e => {
 											e.currentTarget.src = story.fallbackImage
 										}}
+										className="tilt-3d"
 									/>
 								</div>
 								<div className="story-content">
 									<p className="story-description">
-										<span className="brigade-name">{story.name}:</span>{" "}
+										<span className="brigade-name gradient-text">
+											{story.name}:
+										</span>{" "}
 										{story.description}
 									</p>
-									<button className="story-button">
+									<button className="story-button btn-animated btn-ripple">
 										{t("stories-read-story-button")}
 									</button>
 								</div>
@@ -87,10 +145,37 @@ function StoriesSection() {
 					</div>
 				</div>
 
-				<div className="call-to-action">
-					<h3 className="cta-title">{t("stories-cta-title")}</h3>
-					<p className="cta-description">{t("stories-cta-description")}</p>
-					<button className="cta-button">{t("stories-cta-button")}</button>
+				<div
+					ref={ctaRef}
+					className={`call-to-action glass-effect ${
+						ctaVisible ? "visible" : ""
+					}`}
+				>
+					<h3
+						className={`cta-title ${
+							ctaVisible ? "animate-scale-in visible" : "animate-scale-in"
+						}`}
+					>
+						{t("stories-cta-title")}
+					</h3>
+					<p
+						className={`cta-description ${
+							ctaVisible
+								? "animate-fade-up visible stagger-1"
+								: "animate-fade-up stagger-1"
+						}`}
+					>
+						{t("stories-cta-description")}
+					</p>
+					<button
+						className={`donate-button btn-animated btn-pulse ${
+							ctaVisible
+								? "animate-scale-in visible stagger-2"
+								: "animate-scale-in stagger-2"
+						}`}
+					>
+						{t("stories-cta-button")}
+					</button>
 				</div>
 			</div>
 		</section>

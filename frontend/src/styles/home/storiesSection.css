@@ -155,31 +155,6 @@
 	margin-right: auto;
 }
 
-.cta-button {
-	background: #4a7c59;
-	color: white;
-	border: none;
-	padding: 15px 40px;
-	font-size: 1.1rem;
-	font-weight: 600;
-	border-radius: 8px;
-	cursor: pointer;
-	transition: all 0.3s ease;
-	text-transform: none;
-	letter-spacing: 0.5px;
-}
-
-.cta-button:hover {
-	background: #3d6b4a;
-	transform: translateY(-2px);
-	box-shadow: 0 4px 15px rgba(74, 124, 89, 0.3);
-}
-
-.cta-button:active {
-	transform: translateY(0);
-	box-shadow: 0 2px 8px rgba(74, 124, 89, 0.2);
-}
-
 /* Mobile responsiveness */
 @media (max-width: 1024px) {
 	.stories-container {
@@ -294,10 +269,5 @@
 
 	.cta-description {
 		font-size: 0.95rem;
-	}
-
-	.cta-button {
-		padding: 12px 30px;
-		font-size: 1rem;
 	}
 }

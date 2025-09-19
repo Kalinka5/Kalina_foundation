@@ -1,9 +1,26 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import {
+	useScrollAnimation,
+	useStaggeredAnimation,
+} from "../../lib/useAnimations.tsx"
 import "../../styles/home/ourInitiatives.css"
 
 function OurInitiatives() {
 	const { t } = useTranslation()
+
+	// Animation hooks
+	const { elementRef: sectionRef, isVisible } = useScrollAnimation<HTMLElement>(
+		{
+			threshold: 0.2,
+			triggerOnce: true,
+		}
+	)
+	const { containerRef: gridRef, visibleItems } =
+		useStaggeredAnimation<HTMLDivElement>(6, {
+			stagger: 150,
+			threshold: 0.1,
+		})
 
 	const initiatives = [
 		{
@@ -51,20 +68,47 @@ function OurInitiatives() {
 	]
 
 	return (
-		<section className="our-initiatives" id="our-initiatives">
+		<section
+			ref={sectionRef}
+			className={`our-initiatives ${isVisible ? "visible" : ""}`}
+			id="our-initiatives"
+		>
 			<div className="initiatives-container">
 				<div className="initiatives-header">
-					<h2 className="initiatives-title">{t("initiatives-title")}</h2>
-					<p className="initiatives-subtitle">{t("initiatives-subtitle")}</p>
+					<h2
+						className={`initiatives-title ${
+							isVisible ? "animate-fade-up visible" : "animate-fade-up"
+						}`}
+					>
+						{t("initiatives-title")}
+					</h2>
+					<p
+						className={`initiatives-subtitle ${
+							isVisible
+								? "animate-fade-up visible stagger-1"
+								: "animate-fade-up stagger-1"
+						}`}
+					>
+						{t("initiatives-subtitle")}
+					</p>
 				</div>
 
-				<div className="initiatives-grid">
-					{initiatives.map(initiative => (
-						<div key={initiative.id} className="initiative-card">
-							<div className="card-icon">{initiative.icon}</div>
+				<div ref={gridRef} className="initiatives-grid">
+					{initiatives.map((initiative, index) => (
+						<div
+							key={initiative.id}
+							className={`initiative-card hover-lift tilt-3d glass-effect ${
+								visibleItems[index]
+									? "animate-scale-in visible"
+									: "animate-scale-in"
+							}`}
+						>
+							<div className="card-icon floating-gentle">{initiative.icon}</div>
 							<h3 className="card-title">{initiative.title}</h3>
 							<p className="card-description">{initiative.description}</p>
-							<button className="card-button">{initiative.buttonText}</button>
+							<button className="card-button btn-animated btn-ripple">
+								{initiative.buttonText}
+							</button>
 						</div>
 					))}
 				</div>

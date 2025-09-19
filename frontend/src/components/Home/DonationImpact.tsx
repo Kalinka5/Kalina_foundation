@@ -1,11 +1,32 @@
 import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { useLimitedItems, useTotalDonated } from "../../lib/hooks.tsx"
+import {
+	useScrollAnimation,
+	useStaggeredAnimation,
+} from "../../lib/useAnimations.tsx"
 import "../../styles/home/donationImpact.css"
 
 function DonationImpact() {
 	const { t } = useTranslation()
 	const [donationAmount, setDonationAmount] = useState("")
+
+	// Animation hooks
+	const { elementRef: heroRef, isVisible: heroVisible } =
+		useScrollAnimation<HTMLDivElement>({
+			threshold: 0.3,
+			triggerOnce: true,
+		})
+	const { elementRef: formRef, isVisible: formVisible } =
+		useScrollAnimation<HTMLDivElement>({
+			threshold: 0.4,
+			triggerOnce: true,
+		})
+	const { containerRef: gridRef, visibleItems } =
+		useStaggeredAnimation<HTMLDivElement>(4, {
+			stagger: 200,
+			threshold: 0.2,
+		})
 
 	// Get 4 items from backend for donation impact display
 	const { data: items, isLoading: itemsLoading } = useLimitedItems(4)
@@ -35,31 +56,70 @@ function DonationImpact() {
 	return (
 		<section className="donation-impact" id="donation-impact">
 			{/* Hero Section */}
-			<div className="impact-hero">
+			<div
+				ref={heroRef}
+				className={`impact-hero ${heroVisible ? "visible" : ""}`}
+			>
 				<div className="impact-hero-container">
-					<h2 className="impact-hero-title">
+					<h2
+						className={`impact-hero-title gradient-text ${
+							heroVisible ? "animate-fade-up visible" : "animate-fade-up"
+						}`}
+					>
 						{t("donation-impact-hero-title")}
 					</h2>
-					<p className="impact-hero-description">
+					<p
+						className={`impact-hero-description ${
+							heroVisible
+								? "animate-fade-up visible stagger-1"
+								: "animate-fade-up stagger-1"
+						}`}
+					>
 						{t("donation-impact-hero-description")}
 					</p>
-					<button className="impact-hero-button">
+					<button
+						className={`impact-hero-button btn-animated btn-pulse ${
+							heroVisible
+								? "animate-scale-in visible stagger-2"
+								: "animate-scale-in stagger-2"
+						}`}
+					>
 						{t("donation-impact-hero-button")}
 					</button>
 				</div>
 			</div>
 
 			{/* Choose Your Impact */}
-			<div className="choose-impact">
+			<div
+				ref={formRef}
+				className={`choose-impact ${formVisible ? "visible" : ""}`}
+			>
 				<div className="choose-impact-container">
-					<h3 className="choose-impact-title">
+					<h3
+						className={`choose-impact-title ${
+							formVisible ? "animate-fade-up visible" : "animate-fade-up"
+						}`}
+					>
 						{t("donation-impact-choose-title")}
 					</h3>
-					<p className="choose-impact-subtitle">
+					<p
+						className={`choose-impact-subtitle ${
+							formVisible
+								? "animate-fade-up visible stagger-1"
+								: "animate-fade-up stagger-1"
+						}`}
+					>
 						{t("donation-impact-choose-subtitle")}
 					</p>
 
-					<form onSubmit={handleDonationSubmit} className="donation-form">
+					<form
+						onSubmit={handleDonationSubmit}
+						className={`donation-form glass-effect ${
+							formVisible
+								? "animate-scale-in visible stagger-2"
+								: "animate-scale-in stagger-2"
+						}`}
+					>
 						<div className="amount-input">
 							<span className="currency-symbol">$</span>
 							<input
@@ -71,7 +131,10 @@ function DonationImpact() {
 								min="1"
 							/>
 						</div>
-						<button type="submit" className="process-donation-btn">
+						<button
+							type="submit"
+							className="process-donation-btn btn-animated btn-ripple"
+						>
 							{t("donation-impact-process-button")}
 						</button>
 					</form>
@@ -88,17 +151,21 @@ function DonationImpact() {
 						{t("donation-impact-breakdown-subtitle")}
 					</p>
 
-					<div className="categories-grid">
+					<div ref={gridRef} className="categories-grid">
 						{itemsLoading ? (
-							<div className="loading">Loading items...</div>
+							<div className="loading shimmer">Loading items...</div>
 						) : (
-							donationCategories.map(category => (
+							donationCategories.map((category, index) => (
 								<div
 									key={category.id}
-									className="category-card"
+									className={`category-card hover-lift tilt-3d ${
+										visibleItems[index]
+											? "animate-scale-in visible"
+											: "animate-scale-in"
+									}`}
 									style={{ backgroundImage: `url(${category.image})` }}
 								>
-									<div className="category-overlay">
+									<div className="category-overlay glass-effect">
 										<h4 className="category-title">
 											{t(`${category.title}-title`)}
 										</h4>
@@ -107,7 +174,7 @@ function DonationImpact() {
 										</p>
 										<div className="category-stats">
 											<div className="stats-text">
-												<span className="collected">
+												<span className="collected gradient-text">
 													${category.collected.toLocaleString()}
 												</span>
 												<span className="goal">
@@ -149,9 +216,6 @@ function DonationImpact() {
 							<div className="total-donated-amount">
 								<span className="total-amount">
 									${totalDonatedData?.total_donated?.toLocaleString() || 0}
-								</span>
-								<span className="total-label">
-									{t("donation-impact-total-donated-label")}
 								</span>
 							</div>
 						)}

@@ -1,0 +1,411 @@
+/**
+ * Home Page Animation Enhancements
+ * Additional styles to complement the main animation framework
+ */
+
+/* =========================
+   HERO SECTION ENHANCEMENTS
+   ========================= */
+.hero-section {
+	position: relative;
+	overflow: hidden;
+}
+
+.hero-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 120%;
+	z-index: -1;
+	opacity: 0.6;
+}
+
+.floating-elements {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.floating-element {
+	position: absolute;
+	font-size: 2rem;
+	opacity: 0.7;
+	pointer-events: none;
+}
+
+.floating-element:nth-child(1) {
+	top: 20%;
+	left: 10%;
+}
+
+.floating-element:nth-child(2) {
+	top: 60%;
+	right: 15%;
+}
+
+.floating-element:nth-child(3) {
+	top: 80%;
+	left: 20%;
+}
+
+.image-container {
+	position: relative;
+	display: inline-block;
+	border-radius: 16px;
+	overflow: hidden;
+}
+
+.image-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: opacity var(--duration-normal) ease;
+}
+
+.image-container:hover .image-overlay {
+	opacity: 0.1;
+}
+
+/* =========================
+   SECTION ENHANCEMENTS
+   ========================= */
+.initiatives-grid .initiative-card {
+	background: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stories-grid .story-card {
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(8px);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.value-item {
+	background: rgba(255, 255, 255, 0.02);
+	backdrop-filter: blur(6px);
+	border: 1px solid rgba(255, 255, 255, 0.05);
+	padding: 1rem;
+	margin: 0.5rem 0;
+	border-radius: 12px;
+	transition: all var(--duration-normal) var(--ease-out-quart);
+}
+
+.value-item:hover {
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.15);
+	transform: translateX(10px);
+}
+
+/* =========================
+   CARD ENHANCEMENTS
+   ========================= */
+.category-card,
+.hero-card {
+	position: relative;
+	overflow: hidden;
+}
+.hero-card {
+	padding-top: 32px;
+}
+
+.category-card::before,
+.hero-card::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(255, 255, 255, 0.1) 50%,
+		transparent 100%
+	);
+	transition: left var(--duration-slow) ease;
+	z-index: 1;
+}
+
+/* Improve category card image visibility */
+.category-overlay {
+	background: rgba(0, 0, 0, 0.4) !important;
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+}
+
+.category-card {
+	position: relative;
+	background-size: cover !important;
+	background-position: center !important;
+	filter: brightness(1.1) contrast(1.1);
+}
+
+.category-card:hover::before,
+.hero-card:hover::before {
+	left: 100%;
+}
+
+/* =========================
+   LOADING STATES
+   ========================= */
+.loading.shimmer {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 0.1) 0px,
+		rgba(255, 255, 255, 0.2) 40px,
+		rgba(255, 255, 255, 0.1) 80px
+	);
+	background-size: 200px 100%;
+	animation: shimmer 1.5s infinite linear;
+	border-radius: 8px;
+	padding: 2rem;
+	text-align: center;
+}
+
+/* =========================
+   GRADIENT TEXT VARIATIONS
+   ========================= */
+.brigade-name.gradient-text {
+	background: linear-gradient(45deg, #ffd700, #ffb347, #4169e1);
+	background-size: 200% auto;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.collected.gradient-text {
+	color: #ffffff !important;
+	font-weight: 700;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+	background: none !important;
+	background-clip: unset !important;
+	-webkit-background-clip: unset !important;
+	-webkit-text-fill-color: unset !important;
+	animation: none !important;
+}
+
+.hero-amount.gradient-text {
+	color: #ffffff !important;
+	font-weight: 700;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+	background: none !important;
+	background-clip: unset !important;
+	-webkit-background-clip: unset !important;
+	-webkit-text-fill-color: unset !important;
+	font-size: 1.1em;
+}
+
+.avatar-initials.gradient-text {
+	background: linear-gradient(135deg, #ffb347, #4169e1, #0066cc);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* =========================
+   BUTTON ENHANCEMENTS
+   ========================= */
+.btn-animated {
+	position: relative;
+	background: #4169e1;
+	border: none;
+	color: white;
+	font-weight: 600;
+	padding: 12px 24px;
+	border-radius: 8px;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.btn-animated::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: #ffd700;
+	transition: left var(--duration-normal) ease;
+	z-index: -1;
+}
+
+.btn-animated:hover::before {
+	left: 0;
+}
+
+/* Apply blue text to buttons with yellow backgrounds on hover for better color scheme consistency */
+.initiative-card .btn-animated:hover,
+.story-card .btn-animated:hover,
+.category-card .btn-animated:hover,
+.cta-button.btn-animated:hover,
+.impact-hero-button.btn-animated:hover,
+.process-donation-btn.btn-animated:hover,
+.btn-animated:hover[style*="background"][style*="yellow"],
+.btn-animated:hover[class*="yellow"] {
+	color: #4169e1;
+}
+
+.btn-pulse {
+	position: relative;
+}
+
+.btn-pulse::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	height: 100%;
+	background: inherit;
+	border-radius: inherit;
+	transform: translate(-50%, -50%) scale(1);
+	opacity: 0.7;
+	animation: pulse 2s infinite;
+	z-index: -1;
+}
+
+/* =========================
+   SPECIAL EFFECTS
+   ========================= */
+/* Fix hero avatar container positioning */
+.hero-avatar-container {
+	position: relative;
+	display: inline-block;
+}
+
+.medal-icon.floating {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	font-size: 1.8rem;
+	filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+	z-index: 10;
+	background: rgba(255, 255, 255, 0.9);
+	border-radius: 50%;
+	padding: 2px;
+	width: 32px;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.percentage-bar {
+	position: relative;
+	width: 100%;
+	height: 6px;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.percentage-fill {
+	height: 100%;
+	background: linear-gradient(90deg, #ffd700 0%, #4169e1 100%);
+	border-radius: 3px;
+	transition: width 1s var(--ease-out-expo);
+	position: relative;
+}
+
+.percentage-fill::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(255, 255, 255, 0.3) 50%,
+		transparent 100%
+	);
+	animation: shimmer 2s infinite;
+}
+
+/* =========================
+   RESPONSIVE ENHANCEMENTS
+   ========================= */
+@media (max-width: 768px) {
+	.floating-element {
+		font-size: 1.5rem;
+		opacity: 0.5;
+	}
+
+	.hero-background {
+		opacity: 0.3;
+	}
+
+	.glass-effect {
+		backdrop-filter: blur(5px);
+		-webkit-backdrop-filter: blur(5px);
+	}
+
+	.value-item:hover {
+		transform: none;
+		background: rgba(255, 255, 255, 0.05);
+	}
+}
+
+@media (max-width: 480px) {
+	.floating-elements {
+		display: none;
+	}
+
+	.btn-animated::before {
+		display: none;
+	}
+
+	.category-card::before,
+	.hero-card::before {
+		display: none;
+	}
+
+	.gradient-text {
+		background: none !important;
+		-webkit-text-fill-color: inherit !important;
+		color: inherit;
+	}
+}
+
+/* =========================
+   PERFORMANCE OPTIMIZATIONS
+   ========================= */
+.animate-on-scroll,
+.hover-lift,
+.tilt-3d,
+.floating,
+.parallax-element {
+	transform: translateZ(0);
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+/* Preload critical animations */
+@media (prefers-reduced-motion: no-preference) {
+	.hero-section,
+	.our-initiatives,
+	.stories-section {
+		contain: layout style paint;
+	}
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+	.glass-effect {
+		background: rgba(0, 0, 0, 0.1);
+		border-color: rgba(255, 255, 255, 0.1);
+	}
+
+	.value-item {
+		background: rgba(0, 0, 0, 0.02);
+		border-color: rgba(255, 255, 255, 0.03);
+	}
+}

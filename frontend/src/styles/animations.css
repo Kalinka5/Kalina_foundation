@@ -1,0 +1,531 @@
+/**
+ * Modern Animation Framework
+ * Optimized for 60fps performance, mobile-friendly, and accessible
+ * Supports reduced motion preference
+ */
+
+/* =========================
+   CSS CUSTOM PROPERTIES
+   ========================= */
+:root {
+	/* Animation durations */
+	--duration-fast: 0.2s;
+	--duration-normal: 0.3s;
+	--duration-slow: 0.6s;
+	--duration-slower: 1s;
+
+	/* Easing curves - Modern and natural */
+	--ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+	--ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+	--ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+	/* Animation delays for staggered effects */
+	--stagger-delay: 0.1s;
+	--stagger-fast: 0.05s;
+	--stagger-slow: 0.15s;
+
+	/* Transform values */
+	--scale-hover: 1.05;
+	--scale-active: 0.98;
+	--translate-distance: 30px;
+	--rotate-slight: 2deg;
+}
+
+/* =========================
+   ACCESSIBILITY SUPPORT
+   ========================= */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	/* Hide floating and parallax effects */
+	.floating,
+	.parallax-element {
+		transform: none !important;
+	}
+}
+
+/* =========================
+   GLOBAL ANIMATION SETUP
+   ========================= */
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	/* Optimize rendering performance */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Improve performance for animated elements */
+.animate-on-scroll,
+.floating,
+.parallax-element,
+.hover-lift {
+	will-change: transform;
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+/* =========================
+   KEYFRAME ANIMATIONS
+   ========================= */
+
+/* Fade and slide animations */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(var(--translate-distance));
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeInDown {
+	from {
+		opacity: 0;
+		transform: translateY(calc(-1 * var(--translate-distance)));
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeInLeft {
+	from {
+		opacity: 0;
+		transform: translateX(calc(-1 * var(--translate-distance)));
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes fadeInRight {
+	from {
+		opacity: 0;
+		transform: translateX(var(--translate-distance));
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes scaleIn {
+	from {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes bounceIn {
+	0% {
+		opacity: 0;
+		transform: scale(0.3);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.05);
+	}
+	70% {
+		transform: scale(0.9);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* Modern gradient text reveal */
+@keyframes gradientReveal {
+	0% {
+		background-position: -200% center;
+	}
+	100% {
+		background-position: 200% center;
+	}
+}
+
+/* Floating animations */
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+@keyframes floatGentle {
+	0%,
+	100% {
+		transform: translateY(0px) rotate(0deg);
+	}
+	33% {
+		transform: translateY(-5px) rotate(1deg);
+	}
+	66% {
+		transform: translateY(-2px) rotate(-1deg);
+	}
+}
+
+/* Button pulse animation */
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+	}
+	70% {
+		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+	}
+}
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+	0% {
+		background-position: -200px 0;
+	}
+	100% {
+		background-position: calc(200px + 100%) 0;
+	}
+}
+
+/* 3D rotation effect */
+@keyframes rotate3D {
+	0% {
+		transform: perspective(1000px) rotateY(0deg);
+	}
+	100% {
+		transform: perspective(1000px) rotateY(360deg);
+	}
+}
+
+/* =========================
+   ANIMATION CLASSES
+   ========================= */
+
+/* Scroll-triggered animations */
+.animate-fade-in {
+	opacity: 0;
+	transition: opacity var(--duration-slow) var(--ease-out-expo);
+}
+
+.animate-fade-in.visible {
+	opacity: 1;
+}
+
+.animate-fade-up {
+	opacity: 0;
+	transform: translateY(var(--translate-distance));
+	transition: opacity var(--duration-slow) var(--ease-out-expo),
+		transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.animate-fade-up.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.animate-fade-down {
+	opacity: 0;
+	transform: translateY(calc(-1 * var(--translate-distance)));
+	transition: opacity var(--duration-slow) var(--ease-out-expo),
+		transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.animate-fade-down.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.animate-fade-left {
+	opacity: 0;
+	transform: translateX(calc(-1 * var(--translate-distance)));
+	transition: opacity var(--duration-slow) var(--ease-out-expo),
+		transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.animate-fade-left.visible {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.animate-fade-right {
+	opacity: 0;
+	transform: translateX(var(--translate-distance));
+	transition: opacity var(--duration-slow) var(--ease-out-expo),
+		transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.animate-fade-right.visible {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.animate-scale-in {
+	opacity: 0;
+	transform: scale(0.8);
+	transition: opacity var(--duration-slow) var(--ease-out-back),
+		transform var(--duration-slow) var(--ease-out-back);
+}
+
+.animate-scale-in.visible {
+	opacity: 1;
+	transform: scale(1);
+}
+
+/* Staggered animations */
+.stagger-1 {
+	transition-delay: calc(1 * var(--stagger-delay));
+}
+.stagger-2 {
+	transition-delay: calc(2 * var(--stagger-delay));
+}
+.stagger-3 {
+	transition-delay: calc(3 * var(--stagger-delay));
+}
+.stagger-4 {
+	transition-delay: calc(4 * var(--stagger-delay));
+}
+.stagger-5 {
+	transition-delay: calc(5 * var(--stagger-delay));
+}
+.stagger-6 {
+	transition-delay: calc(6 * var(--stagger-delay));
+}
+
+/* =========================
+   MICRO-INTERACTIONS
+   ========================= */
+
+/* Hover lift effect for cards */
+.hover-lift {
+	transition: transform var(--duration-normal) var(--ease-out-quart),
+		box-shadow var(--duration-normal) var(--ease-out-quart);
+}
+
+.hover-lift:hover {
+	transform: translateY(-8px) scale(var(--scale-hover));
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Button animations */
+.btn-animated {
+	position: relative;
+	overflow: hidden;
+	transition: transform var(--duration-fast) var(--ease-out-quart),
+		box-shadow var(--duration-fast) var(--ease-out-quart);
+}
+
+.btn-animated:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-animated:active {
+	transform: translateY(0) scale(var(--scale-active));
+}
+
+/* Pulse button */
+.btn-pulse {
+	animation: pulse 2s infinite;
+}
+
+/* Ripple effect */
+.btn-ripple {
+	position: relative;
+	overflow: hidden;
+}
+
+.btn-ripple::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	transition: width 0.6s, height 0.6s;
+}
+
+.btn-ripple:active::after {
+	width: 300px;
+	height: 300px;
+}
+
+/* =========================
+   MODERN EFFECTS
+   ========================= */
+
+/* Gradient text reveal */
+.gradient-text {
+	background: linear-gradient(
+		90deg,
+		#ffd700 0%,
+		#ffb347 25%,
+		#4169e1 50%,
+		#0066cc 75%,
+		#003d7a 100%
+	);
+	background-size: 200% auto;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: gradientReveal 3s linear infinite;
+}
+
+/* Glass morphism effect */
+.glass-effect {
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 16px;
+}
+
+/* Floating elements */
+.floating {
+	animation: float 6s ease-in-out infinite;
+}
+
+.floating-gentle {
+	animation: floatGentle 8s ease-in-out infinite;
+}
+
+.floating-delay-1 {
+	animation-delay: -1s;
+}
+.floating-delay-2 {
+	animation-delay: -2s;
+}
+.floating-delay-3 {
+	animation-delay: -3s;
+}
+
+/* Parallax container */
+.parallax-container {
+	overflow: hidden;
+	position: relative;
+}
+
+.parallax-element {
+	transition: transform 0.1s linear;
+}
+
+/* 3D tilt effect for cards */
+.tilt-3d {
+	perspective: 1000px;
+	transform-style: preserve-3d;
+	transition: transform var(--duration-normal) var(--ease-out-quart);
+}
+
+.tilt-3d:hover {
+	transform: perspective(1000px) rotateX(10deg) rotateY(10deg) translateZ(20px);
+}
+
+/* Shimmer loading effect */
+.shimmer {
+	background: linear-gradient(90deg, #f0f0f0 0px, #e0e0e0 40px, #f0f0f0 80px);
+	background-size: 200px;
+	animation: shimmer 1.5s infinite linear;
+}
+
+/* =========================
+   PAGE LOAD ANIMATIONS
+   ========================= */
+.page-enter {
+	animation: fadeInUp var(--duration-slower) var(--ease-out-expo);
+}
+
+.hero-enter {
+	animation: fadeInDown var(--duration-slower) var(--ease-out-expo);
+	animation-delay: 0.2s;
+	animation-fill-mode: both;
+}
+
+.content-enter {
+	animation: fadeInUp var(--duration-slower) var(--ease-out-expo);
+	animation-delay: 0.4s;
+	animation-fill-mode: both;
+}
+
+/* =========================
+   MOBILE OPTIMIZATIONS
+   ========================= */
+@media (max-width: 768px) {
+	:root {
+		--duration-normal: 0.2s;
+		--duration-slow: 0.4s;
+		--translate-distance: 20px;
+	}
+
+	/* Simpler animations on mobile */
+	.hover-lift:hover {
+		transform: translateY(-4px) scale(1.02);
+	}
+
+	.tilt-3d:hover {
+		transform: perspective(1000px) translateZ(10px);
+	}
+
+	/* Disable floating animations on mobile to save battery */
+	.floating,
+	.floating-gentle {
+		animation: none;
+	}
+}
+
+/* =========================
+   HIGH PERFORMANCE MODE
+   ========================= */
+@media (max-width: 480px) {
+	/* Ultra-light animations for low-end devices */
+	.animate-fade-up,
+	.animate-fade-down,
+	.animate-fade-left,
+	.animate-fade-right {
+		transform: none !important;
+		transition: opacity var(--duration-fast) ease-out;
+	}
+
+	.hover-lift {
+		transition: opacity var(--duration-fast) ease-out;
+	}
+
+	.hover-lift:hover {
+		transform: none;
+		opacity: 0.8;
+	}
+}

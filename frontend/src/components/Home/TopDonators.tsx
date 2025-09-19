@@ -1,6 +1,7 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 import { useDonators } from "../../lib/hooks.tsx"
+import { useScrollAnimation } from "../../lib/useAnimations.tsx"
 import useMediaQuery from "../../lib/useMediaQuery.tsx"
 import "../../styles/home/topDonators.css"
 
@@ -9,13 +10,27 @@ function TopDonators() {
 	const { t } = useTranslation()
 	const isMobile = useMediaQuery("(max-width: 1034px)")
 
+	// Animation hooks
+	const { elementRef: sectionRef, isVisible } = useScrollAnimation({
+		threshold: 0.3,
+		triggerOnce: true,
+	})
+
 	if (isLoading) {
 		return (
-			<section className="top-heroes-section" id="top-donators">
+			<section
+				ref={sectionRef}
+				className="top-heroes-section visible"
+				id="top-donators"
+			>
 				<div className="top-heroes-container">
 					<div className="top-heroes-header">
-						<h2 className="top-heroes-title">{t("our-top-donators")}</h2>
-						<p className="top-heroes-subtitle">{t("loading-supporters")}</p>
+						<h2 className="top-heroes-title animate-fade-up visible">
+							{t("our-top-donators")}
+						</h2>
+						<p className="top-heroes-subtitle animate-fade-up visible stagger-1">
+							{t("loading-supporters")}
+						</p>
 					</div>
 				</div>
 			</section>
@@ -24,11 +39,19 @@ function TopDonators() {
 
 	if (isError || !donators) {
 		return (
-			<section className="top-heroes-section" id="top-donators">
+			<section
+				ref={sectionRef}
+				className="top-heroes-section visible"
+				id="top-donators"
+			>
 				<div className="top-heroes-container">
 					<div className="top-heroes-header">
-						<h2 className="top-heroes-title">{t("our-top-donators")}</h2>
-						<p className="top-heroes-subtitle">{t("unable-load-donators")}</p>
+						<h2 className="top-heroes-title animate-fade-up visible">
+							{t("our-top-donators")}
+						</h2>
+						<p className="top-heroes-subtitle animate-fade-up visible stagger-1">
+							{t("unable-load-donators")}
+						</p>
 					</div>
 				</div>
 			</section>
@@ -80,25 +103,47 @@ function TopDonators() {
 	}
 
 	return (
-		<section className="top-heroes-section" id="top-donators">
+		<section
+			ref={sectionRef}
+			className={`top-heroes-section ${isVisible ? "visible" : ""}`}
+			id="top-donators"
+		>
 			<div className="top-heroes-container">
 				<div className="top-heroes-header">
-					<h2 className="top-heroes-title">{t("our-top-donators")}</h2>
-					<p className="top-heroes-subtitle">{t("celebrating-supporters")}</p>
+					<h2
+						className={`top-heroes-title ${
+							isVisible ? "animate-fade-up visible" : "animate-fade-up"
+						}`}
+					>
+						{t("our-top-donators")}
+					</h2>
+					<p
+						className={`top-heroes-subtitle ${
+							isVisible
+								? "animate-fade-up visible stagger-1"
+								: "animate-fade-up stagger-1"
+						}`}
+					>
+						{t("celebrating-supporters")}
+					</p>
 				</div>
 
 				<div className="heroes-grid">
 					{displayedDonators.map((donator, index) => (
 						<div
 							key={donator.id}
-							className={`hero-card ${
+							className={`hero-card hover-lift glass-effect ${
 								index < 3 ? "podium-position" : ""
-							} position-${index + 1}`}
+							} position-${index + 1} ${
+								isVisible
+									? `animate-scale-in visible stagger-${index + 2}`
+									: `animate-scale-in stagger-${index + 2}`
+							}`}
 						>
 							<div className="top-hero-content">
 								<div className="hero-avatar-container">
 									<div
-										className={`hero-avatar ${
+										className={`hero-avatar tilt-3d ${
 											donator.image ? "has-photo" : "initials-avatar"
 										}`}
 									>
@@ -109,16 +154,16 @@ function TopDonators() {
 												className="avatar-image"
 											/>
 										) : (
-											<span className="avatar-initials">
+											<span className="avatar-initials gradient-text">
 												{getInitials(donator)}
 											</span>
 										)}
 									</div>
-									{index < 3 && <div className="medal-icon">🏆</div>}
+									{index < 3 && <div className="medal-icon floating">🏆</div>}
 								</div>
 								<div className="hero-info">
 									<h3 className="hero-name">{getDisplayName(donator)}</h3>
-									<p className="hero-amount">
+									<p className="hero-amount gradient-text">
 										{formatDonationAmount(donator.donated)}
 									</p>
 								</div>
@@ -129,7 +174,15 @@ function TopDonators() {
 				</div>
 
 				<div className="heroes-cta">
-					<p className="cta-text">{t("join-community")}</p>
+					<p
+						className={`cta-text ${
+							isVisible
+								? "animate-fade-up visible stagger-6"
+								: "animate-fade-up stagger-6"
+						}`}
+					>
+						{t("join-community")}
+					</p>
 				</div>
 			</div>
 		</section>
