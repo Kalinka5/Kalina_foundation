@@ -1,41 +1,30 @@
 import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
+import { useLimitedItems, useTotalDonated } from "../../lib/hooks.tsx"
 import "../../styles/home/donationImpact.css"
 
 function DonationImpact() {
 	const { t } = useTranslation()
 	const [donationAmount, setDonationAmount] = useState("")
 
-	const donationCategories = [
-		{
-			id: 1,
-			icon: "🏥",
-			title: t("donation-impact-medical-title"),
-			description: t("donation-impact-medical-description"),
-			percentage: 30,
-		},
-		{
-			id: 2,
-			icon: "👨‍👩‍👧‍👦",
-			title: t("donation-impact-family-title"),
-			description: t("donation-impact-family-description"),
-			percentage: 20,
-		},
-		{
-			id: 3,
-			icon: "🏠",
-			title: t("donation-impact-reintegration-title"),
-			description: t("donation-impact-reintegration-description"),
-			percentage: 20,
-		},
-		{
-			id: 4,
-			icon: "🚨",
-			title: t("donation-impact-emergency-title"),
-			description: t("donation-impact-emergency-description"),
-			percentage: 10,
-		},
-	]
+	// Get 4 items from backend for donation impact display
+	const { data: items, isLoading: itemsLoading } = useLimitedItems(4)
+	const { data: totalDonatedData, isLoading: totalLoading } = useTotalDonated()
+
+	// Transform items into donation categories format
+	const donationCategories =
+		items?.map(item => ({
+			id: item.id,
+			title: item.title,
+			description: item.description,
+			percentage:
+				item.full_price > 0
+					? Math.round((item.collected / item.full_price) * 100)
+					: 0,
+			image: item.image,
+			collected: item.collected,
+			full_price: item.full_price,
+		})) || []
 
 	const handleDonationSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
@@ -100,44 +89,70 @@ function DonationImpact() {
 					</p>
 
 					<div className="categories-grid">
-						{donationCategories.map(category => (
-							<div key={category.id} className="category-card">
-								<div className="category-icon">{category.icon}</div>
-								<h4 className="category-title">{category.title}</h4>
-								<p className="category-description">{category.description}</p>
-								<div className="category-percentage">
-									<div className="percentage-bar">
-										<div
-											className="percentage-fill"
-											style={{ width: `${category.percentage}%` }}
-										></div>
+						{itemsLoading ? (
+							<div className="loading">Loading items...</div>
+						) : (
+							donationCategories.map(category => (
+								<div
+									key={category.id}
+									className="category-card"
+									style={{ backgroundImage: `url(${category.image})` }}
+								>
+									<div className="category-overlay">
+										<h4 className="category-title">{category.title}</h4>
+										<p className="category-description">
+											{category.description}
+										</p>
+										<div className="category-stats">
+											<div className="stats-text">
+												<span className="collected">
+													${category.collected.toLocaleString()}
+												</span>
+												<span className="goal">
+													{t("donation-impact-of")} $
+													{category.full_price.toLocaleString()}{" "}
+													{t("donation-impact-goal")}
+												</span>
+											</div>
+											<div className="category-percentage">
+												<div className="percentage-bar">
+													<div
+														className="percentage-fill"
+														style={{ width: `${category.percentage}%` }}
+													></div>
+												</div>
+												<span className="percentage-text">
+													{category.percentage}%
+												</span>
+											</div>
+										</div>
 									</div>
-									<span className="percentage-text">
-										{category.percentage}%
-									</span>
 								</div>
-							</div>
-						))}
+							))
+						)}
 					</div>
 
-					{/* Operational Costs */}
-					<div className="operational-costs">
-						<div className="operational-icon">⚙️</div>
-						<h4 className="operational-title">
-							{t("donation-impact-operational-title")}
+					{/* Total Donated */}
+					<div className="total-donated-section">
+						<div className="total-donated-icon">💵</div>
+						<h4 className="total-donated-title">
+							{t("donation-impact-total-donated-title")}
 						</h4>
-						<p className="operational-description">
-							{t("donation-impact-operational-description")}
+						<p className="total-donated-description">
+							{t("donation-impact-total-donated-description")}
 						</p>
-						<div className="operational-percentage">
-							<div className="percentage-bar">
-								<div
-									className="percentage-fill operational-fill"
-									style={{ width: "16%" }}
-								></div>
+						{totalLoading ? (
+							<div className="loading">Loading...</div>
+						) : (
+							<div className="total-donated-amount">
+								<span className="total-amount">
+									${totalDonatedData?.total_donated?.toLocaleString() || 0}
+								</span>
+								<span className="total-label">
+									{t("donation-impact-total-donated-label")}
+								</span>
 							</div>
-							<span className="percentage-text">16%</span>
-						</div>
+						)}
 					</div>
 
 					<div className="transparency-note">

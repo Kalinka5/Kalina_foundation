@@ -215,6 +215,18 @@ class ItemsViewSet(viewsets.ModelViewSet):
 
     def list(self, request):
         queryset = self.filter_queryset(self.get_queryset().order_by('title'))
+        
+        # Support limit parameter
+        limit = request.query_params.get('limit')
+        if limit:
+            try:
+                limit = int(limit)
+                queryset = queryset[:limit]
+                serializer = ItemSerializer(queryset, many=True)
+                return Response(serializer.data)
+            except ValueError:
+                pass
+        
         page = self.paginate_queryset(queryset)
         serializer = ItemSerializer(page, many=True)
         return Response(serializer.data)
@@ -271,6 +283,13 @@ def donaters(request):
     user = User.objects.all().order_by('-donated')[:5]
     serializer = UserSerializer(user, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def total_donated(request):
+    from django.db.models import Sum
+    total = Item.objects.aggregate(total_collected=Sum('collected'))['total_collected'] or 0
+    return Response({'total_donated': total}, status=status.HTTP_200_OK)
 
 
 def get_usd_to_uah():

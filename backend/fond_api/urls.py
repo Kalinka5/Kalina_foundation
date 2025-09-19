@@ -18,6 +18,7 @@ urlpatterns = [
     path('categories/<int:pk>', views.single_category, name='single_category'),
     path('profile', views.profile, name='profile'),
     path('donators', views.donaters, name='top-donators'),
+    path('total-donated', views.total_donated, name='total-donated'),
     path('donate/', views.process_donation, name='process_donation'),
 ]
 
