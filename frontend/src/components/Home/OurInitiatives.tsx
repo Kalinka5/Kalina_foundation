@@ -8,14 +8,14 @@ function OurInitiatives() {
 	const initiatives = [
 		{
 			id: 1,
-			icon: "💼",
+			icon: "🪖",
 			title: t("initiatives-equipment-title"),
 			description: t("initiatives-equipment-description"),
 			buttonText: t("initiatives-equipment-button"),
 		},
 		{
 			id: 2,
-			icon: "🩺",
+			icon: "🩹",
 			title: t("initiatives-medical-title"),
 			description: t("initiatives-medical-description"),
 			buttonText: t("initiatives-medical-button"),
@@ -29,21 +29,21 @@ function OurInitiatives() {
 		},
 		{
 			id: 4,
-			icon: "🤖",
+			icon: "🕹️",
 			title: t("initiatives-technology-title"),
 			description: t("initiatives-technology-description"),
 			buttonText: t("initiatives-technology-button"),
 		},
 		{
 			id: 5,
-			icon: "🍔",
+			icon: "💧",
 			title: t("initiatives-food-title"),
 			description: t("initiatives-food-description"),
 			buttonText: t("initiatives-food-button"),
 		},
 		{
 			id: 6,
-			icon: "💖",
+			icon: "🤝",
 			title: t("initiatives-special-title"),
 			description: t("initiatives-special-description"),
 			buttonText: t("initiatives-special-button"),
