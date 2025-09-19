@@ -2,11 +2,12 @@ import React, { useState } from "react"
 
 import Footer from "../components/Footer.js"
 import Header from "../components/Header.tsx"
-import DonateBanner from "../components/Home/DonateBanner.tsx"
-import DonationDrives from "../components/Home/DonationDrives.tsx"
+import DonationImpact from "../components/Home/DonationImpact.tsx"
 import HeroSection from "../components/Home/HeroSection.tsx"
+import OurInitiatives from "../components/Home/OurInitiatives.tsx"
+import StoriesSection from "../components/Home/StoriesSection.tsx"
+import TeamMission from "../components/Home/TeamMission.tsx"
 import TopDonators from "../components/Home/TopDonators.tsx"
-import WatchNow from "../components/Home/WatchNow.tsx"
 
 import { MAX_PAGE_NUMBER } from "../lib/constants.js"
 
@@ -24,9 +25,11 @@ function Home() {
 
 	const SectionLinks = [
 		{ id: 1, urlLink: "#hero-section", urlName: t("about-us") },
-		{ id: 2, urlLink: "#donation-drives", urlName: t("donation-drives") },
-		{ id: 3, urlLink: "#watch-now", urlName: t("watch-now") },
-		{ id: 4, urlLink: "#top-donators", urlName: t("top-donators") },
+		{ id: 2, urlLink: "#team-mission", urlName: t("our-mission") },
+		{ id: 3, urlLink: "#our-initiatives", urlName: t("our-initiatives") },
+		{ id: 4, urlLink: "#stories-section", urlName: t("stories") },
+		{ id: 5, urlLink: "#donation-impact", urlName: t("donate") },
+		{ id: 6, urlLink: "#top-donators", urlName: t("top-donators") },
 	]
 
 	return (
@@ -35,9 +38,10 @@ function Home() {
 			{page > 0 && page < MAX_PAGE_NUMBER ? (
 				<>
 					<HeroSection />
-					<DonateBanner />
-					<DonationDrives />
-					<WatchNow />
+					<TeamMission />
+					<OurInitiatives />
+					<StoriesSection />
+					<DonationImpact />
 					<TopDonators />
 					<Footer />
 				</>

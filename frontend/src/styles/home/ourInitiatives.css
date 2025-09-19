@@ -1,0 +1,192 @@
+.our-initiatives {
+	background: #1a1a1a;
+	padding: 80px 0;
+	color: white;
+}
+
+.initiatives-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 40px;
+}
+
+.initiatives-header {
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.initiatives-title {
+	font-size: 3rem;
+	font-weight: 700;
+	margin-bottom: 20px;
+	color: #ffffff;
+	letter-spacing: -0.02em;
+}
+
+.initiatives-subtitle {
+	font-size: 1.2rem;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.8);
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.initiatives-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+}
+
+.initiative-card {
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 12px;
+	padding: 40px 30px;
+	text-align: center;
+	transition: all 0.3s ease;
+	backdrop-filter: blur(10px);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 320px;
+}
+
+.initiative-card:hover {
+	transform: translateY(-8px);
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.2);
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+	font-size: 3rem;
+	margin-bottom: 20px;
+	opacity: 0.9;
+}
+
+.card-title {
+	font-size: 1.4rem;
+	font-weight: 600;
+	margin-bottom: 15px;
+	color: #ffffff;
+	line-height: 1.3;
+}
+
+.card-description {
+	font-size: 1rem;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.8);
+	margin-bottom: 25px;
+	flex-grow: 1;
+}
+
+.card-button {
+	background: #333333;
+	color: white;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	padding: 12px 24px;
+	border-radius: 6px;
+	font-size: 0.95rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-transform: none;
+	letter-spacing: 0.3px;
+}
+
+.card-button:hover {
+	background: #4a4a4a;
+	border-color: rgba(255, 255, 255, 0.3);
+	transform: translateY(-2px);
+}
+
+.card-button:active {
+	transform: translateY(0);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+	.initiatives-container {
+		padding: 0 30px;
+	}
+
+	.initiatives-grid {
+		gap: 25px;
+	}
+
+	.initiatives-title {
+		font-size: 2.5rem;
+	}
+
+	.initiatives-subtitle {
+		font-size: 1.1rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.our-initiatives {
+		padding: 60px 0;
+	}
+
+	.initiatives-container {
+		padding: 0 20px;
+	}
+
+	.initiatives-header {
+		margin-bottom: 40px;
+	}
+
+	.initiatives-title {
+		font-size: 2rem;
+	}
+
+	.initiatives-subtitle {
+		font-size: 1rem;
+	}
+
+	.initiatives-grid {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+
+	.initiative-card {
+		padding: 30px 25px;
+		min-height: 280px;
+	}
+
+	.card-icon {
+		font-size: 2.5rem;
+	}
+
+	.card-title {
+		font-size: 1.3rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.initiatives-title {
+		font-size: 1.8rem;
+	}
+
+	.initiative-card {
+		padding: 25px 20px;
+		min-height: 260px;
+	}
+
+	.card-icon {
+		font-size: 2.2rem;
+	}
+
+	.card-title {
+		font-size: 1.2rem;
+	}
+
+	.card-description {
+		font-size: 0.95rem;
+	}
+
+	.card-button {
+		padding: 10px 20px;
+		font-size: 0.9rem;
+	}
+}

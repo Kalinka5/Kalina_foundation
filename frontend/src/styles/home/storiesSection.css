@@ -1,0 +1,303 @@
+.stories-section {
+	background: #1a1a1a;
+	padding: 80px 0;
+	color: white;
+}
+
+.stories-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 40px;
+}
+
+.stories-header {
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.stories-title {
+	font-size: 3rem;
+	font-weight: 700;
+	margin-bottom: 20px;
+	color: #ffffff;
+	letter-spacing: -0.02em;
+}
+
+.stories-subtitle {
+	font-size: 1.2rem;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.8);
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.journeys-section {
+	margin-bottom: 80px;
+}
+
+.journeys-title {
+	font-size: 2.2rem;
+	font-weight: 600;
+	text-align: center;
+	margin-bottom: 50px;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.stories-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 30px;
+}
+
+.story-card {
+	background: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 12px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	backdrop-filter: blur(10px);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.story-card:hover {
+	transform: translateY(-8px);
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.2);
+	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.story-image {
+	height: 200px;
+	overflow: hidden;
+}
+
+.story-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+}
+
+.story-card:hover .story-image img {
+	transform: scale(1.05);
+}
+
+.story-content {
+	padding: 25px;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.story-description {
+	font-size: 0.95rem;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.8);
+	margin-bottom: 20px;
+	flex-grow: 1;
+}
+
+.story-description .brigade-name {
+	font-weight: bold;
+	color: rgba(255, 255, 255, 0.95);
+}
+
+.story-button {
+	background: #333333;
+	color: white;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	padding: 10px 20px;
+	border-radius: 6px;
+	font-size: 0.9rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-transform: none;
+	letter-spacing: 0.3px;
+	width: 100%;
+}
+
+.story-button:hover {
+	background: #4a4a4a;
+	border-color: rgba(255, 255, 255, 0.3);
+	transform: translateY(-2px);
+}
+
+.story-button:active {
+	transform: translateY(0);
+}
+
+.call-to-action {
+	text-align: center;
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 16px;
+	padding: 50px 40px;
+	backdrop-filter: blur(10px);
+}
+
+.cta-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-bottom: 20px;
+	color: #ffffff;
+}
+
+.cta-description {
+	font-size: 1.2rem;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.8);
+	margin-bottom: 30px;
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.cta-button {
+	background: #4a7c59;
+	color: white;
+	border: none;
+	padding: 15px 40px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-transform: none;
+	letter-spacing: 0.5px;
+}
+
+.cta-button:hover {
+	background: #3d6b4a;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 15px rgba(74, 124, 89, 0.3);
+}
+
+.cta-button:active {
+	transform: translateY(0);
+	box-shadow: 0 2px 8px rgba(74, 124, 89, 0.2);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+	.stories-container {
+		padding: 0 30px;
+	}
+
+	.stories-grid {
+		gap: 25px;
+	}
+
+	.stories-title {
+		font-size: 2.5rem;
+	}
+
+	.journeys-title {
+		font-size: 2rem;
+	}
+
+	.cta-title {
+		font-size: 2.2rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.stories-section {
+		padding: 60px 0;
+	}
+
+	.stories-container {
+		padding: 0 20px;
+	}
+
+	.stories-header {
+		margin-bottom: 40px;
+	}
+
+	.journeys-section {
+		margin-bottom: 60px;
+	}
+
+	.stories-title {
+		font-size: 2rem;
+	}
+
+	.stories-subtitle {
+		font-size: 1rem;
+	}
+
+	.journeys-title {
+		font-size: 1.8rem;
+		margin-bottom: 30px;
+	}
+
+	.stories-grid {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+
+	.story-image {
+		height: 180px;
+	}
+
+	.story-content {
+		padding: 20px;
+	}
+
+	.story-description {
+		min-height: 60px;
+		margin-bottom: 15px;
+	}
+
+	.call-to-action {
+		padding: 40px 30px;
+	}
+
+	.cta-title {
+		font-size: 2rem;
+	}
+
+	.cta-description {
+		font-size: 1rem;
+		margin-bottom: 25px;
+	}
+}
+
+@media (max-width: 480px) {
+	.stories-title {
+		font-size: 1.8rem;
+	}
+
+	.journeys-title {
+		font-size: 1.6rem;
+	}
+
+	.story-description {
+		font-size: 0.9rem;
+		min-height: 50px;
+	}
+
+	.story-button {
+		padding: 8px 16px;
+		font-size: 0.85rem;
+	}
+
+	.call-to-action {
+		padding: 30px 20px;
+	}
+
+	.cta-title {
+		font-size: 1.8rem;
+	}
+
+	.cta-description {
+		font-size: 0.95rem;
+	}
+
+	.cta-button {
+		padding: 12px 30px;
+		font-size: 1rem;
+	}
+}
