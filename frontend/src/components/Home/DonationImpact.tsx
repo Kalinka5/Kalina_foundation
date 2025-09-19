@@ -99,9 +99,11 @@ function DonationImpact() {
 									style={{ backgroundImage: `url(${category.image})` }}
 								>
 									<div className="category-overlay">
-										<h4 className="category-title">{category.title}</h4>
+										<h4 className="category-title">
+											{t(`${category.title}-title`)}
+										</h4>
 										<p className="category-description">
-											{category.description}
+											{t(`${category.title}-description`)}
 										</p>
 										<div className="category-stats">
 											<div className="stats-text">
