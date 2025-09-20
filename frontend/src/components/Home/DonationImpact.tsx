@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { useLimitedItems, useTotalDonated } from "../../lib/hooks.tsx"
 import {
@@ -10,6 +10,11 @@ import "../../styles/home/donationImpact.css"
 function DonationImpact() {
 	const { t } = useTranslation()
 	const [donationAmount, setDonationAmount] = useState("")
+	const [currentPage, setCurrentPage] = useState(0)
+	const [isTransitioning, setIsTransitioning] = useState(false)
+	const timerRef = useRef<number | null>(null)
+	const itemsPerPage = 4
+	const autoAdvanceDelay = 10000 // 10 seconds
 
 	// Animation hooks
 	const { elementRef: heroRef, isVisible: heroVisible } =
@@ -28,12 +33,12 @@ function DonationImpact() {
 			threshold: 0.2,
 		})
 
-	// Get 4 items from backend for donation impact display
-	const { data: items, isLoading: itemsLoading } = useLimitedItems(4)
+	// Get 16 items from backend for donation impact display
+	const { data: items, isLoading: itemsLoading } = useLimitedItems(16)
 	const { data: totalDonatedData, isLoading: totalLoading } = useTotalDonated()
 
 	// Transform items into donation categories format
-	const donationCategories =
+	const allDonationCategories =
 		items?.map(item => ({
 			id: item.id,
 			title: item.title,
@@ -46,6 +51,56 @@ function DonationImpact() {
 			collected: item.collected,
 			full_price: item.full_price,
 		})) || []
+
+	// Calculate pagination
+	const totalPages = Math.ceil(allDonationCategories.length / itemsPerPage)
+	const startIndex = currentPage * itemsPerPage
+	const endIndex = startIndex + itemsPerPage
+	const donationCategories = allDonationCategories.slice(startIndex, endIndex)
+
+	// Navigation functions
+	const nextPage = () => {
+		if (isTransitioning) return
+		setIsTransitioning(true)
+		setCurrentPage(prev => (prev + 1) % totalPages)
+		resetTimer()
+		setTimeout(() => setIsTransitioning(false), 250) // Faster transition
+	}
+
+	const prevPage = () => {
+		if (isTransitioning) return
+		setIsTransitioning(true)
+		setCurrentPage(prev => (prev - 1 + totalPages) % totalPages)
+		resetTimer()
+		setTimeout(() => setIsTransitioning(false), 250) // Faster transition
+	}
+
+	// Timer functions
+	const startTimer = () => {
+		if (timerRef.current) window.clearInterval(timerRef.current)
+		timerRef.current = window.setInterval(() => {
+			if (!isTransitioning && totalPages > 1) {
+				setIsTransitioning(true)
+				setCurrentPage(prev => (prev + 1) % totalPages)
+				setTimeout(() => setIsTransitioning(false), 250) // Faster transition
+			}
+		}, autoAdvanceDelay)
+	}
+
+	const resetTimer = () => {
+		if (timerRef.current) window.clearInterval(timerRef.current)
+		startTimer()
+	}
+
+	// Effect for auto-advance timer
+	useEffect(() => {
+		if (totalPages > 1) {
+			startTimer()
+		}
+		return () => {
+			if (timerRef.current) window.clearInterval(timerRef.current)
+		}
+	}, [totalPages])
 
 	const handleDonationSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
@@ -151,53 +206,130 @@ function DonationImpact() {
 						{t("donation-impact-breakdown-subtitle")}
 					</p>
 
-					<div ref={gridRef} className="categories-grid">
-						{itemsLoading ? (
-							<div className="loading shimmer">Loading items...</div>
-						) : (
-							donationCategories.map((category, index) => (
-								<div
-									key={category.id}
-									className={`category-card hover-lift tilt-3d ${
-										visibleItems[index]
-											? "animate-scale-in visible"
-											: "animate-scale-in"
+					{/* Navigation and Grid Container */}
+					<div className="categories-container">
+						{/* Navigation Buttons */}
+						{totalPages > 1 && (
+							<>
+								<button
+									className={`nav-button nav-button-prev ${
+										isTransitioning ? "disabled" : ""
 									}`}
-									style={{ backgroundImage: `url(${category.image})` }}
+									onClick={prevPage}
+									disabled={isTransitioning}
+									aria-label="Previous items"
 								>
-									<div className="category-overlay glass-effect">
-										<h4 className="category-title">
-											{t(`${category.title}-title`)}
-										</h4>
-										<p className="category-description">
-											{t(`${category.title}-description`)}
-										</p>
-										<div className="category-stats">
-											<div className="stats-text">
-												<span className="collected white-text">
-													${category.collected.toLocaleString()}
-												</span>
-												<span className="goal">
-													{t("donation-impact-of")} $
-													{category.full_price.toLocaleString()}{" "}
-													{t("donation-impact-goal")}
-												</span>
-											</div>
-											<div className="category-percentage">
-												<div className="percentage-bar">
-													<div
-														className="percentage-fill"
-														style={{ width: `${category.percentage}%` }}
-													></div>
+									<svg
+										width="24"
+										height="24"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="2"
+										viewBox="0 0 24 24"
+									>
+										<path d="M15 18l-6-6 6-6" />
+									</svg>
+								</button>
+								<button
+									className={`nav-button nav-button-next ${
+										isTransitioning ? "disabled" : ""
+									}`}
+									onClick={nextPage}
+									disabled={isTransitioning}
+									aria-label="Next items"
+								>
+									<svg
+										width="24"
+										height="24"
+										fill="none"
+										stroke="currentColor"
+										strokeWidth="2"
+										viewBox="0 0 24 24"
+									>
+										<path d="M9 18l6-6-6-6" />
+									</svg>
+								</button>
+							</>
+						)}
+
+						{/* Categories Grid */}
+						<div
+							ref={gridRef}
+							className={`categories-grid ${
+								isTransitioning ? "transitioning" : ""
+							}`}
+						>
+							{itemsLoading ? (
+								<div className="loading shimmer">Loading items...</div>
+							) : (
+								donationCategories.map((category, index) => (
+									<div
+										key={`${category.id}-${currentPage}`}
+										className={`category-card hover-lift tilt-3d ${
+											visibleItems[index] && !isTransitioning
+												? "animate-scale-in visible"
+												: "animate-scale-in"
+										}`}
+										style={{ backgroundImage: `url(${category.image})` }}
+									>
+										<div className="category-overlay glass-effect">
+											<h4 className="category-title">
+												{t(`${category.title}-title`)}
+											</h4>
+											<p className="category-description">
+												{t(`${category.title}-description`)}
+											</p>
+											<div className="category-stats">
+												<div className="stats-text">
+													<span className="collected white-text">
+														${category.collected.toLocaleString()}
+													</span>
+													<span className="goal">
+														{t("donation-impact-of")} $
+														{category.full_price.toLocaleString()}{" "}
+														{t("donation-impact-goal")}
+													</span>
 												</div>
-												<span className="percentage-text">
-													{category.percentage}%
-												</span>
+												<div className="category-percentage">
+													<div className="percentage-bar">
+														<div
+															className="percentage-fill"
+															style={{ width: `${category.percentage}%` }}
+														></div>
+													</div>
+													<span className="percentage-text">
+														{category.percentage}%
+													</span>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							))
+								))
+							)}
+						</div>
+
+						{/* Page Indicators */}
+						{totalPages > 1 && (
+							<div className="page-indicators">
+								{Array.from({ length: totalPages }, (_, index) => (
+									<button
+										key={index}
+										className={`page-indicator ${
+											index === currentPage ? "active" : ""
+										}`}
+										onClick={() => {
+											if (!isTransitioning && index !== currentPage) {
+												setIsTransitioning(true)
+												setCurrentPage(index)
+												resetTimer()
+												setTimeout(() => setIsTransitioning(false), 250) // Faster transition
+											}
+										}}
+										disabled={isTransitioning}
+										aria-label={`Go to page ${index + 1}`}
+									/>
+								))}
+							</div>
 						)}
 					</div>
 

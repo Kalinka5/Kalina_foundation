@@ -175,11 +175,39 @@
 	margin-right: auto;
 }
 
+/* Categories Container with Navigation */
+.categories-container {
+	position: relative;
+	margin-bottom: 40px;
+	padding: 0 70px; /* Add padding for navigation buttons */
+	overflow: hidden; /* Prevent any layout jumps during transitions */
+}
+
 .categories-grid {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 30px;
-	margin-bottom: 40px;
+	gap: 25px; /* Slightly reduced gap to compensate for padding */
+	transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+		transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+	opacity: 1;
+	transform: translateY(0) scale(1);
+}
+
+.categories-grid.transitioning {
+	opacity: 0.3;
+	transform: translateY(10px) scale(0.98);
+}
+
+/* Add a subtle animation for cards appearing */
+@keyframes cardAppear {
+	from {
+		opacity: 0;
+		transform: translateY(15px) scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
 }
 
 .category-card {
@@ -187,17 +215,121 @@
 	border-radius: 12px;
 	padding: 0;
 	text-align: left;
-	transition: all 0.3s ease;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	min-height: 250px;
 	overflow: hidden;
+	opacity: 1;
+	transform: scale(1);
+	animation: cardAppear 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .category-card:hover {
-	transform: translateY(-5px);
+	transform: translateY(-5px) scale(1.02);
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation Buttons */
+.nav-button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	color: white;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	backdrop-filter: blur(10px);
+}
+
+.nav-button:hover {
+	background: rgba(255, 255, 255, 0.2);
+	border-color: rgba(255, 255, 255, 0.4);
+	transform: translateY(-50%) scale(1.05);
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:active {
+	transform: translateY(-50%) scale(0.98);
+	transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-button.disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+	pointer-events: none;
+	transform: translateY(-50%) scale(0.9);
+}
+
+.nav-button-prev {
+	left: 10px; /* Position within the padded area */
+}
+
+.nav-button-next {
+	right: 10px; /* Position within the padded area */
+}
+
+.nav-button svg {
+	width: 24px;
+	height: 24px;
+	stroke-width: 2.5;
+}
+
+/* Page Indicators */
+.page-indicators {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	margin-top: 30px;
+}
+
+.page-indicator {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	border: none;
+	background: rgba(255, 255, 255, 0.3);
+	cursor: pointer;
+	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+	overflow: hidden;
+}
+
+.page-indicator::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, #4a7c59, #5da167);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.page-indicator.active::before {
+	opacity: 1;
+}
+
+.page-indicator:hover {
+	transform: scale(1.15);
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.page-indicator.active {
+	background: #4a7c59;
+	transform: scale(1.2);
+	box-shadow: 0 2px 8px rgba(74, 124, 89, 0.4);
 }
 
 .category-overlay {
@@ -439,6 +571,10 @@
 		padding: 0 30px;
 	}
 
+	.categories-container {
+		padding: 0 60px; /* Slightly reduced padding for tablet */
+	}
+
 	.categories-grid {
 		gap: 25px;
 	}
@@ -491,6 +627,39 @@
 	.testimonial-quote {
 		font-size: 1.2rem;
 	}
+
+	/* Mobile Navigation Adjustments */
+	.categories-container {
+		padding: 0 55px; /* Reduced padding for mobile */
+	}
+
+	.nav-button {
+		width: 40px;
+		height: 40px;
+	}
+
+	.nav-button-prev {
+		left: 7px;
+	}
+
+	.nav-button-next {
+		right: 7px;
+	}
+
+	.nav-button svg {
+		width: 20px;
+		height: 20px;
+	}
+
+	.page-indicators {
+		margin-top: 25px;
+		gap: 10px;
+	}
+
+	.page-indicator {
+		width: 10px;
+		height: 10px;
+	}
 }
 
 @media (max-width: 480px) {
@@ -526,5 +695,37 @@
 
 	.total-amount {
 		font-size: 2rem;
+	}
+
+	/* Extra Small Mobile Navigation */
+	.categories-container {
+		padding: 0 50px; /* Further reduced padding for small mobile */
+	}
+
+	.nav-button {
+		width: 35px;
+		height: 35px;
+	}
+
+	.nav-button-prev {
+		left: 7px;
+	}
+
+	.nav-button-next {
+		right: 7px;
+	}
+
+	.nav-button svg {
+		width: 18px;
+		height: 18px;
+	}
+
+	.page-indicator {
+		width: 8px;
+		height: 8px;
+	}
+
+	.page-indicators {
+		gap: 8px;
 	}
 }
