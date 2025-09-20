@@ -131,7 +131,7 @@ function StoriesSection() {
 								</div>
 								<div className="story-content">
 									<p className="story-description">
-										<span className="brigade-name gradient-text">
+										<span className="brigade-name yellow-text">
 											{story.name}:
 										</span>{" "}
 										{story.description}

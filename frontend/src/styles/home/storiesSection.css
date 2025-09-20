@@ -104,6 +104,10 @@
 	color: rgba(255, 255, 255, 0.95);
 }
 
+.yellow-text {
+	color: #ffd700 !important;
+}
+
 .story-button {
 	background: #333333;
 	color: white;

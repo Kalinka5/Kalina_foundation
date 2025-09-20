@@ -62,7 +62,7 @@ function DonationImpact() {
 			>
 				<div className="impact-hero-container">
 					<h2
-						className={`impact-hero-title gradient-text ${
+						className={`impact-hero-title yellow-text ${
 							heroVisible ? "animate-fade-up visible" : "animate-fade-up"
 						}`}
 					>
@@ -174,7 +174,7 @@ function DonationImpact() {
 										</p>
 										<div className="category-stats">
 											<div className="stats-text">
-												<span className="collected gradient-text">
+												<span className="collected white-text">
 													${category.collected.toLocaleString()}
 												</span>
 												<span className="goal">

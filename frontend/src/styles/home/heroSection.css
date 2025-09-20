@@ -59,6 +59,7 @@
 
 .donate-button:hover {
 	background: #3d6b4a;
+	color: #4169e1;
 	transform: translateY(-2px);
 	box-shadow: 0 4px 15px rgba(74, 124, 89, 0.3);
 }

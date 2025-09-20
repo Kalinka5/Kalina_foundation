@@ -146,7 +146,7 @@ function TeamMission() {
 												: `animate-fade-right stagger-${index + 1}`
 										}`}
 									>
-										<strong className="value-title gradient-text">
+										<strong className="value-title yellow-text">
 											{value.title}:
 										</strong>{" "}
 										<span className="value-description">

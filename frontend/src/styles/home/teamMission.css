@@ -93,6 +93,10 @@
 	color: rgba(255, 255, 255, 0.85);
 }
 
+.yellow-text {
+	color: #ffd700 !important;
+}
+
 /* Vertical image styling */
 .team-image-vertical {
 	height: 100%;
