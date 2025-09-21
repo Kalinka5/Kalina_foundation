@@ -367,3 +367,46 @@ def process_donation(request):
             return JsonResponse({'status': 'error', 'message': 'Invalid JSON format'}, status=400)
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
+
+
+# TEMPORARY: Remove this after creating your superuser
+@api_view(['POST'])
+@permission_classes([])  # No authentication required
+def create_superuser_temp(request):
+    """
+    TEMPORARY endpoint to create a superuser for Vercel deployment
+    Remove this endpoint after use for security!
+    """
+    # Add a simple security check (you can customize this)
+    secret_key = request.data.get('secret_key')
+    if secret_key != 'YOUR_TEMPORARY_SECRET_HERE':  # Change this!
+        return Response({'error': 'Unauthorized'}, status=status.HTTP_401_UNAUTHORIZED)
+    
+    email = request.data.get('email')
+    password = request.data.get('password')
+    username = request.data.get('username', '')
+    
+    if not email or not password:
+        return Response({'error': 'Email and password required'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    try:
+        # Check if user already exists
+        if User.objects.filter(email=email).exists():
+            return Response({'error': 'User already exists'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Create superuser
+        user = User.objects.create_superuser(
+            email=email,
+            password=password,
+            username=username,
+            is_active=True
+        )
+        
+        return Response({
+            'success': True,
+            'message': f'Superuser created successfully with email: {user.email}',
+            'user_id': user.id
+        }, status=status.HTTP_201_CREATED)
+        
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
