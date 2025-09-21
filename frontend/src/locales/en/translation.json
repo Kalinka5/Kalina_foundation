@@ -133,58 +133,41 @@
 	"failed-sent": "Email may be already verified or the link is broken",
 
 	"tactical-bag-title": "Tactical Backpacks",
-	"tactical-bag-description": "Made of durable nylon, with many pockets and modular attachments (MOLLE). Used for carrying ammo, food, first aid kits, drones, etc. Convenience and durability are extremely important in combat conditions.",
-
+	"tactical-bag-description": "Made of durable nylon, featuring many pockets and modular attachments (MOLLE). Used for carrying ammo, food, first aid kits, drones, etc. Comfort and endurance are crucial in combat conditions.",
 	"generators-title": "Generators and Power Banks",
-	"generators-description": "Provide autonomous power for equipment, charging drones, radios, laptops. Especially important at frontline positions where there is no access to the power grid. Diesel or gasoline generators are often purchased.",
-
-	"military-form-title": "Footwear and Uniform",
-	"military-form-description": "Strong, comfortable footwear saves feet from injuries. Quality uniforms protect from rain, cold, and heat. This is comfort and health for the soldier. The longer the uniform lasts, the lower the army’s expenses.",
-
+	"generators-description": "Provide autonomous power for equipment, charging drones, radios, laptops. Especially important at frontline positions without access to the power grid. Diesel or gasoline generators are often purchased.",
+	"military-form-title": "Footwear and Uniforms",
+	"military-form-description": "Durable, comfortable boots protect feet from injuries. Quality uniforms shield from rain, cold, and heat. They ensure soldier’s comfort and health. The longer the uniform lasts, the fewer costs for the army.",
 	"fpv-drones-title": "FPV Drones",
-	"fpv-drones-description": "An FPV drone is a First-Person-View unmanned aerial vehicle controlled from the pilot’s perspective. With a controller and goggles, the pilot can maneuver quickly and accurately to locate and strike targets. These drones have a wide and effective range of uses: from engaging infantry and repelling assaults to disabling heavy armored vehicles.",
-
+	"fpv-drones-description": "An FPV drone is a UAV controlled from the first-person view via goggles; it allows fast maneuvering and target detection — from infantry to armored vehicles.",
 	"mavic-title": "Mavic Drones (DJI)",
-	"mavic-description": "Popular reconnaissance drones that allow soldiers to observe enemy positions from above. Also used for artillery fire correction. The most common are Mavic 3 models, which feature a good camera, long flight range, and stable signal.",
-
+	"mavic-description": "Popular reconnaissance drones that let fighters observe enemy positions from above. Also used to adjust artillery fire. Most often Mavic 3 models are used, offering a good camera, flight range, and stable signal.",
 	"leleka-title": "Leleka",
-	"leleka-description": "Leleka-100 (Eng. Leleka-100 or Ciconia) is a Ukrainian unmanned aerial vehicle designed for reconnaissance. Developed by the Ukrainian company DeViRo. Adopted by the Armed Forces of Ukraine in May 2021.",
-
+	"leleka-description": "Leleka-100 (Eng. Leleka-100 or Ciconia) — a Ukrainian UAV designed for reconnaissance. Developed by the Ukrainian company DeViRo. Adopted by the Armed Forces of Ukraine in May 2021.",
 	"shark-d-title": "Shark-D",
-	"shark-d-description": "SHARK (Ukr. “ШАРК”) is a reconnaissance UAV system developed by Ukrspecsystems for observation and fire correction. The UAV is equipped with a highly reliable communication module (AES256 encryption), allowing it to penetrate up to 80 km behind enemy lines even under electronic warfare conditions.",
-
+	"shark-d-description": "SHARK — a reconnaissance UAV by Ukrspecsystems for surveillance and fire adjustment; equipped with AES-256 communication and capable of operating up to ~80 km behind enemy lines under electronic warfare conditions.",
 	"suvs-title": "SUVs",
-	"suvs-description": "An SUV (off-road vehicle, all-road vehicle, Ger. Geländewagen) is a 4×4 passenger or light commercial vehicle with enhanced off-road capability, designed for use on all types of roads and off-road terrain. The term 'vehicle with increased cross-country capability' is the official designation. SUVs differ from regular cars in configuration.",
-
+	"suvs-description": "An SUV is an all-wheel-drive (4×4) vehicle with enhanced off-road capability, suitable for various road conditions and rough terrain; structurally different from regular cars.",
 	"boats-title": "Boats",
-	"boats-description": "Inflatable boats have a key advantage over rigid boats — lightness and mobility. When folded, they can be transported in a car trunk or carried in a special bag or backpack. Even when inflated and fully equipped, a PVC boat can be carried short distances by 5–6 people.",
-
+	"boats-description": "Boats are essential for crossing rivers, transporting personnel, and supplying positions in areas inaccessible by vehicles. Inflatable and motorized boats are most commonly used.",
 	"body-armor-title": "Body Armor",
-	"body-armor-description": "Protects against rifle bullets, shell and mine fragments. Essential for both recruits and experienced soldiers. It’s important to buy certified armor with reliable plates.",
-
+	"body-armor-description": "Protects against rifle bullets, shell fragments, and mines. Essential for both recruits and experienced soldiers. It is important to buy certified vests with reliable plates.",
 	"thermal-imagers-title": "Thermal Imagers",
-	"thermal-imagers-description": "A thermal imager (infrared camera) is an optoelectronic device for visualizing temperature fields and measuring temperature. It mainly operates in the infrared spectrum, producing thermal images by shifting the emission peaks of heated bodies into the shortwave range.",
-
+	"thermal-imagers-description": "Allow soldiers to see in complete darkness. Extremely important for reconnaissance, assaults, and patrols. Available as monoculars, binoculars, or helmet-mounted versions. A quality thermal device provides an edge in night combat.",
 	"radios-title": "Portable Radios",
-	"radios-description": "A portable radio station, also known as a transceiver or walkie-talkie, is a wireless communication device that allows voice or other data exchange between users over a distance. It is often used for communication and coordination among people within radio range.",
-
+	"radios-description": "A portable radio station (walkie-talkie) is a device for wireless voice communication and coordination between users within signal range.",
 	"pd-1-title": "PD-1",
-	"pd-1-description": "PD-1 (short for People’s Drone) is a Ukrainian unmanned aviation system designed for aerial reconnaissance and monitoring enemy movements. It was developed and produced by the All-Ukrainian Volunteer Center 'People’s Project' together with Ukrspecsystems.",
-
+	"pd-1-description": "PD-1 (People's Drone) — a Ukrainian UAV for aerial reconnaissance and tracking enemy movements. Developed by the All-Ukrainian Volunteer Center 'People’s Project' and Ukrspecsystems.",
 	"poseidon-title": "H10 Poseidon",
-	"poseidon-description": "H10 Poseidon is a reconnaissance UAV manufactured by Swarmly, equipped with dual cameras featuring 40× zoom, secure communication channels, and a vertical takeoff and landing system.",
-
+	"poseidon-description": "H10 Poseidon — a reconnaissance UAV manufactured by Swarmly, equipped with dual cameras with 40× zoom, secure communication channels, and a vertical take-off and landing system.",
 	"ram-2-title": "RAM II UAV",
-	"ram-2-description": "RAM II UAV is a Ukrainian loitering munition drone. Built on the Leleka-100 UAV platform by DEVIRO. The system is designed to deliver precise and effective strikes against enemy forces while minimizing collateral damage in urban areas. The system is launched from a mobile catapult.",
-
+	"ram-2-description": "RAM II UAV — a Ukrainian loitering munition drone based on the 'Leleka-100' airframe (DEVIRO). Designed for precise strikes with minimized collateral damage in urban areas. Launched from a mobile catapult.",
 	"electronic-warfare-stations-title": "Electronic Warfare Stations",
-	"electronic-warfare-stations-description": "Special systems that jam enemy signals: GPS, drone control, and other electronics. Extremely important for protecting positions from enemy UAV and FPV drone strikes. They also reduce the effectiveness of enemy reconnaissance.",
-
+	"electronic-warfare-stations-description": "Special devices that jam enemy signals: GPS, drone control, and other electronics. Crucial for protecting positions from enemy UAVs and FPV drones. Also reduce the effectiveness of enemy reconnaissance.",
 	"starlink-title": "Starlink",
-	"starlink-description": "Starlink is a project by the American company SpaceX to develop a high-performance satellite platform for manufacturing and launching large satellite constellations. The system provides broadband internet access anywhere on the planet. The first countries served were Canada and the USA (2020).",
-
+	"starlink-description": "Starlink — a SpaceX project to create a satellite constellation for global broadband internet; first services launched in the USA and Canada (2020).",
 	"helmets-title": "Ballistic Helmets",
-	"helmets-description": "Protect the head from shrapnel, bullets, and impacts. Made from Kevlar or UHMWPE. Often include mounts for night vision devices, cameras, or headsets. A reliable helmet can save a life during shelling.",
+	"helmets-description": "Protect the head from fragments, bullets, and impacts. Made of Kevlar or UHMWPE. Often feature mounts for night vision devices, cameras, or headsets. A reliable helmet can save a life during shelling.",
 
 	"loading": "Loading...",
 	"error-loading-drives": "Error loading donation drives",

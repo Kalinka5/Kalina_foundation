@@ -13,8 +13,6 @@ urlpatterns = [
     path('register', views.RegisterApi.as_view(), name='register_new_user'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('logout', views.logoutView),
-    # TEMPORARY: Remove after creating superuser
-    path('create-superuser-temp/', views.create_superuser_temp, name='create_superuser_temp'),
     # Other API
     path('categories', views.CategoriesListView.as_view(), name='categories'),
     path('categories/<int:pk>', views.single_category, name='single_category'),
