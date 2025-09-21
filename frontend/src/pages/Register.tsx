@@ -1,190 +1,308 @@
-import React, { useState } from "react";
-import Alert from "@mui/material/Alert";
+import React, { useState } from "react"
+import { useTranslation } from "react-i18next"
+import { FaGoogle } from "react-icons/fa"
+import { IoChevronBack, IoClose, IoSend } from "react-icons/io5"
 
-import { useTranslation } from "react-i18next";
+import api from "../lib/api.js"
+import { HOME_PAGE, LOGIN_PAGE } from "../lib/constants.js"
+import { RegistrationStatus } from "../lib/types.tsx"
 
-import { LOGIN_PAGE } from "../lib/constants.js";
-
-import api from "../lib/api.js";
-import Validation from "../lib/validation.js";
-
-import LogRegContainer from "../components/LoginRegister/LogRegContainer.tsx";
-import LogRegForm from "../components/LoginRegister/LogRegForm.tsx";
-import Header from "../components/Header.tsx";
-import Title from "../components/LoginRegister/Title.tsx";
-import InputField from "../components/LoginRegister/RegisterField.tsx";
-import LogRegLink from "../components/LoginRegister/Link.tsx";
-import SubmitButton from "../components/LoginRegister/SubmitButton.tsx";
-
-import { RegistrationStatus } from "../lib/types.tsx";
-
-import "../styles/loginRegister/alertMessage.css";
+import "../styles/loginRegister/modernRegister.css"
 
 function Register() {
-  const [registrationStatus, setRegistrationStatus] =
-    useState<RegistrationStatus>(null);
+	const [registrationStatus, setRegistrationStatus] =
+		useState<RegistrationStatus>(null)
 
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password1, setPassword1] = useState("");
-  const [password2, setPassword2] = useState("");
+	const [fullName, setFullName] = useState("")
+	const [email, setEmail] = useState("")
+	const [password, setPassword] = useState("")
 
-  const [loading, setLoading] = useState(false);
+	const [loading, setLoading] = useState(false)
+	const [errors, setErrors] = useState<any>({})
+	const [validFields, setValidFields] = useState<any>({})
 
-  const [errors, setErrors] = useState({});
-  const [validFields, setValidFields] = useState({});
+	const { t, i18n } = useTranslation()
 
-  const { t } = useTranslation();
+	// Custom Language Selector Component
+	const CustomLanguageSelector = () => {
+		const currentLang = i18n.language
 
-  let statusMessage: React.ReactNode = null;
-  if (registrationStatus === "success") {
-    statusMessage = (
-      <Alert
-        variant="filled"
-        severity="success"
-        className="alert-message"
-        onClose={() => {
-          setRegistrationStatus(null);
-        }}
-      >
-        <b>Registration successful!</b> Please check your <b>email</b> to verify
-        your account.
-      </Alert>
-    );
-  }
+		const handleLanguageChange = (lang: string) => {
+			i18n.changeLanguage(lang)
+			localStorage.setItem("i18nextLng", lang)
+		}
 
-  const handleSubmit = async (e) => {
-    setLoading(true);
-    e.preventDefault();
+		return (
+			<div className="custom-language-selector">
+				<button
+					className={`lang-button ${currentLang === "en" ? "active" : ""}`}
+					onClick={() => handleLanguageChange("en")}
+				>
+					EN
+				</button>
+				<button
+					className={`lang-button ${currentLang === "ua" ? "active" : ""}`}
+					onClick={() => handleLanguageChange("ua")}
+				>
+					UA
+				</button>
+			</div>
+		)
+	}
 
-    const [err, valFields] = Validation(
-      username,
-      email,
-      password1,
-      password2,
-      t
-    );
-    setErrors(err);
-    setValidFields(valFields);
+	// Success/Error message component
+	const AlertMessage = ({
+		message,
+		type,
+		onClose,
+	}: {
+		message: string
+		type: "success" | "error"
+		onClose: () => void
+	}) => (
+		<div className="modern-alert-container">
+			<div className={`modern-alert ${type}`}>
+				<span>{message}</span>
+				<button className="modern-alert-close" onClick={onClose}>
+					×
+				</button>
+			</div>
+		</div>
+	)
 
-    try {
-      if (Object.keys(err).length === 0) {
-        const requestData = {
-          username: username,
-          email: email,
-          password: password1,
-        };
+	const handleSubmit = async (e: React.FormEvent) => {
+		setLoading(true)
+		e.preventDefault()
 
-        const response = await api("register", {
-          method: "POST",
-          body: JSON.stringify(requestData),
-        });
+		// Simple validation for the modern form
+		const newErrors: any = {}
 
-        // Handle HTTP errors
-        if (response.ok) {
-          setRegistrationStatus("success");
-        } else {
-          setRegistrationStatus("error");
-          console.log(response);
+		if (!fullName.trim()) {
+			newErrors.fullName = t("register-full-name-required")
+		}
 
-          // Parse error message if response contains JSON
-          try {
-            if (response["username"]) {
-              setErrors({ username: t("username-already-exists") });
-            } else if (response["email"]) {
-              setErrors({ email: t("email-already-exists") });
-            }
-          } catch {
-            // Handle non-JSON errors
-            console.error("Unexpected error:", response);
-            alert(response);
-          }
-        }
-      }
-    } catch (error) {
-      setRegistrationStatus("error");
-      console.error("Unexpected error:", error);
-      alert(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+		if (!email.trim()) {
+			newErrors.email = t("register-email-required")
+		} else if (!/\S+@\S+\.\S+/.test(email)) {
+			newErrors.email = t("register-email-invalid")
+		}
 
-  return (
-    <div className="header-body">
-      <Header />
+		if (!password) {
+			newErrors.password = t("register-password-required")
+		} else if (password.length < 8) {
+			newErrors.password = t("register-password-min-length")
+		}
 
-      <LogRegContainer message={statusMessage}>
-        <LogRegForm handleSubmit={handleSubmit}>
-          <Title text="registration-head" />
+		setErrors(newErrors)
 
-          <div className="form-fields">
-            <InputField
-              value={username}
-              placeholder="username-input"
-              type="text"
-              onChange={setUsername}
-              validFields={validFields}
-              isValid="usernameIsValid"
-              errors={errors}
-              errorsName="username"
-              className="name-tip"
-              tooltipText="tooltip1"
-            />
+		try {
+			if (Object.keys(newErrors).length === 0) {
+				const requestData = {
+					username: fullName, // Using fullName as username for backend compatibility
+					email: email,
+					password: password,
+				}
 
-            <InputField
-              value={email}
-              placeholder="email-input"
-              type="email"
-              onChange={setEmail}
-              validFields={validFields}
-              isValid="emailIsValid"
-              errors={errors}
-              errorsName="email"
-              className="email-tip"
-              tooltipText="tooltip2"
-            />
+				const response = await api("register", {
+					method: "POST",
+					body: JSON.stringify(requestData),
+				})
 
-            <InputField
-              value={password1}
-              placeholder="password-input"
-              type="password"
-              onChange={setPassword1}
-              validFields={validFields}
-              isValid="passwordIsValid"
-              errors={errors}
-              errorsName="password"
-              className="pass-tip"
-              tooltipText="tooltip3"
-            />
+				// Handle HTTP errors
+				if (response.ok) {
+					setRegistrationStatus("success")
+					// Clear form on success
+					setFullName("")
+					setEmail("")
+					setPassword("")
+					setErrors({})
+				} else {
+					setRegistrationStatus("error")
+					console.log(response)
 
-            <InputField
-              value={password2}
-              placeholder="conf-pass-input"
-              type="password"
-              onChange={setPassword2}
-              validFields={validFields}
-              isValid="confPasswordIsValid"
-              errors={errors}
-              errorsName="confirmPassword"
-              className="confirm-tip"
-              tooltipText="tooltip4"
-            />
-          </div>
-          <div className="form-fields">
-            <SubmitButton text="register-now" loading={loading} />
-          </div>
-          <div className="form-fields">
-            <LogRegLink
-              link={LOGIN_PAGE}
-              textLink="login-now"
-              question="register-q"
-            />
-          </div>
-        </LogRegForm>
-      </LogRegContainer>
-    </div>
-  );
+					// Parse error message if response contains JSON
+					try {
+						if (response["username"]) {
+							setErrors({ fullName: t("register-username-exists") })
+						} else if (response["email"]) {
+							setErrors({ email: t("register-email-exists") })
+						}
+					} catch {
+						// Handle non-JSON errors
+						console.error("Unexpected error:", response)
+					}
+				}
+			}
+		} catch (error) {
+			setRegistrationStatus("error")
+			console.error("Unexpected error:", error)
+		} finally {
+			setLoading(false)
+		}
+	}
+
+	return (
+		<>
+			{/* Success/Error Messages */}
+			{registrationStatus === "success" && (
+				<AlertMessage
+					message={t("register-success-message")}
+					type="success"
+					onClose={() => setRegistrationStatus(null)}
+				/>
+			)}
+			{registrationStatus === "error" && (
+				<AlertMessage
+					message={t("register-error-message")}
+					type="error"
+					onClose={() => setRegistrationStatus(null)}
+				/>
+			)}
+
+			<div className="modern-register-container">
+				<div className="modern-register-modal">
+					{/* Close Button */}
+					<button
+						className="modern-register-close"
+						onClick={() => (window.location.href = HOME_PAGE)}
+					>
+						<IoClose />
+					</button>
+
+					{/* Left side - Form */}
+					<div className="modern-register-form-side">
+						<div className="modern-register-top-bar">
+							<button
+								className="modern-back-button"
+								onClick={() => (window.location.href = HOME_PAGE)}
+							>
+								<IoChevronBack />
+							</button>
+							<div className="modern-register-logo">
+								<img
+									src="/logo.png"
+									alt="Kalina Foundation"
+									className="modern-register-logo-img"
+								/>
+							</div>
+						</div>
+
+						<div className="modern-register-header">
+							<h1 className="modern-register-title">
+								{t("register-create-account")}
+							</h1>
+							<p className="modern-register-subtitle">
+								{t("register-subtitle")}
+							</p>
+						</div>
+
+						<form className="modern-register-form" onSubmit={handleSubmit}>
+							<div className="modern-form-group">
+								<label className="modern-form-label" htmlFor="fullName">
+									{t("register-full-name")}
+								</label>
+								<input
+									id="fullName"
+									type="text"
+									className={`modern-form-input ${
+										errors.fullName ? "error" : ""
+									}`}
+									placeholder={t("register-full-name-placeholder")}
+									value={fullName}
+									onChange={e => setFullName(e.target.value)}
+								/>
+								{errors.fullName && (
+									<div className="modern-error-message">{errors.fullName}</div>
+								)}
+							</div>
+
+							<div className="modern-form-group">
+								<label className="modern-form-label" htmlFor="email">
+									{t("register-email")}
+								</label>
+								<input
+									id="email"
+									type="email"
+									className={`modern-form-input ${errors.email ? "error" : ""}`}
+									placeholder={t("register-email-placeholder")}
+									value={email}
+									onChange={e => setEmail(e.target.value)}
+								/>
+								{errors.email && (
+									<div className="modern-error-message">{errors.email}</div>
+								)}
+							</div>
+
+							<div className="modern-form-group">
+								<label className="modern-form-label" htmlFor="password">
+									{t("register-password")}
+								</label>
+								<div className="modern-password-container">
+									<input
+										id="password"
+										type="password"
+										className={`modern-form-input ${
+											errors.password ? "error" : ""
+										}`}
+										placeholder={t("register-password-placeholder")}
+										value={password}
+										onChange={e => setPassword(e.target.value)}
+									/>
+									<IoSend className="modern-password-icon" />
+								</div>
+								{errors.password && (
+									<div className="modern-error-message">{errors.password}</div>
+								)}
+							</div>
+
+							<button
+								type="submit"
+								className="modern-submit-button"
+								disabled={loading}
+							>
+								{t("register-submit")}
+								{loading && <div className="loader"></div>}
+							</button>
+						</form>
+
+						<div className="modern-social-login">
+							<button className="modern-social-button" type="button">
+								<FaGoogle className="modern-social-icon" />
+								{t("register-google")}
+							</button>
+						</div>
+
+						<div className="modern-register-footer">
+							<div className="modern-register-link">
+								{t("register-have-account")}{" "}
+								<a href={LOGIN_PAGE}>{t("register-sign-in")}</a>
+							</div>
+							<a href="#" className="modern-terms-link">
+								{t("register-terms")}
+							</a>
+						</div>
+					</div>
+
+					{/* Right side - Image */}
+					<div className="modern-register-image-side">
+						{/* Language selector positioned on image side */}
+						<div className="modern-language-wrapper">
+							<CustomLanguageSelector />
+						</div>
+
+						<div className="modern-image-frame">
+							{/* Background Image */}
+							<img
+								src="/img/register-background.png"
+								alt="Professional team working together"
+								className="modern-register-background-image"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	)
 }
 
-export default Register;
+export default Register
