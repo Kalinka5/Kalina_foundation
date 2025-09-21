@@ -16,7 +16,6 @@ class Category(models.Model):
 class Item(models.Model):
     title = models.CharField(max_length=255, unique=True)
     image = models.ImageField(upload_to='uploads/', blank=True, default=None)
-    description = models.TextField()
     amount = models.IntegerField(null=False)
     full_price = models.IntegerField()
     collected = models.IntegerField(default=0)

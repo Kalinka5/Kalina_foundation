@@ -110,7 +110,6 @@ export type Item = {
 	id: number
 	title: string
 	image: string
-	description: string
 	amount: number
 	full_price: number
 	collected: number
@@ -251,10 +250,6 @@ export type InputProps = {
 	withIcon: boolean
 	styleName?: "input-group-icon"
 	type: "text" | "number"
-}
-export type DescriptionProps = {
-	description: string
-	setDescription: Dispatch<SetStateAction<string>>
 }
 
 // Payment page

@@ -43,7 +43,6 @@ function DonationImpact() {
 		items?.map(item => ({
 			id: item.id,
 			title: item.title,
-			description: item.description,
 			percentage:
 				item.full_price > 0
 					? Math.round((item.collected / item.full_price) * 100)
@@ -283,9 +282,6 @@ function DonationImpact() {
 											<h4 className="category-title">
 												{t(`${category.title}-title`)}
 											</h4>
-											<p className="category-description">
-												{t(`${category.title}-description`)}
-											</p>
 											<div className="category-stats">
 												<div className="stats-text">
 													<span className="collected white-text">
