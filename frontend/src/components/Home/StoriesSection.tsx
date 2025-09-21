@@ -1,5 +1,6 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import { DONATE_PAGE } from "../../lib/constants"
 import {
 	useScrollAnimation,
 	useStaggeredAnimation,
@@ -71,6 +72,11 @@ function StoriesSection() {
 			fallbackImage: "/img/carousel-img6.jpg",
 		},
 	]
+
+	const handleDonateClick = () => {
+		// Navigate to donation page or scroll to donation section
+		window.location.href = DONATE_PAGE
+	}
 
 	return (
 		<section
@@ -173,6 +179,7 @@ function StoriesSection() {
 								? "animate-scale-in visible stagger-2"
 								: "animate-scale-in stagger-2"
 						}`}
+						onClick={handleDonateClick}
 					>
 						{t("stories-cta-button")}
 					</button>

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
+import { DONATE_PAGE } from "../../lib/constants"
 import { useLimitedItems, useTotalDonated } from "../../lib/hooks.tsx"
 import {
 	useScrollAnimation,
@@ -104,8 +105,13 @@ function DonationImpact() {
 
 	const handleDonationSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
-		// Navigate to payment page with amount
-		window.location.href = `/payment?amount=${donationAmount}`
+		// Navigate to donation page with amount
+		window.location.href = `${DONATE_PAGE}?amount=${donationAmount}`
+	}
+
+	const handleDonateClick = () => {
+		// Navigate to donation page or scroll to donation section
+		window.location.href = DONATE_PAGE
 	}
 
 	return (
@@ -138,6 +144,7 @@ function DonationImpact() {
 								? "animate-scale-in visible stagger-2"
 								: "animate-scale-in stagger-2"
 						}`}
+						onClick={handleDonateClick}
 					>
 						{t("donation-impact-hero-button")}
 					</button>

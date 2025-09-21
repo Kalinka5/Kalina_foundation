@@ -1,5 +1,6 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
+import { DONATE_PAGE } from "../../lib/constants"
 import {
 	usePageLoadAnimation,
 	useParallax,
@@ -20,7 +21,7 @@ function HeroSection() {
 
 	const handleDonateClick = () => {
 		// Navigate to donation page or scroll to donation section
-		window.location.href = "/payment"
+		window.location.href = DONATE_PAGE
 	}
 
 	return (
