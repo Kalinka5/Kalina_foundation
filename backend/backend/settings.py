@@ -236,7 +236,7 @@ SIMPLE_JWT = {
     'AUTH_COOKIE_SAMESITE': "Lax",  # TODO: Modify to Lax
 }
 
-CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins for development
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
@@ -245,6 +245,10 @@ CORS_ALLOWED_ORIGINS = [
     "https://kalina-foundation.vercel.app",
     "https://www.kalinafond.com"
 ]
+
+# Additional CORS settings for development
+CORS_ALLOW_ALL_HEADERS = True
+CORS_ALLOW_ALL_METHODS = True
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [

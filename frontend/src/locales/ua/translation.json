@@ -325,13 +325,15 @@
 	"team-values-solidarity-description": "Сприяння міцній спільноті підтримки, визнаючи спільну відповідальність перед нашими героями.",
 
 	"register-create-account": "Створити акаунт",
-	"register-subtitle": "Зареєструйтесь і потрапте в топ донатерів",
+	"register-subtitle": "Зареєструйтесь і потрапите у Топ Донатерів",
 	"register-full-name": "Повне ім'я",
 	"register-full-name-placeholder": "Амелі Лоран",
 	"register-email": "Електронна пошта",
 	"register-email-placeholder": "amelielaurent7622@gmail.com",
 	"register-password": "Пароль",
 	"register-password-placeholder": "••••••••••••••••••",
+	"register-confirm-password": "Підтвердити пароль",
+	"register-confirm-password-placeholder": "••••••••••••••••••",
 	"register-submit": "Зареєструватися",
 	"register-google": "Google",
 	"register-have-account": "Вже маєте акаунт?",
@@ -344,6 +346,10 @@
 	"register-email-invalid": "Електронна пошта недійсна",
 	"register-password-required": "Пароль є обов'язковим",
 	"register-password-min-length": "Пароль повинен містити принаймні 8 символів",
+	"register-confirm-password-required": "Підтвердження пароля є обов'язковим",
+	"register-passwords-not-match": "Паролі не співпадають",
 	"register-username-exists": "Користувач з таким ім'ям вже існує",
-	"register-email-exists": "Користувач з такою електронною поштою вже існує"
+	"register-email-exists": "Користувач з такою електронною поштою вже існує",
+	"back": "Назад",
+	"login-registration-success": "Реєстрація успішна! Перевірте свою електронну пошту для підтвердження акаунту."
 }

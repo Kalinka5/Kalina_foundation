@@ -332,6 +332,8 @@
 	"register-email-placeholder": "amelielaurent7622@gmail.com",
 	"register-password": "Password",
 	"register-password-placeholder": "••••••••••••••••••",
+	"register-confirm-password": "Confirm Password",
+	"register-confirm-password-placeholder": "••••••••••••••••••",
 	"register-submit": "Submit",
 	"register-google": "Google",
 	"register-have-account": "Have any account?",
@@ -344,6 +346,10 @@
 	"register-email-invalid": "Email is not valid",
 	"register-password-required": "Password is required",
 	"register-password-min-length": "Password must be at least 8 characters",
+	"register-confirm-password-required": "Confirm password is required",
+	"register-passwords-not-match": "Passwords do not match",
 	"register-username-exists": "User with this name already exists",
-	"register-email-exists": "User with this email already exists"
+	"register-email-exists": "User with this email already exists",
+	"back": "Back",
+	"login-registration-success": "Registration successful! Please check your email to verify your account."
 }
