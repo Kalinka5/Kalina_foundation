@@ -351,5 +351,19 @@
 	"register-username-exists": "User with this name already exists",
 	"register-email-exists": "User with this email already exists",
 	"back": "Back",
-	"login-registration-success": "Registration successful! Please check your email to verify your account."
+	"login-registration-success": "Registration successful! Please check your email to verify your account.",
+
+	"login-welcome-back": "Welcome Back",
+	"login-subtitle": "Sign in to continue your support for Ukraine",
+	"login-email-placeholder": "Enter your email address",
+	"login-password-placeholder": "Enter your password",
+	"login-google": "Continue with Google",
+	"login-no-account": "Don't have an account?",
+	"login-register-now": "Register now",
+	"login-forgot-password": "Forgot password?",
+	"login-email-required": "Email is required",
+	"login-email-invalid": "Email is not valid",
+	"login-password-required": "Password is required",
+	"login-invalid-credentials": "Invalid email or password",
+	"login-error-message": "Login failed. Please try again."
 }

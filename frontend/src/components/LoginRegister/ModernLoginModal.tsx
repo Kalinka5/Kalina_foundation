@@ -3,34 +3,30 @@ import { useTranslation } from "react-i18next"
 import { FaGoogle } from "react-icons/fa"
 import { IoChevronBack, IoClose, IoEye, IoEyeOff } from "react-icons/io5"
 
-import api from "../lib/api.js"
-import { HOME_PAGE, LOGIN_PAGE } from "../lib/constants.js"
-import { RegistrationStatus } from "../lib/types.tsx"
+import api from "../../lib/api.js"
+import { PROFILE_PAGE, REGISTER_PAGE } from "../../lib/constants.js"
+import { TokenResponse } from "../../lib/types.tsx"
 
-import "../styles/loginRegister/modernRegister.css"
+import "../../styles/loginRegister/modernLogin.css"
 
-function Register() {
-	const [registrationStatus, setRegistrationStatus] =
-		useState<RegistrationStatus>(null)
+interface ModernLoginModalProps {
+	onClose: () => void
+}
 
+function ModernLoginModal({ onClose }: ModernLoginModalProps) {
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
-	const [confirmPassword, setConfirmPassword] = useState("")
-
+	const [showPassword, setShowPassword] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const [errors, setErrors] = useState<any>({})
-	const [validFields, setValidFields] = useState<any>({})
-
-	// Password visibility states
-	const [showPassword, setShowPassword] = useState(false)
-	const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+	const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 
 	// Image sliding state
 	const [currentImageIndex, setCurrentImageIndex] = useState(0)
 	const backgroundImages = [
-		"/img/register-background1.png",
-		"/img/register-background2.png",
-		"/img/register-background3.png",
+		"/img/login-background1.png",
+		"/img/login-background2.png",
+		"/img/login-background3.png",
 	]
 
 	const { t, i18n } = useTranslation()
@@ -46,6 +42,22 @@ function Register() {
 		return () => clearInterval(interval)
 	}, [backgroundImages.length])
 
+	// Check for registration success parameter
+	useEffect(() => {
+		const urlParams = new URLSearchParams(window.location.search)
+		if (urlParams.get("registered") === "true") {
+			setShowSuccessMessage(true)
+			// Remove the parameter from URL without page reload
+			const newUrl = window.location.pathname
+			window.history.replaceState({}, document.title, newUrl)
+
+			// Hide success message after 5 seconds
+			setTimeout(() => {
+				setShowSuccessMessage(false)
+			}, 5000)
+		}
+	}, [])
+
 	// Handle manual navigation
 	const goToSlide = (index: number) => {
 		setCurrentImageIndex(index)
@@ -54,10 +66,6 @@ function Register() {
 	// Toggle password visibility
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword)
-	}
-
-	const toggleConfirmPasswordVisibility = () => {
-		setShowConfirmPassword(!showConfirmPassword)
 	}
 
 	// Custom Language Selector Component
@@ -111,75 +119,40 @@ function Register() {
 		setLoading(true)
 		e.preventDefault()
 
-		// Simple validation for the modern form
+		// Simple validation
 		const newErrors: any = {}
 
 		if (!email.trim()) {
-			newErrors.email = t("register-email-required")
+			newErrors.email = t("login-email-required")
 		} else if (!/\S+@\S+\.\S+/.test(email)) {
-			newErrors.email = t("register-email-invalid")
+			newErrors.email = t("login-email-invalid")
 		}
 
 		if (!password) {
-			newErrors.password = t("register-password-required")
-		} else if (password.length < 8) {
-			newErrors.password = t("register-password-min-length")
-		}
-
-		if (!confirmPassword) {
-			newErrors.confirmPassword = t("register-confirm-password-required")
-		} else if (password !== confirmPassword) {
-			newErrors.confirmPassword = t("register-passwords-not-match")
+			newErrors.password = t("login-password-required")
 		}
 
 		setErrors(newErrors)
 
 		try {
 			if (Object.keys(newErrors).length === 0) {
-				const requestData = {
-					username: email, // Using email as username for backend compatibility
-					email: email,
-					password: password,
-				}
-
-				const response = await api("register", {
+				const response = (await api("token/", {
 					method: "POST",
-					body: JSON.stringify(requestData),
-				})
+					body: JSON.stringify({ email: email, password: password }),
+				})) as TokenResponse
 
-				// Handle HTTP errors
-				if (response.ok) {
-					setRegistrationStatus("success")
-					// Clear form on success
-					setEmail("")
-					setPassword("")
-					setConfirmPassword("")
-					setErrors({})
+				if (response?.access && response?.refresh) {
+					localStorage.setItem("access_token", response.access)
+					localStorage.setItem("refresh_token", response.refresh)
 
-					// Redirect to login page after 2 seconds
-					setTimeout(() => {
-						window.location.href = `${LOGIN_PAGE}?registered=true`
-					}, 2000)
+					// Redirect to profile page
+					window.location.href = PROFILE_PAGE
 				} else {
-					setRegistrationStatus("error")
-					console.log(response)
-
-					// Parse error message if response contains JSON
-					try {
-						if (response["username"]) {
-							setErrors({ email: t("register-username-exists") })
-						} else if (response["email"]) {
-							setErrors({ email: t("register-email-exists") })
-						}
-					} catch {
-						// Handle non-JSON errors
-						console.error("Unexpected error:", response)
-					}
+					setErrors({ general: t("login-invalid-credentials") })
 				}
 			}
 		} catch (error) {
-			setRegistrationStatus("error")
-			console.error("Unexpected error:", error)
+			setErrors({ general: t("login-error-message") })
 		} finally {
 			setLoading(false)
 		}
@@ -188,69 +161,59 @@ function Register() {
 	return (
 		<>
 			{/* Success/Error Messages */}
-			{registrationStatus === "success" && (
+			{showSuccessMessage && (
 				<AlertMessage
-					message={t("register-success-message")}
+					message={t("login-registration-success")}
 					type="success"
-					onClose={() => setRegistrationStatus(null)}
+					onClose={() => setShowSuccessMessage(false)}
 				/>
 			)}
-			{registrationStatus === "error" && (
+			{errors.general && (
 				<AlertMessage
-					message={t("register-error-message")}
+					message={errors.general}
 					type="error"
-					onClose={() => setRegistrationStatus(null)}
+					onClose={() => setErrors({ ...errors, general: null })}
 				/>
 			)}
 
-			<div className="modern-register-container">
-				<div className="modern-register-modal">
+			<div className="modern-login-container">
+				<div className="modern-login-modal">
 					{/* Close Button */}
-					<button
-						className="modern-register-close"
-						onClick={() => (window.location.href = HOME_PAGE)}
-					>
+					<button className="modern-login-close" onClick={onClose}>
 						<IoClose />
 					</button>
 
 					{/* Left side - Form */}
-					<div className="modern-register-form-side">
-						<div className="modern-register-top-bar">
-							<button
-								className="modern-back-button"
-								onClick={() => (window.location.href = HOME_PAGE)}
-							>
+					<div className="modern-login-form-side">
+						<div className="modern-login-top-bar">
+							<button className="modern-back-button" onClick={onClose}>
 								<IoChevronBack />
 								<span>{t("back")}</span>
 							</button>
-							<div className="modern-register-logo">
+							<div className="modern-login-logo">
 								<img
 									src="/logo.png"
 									alt="Kalina Foundation"
-									className="modern-register-logo-img"
+									className="modern-login-logo-img"
 								/>
 							</div>
 						</div>
 
-						<div className="modern-register-header">
-							<h1 className="modern-register-title">
-								{t("register-create-account")}
-							</h1>
-							<p className="modern-register-subtitle">
-								{t("register-subtitle")}
-							</p>
+						<div className="modern-login-header">
+							<h1 className="modern-login-title">{t("login-welcome-back")}</h1>
+							<p className="modern-login-subtitle">{t("login-subtitle")}</p>
 						</div>
 
-						<form className="modern-register-form" onSubmit={handleSubmit}>
+						<form className="modern-login-form" onSubmit={handleSubmit}>
 							<div className="modern-form-group">
 								<label className="modern-form-label" htmlFor="email">
-									{t("register-email")}
+									{t("email")}
 								</label>
 								<input
 									id="email"
 									type="email"
 									className={`modern-form-input ${errors.email ? "error" : ""}`}
-									placeholder={t("register-email-placeholder")}
+									placeholder={t("login-email-placeholder")}
 									value={email}
 									onChange={e => setEmail(e.target.value)}
 								/>
@@ -261,7 +224,7 @@ function Register() {
 
 							<div className="modern-form-group">
 								<label className="modern-form-label" htmlFor="password">
-									{t("register-password")}
+									{t("password")}
 								</label>
 								<div className="modern-password-container">
 									<input
@@ -270,7 +233,7 @@ function Register() {
 										className={`modern-form-input ${
 											errors.password ? "error" : ""
 										}`}
-										placeholder={t("register-password-placeholder")}
+										placeholder={t("login-password-placeholder")}
 										value={password}
 										onChange={e => setPassword(e.target.value)}
 									/>
@@ -285,41 +248,13 @@ function Register() {
 										{showPassword ? <IoEyeOff /> : <IoEye />}
 									</button>
 								</div>
+								<div className="modern-forgot-password-container">
+									<a href="#" className="modern-forgot-password-link">
+										{t("login-forgot-password")}
+									</a>
+								</div>
 								{errors.password && (
 									<div className="modern-error-message">{errors.password}</div>
-								)}
-							</div>
-
-							<div className="modern-form-group">
-								<label className="modern-form-label" htmlFor="confirmPassword">
-									{t("register-confirm-password")}
-								</label>
-								<div className="modern-password-container">
-									<input
-										id="confirmPassword"
-										type={showConfirmPassword ? "text" : "password"}
-										className={`modern-form-input ${
-											errors.confirmPassword ? "error" : ""
-										}`}
-										placeholder={t("register-confirm-password-placeholder")}
-										value={confirmPassword}
-										onChange={e => setConfirmPassword(e.target.value)}
-									/>
-									<button
-										type="button"
-										className="modern-password-toggle"
-										onClick={toggleConfirmPasswordVisibility}
-										aria-label={
-											showConfirmPassword ? "Hide password" : "Show password"
-										}
-									>
-										{showConfirmPassword ? <IoEyeOff /> : <IoEye />}
-									</button>
-								</div>
-								{errors.confirmPassword && (
-									<div className="modern-error-message">
-										{errors.confirmPassword}
-									</div>
 								)}
 							</div>
 
@@ -328,7 +263,7 @@ function Register() {
 								className="modern-submit-button"
 								disabled={loading}
 							>
-								{t("register-submit")}
+								{t("login-button")}
 								{loading && <div className="loader"></div>}
 							</button>
 						</form>
@@ -336,23 +271,20 @@ function Register() {
 						<div className="modern-social-login">
 							<button className="modern-social-button" type="button">
 								<FaGoogle className="modern-social-icon" />
-								{t("register-google")}
+								{t("login-google")}
 							</button>
 						</div>
 
-						<div className="modern-register-footer">
-							<div className="modern-register-link">
-								{t("register-have-account")}{" "}
-								<a href={LOGIN_PAGE}>{t("register-sign-in")}</a>
+						<div className="modern-login-footer">
+							<div className="modern-login-link">
+								{t("login-no-account")}{" "}
+								<a href={REGISTER_PAGE}>{t("login-register-now")}</a>
 							</div>
-							<a href="#" className="modern-terms-link">
-								{t("register-terms")}
-							</a>
 						</div>
 					</div>
 
 					{/* Right side - Image */}
-					<div className="modern-register-image-side">
+					<div className="modern-login-image-side">
 						{/* Language selector positioned on image side */}
 						<div className="modern-language-wrapper">
 							<CustomLanguageSelector />
@@ -363,7 +295,7 @@ function Register() {
 							<img
 								src={backgroundImages[currentImageIndex]}
 								alt="Professional team working together"
-								className="modern-register-background-image"
+								className="modern-login-background-image"
 							/>
 
 							{/* Navigation Dots */}
@@ -387,4 +319,4 @@ function Register() {
 	)
 }
 
-export default Register
+export default ModernLoginModal

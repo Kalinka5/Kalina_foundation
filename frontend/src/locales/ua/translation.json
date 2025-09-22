@@ -351,5 +351,19 @@
 	"register-username-exists": "Користувач з таким ім'ям вже існує",
 	"register-email-exists": "Користувач з такою електронною поштою вже існує",
 	"back": "Назад",
-	"login-registration-success": "Реєстрація успішна! Перевірте свою електронну пошту для підтвердження акаунту."
+	"login-registration-success": "Реєстрація успішна! Перевірте свою електронну пошту для підтвердження акаунту.",
+
+	"login-welcome-back": "Ласкаво просимо назад",
+	"login-subtitle": "Увійдіть, щоб продовжити підтримку України",
+	"login-email-placeholder": "Введіть свою електронну адресу",
+	"login-password-placeholder": "Введіть свій пароль",
+	"login-google": "Продовжити з Google",
+	"login-no-account": "Немає акаунту?",
+	"login-register-now": "Зареєструватися зараз",
+	"login-forgot-password": "Забули пароль?",
+	"login-email-required": "Електронна пошта є обов'язковою",
+	"login-email-invalid": "Електронна пошта недійсна",
+	"login-password-required": "Пароль є обов'язковим",
+	"login-invalid-credentials": "Неправильна електронна пошта або пароль",
+	"login-error-message": "Вхід не вдався. Спробуйте ще раз."
 }
