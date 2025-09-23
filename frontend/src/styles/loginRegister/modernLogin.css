@@ -270,6 +270,20 @@
 	background: rgba(255, 255, 255, 0.1);
 }
 
+/* Error state for password toggle button */
+.modern-form-input.error + .modern-password-toggle {
+	color: #ef4444;
+}
+
+.modern-form-input.error + .modern-password-toggle:hover {
+	color: #dc2626;
+	background: rgba(239, 68, 68, 0.1);
+}
+
+.modern-form-input.error + .modern-password-toggle:focus {
+	background: rgba(239, 68, 68, 0.1);
+}
+
 .modern-password-toggle svg {
 	width: 18px;
 	height: 18px;
@@ -1022,19 +1036,64 @@
 /* Error states */
 .modern-form-input.error {
 	border-color: #ef4444;
-	background: #fef2f2;
+	background: #2a2a2a;
+	color: #ffffff;
+	animation: errorShake 0.5s ease;
 }
 
 .modern-form-input.error:focus {
 	border-color: #ef4444;
-	box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+	box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+	background: #2a2a2a;
+	color: #ffffff;
+}
+
+@keyframes errorShake {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	10%,
+	30%,
+	50%,
+	70%,
+	90% {
+		transform: translateX(-2px);
+	}
+	20%,
+	40%,
+	60%,
+	80% {
+		transform: translateX(2px);
+	}
 }
 
 .modern-error-message {
 	color: #ef4444;
-	font-size: 12px;
-	margin-top: 4px;
+	font-size: 13px;
+	margin-top: 6px;
 	font-weight: 500;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	animation: errorSlideIn 0.3s ease;
+}
+
+.modern-error-message::before {
+	content: "⚠";
+	font-size: 14px;
+	color: #ef4444;
+}
+
+@keyframes errorSlideIn {
+	from {
+		opacity: 0;
+		transform: translateY(-5px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 /* Success states */
