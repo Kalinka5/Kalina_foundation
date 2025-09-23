@@ -1,40 +1,246 @@
 {% autoescape off %} {% load static %}
 
-<h1>Verify your email</h1>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Email Verification - Kalina Foundation</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
 
-<p>
-	Hi <b>{{ user.username }}</b>,<br />Tap the button below to verify your
-	email.<br />If you don't request to register in Kalina Foundation, you can
-	safely delete this email.
-</p>
-<br />
-<a
-	className="edit-button"
-	href="https://www.kalina-fond.com/email-verify/{{ uid }}/{{ token }}/"
-	target="_blank"
-	rel="noreferrer"
-	style="
-		border: 0;
-		color: #ffffff;
-		background-color: #1512e6;
-		padding: 15px 25px;
-		font-weight: bold;
-		text-decoration: none;
-		border-radius: 5px;
-		margin: 200px;
-	"
->
-	<span>Verify</span>
-</a>
-<br />
-<br />
-<p>
-	If that doesn't work, copy and paste the folowing link in your browser:<br />
-	https://www.kalinafond.com/email-verify/{{ uid }}/{{ token }}/
-</p>
-<p>
-	Cheers,<br />
-	Kalina Foundation
-</p>
+			body {
+				font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+				line-height: 1.6;
+				color: #333;
+				background-color: #f8f9fa;
+			}
+
+			.email-container {
+				max-width: 600px;
+				margin: 0 auto;
+				background-color: #ffffff;
+				border-radius: 12px;
+				overflow: hidden;
+				box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+			}
+
+			.header {
+				background: linear-gradient(135deg, #1512e6 0%, #0d0bb8 100%);
+				padding: 30px 20px;
+				text-align: center;
+				color: white;
+			}
+
+			.logo {
+				width: 80px;
+				height: 80px;
+				margin: 0 auto 20px;
+				background-color: rgba(255, 255, 255, 0.1);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 24px;
+				font-weight: bold;
+			}
+
+			.header h1 {
+				font-size: 28px;
+				font-weight: 600;
+				margin-bottom: 10px;
+			}
+
+			.header p {
+				font-size: 16px;
+				opacity: 0.9;
+			}
+
+			.content {
+				padding: 40px 30px;
+			}
+
+			.greeting {
+				font-size: 18px;
+				margin-bottom: 20px;
+				color: #2c3e50;
+			}
+
+			.message {
+				font-size: 16px;
+				margin-bottom: 30px;
+				color: #555;
+				line-height: 1.7;
+			}
+
+			.verify-button {
+				display: inline-block;
+				background: linear-gradient(135deg, #1512e6 0%, #0d0bb8 100%);
+				color: white;
+				padding: 16px 32px;
+				text-decoration: none;
+				border-radius: 8px;
+				font-weight: 600;
+				font-size: 16px;
+				text-align: center;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 15px rgba(21, 18, 230, 0.3);
+				margin: 20px 0;
+			}
+
+			.verify-button:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(21, 18, 230, 0.4);
+			}
+
+			.backup-link {
+				background-color: #f8f9fa;
+				border: 1px solid #e9ecef;
+				border-radius: 8px;
+				padding: 20px;
+				margin: 30px 0;
+			}
+
+			.backup-link p {
+				font-size: 14px;
+				color: #6c757d;
+				margin-bottom: 10px;
+			}
+
+			.backup-link a {
+				color: #1512e6;
+				word-break: break-all;
+				font-size: 12px;
+			}
+
+			.footer {
+				background-color: #f8f9fa;
+				padding: 30px;
+				text-align: center;
+				border-top: 1px solid #e9ecef;
+			}
+
+			.footer p {
+				color: #6c757d;
+				font-size: 14px;
+				margin-bottom: 10px;
+			}
+
+			.footer .signature {
+				font-weight: 600;
+				color: #1512e6;
+				font-size: 16px;
+			}
+
+			.hero-image {
+				width: 100%;
+				height: 200px;
+				background: linear-gradient(
+					135deg,
+					rgba(21, 18, 230, 0.1) 0%,
+					rgba(13, 11, 184, 0.1) 100%
+				);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 20px 0;
+				border-radius: 8px;
+			}
+
+			.hero-image img {
+				max-width: 120px;
+				max-height: 120px;
+				opacity: 0.7;
+			}
+
+			@media (max-width: 600px) {
+				.email-container {
+					margin: 10px;
+					border-radius: 8px;
+				}
+
+				.content {
+					padding: 30px 20px;
+				}
+
+				.header {
+					padding: 20px 15px;
+				}
+
+				.header h1 {
+					font-size: 24px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="email-container">
+			<div class="header">
+				<div class="logo">KF</div>
+				<h1>Welcome to Kalina Foundation</h1>
+				<p>Verify your email to get started</p>
+			</div>
+
+			<div class="content">
+				<div class="greeting">Hello <strong>{{ user.username }}</strong>,</div>
+
+				<div class="message">
+					Thank you for joining Kalina Foundation! We're excited to have you as
+					part of our community dedicated to supporting Ukraine.
+					<br /><br />
+					To complete your registration and start making a difference, please
+					verify your email address by clicking the button below.
+				</div>
+
+				<div class="hero-image">
+					<img
+						src="https://www.kalinafond.com/static/img/ukrainian-hero.png"
+						alt="Ukrainian Hero"
+						style="max-width: 120px; max-height: 120px"
+					/>
+				</div>
+
+				<div style="text-align: center">
+					<a
+						href="https://www.kalinafond.com/email-verify/{{ uid }}/{{ token }}/"
+						class="verify-button"
+						target="_blank"
+						rel="noreferrer"
+					>
+						Verify Email Address
+					</a>
+				</div>
+
+				<div class="backup-link">
+					<p><strong>Button not working?</strong></p>
+					<p>Copy and paste this link into your browser:</p>
+					<a
+						href="https://www.kalinafond.com/email-verify/{{ uid }}/{{ token }}/"
+					>
+						https://www.kalinafond.com/email-verify/{{ uid }}/{{ token }}/
+					</a>
+				</div>
+
+				<div class="message">
+					<strong>Didn't request this account?</strong><br />
+					If you didn't create an account with Kalina Foundation, you can safely
+					ignore this email. No further action is required.
+				</div>
+			</div>
+
+			<div class="footer">
+				<p>This email was sent to {{ user.email }}</p>
+				<p class="signature">With gratitude,<br />Kalina Foundation Team</p>
+				<p style="margin-top: 20px; font-size: 12px">
+					© 2024 Kalina Foundation. All rights reserved.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
 
 {%endautoescape%}
