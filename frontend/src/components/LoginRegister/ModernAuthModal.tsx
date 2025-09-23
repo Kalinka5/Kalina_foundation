@@ -5,7 +5,12 @@ import { IoChevronBack, IoClose, IoEye, IoEyeOff } from "react-icons/io5"
 import { useNavigate } from "react-router-dom"
 
 import api from "../../lib/api.js"
-import { LOGIN_PAGE, PROFILE_PAGE, REGISTER_PAGE } from "../../lib/constants.js"
+import {
+	LOGIN_PAGE,
+	PROFILE_PAGE,
+	REGISTER_PAGE,
+	TERMS_CONDITIONS_PAGE,
+} from "../../lib/constants.js"
 import { RegistrationStatus, TokenResponse } from "../../lib/types.tsx"
 import { useAuth } from "../AuthContext.tsx"
 
@@ -592,7 +597,11 @@ function ModernAuthModal({
 								)}
 							</div>
 							{mode === "register" && (
-								<button type="button" className="modern-terms-link">
+								<button
+									type="button"
+									className="modern-terms-link"
+									onClick={() => navigate(TERMS_CONDITIONS_PAGE)}
+								>
 									{t("register-terms")}
 								</button>
 							)}

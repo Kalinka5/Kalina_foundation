@@ -1,138 +1,169 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
+
+import Footer from "../components/Footer.js"
+import Header from "../components/Header.tsx"
+
 import "../styles/termsConditions.css"
 
 const TermsConditions: React.FC = () => {
+	const { t } = useTranslation()
+
 	return (
 		<div className="terms-conditions">
-			<div className="container">
-				<h1>Terms & Conditions</h1>
-				<p className="last-updated">
-					Last updated: {new Date().toLocaleDateString()}
-				</p>
+			<Header fixed="pos-fixed" />
+			<div className="terms-content">
+				<div className="terms-header">
+					<h1 className="terms-title">{t("terms-title")}</h1>
+					<p className="terms-subtitle">{t("terms-subtitle")}</p>
+				</div>
 
-				<section>
-					<h2>1. Agreement to Terms</h2>
-					<p>
-						By accessing and using the Kalina Foundation website, you accept and
-						agree to be bound by the terms and provision of this agreement. If
-						you do not agree to abide by the above, please do not use this
-						service.
-					</p>
-				</section>
+				<div className="terms-body">
+					<section className="terms-section">
+						<h2 className="terms-section-title">{t("terms-welcome-title")}</h2>
+						<p className="terms-text">
+							{t("terms-welcome-text-1")}{" "}
+							<strong>{t("terms-welcome-text-2")}</strong>{" "}
+							{t("terms-welcome-text-3")}{" "}
+							<strong>{t("terms-welcome-text-4")}</strong>{" "}
+							{t("terms-welcome-text-5")}{" "}
+							<strong>{t("terms-welcome-text-6")}</strong>{" "}
+							{t("terms-welcome-text-7")}{" "}
+							<strong>{t("terms-welcome-text-8")}</strong>{" "}
+							{t("terms-welcome-text-9")}
+						</p>
+					</section>
 
-				<section>
-					<h2>2. Use License</h2>
-					<p>
-						Permission is granted to temporarily access the materials on Kalina
-						Foundation's website for personal, non-commercial transitory viewing
-						only. This is the grant of a license, not a transfer of title, and
-						under this license you may not:
-					</p>
-					<ul>
-						<li>Modify or copy the materials</li>
-						<li>
-							Use the materials for any commercial purpose or for any public
-							display
-						</li>
-						<li>
-							Attempt to reverse engineer any software contained on the website
-						</li>
-						<li>
-							Remove any copyright or other proprietary notations from the
-							materials
-						</li>
-					</ul>
-				</section>
+					<section className="terms-section">
+						<h2 className="terms-section-title">
+							{t("terms-registration-title")}
+						</h2>
+						<h3 className="terms-subsection-title">
+							{t("terms-registration-subtitle")}
+						</h3>
+						<p className="terms-text">
+							{t("terms-registration-text-1")}{" "}
+							<strong>{t("terms-registration-text-2")}</strong>{" "}
+							{t("terms-registration-text-3")}{" "}
+							<strong>{t("terms-registration-text-4")}</strong>{" "}
+							{t("terms-registration-text-5")}{" "}
+							<strong>{t("terms-registration-text-6")}</strong>{" "}
+							{t("terms-registration-text-7")}
+						</p>
+						<p className="terms-text">
+							{t("terms-registration-text-8")}{" "}
+							<strong>{t("terms-registration-text-9")}</strong>{" "}
+							{t("terms-registration-text-10")}
+						</p>
+					</section>
 
-				<section>
-					<h2>3. Donations</h2>
-					<p>
-						All donations made through our website are final and non-refundable
-						unless otherwise stated in our Refund Policy. Donations are used to
-						support our charitable activities and programs in Ukraine.
-					</p>
-				</section>
+					<section className="terms-section">
+						<h3 className="terms-subsection-title">
+							{t("terms-account-transfer-title")}
+						</h3>
+						<h4 className="terms-subsection-subtitle">
+							{t("terms-account-transfer-subtitle-1")}
+						</h4>
+						<p className="terms-text">
+							{t("terms-account-transfer-text-1")}{" "}
+							<strong>{t("terms-account-transfer-text-2")}</strong>{" "}
+							{t("terms-account-transfer-text-3")}{" "}
+							<strong>{t("terms-account-transfer-text-4")}</strong>{" "}
+							{t("terms-account-transfer-text-5")}
+						</p>
+						<h4 className="terms-subsection-subtitle">
+							{t("terms-account-transfer-subtitle-2")}
+						</h4>
+						<p className="terms-text">
+							{t("terms-account-transfer-text-6")}{" "}
+							<strong>{t("terms-account-transfer-text-7")}</strong>{" "}
+							{t("terms-account-transfer-text-8")}
+						</p>
+						<h5 className="terms-subsection-subtitle-small">
+							{t("terms-account-transfer-subtitle-3")}
+						</h5>
+						<p className="terms-text">
+							{t("terms-account-transfer-text-9")}{" "}
+							<strong>{t("terms-account-transfer-text-10")}</strong>{" "}
+							{t("terms-account-transfer-text-11")}
+						</p>
+						<h5 className="terms-subsection-subtitle-small">
+							{t("terms-account-transfer-subtitle-4")}
+						</h5>
+						<p className="terms-text">
+							{t("terms-account-transfer-text-12")}{" "}
+							<strong>{t("terms-account-transfer-text-13")}</strong>{" "}
+							{t("terms-account-transfer-text-14")}
+						</p>
+						<h5 className="terms-subsection-subtitle-small">
+							{t("terms-account-transfer-subtitle-5")}
+						</h5>
+						<p className="terms-text">
+							{t("terms-account-transfer-text-15")}{" "}
+							<strong>{t("terms-account-transfer-text-16")}</strong>{" "}
+							{t("terms-account-transfer-text-17")}
+						</p>
+					</section>
 
-				<section>
-					<h2>4. User Accounts</h2>
-					<p>
-						When you create an account with us, you must provide information
-						that is accurate, complete, and current at all times. You are
-						responsible for safeguarding the password and for all activities
-						that occur under your account.
-					</p>
-				</section>
+					<section className="terms-section">
+						<h3 className="terms-subsection-title">
+							{t("terms-account-recovery-title")}
+						</h3>
+						<p className="terms-text">
+							{t("terms-account-recovery-text-1")}{" "}
+							<strong>{t("terms-account-recovery-text-2")}</strong>{" "}
+							{t("terms-account-recovery-text-3")}
+						</p>
+					</section>
 
-				<section>
-					<h2>5. Privacy Policy</h2>
-					<p>
-						Your privacy is important to us. Please review our Privacy Policy,
-						which also governs your use of the website, to understand our
-						practices.
-					</p>
-				</section>
+					<section className="terms-section">
+						<h3 className="terms-subsection-title">
+							{t("terms-account-security-title")}
+						</h3>
+						<p className="terms-text">
+							{t("terms-account-security-text-1")}{" "}
+							<strong>{t("terms-account-security-text-2")}</strong>{" "}
+							{t("terms-account-security-text-3")}{" "}
+							<strong>{t("terms-account-security-text-4")}</strong>{" "}
+							{t("terms-account-security-text-5")}
+						</p>
+					</section>
 
-				<section>
-					<h2>6. Prohibited Uses</h2>
-					<p>You may not use our website:</p>
-					<ul>
-						<li>For any unlawful purpose</li>
-						<li>To harass, abuse, or harm other users</li>
-						<li>To submit false or misleading information</li>
-						<li>
-							To interfere with the security or functionality of the website
-						</li>
-					</ul>
-				</section>
-
-				<section>
-					<h2>7. Disclaimer</h2>
-					<p>
-						The materials on Kalina Foundation's website are provided on an 'as
-						is' basis. Kalina Foundation makes no warranties, expressed or
-						implied, and hereby disclaims and negates all other warranties
-						including without limitation, implied warranties or conditions of
-						merchantability, fitness for a particular purpose, or
-						non-infringement of intellectual property or other violation of
-						rights.
-					</p>
-				</section>
-
-				<section>
-					<h2>8. Limitations</h2>
-					<p>
-						In no event shall Kalina Foundation or its suppliers be liable for
-						any damages (including, without limitation, damages for loss of data
-						or profit, or due to business interruption) arising out of the use
-						or inability to use the materials on Kalina Foundation's website.
-					</p>
-				</section>
-
-				<section>
-					<h2>9. Revisions</h2>
-					<p>
-						The materials appearing on Kalina Foundation's website could include
-						technical, typographical, or photographic errors. Kalina Foundation
-						does not warrant that any of the materials on its website are
-						accurate, complete, or current.
-					</p>
-				</section>
-
-				<section>
-					<h2>10. Contact Information</h2>
-					<p>
-						If you have any questions about these Terms & Conditions, please
-						contact us at:
-					</p>
-					<p>
-						Email: info@kalinafond.com
-						<br />
-						Phone: +380992977886
-						<br />
-						Address: Dnipro, Ukraine, CA: 49051
-					</p>
-				</section>
+					<section className="terms-section">
+						<h3 className="terms-subsection-title">
+							{t("terms-account-cancellation-title")}
+						</h3>
+						<h4 className="terms-subsection-subtitle">
+							{t("terms-account-cancellation-subtitle-1")}
+						</h4>
+						<h5 className="terms-subsection-subtitle-small">
+							{t("terms-account-cancellation-subtitle-2")}
+						</h5>
+						<p className="terms-text">
+							{t("terms-account-cancellation-text-1")}{" "}
+							<strong>{t("terms-account-cancellation-text-2")}</strong>{" "}
+							{t("terms-account-cancellation-text-3")}
+						</p>
+						<h5 className="terms-subsection-subtitle-small">
+							{t("terms-account-cancellation-subtitle-3")}
+						</h5>
+						<p className="terms-text">
+							{t("terms-account-cancellation-text-4")}{" "}
+							<strong>{t("terms-account-cancellation-text-5")}</strong>{" "}
+							{t("terms-account-cancellation-text-6")}
+						</p>
+						<h5 className="terms-subsection-subtitle-small">
+							{t("terms-account-cancellation-subtitle-4")}
+						</h5>
+						<p className="terms-text">
+							{t("terms-account-cancellation-text-7")}{" "}
+							<strong>{t("terms-account-cancellation-text-8")}</strong>{" "}
+							{t("terms-account-cancellation-text-9")}
+						</p>
+					</section>
+				</div>
 			</div>
+			<Footer />
 		</div>
 	)
 }

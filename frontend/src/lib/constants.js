@@ -7,6 +7,7 @@ export const REGISTER_PAGE = "/register"
 export const LOGOUT_PAGE = "/logout"
 export const PROFILE_PAGE = "/profile"
 export const DONATE_PAGE = "/donate"
+export const TERMS_CONDITIONS_PAGE = "/terms"
 
 export const API_URL =
 	process.env.NODE_ENV === "development"

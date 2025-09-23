@@ -97,7 +97,7 @@ class Footer extends React.Component {
 						</a>
 					</div>
 					<p className="footer-copyright">
-						© 2023 by Kalina Foundation. Powered and secured by Wix
+						© 2025 by Kalina Foundation. Powered and secured by Wix
 					</p>
 				</div>
 			</footer>
