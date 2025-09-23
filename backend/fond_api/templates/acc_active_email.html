@@ -3,38 +3,38 @@
 <h1>Verify your email</h1>
 
 <p>
-  Hi <b>{{ user.username }}</b>,<br />Tap the button below to verify your
-  email.<br />If you don't request to register in Kalina Foundation, you can
-  safely delete this email.
+	Hi <b>{{ user.username }}</b>,<br />Tap the button below to verify your
+	email.<br />If you don't request to register in Kalina Foundation, you can
+	safely delete this email.
 </p>
 <br />
 <a
-  className="edit-button"
-  href="https://www.kalina-fond.com/email-verify/{{ uid }}/{{ token }}/"
-  target="_blank"
-  rel="noreferrer"
-  style="
-    border: 0;
-    color: #ffffff;
-    background-color: #1512e6;
-    padding: 15px 25px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
-    margin: 200px;
-  "
+	className="edit-button"
+	href="https://www.kalina-fond.com/email-verify/{{ uid }}/{{ token }}/"
+	target="_blank"
+	rel="noreferrer"
+	style="
+		border: 0;
+		color: #ffffff;
+		background-color: #1512e6;
+		padding: 15px 25px;
+		font-weight: bold;
+		text-decoration: none;
+		border-radius: 5px;
+		margin: 200px;
+	"
 >
-  <span>Verify</span>
+	<span>Verify</span>
 </a>
 <br />
 <br />
 <p>
-  If that doesn't work, copy and paste the folowing link in your browser:<br />
-  https://www.kalina-fond.com/email-verify/{{ uid }}/{{ token }}/
+	If that doesn't work, copy and paste the folowing link in your browser:<br />
+	https://www.kalinafond.com/email-verify/{{ uid }}/{{ token }}/
 </p>
 <p>
-  Cheers,<br />
-  Kalina Foundation
+	Cheers,<br />
+	Kalina Foundation
 </p>
 
 {%endautoescape%}

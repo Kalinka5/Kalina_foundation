@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { FaGoogle } from "react-icons/fa"
 import { IoChevronBack, IoClose, IoEye, IoEyeOff } from "react-icons/io5"
+import { useNavigate } from "react-router-dom"
 
 import api from "../../lib/api.js"
 import { LOGIN_PAGE, PROFILE_PAGE, REGISTER_PAGE } from "../../lib/constants.js"
 import { RegistrationStatus, TokenResponse } from "../../lib/types.tsx"
+import { useAuth } from "../AuthContext.tsx"
 
 import "../../styles/loginRegister/modernLogin.css"
 import "../../styles/loginRegister/modernRegister.css"
@@ -37,6 +39,8 @@ function ModernAuthModal({
 	const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
 	const { t, i18n } = useTranslation()
+	const { setIsAuthorized } = useAuth()
+	const navigate = useNavigate()
 
 	// Auto-slide images every 10 seconds
 	useEffect(() => {
@@ -66,6 +70,29 @@ function ModernAuthModal({
 			}
 		}
 	}, [mode])
+
+	// Clear errors when language changes
+	useEffect(() => {
+		setErrors({})
+		setRegistrationStatus(null)
+		setShowSuccessMessage(false)
+	}, [i18n.language])
+
+	// Auto-dismiss error messages after 10 seconds
+	useEffect(() => {
+		if (errors.general || registrationStatus === "error") {
+			const timer = setTimeout(() => {
+				if (errors.general) {
+					setErrors(prevErrors => ({ ...prevErrors, general: null }))
+				}
+				if (registrationStatus === "error") {
+					setRegistrationStatus(null)
+				}
+			}, 10000) // 10 seconds
+
+			return () => clearTimeout(timer)
+		}
+	}, [errors.general, registrationStatus])
 
 	// Handle manual navigation
 	const goToSlide = (index: number) => {
@@ -180,8 +207,11 @@ function ModernAuthModal({
 						localStorage.setItem("access_token", response.access)
 						localStorage.setItem("refresh_token", response.refresh)
 
-						// Redirect to profile page
-						window.location.href = PROFILE_PAGE
+						// Update authentication state
+						setIsAuthorized(true)
+
+						// Redirect to profile page using React Router
+						navigate(PROFILE_PAGE)
 					} else {
 						setErrors({ general: t("login-invalid-credentials") })
 					}
@@ -209,7 +239,7 @@ function ModernAuthModal({
 
 						// Redirect to login page after 2 seconds
 						setTimeout(() => {
-							window.location.href = `${LOGIN_PAGE}?registered=true`
+							navigate(`${LOGIN_PAGE}?registered=true`)
 						}, 2000)
 					} else {
 						setRegistrationStatus("error")
