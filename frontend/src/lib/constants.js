@@ -17,3 +17,5 @@ export const API_URL =
 export const DONATION_ITEM_ID = 1
 
 export const MAX_PAGE_NUMBER = 6
+
+export const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || ""

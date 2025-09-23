@@ -29,6 +29,9 @@ import uuid
 import json
 from json import JSONDecodeError
 
+from google.auth.transport import requests as google_requests
+from google.oauth2 import id_token
+
 from .tokens import account_activation_token
 
 from .models import Category, Item, User, PasswordResetToken
@@ -508,5 +511,113 @@ def reset_password(request):
         print(f"Reset password error: {e}")
         return Response(
             {'error': 'An error occurred while processing your request.'},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
+
+@api_view(['POST'])
+@permission_classes([])
+def google_auth(request):
+    """
+    Handle Google OAuth authentication
+    """
+    try:
+        id_token_value = request.data.get('id_token')
+        
+        if not id_token_value:
+            return Response(
+                {'error': 'ID token is required'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        # Verify the token
+        try:
+            idinfo = id_token.verify_oauth2_token(
+                id_token_value, 
+                google_requests.Request(), 
+                settings.GOOGLE_CLIENT_ID
+            )
+            
+            # Check if the token is for the correct audience
+            if idinfo['aud'] != settings.GOOGLE_CLIENT_ID:
+                raise ValueError('Could not verify audience.')
+                
+        except ValueError as e:
+            print(f"Token verification error: {e}")
+            return Response(
+                {'error': 'Invalid token'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        # Extract user information
+        email = idinfo.get('email')
+        first_name = idinfo.get('given_name', '')
+        last_name = idinfo.get('family_name', '')
+        google_id = idinfo.get('sub')
+        
+        if not email:
+            return Response(
+                {'error': 'Email not provided by Google'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        # Check if user exists, if not create one
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            # Create new user
+            username = email.split('@')[0]  # Use email prefix as username
+            # Ensure username is unique
+            base_username = username
+            counter = 1
+            while User.objects.filter(username=username).exists():
+                username = f"{base_username}{counter}"
+                counter += 1
+            
+            user = User.objects.create_user(
+                username=username,
+                email=email,
+                first_name=first_name,
+                last_name=last_name,
+                is_active=True  # Google verified users are automatically active
+            )
+        
+        # Generate tokens for the user
+        tokens = get_user_tokens(user)
+        
+        # Set cookies
+        res = Response()
+        res.set_cookie(
+            key=settings.SIMPLE_JWT['AUTH_COOKIE'],
+            value=tokens["access"],
+            expires=settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'],
+            secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
+            httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
+            samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
+        )
+
+        res.set_cookie(
+            key=settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'],
+            value=tokens["refresh"],
+            expires=settings.SIMPLE_JWT['REFRESH_TOKEN_LIFETIME'],
+            secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
+            httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
+            samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
+        )
+
+        res.data = {
+            'status': 'success',
+            'message': 'Google authentication successful',
+            'user': UserSerializer(user, context={'request': request}).data,
+            'tokens': tokens
+        }
+        res["X-CSRFToken"] = csrf.get_token(request)
+        
+        return res
+        
+    except Exception as e:
+        print(f"Google auth error: {e}")
+        return Response(
+            {'error': 'An error occurred during Google authentication.'},
             status=status.HTTP_500_INTERNAL_SERVER_ERROR
         )

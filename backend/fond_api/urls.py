@@ -14,6 +14,7 @@ urlpatterns = [
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
     path('forgot-password/', views.forgot_password, name='forgot_password'),
     path('reset-password/', views.reset_password, name='reset_password'),
+    path('google-auth/', views.google_auth, name='google_auth'),
     path('logout', views.logoutView),
     # Other API
     path('categories', views.CategoriesListView.as_view(), name='categories'),

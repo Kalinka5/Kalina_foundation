@@ -52,12 +52,14 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
     'storages',
+    'csp',
 ]
 
 AUTH_USER_MODEL = 'fond_api.User'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'csp.middleware.CSPMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -164,6 +166,11 @@ PASSWORD_RESET_TIMEOUT = 14400
 
 # Frontend URL for password reset links
 FRONTEND_URL = os.environ.get("FRONTEND_URL", "http://127.0.0.1:3000")
+
+# Google OAuth Settings
+GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "")
+GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", "")
+GOOGLE_REDIRECT_URI = os.environ.get("GOOGLE_REDIRECT_URI", f"{FRONTEND_URL}/auth/google/callback")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -278,3 +285,44 @@ CORS_EXPOSE_HEADERS = ["Content-Type", "X-CSRFToken"]
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_SAMESITE = "Lax"
+
+# Content Security Policy for Google OAuth (django-csp 4.0+ format)
+CONTENT_SECURITY_POLICY = {
+    'DIRECTIVES': {
+        'default-src': ("'self'",),
+        'script-src': (
+            "'self'",
+            "'unsafe-inline'",
+            "'unsafe-eval'",
+            "https://apis.google.com",
+            "https://accounts.google.com",
+            "https://www.gstatic.com",
+            "https://www.google.com"
+        ),
+        'style-src': (
+            "'self'",
+            "'unsafe-inline'",
+            "https://fonts.googleapis.com",
+            "https://accounts.google.com"
+        ),
+        'font-src': (
+            "'self'",
+            "https://fonts.gstatic.com"
+        ),
+        'img-src': (
+            "'self'",
+            "data:",
+            "https:",
+            "https://accounts.google.com"
+        ),
+        'frame-src': (
+            "'self'",
+            "https://accounts.google.com"
+        ),
+        'connect-src': (
+            "'self'",
+            "https://accounts.google.com",
+            "https://www.googleapis.com"
+        ),
+    }
+}

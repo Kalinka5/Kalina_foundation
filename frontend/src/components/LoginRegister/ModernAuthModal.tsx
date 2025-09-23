@@ -1,3 +1,4 @@
+import { gapi } from "gapi-script"
 import React, { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { FaGoogle } from "react-icons/fa"
@@ -6,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 
 import api from "../../lib/api.js"
 import {
+	GOOGLE_CLIENT_ID,
 	LOGIN_PAGE,
 	PROFILE_PAGE,
 	REGISTER_PAGE,
@@ -41,6 +43,7 @@ function ModernAuthModal({
 		useState<RegistrationStatus>(null)
 	const [showForgotPassword, setShowForgotPassword] = useState(false)
 	const [isTransitioning, setIsTransitioning] = useState(false)
+	const [googleApiReady, setGoogleApiReady] = useState(false)
 
 	// Image sliding state
 	const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -59,6 +62,50 @@ function ModernAuthModal({
 
 		return () => clearInterval(interval)
 	}, [backgroundImages.length])
+
+	// Initialize Google OAuth
+	useEffect(() => {
+		const initGoogleAuth = () => {
+			if (
+				GOOGLE_CLIENT_ID &&
+				typeof window !== "undefined" &&
+				(window as any).gapi
+			) {
+				try {
+					gapi.load("auth2", () => {
+						gapi.auth2
+							.init({
+								client_id: GOOGLE_CLIENT_ID,
+								ux_mode: "popup", // Use popup instead of iframe
+								redirect_uri: "postmessage", // Handle response via postMessage
+							})
+							.then(() => {
+								setGoogleApiReady(true)
+							})
+							.catch(error => {
+								console.error("Google Auth initialization error:", error)
+								setGoogleApiReady(false)
+							})
+					})
+				} catch (error) {
+					console.error("Google API loading error:", error)
+				}
+			} else if (!GOOGLE_CLIENT_ID) {
+				console.warn("Google Client ID not configured")
+			}
+		}
+
+		// Wait for Google API to load
+		const checkGapi = () => {
+			if (typeof window !== "undefined" && (window as any).gapi) {
+				initGoogleAuth()
+			} else {
+				setTimeout(checkGapi, 100)
+			}
+		}
+
+		checkGapi()
+	}, [])
 
 	// Check for registration success parameter (only for login mode)
 	useEffect(() => {
@@ -134,6 +181,89 @@ function ModernAuthModal({
 			setEmail("")
 			setErrors({})
 		}, 300)
+	}
+
+	// Handle Google sign-in
+	const handleGoogleSignIn = async () => {
+		try {
+			setLoading(true)
+			setErrors({})
+
+			// Check if Google API is available
+			if (typeof window === "undefined" || !(window as any).gapi) {
+				throw new Error("Google API not available")
+			}
+
+			// Check if Google API is loaded
+			if (!gapi.auth2) {
+				throw new Error(
+					"Google Auth2 API not loaded. Please wait a moment and try again."
+				)
+			}
+
+			const authInstance = gapi.auth2.getAuthInstance()
+			if (!authInstance) {
+				throw new Error(
+					"Google Auth not initialized. Please refresh the page and try again."
+				)
+			}
+
+			const googleUser = await authInstance.signIn({
+				ux_mode: "popup",
+			})
+
+			const idToken = googleUser.getAuthResponse().id_token
+
+			if (!idToken) {
+				throw new Error("No ID token received from Google")
+			}
+
+			// Send the ID token to your backend
+			const response = await api("google-auth/", {
+				method: "POST",
+				body: JSON.stringify({ id_token: idToken }),
+			})
+
+			if ((response as any)?.status === "success") {
+				// Update authentication state
+				setIsAuthorized(true)
+
+				// Redirect to profile page
+				navigate(PROFILE_PAGE)
+			} else {
+				setErrors({ general: t("login-error-message") })
+			}
+		} catch (error) {
+			console.error("Google sign-in error:", error)
+			if (error instanceof Error) {
+				if (error.message.includes("popup_blocked")) {
+					setErrors({
+						general: "Please allow popups for this site and try again.",
+					})
+				} else if (error.message.includes("access_denied")) {
+					setErrors({ general: "Access denied. Please try again." })
+				} else if (error.message.includes("Google API not available")) {
+					setErrors({
+						general:
+							"Google authentication is not available. Please check your internet connection.",
+					})
+				} else if (
+					error.message.includes("not loaded") ||
+					error.message.includes("not initialized")
+				) {
+					setErrors({
+						general:
+							"Google authentication is loading. Please wait a moment and try again.",
+					})
+				} else {
+					setErrors({ general: t("login-error-message") })
+				}
+			} else {
+				setErrors({ general: t("login-error-message") })
+			}
+		} finally {
+			setLoading(false)
+		}
 	}
 
 	// Custom Language Selector Component
@@ -565,9 +695,15 @@ function ModernAuthModal({
 						</form>
 
 						<div className="modern-social-login">
-							<button className="modern-social-button" type="button">
+							<button
+								className="modern-social-button"
+								type="button"
+								onClick={handleGoogleSignIn}
+								disabled={loading || !googleApiReady || !GOOGLE_CLIENT_ID}
+							>
 								<FaGoogle className="modern-social-icon" />
 								{mode === "login" ? t("login-google") : t("register-google")}
+								{loading && <div className="loader"></div>}
 							</button>
 						</div>
 
