@@ -369,6 +369,12 @@
 	font-size: 13px;
 	color: #b0b0b0;
 	text-decoration: underline;
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	font-family: inherit;
+	transition: color 0.2s ease;
 }
 
 .modern-forgot-password-link:hover {
@@ -809,6 +815,12 @@
 		color: #888888;
 		font-size: 11px;
 		text-decoration: none;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		font-family: inherit;
+		transition: color 0.2s ease;
 	}
 
 	.modern-forgot-password-link:hover {

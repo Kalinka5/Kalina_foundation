@@ -1,20 +1,34 @@
 import React, { useState } from "react"
-import { useTranslation } from "react-i18next"
 
-import ModernLoginModal from "../components/LoginRegister/ModernLoginModal.tsx"
+import ModernAuthModal from "../components/LoginRegister/ModernAuthModal.tsx"
 
 import "../styles/loginRegister/modernLogin.css"
 
 function Login() {
-	const [showModal, setShowModal] = useState(true)
-	const { t } = useTranslation()
+	const [showModal] = useState(true)
 
 	const handleClose = () => {
 		// Redirect to home page when modal is closed
 		window.location.href = "/"
 	}
 
-	return <>{showModal && <ModernLoginModal onClose={handleClose} />}</>
+	const backgroundImages = [
+		"/img/login-background1.png",
+		"/img/login-background2.png",
+		"/img/login-background3.png",
+	]
+
+	return (
+		<>
+			{showModal && (
+				<ModernAuthModal
+					onClose={handleClose}
+					backgroundImages={backgroundImages}
+					mode="login"
+				/>
+			)}
+		</>
+	)
 }
 
 export default Login
