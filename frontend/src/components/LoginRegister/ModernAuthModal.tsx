@@ -34,6 +34,8 @@ function ModernAuthModal({
 	const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 	const [registrationStatus, setRegistrationStatus] =
 		useState<RegistrationStatus>(null)
+	const [showForgotPassword, setShowForgotPassword] = useState(false)
+	const [isTransitioning, setIsTransitioning] = useState(false)
 
 	// Image sliding state
 	const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -108,6 +110,27 @@ function ModernAuthModal({
 		setShowConfirmPassword(!showConfirmPassword)
 	}
 
+	// Handle forgot password transition
+	const handleForgotPasswordClick = () => {
+		setIsTransitioning(true)
+		setTimeout(() => {
+			setShowForgotPassword(true)
+			setIsTransitioning(false)
+		}, 300) // Half of the animation duration
+	}
+
+	// Handle back to login transition
+	const handleBackToLogin = () => {
+		setIsTransitioning(true)
+		setTimeout(() => {
+			setShowForgotPassword(false)
+			setIsTransitioning(false)
+			// Clear forgot password form
+			setEmail("")
+			setErrors({})
+		}, 300)
+	}
+
 	// Custom Language Selector Component
 	const CustomLanguageSelector = () => {
 		const currentLang = i18n.language
@@ -158,29 +181,35 @@ function ModernAuthModal({
 	const handleSubmit = async (e: React.FormEvent) => {
 		setLoading(true)
 		e.preventDefault()
+		console.log("Form submitted, showForgotPassword:", showForgotPassword)
 
 		// Validation based on mode
 		const newErrors: any = {}
 
 		if (!email.trim()) {
-			newErrors.email =
-				mode === "login"
-					? t("login-email-required")
-					: t("register-email-required")
+			newErrors.email = showForgotPassword
+				? t("forgot-password-email-required")
+				: mode === "login"
+				? t("login-email-required")
+				: t("register-email-required")
 		} else if (!/\S+@\S+\.\S+/.test(email)) {
-			newErrors.email =
-				mode === "login"
-					? t("login-email-invalid")
-					: t("register-email-invalid")
+			newErrors.email = showForgotPassword
+				? t("forgot-password-email-invalid")
+				: mode === "login"
+				? t("login-email-invalid")
+				: t("register-email-invalid")
 		}
 
-		if (!password) {
-			newErrors.password =
-				mode === "login"
-					? t("login-password-required")
-					: t("register-password-required")
-		} else if (mode === "register" && password.length < 8) {
-			newErrors.password = t("register-password-min-length")
+		// Only validate password if not in forgot password mode
+		if (!showForgotPassword) {
+			if (!password) {
+				newErrors.password =
+					mode === "login"
+						? t("login-password-required")
+						: t("register-password-required")
+			} else if (mode === "register" && password.length < 8) {
+				newErrors.password = t("register-password-min-length")
+			}
 		}
 
 		// Additional validation for register mode
@@ -196,7 +225,29 @@ function ModernAuthModal({
 
 		try {
 			if (Object.keys(newErrors).length === 0) {
-				if (mode === "login") {
+				if (showForgotPassword) {
+					// Forgot password logic
+					console.log("Submitting forgot password for email:", email)
+					const response = await api("forgot-password/", {
+						method: "POST",
+						body: JSON.stringify({ email: email }),
+					})
+					console.log("Forgot password response:", response)
+
+					if ((response as any)?.status === "success") {
+						setShowSuccessMessage(true)
+						// Clear form on success
+						setEmail("")
+						setErrors({})
+
+						// Go back to login after 3 seconds
+						setTimeout(() => {
+							handleBackToLogin()
+						}, 3000)
+					} else {
+						setErrors({ general: t("forgot-password-error-message") })
+					}
+				} else if (mode === "login") {
 					// Login logic
 					const response = (await api("token/", {
 						method: "POST",
@@ -362,12 +413,16 @@ function ModernAuthModal({
 
 						<div className={headerClass}>
 							<h1 className={titleClass}>
-								{mode === "login"
+								{showForgotPassword
+									? t("forgot-password-title")
+									: mode === "login"
 									? t("login-welcome-back")
 									: t("register-create-account")}
 							</h1>
 							<p className={subtitleClass}>
-								{mode === "login"
+								{showForgotPassword
+									? t("forgot-password-subtitle")
+									: mode === "login"
 									? t("login-subtitle")
 									: t("register-subtitle")}
 							</p>
@@ -376,14 +431,20 @@ function ModernAuthModal({
 						<form className={formClass} onSubmit={handleSubmit}>
 							<div className="modern-form-group">
 								<label className="modern-form-label" htmlFor="email">
-									{mode === "login" ? t("email") : t("register-email")}
+									{showForgotPassword
+										? t("email")
+										: mode === "login"
+										? t("email")
+										: t("register-email")}
 								</label>
 								<input
 									id="email"
 									type="email"
 									className={`modern-form-input ${errors.email ? "error" : ""}`}
 									placeholder={
-										mode === "login"
+										showForgotPassword
+											? t("forgot-password-email-placeholder")
+											: mode === "login"
 											? t("login-email-placeholder")
 											: t("register-email-placeholder")
 									}
@@ -395,7 +456,11 @@ function ModernAuthModal({
 								)}
 							</div>
 
-							<div className="modern-form-group">
+							<div
+								className={`modern-form-group ${
+									showForgotPassword ? "hidden" : "visible"
+								}`}
+							>
 								<label className="modern-form-label" htmlFor="password">
 									{mode === "login" ? t("password") : t("register-password")}
 								</label>
@@ -430,6 +495,7 @@ function ModernAuthModal({
 										<button
 											type="button"
 											className="modern-forgot-password-link"
+											onClick={handleForgotPasswordClick}
 										>
 											{t("login-forgot-password")}
 										</button>
@@ -484,7 +550,11 @@ function ModernAuthModal({
 								className="modern-submit-button"
 								disabled={loading}
 							>
-								{mode === "login" ? t("login-button") : t("register-submit")}
+								{showForgotPassword
+									? t("forgot-password-submit")
+									: mode === "login"
+									? t("login-button")
+									: t("register-submit")}
 								{loading && <div className="loader"></div>}
 							</button>
 						</form>
@@ -498,7 +568,18 @@ function ModernAuthModal({
 
 						<div className={footerClass}>
 							<div className={linkClass}>
-								{mode === "login" ? (
+								{showForgotPassword ? (
+									<>
+										{t("forgot-password-back-to-login")}{" "}
+										<button
+											type="button"
+											className="modern-link-button"
+											onClick={handleBackToLogin}
+										>
+											{t("login")}
+										</button>
+									</>
+								) : mode === "login" ? (
 									<>
 										{t("login-no-account")}{" "}
 										<a href={REGISTER_PAGE}>{t("login-register-now")}</a>

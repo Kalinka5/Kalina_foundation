@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
+from django.utils import timezone
+from datetime import timedelta
 
 
 class Category(models.Model):
@@ -81,3 +83,27 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+
+
+class PasswordResetToken(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    token = models.CharField(max_length=255, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField()
+    is_used = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        if not self.expires_at:
+            # Token expires in 1 hour
+            self.expires_at = timezone.now() + timedelta(hours=1)
+        super().save(*args, **kwargs)
+
+    def is_expired(self):
+        return timezone.now() > self.expires_at
+
+    def is_valid(self):
+        return not self.is_used and not self.is_expired()
+
+    class Meta:
+        verbose_name = 'Password Reset Token'
+        verbose_name_plural = 'Password Reset Tokens'

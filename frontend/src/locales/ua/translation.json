@@ -353,7 +353,7 @@
 	"back": "Назад",
 	"login-registration-success": "Реєстрація успішна! Перевірте свою електронну пошту для підтвердження акаунту.",
 
-	"login-welcome-back": "Ласкаво просимо назад",
+	"login-welcome-back": "З поверненням",
 	"login-subtitle": "Увійдіть, щоб продовжити підтримку України",
 	"login-email-placeholder": "Введіть свою електронну адресу",
 	"login-password-placeholder": "Введіть свій пароль",
@@ -365,5 +365,32 @@
 	"login-email-invalid": "Електронна пошта недійсна",
 	"login-password-required": "Пароль є обов'язковим",
 	"login-invalid-credentials": "Неправильна електронна пошта або пароль",
-	"login-error-message": "Вхід не вдався. Спробуйте ще раз."
+	"login-error-message": "Вхід не вдався. Спробуйте ще раз.",
+
+	"forgot-password-title": "Забули пароль?",
+	"forgot-password-subtitle": "Введіть свою електронну адресу, і ми надішлемо вам посилання для скидання пароля",
+	"forgot-password-email-placeholder": "Введіть свою електронну адресу",
+	"forgot-password-submit": "Надіслати посилання",
+	"forgot-password-back-to-login": "Повернутися до входу",
+	"forgot-password-success-message": "Посилання для скидання пароля надіслано! Перевірте свою електронну пошту.",
+	"forgot-password-error-message": "Не вдалося надіслати посилання для скидання. Спробуйте ще раз.",
+	"forgot-password-email-required": "Електронна пошта є обов'язковою",
+	"forgot-password-email-invalid": "Електронна пошта недійсна",
+
+	"reset-password-title": "Скинути пароль",
+	"reset-password-subtitle": "Введіть свій новий пароль нижче",
+	"reset-password-new-password": "Новий пароль",
+	"reset-password-new-password-placeholder": "Введіть свій новий пароль",
+	"reset-password-confirm-password": "Підтвердити новий пароль",
+	"reset-password-confirm-password-placeholder": "Підтвердіть свій новий пароль",
+	"reset-password-submit": "Скинути пароль",
+	"reset-password-success-message": "Пароль успішно скинуто! Тепер ви можете увійти з новим паролем.",
+	"reset-password-error-message": "Скидання пароля не вдалося. Спробуйте ще раз.",
+	"reset-password-invalid-token": "Недійсне або застаріле посилання для скидання. Запишіть нове.",
+	"reset-password-new-password-required": "Новий пароль є обов'язковим",
+	"reset-password-confirm-password-required": "Будь ласка, підтвердіть свій новий пароль",
+	"reset-password-passwords-not-match": "Паролі не співпадають",
+	"reset-password-min-length": "Пароль повинен містити принаймні 8 символів",
+	"reset-password-requirements-title": "Ваш пароль повинен містити:",
+	"reset-password-min-length-requirement": "Принаймні 10 символів у довжину"
 }

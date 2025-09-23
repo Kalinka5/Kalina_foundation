@@ -162,6 +162,9 @@ EMAIL_USE_TLS = os.environ["EMAIL_USE_TLS"]
 
 PASSWORD_RESET_TIMEOUT = 14400
 
+# Frontend URL for password reset links
+FRONTEND_URL = os.environ.get("FRONTEND_URL", "http://127.0.0.1:3000")
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

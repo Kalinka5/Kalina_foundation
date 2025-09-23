@@ -29,6 +29,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy.tsx"
 import Profile from "./pages/Profile.tsx"
 import RefundPolicy from "./pages/RefundPolicy.tsx"
 import Register from "./pages/Register.tsx"
+import ResetPassword from "./pages/ResetPassword.tsx"
 import TermsConditions from "./pages/TermsConditions.tsx"
 
 import "./styles/index.css"
@@ -50,6 +51,7 @@ function App() {
 					<Route path={LOGIN_PAGE} element={<Login />} />
 					<Route path={REGISTER_PAGE} element={<Register />} />
 					<Route path="email-verify/:uid/:token" element={<EmailVerify />} />
+					<Route path="/reset-password" element={<ResetPassword />} />
 					<Route path={LOGOUT_PAGE} element={<Logout />} />
 					<Route
 						path={PROFILE_PAGE}

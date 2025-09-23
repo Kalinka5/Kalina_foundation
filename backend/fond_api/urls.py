@@ -12,6 +12,8 @@ urlpatterns = [
          name='refresh_token'),
     path('register', views.RegisterApi.as_view(), name='register_new_user'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
+    path('forgot-password/', views.forgot_password, name='forgot_password'),
+    path('reset-password/', views.reset_password, name='reset_password'),
     path('logout', views.logoutView),
     # Other API
     path('categories', views.CategoriesListView.as_view(), name='categories'),

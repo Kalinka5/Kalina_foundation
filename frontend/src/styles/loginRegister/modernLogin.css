@@ -389,6 +389,8 @@
 	padding: 0;
 	font-family: inherit;
 	transition: color 0.2s ease;
+	position: relative;
+	z-index: 10;
 }
 
 .modern-forgot-password-link:hover {
@@ -1153,5 +1155,457 @@
 	to {
 		opacity: 1;
 		transform: translateY(0);
+	}
+}
+
+/* Link Button Styles */
+.modern-link-button {
+	background: none;
+	border: none;
+	color: #667eea;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	text-decoration: underline;
+	transition: color 0.2s ease;
+	padding: 0;
+	margin: 0;
+}
+
+.modern-link-button:hover {
+	color: #5a67d8;
+	text-decoration: none;
+}
+
+/* Form transition animations */
+.modern-form-group {
+	transition: all 0.3s ease;
+	overflow: hidden;
+}
+
+.modern-form-group.hidden {
+	max-height: 0;
+	opacity: 0;
+	margin: 0;
+	padding: 0;
+	transform: translateY(-10px);
+}
+
+.modern-form-group.visible {
+	max-height: 100px;
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.modern-login-header {
+	transition: all 0.3s ease;
+}
+
+.modern-submit-button {
+	transition: all 0.3s ease;
+}
+
+/* Keep modal height consistent */
+.modern-login-modal {
+	min-height: 600px;
+	transition: all 0.3s ease;
+}
+
+.modern-login-form-side {
+	min-height: 600px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/* Reset Password Page Styles */
+.reset-password-container {
+	min-height: 100vh;
+	background: #0f1419;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		sans-serif;
+}
+
+.reset-password-modal {
+	background: #1a1a1a;
+	border-radius: 24px;
+	box-shadow: 0 32px 64px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.2);
+	max-width: 480px;
+	width: 100%;
+	padding: 48px;
+	position: relative;
+}
+
+.reset-password-logo {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 32px;
+}
+
+.reset-password-logo-img {
+	height: 48px;
+	width: auto;
+}
+
+.reset-password-header {
+	text-align: center;
+	margin-bottom: 32px;
+}
+
+.reset-password-title {
+	font-size: 28px;
+	font-weight: 600;
+	color: #ffffff;
+	margin: 0 0 12px 0;
+	line-height: 1.2;
+}
+
+.reset-password-subtitle {
+	font-size: 16px;
+	color: #b0b0b0;
+	margin: 0;
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+.reset-password-form {
+	margin-bottom: 24px;
+}
+
+.reset-password-form-group {
+	margin-bottom: 20px;
+}
+
+.reset-password-label {
+	display: block;
+	font-size: 14px;
+	font-weight: 500;
+	color: #e5e5e5;
+	margin-bottom: 8px;
+}
+
+.reset-password-input-container {
+	position: relative;
+}
+
+.reset-password-input {
+	width: 100%;
+	padding: 16px 20px;
+	border: 1px solid #404040;
+	border-radius: 12px;
+	font-size: 16px;
+	font-weight: 400;
+	color: #ffffff;
+	background: #2a2a2a;
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+	transition: all 0.2s ease;
+	box-sizing: border-box;
+	padding-right: 50px;
+}
+
+.reset-password-input:focus {
+	outline: none;
+	border-color: #4169e1;
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2),
+		0 0 0 3px rgba(65, 105, 225, 0.2);
+}
+
+.reset-password-input::placeholder {
+	color: #888888;
+	font-weight: 400;
+}
+
+.reset-password-input.error {
+	border-color: #ef4444;
+	background: #2a2a2a;
+	color: #ffffff;
+	animation: errorShake 0.5s ease;
+}
+
+.reset-password-input.error:focus {
+	border-color: #ef4444;
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2),
+		0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.reset-password-toggle {
+	position: absolute;
+	right: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	border: none;
+	color: #e5e5e5;
+	cursor: pointer;
+	padding: 4px;
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
+	z-index: 10;
+}
+
+.reset-password-toggle:hover {
+	color: #ffffff;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.reset-password-toggle:focus {
+	outline: none;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.reset-password-toggle svg {
+	width: 18px;
+	height: 18px;
+}
+
+.reset-password-error {
+	color: #ef4444;
+	font-size: 13px;
+	margin-top: 6px;
+	font-weight: 500;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	animation: errorSlideIn 0.3s ease;
+}
+
+.reset-password-error::before {
+	content: "⚠";
+	font-size: 14px;
+	color: #ef4444;
+}
+
+.reset-password-requirements {
+	background: #333333;
+	border-radius: 12px;
+	padding: 16px;
+	margin-bottom: 24px;
+	border: 1px solid #404040;
+}
+
+.reset-password-requirements-title {
+	font-size: 14px;
+	font-weight: 500;
+	color: #e5e5e5;
+	margin: 0 0 12px 0;
+}
+
+.reset-password-requirement {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.reset-password-checkmark {
+	color: #10b981;
+	font-size: 16px;
+}
+
+.reset-password-requirement-text {
+	font-size: 14px;
+	color: #10b981;
+	font-weight: 500;
+}
+
+.reset-password-submit {
+	width: 100%;
+	background: #4169e1;
+	color: #ffffff;
+	border: none;
+	padding: 16px;
+	border-radius: 12px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	box-shadow: 0 4px 8px rgba(65, 105, 225, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.reset-password-submit:hover {
+	background: #5a7ff0;
+	transform: translateY(-1px);
+	box-shadow: 0 6px 12px rgba(65, 105, 225, 0.4);
+}
+
+.reset-password-submit:active {
+	transform: translateY(0);
+}
+
+.reset-password-submit:disabled {
+	opacity: 0.7;
+	cursor: not-allowed;
+	transform: none;
+}
+
+.reset-password-footer {
+	text-align: center;
+	margin-top: 24px;
+}
+
+.reset-password-back-button {
+	background: none;
+	border: none;
+	color: #667eea;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	text-decoration: underline;
+	transition: color 0.2s ease;
+	padding: 0;
+	margin: 0;
+}
+
+.reset-password-back-button:hover {
+	color: #5a67d8;
+	text-decoration: none;
+}
+
+.reset-password-language {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+.reset-password-language .custom-language-selector {
+	background: #333333;
+	border-radius: 25px;
+	padding: 4px;
+	border: 1px solid #555555;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.reset-password-language .lang-button {
+	padding: 8px 16px;
+	border: none;
+	border-radius: 20px;
+	background: transparent;
+	color: #b0b0b0;
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.reset-password-language .lang-button:hover {
+	color: #ffffff;
+	background: #404040;
+}
+
+.reset-password-language .lang-button.active {
+	background: #4169e1;
+	color: #ffffff;
+	box-shadow: 0 2px 6px rgba(65, 105, 225, 0.3);
+}
+
+.reset-password-loader {
+	width: 16px;
+	height: 16px;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	border-top: 2px solid white;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+/* Responsive Design for Reset Password */
+@media (max-width: 768px) {
+	.reset-password-container {
+		padding: 16px;
+	}
+
+	.reset-password-modal {
+		padding: 32px 24px;
+		border-radius: 16px;
+	}
+
+	.reset-password-title {
+		font-size: 24px;
+		margin-bottom: 8px;
+	}
+
+	.reset-password-subtitle {
+		font-size: 14px;
+		margin-bottom: 24px;
+	}
+
+	.reset-password-form-group {
+		margin-bottom: 16px;
+	}
+
+	.reset-password-input {
+		padding: 12px 16px;
+		padding-right: 45px;
+		font-size: 15px;
+	}
+
+	.reset-password-toggle {
+		right: 10px;
+		padding: 3px;
+	}
+
+	.reset-password-toggle svg {
+		width: 16px;
+		height: 16px;
+	}
+
+	.reset-password-requirements {
+		padding: 12px;
+		margin-bottom: 20px;
+	}
+
+	.reset-password-submit {
+		padding: 12px;
+		font-size: 15px;
+	}
+
+	.reset-password-language {
+		top: 16px;
+		right: 16px;
+	}
+
+	.reset-password-language .lang-button {
+		padding: 6px 12px;
+		font-size: 11px;
+	}
+}
+
+@media (max-width: 480px) {
+	.reset-password-modal {
+		padding: 24px 20px;
+	}
+
+	.reset-password-title {
+		font-size: 22px;
+	}
+
+	.reset-password-subtitle {
+		font-size: 13px;
+	}
+
+	.reset-password-input {
+		padding: 10px 14px;
+		padding-right: 40px;
+		font-size: 14px;
+	}
+
+	.reset-password-requirements {
+		padding: 10px;
+	}
+
+	.reset-password-submit {
+		padding: 10px;
+		font-size: 14px;
 	}
 }
