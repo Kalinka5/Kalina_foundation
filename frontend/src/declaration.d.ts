@@ -13,11 +13,19 @@ declare module "*.png" {
 	export default value
 }
 
-// Google API declarations
+// Google Identity Services declarations
 declare global {
 	interface Window {
-		gapi: any // eslint-disable-line spellcheck/spell-checker
+		google?: {
+			accounts: {
+				id: {
+					initialize: (config: any) => void
+					prompt: (callback?: (notification: any) => void) => void
+					renderButton: (element: HTMLElement, config: any) => void
+				}
+			}
+		}
 	}
 }
 
-declare const gapi: any // eslint-disable-line spellcheck/spell-checker
+export {}

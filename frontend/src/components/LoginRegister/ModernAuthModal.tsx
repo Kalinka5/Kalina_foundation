@@ -1,4 +1,4 @@
-import { gapi } from "gapi-script"
+// Google Identity Services will be loaded from the HTML script tag
 import React, { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { FaGoogle } from "react-icons/fa"
@@ -63,48 +63,56 @@ function ModernAuthModal({
 		return () => clearInterval(interval)
 	}, [backgroundImages.length])
 
-	// Initialize Google OAuth
+	// Initialize Google OAuth with Google Identity Services
 	useEffect(() => {
 		const initGoogleAuth = () => {
+			console.log("🔍 DEBUG: GOOGLE_CLIENT_ID:", GOOGLE_CLIENT_ID)
+			console.log("🔍 DEBUG: Current origin:", window.location.origin)
+			console.log(
+				"🔍 DEBUG: Google object available:",
+				!!(window as any).google
+			)
+
 			if (
 				GOOGLE_CLIENT_ID &&
 				typeof window !== "undefined" &&
-				(window as any).gapi
+				(window as any).google
 			) {
 				try {
-					gapi.load("auth2", () => {
-						gapi.auth2
-							.init({
-								client_id: GOOGLE_CLIENT_ID,
-								ux_mode: "popup", // Use popup instead of iframe
-								redirect_uri: "postmessage", // Handle response via postMessage
-							})
-							.then(() => {
-								setGoogleApiReady(true)
-							})
-							.catch(error => {
-								console.error("Google Auth initialization error:", error)
-								setGoogleApiReady(false)
-							})
+					// Initialize Google Identity Services
+					;(window as any).google.accounts.id.initialize({
+						client_id: GOOGLE_CLIENT_ID,
+						callback: handleGoogleSignInCallback,
+						auto_select: false,
+						cancel_on_tap_outside: false,
 					})
+					console.log("✅ Google Identity Services initialized successfully")
+					setGoogleApiReady(true)
 				} catch (error) {
-					console.error("Google API loading error:", error)
+					console.error(
+						"❌ Google Identity Services initialization error:",
+						error
+					)
+					setGoogleApiReady(false)
 				}
 			} else if (!GOOGLE_CLIENT_ID) {
-				console.warn("Google Client ID not configured")
+				console.warn("⚠️ Google Client ID not configured")
 			}
 		}
 
-		// Wait for Google API to load
-		const checkGapi = () => {
-			if (typeof window !== "undefined" && (window as any).gapi) {
+		// Wait for Google Identity Services to load
+		const checkGoogle = () => {
+			if (
+				typeof window !== "undefined" &&
+				(window as any).google?.accounts?.id
+			) {
 				initGoogleAuth()
 			} else {
-				setTimeout(checkGapi, 100)
+				setTimeout(checkGoogle, 100)
 			}
 		}
 
-		checkGapi()
+		checkGoogle()
 	}, [])
 
 	// Check for registration success parameter (only for login mode)
@@ -183,48 +191,23 @@ function ModernAuthModal({
 		}, 300)
 	}
 
-	// Handle Google sign-in
-	const handleGoogleSignIn = async () => {
+	// Handle Google sign-in callback
+	const handleGoogleSignInCallback = async (response: any) => {
 		try {
 			setLoading(true)
 			setErrors({})
 
-			// Check if Google API is available
-			if (typeof window === "undefined" || !(window as any).gapi) {
-				throw new Error("Google API not available")
+			if (!response.credential) {
+				throw new Error("No credential received from Google")
 			}
 
-			// Check if Google API is loaded
-			if (!gapi.auth2) {
-				throw new Error(
-					"Google Auth2 API not loaded. Please wait a moment and try again."
-				)
-			}
-
-			const authInstance = gapi.auth2.getAuthInstance()
-			if (!authInstance) {
-				throw new Error(
-					"Google Auth not initialized. Please refresh the page and try again."
-				)
-			}
-
-			const googleUser = await authInstance.signIn({
-				ux_mode: "popup",
-			})
-
-			const idToken = googleUser.getAuthResponse().id_token
-
-			if (!idToken) {
-				throw new Error("No ID token received from Google")
-			}
-
-			// Send the ID token to your backend
-			const response = await api("google-auth/", {
+			// Send the credential to your backend
+			const apiResponse = await api("google-auth/", {
 				method: "POST",
-				body: JSON.stringify({ id_token: idToken }),
+				body: JSON.stringify({ id_token: response.credential }),
 			})
 
-			if ((response as any)?.status === "success") {
+			if ((apiResponse as any)?.status === "success") {
 				// Update authentication state
 				setIsAuthorized(true)
 
@@ -235,33 +218,37 @@ function ModernAuthModal({
 			}
 		} catch (error) {
 			console.error("Google sign-in error:", error)
-			if (error instanceof Error) {
-				if (error.message.includes("popup_blocked")) {
-					setErrors({
-						general: "Please allow popups for this site and try again.",
-					})
-				} else if (error.message.includes("access_denied")) {
-					setErrors({ general: "Access denied. Please try again." })
-				} else if (error.message.includes("Google API not available")) {
-					setErrors({
-						general:
-							"Google authentication is not available. Please check your internet connection.",
-					})
-				} else if (
-					error.message.includes("not loaded") ||
-					error.message.includes("not initialized")
-				) {
-					setErrors({
-						general:
-							"Google authentication is loading. Please wait a moment and try again.",
-					})
-				} else {
-					setErrors({ general: t("login-error-message") })
-				}
-			} else {
-				setErrors({ general: t("login-error-message") })
-			}
+			setErrors({ general: t("login-error-message") })
 		} finally {
+			setLoading(false)
+		}
+	}
+
+	// Handle Google sign-in button click
+	const handleGoogleSignIn = () => {
+		try {
+			setLoading(true)
+			setErrors({})
+
+			// Check if Google Identity Services is available
+			if (
+				typeof window === "undefined" ||
+				!(window as any).google?.accounts?.id
+			) {
+				throw new Error("Google Identity Services not available")
+			}
+
+			// Trigger the Google sign-in popup
+			;(window as any).google.accounts.id.prompt((notification: any) => {
+				if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+					// The prompt was not displayed or was skipped
+					setLoading(false)
+					console.log("Google sign-in prompt was not displayed or was skipped")
+				}
+			})
+		} catch (error) {
+			console.error("Google sign-in error:", error)
+			setErrors({ general: t("login-error-message") })
 			setLoading(false)
 		}
 	}
