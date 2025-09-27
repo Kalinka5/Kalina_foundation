@@ -1,28 +1,16 @@
-import React from "react";
-
-import { PaymentPortrait } from "../components/Payment/PaymentPortrait.js";
-import { PaymentLandscape } from "../components/Payment/PaymentLandscape.js";
-import Header from "../components/Header.tsx";
-
-import useOrientation from "../lib/useOrientation.js";
-
-import "../styles/payment/payment.css";
+import React from "react"
+import Header from "../components/Header.tsx"
+import ModernDonationPage from "../components/Payment/ModernDonationPage.tsx"
 
 function Payment() {
-  const orientation = useOrientation();
-
-  return (
-    <div className="payment header-body">
-      <Header />
-      <div
-        className={`main-body ${
-          orientation.isLandscape && "payment-landscape"
-        }`}
-      >
-        {orientation.isPortrait ? <PaymentPortrait /> : <PaymentLandscape />}
-      </div>
-    </div>
-  );
+	return (
+		<div className="header-body">
+			<Header />
+			<div className="main-body">
+				<ModernDonationPage />
+			</div>
+		</div>
+	)
 }
 
-export default Payment;
+export default Payment

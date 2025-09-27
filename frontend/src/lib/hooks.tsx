@@ -182,14 +182,13 @@ export function useEmailVerification(uid: string, token: string) {
 	return emailVerification.data?.status
 }
 
-// Edit Item
+// Get Single Item Data
 const getItemData = async (id: string): Promise<Item> => {
 	try {
-		const response = await api(`items/${id}/`)
+		const response = await api(`items/${id}/?format=json`)
 		return response as unknown as Item
 	} catch (err) {
-		alert(err)
-		console.log("Something go wrong when sending backend request to /profile")
+		console.error("Error fetching item data:", err)
 		throw new Error("Failed to fetch item data")
 	}
 }
@@ -198,6 +197,26 @@ export function useItemData(id: string) {
 	const item = useQuery<Item>({
 		queryKey: ["item", id],
 		queryFn: () => getItemData(id),
+		staleTime: 60 * 60 * 1000, // 1 hour
+		gcTime: 24 * 60 * 60 * 1000, // Cache data for 24 hours
+		refetchOnMount: false, // Do not refetch on mount if data is fresh
+		refetchOnWindowFocus: false, // Prevent refetching when the window regains focus
+	})
+
+	return item
+}
+
+// Get Item for Payment Page (with default fallback)
+export function usePaymentItem(itemId?: string) {
+	const targetId = itemId || "23" // Default to item 23 if no ID provided
+
+	const item = useQuery<Item>({
+		queryKey: ["payment-item", targetId],
+		queryFn: () => getItemData(targetId),
+		staleTime: 60 * 60 * 1000, // 1 hour
+		gcTime: 24 * 60 * 60 * 1000, // Cache data for 24 hours
+		refetchOnMount: false, // Do not refetch on mount if data is fresh
+		refetchOnWindowFocus: false, // Prevent refetching when the window regains focus
 	})
 
 	return item
