@@ -1,0 +1,104 @@
+.payment-method-card {
+	background: linear-gradient(180deg, #ffffff, #f8fafc);
+	border-radius: 1.2rem;
+	padding: 1.75rem;
+	color: #1f2937;
+	cursor: pointer;
+	box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+	border: 1px solid rgba(148, 163, 184, 0.2);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	min-height: 14rem;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.payment-method-card:hover {
+	box-shadow: 0 30px 60px rgba(15, 23, 42, 0.18);
+}
+
+.payment-method-card__icon {
+	width: 4.5rem;
+	height: 4.5rem;
+	border-radius: 999px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 1.25rem;
+	font-size: 2rem;
+	color: #ffffff;
+}
+
+.payment-method-card--monobank .payment-method-card__icon {
+	background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+}
+
+.payment-method-card--privat .payment-method-card__icon {
+	background: linear-gradient(135deg, #22c55e, #16a34a);
+	font-weight: 700;
+	font-size: 2rem;
+}
+
+.payment-method-card--stripe .payment-method-card__icon {
+	background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.payment-method-card--paypal .payment-method-card__icon {
+	background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.payment-method-card--metamask .payment-method-card__icon {
+	background: linear-gradient(135deg, #f97316, #ea580c);
+}
+
+.payment-method-card__title {
+	font-size: 1.2rem;
+	font-weight: 700;
+	margin-bottom: 0.5rem;
+	color: #111827;
+}
+
+.payment-method-card__description {
+	font-size: 0.95rem;
+	color: #4b5563;
+	line-height: 1.6;
+	flex: 1;
+	margin-bottom: 1.25rem;
+}
+
+.payment-method-card__button {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	border-radius: 0.85rem;
+	border: none;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	color: #ffffff;
+	cursor: pointer;
+	transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.payment-method-card__button:active {
+	transform: translateY(1px);
+}
+
+.payment-method-card--monobank .payment-method-card__button {
+	background: linear-gradient(135deg, #7c3aed, #6d28d9);
+}
+
+.payment-method-card--privat .payment-method-card__button {
+	background: linear-gradient(135deg, #22c55e, #15803d);
+}
+
+.payment-method-card--stripe .payment-method-card__button {
+	background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
+.payment-method-card--paypal .payment-method-card__button {
+	background: linear-gradient(135deg, #2563eb, #1e3a8a);
+}
+
+.payment-method-card--metamask .payment-method-card__button {
+	background: linear-gradient(135deg, #f97316, #d97706);
+}

@@ -4,9 +4,12 @@ import {
 	FaChevronRight,
 	FaCreditCard,
 	FaEthereum,
+	FaMicrochip,
 	FaPaypal,
 	FaWallet,
+	FaWifi,
 } from "react-icons/fa"
+import "../../styles/PaymentAccordion.css"
 
 interface AccordionItemProps {
 	title: string
@@ -24,19 +27,16 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 	onClick,
 }) => {
 	return (
-		<div className="border-b border-gray-600">
-			<button
-				onClick={onClick}
-				className="w-full flex items-center justify-between p-4 text-lg font-medium text-white hover:bg-gray-700 transition-colors duration-200"
-			>
-				<div className="flex items-center space-x-3">
-					<Icon className="text-gray-400 text-xl" />
-					<span>{title}</span>
+		<div className="payment-accordion-item">
+			<button onClick={onClick} className="payment-accordion-trigger">
+				<div className="payment-accordion-trigger-left">
+					<Icon className="payment-accordion-trigger-icon" />
+					<span className="payment-accordion-trigger-title">{title}</span>
 				</div>
 				<motion.span
 					animate={{ rotate: isOpen ? 90 : 0 }}
 					transition={{ duration: 0.2 }}
-					className="text-gray-400"
+					className="payment-accordion-trigger-chevron"
 				>
 					<FaChevronRight />
 				</motion.span>
@@ -48,9 +48,9 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 						animate={{ height: "auto", opacity: 1 }}
 						exit={{ height: 0, opacity: 0 }}
 						transition={{ duration: 0.3, ease: "easeInOut" }}
-						className="overflow-hidden"
+						className="payment-accordion-content"
 					>
-						<div className="px-4 pb-4">{children}</div>
+						<div className="payment-accordion-content-inner">{children}</div>
 					</motion.div>
 				)}
 			</AnimatePresence>
@@ -68,29 +68,13 @@ export const PaymentAccordion: React.FC<PaymentAccordionProps> = ({
 	onPaymentMethod,
 }) => {
 	const [openIndex, setOpenIndex] = useState(0)
+	const [selectedBank, setSelectedBank] = useState<"monobank" | "privatbank">(
+		"monobank"
+	)
 
 	const toggleIndex = (index: number) => {
 		setOpenIndex(openIndex === index ? -1 : index)
 	}
-
-	const savedCards = [
-		{
-			id: "monobank",
-			type: "Monobank",
-			number: "5375 XXXX XXXX 4141",
-			name: "Raviteja Govindaraju",
-			gradient: "from-purple-500 to-purple-700",
-			logo: "M",
-		},
-		{
-			id: "privatbank",
-			type: "PrivatBank",
-			number: "5168 XXXX XXXX 5678",
-			name: "Raviteja Govindaraju",
-			gradient: "from-green-500 to-green-700",
-			logo: "P",
-		},
-	]
 
 	const stripeFeatures = []
 
@@ -99,46 +83,110 @@ export const PaymentAccordion: React.FC<PaymentAccordionProps> = ({
 	const metamaskFeatures = []
 
 	return (
-		<div className="bg-gray-800 rounded-xl shadow-2xl border border-gray-700">
+		<div className="payment-accordion">
 			<AccordionItem
 				title="Cards"
 				icon={FaWallet}
 				isOpen={openIndex === 0}
 				onClick={() => toggleIndex(0)}
 			>
-				<div className="space-y-3">
-					{savedCards.map(card => (
-						<motion.div
-							key={card.id}
-							whileHover={{ scale: 1.02 }}
-							whileTap={{ scale: 0.98 }}
-							onClick={() => onCardSelect?.(card.id)}
-							className={`bg-gradient-to-r ${card.gradient} text-white p-4 rounded-xl shadow-lg cursor-pointer transition-all duration-200 hover:shadow-xl`}
-						>
-							<div className="flex justify-between items-start">
-								<div>
-									<p className="text-sm opacity-90">
-										{card.type} •••• {card.number.split(" ")[3]}
-									</p>
-									<p className="font-semibold text-lg">{card.name}</p>
+				<div className="bank-card-switch">
+					<button
+						type="button"
+						className={`bank-card-option ${
+							selectedBank === "monobank" ? "active" : ""
+						}`}
+						onClick={() => {
+							setSelectedBank("monobank")
+							onCardSelect?.("monobank")
+						}}
+					>
+						Monobank
+					</button>
+					<button
+						type="button"
+						className={`bank-card-option ${
+							selectedBank === "privatbank" ? "active" : ""
+						}`}
+						onClick={() => {
+							setSelectedBank("privatbank")
+							onCardSelect?.("privatbank")
+						}}
+					>
+						PrivatBank
+					</button>
+				</div>
+				<div className="bank-card-stage">
+					{selectedBank === "monobank" ? (
+						<div className="bank-card-callout">
+							<motion.div
+								key="monobank"
+								initial={{ opacity: 0, y: 10 }}
+								animate={{ opacity: 1, y: 0 }}
+								exit={{ opacity: 0, y: -10 }}
+								className="bank-card bank-card--monobank"
+							>
+								<div className="bank-card-top">
+									<div className="bank-card-brand">
+										<span className="bank-card-brand-name">monobank</span>
+										<span className="bank-card-brand-sub">Universal Bank</span>
+									</div>
+									<span className="bank-card-currency">UAH</span>
 								</div>
-								<div className="text-right">
-									<p className="text-xs opacity-75">Expires</p>
-									<p className="text-sm font-medium">12/26</p>
+								<div className="bank-card-body">
+									<div className="bank-card-chip">
+										<FaMicrochip />
+									</div>
+									<FaWifi className="bank-card-contactless" />
 								</div>
-							</div>
-							<div className="mt-3 flex justify-between items-center">
-								<div className="flex space-x-2">
-									<div className="w-8 h-5 bg-white/20 rounded text-xs flex items-center justify-center font-bold">
-										{card.logo}
+								<div className="bank-card-number">9876 5432 1098 5414</div>
+								<div className="bank-card-footer">
+									<div className="bank-card-holder">
+										<span className="bank-card-label">Cardholder</span>
+									</div>
+									<div className="bank-card-expire">
+										<span className="bank-card-label">Valid To</span>
 									</div>
 								</div>
-								<div className="w-12 h-8 bg-white/20 rounded flex items-center justify-center">
-									<div className="w-6 h-4 bg-white/30 rounded-sm"></div>
+							</motion.div>
+							<a
+								href="https://send.monobank.ua/jar/QsATQ1NQ4"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="bank-card-cta"
+							>
+								Open Mono Pay
+							</a>
+						</div>
+					) : (
+						<motion.div
+							key="privatbank"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: 0 }}
+							exit={{ opacity: 0, y: -10 }}
+							className="bank-card bank-card--privat"
+						>
+							<h4 className="bank-card-title">PrivatBank Transfer</h4>
+							<dl className="bank-card-details">
+								<div className="bank-card-detail-row">
+									<dt>Recipient</dt>
+									<dd>Каліневич Данііл Олександрович</dd>
 								</div>
-							</div>
+								<div className="bank-card-detail-row">
+									<dt>IBAN</dt>
+									<dd>UA863052990000026201737711936</dd>
+								</div>
+								<div className="bank-card-detail-row">
+									<dt>RNOKPP</dt>
+									<dd>3765604679</dd>
+								</div>
+								<div className="bank-card-detail-row">
+									<dt>Purpose</dt>
+									<dd>Благодійний безповоротний внесок</dd>
+								</div>
+							</dl>
 						</motion.div>
-					))}
+					)}
 				</div>
 			</AccordionItem>
 
@@ -148,47 +196,40 @@ export const PaymentAccordion: React.FC<PaymentAccordionProps> = ({
 				isOpen={openIndex === 1}
 				onClick={() => toggleIndex(1)}
 			>
-				<div className="space-y-4">
-					<div className="bg-gray-700 rounded-lg p-6">
-						<div className="flex items-center space-x-3 mb-4">
-							<div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-								<FaCreditCard className="text-white text-lg" />
-							</div>
-							<div>
-								<h3 className="text-white font-semibold">Stripe Payment</h3>
-								<p className="text-gray-400 text-sm">
-									Secure payment processing
-								</p>
-							</div>
+				<div className="payment-method-panel payment-method-panel--stripe">
+					<div className="payment-method-header">
+						<div className="payment-method-icon">
+							<FaCreditCard />
 						</div>
-
-						<div className="space-y-3 mb-6">
-							{stripeFeatures.map((feature, index) => (
-								<div key={index} className="flex items-center space-x-2">
-									<div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
-									<span className="text-gray-300 text-sm">{feature}</span>
-								</div>
-							))}
+						<div>
+							<h3 className="payment-method-title">Stripe Payment</h3>
+							<p className="payment-method-subtitle">
+								Secure payment processing
+							</p>
 						</div>
-
-						<div className="mb-4">
-							<label className="block text-sm font-medium text-gray-300 mb-2">
-								Amount (UAH)
-							</label>
-							<input
-								type="number"
-								placeholder="Enter amount"
-								className="w-full px-4 py-3 bg-gray-600 border border-gray-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-							/>
-						</div>
-
-						<button
-							onClick={() => onPaymentMethod?.("stripe")}
-							className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
-						>
-							Pay with Stripe
-						</button>
 					</div>
+					<div className="payment-method-body">
+						{stripeFeatures.map((feature, index) => (
+							<div key={index} className="payment-method-feature">
+								<span className="payment-method-bullet" />
+								<span>{feature}</span>
+							</div>
+						))}
+					</div>
+					<div className="payment-input-group">
+						<label className="payment-input-label">Amount (UAH)</label>
+						<input
+							type="number"
+							placeholder="Enter amount"
+							className="payment-input"
+						/>
+					</div>
+					<button
+						onClick={() => onPaymentMethod?.("stripe")}
+						className="payment-primary-button payment-primary-button--stripe"
+					>
+						Pay with Stripe
+					</button>
 				</div>
 			</AccordionItem>
 
@@ -198,47 +239,40 @@ export const PaymentAccordion: React.FC<PaymentAccordionProps> = ({
 				isOpen={openIndex === 2}
 				onClick={() => toggleIndex(2)}
 			>
-				<div className="space-y-4">
-					<div className="bg-gray-700 rounded-lg p-6">
-						<div className="flex items-center space-x-3 mb-4">
-							<div className="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center">
-								<FaPaypal className="text-white text-lg" />
-							</div>
-							<div>
-								<h3 className="text-white font-semibold">PayPal Payment</h3>
-								<p className="text-gray-400 text-sm">
-									Pay securely with PayPal
-								</p>
-							</div>
+				<div className="payment-method-panel payment-method-panel--paypal">
+					<div className="payment-method-header">
+						<div className="payment-method-icon">
+							<FaPaypal />
 						</div>
-
-						<div className="space-y-3 mb-6">
-							{paypalFeatures.map((feature, index) => (
-								<div key={index} className="flex items-center space-x-2">
-									<div className="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
-									<span className="text-gray-300 text-sm">{feature}</span>
-								</div>
-							))}
+						<div>
+							<h3 className="payment-method-title">PayPal Payment</h3>
+							<p className="payment-method-subtitle">
+								Pay securely with PayPal
+							</p>
 						</div>
-
-						<div className="mb-4">
-							<label className="block text-sm font-medium text-gray-300 mb-2">
-								Amount (UAH)
-							</label>
-							<input
-								type="number"
-								placeholder="Enter amount"
-								className="w-full px-4 py-3 bg-gray-600 border border-gray-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-							/>
-						</div>
-
-						<button
-							onClick={() => onPaymentMethod?.("paypal")}
-							className="w-full bg-gradient-to-r from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white py-3 px-6 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
-						>
-							Pay with PayPal
-						</button>
 					</div>
+					<div className="payment-method-body">
+						{paypalFeatures.map((feature, index) => (
+							<div key={index} className="payment-method-feature">
+								<span className="payment-method-bullet" />
+								<span>{feature}</span>
+							</div>
+						))}
+					</div>
+					<div className="payment-input-group">
+						<label className="payment-input-label">Amount (UAH)</label>
+						<input
+							type="number"
+							placeholder="Enter amount"
+							className="payment-input"
+						/>
+					</div>
+					<button
+						onClick={() => onPaymentMethod?.("paypal")}
+						className="payment-primary-button payment-primary-button--paypal"
+					>
+						Pay with PayPal
+					</button>
 				</div>
 			</AccordionItem>
 
@@ -248,80 +282,63 @@ export const PaymentAccordion: React.FC<PaymentAccordionProps> = ({
 				isOpen={openIndex === 3}
 				onClick={() => toggleIndex(3)}
 			>
-				<div className="space-y-4">
-					<div className="bg-gray-700 rounded-lg p-6">
-						<div className="flex items-center space-x-3 mb-4">
-							<div className="w-10 h-10 bg-orange-600 rounded-lg flex items-center justify-center">
-								<FaEthereum className="text-white text-lg" />
-							</div>
-							<div>
-								<h3 className="text-white font-semibold">MetaMask Wallet</h3>
-								<p className="text-gray-400 text-sm">
-									Connect your crypto wallet
-								</p>
-							</div>
+				<div className="payment-method-panel payment-method-panel--metamask">
+					<div className="payment-method-header">
+						<div className="payment-method-icon">
+							<FaEthereum />
 						</div>
-
-						<div className="space-y-3 mb-6">
-							{metamaskFeatures.map((feature, index) => (
-								<div key={index} className="flex items-center space-x-2">
-									<div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
-									<span className="text-gray-300 text-sm">{feature}</span>
-								</div>
-							))}
-						</div>
-
-						{/* Network Selection */}
-						<div className="mb-4">
-							<label className="block text-sm font-medium text-gray-300 mb-2">
-								Choose Network
-							</label>
-							<div className="grid grid-cols-2 gap-3">
-								<button className="p-3 bg-gray-600 hover:bg-gray-500 rounded-lg border-2 border-transparent hover:border-orange-500 transition-all duration-200">
-									<div className="flex items-center space-x-2">
-										<div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-											<FaEthereum className="text-white text-xs" />
-										</div>
-										<span className="text-white text-sm font-medium">ETH</span>
-									</div>
-								</button>
-								<button className="p-3 bg-gray-600 hover:bg-gray-500 rounded-lg border-2 border-transparent hover:border-orange-500 transition-all duration-200">
-									<div className="flex items-center space-x-2">
-										<div className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center">
-											<span className="text-white text-xs font-bold">B</span>
-										</div>
-										<span className="text-white text-sm font-medium">BNB</span>
-									</div>
-								</button>
-							</div>
-						</div>
-
-						{/* Amount Field */}
-						<div className="mb-4">
-							<label className="block text-sm font-medium text-gray-300 mb-2">
-								Amount
-							</label>
-							<input
-								type="number"
-								placeholder="Enter amount"
-								className="w-full px-4 py-3 bg-gray-600 border border-gray-500 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-							/>
-						</div>
-
-						<div className="bg-gray-600 rounded-lg p-4 mb-4">
-							<p className="text-gray-400 text-sm mb-2">Wallet Address</p>
-							<p className="text-white font-mono text-sm break-all">
-								0x742d35Cc6634C0532925a3b8D1234567890abcdef
+						<div>
+							<h3 className="payment-method-title">MetaMask Wallet</h3>
+							<p className="payment-method-subtitle">
+								Connect your crypto wallet
 							</p>
 						</div>
-
-						<button
-							onClick={() => onPaymentMethod?.("metamask")}
-							className="w-full bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white py-3 px-6 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
-						>
-							Connect MetaMask
-						</button>
 					</div>
+					<div className="payment-method-body">
+						{metamaskFeatures.map((feature, index) => (
+							<div key={index} className="payment-method-feature">
+								<span className="payment-method-bullet payment-method-bullet--orange" />
+								<span>{feature}</span>
+							</div>
+						))}
+					</div>
+					<div className="payment-network-group">
+						<label className="payment-input-label">Choose Network</label>
+						<div className="payment-network-options">
+							<button className="payment-network-option">
+								<span className="payment-network-badge payment-network-badge--blue">
+									<FaEthereum />
+								</span>
+								<span className="payment-network-label">ETH</span>
+							</button>
+							<button className="payment-network-option">
+								<span className="payment-network-badge payment-network-badge--yellow">
+									B
+								</span>
+								<span className="payment-network-label">BNB</span>
+							</button>
+						</div>
+					</div>
+					<div className="payment-input-group">
+						<label className="payment-input-label">Amount</label>
+						<input
+							type="number"
+							placeholder="Enter amount"
+							className="payment-input"
+						/>
+					</div>
+					<div className="payment-wallet-address">
+						<p className="payment-wallet-label">Wallet Address</p>
+						<p className="payment-wallet-value">
+							0x742d35Cc6634C0532925a3b8D1234567890abcdef
+						</p>
+					</div>
+					<button
+						onClick={() => onPaymentMethod?.("metamask")}
+						className="payment-primary-button payment-primary-button--metamask"
+					>
+						Connect MetaMask
+					</button>
 				</div>
 			</AccordionItem>
 		</div>

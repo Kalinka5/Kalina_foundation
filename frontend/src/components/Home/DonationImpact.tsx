@@ -18,21 +18,18 @@ function DonationImpact() {
 	const autoAdvanceDelay = 10000 // 10 seconds
 
 	// Animation hooks
-	const { elementRef: heroRef, isVisible: heroVisible } =
-		useScrollAnimation<HTMLDivElement>({
-			threshold: 0.3,
-			triggerOnce: true,
-		})
-	const { elementRef: formRef, isVisible: formVisible } =
-		useScrollAnimation<HTMLDivElement>({
-			threshold: 0.4,
-			triggerOnce: true,
-		})
-	const { containerRef: gridRef, visibleItems } =
-		useStaggeredAnimation<HTMLDivElement>(4, {
-			stagger: 200,
-			threshold: 0.2,
-		})
+	const { elementRef: heroRef, isVisible: heroVisible } = useScrollAnimation({
+		threshold: 0.3,
+		triggerOnce: true,
+	})
+	const { elementRef: formRef, isVisible: formVisible } = useScrollAnimation({
+		threshold: 0.4,
+		triggerOnce: true,
+	})
+	const { containerRef: gridRef, visibleItems } = useStaggeredAnimation(4, {
+		stagger: 200,
+		threshold: 0.2,
+	})
 
 	// Get 16 items from backend for donation impact display
 	const { data: items, isLoading: itemsLoading } = useLimitedItems(16)
@@ -102,7 +99,7 @@ function DonationImpact() {
 		}
 	}, [totalPages])
 
-	const handleDonationSubmit = (e: React.FormEvent) => {
+	const handleDonationSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		// Navigate to donation page with amount
 		window.location.href = `${DONATE_PAGE}?amount=${donationAmount}`
