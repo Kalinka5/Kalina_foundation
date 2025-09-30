@@ -1,4 +1,6 @@
 import { useTranslation } from "react-i18next"
+import { useNavigate } from "react-router-dom"
+import { INITIATIVES_PAGE } from "../../lib/constants"
 import {
 	useScrollAnimation,
 	useStaggeredAnimation,
@@ -7,6 +9,7 @@ import "../../styles/home/ourInitiatives.css"
 
 function OurInitiatives() {
 	const { t } = useTranslation()
+	const navigate = useNavigate()
 
 	// Animation hooks
 	const { elementRef: sectionRef, isVisible } = useScrollAnimation<HTMLElement>(
@@ -28,6 +31,7 @@ function OurInitiatives() {
 			title: t("initiatives-equipment-title"),
 			description: t("initiatives-equipment-description"),
 			buttonText: t("initiatives-equipment-button"),
+			slug: "equipment",
 		},
 		{
 			id: 2,
@@ -35,6 +39,7 @@ function OurInitiatives() {
 			title: t("initiatives-medical-title"),
 			description: t("initiatives-medical-description"),
 			buttonText: t("initiatives-medical-button"),
+			slug: "medical",
 		},
 		{
 			id: 3,
@@ -42,6 +47,7 @@ function OurInitiatives() {
 			title: t("initiatives-transport-title"),
 			description: t("initiatives-transport-description"),
 			buttonText: t("initiatives-transport-button"),
+			slug: "transport",
 		},
 		{
 			id: 4,
@@ -49,6 +55,7 @@ function OurInitiatives() {
 			title: t("initiatives-technology-title"),
 			description: t("initiatives-technology-description"),
 			buttonText: t("initiatives-technology-button"),
+			slug: "technology",
 		},
 		{
 			id: 5,
@@ -56,6 +63,7 @@ function OurInitiatives() {
 			title: t("initiatives-food-title"),
 			description: t("initiatives-food-description"),
 			buttonText: t("initiatives-food-button"),
+			slug: "food",
 		},
 		{
 			id: 6,
@@ -63,8 +71,13 @@ function OurInitiatives() {
 			title: t("initiatives-special-title"),
 			description: t("initiatives-special-description"),
 			buttonText: t("initiatives-special-button"),
+			slug: "special",
 		},
 	]
+
+	const handleInitiativeClick = (slug: string) => {
+		navigate(`${INITIATIVES_PAGE}?category=${slug}`)
+	}
 
 	return (
 		<section
@@ -105,7 +118,10 @@ function OurInitiatives() {
 							<div className="card-icon floating-gentle">{initiative.icon}</div>
 							<h3 className="card-title">{initiative.title}</h3>
 							<p className="card-description">{initiative.description}</p>
-							<button className="card-button btn-animated btn-ripple">
+							<button
+								className="card-button btn-animated btn-ripple"
+								onClick={() => handleInitiativeClick(initiative.slug)}
+							>
 								{initiative.buttonText}
 							</button>
 						</div>

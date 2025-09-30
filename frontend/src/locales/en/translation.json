@@ -462,5 +462,61 @@
 	"terms-account-cancellation-subtitle-4": "1.7.1.3",
 	"terms-account-cancellation-text-7": "Termination means User Content will be deleted from active databases.",
 	"terms-account-cancellation-text-8": "SYNTHMIND",
-	"terms-account-cancellation-text-9": ""
+	"terms-account-cancellation-text-9": "",
+
+	"initiatives-hero-badge": "🇺🇦 United for Victory",
+	"initiatives-hero-title": "Supporting Ukraine's Defenders",
+	"initiatives-hero-subtitle": "Every donation brings victory closer. Together, we provide critical equipment and support to those protecting our freedom on the frontlines.",
+	"initiatives-hero-stat1": "Active Initiatives",
+	"initiatives-hero-stat2": "UAH Raised",
+	"initiatives-hero-stat3": "Brigades Supported",
+	"initiatives-hero-cta": "Support Our Mission",
+
+	"initiatives-mission-label": "Our Mission",
+	"initiatives-mission-title": "Delivering Hope to the Frontlines",
+	"initiatives-mission-description": "We are dedicated to providing Ukraine's defenders with the critical equipment, technology, and resources they need to protect our nation. Through direct partnerships with military brigades, we ensure every contribution reaches those who need it most.",
+	"initiatives-highlight-1": "100% transparency in all donations",
+	"initiatives-highlight-2": "Direct delivery to frontline brigades",
+	"initiatives-highlight-3": "Verified equipment and supplies",
+
+	"initiatives-showcase-title": "Our Core Initiatives",
+	"initiatives-showcase-subtitle": "Three primary focus areas where your support makes the greatest impact",
+
+	"initiatives-tactical-title": "Tactical Equipment",
+	"initiatives-tactical-subtitle": "Essential gear for soldier protection and effectiveness",
+	"initiatives-tactical-description": "We supply body armor, helmets, tactical backpacks, uniforms, and field equipment that keep our soldiers safe and mission-ready. Every piece of equipment undergoes rigorous quality control to ensure maximum protection.",
+	"initiatives-stat-delivered": "Items Delivered",
+	"initiatives-stat-brigades": "Brigades Equipped",
+
+	"initiatives-drones-title": "Drones & Technology",
+	"initiatives-drones-subtitle": "Advanced UAVs for reconnaissance and defense",
+	"initiatives-drones-description": "From FPV drones to advanced reconnaissance systems like Mavic, Leleka, and Shark-D, we provide cutting-edge technology that gives our forces a tactical advantage. Drones save lives by providing critical battlefield intelligence.",
+	"initiatives-stat-drones": "Drones Deployed",
+	"initiatives-stat-missions": "Missions Completed",
+
+	"initiatives-support-title": "Logistics & Support",
+	"initiatives-support-subtitle": "Vehicles, power, and critical infrastructure",
+	"initiatives-support-description": "We deliver SUVs, generators, communication equipment, and medical supplies that keep operations running. Reliable logistics and power infrastructure are essential for sustained military operations in challenging conditions.",
+	"initiatives-stat-vehicles": "Vehicles Delivered",
+	"initiatives-stat-generators": "Power Units Supplied",
+
+	"initiatives-donate-to-this": "Support This Initiative",
+
+	"initiatives-impact-title": "Our Impact Timeline",
+	"initiatives-impact-date1": "February 2022",
+	"initiatives-impact-title1": "Foundation Established",
+	"initiatives-impact-desc1": "Launched our mission to support Ukraine's defenders with immediate focus on medical supplies and tactical equipment.",
+
+	"initiatives-impact-date2": "July 2023",
+	"initiatives-impact-title2": "1,000 Drones Delivered",
+	"initiatives-impact-desc2": "Reached a milestone of delivering over 1,000 reconnaissance and FPV drones to frontline brigades across all sectors.",
+
+	"initiatives-impact-date3": "January 2024",
+	"initiatives-impact-title3": "Expanded to 48 Brigades",
+	"initiatives-impact-desc3": "Now supporting 48 military brigades with continuous equipment supply, technical support, and emergency response.",
+
+	"initiatives-final-cta-title": "Join the Fight for Freedom",
+	"initiatives-final-cta-subtitle": "Your contribution today becomes lifesaving equipment tomorrow. Stand with Ukraine's heroes and make a direct impact on the battlefield.",
+	"initiatives-donate-now": "Donate Now",
+	"initiatives-learn-more": "Learn More"
 }

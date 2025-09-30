@@ -9,6 +9,7 @@ import {
 	ACCESS_TOKEN,
 	DONATE_PAGE,
 	HOME_PAGE,
+	INITIATIVES_PAGE,
 	LOGIN_PAGE,
 	LOGOUT_PAGE,
 	PROFILE_PAGE,
@@ -21,6 +22,7 @@ import ProtectedRoute from "./components/ProtectedRoute"
 import AccessibilityStatement from "./pages/AccessibilityStatement"
 import EmailVerify from "./pages/EmailVerify"
 import Home from "./pages/Home"
+import Initiatives from "./pages/Initiatives"
 import ItemEdit from "./pages/ItemEdit"
 import Login from "./pages/Login"
 import Payment from "./pages/Payment"
@@ -46,6 +48,7 @@ function App() {
 			<main className="App">
 				<Routes>
 					<Route path={`${HOME_PAGE}`} element={<Home />} />
+					<Route path={INITIATIVES_PAGE} element={<Initiatives />} />
 					<Route path="item/:id/edit" element={<ItemEdit />} />
 					<Route path={LOGIN_PAGE} element={<Login />} />
 					<Route path={REGISTER_PAGE} element={<Register />} />
