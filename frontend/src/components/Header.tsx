@@ -7,7 +7,6 @@ import { useAuth } from "../components/AuthContext"
 import LanguageSelector from "./LanguageSelector"
 
 import {
-	DONATE_PAGE,
 	LOGIN_PAGE,
 	LOGOUT_PAGE,
 	PROFILE_PAGE,
@@ -30,12 +29,12 @@ const Header = ({ fixed, children }: HeaderProps) => {
 
 	// Main navigation links
 	const mainNavLinks = [
-		{ id: 1, urlLink: "/about-us", urlName: "about-us" },
-		{ id: 2, urlLink: "/our-mission", urlName: "our-mission" },
-		{ id: 3, urlLink: "/our-initiatives", urlName: "our-initiatives" },
-		{ id: 4, urlLink: "/stories", urlName: "stories" },
-		{ id: 5, urlLink: `${DONATE_PAGE}`, urlName: "donate" },
-		{ id: 6, urlLink: "/top-donators", urlName: "top-donators" },
+		{ id: 1, urlLink: "#hero-section", urlName: "about-us" },
+		{ id: 2, urlLink: "#team-mission", urlName: "our-mission" },
+		{ id: 3, urlLink: "#our-initiatives", urlName: "our-initiatives" },
+		{ id: 4, urlLink: "#stories-section", urlName: "stories" },
+		{ id: 5, urlLink: "#donation-impact", urlName: "donate" },
+		{ id: 6, urlLink: "#top-donators", urlName: "top-donators" },
 	]
 
 	const { isAuthorized } = useAuth()

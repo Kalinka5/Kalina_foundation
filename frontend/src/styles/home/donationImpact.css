@@ -50,8 +50,8 @@
 
 .impact-hero-button:hover {
 	background: #f0f0f0;
-	transform: translateY(-2px);
 	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	filter: brightness(0.95);
 }
 
 /* Choose Your Impact */

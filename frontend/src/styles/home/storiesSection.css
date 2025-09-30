@@ -126,11 +126,11 @@
 .story-button:hover {
 	background: #4a4a4a;
 	border-color: rgba(255, 255, 255, 0.3);
-	transform: translateY(-2px);
+	filter: brightness(1.1);
 }
 
 .story-button:active {
-	transform: translateY(0);
+	filter: brightness(0.95);
 }
 
 .call-to-action {
