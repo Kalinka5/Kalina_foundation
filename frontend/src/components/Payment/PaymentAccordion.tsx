@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion"
-import { useState } from "react"
+import React, { useState } from "react"
 import {
 	FaChevronRight,
 	FaCreditCard,
@@ -7,7 +7,6 @@ import {
 	FaMicrochip,
 	FaPaypal,
 	FaWallet,
-	FaWifi,
 } from "react-icons/fa"
 import "../../styles/PaymentAccordion.css"
 
@@ -128,7 +127,6 @@ export const PaymentAccordion: React.FC<PaymentAccordionProps> = ({
 							>
 								<div className="bank-card-top">
 									<div className="bank-card-brand">
-										<span className="bank-card-brand-name">monobank</span>
 										<span className="bank-card-brand-sub">Universal Bank</span>
 									</div>
 									<span className="bank-card-currency">UAH</span>
@@ -137,7 +135,6 @@ export const PaymentAccordion: React.FC<PaymentAccordionProps> = ({
 									<div className="bank-card-chip">
 										<FaMicrochip />
 									</div>
-									<FaWifi className="bank-card-contactless" />
 								</div>
 								<div className="bank-card-number">9876 5432 1098 5414</div>
 								<div className="bank-card-footer">
@@ -159,33 +156,44 @@ export const PaymentAccordion: React.FC<PaymentAccordionProps> = ({
 							</a>
 						</div>
 					) : (
-						<motion.div
-							key="privatbank"
-							initial={{ opacity: 0, y: 10 }}
-							animate={{ opacity: 1, y: 0 }}
-							exit={{ opacity: 0, y: -10 }}
-							className="bank-card bank-card--privat"
-						>
-							<h4 className="bank-card-title">PrivatBank Transfer</h4>
-							<dl className="bank-card-details">
-								<div className="bank-card-detail-row">
-									<dt>Recipient</dt>
-									<dd>Каліневич Данііл Олександрович</dd>
+						<div className="bank-card-callout">
+							<motion.div
+								key="privatbank"
+								initial={{ opacity: 0, y: 10 }}
+								animate={{ opacity: 1, y: 0 }}
+								exit={{ opacity: 0, y: -10 }}
+								className="bank-card bank-card--privat"
+							>
+								<div className="bank-card-top">
+									<div className="bank-card-brand">
+										<span className="bank-card-brand-sub">Universal Bank</span>
+									</div>
+									<span className="bank-card-currency">UAH</span>
 								</div>
-								<div className="bank-card-detail-row">
-									<dt>IBAN</dt>
-									<dd>UA863052990000026201737711936</dd>
+								<div className="bank-card-body">
+									<div className="bank-card-chip">
+										<FaMicrochip />
+									</div>
 								</div>
-								<div className="bank-card-detail-row">
-									<dt>RNOKPP</dt>
-									<dd>3765604679</dd>
+								<div className="bank-card-number">9876 5432 1098 5414</div>
+								<div className="bank-card-footer">
+									<div className="bank-card-holder">
+										<span className="bank-card-label">Cardholder</span>
+									</div>
+									<div className="bank-card-expire">
+										<span className="bank-card-label">Valid To</span>
+									</div>
 								</div>
-								<div className="bank-card-detail-row">
-									<dt>Purpose</dt>
-									<dd>Благодійний безповоротний внесок</dd>
-								</div>
-							</dl>
-						</motion.div>
+							</motion.div>
+							<a
+								href="https://privatbank.ua/donate"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="bank-card-cta"
+							>
+								Open Privat24
+							</a>
+						</div>
 					)}
 				</div>
 			</AccordionItem>
@@ -293,14 +301,6 @@ export const PaymentAccordion: React.FC<PaymentAccordionProps> = ({
 								Connect your crypto wallet
 							</p>
 						</div>
-					</div>
-					<div className="payment-method-body">
-						{metamaskFeatures.map((feature, index) => (
-							<div key={index} className="payment-method-feature">
-								<span className="payment-method-bullet payment-method-bullet--orange" />
-								<span>{feature}</span>
-							</div>
-						))}
 					</div>
 					<div className="payment-network-group">
 						<label className="payment-input-label">Choose Network</label>

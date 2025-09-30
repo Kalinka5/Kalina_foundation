@@ -220,6 +220,43 @@
 		rgba(249, 115, 22, 0.25),
 		rgba(15, 23, 42, 0.95)
 	);
+	padding: 1.35rem;
+	gap: 1.1rem;
+}
+.payment-method-panel--metamask .payment-method-icon {
+	width: 2.2rem;
+	height: 2.2rem;
+	border-radius: 0.75rem;
+	font-size: 1.1rem;
+}
+.payment-method-panel--metamask .payment-network-options {
+	gap: 0.6rem;
+}
+.payment-method-panel--metamask .payment-network-option {
+	padding: 0.45rem 0.7rem;
+	border-radius: 0.75rem;
+}
+.payment-method-panel--metamask .payment-network-badge {
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 0.6rem;
+	font-size: 0.85rem;
+}
+.payment-method-panel--metamask .payment-input-group {
+	gap: 0.4rem;
+}
+.payment-method-panel--metamask .payment-input {
+	padding: 0.7rem 0.85rem;
+	border-radius: 0.75rem;
+	font-size: 0.9rem;
+}
+.payment-method-panel--metamask .payment-primary-button {
+	padding: 0.85rem 1.1rem;
+	font-size: 0.9rem;
+}
+.payment-method-panel--metamask .payment-wallet-address {
+	padding: 0.8rem;
+	border-radius: 0.85rem;
 }
 .payment-method-header {
 	display: flex;
