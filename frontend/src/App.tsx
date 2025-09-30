@@ -1,4 +1,3 @@
-import React from "react"
 import {
 	Navigate,
 	Route,
@@ -15,22 +14,22 @@ import {
 	PROFILE_PAGE,
 	REFRESH_TOKEN,
 	REGISTER_PAGE,
-} from "./lib/constants.js"
+} from "./lib/constants"
 
-import ProtectedRoute from "./components/ProtectedRoute.tsx"
+import ProtectedRoute from "./components/ProtectedRoute"
 
-import AccessibilityStatement from "./pages/AccessibilityStatement.tsx"
-import EmailVerify from "./pages/EmailVerify.tsx"
-import Home from "./pages/Home.tsx"
-import ItemEdit from "./pages/ItemEdit.tsx"
-import Login from "./pages/Login.tsx"
-import Payment from "./pages/Payment.tsx"
-import PrivacyPolicy from "./pages/PrivacyPolicy.tsx"
-import Profile from "./pages/Profile.tsx"
-import RefundPolicy from "./pages/RefundPolicy.tsx"
-import Register from "./pages/Register.tsx"
-import ResetPassword from "./pages/ResetPassword.tsx"
-import TermsConditions from "./pages/TermsConditions.tsx"
+import AccessibilityStatement from "./pages/AccessibilityStatement"
+import EmailVerify from "./pages/EmailVerify"
+import Home from "./pages/Home"
+import ItemEdit from "./pages/ItemEdit"
+import Login from "./pages/Login"
+import Payment from "./pages/Payment"
+import PrivacyPolicy from "./pages/PrivacyPolicy"
+import Profile from "./pages/Profile"
+import RefundPolicy from "./pages/RefundPolicy"
+import Register from "./pages/Register"
+import ResetPassword from "./pages/ResetPassword"
+import TermsConditions from "./pages/TermsConditions"
 
 import "./styles/index.css"
 

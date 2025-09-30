@@ -1,6 +1,5 @@
-import React from "react"
 import { useTranslation } from "react-i18next"
-import { useScrollAnimation } from "../../lib/useAnimations.tsx"
+import { useScrollAnimation } from "../../lib/useAnimations"
 import "../../styles/home/teamMission.css"
 
 function TeamMission() {

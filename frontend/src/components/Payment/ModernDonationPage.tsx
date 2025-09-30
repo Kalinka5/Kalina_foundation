@@ -1,10 +1,10 @@
 import { motion } from "framer-motion"
-import React, { useState } from "react"
+import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { useParams } from "react-router-dom"
 
-import { usePaymentItem } from "../../lib/hooks.tsx"
-import { PaymentAccordion } from "./PaymentAccordion.tsx"
+import { usePaymentItem } from "../../lib/hooks"
+import { PaymentAccordion } from "./PaymentAccordion"
 
 import "../../styles/ModernDonationPage.css"
 

@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import { useState } from "react"
 
-import ModernAuthModal from "../components/LoginRegister/ModernAuthModal.tsx"
+import ModernAuthModal from "../components/LoginRegister/ModernAuthModal"
 
 import "../styles/loginRegister/modernLogin.css"
 

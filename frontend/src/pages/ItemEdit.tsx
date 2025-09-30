@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 import Alert from "@mui/material/Alert"
 
-import api from "../lib/api.js"
+import api from "../lib/api"
 
-import DeleteButton from "../components/DeleteButton.tsx"
-import Header from "../components/Header.tsx"
-import Input from "../components/ItemEdit/Input.tsx"
-import { H1, H4 } from "../components/ItemEdit/Titles.tsx"
-import UpdateButton from "../components/ItemEdit/UpdateButton.tsx"
-import UploadImage from "../components/UploadImage.tsx"
+import DeleteButton from "../components/DeleteButton"
+import Header from "../components/Header"
+import Input from "../components/ItemEdit/Input"
+import { H1, H4 } from "../components/ItemEdit/Titles"
+import UpdateButton from "../components/ItemEdit/UpdateButton"
+import UploadImage from "../components/UploadImage"
 
-import { HOME_PAGE } from "../lib/constants.js"
+import { HOME_PAGE } from "../lib/constants"
 
-import { useItemData } from "../lib/hooks.tsx"
+import { useItemData } from "../lib/hooks"
 
 import "../styles/itemEdit.css"
 

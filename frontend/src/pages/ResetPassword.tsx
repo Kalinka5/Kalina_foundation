@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next"
 import { IoCheckmark, IoEye, IoEyeOff } from "react-icons/io5"
 import { useNavigate, useSearchParams } from "react-router-dom"
 
-import api from "../lib/api.js"
-import { LOGIN_PAGE } from "../lib/constants.js"
+import api from "../lib/api"
+import { LOGIN_PAGE } from "../lib/constants"
 
 import "../styles/loginRegister/modernLogin.css"
 import "../styles/loginRegister/modernRegister.css"

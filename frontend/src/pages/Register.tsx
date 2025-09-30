@@ -1,6 +1,4 @@
-import React from "react"
-
-import ModernAuthModal from "../components/LoginRegister/ModernAuthModal.tsx"
+import ModernAuthModal from "../components/LoginRegister/ModernAuthModal"
 
 import "../styles/loginRegister/modernRegister.css"
 

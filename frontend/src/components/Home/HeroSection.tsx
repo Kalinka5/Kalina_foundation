@@ -1,11 +1,10 @@
-import React from "react"
 import { useTranslation } from "react-i18next"
 import { DONATE_PAGE } from "../../lib/constants"
 import {
 	usePageLoadAnimation,
 	useParallax,
 	useScrollAnimation,
-} from "../../lib/useAnimations.tsx"
+} from "../../lib/useAnimations"
 import "../../styles/home/heroSection.css"
 
 function HeroSection() {

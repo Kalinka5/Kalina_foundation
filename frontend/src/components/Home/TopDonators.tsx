@@ -1,8 +1,7 @@
-import React from "react"
 import { useTranslation } from "react-i18next"
-import { useDonators } from "../../lib/hooks.tsx"
-import { useScrollAnimation } from "../../lib/useAnimations.tsx"
-import useMediaQuery from "../../lib/useMediaQuery.tsx"
+import { useDonators } from "../../lib/hooks"
+import { useScrollAnimation } from "../../lib/useAnimations"
+import useMediaQuery from "../../lib/useMediaQuery"
 import "../../styles/home/topDonators.css"
 
 function TopDonators() {

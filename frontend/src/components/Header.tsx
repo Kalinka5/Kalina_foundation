@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { FaMoon, FaSun } from "react-icons/fa"
 
-import { useAuth } from "../components/AuthContext.tsx"
+import { useAuth } from "../components/AuthContext"
 
 import LanguageSelector from "./LanguageSelector"
 
@@ -12,9 +12,9 @@ import {
 	LOGOUT_PAGE,
 	PROFILE_PAGE,
 	REGISTER_PAGE,
-} from "../lib/constants.js"
+} from "../lib/constants"
 
-import { HeaderProps } from "../lib/types.tsx"
+import { HeaderProps } from "../lib/types"
 
 import "../styles/header.css"
 

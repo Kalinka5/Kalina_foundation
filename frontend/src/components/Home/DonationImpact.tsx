@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { DONATE_PAGE } from "../../lib/constants"
-import { useLimitedItems, useTotalDonated } from "../../lib/hooks.tsx"
+import { useLimitedItems, useTotalDonated } from "../../lib/hooks"
 import {
 	useScrollAnimation,
 	useStaggeredAnimation,
-} from "../../lib/useAnimations.tsx"
+} from "../../lib/useAnimations"
 import "../../styles/home/donationImpact.css"
 
 function DonationImpact() {

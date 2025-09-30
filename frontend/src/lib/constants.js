@@ -9,13 +9,12 @@ export const PROFILE_PAGE = "/profile"
 export const DONATE_PAGE = "/donate"
 export const TERMS_CONDITIONS_PAGE = "/terms"
 
-export const API_URL =
-	process.env.NODE_ENV === "development"
-		? "http://127.0.0.1:8000"
-		: "https://kalina-foundation-back.vercel.app"
+export const API_URL = import.meta.env.DEV
+	? "http://127.0.0.1:8000"
+	: "https://kalina-foundation-back.vercel.app"
 
 export const DONATION_ITEM_ID = 1
 
 export const MAX_PAGE_NUMBER = 6
 
-export const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || ""
+export const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || ""

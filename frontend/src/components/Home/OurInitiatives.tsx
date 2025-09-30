@@ -1,9 +1,8 @@
-import React from "react"
 import { useTranslation } from "react-i18next"
 import {
 	useScrollAnimation,
 	useStaggeredAnimation,
-} from "../../lib/useAnimations.tsx"
+} from "../../lib/useAnimations"
 import "../../styles/home/ourInitiatives.css"
 
 function OurInitiatives() {

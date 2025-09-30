@@ -5,16 +5,16 @@ import { FaGoogle } from "react-icons/fa"
 import { IoChevronBack, IoClose, IoEye, IoEyeOff } from "react-icons/io5"
 import { useNavigate } from "react-router-dom"
 
-import api from "../../lib/api.js"
+import api from "../../lib/api"
 import {
 	GOOGLE_CLIENT_ID,
 	LOGIN_PAGE,
 	PROFILE_PAGE,
 	REGISTER_PAGE,
 	TERMS_CONDITIONS_PAGE,
-} from "../../lib/constants.js"
-import { RegistrationStatus, TokenResponse } from "../../lib/types.tsx"
-import { useAuth } from "../AuthContext.tsx"
+} from "../../lib/constants"
+import { RegistrationStatus, TokenResponse } from "../../lib/types"
+import { useAuth } from "../AuthContext"
 
 import "../../styles/loginRegister/modernLogin.css"
 import "../../styles/loginRegister/modernRegister.css"

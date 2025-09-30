@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { IoChevronBack, IoClose } from "react-icons/io5"
 
-import api from "../../lib/api.js"
+import api from "../../lib/api"
 
 import "../../styles/loginRegister/modernLogin.css"
 import "../../styles/loginRegister/modernRegister.css"

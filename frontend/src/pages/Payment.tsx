@@ -1,6 +1,5 @@
-import React from "react"
-import Header from "../components/Header.tsx"
-import ModernDonationPage from "../components/Payment/ModernDonationPage.tsx"
+import Header from "../components/Header"
+import ModernDonationPage from "../components/Payment/ModernDonationPage"
 
 function Payment() {
 	return (

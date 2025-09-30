@@ -1,32 +1,14 @@
-import React from "react"
 import { useTranslation } from "react-i18next"
 import { DONATE_PAGE } from "../../lib/constants"
 import {
+	useParallax,
 	useScrollAnimation,
 	useStaggeredAnimation,
-} from "../../lib/useAnimations.tsx"
+} from "../../lib/useAnimations"
 import "../../styles/home/storiesSection.css"
 
 function StoriesSection() {
 	const { t } = useTranslation()
-
-	// Animation hooks
-	const { elementRef: sectionRef, isVisible } = useScrollAnimation<HTMLElement>(
-		{
-			threshold: 0.2,
-			triggerOnce: true,
-		}
-	)
-	const { containerRef: gridRef, visibleItems } =
-		useStaggeredAnimation<HTMLDivElement>(6, {
-			stagger: 120,
-			threshold: 0.1,
-		})
-	const { elementRef: ctaRef, isVisible: ctaVisible } =
-		useScrollAnimation<HTMLDivElement>({
-			threshold: 0.5,
-			triggerOnce: true,
-		})
 
 	const stories = [
 		{
@@ -73,6 +55,25 @@ function StoriesSection() {
 		},
 	]
 
+	// Animation hooks
+	const { elementRef: sectionRef, isVisible } = useScrollAnimation<HTMLElement>(
+		{
+			threshold: 0.2,
+			triggerOnce: true,
+		}
+	)
+	const { containerRef: gridRef, visibleItems } =
+		useStaggeredAnimation<HTMLDivElement>(stories.length, {
+			stagger: 120,
+			threshold: 0.1,
+		})
+	const { elementRef: parallaxRef, offset } = useParallax<HTMLDivElement>(0.2)
+	const { elementRef: ctaRef, isVisible: ctaVisible } =
+		useScrollAnimation<HTMLDivElement>({
+			threshold: 0.5,
+			triggerOnce: true,
+		})
+
 	const handleDonateClick = () => {
 		// Navigate to donation page or scroll to donation section
 		window.location.href = DONATE_PAGE
@@ -104,7 +105,7 @@ function StoriesSection() {
 					</p>
 				</div>
 
-				<div className="journeys-section">
+				<div ref={parallaxRef} className="journeys-section">
 					<h3
 						className={`journeys-title ${
 							isVisible

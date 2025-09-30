@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
-import Footer from "../components/Footer.js"
-import Header from "../components/Header.tsx"
-import DonationImpact from "../components/Home/DonationImpact.tsx"
-import HeroSection from "../components/Home/HeroSection.tsx"
-import OurInitiatives from "../components/Home/OurInitiatives.tsx"
-import StoriesSection from "../components/Home/StoriesSection.tsx"
-import TeamMission from "../components/Home/TeamMission.tsx"
-import TopDonators from "../components/Home/TopDonators.tsx"
+import Footer from "../components/Footer"
+import Header from "../components/Header"
+import DonationImpact from "../components/Home/DonationImpact"
+import HeroSection from "../components/Home/HeroSection"
+import OurInitiatives from "../components/Home/OurInitiatives"
+import StoriesSection from "../components/Home/StoriesSection"
+import TeamMission from "../components/Home/TeamMission"
+import TopDonators from "../components/Home/TopDonators"
 
-import { MAX_PAGE_NUMBER } from "../lib/constants.js"
-import { usePageLoadAnimation } from "../lib/useAnimations.tsx"
+import { MAX_PAGE_NUMBER } from "../lib/constants"
+import { usePageLoadAnimation } from "../lib/useAnimations"
 
 import { useMediaQuery } from "@uidotdev/usehooks"
 
 import { useTranslation } from "react-i18next"
 
-import NotFound from "./NotFound.js"
+import NotFound from "./NotFound"
 
 // Import animation styles
 import "../styles/animations.css"
