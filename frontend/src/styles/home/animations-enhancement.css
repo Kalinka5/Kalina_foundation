@@ -255,7 +255,7 @@
 /* =========================
    BUTTON ENHANCEMENTS
    ========================= */
-.btn-animated {
+.btn-enhanced {
 	position: relative;
 	background: #4169e1;
 	border: none;
@@ -267,7 +267,7 @@
 	overflow: hidden;
 }
 
-.btn-animated::before {
+.btn-enhanced::before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -279,20 +279,25 @@
 	z-index: -1;
 }
 
-.btn-animated:hover::before {
+.btn-enhanced:hover::before {
 	left: 0;
 }
 
 /* Apply blue text to buttons with yellow backgrounds on hover for better color scheme consistency */
-.initiative-card .btn-animated:hover,
-.story-card .btn-animated:hover,
-.category-card .btn-animated:hover,
-.cta-button.btn-animated:hover,
-.impact-hero-button.btn-animated:hover,
-.process-donation-btn.btn-animated:hover,
-.btn-animated:hover[style*="background"][style*="yellow"],
-.btn-animated:hover[class*="yellow"] {
+.initiative-card .btn-enhanced:hover,
+.category-card .btn-enhanced:hover,
+.cta-button.btn-enhanced:hover,
+.impact-hero-button.btn-enhanced:hover,
+.process-donation-btn.btn-enhanced:hover,
+.btn-enhanced:hover[style*="background"][style*="yellow"],
+.btn-enhanced:hover[class*="yellow"] {
 	color: #4169e1;
+}
+
+/* Keep white text for story-card buttons and general btn-animated on hover for better visibility over yellow background */
+.story-card .btn-animated:hover,
+.btn-animated:hover {
+	color: #ffffff !important;
 }
 
 .btn-pulse {
@@ -431,7 +436,7 @@
 		display: none;
 	}
 
-	.btn-animated::before {
+	.btn-enhanced::before {
 		display: none;
 	}
 

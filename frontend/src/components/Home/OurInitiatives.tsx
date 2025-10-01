@@ -75,10 +75,6 @@ function OurInitiatives() {
 		},
 	]
 
-	const handleInitiativeClick = (slug: string) => {
-		navigate(`${INITIATIVES_PAGE}?category=${slug}`)
-	}
-
 	return (
 		<section
 			ref={sectionRef}
@@ -120,7 +116,7 @@ function OurInitiatives() {
 							<p className="card-description">{initiative.description}</p>
 							<button
 								className="card-button btn-animated btn-ripple"
-								onClick={() => handleInitiativeClick(initiative.slug)}
+								onClick={() => navigate(`${INITIATIVES_PAGE}`)}
 							>
 								{initiative.buttonText}
 							</button>

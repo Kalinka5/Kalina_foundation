@@ -77,8 +77,6 @@ function Initiatives() {
 	const videoRef = useRef<HTMLIFrameElement>(null)
 	const statsRef = useRef<HTMLDivElement>(null)
 	const [startCounting, setStartCounting] = useState(false)
-	const scrollContainerRef = useRef<HTMLDivElement>(null)
-	const [isPaused, setIsPaused] = useState(false)
 
 	// IntersectionObserver to trigger counting animation
 	useEffect(() => {
@@ -103,41 +101,6 @@ function Initiatives() {
 			}
 		}
 	}, [startCounting])
-
-	// Auto-scroll effect for showcase cards
-	useEffect(() => {
-		const container = scrollContainerRef.current
-		if (!container) return
-
-		let animationFrameId: number
-		let scrollPosition = 0
-		const scrollSpeed = 0.5 // pixels per frame
-
-		const autoScroll = () => {
-			if (!isPaused && container) {
-				scrollPosition += scrollSpeed
-				container.scrollLeft = scrollPosition
-
-				// Reset scroll when reaching the end (infinite loop)
-				const maxScroll = container.scrollWidth - container.clientWidth
-				if (scrollPosition >= maxScroll / 2) {
-					// Reset to start when halfway (since we duplicate cards)
-					scrollPosition = 0
-					container.scrollLeft = 0
-				}
-			}
-
-			animationFrameId = requestAnimationFrame(autoScroll)
-		}
-
-		animationFrameId = requestAnimationFrame(autoScroll)
-
-		return () => {
-			if (animationFrameId) {
-				cancelAnimationFrame(animationFrameId)
-			}
-		}
-	}, [isPaused])
 
 	const initiatives: Initiative[] = [
 		{
@@ -181,69 +144,41 @@ function Initiatives() {
 		},
 	]
 
-	// Showcase cards with different types
-	const showcaseCards = [
+	// Story content with different layouts
+	const storyContent = [
 		{
 			id: 1,
-			type: "image-text",
-			icon: "🎯",
-			title: t("initiatives-tactical-title"),
-			description: t("initiatives-tactical-subtitle"),
+			layout: "image-left",
 			image: "/img/donation-image1.jpg",
-			color: "#f5e6d3",
-			textColor: "#2d2d2d",
+			title: t("initiatives-story-1-title"),
+			description: t("initiatives-story-1-desc"),
+			stats: [
+				{ value: "2,450+", label: t("initiatives-stat-delivered") },
+				{ value: "48", label: t("initiatives-stat-brigades") },
+			],
 		},
 		{
 			id: 2,
-			type: "stats-card",
-			icon: "💪",
-			title: t("initiatives-stat-delivered"),
-			value: "2,450+",
-			subtitle: t("initiatives-stat-brigades"),
-			valueSmall: "48",
-			color: "#fef3c7",
-			gradient: "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)",
+			layout: "image-right-large",
+			image: "/img/donation-image3.jpg",
+			title: t("initiatives-story-2-title"),
+			description: t("initiatives-story-2-desc"),
+			highlight: t("initiatives-story-2-highlight"),
 		},
 		{
 			id: 3,
-			type: "image-overlay",
-			icon: "🚁",
-			title: t("initiatives-drones-title"),
-			subtitle: t("initiatives-drones-subtitle"),
-			image: "/img/donation-image3.jpg",
-			color: "#1f2937",
-			badge: t("initiatives-stat-missions"),
-			badgeValue: "5,800",
+			layout: "two-images",
+			images: ["/img/donation-image5.jpg", "/img/donation-image2.jpg"],
+			title: t("initiatives-story-3-title"),
+			description: t("initiatives-story-3-desc"),
 		},
 		{
 			id: 4,
-			type: "text-action",
-			icon: "⚡",
-			title: t("initiatives-support-title"),
-			description: t("initiatives-support-subtitle"),
-			color: "#a78bfa",
-			buttonText: t("initiatives-donate-to-this"),
-		},
-		{
-			id: 5,
-			type: "image-text",
-			icon: "🎖️",
-			title: t("initiatives-impact-title1"),
-			description: t("initiatives-impact-desc1"),
-			image: "/img/donation-image5.jpg",
-			color: "#dbeafe",
-			textColor: "#1e3a8a",
-		},
-		{
-			id: 6,
-			type: "image-overlay",
-			icon: "🛡️",
-			title: t("initiatives-tactical-subtitle"),
-			subtitle: t("initiatives-highlight-1"),
-			image: "/img/donation-image2.jpg",
-			color: "#1f2937",
-			badge: t("initiatives-hero-stat3"),
-			badgeValue: "48",
+			layout: "image-left",
+			image: "/img/donation-image4.jpg",
+			title: t("initiatives-story-4-title"),
+			description: t("initiatives-story-4-desc"),
+			quote: t("initiatives-story-4-quote"),
 		},
 	]
 
@@ -356,142 +291,132 @@ function Initiatives() {
 				</div>
 			</section>
 
-			{/* Initiatives Showcase - Sliding Cards */}
-			<section className="initiatives-showcase">
+			{/* Our Story - Alternating Layouts */}
+			<section className="our-story-section">
 				<div className="initiatives-container">
-					<div className="showcase-header">
+					<div className="story-header">
 						<h2 className="initiatives-section-title">
-							{t("initiatives-showcase-title")}
+							{t("initiatives-story-title")}
 						</h2>
 						<p className="initiatives-section-subtitle">
-							{t("initiatives-showcase-subtitle")}
+							{t("initiatives-story-subtitle")}
 						</p>
 					</div>
 
-					{/* Horizontal Scrolling Cards */}
-					<div className="showcase-cards-wrapper">
-						<div
-							className="showcase-cards-scroll"
-							ref={scrollContainerRef}
-							onMouseEnter={() => setIsPaused(true)}
-							onMouseLeave={() => setIsPaused(false)}
-						>
-							{/* Duplicate cards for infinite scroll */}
-							{[...showcaseCards, ...showcaseCards].map((card, index) => {
-								const cardKey = `${card.id}-${index}`
-								// Image + Text Below Card
-								if (card.type === "image-text") {
-									return (
-										<div
-											key={cardKey}
-											className="showcase-card card-image-text animate-card"
-											style={{ backgroundColor: card.color }}
-										>
-											<div className="card-image-container">
-												<img
-													src={card.image}
-													alt={card.title}
-													className="card-image"
-												/>
-											</div>
-											<div
-												className="card-content"
-												style={{ color: card.textColor }}
-											>
-												<div className="card-icon">{card.icon}</div>
-												<h3 className="card-title">{card.title}</h3>
-												<p className="card-description">{card.description}</p>
-											</div>
-										</div>
-									)
-								}
-
-								// Stats Card
-								if (card.type === "stats-card") {
-									return (
-										<div
-											key={cardKey}
-											className="showcase-card card-stats animate-card"
-											style={{ background: card.gradient }}
-										>
-											<div className="card-icon-large">{card.icon}</div>
-											<div className="stats-content">
-												<div className="stat-primary">
-													<div className="stat-value-large">{card.value}</div>
-													<div className="stat-label-main">{card.title}</div>
-												</div>
-												<div className="stat-secondary">
-													<div className="stat-value-small">
-														{card.valueSmall}
-													</div>
-													<div className="stat-label-small">
-														{card.subtitle}
-													</div>
-												</div>
-											</div>
-											<div className="card-decoration">✨</div>
-										</div>
-									)
-								}
-
-								// Image with Overlay Text Card
-								if (card.type === "image-overlay") {
-									return (
-										<div
-											key={cardKey}
-											className="showcase-card card-image-overlay animate-card"
-										>
+					{storyContent.map((story, index) => {
+						// Layout 1: Image Left, Text Right
+						if (story.layout === "image-left") {
+							return (
+								<div key={story.id} className="story-block image-left">
+									<div className="initiatives-story-image-wrapper">
+										<div className="initiatives-story-image-container">
 											<img
-												src={card.image}
-												alt={card.title}
-												className="card-background-image"
+												src={story.image}
+												alt={story.title}
+												className="initiatives-story-image"
 											/>
-											<div className="card-overlay"></div>
-											<div className="card-overlay-content">
-												{card.badge && (
-													<div className="overlay-badge">
-														<span className="badge-icon">{card.icon}</span>
-														<span className="badge-text">
-															{card.badgeValue} {card.badge}
-														</span>
+											<div className="image-glow"></div>
+										</div>
+									</div>
+									<div className="initiatives-story-content">
+										<div className="story-badge">
+											{t("initiatives-story-badge")} {story.id}
+										</div>
+										<h3 className="story-title">{story.title}</h3>
+										<p className="initiatives-story-description">
+											{story.description}
+										</p>
+										{story.stats && (
+											<div className="story-stats">
+												{story.stats.map((stat, i) => (
+													<div key={i} className="story-stat">
+														<div className="stat-value">{stat.value}</div>
+														<div className="stat-label">{stat.label}</div>
 													</div>
-												)}
-												<h3 className="overlay-title">{card.title}</h3>
-												<p className="overlay-subtitle">{card.subtitle}</p>
+												))}
 											</div>
-										</div>
-									)
-								}
+										)}
+										{story.quote && (
+											<div className="story-quote">
+												<span className="quote-icon">"</span>
+												{story.quote}
+											</div>
+										)}
+									</div>
+								</div>
+							)
+						}
 
-								// Text + Action Card
-								if (card.type === "text-action") {
-									return (
-										<div
-											key={cardKey}
-											className="showcase-card card-text-action animate-card"
-											style={{ backgroundColor: card.color }}
-										>
-											<div className="card-icon-animated">{card.icon}</div>
-											<h3 className="action-card-title">{card.title}</h3>
-											<p className="action-card-description">
-												{card.description}
-											</p>
-											<button
-												className="action-card-button"
-												onClick={() => navigate("/donate")}
-											>
-												<span>{card.buttonText}</span>
-												<span className="button-icon">→</span>
-											</button>
-											<div className="card-pulse-effect"></div>
+						// Layout 2: Image Right (Larger), Text Left
+						if (story.layout === "image-right-large") {
+							return (
+								<div key={story.id} className="story-block image-right-large">
+									<div className="initiatives-story-content">
+										<div className="story-badge">
+											{t("initiatives-story-badge")} {story.id}
 										</div>
-									)
-								}
+										<h3 className="story-title">{story.title}</h3>
+										<p className="initiatives-story-description">
+											{story.description}
+										</p>
+										{story.highlight && (
+											<div className="story-highlight">
+												<div className="highlight-dot"></div>
+												{story.highlight}
+											</div>
+										)}
+									</div>
+									<div className="initiatives-story-image-wrapper large">
+										<div className="initiatives-story-image-container">
+											<img
+												src={story.image}
+												alt={story.title}
+												className="initiatives-story-image"
+											/>
+											<div className="image-glow"></div>
+										</div>
+									</div>
+								</div>
+							)
+						}
 
-								return null
-							})}
-						</div>
-					</div>
+						// Layout 3: Two Images, Text in Center
+						if (story.layout === "two-images") {
+							return (
+								<div key={story.id} className="story-block two-images">
+									<div className="story-images-grid">
+										<div className="initiatives-story-image-container">
+											<img
+												src={story.images[0]}
+												alt={`${story.title} 1`}
+												className="initiatives-story-image"
+											/>
+											<div className="image-glow"></div>
+										</div>
+										<div className="initiatives-story-image-container">
+											<img
+												src={story.images[1]}
+												alt={`${story.title} 2`}
+												className="initiatives-story-image"
+											/>
+											<div className="image-glow"></div>
+										</div>
+									</div>
+									<div className="initiatives-story-content centered">
+										<div className="story-badge">
+											{t("initiatives-story-badge")} {story.id}
+										</div>
+										<h3 className="story-title">{story.title}</h3>
+										<p className="initiatives-story-description">
+											{story.description}
+										</p>
+									</div>
+								</div>
+							)
+						}
+
+						return null
+					})}
 				</div>
 			</section>
 
@@ -540,7 +465,9 @@ function Initiatives() {
 			<section className="final-cta">
 				<div className="initiatives-container">
 					<div className="cta-box">
-						<h2 className="cta-title">{t("initiatives-final-cta-title")}</h2>
+						<h2 className="initiatives-cta-title">
+							{t("initiatives-final-initiatives-cta-title")}
+						</h2>
 						<p className="cta-subtitle">
 							{t("initiatives-final-cta-subtitle")}
 						</p>
@@ -550,12 +477,6 @@ function Initiatives() {
 								onClick={() => navigate("/donate")}
 							>
 								{t("initiatives-donate-now")}
-							</button>
-							<button
-								className="btn-secondary-large"
-								onClick={() => navigate("/home")}
-							>
-								{t("initiatives-learn-more")}
 							</button>
 						</div>
 					</div>

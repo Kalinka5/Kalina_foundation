@@ -4,7 +4,7 @@ import Footer from "../components/Footer"
 import Header from "../components/Header"
 import DonationImpact from "../components/Home/DonationImpact"
 import HeroSection from "../components/Home/HeroSection"
-import OurInitiatives from "../components/Home/OurInitiatives"
+import InitiativesShowcase from "../components/Home/InitiativesShowcase"
 import StoriesSection from "../components/Home/StoriesSection"
 import TeamMission from "../components/Home/TeamMission"
 import TopDonators from "../components/Home/TopDonators"
@@ -67,7 +67,7 @@ function Home() {
 	const SectionLinks = [
 		{ id: 1, urlLink: "#hero-section", urlName: t("about-us") },
 		{ id: 2, urlLink: "#team-mission", urlName: t("our-mission") },
-		{ id: 3, urlLink: "#our-initiatives", urlName: t("our-initiatives") },
+		{ id: 3, urlLink: "#donation-impact", urlName: t("our-initiatives") },
 		{ id: 4, urlLink: "#stories-section", urlName: t("stories") },
 		{ id: 5, urlLink: "#donation-impact", urlName: t("donate") },
 		{ id: 6, urlLink: "#top-donators", urlName: t("top-donators") },
@@ -80,8 +80,8 @@ function Home() {
 				<main className="home-content">
 					<HeroSection />
 					<TeamMission />
-					<OurInitiatives />
 					<StoriesSection />
+					<InitiativesShowcase />
 					<DonationImpact />
 					<TopDonators />
 					<Footer />

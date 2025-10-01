@@ -7,6 +7,7 @@ import {
 	useStaggeredAnimation,
 } from "../../lib/useAnimations"
 import "../../styles/home/donationImpact.css"
+import OurInitiatives from "./OurInitiatives"
 
 function DonationImpact() {
 	const { t } = useTranslation()
@@ -18,10 +19,6 @@ function DonationImpact() {
 	const autoAdvanceDelay = 10000 // 10 seconds
 
 	// Animation hooks
-	const { elementRef: heroRef, isVisible: heroVisible } = useScrollAnimation({
-		threshold: 0.3,
-		triggerOnce: true,
-	})
 	const { elementRef: formRef, isVisible: formVisible } = useScrollAnimation({
 		threshold: 0.4,
 		triggerOnce: true,
@@ -112,40 +109,8 @@ function DonationImpact() {
 
 	return (
 		<section className="donation-impact" id="donation-impact">
-			{/* Hero Section */}
-			<div
-				ref={heroRef}
-				className={`impact-hero ${heroVisible ? "visible" : ""}`}
-			>
-				<div className="impact-hero-container">
-					<h2
-						className={`impact-hero-title yellow-text ${
-							heroVisible ? "animate-fade-up visible" : "animate-fade-up"
-						}`}
-					>
-						{t("donation-impact-hero-title")}
-					</h2>
-					<p
-						className={`impact-hero-description ${
-							heroVisible
-								? "animate-fade-up visible stagger-1"
-								: "animate-fade-up stagger-1"
-						}`}
-					>
-						{t("donation-impact-hero-description")}
-					</p>
-					<button
-						className={`impact-hero-button btn-animated btn-pulse ${
-							heroVisible
-								? "animate-scale-in visible stagger-2"
-								: "animate-scale-in stagger-2"
-						}`}
-						onClick={handleDonateClick}
-					>
-						{t("donation-impact-hero-button")}
-					</button>
-				</div>
-			</div>
+			{/* Our Initiatives Section */}
+			<OurInitiatives />
 
 			{/* Choose Your Impact */}
 			<div

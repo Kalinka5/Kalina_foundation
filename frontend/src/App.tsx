@@ -18,6 +18,7 @@ import {
 } from "./lib/constants"
 
 import ProtectedRoute from "./components/ProtectedRoute"
+import ScrollToTop from "./components/ScrollToTop"
 
 import AccessibilityStatement from "./pages/AccessibilityStatement"
 import EmailVerify from "./pages/EmailVerify"
@@ -45,6 +46,7 @@ function Logout() {
 function App() {
 	return (
 		<Router>
+			<ScrollToTop />
 			<main className="App">
 				<Routes>
 					<Route path={`${HOME_PAGE}`} element={<Home />} />

@@ -347,16 +347,42 @@ body {
 		box-shadow var(--duration-fast) var(--ease-out-quart);
 }
 
+.btn-animated::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		#ffd700,
+		#ffd700,
+		transparent
+	);
+	transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+	z-index: -1;
+}
+
 /* Hover effect for buttons without pulse animation */
 .btn-animated:not(.btn-pulse):hover {
 	transform: translateY(-2px);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+.btn-animated:hover::before {
+	left: 100%;
+}
+
 /* Hover effect for buttons with pulse - enhance shadow only */
 .btn-animated.btn-pulse:hover {
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 	filter: brightness(1.05);
+}
+
+.btn-animated.btn-pulse:hover::before {
+	left: 100%;
 }
 
 .btn-animated:not(.btn-pulse):active {
