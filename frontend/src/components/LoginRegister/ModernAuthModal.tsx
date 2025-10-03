@@ -253,33 +253,6 @@ function ModernAuthModal({
 		}
 	}
 
-	// Custom Language Selector Component
-	const CustomLanguageSelector = () => {
-		const currentLang = i18n.language
-
-		const handleLanguageChange = (lang: string) => {
-			i18n.changeLanguage(lang)
-			localStorage.setItem("i18nextLng", lang)
-		}
-
-		return (
-			<div className="custom-language-selector">
-				<button
-					className={`lang-button ${currentLang === "en" ? "active" : ""}`}
-					onClick={() => handleLanguageChange("en")}
-				>
-					EN
-				</button>
-				<button
-					className={`lang-button ${currentLang === "ua" ? "active" : ""}`}
-					onClick={() => handleLanguageChange("ua")}
-				>
-					UA
-				</button>
-			</div>
-		)
-	}
-
 	// Success/Error message component
 	const AlertMessage = ({
 		message,
@@ -733,11 +706,6 @@ function ModernAuthModal({
 
 					{/* Right side - Image */}
 					<div className={imageSideClass}>
-						{/* Language selector positioned on image side */}
-						<div className="modern-language-wrapper">
-							<CustomLanguageSelector />
-						</div>
-
 						<div className="modern-image-frame">
 							{/* Background Image */}
 							<img

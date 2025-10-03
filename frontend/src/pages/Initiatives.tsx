@@ -157,7 +157,7 @@ function Initiatives() {
 		{
 			id: 1,
 			layout: "image-left",
-			image: "/img/donation-image1.jpg",
+			image: "/img/donation-image2.jpg",
 			title: t("initiatives-story-1-title"),
 			description: t("initiatives-story-1-desc"),
 			stats: [
@@ -165,28 +165,21 @@ function Initiatives() {
 				{ value: "48", label: t("initiatives-stat-brigades") },
 			],
 		},
+
 		{
 			id: 2,
-			layout: "image-right-large",
-			image: "/img/donation-image3.jpg",
+			layout: "two-images",
+			images: ["/img/donation-image3.jpg", "/img/donation-image4.jpg"],
 			title: t("initiatives-story-2-title"),
 			description: t("initiatives-story-2-desc"),
-			highlight: t("initiatives-story-2-highlight"),
 		},
 		{
 			id: 3,
-			layout: "two-images",
-			images: ["/img/donation-image5.jpg", "/img/donation-image2.jpg"],
+			layout: "image-left",
+			image: "/img/donation-image5.jpg",
 			title: t("initiatives-story-3-title"),
 			description: t("initiatives-story-3-desc"),
-		},
-		{
-			id: 4,
-			layout: "image-left",
-			image: "/img/donation-image4.jpg",
-			title: t("initiatives-story-4-title"),
-			description: t("initiatives-story-4-desc"),
-			quote: t("initiatives-story-4-quote"),
+			quote: t("initiatives-story-3-quote"),
 		},
 	]
 
@@ -370,12 +363,6 @@ function Initiatives() {
 										<p className="initiatives-story-description">
 											{story.description}
 										</p>
-										{story.highlight && (
-											<div className="story-highlight">
-												<div className="highlight-dot"></div>
-												{story.highlight}
-											</div>
-										)}
 									</div>
 									<div className="initiatives-story-image-wrapper large">
 										<div className="initiatives-story-image-container">
@@ -466,6 +453,56 @@ function Initiatives() {
 								</div>
 								<h4>{t("initiatives-impact-title3")}</h4>
 								<p>{t("initiatives-impact-desc3")}</p>
+							</div>
+						</div>
+						<div className="timeline-item">
+							<div className="timeline-marker"></div>
+							<div className="timeline-content">
+								<div className="timeline-date">
+									{t("initiatives-impact-date4")}
+								</div>
+								<h4>{t("initiatives-impact-title4")}</h4>
+								<p>{t("initiatives-impact-desc4")}</p>
+							</div>
+						</div>
+						<div className="timeline-item">
+							<div className="timeline-marker"></div>
+							<div className="timeline-content">
+								<div className="timeline-date">
+									{t("initiatives-impact-date5")}
+								</div>
+								<h4>{t("initiatives-impact-title5")}</h4>
+								<p>{t("initiatives-impact-desc5")}</p>
+							</div>
+						</div>
+						<div className="timeline-item">
+							<div className="timeline-marker"></div>
+							<div className="timeline-content">
+								<div className="timeline-date">
+									{t("initiatives-impact-date6")}
+								</div>
+								<h4>{t("initiatives-impact-title6")}</h4>
+								<p>{t("initiatives-impact-desc6")}</p>
+							</div>
+						</div>
+						<div className="timeline-item">
+							<div className="timeline-marker"></div>
+							<div className="timeline-content">
+								<div className="timeline-date">
+									{t("initiatives-impact-date7")}
+								</div>
+								<h4>{t("initiatives-impact-title7")}</h4>
+								<p>{t("initiatives-impact-desc7")}</p>
+							</div>
+						</div>
+						<div className="timeline-item">
+							<div className="timeline-marker"></div>
+							<div className="timeline-content">
+								<div className="timeline-date">
+									{t("initiatives-impact-date8")}
+								</div>
+								<h4>{t("initiatives-impact-title8")}</h4>
+								<p>{t("initiatives-impact-desc8")}</p>
 							</div>
 						</div>
 					</div>

@@ -1,40 +1,49 @@
 .custom-language-selector {
 	display: flex;
-	align-items: center;
-	gap: 4px;
+	background: #333333;
+	border-radius: 25px;
+	padding: 4px;
+	border: 1px solid #555555;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 	margin-right: 16px;
 }
 
 .lang-button {
+	padding: 8px 16px;
+	border: none;
+	border-radius: 20px;
 	background: transparent;
-	border: 1px solid #f2f2f2;
-	color: #f2f2f2;
-	padding: 6px 12px;
+	color: #b0b0b0;
 	font-size: 12px;
-	font-weight: 500;
+	font-weight: 600;
 	cursor: pointer;
-	transition: all 0.3s ease;
-	border-radius: 4px;
+	transition: all 0.2s ease;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
 	font-family: "Poppins", sans-serif;
 }
 
 .lang-button:hover {
-	background: rgba(255, 255, 255, 0.1);
+	color: #ffffff;
+	background: #404040;
 }
 
 .lang-button.active {
-	background: #008cff;
-	border-color: #008cff;
-	color: white;
+	background: #4169e1;
+	color: #ffffff;
+	box-shadow: 0 2px 6px rgba(65, 105, 225, 0.3);
 }
 
 @media (max-width: 750px) {
 	.custom-language-selector {
 		margin-right: 8px;
+		padding: 3px;
+		border-radius: 6px;
 	}
 
 	.lang-button {
-		padding: 4px 8px;
-		font-size: 10px;
+		padding: 6px 12px;
+		font-size: 11px;
+		border-radius: 4px;
 	}
 }

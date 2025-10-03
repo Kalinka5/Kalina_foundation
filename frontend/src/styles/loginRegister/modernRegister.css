@@ -96,49 +96,6 @@
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Language selector wrapper */
-.modern-language-wrapper {
-	position: absolute;
-	top: 24px;
-	left: 24px;
-	z-index: 10;
-}
-
-/* Custom language selector */
-.custom-language-selector {
-	display: flex;
-	background: #333333;
-	border-radius: 25px;
-	padding: 4px;
-	border: 1px solid #555555;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.lang-button {
-	padding: 8px 16px;
-	border: none;
-	border-radius: 20px;
-	background: transparent;
-	color: #b0b0b0;
-	font-size: 12px;
-	font-weight: 600;
-	cursor: pointer;
-	transition: all 0.2s ease;
-	text-transform: uppercase;
-	letter-spacing: 0.5px;
-}
-
-.lang-button:hover {
-	color: #ffffff;
-	background: #404040;
-}
-
-.lang-button.active {
-	background: #4169e1;
-	color: #ffffff;
-	box-shadow: 0 2px 6px rgba(65, 105, 225, 0.3);
-}
-
 .modern-register-logo {
 	background: #333333;
 	color: #e5e5e5;
@@ -841,39 +798,6 @@
 		display: none;
 	}
 
-	.modern-language-wrapper {
-		position: fixed;
-		top: 15px;
-		left: 15px;
-		z-index: 20;
-	}
-
-	.custom-language-selector {
-		background: rgba(0, 0, 0, 0.7);
-		padding: 3px;
-		border-radius: 6px;
-		border: 1px solid rgba(255, 255, 255, 0.2);
-	}
-
-	.lang-button {
-		padding: 6px 12px;
-		font-size: 11px;
-		background: transparent;
-		color: #e5e5e5;
-		border: none;
-		border-radius: 4px;
-		transition: all 0.2s ease;
-	}
-
-	.lang-button:hover {
-		background: rgba(255, 255, 255, 0.1);
-	}
-
-	.lang-button.active {
-		background: #4169e1;
-		color: #ffffff;
-	}
-
 	.modern-back-button {
 		background: rgba(0, 0, 0, 0.7);
 		border: 1px solid rgba(255, 255, 255, 0.2);
@@ -970,11 +894,6 @@
 
 	.modern-error-message {
 		font-size: 10px;
-	}
-
-	.modern-language-wrapper {
-		top: 10px;
-		left: 10px;
 	}
 
 	.modern-back-button {

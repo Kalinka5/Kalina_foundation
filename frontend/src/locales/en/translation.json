@@ -517,6 +517,26 @@
 	"initiatives-impact-title3": "Expanded to 48 Brigades",
 	"initiatives-impact-desc3": "Now supporting 48 military brigades with continuous equipment supply, technical support, and emergency response.",
 
+	"initiatives-impact-date4": "March 2024",
+	"initiatives-impact-title4": "Medical Aid Program Launch",
+	"initiatives-impact-desc4": "Launched comprehensive medical aid program, delivering over 15,000 first-aid kits and medical supplies to frontline units across all sectors.",
+
+	"initiatives-impact-date5": "June 2024",
+	"initiatives-impact-title5": "Advanced Technology Integration",
+	"initiatives-impact-desc5": "Introduced cutting-edge thermal imaging systems and electronic warfare equipment, significantly enhancing battlefield effectiveness and soldier safety.",
+
+	"initiatives-impact-date6": "September 2024",
+	"initiatives-impact-title6": "Logistics Network Expansion",
+	"initiatives-impact-desc6": "Established regional distribution centers and rapid response teams, reducing delivery times by 60% and ensuring critical supplies reach the frontlines within 24 hours.",
+
+	"initiatives-impact-date7": "November 2024",
+	"initiatives-impact-title7": "International Partnership Program",
+	"initiatives-impact-desc7": "Formed strategic partnerships with international defense contractors and NGOs, expanding our reach and access to specialized military equipment and training programs.",
+
+	"initiatives-impact-date8": "January 2025",
+	"initiatives-impact-title8": "Digital Innovation Initiative",
+	"initiatives-impact-desc8": "Launched digital platform for real-time equipment tracking and brigade communication, revolutionizing how we coordinate support and maintain transparency in our operations.",
+
 	"initiatives-final-cta-title": "Join the Fight for Freedom",
 	"initiatives-final-cta-subtitle": "Your contribution today becomes lifesaving equipment tomorrow. Stand with Ukraine's heroes and make a direct impact on the battlefield.",
 	"initiatives-donate-now": "Donate Now",
@@ -529,14 +549,12 @@
 	"initiatives-story-1-title": "Protection and Readiness on the Frontlines",
 	"initiatives-story-1-desc": "Thanks to your support, we've delivered over 2,450 units of critical tactical equipment to 48 brigades. From next-generation body armor to specialized gear - every unit undergoes rigorous quality control. Our soldiers receive the same equipment used by elite NATO units, ensuring maximum protection in the most dangerous situations.",
 
-	"initiatives-story-2-title": "Technological Advantage in the Air",
-	"initiatives-story-2-desc": "Drones have changed modern warfare, providing a tactical advantage that saves lives. From FPV drones for precision operations to advanced Mavic, Leleka, and Shark-D reconnaissance systems - we provide the technologies that make a real difference. Over 5,800 successful missions have been completed using the equipment we supply.",
-	"initiatives-story-2-highlight": "Every drone is equipped with the latest technology and accompanied by comprehensive operator training",
+	"initiatives-story-2-title": "Power of Two: Logistics and Energy",
+	"initiatives-story-2-desc": "Military operations depend on reliable logistics and stable power supply. Our programs have delivered 340+ vehicles and 890 generators, ensuring continuous operations on the frontlines. From SUVs capable of withstanding the toughest conditions to mobile power stations supporting critical operations - your donations keep missions running smoothly.",
 
-	"initiatives-story-3-title": "Power of Two: Logistics and Energy",
-	"initiatives-story-3-desc": "Military operations depend on reliable logistics and stable power supply. Our programs have delivered 340+ vehicles and 890 generators, ensuring continuous operations on the frontlines. From SUVs capable of withstanding the toughest conditions to mobile power stations supporting critical operations - your donations keep missions running smoothly.",
+	"initiatives-story-3-title": "Your Impact: More Than Numbers",
+	"initiatives-story-3-desc": "Behind every number is a real story. Body armor that saved a life. A drone that warned of danger. A generator that kept a field hospital running in a critical moment. When you contribute, you're not just giving equipment - you're giving hope, protection, and a chance for victory. Our defenders feel your support every day.",
+	"initiatives-story-3-quote": "Thanks to your support, we have world-class equipment. Every unit you send reminds us that we are not alone in this fight.",
 
-	"initiatives-story-4-title": "Your Impact: More Than Numbers",
-	"initiatives-story-4-desc": "Behind every number is a real story. Body armor that saved a life. A drone that warned of danger. A generator that kept a field hospital running in a critical moment. When you contribute, you're not just giving equipment - you're giving hope, protection, and a chance for victory. Our defenders feel your support every day.",
-	"initiatives-story-4-quote": "Thanks to your support, we have world-class equipment. Every unit you send reminds us that we are not alone in this fight."
+	"initiatives-final-initiatives-cta-title": "Join the Fight for Freedom"
 }
