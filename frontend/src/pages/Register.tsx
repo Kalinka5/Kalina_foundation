@@ -1,3 +1,4 @@
+import Header from "../components/Header"
 import ModernAuthModal from "../components/LoginRegister/ModernAuthModal"
 
 import "../styles/loginRegister/modernRegister.css"
@@ -15,11 +16,14 @@ function Register() {
 	]
 
 	return (
-		<ModernAuthModal
-			onClose={handleClose}
-			backgroundImages={backgroundImages}
-			mode="register"
-		/>
+		<>
+			<Header navLinks={[]} />
+			<ModernAuthModal
+				onClose={handleClose}
+				backgroundImages={backgroundImages}
+				mode="register"
+			/>
+		</>
 	)
 }
 

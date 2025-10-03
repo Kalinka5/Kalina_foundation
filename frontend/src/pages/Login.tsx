@@ -1,5 +1,6 @@
 import { useState } from "react"
 
+import Header from "../components/Header"
 import ModernAuthModal from "../components/LoginRegister/ModernAuthModal"
 
 import "../styles/loginRegister/modernLogin.css"
@@ -20,6 +21,7 @@ function Login() {
 
 	return (
 		<>
+			<Header navLinks={[]} />
 			{showModal && (
 				<ModernAuthModal
 					onClose={handleClose}

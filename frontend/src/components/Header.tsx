@@ -17,7 +17,7 @@ import { HeaderProps } from "../lib/types"
 
 import "../styles/header.css"
 
-const Header = ({ fixed, children }: HeaderProps) => {
+const Header = ({ fixed, children, navLinks = [] }: HeaderProps) => {
 	const authLinks = [
 		{ id: 1, urlLink: `${PROFILE_PAGE}`, urlName: "profile" },
 		{ id: 2, urlLink: `${LOGOUT_PAGE}`, urlName: "logout" },
@@ -25,16 +25,6 @@ const Header = ({ fixed, children }: HeaderProps) => {
 	const notAuthLinks = [
 		{ id: 1, urlLink: `${LOGIN_PAGE}`, urlName: "login" },
 		{ id: 2, urlLink: `${REGISTER_PAGE}`, urlName: "register" },
-	]
-
-	// Main navigation links
-	const mainNavLinks = [
-		{ id: 1, urlLink: "#hero-section", urlName: "about-us" },
-		{ id: 2, urlLink: "#team-mission", urlName: "our-mission" },
-		{ id: 3, urlLink: "#our-initiatives", urlName: "our-initiatives" },
-		{ id: 4, urlLink: "#stories-section", urlName: "stories" },
-		{ id: 5, urlLink: "#donation-impact", urlName: "donate" },
-		{ id: 6, urlLink: "#top-donators", urlName: "top-donators" },
 	]
 
 	const { isAuthorized } = useAuth()
@@ -55,15 +45,17 @@ const Header = ({ fixed, children }: HeaderProps) => {
 
 	const NavContent = () => (
 		<>
-			<div className="center-nav">
-				<ul className="nav-links main-nav-links">
-					{mainNavLinks.map(el => (
-						<li className="nav-link" key={el.id}>
-							<a href={el.urlLink}>{t(el.urlName)}</a>
-						</li>
-					))}
-				</ul>
-			</div>
+			{navLinks && navLinks.length > 0 && (
+				<div className="center-nav">
+					<ul className="nav-links main-nav-links">
+						{navLinks.map(el => (
+							<li className="nav-link" key={el.id}>
+								<a href={el.urlLink}>{t(el.urlName)}</a>
+							</li>
+						))}
+					</ul>
+				</div>
+			)}
 			<div className="right-nav">
 				<LanguageSelector />
 				<button className="theme-toggle" onClick={toggleTheme}>

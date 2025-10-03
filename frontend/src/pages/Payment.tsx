@@ -4,7 +4,7 @@ import ModernDonationPage from "../components/Payment/ModernDonationPage"
 function Payment() {
 	return (
 		<div className="header-body">
-			<Header />
+			<Header navLinks={[]} />
 			<div className="main-body">
 				<ModernDonationPage />
 			</div>

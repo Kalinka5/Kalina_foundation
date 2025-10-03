@@ -64,18 +64,19 @@ function Home() {
 		return () => document.removeEventListener("click", handleScrollToSection)
 	}, [])
 
-	const SectionLinks = [
-		{ id: 1, urlLink: "#hero-section", urlName: t("about-us") },
-		{ id: 2, urlLink: "#team-mission", urlName: t("our-mission") },
-		{ id: 3, urlLink: "#donation-impact", urlName: t("our-initiatives") },
-		{ id: 4, urlLink: "#stories-section", urlName: t("stories") },
-		{ id: 5, urlLink: "#donation-impact", urlName: t("donate") },
-		{ id: 6, urlLink: "#top-donators", urlName: t("top-donators") },
+	// Home page navigation links
+	const homeNavLinks = [
+		{ id: 1, urlLink: "#hero-section", urlName: "about-us" },
+		{ id: 2, urlLink: "#team-mission", urlName: "our-mission" },
+		{ id: 3, urlLink: "#our-initiatives", urlName: "our-initiatives" },
+		{ id: 4, urlLink: "#stories-section", urlName: "stories" },
+		{ id: 5, urlLink: "#donation-impact", urlName: "donate" },
+		{ id: 6, urlLink: "#top-donators", urlName: "top-donators" },
 	]
 
 	return (
 		<div className={`main ${isPageLoaded ? "page-enter" : ""}`}>
-			<Header fixed="pos-fixed">{!isPhoneDisplay && SectionLinks}</Header>
+			<Header fixed="pos-fixed" navLinks={homeNavLinks} />
 			{page > 0 && page < MAX_PAGE_NUMBER ? (
 				<main className="home-content">
 					<HeroSection />

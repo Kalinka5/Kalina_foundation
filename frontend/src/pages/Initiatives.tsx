@@ -78,6 +78,14 @@ function Initiatives() {
 	const statsRef = useRef<HTMLDivElement>(null)
 	const [startCounting, setStartCounting] = useState(false)
 
+	// Initiatives page navigation links
+	const initiativesNavLinks = [
+		{ id: 1, urlLink: "#video-hero", urlName: "about-us" },
+		{ id: 2, urlLink: "#initiatives-mission-section", urlName: "our-mission" },
+		{ id: 3, urlLink: "#our-story-section", urlName: "our-story" },
+		{ id: 4, urlLink: "#impact-timeline", urlName: "impact" },
+	]
+
 	// IntersectionObserver to trigger counting animation
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -184,10 +192,10 @@ function Initiatives() {
 
 	return (
 		<div className="initiatives-page">
-			<Header />
+			<Header navLinks={initiativesNavLinks} />
 
 			{/* Video Hero Section */}
-			<section className="video-hero">
+			<section className="video-hero" id="video-hero">
 				<div className="video-container">
 					<iframe
 						ref={videoRef}
@@ -249,7 +257,10 @@ function Initiatives() {
 			</section>
 
 			{/* Mission Statement */}
-			<section className="initiatives-mission-section">
+			<section
+				className="initiatives-mission-section"
+				id="initiatives-mission-section"
+			>
 				<div className="initiatives-container">
 					<div className="initiatives-mission-content">
 						<div className="mission-text">
@@ -292,7 +303,7 @@ function Initiatives() {
 			</section>
 
 			{/* Our Story - Alternating Layouts */}
-			<section className="our-story-section">
+			<section className="our-story-section" id="our-story-section">
 				<div className="initiatives-container">
 					<div className="story-header">
 						<h2 className="initiatives-section-title">
@@ -421,7 +432,7 @@ function Initiatives() {
 			</section>
 
 			{/* Impact Timeline */}
-			<section className="impact-timeline">
+			<section className="impact-timeline" id="impact-timeline">
 				<div className="initiatives-container">
 					<h2 className="initiatives-section-title">
 						{t("initiatives-impact-title")}

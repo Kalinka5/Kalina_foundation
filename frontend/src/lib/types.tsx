@@ -12,9 +12,16 @@ export type EmailVerify = {
 }
 
 // Header Component
+export type NavLink = {
+	id: number
+	urlLink: string
+	urlName: string
+}
+
 export type HeaderProps = {
 	fixed?: "pos-fixed"
-	children?: { id: number; urlLink: string; urlName: string }[] | false
+	children?: NavLink[] | false
+	navLinks?: NavLink[]
 }
 
 // UpdateButton.tsx
