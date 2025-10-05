@@ -1,81 +1,87 @@
 import React from "react"
-import "../styles/accessibilityStatement.css"
+import { useTranslation } from "react-i18next"
+
+import Footer from "../components/Footer"
+import Header from "../components/Header"
+
+import "../styles/termsConditions.css"
 
 const AccessibilityStatement: React.FC = () => {
+	const { t } = useTranslation()
+
 	return (
-		<div className="accessibility-statement">
-			<div className="container">
-				<h1>Accessibility Statement</h1>
-				<p className="last-updated">
-					Last updated: {new Date().toLocaleDateString()}
-				</p>
-
-				<section>
-					<h2>Our Commitment</h2>
-					<p>
-						Kalina Foundation is committed to ensuring digital accessibility for
-						people with disabilities. We are continually improving the user
-						experience for everyone and applying the relevant accessibility
-						standards to achieve these goals.
+		<div className="terms-conditions">
+			<Header fixed="pos-fixed" />
+			<div className="terms-content">
+				<div className="terms-header">
+					<h1 className="terms-title">{t("accessibility-title")}</h1>
+					<p className="terms-subtitle">
+						{t("accessibility-subtitle", {
+							date: new Date().toLocaleDateString(),
+						})}
 					</p>
-				</section>
+				</div>
 
-				<section>
-					<h2>Accessibility Standards</h2>
-					<p>
-						We aim to conform to the Web Content Accessibility Guidelines (WCAG)
-						2.1 level AA standards. These guidelines explain how to make web
-						content more accessible for people with disabilities and
-						user-friendly for everyone.
-					</p>
-				</section>
+				<div className="terms-body">
+					<section className="terms-section">
+						<h2 className="terms-section-title">
+							{t("accessibility-commitment-title")}
+						</h2>
+						<p className="terms-text">{t("accessibility-commitment-text")}</p>
+					</section>
 
-				<section>
-					<h2>Accessibility Features</h2>
-					<p>Our website includes the following accessibility features:</p>
-					<ul>
-						<li>Alternative text for images</li>
-						<li>Keyboard navigation support</li>
-						<li>Clear heading structure</li>
-						<li>High contrast color schemes</li>
-						<li>Readable fonts and appropriate font sizes</li>
-						<li>Form labels and instructions</li>
-					</ul>
-				</section>
+					<section className="terms-section">
+						<h2 className="terms-section-title">
+							{t("accessibility-standards-title")}
+						</h2>
+						<p className="terms-text">{t("accessibility-standards-text")}</p>
+					</section>
 
-				<section>
-					<h2>Known Issues</h2>
-					<p>
-						We are aware that some parts of our website may not be fully
-						accessible. We are working to address these issues and improve our
-						overall accessibility.
-					</p>
-				</section>
+					<section className="terms-section">
+						<h2 className="terms-section-title">
+							{t("accessibility-features-title")}
+						</h2>
+						<p className="terms-text">{t("accessibility-features-intro")}</p>
+						<ul className="terms-text">
+							<li>{t("accessibility-feature-1")}</li>
+							<li>{t("accessibility-feature-2")}</li>
+							<li>{t("accessibility-feature-3")}</li>
+							<li>{t("accessibility-feature-4")}</li>
+							<li>{t("accessibility-feature-5")}</li>
+							<li>{t("accessibility-feature-6")}</li>
+						</ul>
+					</section>
 
-				<section>
-					<h2>Feedback</h2>
-					<p>
-						We welcome your feedback on the accessibility of our website. If you
-						encounter accessibility barriers, please let us know:
-					</p>
-					<p>
-						Email: info@kalinafond.com
-						<br />
-						Phone: +380992977886
-						<br />
-						Address: Dnipro, Ukraine, CA: 49051
-					</p>
-				</section>
+					<section className="terms-section">
+						<h2 className="terms-section-title">
+							{t("accessibility-issues-title")}
+						</h2>
+						<p className="terms-text">{t("accessibility-issues-text")}</p>
+					</section>
 
-				<section>
-					<h2>Third-Party Content</h2>
-					<p>
-						Some content on our website may be provided by third parties. We
-						cannot guarantee the accessibility of such content, but we work with
-						our partners to encourage accessible practices.
-					</p>
-				</section>
+					<section className="terms-section">
+						<h2 className="terms-section-title">
+							{t("accessibility-feedback-title")}
+						</h2>
+						<p className="terms-text">{t("accessibility-feedback-intro")}</p>
+						<p className="terms-text">
+							{t("accessibility-feedback-email")}
+							<br />
+							{t("accessibility-feedback-phone")}
+							<br />
+							{t("accessibility-feedback-address")}
+						</p>
+					</section>
+
+					<section className="terms-section">
+						<h2 className="terms-section-title">
+							{t("accessibility-third-party-title")}
+						</h2>
+						<p className="terms-text">{t("accessibility-third-party-text")}</p>
+					</section>
+				</div>
 			</div>
+			<Footer />
 		</div>
 	)
 }

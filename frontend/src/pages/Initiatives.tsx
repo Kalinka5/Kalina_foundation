@@ -185,351 +185,353 @@ function Initiatives() {
 
 	return (
 		<div className="initiatives-page">
-			<Header navLinks={initiativesNavLinks} />
+			<Header fixed="pos-fixed" navLinks={initiativesNavLinks} />
 
 			{/* Video Hero Section */}
-			<section className="video-hero" id="video-hero">
-				<div className="video-container">
-					<iframe
-						ref={videoRef}
-						src="https://www.youtube.com/embed/o8ETgjcIxuE?autoplay=1&loop=1&playlist=o8ETgjcIxuE&t=20&mute=1&playsinline=1&controls=0&showinfo=0&autohide=1&allowfullscreen=true&mode=transparent"
-						allow="autoplay; encrypted-media"
-						allowFullScreen
-						className="video-background"
-					></iframe>
-					<div className="video-overlay"></div>
-				</div>
-				<div className="hero-content-wrapper">
-					<div className="hero-badge">{t("initiatives-hero-badge")}</div>
-					<h1 className="video-hero-title animate-fade-in">
-						{t("initiatives-hero-title")}
-					</h1>
-					<p className="video-hero-subtitle animate-fade-in-delay">
-						{t("initiatives-hero-subtitle")}
-					</p>
-					<div className="hero-stats-grid animate-slide-up" ref={statsRef}>
-						<div className="hero-stat-card">
-							<div className="stat-number">
-								<CountingNumber
-									value={3}
-									duration={2000}
-									shouldStart={startCounting}
-								/>
+			<main>
+				<section className="video-hero" id="video-hero">
+					<div className="video-container">
+						<iframe
+							ref={videoRef}
+							src="https://www.youtube.com/embed/o8ETgjcIxuE?autoplay=1&loop=1&playlist=o8ETgjcIxuE&t=20&mute=1&playsinline=1&controls=0&showinfo=0&autohide=1&allowfullscreen=true&mode=transparent"
+							allow="autoplay; encrypted-media"
+							allowFullScreen
+							className="video-background"
+						></iframe>
+						<div className="video-overlay"></div>
+					</div>
+					<div className="hero-content-wrapper">
+						<div className="hero-badge">{t("initiatives-hero-badge")}</div>
+						<h1 className="video-hero-title animate-fade-in">
+							{t("initiatives-hero-title")}
+						</h1>
+						<p className="video-hero-subtitle animate-fade-in-delay">
+							{t("initiatives-hero-subtitle")}
+						</p>
+						<div className="hero-stats-grid animate-slide-up" ref={statsRef}>
+							<div className="hero-stat-card">
+								<div className="stat-number">
+									<CountingNumber
+										value={3}
+										duration={2000}
+										shouldStart={startCounting}
+									/>
+								</div>
+								<div className="stat-label">{t("initiatives-hero-stat1")}</div>
 							</div>
-							<div className="stat-label">{t("initiatives-hero-stat1")}</div>
+							<div className="hero-stat-card">
+								<div className="stat-number">
+									<CountingNumber
+										value={26040}
+										duration={1500}
+										shouldStart={startCounting}
+									/>
+								</div>
+								<div className="stat-label">{t("initiatives-hero-stat2")}</div>
+							</div>
+							<div className="hero-stat-card">
+								<div className="stat-number">
+									<CountingNumber
+										value={48}
+										duration={1800}
+										shouldStart={startCounting}
+									/>
+								</div>
+								<div className="stat-label">{t("initiatives-hero-stat3")}</div>
+							</div>
 						</div>
-						<div className="hero-stat-card">
-							<div className="stat-number">
-								<CountingNumber
-									value={26040}
-									duration={1500}
-									shouldStart={startCounting}
-								/>
+						<button
+							className="hero-cta-button"
+							onClick={() => navigate("/donate")}
+						>
+							<span className="button-text">{t("initiatives-hero-cta")}</span>
+							<span className="button-arrow">→</span>
+						</button>
+					</div>
+				</section>
+
+				{/* Mission Statement */}
+				<section
+					className="initiatives-mission-section"
+					id="initiatives-mission-section"
+				>
+					<div className="initiatives-container">
+						<div className="initiatives-mission-content">
+							<div className="mission-text">
+								<span className="initiatives-mission-label">
+									{t("initiatives-mission-label")}
+								</span>
+								<h2 className="initiatives-mission-title">
+									{t("initiatives-mission-title")}
+								</h2>
+								<p className="initiatives-mission-description">
+									{t("initiatives-mission-description")}
+								</p>
+								<div className="initiatives-mission-highlights">
+									<div className="highlight-item">
+										<div className="highlight-icon">✓</div>
+										<span>{t("initiatives-highlight-1")}</span>
+									</div>
+									<div className="highlight-item">
+										<div className="highlight-icon">✓</div>
+										<span>{t("initiatives-highlight-2")}</span>
+									</div>
+									<div className="highlight-item">
+										<div className="highlight-icon">✓</div>
+										<span>{t("initiatives-highlight-3")}</span>
+									</div>
+								</div>
 							</div>
-							<div className="stat-label">{t("initiatives-hero-stat2")}</div>
-						</div>
-						<div className="hero-stat-card">
-							<div className="stat-number">
-								<CountingNumber
-									value={48}
-									duration={1800}
-									shouldStart={startCounting}
-								/>
+							<div className="initiatives-mission-visual">
+								<div className="initiatives-floating-card">
+									<div className="initiatives-card-glow"></div>
+									<img
+										src="/img/donation-image1.jpg"
+										alt="Mission"
+										className="initiatives-mission-image"
+									/>
+								</div>
 							</div>
-							<div className="stat-label">{t("initiatives-hero-stat3")}</div>
 						</div>
 					</div>
-					<button
-						className="hero-cta-button"
-						onClick={() => navigate("/donate")}
-					>
-						<span className="button-text">{t("initiatives-hero-cta")}</span>
-						<span className="button-arrow">→</span>
-					</button>
-				</div>
-			</section>
+				</section>
 
-			{/* Mission Statement */}
-			<section
-				className="initiatives-mission-section"
-				id="initiatives-mission-section"
-			>
-				<div className="initiatives-container">
-					<div className="initiatives-mission-content">
-						<div className="mission-text">
-							<span className="initiatives-mission-label">
-								{t("initiatives-mission-label")}
-							</span>
-							<h2 className="initiatives-mission-title">
-								{t("initiatives-mission-title")}
+				{/* Our Story - Alternating Layouts */}
+				<section className="our-story-section" id="our-story-section">
+					<div className="initiatives-container">
+						<div className="story-header">
+							<h2 className="initiatives-section-title">
+								{t("initiatives-story-title")}
 							</h2>
-							<p className="initiatives-mission-description">
-								{t("initiatives-mission-description")}
+							<p className="initiatives-section-subtitle">
+								{t("initiatives-story-subtitle")}
 							</p>
-							<div className="initiatives-mission-highlights">
-								<div className="highlight-item">
-									<div className="highlight-icon">✓</div>
-									<span>{t("initiatives-highlight-1")}</span>
-								</div>
-								<div className="highlight-item">
-									<div className="highlight-icon">✓</div>
-									<span>{t("initiatives-highlight-2")}</span>
-								</div>
-								<div className="highlight-item">
-									<div className="highlight-icon">✓</div>
-									<span>{t("initiatives-highlight-3")}</span>
-								</div>
-							</div>
 						</div>
-						<div className="initiatives-mission-visual">
-							<div className="initiatives-floating-card">
-								<div className="initiatives-card-glow"></div>
-								<img
-									src="/img/donation-image1.jpg"
-									alt="Mission"
-									className="initiatives-mission-image"
-								/>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
 
-			{/* Our Story - Alternating Layouts */}
-			<section className="our-story-section" id="our-story-section">
-				<div className="initiatives-container">
-					<div className="story-header">
+						{storyContent.map((story, index) => {
+							// Layout 1: Image Left, Text Right
+							if (story.layout === "image-left") {
+								return (
+									<div key={story.id} className="story-block image-left">
+										<div className="initiatives-story-image-wrapper">
+											<div className="initiatives-story-image-container">
+												<img
+													src={story.image}
+													alt={story.title}
+													className="initiatives-story-image"
+												/>
+												<div className="image-glow"></div>
+											</div>
+										</div>
+										<div className="initiatives-story-content">
+											<div className="story-badge">
+												{t("initiatives-story-badge")} {story.id}
+											</div>
+											<h3 className="story-title">{story.title}</h3>
+											<p className="initiatives-story-description">
+												{story.description}
+											</p>
+											{story.stats && (
+												<div className="story-stats">
+													{story.stats.map((stat, i) => (
+														<div key={i} className="story-stat">
+															<div className="stat-value">{stat.value}</div>
+															<div className="stat-label">{stat.label}</div>
+														</div>
+													))}
+												</div>
+											)}
+											{story.quote && (
+												<div className="story-quote">
+													<span className="quote-icon">"</span>
+													{story.quote}
+												</div>
+											)}
+										</div>
+									</div>
+								)
+							}
+
+							// Layout 2: Image Right (Larger), Text Left
+							if (story.layout === "image-right-large") {
+								return (
+									<div key={story.id} className="story-block image-right-large">
+										<div className="initiatives-story-content">
+											<div className="story-badge">
+												{t("initiatives-story-badge")} {story.id}
+											</div>
+											<h3 className="story-title">{story.title}</h3>
+											<p className="initiatives-story-description">
+												{story.description}
+											</p>
+										</div>
+										<div className="initiatives-story-image-wrapper large">
+											<div className="initiatives-story-image-container">
+												<img
+													src={story.image}
+													alt={story.title}
+													className="initiatives-story-image"
+												/>
+												<div className="image-glow"></div>
+											</div>
+										</div>
+									</div>
+								)
+							}
+
+							// Layout 3: Two Images, Text in Center
+							if (story.layout === "two-images") {
+								return (
+									<div key={story.id} className="story-block two-images">
+										<div className="story-images-grid">
+											<div className="initiatives-story-image-container">
+												<img
+													src={story.images[0]}
+													alt={`${story.title} 1`}
+													className="initiatives-story-image"
+												/>
+												<div className="image-glow"></div>
+											</div>
+											<div className="initiatives-story-image-container">
+												<img
+													src={story.images[1]}
+													alt={`${story.title} 2`}
+													className="initiatives-story-image"
+												/>
+												<div className="image-glow"></div>
+											</div>
+										</div>
+										<div className="initiatives-story-content centered">
+											<div className="story-badge">
+												{t("initiatives-story-badge")} {story.id}
+											</div>
+											<h3 className="story-title">{story.title}</h3>
+											<p className="initiatives-story-description">
+												{story.description}
+											</p>
+										</div>
+									</div>
+								)
+							}
+
+							return null
+						})}
+					</div>
+				</section>
+
+				{/* Impact Timeline */}
+				<section className="impact-timeline" id="impact-timeline">
+					<div className="initiatives-container">
 						<h2 className="initiatives-section-title">
-							{t("initiatives-story-title")}
+							{t("initiatives-impact-title")}
 						</h2>
-						<p className="initiatives-section-subtitle">
-							{t("initiatives-story-subtitle")}
-						</p>
-					</div>
-
-					{storyContent.map((story, index) => {
-						// Layout 1: Image Left, Text Right
-						if (story.layout === "image-left") {
-							return (
-								<div key={story.id} className="story-block image-left">
-									<div className="initiatives-story-image-wrapper">
-										<div className="initiatives-story-image-container">
-											<img
-												src={story.image}
-												alt={story.title}
-												className="initiatives-story-image"
-											/>
-											<div className="image-glow"></div>
-										</div>
+						<div className="timeline">
+							<div className="timeline-item">
+								<div className="timeline-marker"></div>
+								<div className="timeline-content">
+									<div className="timeline-date">
+										{t("initiatives-impact-date1")}
 									</div>
-									<div className="initiatives-story-content">
-										<div className="story-badge">
-											{t("initiatives-story-badge")} {story.id}
-										</div>
-										<h3 className="story-title">{story.title}</h3>
-										<p className="initiatives-story-description">
-											{story.description}
-										</p>
-										{story.stats && (
-											<div className="story-stats">
-												{story.stats.map((stat, i) => (
-													<div key={i} className="story-stat">
-														<div className="stat-value">{stat.value}</div>
-														<div className="stat-label">{stat.label}</div>
-													</div>
-												))}
-											</div>
-										)}
-										{story.quote && (
-											<div className="story-quote">
-												<span className="quote-icon">"</span>
-												{story.quote}
-											</div>
-										)}
+									<h4>{t("initiatives-impact-title1")}</h4>
+									<p>{t("initiatives-impact-desc1")}</p>
+								</div>
+							</div>
+							<div className="timeline-item">
+								<div className="timeline-marker"></div>
+								<div className="timeline-content">
+									<div className="timeline-date">
+										{t("initiatives-impact-date2")}
 									</div>
+									<h4>{t("initiatives-impact-title2")}</h4>
+									<p>{t("initiatives-impact-desc2")}</p>
 								</div>
-							)
-						}
-
-						// Layout 2: Image Right (Larger), Text Left
-						if (story.layout === "image-right-large") {
-							return (
-								<div key={story.id} className="story-block image-right-large">
-									<div className="initiatives-story-content">
-										<div className="story-badge">
-											{t("initiatives-story-badge")} {story.id}
-										</div>
-										<h3 className="story-title">{story.title}</h3>
-										<p className="initiatives-story-description">
-											{story.description}
-										</p>
+							</div>
+							<div className="timeline-item">
+								<div className="timeline-marker"></div>
+								<div className="timeline-content">
+									<div className="timeline-date">
+										{t("initiatives-impact-date3")}
 									</div>
-									<div className="initiatives-story-image-wrapper large">
-										<div className="initiatives-story-image-container">
-											<img
-												src={story.image}
-												alt={story.title}
-												className="initiatives-story-image"
-											/>
-											<div className="image-glow"></div>
-										</div>
+									<h4>{t("initiatives-impact-title3")}</h4>
+									<p>{t("initiatives-impact-desc3")}</p>
+								</div>
+							</div>
+							<div className="timeline-item">
+								<div className="timeline-marker"></div>
+								<div className="timeline-content">
+									<div className="timeline-date">
+										{t("initiatives-impact-date4")}
 									</div>
+									<h4>{t("initiatives-impact-title4")}</h4>
+									<p>{t("initiatives-impact-desc4")}</p>
 								</div>
-							)
-						}
-
-						// Layout 3: Two Images, Text in Center
-						if (story.layout === "two-images") {
-							return (
-								<div key={story.id} className="story-block two-images">
-									<div className="story-images-grid">
-										<div className="initiatives-story-image-container">
-											<img
-												src={story.images[0]}
-												alt={`${story.title} 1`}
-												className="initiatives-story-image"
-											/>
-											<div className="image-glow"></div>
-										</div>
-										<div className="initiatives-story-image-container">
-											<img
-												src={story.images[1]}
-												alt={`${story.title} 2`}
-												className="initiatives-story-image"
-											/>
-											<div className="image-glow"></div>
-										</div>
+							</div>
+							<div className="timeline-item">
+								<div className="timeline-marker"></div>
+								<div className="timeline-content">
+									<div className="timeline-date">
+										{t("initiatives-impact-date5")}
 									</div>
-									<div className="initiatives-story-content centered">
-										<div className="story-badge">
-											{t("initiatives-story-badge")} {story.id}
-										</div>
-										<h3 className="story-title">{story.title}</h3>
-										<p className="initiatives-story-description">
-											{story.description}
-										</p>
+									<h4>{t("initiatives-impact-title5")}</h4>
+									<p>{t("initiatives-impact-desc5")}</p>
+								</div>
+							</div>
+							<div className="timeline-item">
+								<div className="timeline-marker"></div>
+								<div className="timeline-content">
+									<div className="timeline-date">
+										{t("initiatives-impact-date6")}
 									</div>
+									<h4>{t("initiatives-impact-title6")}</h4>
+									<p>{t("initiatives-impact-desc6")}</p>
 								</div>
-							)
-						}
-
-						return null
-					})}
-				</div>
-			</section>
-
-			{/* Impact Timeline */}
-			<section className="impact-timeline" id="impact-timeline">
-				<div className="initiatives-container">
-					<h2 className="initiatives-section-title">
-						{t("initiatives-impact-title")}
-					</h2>
-					<div className="timeline">
-						<div className="timeline-item">
-							<div className="timeline-marker"></div>
-							<div className="timeline-content">
-								<div className="timeline-date">
-									{t("initiatives-impact-date1")}
-								</div>
-								<h4>{t("initiatives-impact-title1")}</h4>
-								<p>{t("initiatives-impact-desc1")}</p>
 							</div>
-						</div>
-						<div className="timeline-item">
-							<div className="timeline-marker"></div>
-							<div className="timeline-content">
-								<div className="timeline-date">
-									{t("initiatives-impact-date2")}
+							<div className="timeline-item">
+								<div className="timeline-marker"></div>
+								<div className="timeline-content">
+									<div className="timeline-date">
+										{t("initiatives-impact-date7")}
+									</div>
+									<h4>{t("initiatives-impact-title7")}</h4>
+									<p>{t("initiatives-impact-desc7")}</p>
 								</div>
-								<h4>{t("initiatives-impact-title2")}</h4>
-								<p>{t("initiatives-impact-desc2")}</p>
 							</div>
-						</div>
-						<div className="timeline-item">
-							<div className="timeline-marker"></div>
-							<div className="timeline-content">
-								<div className="timeline-date">
-									{t("initiatives-impact-date3")}
+							<div className="timeline-item">
+								<div className="timeline-marker"></div>
+								<div className="timeline-content">
+									<div className="timeline-date">
+										{t("initiatives-impact-date8")}
+									</div>
+									<h4>{t("initiatives-impact-title8")}</h4>
+									<p>{t("initiatives-impact-desc8")}</p>
 								</div>
-								<h4>{t("initiatives-impact-title3")}</h4>
-								<p>{t("initiatives-impact-desc3")}</p>
-							</div>
-						</div>
-						<div className="timeline-item">
-							<div className="timeline-marker"></div>
-							<div className="timeline-content">
-								<div className="timeline-date">
-									{t("initiatives-impact-date4")}
-								</div>
-								<h4>{t("initiatives-impact-title4")}</h4>
-								<p>{t("initiatives-impact-desc4")}</p>
-							</div>
-						</div>
-						<div className="timeline-item">
-							<div className="timeline-marker"></div>
-							<div className="timeline-content">
-								<div className="timeline-date">
-									{t("initiatives-impact-date5")}
-								</div>
-								<h4>{t("initiatives-impact-title5")}</h4>
-								<p>{t("initiatives-impact-desc5")}</p>
-							</div>
-						</div>
-						<div className="timeline-item">
-							<div className="timeline-marker"></div>
-							<div className="timeline-content">
-								<div className="timeline-date">
-									{t("initiatives-impact-date6")}
-								</div>
-								<h4>{t("initiatives-impact-title6")}</h4>
-								<p>{t("initiatives-impact-desc6")}</p>
-							</div>
-						</div>
-						<div className="timeline-item">
-							<div className="timeline-marker"></div>
-							<div className="timeline-content">
-								<div className="timeline-date">
-									{t("initiatives-impact-date7")}
-								</div>
-								<h4>{t("initiatives-impact-title7")}</h4>
-								<p>{t("initiatives-impact-desc7")}</p>
-							</div>
-						</div>
-						<div className="timeline-item">
-							<div className="timeline-marker"></div>
-							<div className="timeline-content">
-								<div className="timeline-date">
-									{t("initiatives-impact-date8")}
-								</div>
-								<h4>{t("initiatives-impact-title8")}</h4>
-								<p>{t("initiatives-impact-desc8")}</p>
 							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
 
-			{/* Final CTA */}
-			<section className="final-cta">
-				<div className="initiatives-container">
-					<div className="cta-box">
-						<h2 className="initiatives-cta-title">
-							{t("initiatives-final-initiatives-cta-title")}
-						</h2>
-						<p className="cta-subtitle">
-							{t("initiatives-final-cta-subtitle")}
-						</p>
-						<div className="cta-buttons">
-							<button
-								className="btn-primary-large"
-								onClick={() => navigate("/donate")}
-							>
-								{t("initiatives-donate-now")}
-							</button>
+				{/* Final CTA */}
+				<section className="final-cta">
+					<div className="initiatives-container">
+						<div className="cta-box">
+							<h2 className="initiatives-cta-title">
+								{t("initiatives-final-initiatives-cta-title")}
+							</h2>
+							<p className="cta-subtitle">
+								{t("initiatives-final-cta-subtitle")}
+							</p>
+							<div className="cta-buttons">
+								<button
+									className="btn-primary-large"
+									onClick={() => navigate("/donate")}
+								>
+									{t("initiatives-donate-now")}
+								</button>
+							</div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+			</main>
 
 			<Footer />
 		</div>

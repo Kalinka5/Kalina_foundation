@@ -75,7 +75,7 @@ function Home() {
 	]
 
 	return (
-		<div className={`main ${isPageLoaded ? "page-enter" : ""}`}>
+		<div className={`main home-page ${isPageLoaded ? "page-enter" : ""}`}>
 			<Header fixed="pos-fixed" navLinks={homeNavLinks} />
 			{page > 0 && page < MAX_PAGE_NUMBER ? (
 				<main className="home-content">

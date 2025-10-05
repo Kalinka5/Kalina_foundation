@@ -1,8 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 .pos-fixed {
-	position: sticky;
+	position: fixed;
 	top: 0;
+	left: 0;
+	right: 0;
+}
+
+/* Add padding to body when header is fixed to prevent content from being hidden */
+body:has(.pos-fixed) {
+	padding-top: 65px;
+}
+
+@media (max-width: 499px) {
+	body:has(.pos-fixed) {
+		padding-top: 45px;
+	}
 }
 
 header {

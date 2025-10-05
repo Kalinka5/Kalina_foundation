@@ -112,3 +112,46 @@
 		text-align: center;
 	}
 }
+
+/* Dark footer styling for Home and Initiatives pages */
+.home-page .footer,
+.initiatives-page .footer {
+	background-color: #1a1a1a;
+	border-top: 1px solid #333333;
+	margin-top: 0;
+}
+
+.home-page .footer .footer-content,
+.initiatives-page .footer .footer-content {
+	color: #ffffff;
+}
+
+.home-page .footer .footer-section h3,
+.initiatives-page .footer .footer-section h3 {
+	color: #ffffff;
+}
+
+.home-page .footer .footer-section p,
+.initiatives-page .footer .footer-section p {
+	color: #e0e0e0;
+}
+
+.home-page .footer .footer-section a,
+.initiatives-page .footer .footer-section a {
+	color: #e0e0e0;
+}
+
+.home-page .footer .footer-section a:hover,
+.initiatives-page .footer .footer-section a:hover {
+	color: #ffffff;
+}
+
+.home-page .footer .footer-bottom,
+.initiatives-page .footer .footer-bottom {
+	border-top: 1px solid #333333;
+}
+
+.home-page .footer .footer-copyright,
+.initiatives-page .footer .footer-copyright {
+	color: #cccccc;
+}
