@@ -138,9 +138,7 @@ function StoriesSection() {
 								</div>
 								<div className="story-content">
 									<p className="story-description">
-										<span className="brigade-name yellow-text">
-											{story.name}:
-										</span>{" "}
+										<span className="brigade-name">{story.name}:</span>{" "}
 										{story.description}
 									</p>
 									<button className="story-button btn-animated btn-ripple">

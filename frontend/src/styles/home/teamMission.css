@@ -1,7 +1,8 @@
 .team-mission {
-	background: #1a1a1a;
+	background: var(--bg-secondary);
 	padding: 80px 0;
-	color: white;
+	color: var(--text-primary);
+	transition: background 0.3s ease;
 }
 
 .team-mission-container {
@@ -20,7 +21,7 @@
 }
 
 .mission-vision-text {
-	color: #ffffff;
+	color: var(--text-primary);
 }
 
 /* Second section: Values with horizontal image */
@@ -32,7 +33,7 @@
 }
 
 .values-text {
-	color: #ffffff;
+	color: var(--text-primary);
 }
 
 .mission-section,
@@ -48,17 +49,19 @@
 	font-size: 2.2rem;
 	font-weight: 600;
 	margin-bottom: 20px;
-	color: rgba(255, 255, 255, 0.95);
+	color: var(--text-primary);
 	letter-spacing: -0.01em;
 	line-height: 1.2;
+	transition: color 0.3s ease;
 }
 
 .section-description {
 	font-size: 1rem;
 	line-height: 1.7;
-	color: rgba(255, 255, 255, 0.85);
+	color: var(--text-secondary);
 	margin-bottom: 15px;
 	text-align: justify;
+	transition: color 0.3s ease;
 }
 
 .section-description:last-of-type {
@@ -75,9 +78,10 @@
 	font-size: 1rem;
 	line-height: 1.7;
 	margin-bottom: 15px;
-	color: rgba(255, 255, 255, 0.85);
+	color: var(--text-secondary);
 	position: relative;
 	padding-left: 0;
+	transition: color 0.3s ease;
 }
 
 .value-item:last-child {
@@ -85,16 +89,18 @@
 }
 
 .value-title {
-	color: #ffffff;
+	color: var(--value-title-color);
 	font-weight: 600;
+	transition: color 0.3s ease;
 }
 
 .value-description {
-	color: rgba(255, 255, 255, 0.85);
+	color: var(--text-secondary);
+	transition: color 0.3s ease;
 }
 
 .yellow-text {
-	color: #ffd700 !important;
+	color: var(--brand-secondary) !important;
 }
 
 /* Vertical image styling */

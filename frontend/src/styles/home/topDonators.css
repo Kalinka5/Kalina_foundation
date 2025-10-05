@@ -1,6 +1,6 @@
 .top-heroes-section {
-	background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-	color: white;
+	background: var(--gradient-primary);
+	color: var(--text-inverse);
 	padding: 80px 0;
 	text-align: center;
 }
@@ -19,15 +19,26 @@
 	font-size: 3.5rem;
 	font-weight: 700;
 	margin-bottom: 20px;
-	color: white;
+	color: var(--text-inverse);
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure white text in dark theme */
+[data-theme="dark"] .top-heroes-title {
+	color: #ffffff;
 }
 
 .top-heroes-subtitle {
 	font-size: 1.4rem;
-	color: rgba(255, 255, 255, 0.9);
+	color: var(--text-inverse);
+	opacity: 0.9;
 	font-weight: 400;
 	margin-bottom: 0;
+}
+
+/* Ensure white text in dark theme */
+[data-theme="dark"] .top-heroes-subtitle {
+	color: #ffffff;
 }
 
 .heroes-grid {
@@ -257,10 +268,15 @@
 
 .cta-text {
 	font-size: 1.3rem;
-	color: rgba(255, 255, 255, 0.9);
+	color: var(--text-inverse);
 	font-weight: 400;
 	margin: 0;
 	opacity: 0.9;
+}
+
+/* Ensure white text in dark theme */
+[data-theme="dark"] .cta-text {
+	color: #ffffff;
 }
 
 /* Mobile responsiveness */

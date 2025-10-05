@@ -1,10 +1,11 @@
 .hero-section {
 	min-height: 100vh;
 	width: 100%;
-	background: #1a1a1a;
+	background: var(--bg-primary);
 	display: flex;
 	align-items: center;
 	padding: 100px 0 50px;
+	transition: background 0.3s ease;
 }
 
 .hero-container {
@@ -25,7 +26,7 @@
 }
 
 .hero-text {
-	color: #ffffff;
+	color: var(--text-primary);
 	text-align: center;
 	z-index: 10;
 	position: relative;
@@ -38,7 +39,7 @@
 	font-weight: 700;
 	line-height: 1.1;
 	margin-bottom: 30px;
-	color: #ffffff;
+	color: var(--text-primary);
 	letter-spacing: -0.02em;
 }
 
@@ -48,17 +49,18 @@
 	font-weight: 500;
 	line-height: 1.7;
 	margin-bottom: 40px;
-	color: rgba(255, 255, 255, 0.95);
+	color: var(--text-secondary);
 	max-width: 85%;
-	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
+	transition: color 0.3s ease;
 }
 
 .donate-button {
-	background: #4a7c59;
-	color: white;
+	background: var(--gradient-accent);
+	color: var(--text-inverse);
 	border: none;
 	padding: 15px 40px;
 	font-size: 1.1rem;
@@ -71,9 +73,9 @@
 }
 
 .donate-button:hover {
-	background: #3d6b4a;
-	color: #4169e1;
-	box-shadow: 0 4px 15px rgba(74, 124, 89, 0.3);
+	background: var(--btn-primary-bg-hover);
+	color: var(--text-inverse);
+	box-shadow: 0 4px 15px rgba(0, 140, 255, 0.3);
 	filter: brightness(1.1);
 }
 
@@ -240,8 +242,8 @@
 	.hero-description {
 		font-size: 1rem;
 		font-weight: 500;
-		color: rgba(255, 255, 255, 0.98);
-		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+		color: var(--text-secondary);
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	}
 
 	.image-small {
@@ -277,8 +279,8 @@
 		font-size: 0.95rem;
 		font-weight: 500;
 		max-width: 100%;
-		color: rgba(255, 255, 255, 0.98);
-		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+		color: var(--text-secondary);
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	}
 
 	.background-images {
@@ -307,8 +309,8 @@
 	.hero-description {
 		font-size: 0.9rem;
 		font-weight: 500;
-		color: rgba(255, 255, 255, 0.98);
-		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+		color: var(--text-secondary);
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	}
 
 	.donate-button {

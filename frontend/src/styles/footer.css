@@ -1,8 +1,9 @@
 .footer {
-	background: #f5f5f5;
-	color: #333;
+	background: var(--bg-secondary);
+	color: var(--text-primary);
 	padding: 60px 0 20px;
 	font-family: "Poppins", sans-serif;
+	transition: all 0.3s ease;
 }
 
 .footer-content {
@@ -24,24 +25,24 @@
 	font-size: 1.5rem;
 	font-weight: 700;
 	margin-bottom: 20px;
-	color: #333;
+	color: var(--text-primary);
 }
 
 .footer-section p {
 	margin: 8px 0;
-	color: #666;
+	color: var(--text-secondary);
 	font-size: 0.9rem;
 	line-height: 1.5;
 }
 
 .footer-section a {
-	color: #666;
+	color: var(--text-secondary);
 	text-decoration: none;
 	transition: color 0.3s ease;
 }
 
 .footer-section a:hover {
-	color: #333;
+	color: var(--text-link);
 	text-decoration: underline;
 }
 
@@ -49,7 +50,7 @@
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 20px;
-	border-top: 1px solid #ddd;
+	border-top: 1px solid var(--border-primary);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -66,8 +67,8 @@
 	justify-content: center;
 	width: 40px;
 	height: 40px;
-	background: #666;
-	color: white;
+	background: var(--text-secondary);
+	color: var(--text-inverse);
 	border-radius: 50%;
 	text-decoration: none;
 	transition: all 0.3s ease;
@@ -75,7 +76,7 @@
 }
 
 .social-link:hover {
-	background: #333;
+	background: var(--text-primary);
 	transform: translateY(-2px);
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -87,7 +88,7 @@
 
 .footer-copyright {
 	font-size: 0.8rem;
-	color: #999;
+	color: var(--text-secondary);
 	margin: 0;
 }
 
@@ -116,42 +117,42 @@
 /* Dark footer styling for Home and Initiatives pages */
 .home-page .footer,
 .initiatives-page .footer {
-	background-color: #1a1a1a;
-	border-top: 1px solid #333333;
+	background-color: var(--bg-primary);
+	border-top: 1px solid var(--border-primary);
 	margin-top: 0;
 }
 
 .home-page .footer .footer-content,
 .initiatives-page .footer .footer-content {
-	color: #ffffff;
+	color: var(--text-primary);
 }
 
 .home-page .footer .footer-section h3,
 .initiatives-page .footer .footer-section h3 {
-	color: #ffffff;
+	color: var(--text-primary);
 }
 
 .home-page .footer .footer-section p,
 .initiatives-page .footer .footer-section p {
-	color: #e0e0e0;
+	color: var(--text-secondary);
 }
 
 .home-page .footer .footer-section a,
 .initiatives-page .footer .footer-section a {
-	color: #e0e0e0;
+	color: var(--text-secondary);
 }
 
 .home-page .footer .footer-section a:hover,
 .initiatives-page .footer .footer-section a:hover {
-	color: #ffffff;
+	color: var(--text-link);
 }
 
 .home-page .footer .footer-bottom,
 .initiatives-page .footer .footer-bottom {
-	border-top: 1px solid #333333;
+	border-top: 1px solid var(--border-primary);
 }
 
 .home-page .footer .footer-copyright,
 .initiatives-page .footer .footer-copyright {
-	color: #cccccc;
+	color: var(--text-secondary);
 }

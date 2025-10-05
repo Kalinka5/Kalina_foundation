@@ -13,6 +13,9 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: var(--bg-primary);
+	color: var(--text-primary);
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 code {
@@ -65,7 +68,7 @@ code {
 	border-radius: 50%;
 	border: 3px solid transparent;
 	animation: an1 1s ease infinite;
-	border-top-color: #052abc;
+	border-top-color: var(--brand-primary);
 }
 @keyframes an1 {
 	0% {
@@ -80,10 +83,12 @@ code {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
+	background-color: var(--bg-primary);
 }
 .header-body > Header {
 	flex-shrink: 0;
 }
 .main-body {
 	flex-grow: 1;
+	background-color: var(--bg-primary);
 }

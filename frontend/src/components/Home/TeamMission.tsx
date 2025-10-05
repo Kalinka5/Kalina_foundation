@@ -145,9 +145,7 @@ function TeamMission() {
 												: `animate-fade-right stagger-${index + 1}`
 										}`}
 									>
-										<strong className="value-title yellow-text">
-											{value.title}:
-										</strong>{" "}
+										<strong className="value-title">{value.title}:</strong>{" "}
 										<span className="value-description">
 											{value.description}
 										</span>

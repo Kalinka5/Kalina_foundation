@@ -265,3 +265,11 @@ export type CreditCardProps = {
 	currentDonation: 1 | 2
 	children?: ReactNode
 }
+
+// Theme types
+export type Theme = "light" | "dark"
+export type ThemeContextType = {
+	theme: Theme
+	setTheme: (theme: Theme) => void
+	toggleTheme: () => void
+}

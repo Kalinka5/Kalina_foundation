@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next"
 import { FaMoon, FaSun } from "react-icons/fa"
 
 import { useAuth } from "../components/AuthContext"
+import { useTheme } from "../components/ThemeContext"
 
 import LanguageSelector from "./LanguageSelector"
 
@@ -28,19 +29,14 @@ const Header = ({ fixed, children, navLinks = [] }: HeaderProps) => {
 	]
 
 	const { isAuthorized } = useAuth()
+	const { theme, toggleTheme } = useTheme()
 	const links = isAuthorized ? authLinks : notAuthLinks
 	const [isMenuOpen, setMenuOpen] = useState(false)
-	const [isDarkMode, setIsDarkMode] = useState(false)
 
 	const { t } = useTranslation()
 
 	const toggleMenu = () => {
 		setMenuOpen(!isMenuOpen)
-	}
-
-	const toggleTheme = () => {
-		setIsDarkMode(!isDarkMode)
-		// Add theme toggle logic here
 	}
 
 	const NavContent = () => (
@@ -58,8 +54,14 @@ const Header = ({ fixed, children, navLinks = [] }: HeaderProps) => {
 			)}
 			<div className="right-nav">
 				<LanguageSelector />
-				<button className="theme-toggle" onClick={toggleTheme}>
-					{isDarkMode ? <FaSun /> : <FaMoon />}
+				<button
+					className="theme-toggle"
+					onClick={toggleTheme}
+					title={
+						theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+					}
+				>
+					{theme === "dark" ? <FaSun /> : <FaMoon />}
 				</button>
 				<ul className="nav-links page-links">
 					{links.map(el => (

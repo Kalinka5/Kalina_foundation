@@ -7,7 +7,6 @@ import {
 	useStaggeredAnimation,
 } from "../../lib/useAnimations"
 import "../../styles/home/donationImpact.css"
-import OurInitiatives from "./OurInitiatives"
 
 function DonationImpact() {
 	const { t } = useTranslation()
@@ -109,9 +108,6 @@ function DonationImpact() {
 
 	return (
 		<section className="donation-impact" id="donation-impact">
-			{/* Our Initiatives Section */}
-			<OurInitiatives />
-
 			{/* Choose Your Impact */}
 			<div
 				ref={formRef}
@@ -246,7 +242,7 @@ function DonationImpact() {
 											</h4>
 											<div className="category-stats">
 												<div className="stats-text">
-													<span className="collected white-text">
+													<span className="collected">
 														${category.collected.toLocaleString()}
 													</span>
 													<span className="goal">

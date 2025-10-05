@@ -295,9 +295,13 @@
 }
 
 /* Keep white text for story-card buttons and general btn-animated on hover for better visibility over yellow background */
-.story-card .btn-animated:hover,
-.btn-animated:hover {
+.story-card .btn-animated:hover {
 	color: #ffffff !important;
+}
+
+/* Theme-aware button hover text */
+.btn-animated:hover {
+	color: var(--text-inverse) !important;
 }
 
 .btn-pulse {
