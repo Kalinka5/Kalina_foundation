@@ -13,6 +13,7 @@ function InitiativesShowcase() {
 	const { t } = useTranslation()
 	const navigate = useNavigate()
 	const scrollContainerRef = useRef<HTMLDivElement>(null)
+	const scrollPositionRef = useRef(0) // Persist scroll position across pauses
 	const [isPaused, setIsPaused] = useState(false)
 
 	// Animation hooks for grid section
@@ -33,20 +34,22 @@ function InitiativesShowcase() {
 		if (!container) return
 
 		let animationFrameId: number
-		let scrollPosition = 0
 		const scrollSpeed = 0.5 // pixels per frame
+
+		// Calculate the width of one set of cards (including gap)
+		const cardWidth = 350 // Card width from CSS
+		const gap = 32 // 2rem gap = 32px
+		const oneSetWidth = (cardWidth + gap) * showcaseCards.length
 
 		const autoScroll = () => {
 			if (!isPaused && container) {
-				scrollPosition += scrollSpeed
-				container.scrollLeft = scrollPosition
+				scrollPositionRef.current += scrollSpeed
+				container.scrollLeft = scrollPositionRef.current
 
-				// Reset scroll when reaching the end (infinite loop)
-				const maxScroll = container.scrollWidth - container.clientWidth
-				if (scrollPosition >= maxScroll / 2) {
-					// Reset to start when halfway (since we duplicate cards)
-					scrollPosition = 0
-					container.scrollLeft = 0
+				// Reset scroll seamlessly when we've scrolled one complete set
+				if (scrollPositionRef.current >= oneSetWidth) {
+					scrollPositionRef.current = scrollPositionRef.current - oneSetWidth
+					container.scrollLeft = scrollPositionRef.current
 				}
 			}
 
@@ -199,120 +202,124 @@ function InitiativesShowcase() {
 						onMouseEnter={() => setIsPaused(true)}
 						onMouseLeave={() => setIsPaused(false)}
 					>
-						{/* Duplicate cards for infinite scroll */}
-						{[...showcaseCards, ...showcaseCards].map((card, index) => {
-							const cardKey = `${card.id}-${index}`
-							// Image + Text Below Card
-							if (card.type === "image-text") {
-								return (
-									<div
-										key={cardKey}
-										className="showcase-card card-image-text animate-card"
-										style={{ backgroundColor: card.color }}
-									>
-										<div className="card-image-container">
+						{/* Duplicate cards multiple times for seamless infinite scroll */}
+						{[...showcaseCards, ...showcaseCards, ...showcaseCards].map(
+							(card, index) => {
+								const cardKey = `${card.id}-${index}`
+								// Image + Text Below Card
+								if (card.type === "image-text") {
+									return (
+										<div
+											key={cardKey}
+											className="showcase-card card-image-text animate-card"
+											style={{ backgroundColor: card.color }}
+										>
+											<div className="card-image-container">
+												<img
+													src={card.image}
+													alt={card.title}
+													className="card-image"
+												/>
+											</div>
+											<div
+												className="showcase-card-content"
+												style={{ color: card.textColor }}
+											>
+												<div className="showcase-card-icon">{card.icon}</div>
+												<h3 className="showcase-card-title">{card.title}</h3>
+												<p className="showcase-card-description">
+													{card.description}
+												</p>
+											</div>
+										</div>
+									)
+								}
+
+								// Stats Card
+								if (card.type === "stats-card") {
+									return (
+										<div
+											key={cardKey}
+											className="showcase-card card-stats animate-card"
+											style={{ background: card.gradient }}
+										>
+											<div className="card-icon-large">{card.icon}</div>
+											<div className="stats-content">
+												<div className="stat-primary">
+													<div className="stat-value-large">{card.value}</div>
+													<div className="stat-label-main">{card.title}</div>
+												</div>
+												<div className="stat-secondary">
+													<div className="stat-value-small">
+														{card.valueSmall}
+													</div>
+													<div className="stat-label-small">
+														{card.subtitle}
+													</div>
+												</div>
+											</div>
+											<div className="card-decoration">✨</div>
+										</div>
+									)
+								}
+
+								// Image with Overlay Text Card
+								if (card.type === "image-overlay") {
+									return (
+										<div
+											key={cardKey}
+											className="showcase-card card-image-overlay animate-card"
+										>
 											<img
 												src={card.image}
 												alt={card.title}
-												className="card-image"
+												className="card-background-image"
 											/>
+											<div className="card-overlay"></div>
+											<div className="card-overlay-content">
+												{card.badge && (
+													<div className="overlay-badge">
+														<span className="badge-icon">{card.icon}</span>
+														<span className="badge-text">
+															{card.badgeValue} {card.badge}
+														</span>
+													</div>
+												)}
+												<h3 className="overlay-title">{card.title}</h3>
+												<p className="overlay-subtitle">{card.subtitle}</p>
+											</div>
 										</div>
+									)
+								}
+
+								// Text + Action Card
+								if (card.type === "text-action") {
+									return (
 										<div
-											className="showcase-card-content"
-											style={{ color: card.textColor }}
+											key={cardKey}
+											className="showcase-card card-text-action animate-card"
+											style={{ backgroundColor: card.color }}
 										>
-											<div className="showcase-card-icon">{card.icon}</div>
-											<h3 className="showcase-card-title">{card.title}</h3>
-											<p className="showcase-card-description">
+											<div className="card-icon-animated">{card.icon}</div>
+											<h3 className="action-card-title">{card.title}</h3>
+											<p className="action-card-description">
 												{card.description}
 											</p>
+											<button
+												className="action-card-button"
+												onClick={() => navigate("/donate")}
+											>
+												<span>{card.buttonText}</span>
+												<span className="button-icon">→</span>
+											</button>
+											<div className="card-pulse-effect"></div>
 										</div>
-									</div>
-								)
-							}
+									)
+								}
 
-							// Stats Card
-							if (card.type === "stats-card") {
-								return (
-									<div
-										key={cardKey}
-										className="showcase-card card-stats animate-card"
-										style={{ background: card.gradient }}
-									>
-										<div className="card-icon-large">{card.icon}</div>
-										<div className="stats-content">
-											<div className="stat-primary">
-												<div className="stat-value-large">{card.value}</div>
-												<div className="stat-label-main">{card.title}</div>
-											</div>
-											<div className="stat-secondary">
-												<div className="stat-value-small">
-													{card.valueSmall}
-												</div>
-												<div className="stat-label-small">{card.subtitle}</div>
-											</div>
-										</div>
-										<div className="card-decoration">✨</div>
-									</div>
-								)
+								return null
 							}
-
-							// Image with Overlay Text Card
-							if (card.type === "image-overlay") {
-								return (
-									<div
-										key={cardKey}
-										className="showcase-card card-image-overlay animate-card"
-									>
-										<img
-											src={card.image}
-											alt={card.title}
-											className="card-background-image"
-										/>
-										<div className="card-overlay"></div>
-										<div className="card-overlay-content">
-											{card.badge && (
-												<div className="overlay-badge">
-													<span className="badge-icon">{card.icon}</span>
-													<span className="badge-text">
-														{card.badgeValue} {card.badge}
-													</span>
-												</div>
-											)}
-											<h3 className="overlay-title">{card.title}</h3>
-											<p className="overlay-subtitle">{card.subtitle}</p>
-										</div>
-									</div>
-								)
-							}
-
-							// Text + Action Card
-							if (card.type === "text-action") {
-								return (
-									<div
-										key={cardKey}
-										className="showcase-card card-text-action animate-card"
-										style={{ backgroundColor: card.color }}
-									>
-										<div className="card-icon-animated">{card.icon}</div>
-										<h3 className="action-card-title">{card.title}</h3>
-										<p className="action-card-description">
-											{card.description}
-										</p>
-										<button
-											className="action-card-button"
-											onClick={() => navigate("/donate")}
-										>
-											<span>{card.buttonText}</span>
-											<span className="button-icon">→</span>
-										</button>
-										<div className="card-pulse-effect"></div>
-									</div>
-								)
-							}
-
-							return null
-						})}
+						)}
 					</div>
 				</div>
 

@@ -354,6 +354,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	color: #ffffff;
+	border-radius: 12px;
 }
 
 .category-icon {
