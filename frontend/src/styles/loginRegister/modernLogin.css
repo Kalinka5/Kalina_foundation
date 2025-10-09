@@ -61,6 +61,7 @@
 /* Left side - Form */
 .modern-login-form-side {
 	flex: 0 0 40%;
+	max-width: 480px;
 	background: var(--auth-bg-form-side);
 	padding: 56px;
 	display: flex;
@@ -612,10 +613,14 @@
 		background: var(--auth-bg-primary);
 		box-shadow: none;
 		overflow: hidden;
+		justify-content: center;
 	}
 
 	.modern-login-form-side {
 		flex: 1;
+		max-width: 480px;
+		max-height: 700px;
+		margin: 0 auto;
 		padding: 20px 24px;
 		background: var(--auth-bg-primary);
 		position: relative;
@@ -823,6 +828,14 @@
 		display: none;
 	}
 
+	.modern-login-top-bar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 24px;
+		position: static;
+	}
+
 	.modern-back-button {
 		background: var(--auth-top-bar-bg);
 		border: 1px solid var(--auth-top-bar-border);
@@ -831,15 +844,17 @@
 		padding: 0 10px;
 		font-size: 12px;
 		gap: 4px;
-		position: fixed;
-		top: 15px;
-		right: 15px;
+		position: static;
 		z-index: 20;
 	}
 
 	.modern-back-button:hover {
 		background: var(--auth-close-bg-hover);
 		color: var(--auth-text-primary);
+	}
+
+	.modern-login-logo {
+		position: static;
 	}
 }
 
@@ -932,7 +947,7 @@
 
 	.modern-back-button {
 		top: 10px;
-		right: 10px;
+		left: 10px;
 		height: 28px;
 		padding: 0 8px;
 		font-size: 11px;

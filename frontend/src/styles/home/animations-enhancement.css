@@ -106,12 +106,6 @@
 	background: rgba(255, 255, 255, 0.1);
 }
 
-/* Enhanced spacing and floating effect */
-.background-image-container {
-	/* Transition removed - animations are handled by animation classes */
-	/* Only animate padding on hover */
-}
-
 .background-image-container:hover {
 	padding: 12px;
 	transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
