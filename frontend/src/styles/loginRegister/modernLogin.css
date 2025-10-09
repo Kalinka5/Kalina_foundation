@@ -1,9 +1,10 @@
 /* Modern Login Page Design - Based on Register Design */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import "./authTheme.css";
 
 .modern-login-container {
-	min-height: 100vh;
-	background: var(--bg-primary);
+	height: calc(100vh - 65px);
+	background: var(--auth-bg-primary);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -11,13 +12,15 @@
 	font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
 		sans-serif;
 	transition: background 0.3s ease;
+	overflow: hidden;
 }
 
 .modern-login-modal {
-	background: var(--bg-card);
-	border: 1px solid var(--border-primary);
+	background: var(--auth-bg-card);
+	border: 1px solid var(--auth-border-primary);
 	border-radius: 40px;
-	box-shadow: var(--shadow-heavy);
+	box-shadow: 0 32px 64px var(--auth-shadow-heavy),
+		0 8px 16px var(--auth-shadow-medium);
 	display: flex;
 	max-width: 1200px;
 	width: 100%;
@@ -35,30 +38,30 @@
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	background: #2a2a2a;
-	border: 1px solid #404040;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	background: var(--auth-close-bg);
+	border: 1px solid var(--auth-close-border);
+	box-shadow: 0 4px 12px var(--auth-shadow-medium);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
 	z-index: 30;
 	font-size: 18px;
-	color: #e5e5e5;
+	color: var(--auth-close-text);
 	transition: all 0.2s ease;
 }
 
 .modern-login-close:hover {
-	background: #404040;
-	color: white;
+	background: var(--auth-close-bg-hover);
+	color: var(--auth-text-primary);
 	transform: scale(1.05);
-	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 6px 16px var(--auth-shadow-heavy);
 }
 
 /* Left side - Form */
 .modern-login-form-side {
 	flex: 0 0 40%;
-	background: linear-gradient(to bottom, #1a1a1a 0%, #252525 100%);
+	background: var(--auth-bg-form-side);
 	padding: 56px;
 	display: flex;
 	flex-direction: column;
@@ -78,9 +81,9 @@
 	height: 40px;
 	padding: 0 16px;
 	border-radius: 20px;
-	background: #333333;
-	border: 1px solid #555555;
-	color: #e5e5e5;
+	background: var(--auth-top-bar-bg);
+	border: 1px solid var(--auth-top-bar-border);
+	color: var(--auth-top-bar-text);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -93,22 +96,22 @@
 }
 
 .modern-back-button:hover {
-	background: #404040;
-	color: #ffffff;
+	background: var(--auth-close-bg-hover);
+	color: var(--auth-text-primary);
 	transform: scale(1.05);
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 4px 12px var(--auth-shadow-medium);
 }
 
 .modern-login-logo {
-	background: #333333;
-	color: #e5e5e5;
+	background: var(--auth-top-bar-bg);
+	color: var(--auth-top-bar-text);
 	padding: 8px 16px;
 	border-radius: 50px;
 	font-weight: 500;
 	font-size: 14px;
 	display: inline-block;
 	width: fit-content;
-	border: 1px solid #555555;
+	border: 1px solid var(--auth-top-bar-border);
 }
 
 .modern-login-logo-img {
@@ -124,7 +127,7 @@
 .modern-login-title {
 	font-size: 32px;
 	font-weight: 600;
-	color: #ffffff;
+	color: var(--auth-text-primary);
 	margin: 0 0 8px 0;
 	line-height: 1.2;
 	text-align: center;
@@ -132,7 +135,7 @@
 
 .modern-login-subtitle {
 	font-size: 16px;
-	color: #b0b0b0;
+	color: var(--auth-text-secondary);
 	margin: 0;
 	font-weight: 400;
 	text-align: center;
@@ -150,7 +153,7 @@
 	display: block;
 	font-size: 14px;
 	font-weight: 500;
-	color: #e5e5e5;
+	color: var(--auth-text-label);
 	margin-bottom: 8px;
 }
 
@@ -164,26 +167,27 @@
 .modern-form-input {
 	width: 100%;
 	padding: 16px 20px;
-	border: 1px solid #404040;
+	border: 1px solid var(--auth-border-input);
 	border-radius: 50px;
 	font-size: 16px;
 	font-weight: 400;
-	color: #ffffff;
-	background: #2a2a2a;
-	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+	color: var(--auth-text-input);
+	background: var(--auth-bg-input);
+	box-shadow: inset 0 2px 4px var(--auth-shadow-light);
 	transition: all 0.2s ease;
 	box-sizing: border-box;
 }
 
 .modern-form-input:focus {
 	outline: none;
-	border-color: #4169e1;
-	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2),
+	border-color: var(--auth-border-input-focus);
+	background: var(--auth-bg-input-focus);
+	box-shadow: inset 0 2px 4px var(--auth-shadow-light),
 		0 0 0 3px rgba(65, 105, 225, 0.2);
 }
 
 .modern-form-input::placeholder {
-	color: #888888;
+	color: var(--auth-text-placeholder);
 	font-weight: 400;
 }
 
@@ -209,7 +213,7 @@
 	transform: translateY(-50%);
 	background: none;
 	border: none;
-	color: #e5e5e5;
+	color: var(--auth-text-secondary);
 	cursor: pointer;
 	padding: 4px;
 	border-radius: 4px;
@@ -221,13 +225,13 @@
 }
 
 .modern-password-toggle:hover {
-	color: #ffffff;
-	background: rgba(255, 255, 255, 0.1);
+	color: var(--auth-text-primary);
+	background: rgba(128, 128, 128, 0.1);
 }
 
 .modern-password-toggle:focus {
 	outline: none;
-	background: rgba(255, 255, 255, 0.1);
+	background: rgba(128, 128, 128, 0.1);
 }
 
 /* Error state for password toggle button */
@@ -251,8 +255,8 @@
 
 .modern-submit-button {
 	width: 100%;
-	background: #ffd700;
-	color: #1a1a1a;
+	background: var(--auth-btn-primary-bg);
+	color: var(--auth-btn-primary-text);
 	border: none;
 	padding: 16px;
 	border-radius: 50px;
@@ -261,13 +265,13 @@
 	cursor: pointer;
 	transition: all 0.2s ease;
 	margin-bottom: 32px;
-	box-shadow: 0 4px 8px rgba(255, 215, 0, 0.3);
+	box-shadow: 0 4px 8px var(--auth-shadow-medium);
 }
 
 .modern-submit-button:hover {
-	background: #ffed4e;
+	background: var(--auth-btn-primary-bg-hover);
 	transform: translateY(-1px);
-	box-shadow: 0 6px 12px rgba(255, 215, 0, 0.4);
+	box-shadow: 0 6px 12px var(--auth-shadow-heavy);
 }
 
 .modern-submit-button:active {
@@ -292,10 +296,10 @@
 	justify-content: center;
 	gap: 10px;
 	padding: 14px 16px;
-	border: 1px solid #404040;
+	border: 1px solid var(--auth-btn-secondary-border);
 	border-radius: 50px;
-	background: #2a2a2a;
-	color: #e5e5e5;
+	background: var(--auth-btn-secondary-bg);
+	color: var(--auth-btn-secondary-text);
 	font-size: 14px;
 	font-weight: 500;
 	cursor: pointer;
@@ -304,11 +308,11 @@
 }
 
 .modern-social-button:hover {
-	border-color: #555555;
-	background: #404040;
-	color: #ffffff;
+	border-color: var(--auth-border-input);
+	background: var(--auth-btn-secondary-bg-hover);
+	color: var(--auth-text-primary);
 	transform: translateY(-1px);
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 2px 8px var(--auth-shadow-medium);
 }
 
 .modern-social-icon {
@@ -326,22 +330,22 @@
 
 .modern-login-link {
 	font-size: 13px;
-	color: #b0b0b0;
+	color: var(--auth-text-secondary);
 }
 
 .modern-login-link a {
-	color: #ffd700;
+	color: var(--auth-link-color);
 	text-decoration: underline;
 	font-weight: 500;
 }
 
 .modern-login-link a:hover {
-	color: #ffed4e;
+	color: var(--auth-link-hover);
 }
 
 .modern-forgot-password-link {
 	font-size: 13px;
-	color: #b0b0b0;
+	color: var(--auth-text-secondary);
 	text-decoration: underline;
 	background: none;
 	border: none;
@@ -354,7 +358,7 @@
 }
 
 .modern-forgot-password-link:hover {
-	color: #e5e5e5;
+	color: var(--auth-text-primary);
 }
 
 /* Right side - Image */
@@ -368,7 +372,7 @@
 	overflow: hidden;
 	border-top-right-radius: 48px;
 	border-bottom-right-radius: 40px;
-	background: linear-gradient(to bottom, #1a1a1a 0%, #252525 100%);
+	background: var(--auth-bg-form-side);
 }
 
 /* Inner frame to ensure child elements inherit rounded corners */
@@ -388,7 +392,7 @@
 	right: -24px;
 	width: 96px;
 	height: 96px;
-	background: #1a1a1a;
+	background: var(--auth-image-frame-notch);
 	border-radius: 50%;
 	z-index: 20;
 	pointer-events: none;
@@ -422,7 +426,7 @@
 	height: 3px;
 	border-radius: 2px;
 	border: none;
-	background: rgba(255, 255, 255, 0.3);
+	background: var(--auth-dot-inactive);
 	cursor: pointer;
 	transition: all 0.3s ease;
 	opacity: 0.6;
@@ -434,7 +438,7 @@
 }
 
 .modern-dot.active {
-	background: #4169e1;
+	background: var(--auth-dot-active);
 	opacity: 1;
 	width: 32px;
 	transform: scaleY(1.3);
@@ -593,8 +597,8 @@
 @media (max-width: 768px) {
 	.modern-login-container {
 		padding: 0;
-		min-height: 100vh;
-		background: #0f1419;
+		height: calc(100vh - 65px);
+		background: var(--auth-bg-primary);
 		overflow: hidden;
 	}
 
@@ -605,7 +609,7 @@
 		max-width: 100%;
 		width: 100%;
 		height: 100vh;
-		background: #0f1419;
+		background: var(--auth-bg-primary);
 		box-shadow: none;
 		overflow: hidden;
 	}
@@ -613,7 +617,7 @@
 	.modern-login-form-side {
 		flex: 1;
 		padding: 20px 24px;
-		background: #0f1419;
+		background: var(--auth-bg-primary);
 		position: relative;
 		z-index: 10;
 		border-radius: 0;
@@ -653,23 +657,23 @@
 
 	.modern-login-title {
 		font-size: 28px;
-		color: #ffffff;
+		color: var(--auth-text-primary);
 		text-align: center;
 		margin-bottom: 6px;
 	}
 
 	.modern-login-subtitle {
-		color: #e5e5e5;
+		color: var(--auth-text-secondary);
 		text-align: center;
 		margin-bottom: 24px;
 		font-size: 14px;
 	}
 
 	.modern-login-form {
-		background: rgba(42, 42, 42, 0.6);
+		background: var(--auth-bg-card);
 		padding: 24px 20px;
 		border-radius: 12px;
-		border: 1px solid rgba(255, 255, 255, 0.1);
+		border: 1px solid var(--auth-border-primary);
 		margin-bottom: 16px;
 	}
 
@@ -678,7 +682,7 @@
 	}
 
 	.modern-form-label {
-		color: #e5e5e5;
+		color: var(--auth-text-label);
 		font-size: 13px;
 		font-weight: 500;
 		margin-bottom: 6px;
@@ -694,9 +698,9 @@
 	}
 
 	.modern-form-input {
-		background: rgba(26, 26, 26, 0.8);
-		border: 1px solid #404040;
-		color: #ffffff;
+		background: var(--auth-bg-input);
+		border: 1px solid var(--auth-border-input);
+		color: var(--auth-text-input);
 		font-size: 15px;
 		padding: 12px 16px;
 		border-radius: 10px;
@@ -704,14 +708,14 @@
 	}
 
 	.modern-form-input:focus {
-		border-color: #4169e1;
-		background: rgba(26, 26, 26, 0.9);
+		border-color: var(--auth-border-input-focus);
+		background: var(--auth-bg-input-focus);
 		outline: none;
 		box-shadow: 0 0 0 2px rgba(65, 105, 225, 0.1);
 	}
 
 	.modern-form-input::placeholder {
-		color: #888888;
+		color: var(--auth-text-placeholder);
 	}
 
 	.modern-password-container {
@@ -719,8 +723,8 @@
 	}
 
 	.modern-submit-button {
-		background: #4169e1;
-		color: #ffffff;
+		background: var(--auth-btn-primary-bg);
+		color: var(--auth-btn-primary-text);
 		border: none;
 		padding: 12px 20px;
 		border-radius: 10px;
@@ -733,13 +737,13 @@
 	}
 
 	.modern-submit-button:hover {
-		background: #5a7ff0;
+		background: var(--auth-btn-primary-bg-hover);
 		transform: translateY(-1px);
-		box-shadow: 0 4px 15px rgba(65, 105, 225, 0.3);
+		box-shadow: 0 4px 15px var(--auth-shadow-medium);
 	}
 
 	.modern-submit-button:disabled {
-		background: #666666;
+		opacity: 0.7;
 		cursor: not-allowed;
 		transform: none;
 		box-shadow: none;
@@ -750,9 +754,9 @@
 	}
 
 	.modern-social-button {
-		background: rgba(42, 42, 42, 0.6);
-		border: 1px solid #404040;
-		color: #e5e5e5;
+		background: var(--auth-btn-secondary-bg);
+		border: 1px solid var(--auth-btn-secondary-border);
+		color: var(--auth-btn-secondary-text);
 		padding: 12px 20px;
 		border-radius: 10px;
 		width: 100%;
@@ -761,8 +765,8 @@
 	}
 
 	.modern-social-button:hover {
-		background: rgba(42, 42, 42, 0.8);
-		border-color: #555555;
+		background: var(--auth-btn-secondary-bg-hover);
+		border-color: var(--auth-border-input);
 		transform: translateY(-1px);
 	}
 
@@ -772,13 +776,13 @@
 	}
 
 	.modern-login-link {
-		color: #e5e5e5;
+		color: var(--auth-text-secondary);
 		font-size: 13px;
 		margin-bottom: 12px;
 	}
 
 	.modern-login-link a {
-		color: #4169e1;
+		color: var(--auth-link-color);
 		text-decoration: none;
 		font-weight: 500;
 	}
@@ -788,7 +792,7 @@
 	}
 
 	.modern-forgot-password-link {
-		color: #888888;
+		color: var(--auth-text-tertiary);
 		font-size: 11px;
 		text-decoration: none;
 		background: none;
@@ -800,11 +804,11 @@
 	}
 
 	.modern-forgot-password-link:hover {
-		color: #e5e5e5;
+		color: var(--auth-text-secondary);
 	}
 
 	.modern-error-message {
-		color: #ff6b6b;
+		color: var(--auth-error-color);
 		font-size: 11px;
 		margin-top: 4px;
 	}
@@ -820,9 +824,9 @@
 	}
 
 	.modern-back-button {
-		background: rgba(0, 0, 0, 0.7);
-		border: 1px solid rgba(255, 255, 255, 0.2);
-		color: #ffffff;
+		background: var(--auth-top-bar-bg);
+		border: 1px solid var(--auth-top-bar-border);
+		color: var(--auth-top-bar-text);
 		height: 32px;
 		padding: 0 10px;
 		font-size: 12px;
@@ -834,8 +838,8 @@
 	}
 
 	.modern-back-button:hover {
-		background: rgba(0, 0, 0, 0.8);
-		color: #ffffff;
+		background: var(--auth-close-bg-hover);
+		color: var(--auth-text-primary);
 	}
 }
 
@@ -959,17 +963,17 @@
 
 /* Error states */
 .modern-form-input.error {
-	border-color: #ef4444;
-	background: #2a2a2a;
-	color: #ffffff;
+	border-color: var(--auth-error-color);
+	background: var(--auth-error-bg);
+	color: var(--auth-text-input);
 	animation: errorShake 0.5s ease;
 }
 
 .modern-form-input.error:focus {
-	border-color: #ef4444;
+	border-color: var(--auth-error-color);
 	box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
-	background: #2a2a2a;
-	color: #ffffff;
+	background: var(--auth-error-bg);
+	color: var(--auth-text-input);
 }
 
 @keyframes errorShake {
@@ -993,7 +997,7 @@
 }
 
 .modern-error-message {
-	color: #ef4444;
+	color: var(--auth-error-color);
 	font-size: 13px;
 	margin-top: 6px;
 	font-weight: 500;
@@ -1006,7 +1010,7 @@
 .modern-error-message::before {
 	content: "⚠";
 	font-size: 14px;
-	color: #ef4444;
+	color: var(--auth-error-color);
 }
 
 @keyframes errorSlideIn {
@@ -1022,12 +1026,12 @@
 
 /* Success states */
 .modern-form-input.success {
-	border-color: #10b981;
-	background: #f0fdf4;
+	border-color: var(--auth-success-color);
+	background: var(--auth-success-bg);
 }
 
 .modern-form-input.success:focus {
-	border-color: #10b981;
+	border-color: var(--auth-success-color);
 	box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
 }
 
@@ -1043,11 +1047,11 @@
 }
 
 .modern-alert {
-	background: #10b981;
+	background: var(--auth-success-color);
 	color: white;
 	padding: 16px 20px;
 	border-radius: 12px;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 10px 25px var(--auth-shadow-medium);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -1056,7 +1060,7 @@
 }
 
 .modern-alert.error {
-	background: #ef4444;
+	background: var(--auth-error-color);
 }
 
 .modern-alert-close {

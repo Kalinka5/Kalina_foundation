@@ -1,0 +1,145 @@
+/* Authentication Theme Variables */
+/* This file contains theme-specific variables for login/register pages */
+
+/* Light Theme (Default for Auth Pages) */
+[data-theme="light"] {
+	/* Backgrounds */
+	--auth-bg-primary: #f8f9fa;
+	--auth-bg-card: #ffffff;
+	--auth-bg-form-side: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 100%);
+	--auth-bg-image-side: linear-gradient(to bottom, #f0f0f0 0%, #e0e0e0 100%);
+	--auth-bg-input: #f0f0f0;
+	--auth-bg-input-focus: #ffffff;
+
+	/* Text Colors */
+	--auth-text-primary: #1a1a1a;
+	--auth-text-secondary: #2d2d2d;
+	--auth-text-tertiary: #666666;
+	--auth-text-input: #1a1a1a;
+	--auth-text-placeholder: #888888;
+	--auth-text-label: #2d2d2d;
+
+	/* Borders */
+	--auth-border-primary: #e0e0e0;
+	--auth-border-input: #d0d0d0;
+	--auth-border-input-focus: #4169e1;
+
+	/* Shadows */
+	--auth-shadow-light: rgba(0, 0, 0, 0.05);
+	--auth-shadow-medium: rgba(0, 0, 0, 0.08);
+	--auth-shadow-heavy: rgba(0, 0, 0, 0.1);
+
+	/* Buttons - Primary (Login/Register) */
+	--auth-btn-primary-bg: #4169e1;
+	--auth-btn-primary-bg-hover: #5a7ff0;
+	--auth-btn-primary-text: #ffffff;
+
+	/* Buttons - Secondary (Social Login) */
+	--auth-btn-secondary-bg: #f0f0f0;
+	--auth-btn-secondary-bg-hover: #e0e0e0;
+	--auth-btn-secondary-text: #333333;
+	--auth-btn-secondary-border: #cccccc;
+
+	/* Links */
+	--auth-link-color: #4169e1;
+	--auth-link-hover: #5a7ff0;
+
+	/* Close Button */
+	--auth-close-bg: #e0e0e0;
+	--auth-close-bg-hover: #cccccc;
+	--auth-close-border: #cccccc;
+	--auth-close-text: #666666;
+
+	/* Top Bar / Back Button */
+	--auth-top-bar-bg: #e0e0e0;
+	--auth-top-bar-border: #cccccc;
+	--auth-top-bar-text: #333333;
+
+	/* Image Frame */
+	--auth-image-frame-notch: #ffffff;
+
+	/* Dots */
+	--auth-dot-active: #4169e1;
+	--auth-dot-inactive: rgba(0, 0, 0, 0.3);
+
+	/* Status Colors */
+	--auth-error-color: #dc3545;
+	--auth-error-bg: #fff0f0;
+	--auth-success-color: #28a745;
+	--auth-success-bg: #e6ffe6;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+	/* Backgrounds */
+	--auth-bg-primary: #0f1419;
+	--auth-bg-card: #1a1a1a;
+	--auth-bg-form-side: linear-gradient(
+		to bottom,
+		rgba(26, 26, 26, 0.95) 0%,
+		rgba(15, 20, 25, 0.98) 100%
+	);
+	--auth-bg-image-side: linear-gradient(
+		135deg,
+		rgba(65, 105, 225, 0.15) 0%,
+		rgba(138, 92, 246, 0.1) 100%
+	);
+	--auth-bg-input: rgba(26, 26, 26, 0.8);
+	--auth-bg-input-focus: rgba(26, 26, 26, 0.9);
+
+	/* Text Colors */
+	--auth-text-primary: #ffffff;
+	--auth-text-secondary: #e5e5e5;
+	--auth-text-tertiary: #b0b0b0;
+	--auth-text-input: #ffffff;
+	--auth-text-placeholder: #888888;
+
+	/* Borders */
+	--auth-border-primary: rgba(255, 255, 255, 0.1);
+	--auth-border-input: #404040;
+	--auth-border-input-focus: #4169e1;
+
+	/* Shadows */
+	--auth-shadow-light: rgba(0, 0, 0, 0.2);
+	--auth-shadow-medium: rgba(0, 0, 0, 0.3);
+	--auth-shadow-heavy: rgba(0, 0, 0, 0.4);
+
+	/* Buttons - Primary (Login/Register) */
+	--auth-btn-primary-bg: #ffd700;
+	--auth-btn-primary-bg-hover: #ffed4e;
+	--auth-btn-primary-text: #1a1a1a;
+
+	/* Buttons - Secondary (Social Login) */
+	--auth-btn-secondary-bg: rgba(42, 42, 42, 0.6);
+	--auth-btn-secondary-bg-hover: rgba(42, 42, 42, 0.8);
+	--auth-btn-secondary-text: #e5e5e5;
+	--auth-btn-secondary-border: #404040;
+
+	/* Links */
+	--auth-link-color: #4169e1;
+	--auth-link-hover: #5a7ff0;
+
+	/* Close Button */
+	--auth-close-bg: rgba(255, 255, 255, 0.1);
+	--auth-close-bg-hover: rgba(255, 255, 255, 0.2);
+	--auth-close-border: rgba(255, 255, 255, 0.2);
+	--auth-close-text: #ffffff;
+
+	/* Top Bar / Back Button */
+	--auth-top-bar-bg: rgba(0, 0, 0, 0.7);
+	--auth-top-bar-border: rgba(255, 255, 255, 0.2);
+	--auth-top-bar-text: #ffffff;
+
+	/* Image Frame */
+	--auth-image-frame-notch: rgba(26, 26, 26, 0.95);
+
+	/* Dots */
+	--auth-dot-active: #ffd700;
+	--auth-dot-inactive: rgba(255, 255, 255, 0.3);
+
+	/* Status Colors */
+	--auth-error-color: #ff6b6b;
+	--auth-error-bg: rgba(255, 107, 107, 0.1);
+	--auth-success-color: #51cf66;
+	--auth-success-bg: rgba(81, 207, 102, 0.1);
+}
