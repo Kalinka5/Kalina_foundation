@@ -10,7 +10,6 @@ import TeamMission from "../components/Home/TeamMission"
 import TopDonators from "../components/Home/TopDonators"
 
 import { MAX_PAGE_NUMBER } from "../lib/constants"
-import { usePageLoadAnimation } from "../lib/useAnimations"
 
 import { useMediaQuery } from "@uidotdev/usehooks"
 
@@ -25,7 +24,6 @@ import "../styles/home/animations-enhancement.css"
 function Home() {
 	const [page, setPage] = useState(1)
 	const isPhoneDisplay = useMediaQuery("only screen and (max-width: 1064px)")
-	const isPageLoaded = usePageLoadAnimation(100) // Small delay for page load animation
 
 	const { t } = useTranslation()
 
@@ -75,7 +73,7 @@ function Home() {
 	]
 
 	return (
-		<div className={`main home-page ${isPageLoaded ? "page-enter" : ""}`}>
+		<div className="main home-page">
 			<Header fixed="pos-fixed" navLinks={homeNavLinks} />
 			{page > 0 && page < MAX_PAGE_NUMBER ? (
 				<main className="home-content">

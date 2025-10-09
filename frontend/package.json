@@ -37,7 +37,8 @@
 		"build": "vite build",
 		"preview": "vite preview",
 		"typecheck": "tsc --noEmit",
-		"test": "vitest"
+		"test": "vitest",
+		"optimize-images": "node optimize-images.cjs"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -61,6 +62,7 @@
 		"@vitejs/plugin-react-swc": "^3.7.1",
 		"framer-motion": "^12.23.22",
 		"postcss-nesting": "^13.0.2",
+		"sharp": "^0.33.5",
 		"typescript": "^5.9.2",
 		"vite": "^5.4.1"
 	}

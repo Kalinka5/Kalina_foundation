@@ -22,9 +22,9 @@
 	--ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 	/* Animation delays for staggered effects */
-	--stagger-delay: 0.1s;
+	--stagger-delay: 0.15s;
 	--stagger-fast: 0.05s;
-	--stagger-slow: 0.15s;
+	--stagger-slow: 0.2s;
 
 	/* Transform values */
 	--scale-hover: 1.05;
@@ -322,6 +322,23 @@ body {
 }
 .stagger-6 {
 	transition-delay: calc(6 * var(--stagger-delay));
+}
+
+/* Hero section staggered animations - for sequential image appearance */
+.hero-stagger-7 {
+	transition-delay: calc(7 * var(--stagger-delay));
+}
+.hero-stagger-8 {
+	transition-delay: calc(8 * var(--stagger-delay));
+}
+.hero-stagger-9 {
+	transition-delay: calc(9 * var(--stagger-delay));
+}
+.hero-stagger-10 {
+	transition-delay: calc(10 * var(--stagger-delay));
+}
+.hero-stagger-11 {
+	transition-delay: calc(11 * var(--stagger-delay));
 }
 
 /* =========================
