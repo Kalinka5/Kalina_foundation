@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next"
 import { useScrollAnimation } from "../../lib/useAnimations"
 import "../../styles/home/teamMission.css"
+import "../../styles/optimizedImage.css"
+import OptimizedImage from "../OptimizedImage"
 
 function TeamMission() {
 	const { t } = useTranslation()
@@ -109,13 +111,12 @@ function TeamMission() {
 						}`}
 					>
 						<div className="image-container hover-lift tilt-3d">
-							<img
+							<OptimizedImage
 								src="/img/team-photo.png"
 								alt="Our dedicated team"
-								onError={e => {
-									// Fallback to existing image if new one doesn't exist
-									e.currentTarget.src = "/img/team-photo.png"
-								}}
+								width={800}
+								height={1062}
+								sizes="(max-width: 768px) 400px, (max-width: 1024px) 600px, 800px"
 							/>
 							<div className="glass-effect image-overlay"></div>
 						</div>
@@ -163,13 +164,12 @@ function TeamMission() {
 						}`}
 					>
 						<div className="image-container hover-lift tilt-3d">
-							<img
+							<OptimizedImage
 								src="/img/team-photo-4x3.png"
 								alt="Team collaboration"
-								onError={e => {
-									// Fallback to existing image if new one doesn't exist
-									e.currentTarget.src = "/img/team-photo.png"
-								}}
+								width={800}
+								height={603}
+								sizes="(max-width: 768px) 400px, (max-width: 1024px) 600px, 800px"
 							/>
 							<div className="glass-effect image-overlay"></div>
 						</div>

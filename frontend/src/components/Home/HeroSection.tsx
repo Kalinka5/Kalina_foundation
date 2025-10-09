@@ -56,8 +56,8 @@ function HeroSection() {
 							src="/img/home-background1.png"
 							alt="Ukrainian hero 1"
 							priority={true}
-							width={180}
-							height={180}
+							width={220}
+							height={220}
 						/>
 						<div className="glass-effect image-overlay"></div>
 					</div>

@@ -27,20 +27,21 @@ const CONFIG = {
 		"home-background*.png",
 		"login-background*.png",
 		"register-background*.png",
+		"team-photo*.png",
 	],
 
 	// Size configurations for responsive images
 	sizes: {
-		small: { width: 140, suffix: "-small" },
-		medium: { width: 180, suffix: "-medium" },
-		large: { width: 220, suffix: "" }, // Original size, no suffix
+		small: { width: 400, suffix: "-small" },
+		medium: { width: 600, suffix: "-medium" },
+		large: { width: 800, suffix: "" }, // High resolution for large displays
 	},
 
 	// Quality settings
 	quality: {
-		webp: 85,
-		png: 90,
-		jpeg: 85,
+		webp: 95, // High quality for better image fidelity
+		png: 95, // High quality PNG
+		jpeg: 92, // High quality JPEG
 	},
 }
 

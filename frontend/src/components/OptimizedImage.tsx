@@ -93,12 +93,12 @@ export const OptimizedImage = ({
 			<source
 				type="image/webp"
 				srcSet={`
-					${webpSources.small} 140w,
-					${webpSources.medium} 180w,
-					${webpSources.large} 220w
+					${webpSources.small} 400w,
+					${webpSources.medium} 600w,
+					${webpSources.large} 800w
 				`}
 				sizes={
-					sizes || "(max-width: 768px) 120px, (max-width: 1024px) 150px, 220px"
+					sizes || "(max-width: 768px) 400px, (max-width: 1024px) 600px, 800px"
 				}
 			/>
 
@@ -106,12 +106,12 @@ export const OptimizedImage = ({
 			<source
 				type={src.endsWith(".png") ? "image/png" : "image/jpeg"}
 				srcSet={`
-					${pngSources.small} 140w,
-					${pngSources.medium} 180w,
-					${pngSources.large} 220w
+					${pngSources.small} 400w,
+					${pngSources.medium} 600w,
+					${pngSources.large} 800w
 				`}
 				sizes={
-					sizes || "(max-width: 768px) 120px, (max-width: 1024px) 150px, 220px"
+					sizes || "(max-width: 768px) 400px, (max-width: 1024px) 600px, 800px"
 				}
 			/>
 
