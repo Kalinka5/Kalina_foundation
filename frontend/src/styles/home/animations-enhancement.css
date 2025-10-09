@@ -438,8 +438,10 @@
 }
 
 @media (max-width: 480px) {
-	.floating-elements {
-		display: none;
+	/* Keep floating elements visible on mobile */
+	.floating-element {
+		font-size: 1.2rem;
+		opacity: 0.4;
 	}
 
 	.btn-enhanced::before {
@@ -451,7 +453,13 @@
 		display: none;
 	}
 
-	.gradient-text {
+	/* Keep gradient text for hero section, remove for other elements */
+	.category-card .gradient-text,
+	.story-card .gradient-text,
+	.collected.gradient-text,
+	.hero-amount.gradient-text,
+	.avatar-initials.gradient-text,
+	.brigade-name.gradient-text {
 		background: none !important;
 		-webkit-text-fill-color: inherit !important;
 		color: inherit;

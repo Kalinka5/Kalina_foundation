@@ -565,21 +565,29 @@ body {
    HIGH PERFORMANCE MODE
    ========================= */
 @media (max-width: 480px) {
-	/* Ultra-light animations for low-end devices */
-	.animate-fade-up,
-	.animate-fade-down,
-	.animate-fade-left,
-	.animate-fade-right {
-		transform: none !important;
-		transition: opacity var(--duration-fast) ease-out;
+	/* Lighter animations for mobile devices */
+	:root {
+		--translate-distance: 15px;
+		--duration-fast: 0.15s;
+		--duration-normal: 0.2s;
+		--duration-slow: 0.3s;
 	}
 
-	.hover-lift {
-		transition: opacity var(--duration-fast) ease-out;
+	/* Keep animations but make them lighter */
+	.animate-fade-up.visible,
+	.animate-fade-down.visible,
+	.animate-fade-left.visible,
+	.animate-fade-right.visible {
+		opacity: 1;
+		transform: translateX(0) translateY(0);
 	}
 
 	.hover-lift:hover {
-		transform: none;
-		opacity: 0.8;
+		transform: translateY(-4px) scale(1.02);
+	}
+
+	/* Keep gradient text animation but slower */
+	.gradient-text {
+		animation-duration: 4s;
 	}
 }
