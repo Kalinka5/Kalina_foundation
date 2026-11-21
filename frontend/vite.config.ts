@@ -5,8 +5,8 @@ import { defineConfig } from "vite"
 export default defineConfig(() => ({
 	plugins: [react()],
 	optimizeDeps: {
-		esbuildOptions: {
-			loader: {
+		rolldownOptions: {
+			moduleTypes: {
 				".js": "jsx",
 			},
 		},
