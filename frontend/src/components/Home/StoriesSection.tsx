@@ -1,189 +1,59 @@
 import { useTranslation } from "react-i18next"
-import { DONATE_PAGE } from "../../lib/constants"
-import {
-	useParallax,
-	useScrollAnimation,
-	useStaggeredAnimation,
-} from "../../lib/useAnimations"
+
+import { BRIGADES } from "./data"
+import { Reveal, RevealText } from "./motion"
+
 import "../../styles/home/storiesSection.css"
 
 function StoriesSection() {
 	const { t } = useTranslation()
 
-	const stories = [
-		{
-			id: 1,
-			image: "/img/3oshbr.png",
-			name: t("stories-brigade-3oshbr-name"),
-			description: t("stories-brigade-3oshbr-description"),
-			fallbackImage: "/img/carousel-img1.jpg",
-		},
-		{
-			id: 2,
-			image: "/img/110ombr.png",
-			name: t("stories-brigade-110ombr-name"),
-			description: t("stories-brigade-110ombr-description"),
-			fallbackImage: "/img/carousel-img5.jpg",
-		},
-		{
-			id: 3,
-			image: "/img/47ombr.png",
-			name: t("stories-brigade-47ombr-name"),
-			description: t("stories-brigade-47ombr-description"),
-			fallbackImage: "/img/carousel-img2.jpg",
-		},
-		{
-			id: 4,
-			image: "/img/92oshbr.png",
-			name: t("stories-brigade-92oshbr-name"),
-			description: t("stories-brigade-92oshbr-description"),
-			fallbackImage: "/img/carousel-img3.jpg",
-		},
-		{
-			id: 5,
-			image: "/img/azov.png",
-			name: t("stories-brigade-azov-name"),
-			description: t("stories-brigade-azov-description"),
-			fallbackImage: "/img/carousel-img4.jpg",
-		},
-		{
-			id: 6,
-			image: "/img/59ombr.png",
-			name: t("stories-brigade-59ombr-name"),
-			description: t("stories-brigade-59ombr-description"),
-			fallbackImage: "/img/carousel-img6.jpg",
-		},
-	]
-
-	// Animation hooks
-	const { elementRef: sectionRef, isVisible } = useScrollAnimation<HTMLElement>(
-		{
-			threshold: 0.2,
-			triggerOnce: true,
-		}
-	)
-	const { containerRef: gridRef, visibleItems } =
-		useStaggeredAnimation<HTMLDivElement>(stories.length, {
-			stagger: 120,
-			threshold: 0.1,
-		})
-	const { elementRef: parallaxRef, offset } = useParallax<HTMLDivElement>(0.2)
-	const { elementRef: ctaRef, isVisible: ctaVisible } =
-		useScrollAnimation<HTMLDivElement>({
-			threshold: 0.5,
-			triggerOnce: true,
-		})
-
-	const handleDonateClick = () => {
-		// Navigate to donation page or scroll to donation section
-		window.location.href = DONATE_PAGE
-	}
-
 	return (
-		<section
-			ref={sectionRef}
-			className={`stories-section ${isVisible ? "visible" : ""}`}
-			id="stories-section"
-		>
-			<div className="stories-container">
-				<div className="stories-header">
-					<h2
-						className={`stories-title ${
-							isVisible ? "animate-fade-up visible" : "animate-fade-up"
-						}`}
-					>
-						{t("stories-title")}
-					</h2>
-					<p
-						className={`stories-subtitle ${
-							isVisible
-								? "animate-fade-up visible stagger-1"
-								: "animate-fade-up stagger-1"
-						}`}
-					>
-						{t("stories-subtitle")}
-					</p>
-				</div>
-
-				<div ref={parallaxRef} className="journeys-section">
-					<h3
-						className={`journeys-title ${
-							isVisible
-								? "animate-fade-up visible stagger-2"
-								: "animate-fade-up stagger-2"
-						}`}
-					>
-						{t("stories-brigades-title")}
-					</h3>
-
-					<div ref={gridRef} className="stories-grid">
-						{stories.map((story, index) => (
-							<div
-								key={story.id}
-								className={`story-card hover-lift glass-effect ${
-									visibleItems[index]
-										? "animate-fade-up visible"
-										: "animate-fade-up"
-								}`}
-							>
-								<div className="story-image">
-									<img
-										src={story.image}
-										alt={`${story.name}'s story`}
-										onError={e => {
-											e.currentTarget.src = story.fallbackImage
-										}}
-										className="tilt-3d"
-									/>
-								</div>
-								<div className="story-content">
-									<p className="story-description">
-										<span className="brigade-name">{story.name}:</span>{" "}
-										{story.description}
-									</p>
-									<button className="story-button btn-animated btn-ripple">
-										{t("stories-read-story-button")}
-									</button>
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-
-				<div
-					ref={ctaRef}
-					className={`call-to-action glass-effect ${
-						ctaVisible ? "visible" : ""
-					}`}
-				>
-					<h3
-						className={`cta-title ${
-							ctaVisible ? "animate-scale-in visible" : "animate-scale-in"
-						}`}
-					>
-						{t("stories-cta-title")}
-					</h3>
-					<p
-						className={`cta-description ${
-							ctaVisible
-								? "animate-fade-up visible stagger-1"
-								: "animate-fade-up stagger-1"
-						}`}
-					>
-						{t("stories-cta-description")}
-					</p>
-					<button
-						className={`donate-button btn-animated btn-pulse ${
-							ctaVisible
-								? "animate-scale-in visible stagger-2"
-								: "animate-scale-in stagger-2"
-						}`}
-						onClick={handleDonateClick}
-					>
-						{t("stories-cta-button")}
-					</button>
+		<section className="h-section stories" id="stories">
+			<div className="h-container">
+				<div className="h-section-head">
+					<Reveal>
+						<p className="h-eyebrow">{t("stories-brigades-title")}</p>
+					</Reveal>
+					<RevealText className="h-title" text={t("home-stories-title")} />
+					<Reveal delay={0.15}>
+						<p className="h-lead">{t("home-stories-subtitle")}</p>
+					</Reveal>
 				</div>
 			</div>
+
+			{/* Full-bleed so cards can be swiped edge to edge on mobile. */}
+			<ul className="stories-rail">
+				{BRIGADES.map((brigade, index) => {
+					const name = t(`stories-brigade-${brigade.key}-name`)
+					return (
+						<Reveal
+							as="li"
+							key={brigade.key}
+							delay={(index % 3) * 0.08}
+							className="story-card"
+						>
+							<img
+								src={brigade.image}
+								alt=""
+								loading="lazy"
+								width={1232}
+								height={928}
+							/>
+							<div className="story-shade" aria-hidden="true" />
+							<div className="story-body">
+								<span className="story-tag">
+									{t(`home-brigade-short-${brigade.key}`)}
+								</span>
+								<h3 className="story-name">{name}</h3>
+								<p className="story-text">
+									{t(`stories-brigade-${brigade.key}-description`)}
+								</p>
+							</div>
+						</Reveal>
+					)
+				})}
+			</ul>
 		</section>
 	)
 }
