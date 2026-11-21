@@ -20,6 +20,7 @@ export type NavLink = {
 
 export type HeaderProps = {
 	fixed?: "pos-fixed"
+	variant?: "home"
 	children?: NavLink[] | false
 	navLinks?: NavLink[]
 }

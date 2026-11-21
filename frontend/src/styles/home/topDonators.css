@@ -1,461 +1,123 @@
-.top-heroes-section {
-	background: var(--gradient-primary);
-	color: var(--text-inverse);
-	padding: 80px 0;
-	text-align: center;
+/* ==========================================================================
+   Top donators
+   ========================================================================== */
+
+.donors {
+	border-top: 1px solid var(--h-line);
 }
 
-.top-heroes-container {
-	max-width: 1200px;
+.donors-list {
+	display: flex;
+	flex-direction: column;
+	max-width: 760px;
 	margin: 0 auto;
-	padding: 0 20px;
+	border-top: 1px solid var(--h-line);
 }
 
-.top-heroes-header {
-	margin-bottom: 60px;
-}
-
-.top-heroes-title {
-	font-size: 3.5rem;
-	font-weight: 700;
-	margin-bottom: 20px;
-	color: var(--text-inverse);
-	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Ensure white text in dark theme */
-[data-theme="dark"] .top-heroes-title {
-	color: #ffffff;
-}
-
-.top-heroes-subtitle {
-	font-size: 1.4rem;
-	color: var(--text-inverse);
-	opacity: 0.9;
-	font-weight: 400;
-	margin-bottom: 0;
-}
-
-/* Ensure white text in dark theme */
-[data-theme="dark"] .top-heroes-subtitle {
-	color: #ffffff;
-}
-
-.heroes-grid {
-	display: flex;
-	justify-content: center;
-	align-items: flex-end;
+.donor {
+	display: grid;
+	grid-template-columns: 48px 56px minmax(0, 1fr) auto;
+	align-items: center;
 	gap: 20px;
-	margin-bottom: 50px;
-	flex-wrap: wrap;
+	padding: 20px 8px;
+	border-bottom: 1px solid var(--h-line);
+	transition: background-color 0.3s var(--h-ease);
 }
 
-.hero-card {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	position: relative;
-	transition: transform 0.3s ease;
+.donor:hover {
+	background: rgba(255, 255, 255, 0.02);
 }
 
-.hero-card:hover {
-	transform: translateY(-8px);
+.donor-rank {
+	display: grid;
+	place-items: center;
+	font-family: var(--h-font-display);
+	font-size: 0.9375rem;
+	font-weight: 600;
+	color: var(--h-subtle);
 }
 
-/* Podium positioning - Gold #1 on left, Silver #2 in center, Bronze #3 on right */
-.position-1 {
-	order: 1;
+.donor-rank svg {
+	font-size: 1.5rem;
 }
 
-.position-2 {
-	order: 2;
+.donor--1 .donor-rank {
+	color: #ffd500;
 }
 
-.position-3 {
-	order: 3;
+.donor--2 .donor-rank {
+	color: #c9d1dc;
 }
 
-.position-4 {
-	order: 4;
+.donor--3 .donor-rank {
+	color: #d29a62;
 }
 
-.position-5 {
-	order: 5;
-}
-
-.top-hero-content {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	position: relative;
-	z-index: 2;
-	margin-bottom: 20px;
-}
-
-.hero-avatar-container {
-	position: relative;
-	margin-bottom: 15px;
-}
-
-.hero-avatar {
-	width: 90px;
-	height: 90px;
+.donor-avatar {
+	display: grid;
+	place-items: center;
+	width: 56px;
+	height: 56px;
 	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: 4px solid rgba(255, 255, 255, 0.9);
 	overflow: hidden;
-	background: rgba(255, 255, 255, 0.1);
-	backdrop-filter: blur(10px);
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	background: var(--h-surface-2);
+	border: 1px solid var(--h-line-strong);
+	font-family: var(--h-font-display);
+	font-weight: 600;
+	color: var(--h-text);
 }
 
-.has-photo .avatar-placeholder {
-	width: 100%;
-	height: 100%;
-	background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
-	border-radius: 50%;
+.donor--1 .donor-avatar {
+	border: 2px solid var(--h-yellow);
 }
 
-.avatar-image {
+.donor-avatar img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	border-radius: 50%;
 }
 
-.initials-avatar {
-	background: rgba(255, 255, 255, 0.2);
-}
-
-.avatar-initials {
-	font-size: 2rem;
-	font-weight: 700;
-	color: white;
-}
-
-.medal-icon {
-	position: absolute;
-	bottom: -8px;
-	right: -8px;
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 14px;
-	font-weight: bold;
-	border: 3px solid white;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.position-1 .medal-icon {
-	background: linear-gradient(45deg, #ffd700, #ffed4e);
-	color: #333;
-}
-
-.position-2 .medal-icon {
-	background: linear-gradient(45deg, #c0c0c0, #e8e8e8);
-	color: #333;
-}
-
-.position-3 .medal-icon {
-	background: linear-gradient(45deg, #cd7f32, #daa520);
-	color: white;
-}
-
-.position-4 .medal-icon {
-	background: linear-gradient(45deg, #708090 0%, #778899 50%, #b0c4de 100%);
-}
-
-.position-5 .medal-icon {
-	background: linear-gradient(45deg, #708090 0%, #778899 50%, #b0c4de 100%);
-}
-
-.hero-info {
-	text-align: center;
-	max-width: 140px;
-}
-
-.hero-name {
-	font-size: 1.3rem;
+.donor-name {
+	font-size: 1.0625rem;
 	font-weight: 600;
-	margin-bottom: 8px;
-	color: white;
-	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-	overflow-wrap: break-word;
+	color: var(--h-text);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
-.hero-amount {
-	font-size: 1.5rem;
-	font-weight: 700;
-	color: #ffd700;
-	margin-bottom: 0;
-	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+.donor-amount {
+	font-family: var(--h-font-display);
+	font-weight: 600;
+	font-size: 1.125rem;
+	color: var(--h-yellow);
+	font-variant-numeric: tabular-nums;
 }
 
-/* Pedestal bars matching the image exactly */
-.pedestal-bar {
-	width: 140px;
-	border-radius: 12px 12px 0 0;
-	position: relative;
-	transition: transform 0.3s ease;
-	display: flex;
-	align-items: flex-end;
-	justify-content: center;
-	padding-bottom: 20px;
-	font-size: 2.5rem;
-	font-weight: 900;
-	color: white;
-	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.position-1 .pedestal-bar {
-	height: 180px;
-	background: linear-gradient(135deg, #daa520 0%, #ffd700 50%, #ffa500 100%);
-}
-
-.position-1 .pedestal-bar::after {
-	content: "#1";
-}
-
-.position-2 .pedestal-bar {
-	height: 140px;
-	background: linear-gradient(135deg, #a0a0a0 0%, #c0c0c0 50%, #e0e0e0 100%);
-	color: #333;
-}
-
-.position-2 .pedestal-bar::after {
-	content: "#2";
-}
-
-.position-3 .pedestal-bar {
-	height: 120px;
-	background: linear-gradient(135deg, #8b4513 0%, #cd853f 50%, #d2691e 100%);
-}
-
-.position-3 .pedestal-bar::after {
-	content: "#3";
-}
-
-.position-4 .pedestal-bar {
-	height: 100px;
-	background: linear-gradient(135deg, #708090 0%, #778899 50%, #b0c4de 100%);
-}
-
-.position-4 .pedestal-bar::after {
-	content: "#4";
-}
-
-.position-5 .pedestal-bar {
-	height: 80px;
-	background: linear-gradient(135deg, #708090 0%, #778899 50%, #b0c4de 100%);
-}
-
-.position-5 .pedestal-bar::after {
-	content: "#5";
-}
-
-.hero-rank-badge {
-	display: none; /* Hide the separate rank badge since it's now on the pedestal */
-}
-
-.heroes-cta {
+.donors-cta {
 	margin-top: 40px;
+	text-align: center;
+	color: var(--h-muted);
 }
 
-.cta-text {
-	font-size: 1.3rem;
-	color: var(--text-inverse);
-	font-weight: 400;
-	margin: 0;
-	opacity: 0.9;
-}
-
-/* Ensure white text in dark theme */
-[data-theme="dark"] .cta-text {
-	color: #ffffff;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 1024px) {
-	.heroes-grid {
-		gap: 15px;
-	}
-
-	.top-heroes-title {
-		font-size: 2.8rem;
-	}
-
-	.top-hero-content {
-		margin-bottom: 15px;
-	}
-
-	.hero-info {
-		max-width: 120px;
-	}
-
-	.pedestal-bar {
-		width: 120px;
-		font-size: 2.2rem;
-		padding-bottom: 15px;
-	}
-
-	.position-1 .pedestal-bar {
-		height: 160px;
-	}
-
-	.position-2 .pedestal-bar {
-		height: 120px;
-	}
-
-	.position-3 .pedestal-bar {
-		height: 100px;
-	}
-
-	.position-4 .pedestal-bar {
-		height: 80px;
-	}
-
-	.position-5 .pedestal-bar {
-		height: 60px;
-	}
-
-	.hero-avatar {
-		width: 80px;
-		height: 80px;
-	}
-}
-
-@media (max-width: 768px) {
-	.top-heroes-section {
-		padding: 60px 0;
-	}
-
-	.top-heroes-title {
-		font-size: 2.4rem;
-	}
-
-	.top-heroes-subtitle,
-	.cta-text {
-		font-size: 1.2rem;
-	}
-
-	.heroes-grid {
+@media (max-width: 560px) {
+	.donor {
+		grid-template-columns: 32px 44px minmax(0, 1fr) auto;
 		gap: 12px;
+		padding: 16px 4px;
 	}
 
-	.hero-card {
-		flex: 0 0 auto;
+	.donor-avatar {
+		width: 44px;
+		height: 44px;
+		font-size: 0.875rem;
 	}
 
-	.top-hero-content {
-		margin-bottom: 12px;
-	}
-
-	.hero-info {
-		max-width: 100px;
-	}
-
-	.pedestal-bar {
-		width: 100px;
-		font-size: 1.8rem;
-		padding-bottom: 12px;
-	}
-
-	.position-1 .pedestal-bar {
-		height: 120px;
-	}
-
-	.position-2 .pedestal-bar {
-		height: 90px;
-	}
-
-	.position-3 .pedestal-bar {
-		height: 75px;
-	}
-
-	.position-4 .pedestal-bar {
-		height: 60px;
-	}
-
-	.position-5 .pedestal-bar {
-		height: 45px;
-	}
-
-	.hero-avatar {
-		width: 70px;
-		height: 70px;
-	}
-
-	.avatar-initials {
-		font-size: 1.6rem;
-	}
-
-	.hero-name {
-		font-size: 1.1rem;
-	}
-
-	.hero-amount {
-		font-size: 1.3rem;
-	}
-}
-
-@media (max-width: 480px) {
-	.heroes-grid {
-		gap: 8px;
-	}
-
-	.top-hero-content {
-		margin-bottom: 10px;
-	}
-
-	.hero-info {
-		max-width: 80px;
-	}
-
-	.pedestal-bar {
-		width: 80px;
-		font-size: 1.5rem;
-		padding-bottom: 10px;
-	}
-
-	.position-1 .pedestal-bar {
-		height: 100px;
-	}
-
-	.position-2 .pedestal-bar {
-		height: 75px;
-	}
-
-	.position-3 .pedestal-bar {
-		height: 60px;
-	}
-
-	.position-4 .pedestal-bar {
-		height: 50px;
-	}
-
-	.position-5 .pedestal-bar {
-		height: 40px;
-	}
-
-	.hero-avatar {
-		width: 60px;
-		height: 60px;
-	}
-
-	.avatar-initials {
-		font-size: 1.4rem;
-	}
-
-	.hero-name {
+	.donor-name {
 		font-size: 1rem;
 	}
 
-	.hero-amount {
-		font-size: 1.2rem;
+	.donor-amount {
+		font-size: 1rem;
 	}
 }

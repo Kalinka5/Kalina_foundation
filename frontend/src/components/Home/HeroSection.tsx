@@ -1,311 +1,172 @@
+import { motion } from "framer-motion"
 import { useTranslation } from "react-i18next"
+import { LuArrowRight } from "react-icons/lu"
+import { Link } from "react-router-dom"
+
 import { DONATE_PAGE } from "../../lib/constants"
-import { usePageLoadAnimation, useParallax } from "../../lib/useAnimations"
+import { useLimitedItems, useTotalDonated } from "../../lib/hooks"
+import OptimizedImage from "../OptimizedImage"
+import { BRIGADES } from "./data"
+import { CountUp, EASE, Parallax, ProgressBar, RevealText } from "./motion"
+
 import "../../styles/home/heroSection.css"
 import "../../styles/optimizedImage.css"
-import OptimizedImage from "../OptimizedImage"
+
+const ITEMS_LIMIT = 16
+
+const fadeUp = (delay: number) => ({
+	initial: { opacity: 0, y: 20 },
+	animate: { opacity: 1, y: 0 },
+	transition: { duration: 0.7, ease: EASE, delay },
+})
 
 function HeroSection() {
 	const { t } = useTranslation()
+	const { data: totalData } = useTotalDonated()
+	const { data: items } = useLimitedItems(ITEMS_LIMIT)
 
-	// Animation hooks
-	const { elementRef: parallaxRef, offset } = useParallax(0.3)
-	const isPageLoaded = usePageLoadAnimation(100)
-
-	const handleDonateClick = () => {
-		// Navigate to donation page or scroll to donation section
-		window.location.href = DONATE_PAGE
-	}
+	const openItems = (items ?? []).filter(i => i.collected < i.full_price)
+	const openCount = openItems.length
+	const featured = [...openItems].sort(
+		(a, b) => b.collected / b.full_price - a.collected / a.full_price
+	)[0]
+	const featuredPct = featured
+		? Math.round((featured.collected / featured.full_price) * 100)
+		: 0
 
 	return (
-		<section className="hero-section parallax-container" id="hero-section">
-			{/* Parallax background elements */}
-			<div
-				ref={parallaxRef}
-				className="parallax-element hero-background"
-				style={{
-					transform: `translateY(${offset * 0.5}px)`,
-					background:
-						"linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(65, 105, 225, 0.15) 100%)",
-				}}
-			/>
-
-			{/* Floating decorative elements */}
-			<div className="floating-elements">
-				<div className="floating-element floating floating-delay-1">💙</div>
-				<div className="floating-element floating-gentle floating-delay-2">
-					💛
-				</div>
-				<div className="floating-element floating floating-delay-3">🇺🇦</div>
+		<section className="hero" id="hero-section">
+			<div className="hero-bg-mobile" aria-hidden="true">
+				<OptimizedImage
+					src="/img/home-background2.png"
+					alt=""
+					width={992}
+					height={992}
+					sizes="100vw"
+				/>
 			</div>
 
-			{/* Background scattered images - Sequential alternating left-right animation */}
-			<div className="background-images">
-				{/* Image 1 - Top Left - Medium Rounded Square */}
-				<div
-					className={`background-image-container image-medium image-rounded ${
-						isPageLoaded
-							? "animate-fade-left visible stagger-1"
-							: "animate-fade-left stagger-1"
-					}`}
-					style={{ top: "10%", left: "20%" }}
-				>
-					<div className="white-background"></div>
-					<div className="background-image hover-lift tilt-3d">
-						<OptimizedImage
-							src="/img/home-background1.png"
-							alt="Ukrainian hero 1"
-							priority={true}
-							width={220}
-							height={220}
-						/>
-						<div className="glass-effect image-overlay"></div>
-					</div>
+			<div className="h-container hero-grid">
+				<div className="hero-copy">
+					<motion.p className="h-eyebrow" {...fadeUp(0)}>
+						<span className="live-dot" aria-hidden="true" />
+						{t("home-hero-eyebrow")}
+					</motion.p>
+
+					<RevealText
+						as="h1"
+						className="hero-title"
+						text={t("home-hero-title")}
+						delay={0.1}
+						immediate
+					/>
+
+					<motion.p className="hero-subtitle" {...fadeUp(0.45)}>
+						{t("home-hero-subtitle")}
+					</motion.p>
+
+					<motion.div className="hero-actions" {...fadeUp(0.6)}>
+						<Link to={DONATE_PAGE} className="btn btn-primary btn-lg">
+							{t("hero-section-donate-button")}
+							<LuArrowRight aria-hidden="true" />
+						</Link>
+						<a href="#urgent-needs" className="btn btn-ghost btn-lg">
+							{t("home-hero-secondary")}
+						</a>
+					</motion.div>
+
+					<motion.dl className="hero-stats" {...fadeUp(0.75)}>
+						<div className="hero-stat">
+							<dt>{t("home-stat-raised")}</dt>
+							<dd>
+								<CountUp value={totalData?.total_donated ?? 0} prefix="$" />
+							</dd>
+						</div>
+						<div className="hero-stat">
+							<dt>{t("home-stat-brigades")}</dt>
+							<dd>
+								<CountUp value={BRIGADES.length} />
+							</dd>
+						</div>
+						<div className="hero-stat">
+							<dt>{t("home-stat-fundraisers")}</dt>
+							<dd>
+								<CountUp
+									value={openCount}
+									suffix={items?.length === ITEMS_LIMIT ? "+" : ""}
+								/>
+							</dd>
+						</div>
+					</motion.dl>
 				</div>
 
-				{/* Image 5 - Top Right - Small Rounded Square */}
-				<div
-					className={`background-image-container image-small image-rounded ${
-						isPageLoaded
-							? "animate-fade-right visible stagger-2"
-							: "animate-fade-right stagger-2"
-					}`}
-					style={{ top: "15%", right: "20%" }}
-				>
-					<div className="white-background"></div>
-					<div className="background-image hover-lift tilt-3d">
-						<OptimizedImage
-							src="/img/home-background5.png"
-							alt="Ukrainian hero 5"
-							priority={true}
-							width={140}
-							height={140}
-						/>
-						<div className="glass-effect image-overlay"></div>
-					</div>
-				</div>
-
-				{/* Image 2 - Mid Left - Medium Circle */}
-				<div
-					className={`background-image-container image-medium image-circle ${
-						isPageLoaded
-							? "animate-fade-left visible stagger-3"
-							: "animate-fade-left stagger-3"
-					}`}
-					style={{ top: "25%", left: "2%" }}
-				>
-					<div className="white-background"></div>
-					<div className="background-image hover-lift tilt-3d">
-						<OptimizedImage
-							src="/img/home-background2.png"
-							alt="Ukrainian hero 2"
-							width={180}
-							height={180}
-						/>
-						<div className="glass-effect image-overlay"></div>
-					</div>
-				</div>
-
-				{/* Image 6 - Mid Right - Large Rounded Square */}
-				<div
-					className={`background-image-container image-large image-rounded ${
-						isPageLoaded
-							? "animate-fade-right visible stagger-4"
-							: "animate-fade-right stagger-4"
-					}`}
-					style={{ top: "30%", right: "2%" }}
-				>
-					<div className="white-background"></div>
-					<div className="background-image hover-lift tilt-3d">
+				<div className="hero-mosaic" aria-hidden="true">
+					<motion.div
+						className="mosaic-tile mosaic-main"
+						initial={{ opacity: 0, scale: 1.06 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ duration: 1.2, ease: EASE, delay: 0.2 }}
+					>
+						<Parallax distance={50} className="mosaic-parallax">
+							<OptimizedImage
+								src="/img/home-background2.png"
+								alt=""
+								priority
+								width={992}
+								height={992}
+								sizes="(max-width: 1024px) 100vw, 40vw"
+							/>
+						</Parallax>
+					</motion.div>
+					<motion.div
+						className="mosaic-tile mosaic-top"
+						initial={{ opacity: 0, y: 30 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 1, ease: EASE, delay: 0.4 }}
+					>
 						<OptimizedImage
 							src="/img/home-background6.png"
-							alt="Ukrainian hero 6"
-							width={220}
-							height={220}
+							alt=""
+							priority
+							width={1024}
+							height={1024}
+							sizes="20vw"
 						/>
-						<div className="glass-effect image-overlay"></div>
-					</div>
-				</div>
-
-				{/* Image 4 - Bottom Mid Left - Large Rounded Square */}
-				<div
-					className={`background-image-container image-large image-rounded ${
-						isPageLoaded
-							? "animate-fade-left visible stagger-5"
-							: "animate-fade-left stagger-5"
-					}`}
-					style={{ top: "45%", left: "15%" }}
-				>
-					<div className="white-background"></div>
-					<div className="background-image hover-lift tilt-3d">
-						<OptimizedImage
-							src="/img/home-background4.png"
-							alt="Ukrainian hero 4"
-							width={220}
-							height={220}
-						/>
-						<div className="glass-effect image-overlay"></div>
-					</div>
-				</div>
-
-				{/* Image 7 - Mid Right - Medium Circle */}
-				<div
-					className={`background-image-container image-medium image-circle ${
-						isPageLoaded
-							? "animate-fade-right visible stagger-6"
-							: "animate-fade-right stagger-6"
-					}`}
-					style={{ top: "50%", right: "16%" }}
-				>
-					<div className="white-background"></div>
-					<div className="background-image hover-lift tilt-3d">
-						<OptimizedImage
-							src="/img/home-background7.png"
-							alt="Ukrainian hero 7"
-							width={180}
-							height={180}
-						/>
-						<div className="glass-effect image-overlay"></div>
-					</div>
-				</div>
-
-				{/* Image 3 - Bottom Left - Small Circle */}
-				<div
-					className={`background-image-container image-small image-circle ${
-						isPageLoaded
-							? "animate-fade-left visible hero-stagger-7"
-							: "animate-fade-left hero-stagger-7"
-					}`}
-					style={{ top: "60%", left: "8%" }}
-				>
-					<div className="white-background"></div>
-					<div className="background-image hover-lift tilt-3d">
-						<OptimizedImage
-							src="/img/home-background3.png"
-							alt="Ukrainian hero 3"
-							width={140}
-							height={140}
-						/>
-						<div className="glass-effect image-overlay"></div>
-					</div>
-				</div>
-
-				{/* Image 8 - Bottom Right - Medium Circle */}
-				<div
-					className={`background-image-container image-medium image-circle ${
-						isPageLoaded
-							? "animate-fade-right visible hero-stagger-8"
-							: "animate-fade-right hero-stagger-8"
-					}`}
-					style={{ top: "68%", right: "8%" }}
-				>
-					<div className="white-background"></div>
-					<div className="background-image hover-lift tilt-3d">
-						<OptimizedImage
-							src="/img/home-background8.png"
-							alt="Ukrainian hero 8"
-							width={180}
-							height={180}
-						/>
-						<div className="glass-effect image-overlay"></div>
-					</div>
-				</div>
-
-				{/* Image 9 - Top Center - Large Circle */}
-				<div
-					className={`background-image-container image-large image-circle ${
-						isPageLoaded
-							? "animate-fade-left visible hero-stagger-9"
-							: "animate-fade-left hero-stagger-9"
-					}`}
-					style={{ top: "10%", right: "45%" }}
-				>
-					<div className="white-background"></div>
-					<div className="background-image hover-lift tilt-3d">
+					</motion.div>
+					<motion.div
+						className="mosaic-tile mosaic-bottom"
+						initial={{ opacity: 0, y: 30 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 1, ease: EASE, delay: 0.55 }}
+					>
 						<OptimizedImage
 							src="/img/home-background9.png"
-							alt="Ukrainian hero 9"
-							width={220}
-							height={220}
+							alt=""
+							width={1024}
+							height={1024}
+							sizes="20vw"
 						/>
-						<div className="glass-effect image-overlay"></div>
-					</div>
-				</div>
+					</motion.div>
 
-				{/* Image 10 - Bottom Center - Medium Circle */}
-				<div
-					className={`background-image-container image-medium image-circle ${
-						isPageLoaded
-							? "animate-fade-right visible hero-stagger-10"
-							: "animate-fade-right hero-stagger-10"
-					}`}
-					style={{ bottom: "10%", right: "55%" }}
-				>
-					<div className="white-background"></div>
-					<div className="background-image hover-lift tilt-3d">
-						<OptimizedImage
-							src="/img/home-background10.png"
-							alt="Ukrainian hero 10"
-							width={180}
-							height={180}
-						/>
-						<div className="glass-effect image-overlay"></div>
-					</div>
-				</div>
-
-				{/* Image 11 - Bottom Right - Small Circle */}
-				<div
-					className={`background-image-container image-small image-circle ${
-						isPageLoaded
-							? "animate-fade-right visible hero-stagger-11"
-							: "animate-fade-right hero-stagger-11"
-					}`}
-					style={{ bottom: "10%", right: "30%" }}
-				>
-					<div className="white-background"></div>
-					<div className="background-image hover-lift tilt-3d">
-						<OptimizedImage
-							src="/img/home-background11.png"
-							alt="Ukrainian hero 11"
-							width={140}
-							height={140}
-						/>
-						<div className="glass-effect image-overlay"></div>
-					</div>
-				</div>
-			</div>
-
-			<div className="hero-container">
-				<div className="hero-content">
-					{/* Central content */}
-					<div className="hero-text">
-						<h1
-							className={`hero-title gradient-text ${
-								isPageLoaded ? "animate-fade-up visible" : "animate-fade-up"
-							}`}
+					{featured && (
+						<motion.div
+							className="mosaic-card"
+							initial={{ opacity: 0, y: 24 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.8, ease: EASE, delay: 1 }}
 						>
-							{t("hero-section-title")}
-						</h1>
-						<p
-							className={`hero-description ${
-								isPageLoaded
-									? "animate-fade-up visible stagger-1"
-									: "animate-fade-up stagger-1"
-							}`}
-						>
-							{t("hero-section-description")}
-						</p>
-						<button
-							className={`donate-button btn-animated btn-pulse ${
-								isPageLoaded
-									? "animate-scale-in visible stagger-2"
-									: "animate-scale-in stagger-2"
-							}`}
-							onClick={handleDonateClick}
-						>
-							{t("hero-section-donate-button")}
-						</button>
-					</div>
+							<span className="mosaic-card-label">
+								{t("home-hero-featured-label")}
+							</span>
+							<span className="mosaic-card-title">
+								{t(`${featured.title}-title`)}
+							</span>
+							<ProgressBar value={featuredPct} label={`${featuredPct}%`} />
+							<span className="mosaic-card-meta">
+								<strong>{featuredPct}%</strong> {t("home-funded")}
+							</span>
+						</motion.div>
+					)}
 				</div>
 			</div>
 		</section>

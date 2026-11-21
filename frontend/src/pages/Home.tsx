@@ -1,94 +1,63 @@
-import { useEffect, useState } from "react"
+import { MotionConfig } from "framer-motion"
+import { useState } from "react"
 
 import Footer from "../components/Footer"
 import Header from "../components/Header"
-import DonationImpact from "../components/Home/DonationImpact"
+import BrigadeMarquee from "../components/Home/BrigadeMarquee"
+import DonateSection from "../components/Home/DonateSection"
+import FinalCTA from "../components/Home/FinalCTA"
 import HeroSection from "../components/Home/HeroSection"
-import InitiativesShowcase from "../components/Home/InitiativesShowcase"
+import HowItWorks from "../components/Home/HowItWorks"
+import MissionSection from "../components/Home/MissionSection"
+import MobileDonateBar from "../components/Home/MobileDonateBar"
 import StoriesSection from "../components/Home/StoriesSection"
-import TeamMission from "../components/Home/TeamMission"
 import TopDonators from "../components/Home/TopDonators"
+import UrgentNeeds from "../components/Home/UrgentNeeds"
 
 import { MAX_PAGE_NUMBER } from "../lib/constants"
 
-import { useMediaQuery } from "@uidotdev/usehooks"
-
-import { useTranslation } from "react-i18next"
-
 import NotFound from "./NotFound"
 
-// Import animation styles
-import "../styles/animations.css"
-import "../styles/home/animations-enhancement.css"
+import "../styles/home/home.css"
+
+// Home page navigation links
+const homeNavLinks = [
+	{ id: 1, urlLink: "#hero-section", urlName: "about-us" },
+	{ id: 2, urlLink: "#urgent-needs", urlName: "home-nav-needs" },
+	{ id: 3, urlLink: "#our-mission", urlName: "our-mission" },
+	{ id: 4, urlLink: "#stories", urlName: "stories" },
+	{ id: 5, urlLink: "#donate", urlName: "donate" },
+	{ id: 6, urlLink: "#top-donators", urlName: "top-donators" },
+]
 
 function Home() {
-	const [page, setPage] = useState(1)
-	const isPhoneDisplay = useMediaQuery("only screen and (max-width: 1064px)")
-
-	const { t } = useTranslation()
-
-	// Performance optimization: Preload critical images
-	useEffect(() => {
-		const criticalImages = [
-			"/img/ukrainian-hero.png",
-			"/img/team-photo.png",
-			"/img/team-photo-4x3.png",
-		]
-
-		criticalImages.forEach(src => {
-			const img = new Image()
-			img.src = src
-		})
-	}, [])
-
-	// Smooth scroll enhancement
-	useEffect(() => {
-		// Enhance smooth scrolling behavior
-		const handleScrollToSection = (e: Event) => {
-			const target = e.target as HTMLAnchorElement
-			if (target.hash) {
-				e.preventDefault()
-				const element = document.querySelector(target.hash)
-				if (element) {
-					element.scrollIntoView({
-						behavior: "smooth",
-						block: "start",
-					})
-				}
-			}
-		}
-
-		document.addEventListener("click", handleScrollToSection)
-		return () => document.removeEventListener("click", handleScrollToSection)
-	}, [])
-
-	// Home page navigation links
-	const homeNavLinks = [
-		{ id: 1, urlLink: "#hero-section", urlName: "about-us" },
-		{ id: 2, urlLink: "#team-mission", urlName: "our-mission" },
-		{ id: 3, urlLink: "#our-initiatives", urlName: "our-initiatives" },
-		{ id: 4, urlLink: "#stories-section", urlName: "stories" },
-		{ id: 5, urlLink: "#donation-impact", urlName: "donate" },
-		{ id: 6, urlLink: "#top-donators", urlName: "top-donators" },
-	]
+	const [page] = useState(1)
 
 	return (
-		<div className="main home-page">
-			<Header fixed="pos-fixed" navLinks={homeNavLinks} />
-			{page > 0 && page < MAX_PAGE_NUMBER ? (
-				<main className="home-content">
-					<HeroSection />
-					<TeamMission />
-					<StoriesSection />
-					<InitiativesShowcase />
-					<DonationImpact />
-					<TopDonators />
-					<Footer />
-				</main>
-			) : (
-				<NotFound />
-			)}
-		</div>
+		// The Home page is always dark (cinematic direction); the theme toggle still
+		// applies to every other page.
+		<MotionConfig reducedMotion="user">
+			<div className="main home-page" data-theme="dark">
+				<Header fixed="pos-fixed" variant="home" navLinks={homeNavLinks} />
+				{page > 0 && page < MAX_PAGE_NUMBER ? (
+					<main className="home-content">
+						<HeroSection />
+						<BrigadeMarquee />
+						<UrgentNeeds />
+						<MissionSection />
+						<StoriesSection />
+						<HowItWorks />
+						<DonateSection />
+						<TopDonators />
+						<FinalCTA />
+						<Footer />
+						<MobileDonateBar />
+					</main>
+				) : (
+					<NotFound />
+				)}
+			</div>
+		</MotionConfig>
 	)
 }
 

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { FaMoon, FaSun } from "react-icons/fa"
 
@@ -18,7 +18,7 @@ import { HeaderProps } from "../lib/types"
 
 import "../styles/header.css"
 
-const Header = ({ fixed, children, navLinks = [] }: HeaderProps) => {
+const Header = ({ fixed, variant, navLinks = [] }: HeaderProps) => {
 	const authLinks = [
 		{ id: 1, urlLink: `${PROFILE_PAGE}`, urlName: "profile" },
 		{ id: 2, urlLink: `${LOGOUT_PAGE}`, urlName: "logout" },
@@ -32,6 +32,16 @@ const Header = ({ fixed, children, navLinks = [] }: HeaderProps) => {
 	const { theme, toggleTheme } = useTheme()
 	const links = isAuthorized ? authLinks : notAuthLinks
 	const [isMenuOpen, setMenuOpen] = useState(false)
+	const [isScrolled, setIsScrolled] = useState(false)
+
+	// The home header starts transparent over the hero and gains a background on scroll.
+	useEffect(() => {
+		if (variant !== "home") return
+		const onScroll = () => setIsScrolled(window.scrollY > 24)
+		onScroll()
+		window.addEventListener("scroll", onScroll, { passive: true })
+		return () => window.removeEventListener("scroll", onScroll)
+	}, [variant])
 
 	const { t } = useTranslation()
 
@@ -75,7 +85,15 @@ const Header = ({ fixed, children, navLinks = [] }: HeaderProps) => {
 	)
 
 	return (
-		<header className={fixed}>
+		<header
+			className={[
+				fixed,
+				variant === "home" && "header-home",
+				variant === "home" && (isScrolled || isMenuOpen) && "is-scrolled",
+			]
+				.filter(Boolean)
+				.join(" ")}
+		>
 			<div className="header-logo">
 				<a href="/home/1">
 					<img src="/logo.png" alt="Kalina Foundation Logo" />
@@ -90,6 +108,8 @@ const Header = ({ fixed, children, navLinks = [] }: HeaderProps) => {
 			<button
 				className={`hamburger ${isMenuOpen ? "active" : ""}`}
 				onClick={toggleMenu}
+				aria-label="Menu"
+				aria-expanded={isMenuOpen}
 			>
 				<span className="bar"></span>
 				<span className="bar"></span>

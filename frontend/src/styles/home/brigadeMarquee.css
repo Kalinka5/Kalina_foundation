@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Brigade marquee
+   ========================================================================== */
+
+.marquee {
+	padding: 32px 0;
+	border-top: 1px solid var(--h-line);
+	border-bottom: 1px solid var(--h-line);
+	background: var(--h-bg);
+}
+
+.marquee-label {
+	text-align: center;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--h-subtle);
+	margin-bottom: 20px;
+	padding: 0 16px;
+}
+
+.marquee-viewport {
+	display: flex;
+	overflow: hidden;
+	mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+	-webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.marquee-track {
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	animation: marquee-scroll 40s linear infinite;
+}
+
+.marquee-viewport:hover .marquee-track {
+	animation-play-state: paused;
+}
+
+.marquee-item {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.marquee-name {
+	font-family: var(--h-font-display);
+	font-weight: 600;
+	font-size: clamp(1.25rem, 2.4vw, 2rem);
+	letter-spacing: -0.01em;
+	white-space: nowrap;
+	color: rgba(244, 246, 250, 0.42);
+	transition: color 0.3s var(--h-ease);
+}
+
+.marquee-item:hover .marquee-name {
+	color: var(--h-text);
+}
+
+.marquee-sep {
+	width: 8px;
+	height: 8px;
+	margin: 0 clamp(24px, 4vw, 48px);
+	background: var(--h-yellow);
+	transform: rotate(45deg);
+	flex-shrink: 0;
+}
+
+@keyframes marquee-scroll {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-100%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.marquee-viewport {
+		flex-wrap: wrap;
+		justify-content: center;
+		row-gap: 12px;
+		mask-image: none;
+		-webkit-mask-image: none;
+		padding: 0 16px;
+	}
+
+	.marquee-track {
+		animation: none !important;
+		flex-wrap: wrap;
+		justify-content: center;
+		row-gap: 12px;
+	}
+
+	.marquee-track[aria-hidden="true"] {
+		display: none;
+	}
+
+	.marquee-name {
+		color: var(--h-muted);
+	}
+}
