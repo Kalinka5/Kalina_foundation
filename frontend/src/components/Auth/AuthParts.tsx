@@ -52,30 +52,43 @@ export function AuthSubmit({
 /** Confirmation screen that replaces a form after it succeeds (or can't be used). */
 export function AuthDone({
 	tone = "success",
+	icon,
 	title,
 	children,
 	actions,
 }: {
-	tone?: "success" | "error"
+	tone?: "success" | "error" | "pending"
+	/** Overrides the default icon for the tone */
+	icon?: ReactNode
 	title: string
 	children: ReactNode
-	actions: ReactNode
+	actions?: ReactNode
 }) {
-	const Icon = tone === "error" ? IoAlertCircle : IoMailOpenOutline
+	const defaultIcon =
+		tone === "error" ? (
+			<IoAlertCircle />
+		) : tone === "pending" ? (
+			<span className="auth-spinner" />
+		) : (
+			<IoMailOpenOutline />
+		)
 	// Move focus to the new heading so screen readers announce the change
 	const headingRef = useRef<HTMLHeadingElement>(null)
 	useEffect(() => headingRef.current?.focus(), [])
 
 	return (
-		<div className={`auth-done auth-done--${tone}`}>
+		<div
+			className={`auth-done auth-done--${tone}`}
+			aria-busy={tone === "pending" || undefined}
+		>
 			<span className="auth-done-icon" aria-hidden>
-				<Icon />
+				{icon ?? defaultIcon}
 			</span>
 			<h1 className="auth-title" tabIndex={-1} ref={headingRef}>
 				{title}
 			</h1>
 			<p className="auth-lead">{children}</p>
-			<div className="auth-done-actions">{actions}</div>
+			{actions && <div className="auth-done-actions">{actions}</div>}
 		</div>
 	)
 }

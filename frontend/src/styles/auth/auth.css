@@ -561,6 +561,17 @@
 	color: var(--a-danger);
 }
 
+.auth-done--pending .auth-done-icon {
+	border-color: var(--h-line-strong);
+	background: var(--h-tint);
+	color: var(--h-muted);
+}
+
+.auth-done-icon .auth-spinner {
+	width: 22px;
+	height: 22px;
+}
+
 .auth-done .auth-lead {
 	margin-bottom: 32px;
 	overflow-wrap: anywhere; /* long email addresses */

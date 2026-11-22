@@ -129,10 +129,7 @@
 
 	"go-back-home": "GO BACK HOME",
 
-	"verification": "Verification",
-	"done": "Done",
 	"failed": "Failed",
-	"failed-sent": "Email may be already verified or the link is broken",
 
 	"tactical-bag-title": "Tactical Backpacks",
 	"tactical-bag-description": "Made of durable nylon, featuring many pockets and modular attachments (MOLLE). Used for carrying ammo, food, first aid kits, drones, etc. Comfort and endurance are crucial in combat conditions.",
@@ -403,6 +400,16 @@
 	"reset-password-invalid-title": "This link doesn't work",
 	"reset-password-request-new": "Request a new link",
 	"reset-password-success-title": "Password updated",
+
+	"verify-email-pending-title": "Confirming your email…",
+	"verify-email-pending-body": "This only takes a moment.",
+	"verify-email-success-title": "Email confirmed",
+	"verify-email-success-body": "Your account is active. Log in to see your profile and donations.",
+	"verify-email-failed-title": "We couldn't confirm your email",
+	"verify-email-failed-body": "This link is invalid or has already been used. If you've confirmed your email before, you can simply log in.",
+	"verify-email-error-title": "Something went wrong",
+	"verify-email-error-body": "We couldn't reach the server. Check your connection and try again.",
+	"verify-email-retry": "Try again",
 
 	"terms-title": "Terms of Service",
 	"terms-subtitle": "Published and effective on: April 30, 2025",

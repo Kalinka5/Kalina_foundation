@@ -163,13 +163,12 @@ const verifyEmail = async ({
 		const response = await api(`activate/${uid}/${token}/`)
 		return response as unknown as EmailVerify
 	} catch (err) {
-		alert(err)
-		console.error(
-			"Something went wrong when sending a request to activate the user"
-		)
+		console.error("Email verification request failed:", err)
 		throw new Error("Failed to fetch email verification")
 	}
 }
+
+export type EmailVerificationStatus = "pending" | "success" | "failed" | "error"
 
 export function useEmailVerification(uid: string, token: string) {
 	const queryKey: [string, string, string] = ["email-verify", uid, token]
@@ -177,9 +176,26 @@ export function useEmailVerification(uid: string, token: string) {
 	const emailVerification = useQuery<EmailVerify>({
 		queryKey,
 		queryFn: verifyEmail,
+		// Activation is one-shot: the token stops being valid once the account
+		// is active, so any refetch (e.g. on window focus after the user checks
+		// their mail app) would turn a success into "failed".
+		staleTime: Infinity,
+		gcTime: Infinity,
+		refetchOnWindowFocus: false,
+		refetchOnReconnect: false,
+		retry: false,
 	})
 
-	return emailVerification.data?.status
+	let status: EmailVerificationStatus = "pending"
+	if (emailVerification.isError) status = "error"
+	else if (emailVerification.data?.status === "success") status = "success"
+	else if (emailVerification.data) status = "failed"
+
+	return {
+		status,
+		retry: () => emailVerification.refetch(),
+		retrying: emailVerification.isFetching,
+	}
 }
 
 // Get Single Item Data

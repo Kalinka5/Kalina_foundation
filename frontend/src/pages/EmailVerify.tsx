@@ -1,89 +1,94 @@
-import React from "react"
-
-import { useParams } from "react-router-dom"
-
 import { useTranslation } from "react-i18next"
+import { IoCheckmarkCircle, IoCloudOfflineOutline } from "react-icons/io5"
+import { Link, useParams } from "react-router-dom"
 
-import Header from "../components/Header"
-
+import AuthLayout from "../components/Auth/AuthLayout"
+import { AuthDone } from "../components/Auth/AuthParts"
+import { LOGIN_PAGE, REGISTER_PAGE } from "../lib/constants"
 import { useEmailVerification } from "../lib/hooks"
 
-import "../styles/emailVerify.css"
-
+// Reached from the link in the activation email: /email-verify/:uid/:token
 function EmailVerify() {
 	const { uid, token } = useParams() as { uid: string; token: string }
-
 	const { t } = useTranslation()
+	const { status, retry, retrying } = useEmailVerification(uid, token)
 
-	const emailStatus = useEmailVerification(uid, token)
+	const loginButton = (
+		<Link to={LOGIN_PAGE} className="btn btn-primary btn-lg btn-block">
+			{t("login-button")}
+		</Link>
+	)
 
-	let statusMessage: React.ReactNode = null
-	if (emailStatus === "success") {
-		statusMessage = (
-			<div className="text success">
-				<h1 className="title">
-					{t("email")} <strong>{t("verification")}</strong>
-					<em>{t("done")}</em>
-				</h1>
-			</div>
+	// Each state is keyed so its heading takes focus when it appears.
+	let content
+	if (status === "success") {
+		content = (
+			<AuthDone
+				key="success"
+				icon={<IoCheckmarkCircle />}
+				title={t("verify-email-success-title")}
+				actions={loginButton}
+			>
+				{t("verify-email-success-body")}
+			</AuthDone>
 		)
-	} else if (emailStatus === "failed") {
-		statusMessage = (
-			<div className="text failed">
-				<h1 className="title">
-					{t("email")} <strong>{t("verification")}</strong>
-					<em>{t("failed")}</em>
-				</h1>
-				<p>{t("failed-sent")}</p>
-			</div>
+	} else if (status === "failed") {
+		content = (
+			<AuthDone
+				key="failed"
+				tone="error"
+				title={t("verify-email-failed-title")}
+				actions={
+					<>
+						{loginButton}
+						<Link to={REGISTER_PAGE} className="btn btn-ghost btn-lg btn-block">
+							{t("register-create-account")}
+						</Link>
+					</>
+				}
+			>
+				{t("verify-email-failed-body")}
+			</AuthDone>
+		)
+	} else if (status === "error") {
+		content = (
+			<AuthDone
+				key="error"
+				tone="error"
+				icon={<IoCloudOfflineOutline />}
+				title={t("verify-email-error-title")}
+				actions={
+					<button
+						type="button"
+						className="btn btn-primary btn-lg btn-block auth-submit"
+						onClick={retry}
+						disabled={retrying}
+						aria-busy={retrying}
+					>
+						{retrying && <span className="auth-spinner" aria-hidden />}
+						{t("verify-email-retry")}
+					</button>
+				}
+			>
+				{t("verify-email-error-body")}
+			</AuthDone>
 		)
 	} else {
-		statusMessage = (
-			<div className="loading-container">
-				<div className="loading-text">
-					<span className="letter1">L</span>
-					<span className="letter2">O</span>
-					<span className="letter3">A</span>
-					<span className="letter4">D</span>
-					<span className="letter5">I</span>
-					<span className="letter6">N</span>
-					<span className="letter7">G</span>
-				</div>
-			</div>
+		content = (
+			<AuthDone key="pending" tone="pending" title={t("verify-email-pending-title")}>
+				{t("verify-email-pending-body")}
+			</AuthDone>
 		)
 	}
 
 	return (
-		<div className="email-verify header-body">
-			<Header />
-			<div className="main-body">
-				<div className="ternary-system">
-					<div className="sun primary"></div>
-					<div className="sun secondary"></div>
-					<div className="sun ternary"></div>
-				</div>
-				<div className="sand">
-					<div className="pendulums">
-						<div className="pendulum">
-							<div className="bar"></div>
-							<div className="motion">
-								<div className="string"></div>
-								<div className="weight"></div>
-							</div>
-						</div>
-						<div className="pendulum shadow">
-							<div className="bar"></div>
-							<div className="motion">
-								<div className="string"></div>
-								<div className="weight"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div className="pyramid"></div>
-				{statusMessage}
-			</div>
-		</div>
+		<AuthLayout
+			image="/img/register-background1"
+			eyebrowKey="home-hero-eyebrow"
+			quoteKey="home-hero-title"
+		>
+			{content}
+		</AuthLayout>
 	)
 }
 
