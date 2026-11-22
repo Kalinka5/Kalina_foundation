@@ -1,15 +1,18 @@
 // Google Identity Services will be loaded from the HTML script tag
-import React, { useEffect, useState } from "react"
+import { useMediaQuery } from "@uidotdev/usehooks"
+import React, { useCallback, useEffect, useRef, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { FaGoogle } from "react-icons/fa"
 import { IoChevronBack, IoClose, IoEye, IoEyeOff } from "react-icons/io5"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate, useSearchParams } from "react-router-dom"
 
 import api from "../../lib/api"
 import {
+	ACCESS_TOKEN,
 	GOOGLE_CLIENT_ID,
 	LOGIN_PAGE,
 	PROFILE_PAGE,
+	REFRESH_TOKEN,
 	REGISTER_PAGE,
 	TERMS_CONDITIONS_PAGE,
 } from "../../lib/constants"
@@ -18,6 +21,91 @@ import { useAuth } from "../AuthContext"
 
 import "../../styles/loginRegister/modernLogin.css"
 import "../../styles/loginRegister/modernRegister.css"
+
+type GoogleCredentialResponse = { credential?: string }
+
+type GooglePromptNotification = {
+	isNotDisplayed?: () => boolean
+}
+
+declare global {
+	interface Window {
+		google?: {
+			accounts?: {
+				id?: {
+					initialize: (config: {
+						client_id: string
+						callback: (response: GoogleCredentialResponse) => void
+						auto_select?: boolean
+						cancel_on_tap_outside?: boolean
+					}) => void
+					prompt: (
+						listener?: (notification: GooglePromptNotification) => void
+					) => void
+					cancel: () => void
+				}
+			}
+		}
+	}
+}
+
+type SuccessMessageKey =
+	| "login-registration-success"
+	| "forgot-password-success-message"
+
+type GoogleAuthResponse = {
+	status?: string
+	tokens?: TokenResponse
+}
+
+// How long to wait for the Google Identity Services script before giving up
+const GOOGLE_SCRIPT_POLL_MS = 100
+const GOOGLE_SCRIPT_MAX_ATTEMPTS = 100 // ~10 seconds
+
+// The image side is hidden below this width (see modernLogin/modernRegister.css),
+// so the background images are not rendered or downloaded there.
+const IMAGE_SIDE_QUERY = "(min-width: 769px)"
+
+const saveTokens = (access: string, refresh: string) => {
+	localStorage.setItem(ACCESS_TOKEN, access)
+	localStorage.setItem(REFRESH_TOKEN, refresh)
+}
+
+// Background images are passed as base paths ("/img/login-background1");
+// optimize-images.cjs generates the -small/-medium/full-size WebP variants.
+const imageSrcSet = (base: string) =>
+	`${base}-small.webp 400w, ${base}-medium.webp 600w, ${base}.webp 800w`
+
+function AlertMessage({
+	message,
+	type,
+	onClose,
+	closeLabel,
+}: {
+	message: string
+	type: "success" | "error"
+	onClose: () => void
+	closeLabel: string
+}) {
+	return (
+		<div className="modern-alert-container">
+			<div
+				className={`modern-alert ${type}`}
+				role={type === "error" ? "alert" : "status"}
+			>
+				<span>{message}</span>
+				<button
+					type="button"
+					className="modern-alert-close"
+					onClick={onClose}
+					aria-label={closeLabel}
+				>
+					×
+				</button>
+			</div>
+		</div>
+	)
+}
 
 interface ModernAuthModalProps {
 	onClose: () => void
@@ -38,7 +126,8 @@ function ModernAuthModal({
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const [errors, setErrors] = useState<any>({})
-	const [showSuccessMessage, setShowSuccessMessage] = useState(false)
+	const [successMessageKey, setSuccessMessageKey] =
+		useState<SuccessMessageKey | null>(null)
 	const [registrationStatus, setRegistrationStatus] =
 		useState<RegistrationStatus>(null)
 	const [showForgotPassword, setShowForgotPassword] = useState(false)
@@ -47,13 +136,31 @@ function ModernAuthModal({
 
 	// Image sliding state
 	const [currentImageIndex, setCurrentImageIndex] = useState(0)
+	const showImageSide = useMediaQuery(IMAGE_SIDE_QUERY)
 
 	const { t, i18n } = useTranslation()
 	const { setIsAuthorized } = useAuth()
 	const navigate = useNavigate()
+	const [searchParams, setSearchParams] = useSearchParams()
+
+	// Timeouts scheduled from event handlers; cleared on unmount so a delayed
+	// redirect or state update never fires after the user has left the page.
+	const timeoutsRef = useRef<number[]>([])
+	const schedule = useCallback((fn: () => void, ms: number) => {
+		const id = window.setTimeout(() => {
+			timeoutsRef.current = timeoutsRef.current.filter(t => t !== id)
+			fn()
+		}, ms)
+		timeoutsRef.current.push(id)
+	}, [])
+	useEffect(() => {
+		const timeouts = timeoutsRef
+		return () => timeouts.current.forEach(clearTimeout)
+	}, [])
 
 	// Auto-slide images every 10 seconds
 	useEffect(() => {
+		if (!showImageSide) return
 		const interval = setInterval(() => {
 			setCurrentImageIndex(
 				prevIndex => (prevIndex + 1) % backgroundImages.length
@@ -61,83 +168,130 @@ function ModernAuthModal({
 		}, 10000) // 10 seconds
 
 		return () => clearInterval(interval)
-	}, [backgroundImages.length])
+	}, [backgroundImages.length, showImageSide])
+
+	// Handle Google sign-in callback
+	const handleGoogleSignInCallback = async (
+		response: GoogleCredentialResponse
+	) => {
+		try {
+			setLoading(true)
+			setErrors({})
+
+			if (!response.credential) {
+				throw new Error("No credential received from Google")
+			}
+
+			// Send the credential to your backend
+			const apiResponse = (await api("google-auth/", {
+				method: "POST",
+				body: JSON.stringify({ id_token: response.credential }),
+			})) as GoogleAuthResponse
+
+			const tokens = apiResponse?.tokens
+			if (
+				apiResponse?.status === "success" &&
+				tokens?.access &&
+				tokens?.refresh
+			) {
+				saveTokens(tokens.access, tokens.refresh)
+
+				// Update authentication state
+				setIsAuthorized(true)
+
+				// Redirect to profile page
+				navigate(PROFILE_PAGE)
+			} else {
+				setErrors({ general: t("login-error-message") })
+			}
+		} catch (error) {
+			console.error("Google sign-in error:", error)
+			setErrors({ general: t("login-error-message") })
+		} finally {
+			setLoading(false)
+		}
+	}
+
+	// Google keeps the callback passed to initialize() for the lifetime of the
+	// page, so route it through a ref to always use the latest render's
+	// translations and navigation.
+	const googleCallbackRef = useRef(handleGoogleSignInCallback)
+	googleCallbackRef.current = handleGoogleSignInCallback
 
 	// Initialize Google OAuth with Google Identity Services
 	useEffect(() => {
-		const initGoogleAuth = () => {
-			console.log("🔍 DEBUG: GOOGLE_CLIENT_ID:", GOOGLE_CLIENT_ID)
-			console.log("🔍 DEBUG: Current origin:", window.location.origin)
-			console.log(
-				"🔍 DEBUG: Google object available:",
-				!!(window as any).google
-			)
+		if (!GOOGLE_CLIENT_ID) {
+			console.warn("Google Client ID not configured")
+			return
+		}
 
-			if (
-				GOOGLE_CLIENT_ID &&
-				typeof window !== "undefined" &&
-				(window as any).google
-			) {
-				try {
-					// Initialize Google Identity Services
-					;(window as any).google.accounts.id.initialize({
-						client_id: GOOGLE_CLIENT_ID,
-						callback: handleGoogleSignInCallback,
-						auto_select: false,
-						cancel_on_tap_outside: false,
-					})
-					console.log("✅ Google Identity Services initialized successfully")
-					setGoogleApiReady(true)
-				} catch (error) {
-					console.error(
-						"❌ Google Identity Services initialization error:",
-						error
-					)
-					setGoogleApiReady(false)
+		let cancelled = false
+		let attempts = 0
+		let timer: number | undefined
+
+		// Wait for the async Google Identity Services script to load
+		const init = () => {
+			if (cancelled) return
+
+			const googleId = window.google?.accounts?.id
+			if (!googleId) {
+				attempts += 1
+				if (attempts < GOOGLE_SCRIPT_MAX_ATTEMPTS) {
+					timer = window.setTimeout(init, GOOGLE_SCRIPT_POLL_MS)
+				} else {
+					console.warn("Google Identity Services script did not load")
 				}
-			} else if (!GOOGLE_CLIENT_ID) {
-				console.warn("⚠️ Google Client ID not configured")
+				return
+			}
+
+			try {
+				googleId.initialize({
+					client_id: GOOGLE_CLIENT_ID,
+					callback: response => googleCallbackRef.current(response),
+					auto_select: false,
+					cancel_on_tap_outside: false,
+				})
+				setGoogleApiReady(true)
+			} catch (error) {
+				console.error("Google Identity Services initialization error:", error)
+				setGoogleApiReady(false)
 			}
 		}
 
-		// Wait for Google Identity Services to load
-		const checkGoogle = () => {
-			if (
-				typeof window !== "undefined" &&
-				(window as any).google?.accounts?.id
-			) {
-				initGoogleAuth()
-			} else {
-				setTimeout(checkGoogle, 100)
-			}
-		}
+		init()
 
-		checkGoogle()
+		return () => {
+			cancelled = true
+			window.clearTimeout(timer)
+			window.google?.accounts?.id?.cancel()
+		}
 	}, [])
 
 	// Check for registration success parameter (only for login mode)
 	useEffect(() => {
-		if (mode === "login") {
-			const urlParams = new URLSearchParams(window.location.search)
-			if (urlParams.get("registered") === "true") {
-				setShowSuccessMessage(true)
-				// Remove the parameter from URL without page reload
-				const newUrl = window.location.pathname
-				window.history.replaceState({}, document.title, newUrl)
+		if (mode !== "login" || searchParams.get("registered") !== "true") return
 
-				// Hide success message after 5 seconds
-				setTimeout(() => {
-					setShowSuccessMessage(false)
-				}, 5000)
-			}
-		}
-	}, [mode])
+		setSuccessMessageKey("login-registration-success")
+		// Remove the parameter from the URL without a page reload
+		setSearchParams({}, { replace: true })
+	}, [mode, searchParams, setSearchParams])
 
-	// Clear errors when language changes
+	// Hide the success message after 5 seconds
 	useEffect(() => {
+		if (!successMessageKey) return
+		const timer = setTimeout(() => setSuccessMessageKey(null), 5000)
+		return () => clearTimeout(timer)
+	}, [successMessageKey])
+
+	// Clear errors when language changes. Skips the initial render, which
+	// would otherwise wipe the "registered" success message set above.
+	const languageRef = useRef(i18n.language)
+	useEffect(() => {
+		if (languageRef.current === i18n.language) return
+		languageRef.current = i18n.language
 		setErrors({})
 		setRegistrationStatus(null)
-		setShowSuccessMessage(false)
+		setSuccessMessageKey(null)
 	}, [i18n.language])
 
 	// Auto-dismiss error messages after 10 seconds
@@ -173,7 +327,7 @@ function ModernAuthModal({
 	// Handle forgot password transition
 	const handleForgotPasswordClick = () => {
 		setIsTransitioning(true)
-		setTimeout(() => {
+		schedule(() => {
 			setShowForgotPassword(true)
 			setIsTransitioning(false)
 		}, 300) // Half of the animation duration
@@ -182,7 +336,7 @@ function ModernAuthModal({
 	// Handle back to login transition
 	const handleBackToLogin = () => {
 		setIsTransitioning(true)
-		setTimeout(() => {
+		schedule(() => {
 			setShowForgotPassword(false)
 			setIsTransitioning(false)
 			// Clear forgot password form
@@ -191,92 +345,31 @@ function ModernAuthModal({
 		}, 300)
 	}
 
-	// Handle Google sign-in callback
-	const handleGoogleSignInCallback = async (response: any) => {
-		try {
-			setLoading(true)
-			setErrors({})
-
-			if (!response.credential) {
-				throw new Error("No credential received from Google")
-			}
-
-			// Send the credential to your backend
-			const apiResponse = await api("google-auth/", {
-				method: "POST",
-				body: JSON.stringify({ id_token: response.credential }),
-			})
-
-			if ((apiResponse as any)?.status === "success") {
-				// Update authentication state
-				setIsAuthorized(true)
-
-				// Redirect to profile page
-				navigate(PROFILE_PAGE)
-			} else {
-				setErrors({ general: t("login-error-message") })
-			}
-		} catch (error) {
-			console.error("Google sign-in error:", error)
-			setErrors({ general: t("login-error-message") })
-		} finally {
-			setLoading(false)
-		}
-	}
-
 	// Handle Google sign-in button click
 	const handleGoogleSignIn = () => {
-		try {
-			setLoading(true)
-			setErrors({})
+		setErrors({})
 
-			// Check if Google Identity Services is available
-			if (
-				typeof window === "undefined" ||
-				!(window as any).google?.accounts?.id
-			) {
-				throw new Error("Google Identity Services not available")
-			}
-
-			// Trigger the Google sign-in popup
-			;(window as any).google.accounts.id.prompt((notification: any) => {
-				if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-					// The prompt was not displayed or was skipped
-					setLoading(false)
-					console.log("Google sign-in prompt was not displayed or was skipped")
-				}
-			})
-		} catch (error) {
-			console.error("Google sign-in error:", error)
+		const googleId = window.google?.accounts?.id
+		if (!googleId) {
+			console.error("Google Identity Services not available")
 			setErrors({ general: t("login-error-message") })
-			setLoading(false)
+			return
 		}
-	}
 
-	// Success/Error message component
-	const AlertMessage = ({
-		message,
-		type,
-		onClose,
-	}: {
-		message: string
-		type: "success" | "error"
-		onClose: () => void
-	}) => (
-		<div className="modern-alert-container">
-			<div className={`modern-alert ${type}`}>
-				<span>{message}</span>
-				<button className="modern-alert-close" onClick={onClose}>
-					×
-				</button>
-			</div>
-		</div>
-	)
+		// Loading starts in the callback, once Google returns a credential.
+		// The prompt may be dismissed or never shown, and in that case no
+		// callback arrives, so setting loading here could leave the form
+		// disabled.
+		googleId.prompt(notification => {
+			if (notification.isNotDisplayed?.()) {
+				setErrors({ general: t("login-error-message") })
+			}
+		})
+	}
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		setLoading(true)
 		e.preventDefault()
-		console.log("Form submitted, showForgotPassword:", showForgotPassword)
 
 		// Validation based on mode
 		const newErrors: any = {}
@@ -322,23 +415,19 @@ function ModernAuthModal({
 			if (Object.keys(newErrors).length === 0) {
 				if (showForgotPassword) {
 					// Forgot password logic
-					console.log("Submitting forgot password for email:", email)
 					const response = await api("forgot-password/", {
 						method: "POST",
 						body: JSON.stringify({ email: email }),
 					})
-					console.log("Forgot password response:", response)
 
 					if ((response as any)?.status === "success") {
-						setShowSuccessMessage(true)
+						setSuccessMessageKey("forgot-password-success-message")
 						// Clear form on success
 						setEmail("")
 						setErrors({})
 
 						// Go back to login after 3 seconds
-						setTimeout(() => {
-							handleBackToLogin()
-						}, 3000)
+						schedule(handleBackToLogin, 3000)
 					} else {
 						setErrors({ general: t("forgot-password-error-message") })
 					}
@@ -350,8 +439,7 @@ function ModernAuthModal({
 					})) as TokenResponse
 
 					if (response?.access && response?.refresh) {
-						localStorage.setItem("access_token", response.access)
-						localStorage.setItem("refresh_token", response.refresh)
+						saveTokens(response.access, response.refresh)
 
 						// Update authentication state
 						setIsAuthorized(true)
@@ -374,8 +462,9 @@ function ModernAuthModal({
 						body: JSON.stringify(requestData),
 					})
 
-					// Handle HTTP errors
-					if (response.ok) {
+					// The backend returns { ok: true } on success and
+					// field errors ({ email: [...] }) on validation failure
+					if (response?.ok) {
 						setRegistrationStatus("success")
 						// Clear form on success
 						setEmail("")
@@ -384,33 +473,24 @@ function ModernAuthModal({
 						setErrors({})
 
 						// Redirect to login page after 2 seconds
-						setTimeout(() => {
-							navigate(`${LOGIN_PAGE}?registered=true`)
-						}, 2000)
+						schedule(() => navigate(`${LOGIN_PAGE}?registered=true`), 2000)
 					} else {
 						setRegistrationStatus("error")
-						console.log(response)
 
-						// Parse error message if response contains JSON
-						try {
-							if (response["username"]) {
-								setErrors({ email: t("register-username-exists") })
-							} else if (response["email"]) {
-								setErrors({ email: t("register-email-exists") })
-							}
-						} catch {
-							// Handle non-JSON errors
-							console.error("Unexpected error:", response)
+						if (response?.["username"]) {
+							setErrors({ email: t("register-username-exists") })
+						} else if (response?.["email"]) {
+							setErrors({ email: t("register-email-exists") })
 						}
 					}
 				}
 			}
 		} catch (error) {
+			console.error("Auth request error:", error)
 			if (mode === "login") {
 				setErrors({ general: t("login-error-message") })
 			} else {
 				setRegistrationStatus("error")
-				console.error("Unexpected error:", error)
 			}
 		} finally {
 			setLoading(false)
@@ -451,14 +531,17 @@ function ModernAuthModal({
 	const closeClass =
 		mode === "login" ? "modern-login-close" : "modern-register-close"
 
+	const closeLabel = t("close")
+
 	return (
 		<>
 			{/* Success/Error Messages */}
-			{mode === "login" && showSuccessMessage && (
+			{mode === "login" && successMessageKey && (
 				<AlertMessage
-					message={t("login-registration-success")}
+					message={t(successMessageKey)}
 					type="success"
-					onClose={() => setShowSuccessMessage(false)}
+					onClose={() => setSuccessMessageKey(null)}
+					closeLabel={closeLabel}
 				/>
 			)}
 			{mode === "login" && errors.general && (
@@ -466,6 +549,7 @@ function ModernAuthModal({
 					message={errors.general}
 					type="error"
 					onClose={() => setErrors({ ...errors, general: null })}
+					closeLabel={closeLabel}
 				/>
 			)}
 			{mode === "register" && registrationStatus === "success" && (
@@ -473,6 +557,7 @@ function ModernAuthModal({
 					message={t("register-success-message")}
 					type="success"
 					onClose={() => setRegistrationStatus(null)}
+					closeLabel={closeLabel}
 				/>
 			)}
 			{mode === "register" && registrationStatus === "error" && (
@@ -480,20 +565,30 @@ function ModernAuthModal({
 					message={t("register-error-message")}
 					type="error"
 					onClose={() => setRegistrationStatus(null)}
+					closeLabel={closeLabel}
 				/>
 			)}
 
 			<div className={containerClass}>
 				<div className={modalClass}>
 					{/* Close Button */}
-					<button className={closeClass} onClick={onClose}>
+					<button
+						type="button"
+						className={closeClass}
+						onClick={onClose}
+						aria-label={closeLabel}
+					>
 						<IoClose />
 					</button>
 
 					{/* Left side - Form */}
 					<div className={formSideClass}>
 						<div className={topBarClass}>
-							<button className="modern-back-button" onClick={onClose}>
+							<button
+								type="button"
+								className="modern-back-button"
+								onClick={onClose}
+							>
 								<IoChevronBack />
 								<span>{t("back")}</span>
 							</button>
@@ -683,12 +778,12 @@ function ModernAuthModal({
 								) : mode === "login" ? (
 									<>
 										{t("login-no-account")}{" "}
-										<a href={REGISTER_PAGE}>{t("login-register-now")}</a>
+										<Link to={REGISTER_PAGE}>{t("login-register-now")}</Link>
 									</>
 								) : (
 									<>
 										{t("register-have-account")}{" "}
-										<a href={LOGIN_PAGE}>{t("register-sign-in")}</a>
+										<Link to={LOGIN_PAGE}>{t("register-sign-in")}</Link>
 									</>
 								)}
 							</div>
@@ -704,31 +799,35 @@ function ModernAuthModal({
 						</div>
 					</div>
 
-					{/* Right side - Image */}
-					<div className={imageSideClass}>
-						<div className="modern-image-frame">
-							{/* Background Image */}
-							<img
-								src={backgroundImages[currentImageIndex]}
-								alt="Professional team working together"
-								className={backgroundImgClass}
-							/>
+					{/* Right side - Image (hidden on small screens) */}
+					{showImageSide && (
+						<div className={imageSideClass}>
+							<div className="modern-image-frame">
+								<img
+									src={`${backgroundImages[currentImageIndex]}.webp`}
+									srcSet={imageSrcSet(backgroundImages[currentImageIndex])}
+									sizes="(max-width: 1200px) 60vw, 720px"
+									alt=""
+									className={backgroundImgClass}
+								/>
 
-							{/* Navigation Dots */}
-							<div className="modern-image-dots">
-								{backgroundImages.map((_, index) => (
-									<button
-										key={index}
-										className={`modern-dot ${
-											index === currentImageIndex ? "active" : ""
-										}`}
-										onClick={() => goToSlide(index)}
-										aria-label={`Go to slide ${index + 1}`}
-									/>
-								))}
+								{/* Navigation Dots */}
+								<div className="modern-image-dots">
+									{backgroundImages.map((_, index) => (
+										<button
+											key={index}
+											type="button"
+											className={`modern-dot ${
+												index === currentImageIndex ? "active" : ""
+											}`}
+											onClick={() => goToSlide(index)}
+											aria-label={`Go to slide ${index + 1}`}
+										/>
+									))}
+								</div>
 							</div>
 						</div>
-					</div>
+					)}
 				</div>
 			</div>
 		</>

@@ -353,6 +353,7 @@
 	"register-username-exists": "User with this name already exists",
 	"register-email-exists": "User with this email already exists",
 	"back": "Back",
+	"close": "Close",
 	"login-registration-success": "Registration successful! Please check your email to verify your account.",
 
 	"login-welcome-back": "Welcome Back",

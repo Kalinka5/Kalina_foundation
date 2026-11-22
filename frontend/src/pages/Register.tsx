@@ -1,25 +1,26 @@
+import { useNavigate } from "react-router-dom"
+
 import Header from "../components/Header"
 import ModernAuthModal from "../components/LoginRegister/ModernAuthModal"
+import { HOME_PAGE } from "../lib/constants"
 
 import "../styles/loginRegister/modernRegister.css"
 
-function Register() {
-	const handleClose = () => {
-		// Redirect to home page when modal is closed
-		window.location.href = "/"
-	}
+// Base paths; ModernAuthModal picks the WebP size variant
+const backgroundImages = [
+	"/img/register-background1",
+	"/img/register-background2",
+	"/img/register-background3",
+]
 
-	const backgroundImages = [
-		"/img/register-background1.png",
-		"/img/register-background2.png",
-		"/img/register-background3.png",
-	]
+function Register() {
+	const navigate = useNavigate()
 
 	return (
 		<>
 			<Header navLinks={[]} />
 			<ModernAuthModal
-				onClose={handleClose}
+				onClose={() => navigate(HOME_PAGE)}
 				backgroundImages={backgroundImages}
 				mode="register"
 			/>
