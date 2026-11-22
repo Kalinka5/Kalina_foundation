@@ -66,6 +66,28 @@ export async function register(
 	return { ok: false, messageKey: "register-error-message" }
 }
 
+/** Matches ACTIVATION_RESEND_COOLDOWN_SECONDS in the backend. */
+export const ACTIVATION_RESEND_COOLDOWN_SECONDS = 60
+
+export type ResendActivationResult = "sent" | "throttled" | "error"
+
+/**
+ * Asks for a new activation link. The backend answers "success" whether or
+ * not the email belongs to an unconfirmed account.
+ */
+export async function resendActivation(
+	email: string
+): Promise<ResendActivationResult> {
+	const response = await api("resend-activation/", {
+		method: "POST",
+		body: JSON.stringify({ email }),
+	})
+	if (response?.status === "success") return "sent"
+	// DRF answers a rate-limited request with { detail: "Request was throttled..." }
+	if (typeof response?.detail === "string") return "throttled"
+	return "error"
+}
+
 /** The backend answers "success" whether or not the account exists. */
 export async function requestPasswordReset(email: string) {
 	const response = await api("forgot-password/", {
