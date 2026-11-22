@@ -11,6 +11,7 @@ import {
 	PasswordStrengthMeter,
 } from "../components/Auth/AuthParts"
 import GoogleSignIn from "../components/Auth/GoogleSignIn"
+import { ResendActivationButton } from "../components/Auth/ResendActivation"
 import { useAuth } from "../components/AuthContext"
 import { PASSWORD_MIN_LENGTH, isValidEmail, register } from "../lib/auth"
 import {
@@ -85,16 +86,19 @@ function Register() {
 			quoteKey="home-hero-title"
 		>
 			{registeredEmail ? (
-				<AuthDone
-					title={t("register-success-title")}
-					actions={
-						<Link to={LOGIN_PAGE} className="btn btn-primary btn-lg btn-block">
-							{t("register-success-login")}
-						</Link>
-					}
-				>
-					{t("register-success-body", { email: registeredEmail })}
-				</AuthDone>
+				<>
+					<AuthDone
+						title={t("register-success-title")}
+						actions={
+							<Link to={LOGIN_PAGE} className="btn btn-primary btn-lg btn-block">
+								{t("register-success-login")}
+							</Link>
+						}
+					>
+						{t("register-success-body", { email: registeredEmail })}
+					</AuthDone>
+					<ResendActivationButton email={registeredEmail} />
+				</>
 			) : (
 				<>
 					<AuthHeading

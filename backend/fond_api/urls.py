@@ -12,6 +12,8 @@ urlpatterns = [
          name='refresh_token'),
     path('register', views.RegisterApi.as_view(), name='register_new_user'),
     path('activate/<uidb64>/<token>/', views.activate, name='activate'),
+    path('resend-activation/', views.resend_activation,
+         name='resend_activation'),
     path('forgot-password/', views.forgot_password, name='forgot_password'),
     path('reset-password/', views.reset_password, name='reset_password'),
     path('google-auth/', views.google_auth, name='google_auth'),

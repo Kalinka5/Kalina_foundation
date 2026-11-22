@@ -4,7 +4,8 @@ import { Link, useParams } from "react-router-dom"
 
 import AuthLayout from "../components/Auth/AuthLayout"
 import { AuthDone } from "../components/Auth/AuthParts"
-import { LOGIN_PAGE, REGISTER_PAGE } from "../lib/constants"
+import { ResendActivationForm } from "../components/Auth/ResendActivation"
+import { LOGIN_PAGE } from "../lib/constants"
 import { useEmailVerification } from "../lib/hooks"
 
 // Reached from the link in the activation email: /email-verify/:uid/:token
@@ -34,21 +35,22 @@ function EmailVerify() {
 		)
 	} else if (status === "failed") {
 		content = (
-			<AuthDone
-				key="failed"
-				tone="error"
-				title={t("verify-email-failed-title")}
-				actions={
-					<>
-						{loginButton}
-						<Link to={REGISTER_PAGE} className="btn btn-ghost btn-lg btn-block">
-							{t("register-create-account")}
+			<>
+				<AuthDone
+					key="failed"
+					tone="error"
+					title={t("verify-email-failed-title")}
+					actions={
+						<Link to={LOGIN_PAGE} className="btn btn-ghost btn-lg btn-block">
+							{t("login-button")}
 						</Link>
-					</>
-				}
-			>
-				{t("verify-email-failed-body")}
-			</AuthDone>
+					}
+				>
+					{t("verify-email-failed-body")}
+				</AuthDone>
+				{/* Registering again isn't possible (the email is taken), so offer a new link */}
+				<ResendActivationForm />
+			</>
 		)
 	} else if (status === "error") {
 		content = (

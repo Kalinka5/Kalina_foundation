@@ -2,7 +2,7 @@ from rest_framework import exceptions as rest_exceptions, generics, status, view
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes, throttle_classes
-from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
+from rest_framework.throttling import UserRateThrottle, AnonRateThrottle, SimpleRateThrottle
 from rest_framework.views import APIView
 
 from rest_framework_simplejwt import tokens, views as jwt_views
@@ -10,6 +10,9 @@ from rest_framework_simplejwt import tokens, views as jwt_views
 from django_filters.rest_framework import DjangoFilterBackend
 
 from django.conf import settings
+from django.core.cache import cache
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 from django.core.mail import EmailMessage
 from django.contrib.auth import authenticate
 from django.utils.encoding import force_bytes, force_str
@@ -22,6 +25,7 @@ from django.middleware import csrf
 
 from decimal import Decimal
 
+import logging
 import requests
 import secrets
 import uuid
@@ -89,6 +93,43 @@ def loginView(request):
         "Email or Password is incorrect!")
 
 
+logger = logging.getLogger(__name__)
+
+# Minimum time between two activation emails to the same account, so the
+# resend endpoint can't be used to flood someone's inbox.
+ACTIVATION_RESEND_COOLDOWN_SECONDS = 60
+
+
+def _activation_cooldown_key(user):
+    return f"activation-email-sent:{user.pk}"
+
+
+def send_activation_email(user):
+    """Email the account activation link and start the resend cooldown."""
+    mail_subject = 'Activation link has been sent to your email id'
+    message = render_to_string('acc_active_email.html', {
+        'user': user,
+        'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+        'token': account_activation_token.make_token(user),
+    })
+    email = EmailMessage(mail_subject, message, to=[user.email])
+    email.content_subtype = 'html'
+    email.send()
+    cache.set(_activation_cooldown_key(user), True,
+              ACTIVATION_RESEND_COOLDOWN_SECONDS)
+
+
+class ActivationResendThrottle(SimpleRateThrottle):
+    """Per-IP limit for activation resends, for anonymous and signed-in callers."""
+    scope = 'activation_resend'
+
+    def get_cache_key(self, request, view):
+        return self.cache_format % {
+            'scope': self.scope,
+            'ident': self.get_ident(request),
+        }
+
+
 class RegisterApi(generics.GenericAPIView):
     serializer_class = RegisterSerializer
     throttle_classes = [AnonRateThrottle, UserRateThrottle]
@@ -97,25 +138,54 @@ class RegisterApi(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
-
-        mail_subject = 'Activation link has been sent to your email id'
-        message = render_to_string('acc_active_email.html', {
-            'user': user,
-            'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-            'token': account_activation_token.make_token(user),
-        })
-        to_email = request.data['email']
-        email = EmailMessage(
-            mail_subject, message, to=[to_email]
-        )
-        email.content_subtype = 'html'
-        email.send()
+        send_activation_email(user)
 
         return Response({
             "user": UserSerializer(user, context=self.get_serializer_context()).data,
             "message": "User Created Successfully. Now perform Login to get your token",
             "ok": True
         })
+
+
+@api_view(['POST'])
+@permission_classes([])
+@throttle_classes([ActivationResendThrottle])
+def resend_activation(request):
+    """
+    Send a new activation link to an account that hasn't been confirmed yet.
+
+    The response is the same whether or not the email belongs to an inactive
+    account, so it can't be used to find out which emails are registered.
+    """
+    email = str(request.data.get('email') or '').strip()
+    try:
+        validate_email(email)
+    except ValidationError:
+        return Response(
+            {'error': 'A valid email is required'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    generic_response = Response(
+        {'status': 'success',
+         'message': 'If this account still needs to be confirmed, a new activation link has been sent.'},
+        status=status.HTTP_200_OK
+    )
+
+    user = User.objects.filter(email__iexact=email, is_active=False).first()
+    if user is None or cache.get(_activation_cooldown_key(user)):
+        return generic_response
+
+    try:
+        send_activation_email(user)
+    except Exception:
+        logger.exception("Failed to resend activation email")
+        return Response(
+            {'error': 'An error occurred while sending the email.'},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR
+        )
+
+    return generic_response
 
 
 def activate(request, uidb64, token):
