@@ -47,7 +47,7 @@
 	font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
 	font-style: italic;
 	line-height: 1.6;
-	color: rgba(244, 246, 250, 0.88);
+	color: color-mix(in srgb, var(--h-text) 88%, transparent);
 	margin-bottom: 12px;
 }
 
@@ -62,7 +62,7 @@
 	font-size: clamp(2.5rem, 6vw, 5rem);
 	line-height: 1.05;
 	letter-spacing: -0.03em;
-	color: #fff;
+	color: var(--h-text);
 	margin-bottom: 20px;
 	text-wrap: balance;
 	max-width: 14ch;
@@ -70,5 +70,5 @@
 
 .final-lead {
 	margin: 0 auto 40px;
-	color: rgba(244, 246, 250, 0.82);
+	color: color-mix(in srgb, var(--h-text) 82%, transparent);
 }

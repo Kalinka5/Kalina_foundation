@@ -1,6 +1,8 @@
 /* ==========================================================================
    Home page: design tokens and shared building blocks
-   Dark cinematic direction. One action colour (Ukrainian yellow).
+   Cinematic direction in dark and light. One action colour (Ukrainian
+   yellow) for buttons and progress; accent text is yellow in dark and
+   Ukrainian blue in light, where yellow text would not be readable.
    ========================================================================== */
 
 .home-page {
@@ -16,6 +18,25 @@
 	--h-yellow-hover: #ffe34d;
 	--h-on-yellow: #0a0a0a;
 	--h-blue: #2f7bff;
+
+	/* Semantic tokens (overridden for the light theme below) */
+	--h-accent: var(--h-yellow);
+	--h-accent-hover: #ffe34d;
+	--h-accent-soft: rgba(255, 213, 0, 0.1);
+	--h-accent-line: rgba(255, 213, 0, 0.45);
+	--h-tint: rgba(255, 255, 255, 0.04);
+	--h-tint-strong: rgba(255, 255, 255, 0.08);
+	--h-surface-hover: #0a0d15;
+	--h-glass: rgba(14, 19, 28, 0.86);
+	--h-shadow-lg: 0 40px 80px -40px rgba(0, 0, 0, 0.8);
+	--h-track: rgba(255, 255, 255, 0.08);
+	--h-hover-line: rgba(255, 255, 255, 0.36);
+	--h-scrim: 7, 9, 15;
+	--h-glow-blue: rgba(47, 123, 255, 0.18);
+	--h-glow-yellow: rgba(255, 213, 0, 0.1);
+	--h-btn-primary-shadow: 0 10px 40px -10px rgba(255, 213, 0, 0.55);
+	--h-warning: #ffb340;
+	--h-success: #5be38a;
 
 	--h-font-display: "Unbounded", "Onest", system-ui, sans-serif;
 	--h-font-body: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -35,10 +56,63 @@
 	overflow-x: clip;
 }
 
+/* Light theme: warm paper background, white cards, blue accent text. */
+[data-theme="light"] .home-page {
+	--h-bg: #f7f5f0;
+	--h-surface: #ffffff;
+	--h-surface-2: #efece4;
+	--h-line: rgba(18, 22, 31, 0.1);
+	--h-line-strong: rgba(18, 22, 31, 0.18);
+	--h-text: #12161f;
+	--h-muted: #4a5263;
+	--h-subtle: #69717f;
+	--h-yellow-hover: #f5c800;
+	--h-blue: #0057b7;
+
+	--h-accent: #0057b7;
+	--h-accent-hover: #00468f;
+	--h-accent-soft: rgba(0, 87, 183, 0.08);
+	--h-accent-line: rgba(0, 87, 183, 0.4);
+	--h-tint: rgba(18, 22, 31, 0.04);
+	--h-tint-strong: rgba(18, 22, 31, 0.07);
+	--h-surface-hover: #ffffff;
+	--h-glass: rgba(255, 255, 255, 0.86);
+	--h-shadow-lg: 0 30px 60px -30px rgba(30, 35, 50, 0.18);
+	--h-track: rgba(18, 22, 31, 0.08);
+	--h-hover-line: rgba(18, 22, 31, 0.32);
+	--h-scrim: 247, 245, 240;
+	--h-glow-blue: rgba(0, 87, 183, 0.1);
+	--h-glow-yellow: rgba(255, 213, 0, 0.16);
+	--h-btn-primary-shadow: 0 10px 30px -12px rgba(184, 138, 0, 0.55);
+	--h-warning: #9a5b00;
+	--h-success: #1e8e4a;
+
+	color-scheme: light;
+}
+
+/* Photo sections stay dark in both themes: white text needs a dark scrim. */
+.story-card,
+.final-cta {
+	--h-text: #f4f6fa;
+	--h-muted: #c3cad6;
+	--h-line: rgba(255, 255, 255, 0.08);
+	--h-line-strong: rgba(255, 255, 255, 0.16);
+	--h-accent: var(--h-yellow);
+	--h-accent-hover: #ffe34d;
+	--h-tint: rgba(255, 255, 255, 0.04);
+	--h-tint-strong: rgba(255, 255, 255, 0.08);
+	--h-hover-line: rgba(255, 255, 255, 0.36);
+	--h-scrim: 7, 9, 15;
+}
+
 /* The hero sits under the transparent fixed header. */
 body:has(.home-page) {
 	padding-top: 0 !important;
 	background: #07090f;
+}
+
+[data-theme="light"] body:has(.home-page) {
+	background: #f7f5f0;
 }
 
 .home-page ::selection {
@@ -51,7 +125,7 @@ body:has(.home-page) {
 }
 
 .home-page :focus-visible {
-	outline: 2px solid var(--h-yellow);
+	outline: 2px solid var(--h-accent);
 	outline-offset: 3px;
 	border-radius: 4px;
 }
@@ -99,7 +173,7 @@ body:has(.home-page) {
 	font-weight: 600;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
-	color: var(--h-yellow);
+	color: var(--h-accent);
 	margin-bottom: 20px;
 }
 
@@ -143,8 +217,8 @@ body:has(.home-page) {
 }
 
 .h-link:hover {
-	color: var(--h-yellow);
-	border-color: var(--h-yellow);
+	color: var(--h-accent);
+	border-color: var(--h-accent);
 }
 
 .h-link:hover svg {
@@ -220,7 +294,7 @@ body:has(.home-page) {
 
 .home-page .btn-primary:hover {
 	background: var(--h-yellow-hover);
-	box-shadow: 0 10px 40px -10px rgba(255, 213, 0, 0.55);
+	box-shadow: var(--h-btn-primary-shadow);
 }
 
 .home-page .btn-primary:disabled {
@@ -231,14 +305,14 @@ body:has(.home-page) {
 }
 
 .home-page .btn-ghost {
-	background: rgba(255, 255, 255, 0.04);
+	background: var(--h-tint);
 	border-color: var(--h-line-strong);
 	color: var(--h-text);
 }
 
 .home-page .btn-ghost:hover {
-	background: rgba(255, 255, 255, 0.08);
-	border-color: rgba(255, 255, 255, 0.32);
+	background: var(--h-tint-strong);
+	border-color: var(--h-hover-line);
 }
 
 .home-page .btn-outline {
@@ -248,8 +322,8 @@ body:has(.home-page) {
 }
 
 .home-page .btn-outline:hover {
-	border-color: var(--h-yellow);
-	color: var(--h-yellow);
+	border-color: var(--h-accent);
+	color: var(--h-accent);
 }
 
 /* ---------- Progress ---------- */
@@ -257,7 +331,7 @@ body:has(.home-page) {
 	position: relative;
 	height: 6px;
 	border-radius: 999px;
-	background: rgba(255, 255, 255, 0.08);
+	background: var(--h-track);
 	overflow: hidden;
 }
 
@@ -290,7 +364,7 @@ body:has(.home-page) {
 }
 
 .header-home.is-scrolled {
-	background: rgba(7, 9, 15, 0.78);
+	background: rgba(var(--h-scrim), 0.8);
 	backdrop-filter: blur(16px) saturate(140%);
 	-webkit-backdrop-filter: blur(16px) saturate(140%);
 	border-bottom-color: var(--h-line);
@@ -298,6 +372,28 @@ body:has(.home-page) {
 
 .header-home .header-logo img {
 	background: transparent;
+}
+
+/* Language pill and theme toggle on the light Home/Donate header */
+[data-theme="light"] .home-page .custom-language-selector {
+	background: var(--h-surface);
+	border-color: var(--h-line-strong);
+	box-shadow: 0 4px 14px -6px rgba(30, 35, 50, 0.18);
+}
+
+[data-theme="light"] .home-page .lang-button {
+	color: var(--h-muted);
+}
+
+[data-theme="light"] .home-page .lang-button:hover {
+	color: var(--h-text);
+	background: var(--h-tint-strong);
+}
+
+[data-theme="light"] .home-page .lang-button.active {
+	background: var(--h-accent);
+	color: #ffffff;
+	box-shadow: 0 2px 6px rgba(0, 87, 183, 0.3);
 }
 
 /* Footer blends into the Home palette */
@@ -324,11 +420,11 @@ body:has(.home-page) {
 		gap: 12px;
 		padding: 10px 10px 10px 18px;
 		border-radius: 999px;
-		background: rgba(14, 19, 28, 0.88);
+		background: var(--h-glass);
 		backdrop-filter: blur(14px);
 		-webkit-backdrop-filter: blur(14px);
 		border: 1px solid var(--h-line-strong);
-		box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.8);
+		box-shadow: var(--h-shadow-lg);
 	}
 
 	.mobile-donate-text {

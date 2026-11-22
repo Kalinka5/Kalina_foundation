@@ -24,9 +24,9 @@ function Payment() {
 	const donation = useDonationState()
 
 	return (
-		// Same always-dark cinematic system as Home, so the flow feels continuous.
+		// Same cinematic system as Home (light and dark), so the flow feels continuous.
 		<MotionConfig reducedMotion="user">
-			<div className="main home-page donate-page" data-theme="dark">
+			<div className="main home-page donate-page">
 				<Header fixed="pos-fixed" variant="home" navLinks={donateNavLinks} />
 				<main className="home-content">
 					<DonateHero state={donation} />
