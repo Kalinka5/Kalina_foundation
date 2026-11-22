@@ -44,7 +44,7 @@ function DonateSection() {
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		if (!isValid) return
-		navigate(`${DONATE_PAGE}?amount=${amount}`)
+		navigate(`${DONATE_PAGE}?amount=${amount}&currency=usd`)
 	}
 
 	return (
