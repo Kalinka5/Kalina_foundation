@@ -167,8 +167,13 @@ EMAIL_USE_TLS = os.environ["EMAIL_USE_TLS"]
 
 PASSWORD_RESET_TIMEOUT = 14400
 
-# Frontend URL for password reset links
-FRONTEND_URL = os.environ.get("FRONTEND_URL", "http://127.0.0.1:3000")
+# Frontend URL for links in emails (password reset) and the Google OAuth redirect.
+# Vercel sets VERCEL=1 on every deployment: require the variable there so a
+# missing value fails loudly instead of sending users to localhost.
+if os.environ.get("VERCEL"):
+    FRONTEND_URL = os.environ["FRONTEND_URL"].rstrip("/")
+else:
+    FRONTEND_URL = os.environ.get("FRONTEND_URL", "http://127.0.0.1:3000").rstrip("/")
 
 # Google OAuth Settings
 GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", "")

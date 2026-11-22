@@ -472,17 +472,10 @@ def forgot_password(request):
         # Generate secure token
         token = secrets.token_urlsafe(32)
         
-        # Create or update password reset token
-        reset_token, created = PasswordResetToken.objects.get_or_create(
-            user=user,
-            defaults={'token': token}
-        )
-        
-        if not created:
-            # Update existing token
-            reset_token.token = token
-            reset_token.is_used = False
-            reset_token.save()
+        # Replace any previous token with a fresh one. Reusing the old row kept
+        # its original expires_at, so every new link was born already expired.
+        PasswordResetToken.objects.filter(user=user).delete()
+        PasswordResetToken.objects.create(user=user, token=token)
         
         # Send email with reset link
         reset_link = f"{settings.FRONTEND_URL}/reset-password?token={token}&email={email}"
