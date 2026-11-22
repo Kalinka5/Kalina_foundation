@@ -3,24 +3,18 @@ import { useTranslation } from "react-i18next"
 import { LuMedal } from "react-icons/lu"
 
 import { useDonators } from "../../lib/hooks"
-import { User } from "../../lib/types"
+import { PublicDonor } from "../../lib/types"
 import { Reveal, RevealText } from "./motion"
 
 import "../../styles/home/topDonators.css"
 
-const getDisplayName = (donator: User) => {
-	const fullName = [donator.first_name?.trim(), donator.last_name?.trim()]
-		.filter(Boolean)
-		.join(" ")
-	return fullName || donator.username
-}
-
-const getInitials = (donator: User) => {
+// The API leaves display_name empty when a donor hasn't set a name; their
+// email is never sent, so they appear as an anonymous supporter.
+const getInitials = (donator: PublicDonor) => {
 	const parts = [donator.first_name?.trim(), donator.last_name?.trim()].filter(
 		Boolean
 	) as string[]
-	const source = parts.length ? parts : [donator.username]
-	return source
+	return parts
 		.map(p => p.charAt(0))
 		.join("")
 		.toUpperCase()
@@ -33,12 +27,12 @@ const formatDonationAmount = (donated: string) => {
 }
 
 /** Avatar photo, falling back to initials when there is none or it fails to load. */
-function DonorAvatar({ donator }: { donator: User }) {
+function DonorAvatar({ donator }: { donator: PublicDonor }) {
 	const [failed, setFailed] = useState(!donator.image)
 	return (
 		<span className="donor-avatar">
 			{failed ? (
-				<span aria-hidden="true">{getInitials(donator)}</span>
+				<span aria-hidden="true">{getInitials(donator) || "♥"}</span>
 			) : (
 				<img
 					src={donator.image}
@@ -80,7 +74,7 @@ function TopDonators() {
 					<ol className="donors-list">
 						{topFive.map((donator, index) => {
 							const rank = index + 1
-							const name = getDisplayName(donator)
+							const name = donator.display_name || t("anonymous-supporter")
 							return (
 								<Reveal
 									as="li"
