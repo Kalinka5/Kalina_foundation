@@ -1,0 +1,591 @@
+/* ==========================================================================
+   Account pages (login, register, forgot and reset password).
+   Built on the Home tokens in styles/home/home.css, so they share the
+   cinematic dark theme and the warm light theme with Home and Donate.
+   ========================================================================== */
+
+.auth-page {
+	--a-field-radius: 12px;
+	--a-danger: #ff8080;
+	--a-danger-soft: rgba(255, 128, 128, 0.1);
+	--a-danger-line: rgba(255, 128, 128, 0.35);
+	--a-success-soft: rgba(91, 227, 138, 0.1);
+	--a-success-line: rgba(91, 227, 138, 0.35);
+
+	min-height: 100svh;
+}
+
+[data-theme="light"] .auth-page {
+	--a-danger: #c4291c;
+	--a-danger-soft: rgba(196, 41, 28, 0.06);
+	--a-danger-line: rgba(196, 41, 28, 0.3);
+	--a-success-soft: rgba(30, 142, 74, 0.07);
+	--a-success-line: rgba(30, 142, 74, 0.3);
+}
+
+/* ---------- Layout ---------- */
+
+.auth {
+	position: relative;
+	isolation: isolate;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	min-height: 100svh;
+	padding-top: var(--h-header-h);
+}
+
+/* Soft yellow and blue glow behind the form, as on the Donate hero */
+.auth::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background:
+		radial-gradient(45% 40% at 10% 15%, var(--h-glow-yellow), transparent 70%),
+		radial-gradient(40% 45% at 35% 95%, var(--h-glow-blue), transparent 70%);
+	pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+	.auth {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	}
+}
+
+.auth-panel {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: clamp(32px, 6svh, 72px) var(--h-gutter) clamp(48px, 8svh, 96px);
+}
+
+.auth-card {
+	width: 100%;
+	max-width: 420px;
+	animation: auth-rise 0.7s var(--h-ease) both;
+}
+
+@keyframes auth-rise {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+}
+
+/* ---------- Artwork panel (wide screens only) ---------- */
+
+.auth-visual {
+	/* Stays dark in both themes: the caption sits on a dark scrim */
+	--h-text: #f4f6fa;
+	--h-muted: #c3cad6;
+
+	position: sticky;
+	top: var(--h-header-h);
+	align-self: start;
+	height: calc(100svh - var(--h-header-h) - 16px);
+	min-height: 520px;
+	margin: 0 16px 16px 0;
+	border-radius: 24px;
+	border: 1px solid var(--h-line);
+	overflow: hidden;
+	isolation: isolate;
+	background: #0e131c;
+}
+
+.auth-visual-image {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	animation: auth-drift 28s ease-in-out infinite alternate;
+}
+
+/* Very slow push-in so the artwork feels alive without drawing focus */
+@keyframes auth-drift {
+	from {
+		transform: scale(1.02);
+	}
+	to {
+		transform: scale(1.09) translate3d(-1.5%, -1%, 0);
+	}
+}
+
+.auth-visual::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	background: linear-gradient(
+		to top,
+		rgba(7, 9, 15, 0.92) 0%,
+		rgba(7, 9, 15, 0.45) 38%,
+		rgba(7, 9, 15, 0) 62%
+	);
+}
+
+.auth-visual-caption {
+	position: absolute;
+	left: clamp(28px, 3vw, 48px);
+	right: clamp(28px, 3vw, 48px);
+	bottom: clamp(28px, 4vw, 48px);
+	z-index: 2;
+}
+
+.auth-visual .h-eyebrow {
+	color: var(--h-yellow);
+	margin-bottom: 14px;
+}
+
+.auth-visual-quote {
+	max-width: 18ch;
+	font-family: var(--h-font-display);
+	font-weight: 600;
+	font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+	color: var(--h-text);
+	text-wrap: balance;
+}
+
+/* ---------- Heading ---------- */
+
+.auth-head {
+	margin-bottom: 32px;
+}
+
+.auth-title {
+	margin-bottom: 12px;
+	font-family: var(--h-font-display);
+	font-weight: 600;
+	font-size: clamp(1.75rem, 3vw, 2.375rem);
+	line-height: 1.12;
+	letter-spacing: -0.025em;
+	color: var(--h-text);
+	text-wrap: balance;
+}
+
+.auth-title:focus {
+	outline: none;
+}
+
+.auth-lead {
+	font-size: 1.0625rem;
+	line-height: 1.6;
+	color: var(--h-muted);
+	text-wrap: pretty;
+}
+
+.auth-back {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 28px;
+	font-size: 0.9375rem;
+	font-weight: 500;
+	color: var(--h-muted);
+	text-decoration: none;
+	transition: color 0.2s var(--h-ease);
+}
+
+.auth-back svg {
+	transition: transform 0.2s var(--h-ease);
+}
+
+.auth-back:hover {
+	color: var(--h-text);
+}
+
+.auth-back:hover svg {
+	transform: translateX(-3px);
+}
+
+/* ---------- Alert ---------- */
+
+.auth-alert {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	margin-bottom: 24px;
+	padding: 14px 16px;
+	border-radius: var(--a-field-radius);
+	border: 1px solid var(--a-danger-line);
+	background: var(--a-danger-soft);
+	font-size: 0.9375rem;
+	line-height: 1.5;
+	color: var(--h-text);
+	animation: auth-rise 0.35s var(--h-ease) both;
+}
+
+.auth-alert-icon {
+	flex-shrink: 0;
+	margin-top: 2px;
+	font-size: 1.2rem;
+	color: var(--a-danger);
+}
+
+.auth-alert--success {
+	border-color: var(--a-success-line);
+	background: var(--a-success-soft);
+}
+
+.auth-alert--success .auth-alert-icon {
+	color: var(--h-success);
+}
+
+/* ---------- Google ---------- */
+
+.auth-google {
+	position: relative;
+	transition: opacity 0.2s var(--h-ease);
+}
+
+.auth-google-slot {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	min-height: 40px;
+	color-scheme: normal; /* Google's iframe paints its own background */
+}
+
+.auth-google.is-loading .auth-google-slot {
+	border-radius: 999px;
+	background: var(--h-tint-strong);
+	animation: auth-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes auth-pulse {
+	50% {
+		opacity: 0.5;
+	}
+}
+
+.auth-google.is-disabled {
+	opacity: 0.55;
+	pointer-events: none;
+}
+
+.auth-google-spinner {
+	position: absolute;
+	top: 50%;
+	right: 14px;
+	margin-top: -9px;
+	color: var(--h-muted);
+}
+
+.auth-divider {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin: 24px 0;
+	font-size: 0.8125rem;
+	font-weight: 500;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--h-subtle);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+	content: "";
+	flex: 1;
+	height: 1px;
+	background: var(--h-line-strong);
+}
+
+/* ---------- Form ---------- */
+
+.auth-form {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.auth-fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	min-width: 0;
+	border: 0;
+}
+
+.auth-fieldset:disabled {
+	opacity: 0.7;
+}
+
+.auth-field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.auth-label-row {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	column-gap: 12px;
+}
+
+.auth-label {
+	font-size: 0.9375rem;
+	font-weight: 500;
+	color: var(--h-text);
+}
+
+.auth-inline-link {
+	font-size: 0.875rem;
+	color: var(--h-muted);
+	text-decoration: underline;
+	text-decoration-color: var(--h-line-strong);
+	text-underline-offset: 3px;
+	transition: color 0.2s var(--h-ease), text-decoration-color 0.2s var(--h-ease);
+}
+
+.auth-inline-link:hover {
+	color: var(--h-accent);
+	text-decoration-color: currentColor;
+}
+
+.auth-input-wrap {
+	position: relative;
+}
+
+.auth-input {
+	width: 100%;
+	min-height: 52px;
+	padding: 0 16px;
+	border-radius: var(--a-field-radius);
+	border: 1px solid var(--h-line-strong);
+	background: var(--h-surface);
+	font-family: var(--h-font-body);
+	font-size: 1rem; /* 16px keeps iOS from zooming on focus */
+	color: var(--h-text);
+	transition:
+		border-color 0.2s var(--h-ease),
+		box-shadow 0.2s var(--h-ease);
+}
+
+.auth-input-wrap:has(.auth-reveal) .auth-input {
+	padding-right: 52px;
+}
+
+.auth-input::placeholder {
+	color: var(--h-subtle);
+}
+
+.auth-input:hover {
+	border-color: var(--h-hover-line);
+}
+
+.auth-input:focus {
+	outline: none;
+	border-color: var(--h-accent);
+	box-shadow: 0 0 0 3px var(--h-accent-soft);
+}
+
+.has-error .auth-input {
+	border-color: var(--a-danger);
+}
+
+.has-error .auth-input:focus {
+	box-shadow: 0 0 0 3px var(--a-danger-soft);
+}
+
+/* Keep browser autofill on-palette instead of a bright yellow box */
+.auth-input:-webkit-autofill {
+	-webkit-text-fill-color: var(--h-text);
+	caret-color: var(--h-text);
+	box-shadow: 0 0 0 100px var(--h-surface) inset;
+}
+
+.auth-input:-webkit-autofill:focus {
+	box-shadow:
+		0 0 0 100px var(--h-surface) inset,
+		0 0 0 3px var(--h-accent-soft);
+}
+
+.auth-reveal {
+	position: absolute;
+	top: 50%;
+	right: 6px;
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	border: 0;
+	border-radius: 8px;
+	background: transparent;
+	font-size: 1.2rem;
+	color: var(--h-subtle);
+	cursor: pointer;
+	transform: translateY(-50%);
+	transition: color 0.2s var(--h-ease), background-color 0.2s var(--h-ease);
+}
+
+.auth-reveal:hover {
+	color: var(--h-text);
+	background: var(--h-tint-strong);
+}
+
+.auth-hint,
+.auth-error {
+	font-size: 0.875rem;
+	line-height: 1.45;
+}
+
+.auth-hint {
+	color: var(--h-subtle);
+}
+
+.auth-error {
+	color: var(--a-danger);
+}
+
+/* ---------- Password strength ---------- */
+
+.auth-strength {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.auth-strength-bars {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 4px;
+	flex: 1;
+}
+
+.auth-strength-bars span {
+	height: 4px;
+	border-radius: 999px;
+	background: var(--h-track);
+	transition: background-color 0.3s var(--h-ease);
+}
+
+.auth-strength--1 .is-on {
+	background: var(--a-danger);
+}
+
+.auth-strength--2 .is-on {
+	background: var(--h-warning);
+}
+
+.auth-strength--3 .is-on,
+.auth-strength--4 .is-on {
+	background: var(--h-success);
+}
+
+.auth-strength-label {
+	flex-shrink: 0;
+	font-size: 0.8125rem;
+	color: var(--h-muted);
+}
+
+/* ---------- Actions ---------- */
+
+.auth-submit[aria-busy="true"]:disabled {
+	background: var(--h-yellow);
+	color: var(--h-on-yellow);
+	opacity: 0.8;
+	cursor: progress;
+}
+
+.auth-spinner {
+	display: inline-block;
+	flex-shrink: 0;
+	width: 18px;
+	height: 18px;
+	border: 2px solid currentColor;
+	border-right-color: transparent;
+	border-radius: 50%;
+	animation: auth-spin 0.7s linear infinite;
+}
+
+@keyframes auth-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.auth-legal {
+	font-size: 0.8125rem;
+	line-height: 1.5;
+	text-align: center;
+	color: var(--h-subtle);
+}
+
+.auth-switch {
+	margin-top: 32px;
+	padding-top: 24px;
+	border-top: 1px solid var(--h-line);
+	font-size: 0.9375rem;
+	text-align: center;
+	color: var(--h-muted);
+}
+
+.auth-legal a,
+.auth-switch a {
+	font-weight: 600;
+	color: var(--h-text);
+	text-decoration: underline;
+	text-decoration-color: var(--h-accent-line);
+	text-underline-offset: 3px;
+	transition: color 0.2s var(--h-ease);
+}
+
+.auth-legal a:hover,
+.auth-switch a:hover {
+	color: var(--h-accent);
+}
+
+/* ---------- Confirmation screens ---------- */
+
+.auth-done-icon {
+	display: grid;
+	place-items: center;
+	width: 56px;
+	height: 56px;
+	margin-bottom: 24px;
+	border-radius: 16px;
+	border: 1px solid var(--h-accent-line);
+	background: var(--h-accent-soft);
+	font-size: 1.6rem;
+	color: var(--h-accent);
+}
+
+.auth-done--error .auth-done-icon {
+	border-color: var(--a-danger-line);
+	background: var(--a-danger-soft);
+	color: var(--a-danger);
+}
+
+.auth-done .auth-lead {
+	margin-bottom: 32px;
+	overflow-wrap: anywhere; /* long email addresses */
+}
+
+.auth-done-actions {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 1023px) {
+	.auth-panel {
+		align-items: flex-start;
+	}
+}
+
+@media (max-width: 480px) {
+	.auth-head {
+		margin-bottom: 24px;
+	}
+
+	.auth-switch {
+		margin-top: 28px;
+	}
+}

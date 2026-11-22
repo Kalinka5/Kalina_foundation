@@ -8,6 +8,7 @@ import {
 import {
 	ACCESS_TOKEN,
 	DONATE_PAGE,
+	FORGOT_PASSWORD_PAGE,
 	HOME_PAGE,
 	INITIATIVES_PAGE,
 	LOGIN_PAGE,
@@ -15,6 +16,7 @@ import {
 	PROFILE_PAGE,
 	REFRESH_TOKEN,
 	REGISTER_PAGE,
+	RESET_PASSWORD_PAGE,
 } from "./lib/constants"
 
 import AuthProvider from "./components/AuthContext"
@@ -24,6 +26,7 @@ import ThemeProvider from "./components/ThemeContext"
 
 import AccessibilityStatement from "./pages/AccessibilityStatement"
 import EmailVerify from "./pages/EmailVerify"
+import ForgotPassword from "./pages/ForgotPassword"
 import Home from "./pages/Home"
 import Initiatives from "./pages/Initiatives"
 import ItemEdit from "./pages/ItemEdit"
@@ -63,7 +66,11 @@ function App() {
 								path="email-verify/:uid/:token"
 								element={<EmailVerify />}
 							/>
-							<Route path="/reset-password" element={<ResetPassword />} />
+							<Route
+								path={FORGOT_PASSWORD_PAGE}
+								element={<ForgotPassword />}
+							/>
+							<Route path={RESET_PASSWORD_PAGE} element={<ResetPassword />} />
 							<Route path={LOGOUT_PAGE} element={<Logout />} />
 							<Route
 								path={PROFILE_PAGE}
