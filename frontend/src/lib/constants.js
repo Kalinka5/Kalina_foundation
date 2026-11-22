@@ -9,6 +9,9 @@ export const PROFILE_PAGE = "/profile"
 export const DONATE_PAGE = "/donate"
 export const INITIATIVES_PAGE = "/initiatives"
 export const TERMS_CONDITIONS_PAGE = "/terms"
+export const PRIVACY_PAGE = "/privacy"
+export const FORGOT_PASSWORD_PAGE = "/forgot-password"
+export const RESET_PASSWORD_PAGE = "/reset-password"
 
 export const API_URL = import.meta.env.DEV
 	? "http://127.0.0.1:8000"
