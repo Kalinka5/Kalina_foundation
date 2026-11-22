@@ -167,64 +167,8 @@ export type UsernameProps = {
 	username: string
 }
 
-// Login and Register
-export type LogRegContainerProps = {
-	message?: ReactNode
-	children: ReactNode
-}
-export type LogRegTitleProps = {
-	text: "login-head" | "registration-head"
-}
-export type LogRegFormProps = {
-	handleSubmit: (e: any) => Promise<void>
-	children: ReactNode
-}
-export type LogRegLinkProps = {
-	link: string
-	textLink: "register-now" | "login-now"
-	question: "login-q" | "register-q"
-}
-export type SubmitButtonProps = {
-	text: "register-now" | "login-button"
-	loading: boolean
-}
-
-// Login Page
-export type LoginFieldProps = {
-	label: "email" | "password"
-	value: string
-	placeholder: "your-email" | "your-password"
-	type: "email" | "password"
-	onChange: Dispatch<SetStateAction<string>>
-}
-
 // Register Page
 export type RegistrationStatus = "success" | "error" | null
-export type RegisterContextType = {
-	registrationStatus: RegistrationStatus
-	setRegistrationStatus: Dispatch<SetStateAction<RegistrationStatus>>
-	username: string
-	setUsername: Dispatch<SetStateAction<string>>
-	email: string
-	setEmail: Dispatch<SetStateAction<string>>
-	password1: string
-	setPassword1: Dispatch<SetStateAction<string>>
-	password2: string
-	setPassword2: Dispatch<SetStateAction<string>>
-}
-
-export type RegisterFieldProps = {
-	value: string
-	placeholder: string
-	type: "text" | "email" | "password"
-	onChange: Dispatch<SetStateAction<string>>
-	validFields: { string: boolean } | {}
-	isValid: string
-	errors: { string: string } | {}
-	errorsName: "username" | "email" | "password" | "confirmPassword"
-	className: "name-tip" | "email-tip" | "pass-tip" | "confirm-tip"
-	tooltipText: "tooltip1" | "tooltip2" | "tooltip3" | "tooltip4"
-}
 
 // Profile
 export type UsernameFieldProps = {
