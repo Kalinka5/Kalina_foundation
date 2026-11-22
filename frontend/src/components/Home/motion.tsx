@@ -68,6 +68,9 @@ export function RevealText({
 
 	return (
 		<Tag
+			// Remount when the text changes (e.g. language switch): the new word
+			// spans start hidden and a `once` in-view trigger would never re-fire.
+			key={text}
 			className={className}
 			aria-label={text}
 			initial="hidden"
