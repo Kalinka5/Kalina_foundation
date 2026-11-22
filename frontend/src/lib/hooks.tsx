@@ -1,6 +1,6 @@
 import { QueryFunctionContext, useQuery } from "@tanstack/react-query"
 
-import { EmailVerify, Item, User } from "./types"
+import { EmailVerify, Item, PublicDonor, User } from "./types"
 
 import api from "./api"
 
@@ -55,11 +55,11 @@ export function useLimitedItems(limit: number) {
 }
 
 // Get Top 5 Donators data
-const getDonators = async (): Promise<User[]> => {
+const getDonators = async (): Promise<PublicDonor[]> => {
 	try {
 		console.log("Start getting data of donators...")
 		const response = await api("donators?format=json")
-		return response as unknown as User[]
+		return response as unknown as PublicDonor[]
 	} catch (error) {
 		console.error("Error fetching donators:", (error as Error).message)
 		return []
@@ -67,7 +67,7 @@ const getDonators = async (): Promise<User[]> => {
 }
 
 export function useDonators() {
-	const donators = useQuery<User[]>({
+	const donators = useQuery<PublicDonor[]>({
 		queryKey: ["donators"],
 		queryFn: getDonators,
 		staleTime: 60 * 60 * 1000, // 1 hour
@@ -129,29 +129,6 @@ export function useUser(auth: boolean) {
 	} else {
 		return false
 	}
-}
-
-// Get User data
-const getUserData = async (): Promise<User> => {
-	try {
-		console.log("Start to sending a request to backend /profile")
-		const response = (await api("profile")) as unknown as User
-		console.log("The request was sending successfully!")
-		return response as unknown as User
-	} catch (error) {
-		console.error("Error fetching items:", (error as Error).message)
-		throw new Error("Failed to fetch user")
-	}
-}
-
-export function useUserData(auth: boolean) {
-	const user = useQuery<User>({
-		queryKey: ["user"],
-		queryFn: getUserData,
-		enabled: auth,
-	})
-
-	return user
 }
 
 // Email Verification

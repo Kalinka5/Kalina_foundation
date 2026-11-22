@@ -107,3 +107,30 @@ class PasswordResetToken(models.Model):
     class Meta:
         verbose_name = 'Password Reset Token'
         verbose_name_plural = 'Password Reset Tokens'
+
+
+class Donation(models.Model):
+    """One donation recorded by the PayPal and crypto checkouts."""
+
+    CURRENCY_CHOICES = [
+        ('USD', 'US dollar'),
+        ('ETH', 'Ether'),
+        ('BNB', 'BNB'),
+    ]
+
+    user = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='donations')
+    currency = models.CharField(max_length=8, choices=CURRENCY_CHOICES)
+    # What the donor paid, in `currency`
+    original_amount = models.DecimalField(max_digits=20, decimal_places=8)
+    amount_uah = models.DecimalField(max_digits=12, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Donation'
+        verbose_name_plural = 'Donations'
+
+    def __str__(self) -> str:
+        return f"{self.original_amount} {self.currency} ({self.amount_uah} UAH)"

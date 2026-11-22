@@ -5,11 +5,13 @@ import { IoEye, IoEyeOff } from "react-icons/io5"
 type AuthFieldProps = {
 	id: string
 	label: string
-	type: "email" | "password"
+	type: "email" | "password" | "text"
 	value: string
-	onChange: (value: string) => void
-	onBlur: () => void
+	onChange?: (value: string) => void
+	onBlur?: () => void
 	autoComplete: string
+	readOnly?: boolean
+	maxLength?: number
 	/** Already translated error text */
 	error?: string
 	hint?: string
@@ -28,6 +30,8 @@ function AuthField({
 	onChange,
 	onBlur,
 	autoComplete,
+	readOnly,
+	maxLength,
 	error,
 	hint,
 	placeholder,
@@ -44,7 +48,9 @@ function AuthField({
 		[error && errorId, hint && hintId].filter(Boolean).join(" ") || undefined
 
 	return (
-		<div className={`auth-field${error ? " has-error" : ""}`}>
+		<div
+			className={`auth-field${error ? " has-error" : ""}${readOnly ? " is-readonly" : ""}`}
+		>
 			<div className="auth-label-row">
 				<label className="auth-label" htmlFor={id}>
 					{label}
@@ -59,9 +65,11 @@ function AuthField({
 					className="auth-input"
 					type={isPassword && revealed ? "text" : type}
 					value={value}
-					onChange={e => onChange(e.target.value)}
+					onChange={e => onChange?.(e.target.value)}
 					onBlur={onBlur}
 					autoComplete={autoComplete}
+					readOnly={readOnly}
+					maxLength={maxLength}
 					placeholder={placeholder}
 					aria-invalid={error ? true : undefined}
 					aria-describedby={describedBy}

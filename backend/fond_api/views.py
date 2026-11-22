@@ -38,8 +38,12 @@ from google.oauth2 import id_token
 
 from .tokens import account_activation_token
 
-from .models import Category, Item, User, PasswordResetToken
-from .serializers import LoginSerializer, RegisterSerializer, CookieTokenRefreshSerializer, UserSerializer, CategorySerializer, ItemSerializer
+from .models import Category, Donation, Item, User, PasswordResetToken
+from .serializers import (
+    CategorySerializer, ChangePasswordSerializer, CookieTokenRefreshSerializer,
+    DonationSerializer, ItemSerializer, LoginSerializer, ProfileSerializer,
+    ProfileUpdateSerializer, PublicDonorSerializer, RegisterSerializer,
+)
 
 
 # Change item ID when users donated full amount
@@ -141,7 +145,7 @@ class RegisterApi(generics.GenericAPIView):
         send_activation_email(user)
 
         return Response({
-            "user": UserSerializer(user, context=self.get_serializer_context()).data,
+            "user": ProfileSerializer(user, context=self.get_serializer_context()).data,
             "message": "User Created Successfully. Now perform Login to get your token",
             "ok": True
         })
@@ -338,14 +342,18 @@ def profile(request):
     user = request.user
 
     if request.method == 'GET':
-        serializer = UserSerializer(user, many=False)
+        serializer = ProfileSerializer(user, context={'request': request})
         return Response(serializer.data)
 
     elif request.method == 'PATCH':
-        serializer = UserSerializer(user, data=request.data, partial=True)
+        # Only first_name, last_name and image are writable; anything else
+        # in the request (is_superuser, donated, email...) is ignored.
+        serializer = ProfileUpdateSerializer(
+            user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data)
+            return Response(
+                ProfileSerializer(user, context={'request': request}).data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
@@ -353,10 +361,34 @@ def profile(request):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+@throttle_classes([UserRateThrottle])
+def change_password(request):
+    serializer = ChangePasswordSerializer(
+        data=request.data, context={'request': request})
+    serializer.is_valid(raise_exception=True)
+
+    user = request.user
+    user.set_password(serializer.validated_data['new_password'])
+    user.save(update_fields=['password'])
+    return Response({'status': 'success'})
+
+
+PROFILE_DONATIONS_LIMIT = 50
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def profile_donations(request):
+    donations = request.user.donations.all()[:PROFILE_DONATIONS_LIMIT]
+    return Response(DonationSerializer(donations, many=True).data)
+
+
 @api_view(['GET'])
 def donaters(request):
     user = User.objects.all().order_by('-donated')[:5]
-    serializer = UserSerializer(user, many=True)
+    serializer = PublicDonorSerializer(user, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -412,6 +444,8 @@ def process_donation(request):
                 amount = request.POST.get('amount')
                 user_email = request.POST.get('email')
 
+            original_amount = amount
+
             # Proceed with your donation logic
             if donate_type == "dollars":
                 usd_to_uah = get_usd_to_uah()
@@ -429,6 +463,12 @@ def process_donation(request):
                 user = User.objects.get(email=user_email)
                 user.donated += amount
                 user.save()
+                Donation.objects.create(
+                    user=user,
+                    currency='USD' if donate_type == 'dollars' else donate_type,
+                    original_amount=Decimal(str(original_amount)),
+                    amount_uah=amount.quantize(Decimal('0.01')),
+                )
 
                 # Update Item collected variable
                 item = Item.objects.get(pk=DONATE_ITEM_ID)
@@ -671,7 +711,7 @@ def google_auth(request):
         res.data = {
             'status': 'success',
             'message': 'Google authentication successful',
-            'user': UserSerializer(user, context={'request': request}).data,
+            'user': ProfileSerializer(user, context={'request': request}).data,
             'tokens': tokens
         }
         res["X-CSRFToken"] = csrf.get_token(request)

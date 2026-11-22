@@ -1,132 +1,194 @@
-import React, { useEffect, useState } from "react"
+import { AnimatePresence, motion, MotionConfig } from "framer-motion"
+import { useCallback, useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
+import {
+	IoCheckmarkCircle,
+	IoColorPaletteOutline,
+	IoLockClosedOutline,
+	IoPersonOutline,
+	IoReceiptOutline,
+	IoTrashOutline,
+} from "react-icons/io5"
 
-import { FaAustralSign, FaAutoprefixer } from "react-icons/fa6"
-import { IoMdAt } from "react-icons/io"
-
-import api from "../lib/api"
-
-import DeleteButton from "../components/DeleteButton"
+import Footer from "../components/Footer"
 import Header from "../components/Header"
-import DeleteUserModal from "../components/Profile/DeleteUserModal"
-import InputField from "../components/Profile/InputField"
-import UpdateButton from "../components/Profile/UpdateButton"
-import UsernameField from "../components/Profile/UsernameField"
-import UploadImage from "../components/UploadImage"
+import { EASE } from "../components/Home/motion"
+import DangerZone from "../components/Profile/DangerZone"
+import DonationHistory from "../components/Profile/DonationHistory"
+import PersonalInfoSection from "../components/Profile/PersonalInfoSection"
+import PreferencesSection from "../components/Profile/PreferencesSection"
+import ProfileHero from "../components/Profile/ProfileHero"
+import ProfileNav, { ProfileSectionLink } from "../components/Profile/ProfileNav"
+import SecuritySection from "../components/Profile/SecuritySection"
 
-import { User } from "../lib/types"
+import { Profile as ProfileData, useProfile } from "../lib/profile"
 
-import { useUserData } from "../lib/hooks"
-
+import "../styles/home/home.css"
+import "../styles/auth/auth.css"
 import "../styles/profile/profile.css"
 
-function Profile() {
-	const [username, setUsername] = useState<string>("")
-	const [email, setEmail] = useState<string>("")
-	const [firstName, setFirstName] = useState<string>("")
-	const [lastName, setLastName] = useState<string>("")
-	const [image, setImage] = useState<File | null>(null)
-	const [imageUrl, setImageURL] = useState<string>("")
-	const [loading, setLoading] = useState<boolean>(false)
-	const [isOpen, setIsOpen] = useState<boolean>(false)
-	const auth = true
+const SECTIONS: ProfileSectionLink[] = [
+	{ id: "personal", labelKey: "profile-section-personal", icon: IoPersonOutline },
+	{ id: "donations", labelKey: "profile-section-donations", icon: IoReceiptOutline },
+	{ id: "security", labelKey: "profile-section-security", icon: IoLockClosedOutline },
+	{ id: "preferences", labelKey: "profile-section-preferences", icon: IoColorPaletteOutline },
+	{ id: "danger", labelKey: "profile-section-danger", icon: IoTrashOutline, tone: "danger" },
+]
 
-	const user = useUserData(auth)
+const TOAST_MS = 4000
 
-	useEffect(() => {
-		if (user.data) {
-			const userData = user.data as User
-			setUsername(userData.username)
-			setEmail(userData.email)
-			setFirstName(userData.first_name)
-			setLastName(userData.last_name)
-			setImageURL(userData.image)
-		}
-	}, [user.data])
+/** Short confirmation in the corner, announced politely to screen readers. */
+function useToast() {
+	const [message, setMessage] = useState<string | null>(null)
+	const timer = useRef<number>()
 
-	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e.preventDefault()
-		setLoading(true)
+	const show = useCallback((text: string) => {
+		window.clearTimeout(timer.current)
+		setMessage(text)
+		timer.current = window.setTimeout(() => setMessage(null), TOAST_MS)
+	}, [])
+	useEffect(() => () => window.clearTimeout(timer.current), [])
 
-		const formData = new FormData()
-		formData.append("username", username)
-		formData.append("email", email)
-		formData.append("first_name", firstName)
-		formData.append("last_name", lastName)
-		image && formData.append("image", image, image.name)
-		console.log(formData)
+	const toast = (
+		<div className="profile-toast-region" role="status" aria-live="polite">
+			<AnimatePresence>
+				{message && (
+					<motion.p
+						className="profile-toast"
+						initial={{ opacity: 0, y: -12, scale: 0.98 }}
+						animate={{ opacity: 1, y: 0, scale: 1 }}
+						exit={{ opacity: 0, y: -12 }}
+						transition={{ duration: 0.3, ease: EASE }}
+					>
+						<IoCheckmarkCircle aria-hidden />
+						{message}
+					</motion.p>
+				)}
+			</AnimatePresence>
+		</div>
+	)
 
-		try {
-			console.log("Start updating User's profile data")
-			const response = await api("profile", {
-				method: "PATCH",
-				body: formData,
-			})
-			console.log("User profile was updated successfully:", response)
-		} catch (error) {
-			console.error("Error updating User's profile:", error)
-			alert("Something went wrong when updating the user profile!")
-		} finally {
-			setLoading(false)
-		}
-	}
+	return { show, toast }
+}
+
+function ProfileContent({ profile }: { profile: ProfileData }) {
+	const { t } = useTranslation()
+	const { show, toast } = useToast()
 
 	return (
-		<div className="profile header-body">
-			<Header />
-
-			<div className="profile-field main-body">
-				<form className="profile-card" onSubmit={handleSubmit}>
-					<div className="profile-header">
-						<UploadImage
-							imageUrl={imageUrl}
-							setImage={setImage}
-							setImageURL={setImageURL}
-						/>
-
-						<UsernameField username={username} setUsername={setUsername} />
-
-						<DeleteButton
-							onClick={async () => setIsOpen(true)}
-							className="profile"
-						/>
-					</div>
-					<div className="profile-details">
-						<InputField
-							value={email}
-							onChange={setEmail}
-							label="email"
-							tLabel="e-mail"
-							type="email"
-							placeholder="e-mail-input"
-							icon={<IoMdAt />}
-						/>
-
-						<InputField
-							value={firstName}
-							onChange={setFirstName}
-							label="firstname"
-							tLabel="firstname"
-							type="text"
-							placeholder="firstname-input"
-							icon={<FaAutoprefixer />}
-						/>
-
-						<InputField
-							value={lastName}
-							onChange={setLastName}
-							label="lastname"
-							tLabel="lastname"
-							type="text"
-							placeholder="lastname-input"
-							icon={<FaAustralSign />}
-						/>
-
-						<UpdateButton loading={loading} />
-					</div>
-				</form>
+		<>
+			<ProfileHero profile={profile} />
+			<div className="h-container profile-layout">
+				<ProfileNav sections={SECTIONS} />
+				<div className="profile-sections">
+					<PersonalInfoSection
+						id="personal"
+						profile={profile}
+						onSaved={() => show(t("profile-saved"))}
+					/>
+					<DonationHistory id="donations" profile={profile} />
+					<SecuritySection id="security" profile={profile} />
+					<PreferencesSection id="preferences" />
+					<DangerZone id="danger" email={profile.email} />
+				</div>
 			</div>
-			{isOpen && <DeleteUserModal setIsOpen={setIsOpen} />}
+			{toast}
+		</>
+	)
+}
+
+function ProfileSkeleton() {
+	const { t } = useTranslation()
+	return (
+		<div className="profile-skeleton-page" aria-busy="true">
+			<p className="sr-only" role="status">
+				{t("profile-loading")}
+			</p>
+			<div className="profile-hero" aria-hidden="true">
+				<div className="h-container profile-hero-inner">
+					<div className="profile-identity">
+						<span className="profile-skeleton profile-skeleton--avatar" />
+						<div className="profile-identity-text">
+							<span className="profile-skeleton profile-skeleton--eyebrow" />
+							<span className="profile-skeleton profile-skeleton--title" />
+							<span className="profile-skeleton profile-skeleton--line" />
+						</div>
+					</div>
+					<div className="profile-impact">
+						<div className="profile-stats">
+							{[0, 1, 2].map(i => (
+								<span key={i} className="profile-skeleton profile-skeleton--stat" />
+							))}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="h-container profile-layout" aria-hidden="true">
+				<div className="profile-nav">
+					<span className="profile-skeleton profile-skeleton--nav" />
+				</div>
+				<div className="profile-sections">
+					<span className="profile-skeleton profile-skeleton--card" />
+					<span className="profile-skeleton profile-skeleton--card" />
+				</div>
+			</div>
 		</div>
+	)
+}
+
+function ProfileLoadError({ onRetry, retrying }: { onRetry: () => void; retrying: boolean }) {
+	const { t } = useTranslation()
+	return (
+		<div className="h-container profile-load-error">
+			<div className="auth-done auth-done--error">
+				<h1 className="auth-title">{t("profile-load-error-title")}</h1>
+				<p className="auth-lead">{t("profile-load-error-text")}</p>
+				<button
+					type="button"
+					className="btn btn-primary"
+					onClick={onRetry}
+					disabled={retrying}
+					aria-busy={retrying}
+				>
+					{retrying && <span className="auth-spinner" aria-hidden />}
+					{t("profile-retry")}
+				</button>
+			</div>
+		</div>
+	)
+}
+
+function Profile() {
+	const { t } = useTranslation()
+	const profile = useProfile()
+
+	useEffect(() => {
+		const previous = document.title
+		document.title = `${t("profile")} · Kalina Foundation`
+		return () => {
+			document.title = previous
+		}
+	}, [t])
+
+	return (
+		<MotionConfig reducedMotion="user">
+			<div className="main home-page profile-page">
+				<Header fixed="pos-fixed" variant="home" navLinks={[]} />
+				<main className="profile-main" id="main-content">
+					{profile.data ? (
+						<ProfileContent profile={profile.data} />
+					) : profile.isError ? (
+						<ProfileLoadError
+							onRetry={() => profile.refetch()}
+							retrying={profile.isFetching}
+						/>
+					) : (
+						<ProfileSkeleton />
+					)}
+				</main>
+				<Footer />
+			</div>
+		</MotionConfig>
 	)
 }
 

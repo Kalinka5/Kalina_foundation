@@ -43,22 +43,17 @@ export type UploadImageProps = {
 	setImageURL: Dispatch<SetStateAction<string>>
 }
 
-// User
-export type User = {
+// User: the signed-in account, as GET /profile returns it
+export type { Profile as User } from "./profile"
+
+// A donor on the public leaderboard (GET /donators): no email or username
+export type PublicDonor = {
 	id: number
-	password: string
-	last_login: string
-	username: string
-	email: string
+	display_name: string | null
 	first_name: string
 	last_name: string
-	image: string
+	image: string | null
 	donated: string
-	is_active: boolean
-	is_staff: boolean
-	is_superuser: boolean
-	groups: []
-	user_permissions: []
 }
 
 // AuthContext.tsx
@@ -152,7 +147,7 @@ export type DonatorImgProps = {
 }
 
 export type PedestalProps = {
-	donators: User[]
+	donators: PublicDonor[]
 	orientation: "landscape" | "portrait"
 }
 
@@ -170,26 +165,6 @@ export type UsernameProps = {
 
 // Register Page
 export type RegistrationStatus = "success" | "error" | null
-
-// Profile
-export type UsernameFieldProps = {
-	username: string
-	setUsername: Dispatch<SetStateAction<string>>
-}
-
-export type ProfileInputFieldProps = {
-	value: string
-	onChange: Dispatch<SetStateAction<string>>
-	label: string
-	tLabel: string
-	type: "email" | "text"
-	placeholder: string
-	icon: React.ReactNode
-}
-
-export type DeleteUserModalProps = {
-	setIsOpen: Dispatch<SetStateAction<boolean>>
-}
 
 // Item Edit page
 export type TitleProps = {
