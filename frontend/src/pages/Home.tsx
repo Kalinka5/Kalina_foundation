@@ -34,10 +34,8 @@ function Home() {
 	const [page] = useState(1)
 
 	return (
-		// The Home page is always dark (cinematic direction); the theme toggle still
-		// applies to every other page.
 		<MotionConfig reducedMotion="user">
-			<div className="main home-page" data-theme="dark">
+			<div className="main home-page">
 				<Header fixed="pos-fixed" variant="home" navLinks={homeNavLinks} />
 				{page > 0 && page < MAX_PAGE_NUMBER ? (
 					<main className="home-content">

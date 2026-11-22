@@ -74,13 +74,13 @@
 	font-size: 1.25rem;
 	font-weight: 600;
 	line-height: 1.25;
-	color: #fff;
+	color: var(--h-text);
 }
 
 .story-text {
 	font-size: 0.9375rem;
 	line-height: 1.55;
-	color: rgba(244, 246, 250, 0.82);
+	color: color-mix(in srgb, var(--h-text) 82%, transparent);
 	display: -webkit-box;
 	-webkit-line-clamp: 4;
 	-webkit-box-orient: vertical;

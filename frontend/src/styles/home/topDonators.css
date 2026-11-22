@@ -25,7 +25,7 @@
 }
 
 .donor:hover {
-	background: rgba(255, 255, 255, 0.02);
+	background: var(--h-tint);
 }
 
 .donor-rank {
@@ -51,6 +51,19 @@
 
 .donor--3 .donor-rank {
 	color: #d29a62;
+}
+
+/* Medal colours that stay readable on white */
+[data-theme="light"] .donor--1 .donor-rank {
+	color: #b88a00;
+}
+
+[data-theme="light"] .donor--2 .donor-rank {
+	color: #7d8796;
+}
+
+[data-theme="light"] .donor--3 .donor-rank {
+	color: #a8652e;
 }
 
 .donor-avatar {
@@ -90,7 +103,7 @@
 	font-family: var(--h-font-display);
 	font-weight: 600;
 	font-size: 1.125rem;
-	color: var(--h-yellow);
+	color: var(--h-accent);
 	font-variant-numeric: tabular-nums;
 }
 

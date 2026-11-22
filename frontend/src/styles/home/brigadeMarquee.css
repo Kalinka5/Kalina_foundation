@@ -50,7 +50,7 @@
 	font-size: clamp(1.25rem, 2.4vw, 2rem);
 	letter-spacing: -0.01em;
 	white-space: nowrap;
-	color: rgba(244, 246, 250, 0.42);
+	color: color-mix(in srgb, var(--h-text) 42%, transparent);
 	transition: color 0.3s var(--h-ease);
 }
 

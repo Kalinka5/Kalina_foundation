@@ -5,8 +5,9 @@
 .donate-page {
 	--d-card-radius: 24px;
 	--d-field-radius: 12px;
-	--d-yellow-soft: rgba(255, 213, 0, 0.1);
-	--d-yellow-line: rgba(255, 213, 0, 0.55);
+	/* Accent fills: yellow in dark, blue in light (see home.css tokens) */
+	--d-yellow-soft: var(--h-accent-soft);
+	--d-yellow-line: var(--h-accent-line);
 }
 
 .donate-page section[id] {
@@ -27,7 +28,7 @@
 	position: absolute;
 	inset: -4px;
 	border-radius: 50%;
-	border: 1px solid var(--h-yellow);
+	border: 1px solid var(--h-accent);
 	opacity: 0;
 	animation: donate-ping 2.4s var(--h-ease) infinite;
 }
@@ -60,8 +61,8 @@
 	inset: 0;
 	z-index: -1;
 	background:
-		radial-gradient(60% 50% at 85% 10%, rgba(255, 213, 0, 0.09), transparent 70%),
-		radial-gradient(50% 45% at 0% 60%, rgba(47, 123, 255, 0.08), transparent 70%);
+		radial-gradient(60% 50% at 85% 10%, var(--h-glow-yellow), transparent 70%),
+		radial-gradient(50% 45% at 0% 60%, var(--h-glow-blue), transparent 70%);
 	pointer-events: none;
 }
 
@@ -134,7 +135,7 @@
 	height: 24px;
 	border-radius: 50%;
 	background: var(--d-yellow-soft);
-	color: var(--h-yellow);
+	color: var(--h-accent);
 	font-size: 0.8125rem;
 }
 
@@ -178,7 +179,7 @@
 .goal {
 	padding: 24px;
 	border-radius: 20px;
-	background: rgba(255, 255, 255, 0.025);
+	background: var(--h-tint);
 	border: 1px solid var(--h-line);
 	max-width: 560px;
 }
@@ -246,7 +247,7 @@
 	font-family: var(--h-font-display);
 	font-weight: 600;
 	font-size: 1.25rem;
-	color: var(--h-yellow);
+	color: var(--h-accent);
 }
 
 /* ==========================================================================
@@ -260,8 +261,8 @@
 	background: var(--h-surface);
 	border: 1px solid var(--h-line-strong);
 	box-shadow:
-		0 1px 0 rgba(255, 255, 255, 0.06) inset,
-		0 40px 80px -40px rgba(0, 0, 0, 0.85);
+		0 1px 0 var(--h-tint-strong) inset,
+		var(--h-shadow-lg);
 	overflow: hidden;
 }
 
@@ -277,7 +278,7 @@
 }
 
 .dc-step--panel {
-	background: rgba(255, 255, 255, 0.015);
+	background: var(--h-tint);
 }
 
 .dc-step-head {
@@ -359,7 +360,7 @@
 }
 
 .currency-option:has(input:focus-visible) {
-	outline: 2px solid var(--h-yellow);
+	outline: 2px solid var(--h-accent);
 	outline-offset: 2px;
 }
 
@@ -404,18 +405,18 @@
 }
 
 .dc-preset:hover {
-	border-color: rgba(255, 255, 255, 0.36);
+	border-color: var(--h-hover-line);
 }
 
 .dc-preset.is-active {
-	border-color: var(--h-yellow);
+	border-color: var(--h-accent);
 	background: var(--d-yellow-soft);
-	color: var(--h-yellow);
+	color: var(--h-accent);
 }
 
 .dc-preset:has(input:focus-visible),
 .dc-method:has(input:focus-visible) {
-	outline: 2px solid var(--h-yellow);
+	outline: 2px solid var(--h-accent);
 	outline-offset: 2px;
 }
 
@@ -472,8 +473,8 @@
 
 .donate-page .dc-custom input:focus {
 	outline: none;
-	border-color: var(--h-yellow);
-	box-shadow: 0 0 0 3px rgba(255, 213, 0, 0.18);
+	border-color: var(--h-accent);
+	box-shadow: 0 0 0 3px var(--h-accent-soft);
 }
 
 /* ---------- Impact line ---------- */
@@ -483,8 +484,8 @@
 	align-items: center;
 	padding: 14px 16px;
 	border-radius: var(--d-field-radius);
-	background: rgba(255, 255, 255, 0.03);
-	border-left: 2px solid var(--h-yellow);
+	background: var(--h-tint);
+	border-left: 2px solid var(--h-accent);
 }
 
 .dc-impact p {
@@ -520,12 +521,12 @@
 }
 
 .dc-method:hover {
-	border-color: rgba(255, 255, 255, 0.36);
+	border-color: var(--h-hover-line);
 }
 
 .dc-method.is-active {
-	border-color: var(--h-yellow);
-	background: rgba(255, 213, 0, 0.06);
+	border-color: var(--h-accent);
+	background: var(--h-accent-soft);
 }
 
 .dc-method-icon {
@@ -577,7 +578,7 @@
 	padding: 2px 8px;
 	border-radius: 999px;
 	background: var(--d-yellow-soft);
-	color: var(--h-yellow);
+	color: var(--h-accent);
 	font-size: 0.6875rem;
 	font-weight: 600;
 	letter-spacing: 0.02em;
@@ -595,8 +596,8 @@
 }
 
 .dc-method.is-active .dc-radio {
-	border-color: var(--h-yellow);
-	box-shadow: inset 0 0 0 4px var(--h-surface), inset 0 0 0 9px var(--h-yellow);
+	border-color: var(--h-accent);
+	box-shadow: inset 0 0 0 4px var(--h-surface), inset 0 0 0 9px var(--h-accent);
 }
 
 /* ---------- Method panel ---------- */
@@ -625,13 +626,13 @@
 .dc-note--warn {
 	padding: 12px 14px;
 	border-radius: var(--d-field-radius);
-	background: rgba(255, 159, 10, 0.08);
-	border: 1px solid rgba(255, 159, 10, 0.24);
+	background: color-mix(in srgb, var(--h-warning) 9%, transparent);
+	border: 1px solid color-mix(in srgb, var(--h-warning) 28%, transparent);
 	color: var(--h-text);
 }
 
 .dc-note--warn svg {
-	color: #ffb340;
+	color: var(--h-warning);
 }
 
 .dc-secure {
@@ -776,14 +777,14 @@
 }
 
 .donate-page .copy-btn:hover {
-	border-color: var(--h-yellow);
-	color: var(--h-yellow);
+	border-color: var(--h-accent);
+	color: var(--h-accent);
 }
 
 .donate-page .copy-btn.is-copied {
-	border-color: rgba(52, 199, 89, 0.5);
-	background: rgba(52, 199, 89, 0.1);
-	color: #5be38a;
+	border-color: color-mix(in srgb, var(--h-success) 50%, transparent);
+	background: color-mix(in srgb, var(--h-success) 10%, transparent);
+	color: var(--h-success);
 }
 
 /* Crypto */
@@ -886,7 +887,7 @@
 
 .donate-page .impact-tile.is-active {
 	border-color: var(--d-yellow-line);
-	background: linear-gradient(180deg, rgba(255, 213, 0, 0.06), var(--h-surface) 60%);
+	background: linear-gradient(180deg, var(--h-accent-soft), var(--h-surface) 60%);
 }
 
 .impact-icon {
@@ -896,7 +897,7 @@
 	height: 44px;
 	border-radius: 12px;
 	background: var(--h-surface-2);
-	color: var(--h-yellow);
+	color: var(--h-accent);
 	font-size: 1.25rem;
 	margin-bottom: 8px;
 }
@@ -935,7 +936,7 @@
 
 .impact-tile:hover .impact-select,
 .impact-tile.is-active .impact-select {
-	color: var(--h-yellow);
+	color: var(--h-accent);
 }
 
 @media (max-width: 1023px) {
@@ -978,7 +979,7 @@
 	height: 44px;
 	border-radius: 12px;
 	background: var(--d-yellow-soft);
-	color: var(--h-yellow);
+	color: var(--h-accent);
 	font-size: 1.25rem;
 	margin-bottom: 20px;
 }
@@ -1060,7 +1061,7 @@
 }
 
 .faq-item summary:hover {
-	color: var(--h-yellow);
+	color: var(--h-accent);
 }
 
 .faq-icon {
@@ -1072,7 +1073,7 @@
 
 .faq-item[open] .faq-icon {
 	transform: rotate(45deg);
-	color: var(--h-yellow);
+	color: var(--h-accent);
 }
 
 .faq-item p {

@@ -22,8 +22,8 @@
 	max-width: 900px;
 	max-height: 900px;
 	background:
-		radial-gradient(closest-side, rgba(47, 123, 255, 0.18), transparent 70%),
-		radial-gradient(closest-side at 30% 70%, rgba(255, 213, 0, 0.1), transparent 70%);
+		radial-gradient(closest-side, var(--h-glow-blue), transparent 70%),
+		radial-gradient(closest-side at 30% 70%, var(--h-glow-yellow), transparent 70%);
 	z-index: -1;
 	pointer-events: none;
 }
@@ -53,7 +53,7 @@
 	position: absolute;
 	inset: -4px;
 	border-radius: 50%;
-	border: 1px solid var(--h-yellow);
+	border: 1px solid var(--h-accent);
 	opacity: 0;
 	animation: live-ping 2.4s var(--h-ease) infinite;
 }
@@ -180,11 +180,11 @@
 	gap: 10px;
 	padding: 18px 20px;
 	border-radius: var(--h-radius);
-	background: rgba(14, 19, 28, 0.86);
+	background: var(--h-glass);
 	backdrop-filter: blur(14px);
 	-webkit-backdrop-filter: blur(14px);
 	border: 1px solid var(--h-line-strong);
-	box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.9);
+	box-shadow: var(--h-shadow-lg);
 }
 
 .mosaic-card-label {
@@ -192,7 +192,7 @@
 	font-weight: 600;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
-	color: var(--h-yellow);
+	color: var(--h-accent);
 }
 
 .mosaic-card-title {
@@ -249,7 +249,12 @@
 		position: absolute;
 		inset: 0;
 		background:
-			linear-gradient(180deg, rgba(7, 9, 15, 0.55) 0%, rgba(7, 9, 15, 0.82) 45%, #07090f 100%);
+			linear-gradient(
+				180deg,
+				rgba(var(--h-scrim), 0.55) 0%,
+				rgba(var(--h-scrim), 0.84) 45%,
+				rgb(var(--h-scrim)) 100%
+			);
 	}
 
 	.hero {
